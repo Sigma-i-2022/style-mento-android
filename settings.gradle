@@ -1,0 +1,2 @@
+rootProject.name = "Style Mento"
+include ':app'
