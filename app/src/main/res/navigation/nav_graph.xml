@@ -15,12 +15,23 @@
     <fragment
         android:id="@+id/home"
         android:name="com.sigmai.stylemento.feature.home.HomeFragment"
-        android:label="signup"
+        android:label="home"
         tools:layout="@layout/fragment_home" />
 
+    <!--
+    이 fragment 는 navigation 으로 관리되지 않지만,
+    구조를 시각적으로 확인하기 위해 넣음.
+     -->
     <fragment
         android:id="@+id/main"
         android:name="com.sigmai.stylemento.feature.main.MainFragment"
         android:label="main"
-        tools:layout="@layout/fragment_main"/>
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_main_to_home"
+            app:destination="@id/home" />
+        <action
+            android:id="@+id/action_main_to_signup"
+            app:destination="@id/signup" />
+    </fragment>
 </navigation>
