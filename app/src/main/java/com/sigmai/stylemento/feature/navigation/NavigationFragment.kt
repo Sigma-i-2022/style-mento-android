@@ -18,13 +18,6 @@ class NavigationFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_navigation, container, false)
 
-        view?.findViewById<Button>(R.id.btn_signup)?.setOnClickListener {
-            this.findNavController().navigate(R.id.action_navigation_to_signup)
-        }
-
-        view?.findViewById<Button>(R.id.btn_home)?.setOnClickListener {
-            this.findNavController().navigate(R.id.action_navigation_to_home)
-        }
 
         return view
     }

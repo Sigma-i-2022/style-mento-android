@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/navigation">
-
-    <fragment
-        android:id="@+id/navigation"
-        android:name="com.sigmai.stylemento.feature.navigation.NavigationFragment"
-        android:label="navigation"
-        tools:layout="@layout/fragment_navigation">
-        <action
-            android:id="@+id/action_navigation_to_signup"
-            app:destination="@id/signup" />
-        <action
-            android:id="@+id/action_navigation_to_home"
-            app:destination="@id/home" />
-    </fragment>
+    app:startDestination="@id/home">
 
     <fragment
         android:id="@+id/signup"
@@ -28,5 +16,11 @@
         android:id="@+id/home"
         android:name="com.sigmai.stylemento.feature.home.HomeFragment"
         android:label="signup"
-        tools:layout="@layout/fragment_sign_up" />
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/main"
+        android:name="com.sigmai.stylemento.feature.main.MainFragment"
+        android:label="main"
+        tools:layout="@layout/fragment_main"/>
 </navigation>
