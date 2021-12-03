@@ -9,4 +9,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override val layoutResourceId = R.layout.fragment_home
     private val viewModel: HomeViewModel by viewModels()
 
+    override fun initState() {
+        super.initState()
+        getUserInfo()
+    }
+
+    override fun initDataBinding() {
+        super.initDataBinding()
+        binding.viewModel = viewModel
+    }
+
+    fun getUserInfo() {
+        viewModel.getUserInfo()
+    }
 }
