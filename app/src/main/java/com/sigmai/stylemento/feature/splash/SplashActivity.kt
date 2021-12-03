@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.sigmai.stylemento.feature.MainActivity
+import com.sigmai.stylemento.feature.main.MainActivity
 import com.sigmai.stylemento.R
 
 class SplashActivity : AppCompatActivity() {
