@@ -7,12 +7,6 @@
     app:startDestination="@id/home">
 
     <fragment
-        android:id="@+id/signup"
-        android:name="com.sigmai.stylemento.feature.signup.SignUpFragment"
-        android:label="signup"
-        tools:layout="@layout/fragment_sign_up" />
-
-    <fragment
         android:id="@+id/home"
         android:name="com.sigmai.stylemento.feature.home.HomeFragment"
         android:label="home"
@@ -26,12 +20,5 @@
         android:id="@+id/main"
         android:name="com.sigmai.stylemento.feature.main.MainFragment"
         android:label="main"
-        tools:layout="@layout/fragment_main">
-        <action
-            android:id="@+id/action_main_to_home"
-            app:destination="@id/home" />
-        <action
-            android:id="@+id/action_main_to_signup"
-            app:destination="@id/signup" />
-    </fragment>
+        tools:layout="@layout/fragment_main"/>
 </navigation>
