@@ -9,7 +9,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
 abstract class BaseFragment<VB: ViewDataBinding> : Fragment() {
-    private lateinit var binding: VB
+    protected lateinit var binding: VB
     abstract val layoutResourceId: Int
 
     override fun onCreateView(
@@ -21,5 +21,19 @@ abstract class BaseFragment<VB: ViewDataBinding> : Fragment() {
         binding.lifecycleOwner = this
 
         return binding.root
+    }
+
+    open fun initState() {
+
+    }
+
+    open fun initDataBinding() {
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initState()
     }
 }
