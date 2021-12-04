@@ -1,19 +1,14 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-
-    // Safe Args
-    id("androidx.navigation.safeargs.kotlin")
 }
 
-// binding
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 31
     buildToolsVersion "30.0.3"
-
-
 
     defaultConfig {
         applicationId "com.sigmai.stylemento"
@@ -42,6 +37,12 @@ android {
     // binding
     dataBinding {
         enabled = true
+    }
+
+    // hilt
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -84,4 +85,8 @@ dependencies {
 
     // viewpager2
     implementation("androidx.viewpager2:viewpager2:1.0.0")
+
+    // hilt
+    implementation "com.google.dagger:hilt-android:2.28-alpha"
+    kapt "com.google.dagger:hilt-android-compiler:2.28-alpha"
 }
