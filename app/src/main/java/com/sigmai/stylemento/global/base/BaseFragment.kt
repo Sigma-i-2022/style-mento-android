@@ -35,5 +35,6 @@ abstract class BaseFragment<VB: ViewDataBinding> : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initState()
+        initDataBinding()
     }
 }
