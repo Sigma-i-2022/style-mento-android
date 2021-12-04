@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="viewModel"
@@ -7,8 +9,6 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".feature.login.LoginFragment">
@@ -24,6 +24,7 @@
             android:src="@drawable/logo"/>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/login_logo"
@@ -33,7 +34,8 @@
             android:background="@drawable/login_button_background"
             android:text="이메일로 가입하기"
             android:textColor="@color/primary"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:onClick="@{()->viewModel.onClickSignUp()}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
