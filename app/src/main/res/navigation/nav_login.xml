@@ -9,5 +9,15 @@
         android:id="@+id/login"
         android:name="com.sigmai.stylemento.feature.login.LoginFragment"
         android:label="login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_signup"
+            app:destination="@id/signup" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signup"
+        android:name="com.sigmai.stylemento.feature.signup.SignUpFragment"
+        android:label="signup"
+        tools:layout="@layout/fragment_sign_up"/>
 </navigation>
