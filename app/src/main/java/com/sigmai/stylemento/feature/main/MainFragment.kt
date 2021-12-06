@@ -10,6 +10,11 @@ import com.sigmai.stylemento.global.base.BaseFragment
 class MainFragment : BaseFragment<FragmentMainBinding>() {
     override val layoutResourceId = R.layout.fragment_main
 
+    private val outlinedIcons = arrayListOf(R.drawable.ic_tab_outlined_notification, R.drawable.ic_tab_outlined_coordinator,
+        R.drawable.ic_tab_outlined_home, R.drawable.ic_tab_outlined_chat, R.drawable.ic_tab_outlined_my_page)
+    private val filledIcons = arrayListOf(R.drawable.ic_tab_filled_notification, R.drawable.ic_tab_filled_coordinator,
+        R.drawable.ic_tab_filled_home, R.drawable.ic_tab_filled_chat, R.drawable.ic_tab_fillted_my_page)
+
     override fun initState() {
         super.initState()
 
@@ -23,7 +28,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
 
         viewPager?.adapter = pagerAdapter
         TabLayoutMediator(tabs!!, viewPager!!) { tab, position ->
-            tab.text = "TAB"
+            tab.setIcon(outlinedIcons[position])
         }.attach()
     }
 }
