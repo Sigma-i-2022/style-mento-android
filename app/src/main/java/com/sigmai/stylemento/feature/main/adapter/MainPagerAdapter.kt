@@ -6,17 +6,17 @@ import com.sigmai.stylemento.feature.host.ChatHostFragment
 import com.sigmai.stylemento.feature.host.CoordinatorHostFragment
 import com.sigmai.stylemento.feature.host.HomeHostFragment
 import com.sigmai.stylemento.feature.host.MyPageHostFragment
+import java.lang.Exception
 
 class MainPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
-    override fun getItemCount(): Int = 5
+    override fun getItemCount(): Int = 4
     override fun createFragment(position: Int): Fragment {
         return when(position) {
             0 -> HomeHostFragment()
             1 -> CoordinatorHostFragment()
-            2 -> HomeHostFragment()
-            3 -> ChatHostFragment()
-            4 -> MyPageHostFragment()
-            else -> HomeHostFragment()
+            2 -> ChatHostFragment()
+            3 -> MyPageHostFragment()
+            else -> throw Exception("존재하지 않는 탭입니다.")
         }
     }
 }

@@ -11,8 +11,7 @@ import com.sigmai.stylemento.global.base.BaseFragment
 class MainFragment : BaseFragment<FragmentMainBinding>() {
     override val layoutResourceId = R.layout.fragment_main
 
-    private val tabIcons = arrayListOf(R.drawable.tab_community, R.drawable.tab_clothes,
-        R.drawable.tab_home, R.drawable.tab_chat, R.drawable.tab_person)
+    private val tabIcons = arrayListOf(R.drawable.tab_home, R.drawable.tab_clothes, R.drawable.tab_chat, R.drawable.tab_person)
 
     override fun initState() {
         super.initState()
