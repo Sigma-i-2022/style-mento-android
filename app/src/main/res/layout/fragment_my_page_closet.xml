@@ -32,7 +32,7 @@
             <View
                 android:layout_width="2dp"
                 android:layout_height="match_parent"
-                android:background="CECECE" />
+                android:background="#CECECE" />
 
             <TextView
                 android:layout_width="0dp"
