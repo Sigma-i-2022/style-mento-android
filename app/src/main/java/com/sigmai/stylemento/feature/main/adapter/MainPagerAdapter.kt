@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.feature.main
+package com.sigmai.stylemento.feature.main.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

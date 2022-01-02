@@ -5,6 +5,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMainBinding
+import com.sigmai.stylemento.feature.main.adapter.MainPagerAdapter
 import com.sigmai.stylemento.global.base.BaseFragment
 
 class MainFragment : BaseFragment<FragmentMainBinding>() {
