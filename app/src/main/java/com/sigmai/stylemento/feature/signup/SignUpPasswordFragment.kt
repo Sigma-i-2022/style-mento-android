@@ -38,21 +38,33 @@ class SignUpPasswordFragment : BaseFragment<FragmentSignUpPasswordBinding>() {
                 val button = view.findViewById<Button>(R.id.signup_next_button)
                 val informationTextView = view.findViewById<TextView>(R.id.password_information)
 
-                if(validator.validatePassword(text.toString())) {
-                    button.setTextColor(ContextCompat.getColor(view.context, R.color.primary))
-                    informationTextView.isVisible = false
-                    button.setOnClickListener {
-                        viewModel.nextPage()
-                    }
-                    if(viewModel.currentPageIndex.value == 1) {
+                if(viewModel.currentPageIndex.value == 0) {
+                    if(validator.validatePassword(text.toString())) {
+                        button.setTextColor(ContextCompat.getColor(view.context, R.color.primary))
+                        informationTextView.isVisible = false
                         button.setOnClickListener {
-                            findNavController().navigate(R.id.action_signup_password_to_signup_finish)
+                            viewModel.nextPage()
                         }
+                    } else {
+                        button.setTextColor(ContextCompat.getColor(view.context, R.color.gray_d))
+                        informationTextView.isVisible = true
+                        button.setOnClickListener {}
                     }
-                } else {
-                    button.setTextColor(ContextCompat.getColor(view.context, R.color.gray_d))
-                    informationTextView.isVisible = true
-                    button.setOnClickListener {}
+                }
+                else {
+                    if(viewModel.inputText[0].value == text.toString()) {
+                        button.setTextColor(ContextCompat.getColor(view.context, R.color.primary))
+                        informationTextView.isVisible = false
+                        if(viewModel.currentPageIndex.value == 1) {
+                            button.setOnClickListener {
+                                findNavController().navigate(R.id.action_signup_password_to_signup_finish)
+                            }
+                        }
+                    } else {
+                        button.setTextColor(ContextCompat.getColor(view.context, R.color.gray_d))
+                        informationTextView.isVisible = true
+                        button.setOnClickListener {}
+                    }
                 }
             }
             override fun afterTextChanged(text: Editable?) {}
