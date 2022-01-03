@@ -8,8 +8,9 @@ class SignUpPasswordViewModel : ViewModel() {
         const val NUMBER_OF_PAGE = 2
     }
     val currentPageIndex = MutableLiveData(0)
-    val pageTitle = arrayListOf("비밀번호를 입력해주세요", "비밀번호를\n다시 한 번 입력해주세요")
-    val inputText = arrayListOf(MutableLiveData<String?>(), MutableLiveData<String?>())
+    val pageTitle = listOf("비밀번호를 입력해주세요", "비밀번호를\n다시 한 번 입력해주세요")
+    val inputText = listOf(MutableLiveData<String?>(), MutableLiveData<String?>())
+    val information = listOf("영문과 숫자를 포하한 8자 이상의 비밀번호로 구성해주세요.")
 
     fun nextPage() {
         val nextPage = currentPageIndex.value!! + 1

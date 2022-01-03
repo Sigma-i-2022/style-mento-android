@@ -7,8 +7,10 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
@@ -34,11 +36,14 @@ class SignUpPasswordFragment : BaseFragment<FragmentSignUpPasswordBinding>() {
 
                 val validator = ValidationUtil()
                 val button = view.findViewById<Button>(R.id.signup_next_button)
+                val informationTextView = view.findViewById<TextView>(R.id.password_information)
 
                 if(validator.validatePassword(text.toString())) {
-                    Log.d("sdf", "만족")
+                    button.setTextColor(ContextCompat.getColor(view.context, R.color.primary))
+                    informationTextView.isVisible = false
                 } else {
-
+                    button.setTextColor(ContextCompat.getColor(view.context, R.color.gray_d))
+                    informationTextView.isVisible = true
                 }
             }
             override fun afterTextChanged(text: Editable?) {}

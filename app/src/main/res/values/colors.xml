@@ -10,6 +10,7 @@
     <color name="primary">#FFA5D08C</color>
     <color name="trans_parent">#00FFFFFF</color>
     <color name="gray_8">#FF888888</color>
-    <color name="gray_d">#FFF1F1F1</color>
+    <color name="gray_d">#FFD1D1D1</color>
+    <color name="gray_f">#FFF1F1F1</color>
     <color name="red">#FFE84E48</color>
 </resources>
