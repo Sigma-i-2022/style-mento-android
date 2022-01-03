@@ -36,15 +36,24 @@ class SignUpEmailFragment : BaseFragment<FragmentSignUpEmailBinding>() {
                 val button = view.findViewById<Button>(R.id.button_in_email)
 
                 if(validator.validateEmail(text.toString())) {
-                    button.setTextColor(ContextCompat.getColor(view.context, R.color.white))
-                    button.background = ContextCompat.getDrawable(view.context, R.drawable.button_background_type_2)
+                    setButtonType(button, 2)
                 }
                 else {
-                    button.setTextColor(ContextCompat.getColor(view.context, R.color.primary))
-                    button.background = ContextCompat.getDrawable(view.context, R.drawable.button_background_type_1)
+                    setButtonType(button, 1)
                 }
             }
             override fun afterTextChanged(text: Editable?) {}
         })
+    }
+
+    fun setButtonType(button: Button, type: Int) {
+        if(type == 1) {
+            button.setTextColor(ContextCompat.getColor(button.context, R.color.primary))
+            button.background = ContextCompat.getDrawable(button.context, R.drawable.button_background_type_1)
+        }
+        else {
+            button.setTextColor(ContextCompat.getColor(button.context, R.color.white))
+            button.background = ContextCompat.getDrawable(button.context, R.drawable.button_background_type_2)
+        }
     }
 }
