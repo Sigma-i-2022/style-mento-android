@@ -31,20 +31,33 @@ class SignUpEmailFragment : BaseFragment<FragmentSignUpEmailBinding>() {
             override fun onTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 viewModel.inputText[viewModel.currentPageIndex.value!!].postValue(text.toString())
 
-                if(viewModel.currentPageIndex.value != 0) return
-
-                val validator = ValidationUtil()
                 val button = view.findViewById<Button>(R.id.button_in_email)
+                val validator = ValidationUtil()
+
+                if(viewModel.currentPageIndex.value == 1) {
+                    if(text?.length == 4) {
+                        button.setOnClickListener {
+                            findNavController().navigate(R.id.action_signup_email_to_signup_password)
+                        }
+                        setButtonType(button, 2)
+                    }
+                    else {
+                        button.setOnClickListener {}
+                        setButtonType(button, 1)
+                    }
+                }
+
+                if(viewModel.currentPageIndex.value == 1) return
 
                 if(validator.validateEmail(text.toString())) {
-                    setButtonType(button, 2)
                     button.setOnClickListener {
                         viewModel.nextPage()
                     }
+                    setButtonType(button, 2)
                 }
                 else {
-                    setButtonType(button, 1)
                     button.setOnClickListener {}
+                    setButtonType(button, 1)
                 }
             }
             override fun afterTextChanged(text: Editable?) {}
