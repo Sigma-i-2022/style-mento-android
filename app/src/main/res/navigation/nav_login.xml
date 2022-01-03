@@ -29,5 +29,15 @@
         android:id="@+id/signup_password"
         android:name="com.sigmai.stylemento.feature.signup.SignUpPasswordFragment"
         android:label="password"
-        tools:layout="@layout/fragment_sign_up_password"/>
+        tools:layout="@layout/fragment_sign_up_password">
+        <action
+            android:id="@+id/action_signup_password_to_signup_finish"
+            app:destination="@id/signup_finish" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signup_finish"
+        android:name="com.sigmai.stylemento.feature.signup.SignUpFinishFragment"
+        android:label="signup finish"
+        tools:layout="@layout/fragment_sign_up_finish"/>
 </navigation>
