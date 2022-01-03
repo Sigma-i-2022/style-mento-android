@@ -1,11 +1,14 @@
 package com.sigmai.stylemento.feature.signup
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentSignUpEmailBinding
@@ -28,13 +31,17 @@ class SignUpEmailFragment : BaseFragment<FragmentSignUpEmailBinding>() {
                 viewModel.inputText[viewModel.currentPageIndex.value!!].postValue(text.toString())
 
                 if(viewModel.currentPageIndex.value != 0) return
-                ValidationUtil().apply {
-                    if(validateEmail(text.toString())) {
-                        // TODO : 유효성 검사 통과했을 때 로직
-                    }
-                    else {
-                        // TODO : 유효성 검사 실패했을 때 로직
-                    }
+
+                val validator = ValidationUtil()
+                val button = view.findViewById<Button>(R.id.button_in_email)
+
+                if(validator.validateEmail(text.toString())) {
+                    button.setTextColor(ContextCompat.getColor(view.context, R.color.white))
+                    button.background = ContextCompat.getDrawable(view.context, R.drawable.button_background_type_2)
+                }
+                else {
+                    button.setTextColor(ContextCompat.getColor(view.context, R.color.primary))
+                    button.background = ContextCompat.getDrawable(view.context, R.drawable.button_background_type_1)
                 }
             }
             override fun afterTextChanged(text: Editable?) {}
