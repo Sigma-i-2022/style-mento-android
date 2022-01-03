@@ -39,7 +39,8 @@
             android:background="@drawable/edittext_background"
             android:hint="stylemento@naver.com"
             android:text="@{viewModel.inputText[viewModel.currentPageIndex]}"
-            android:maxLength="20"/>
+            android:maxLines="1"
+            android:inputType="text"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_in_email"
