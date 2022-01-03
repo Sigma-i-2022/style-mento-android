@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentSignUpEmailBinding
 import com.sigmai.stylemento.global.base.BaseFragment
+import com.sigmai.stylemento.global.util.ValidationUtil
 
 class SignUpEmailFragment : BaseFragment<FragmentSignUpEmailBinding>() {
     override val layoutResourceId = R.layout.fragment_sign_up_email
@@ -25,8 +26,15 @@ class SignUpEmailFragment : BaseFragment<FragmentSignUpEmailBinding>() {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 viewModel.inputText[viewModel.currentPageIndex.value!!].postValue(text.toString())
-                if(text?.length == 20) {
-                    Toast.makeText(context, "너무 길어요!!", Toast.LENGTH_SHORT)
+
+                if(viewModel.currentPageIndex.value != 0) return
+                ValidationUtil().apply {
+                    if(validateEmail(text.toString())) {
+                        // TODO : 유효성 검사 통과했을 때 로직
+                    }
+                    else {
+                        // TODO : 유효성 검사 실패했을 때 로직
+                    }
                 }
             }
             override fun afterTextChanged(text: Editable?) {}

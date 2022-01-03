@@ -9,7 +9,7 @@ class SignUpEmailViewModel : ViewModel() {
     }
     val currentPageIndex = MutableLiveData(0)
     val pageTitle = arrayListOf("이메일 주소를 입력해주세요", "메일로 인증코드를 보내드렸어요\n확인 후 입력해주세요")
-    var inputText = arrayListOf(MutableLiveData<String?>(), MutableLiveData<String?>())
+    val inputText = arrayListOf(MutableLiveData<String?>(), MutableLiveData<String?>())
 
     fun nextPage() {
         val nextPage = currentPageIndex.value!! + 1
