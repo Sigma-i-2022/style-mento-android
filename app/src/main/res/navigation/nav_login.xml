@@ -39,5 +39,11 @@
         android:id="@+id/signup_finish"
         android:name="com.sigmai.stylemento.feature.signup.SignUpFinishFragment"
         android:label="signup finish"
-        tools:layout="@layout/fragment_sign_up_finish"/>
+        tools:layout="@layout/fragment_sign_up_finish">
+        <action
+            android:id="@+id/action_signup_finish_to_login"
+            app:destination="@id/login"
+            app:popUpTo="@id/nav_login"
+            app:popUpToInclusive="true"/>
+    </fragment>
 </navigation>
