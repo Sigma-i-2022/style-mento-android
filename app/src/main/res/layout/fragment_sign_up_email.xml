@@ -37,7 +37,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:textColor="@color/primary"
             android:background="@drawable/edittext_background"
-            android:hint="stylemento@naver.com"
+            android:hint="@{viewModel.hints[viewModel.currentPageIndex]}"
             android:text="@{viewModel.inputText[viewModel.currentPageIndex]}"
             android:maxLines="1"
             android:inputType="text"/>
