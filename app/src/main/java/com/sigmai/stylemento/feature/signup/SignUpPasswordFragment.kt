@@ -3,9 +3,11 @@ package com.sigmai.stylemento.feature.signup
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -31,8 +33,13 @@ class SignUpPasswordFragment : BaseFragment<FragmentSignUpPasswordBinding>() {
                 viewModel.inputText[viewModel.currentPageIndex.value!!].postValue(text.toString())
 
                 val validator = ValidationUtil()
+                val button = view.findViewById<Button>(R.id.signup_next_button)
 
+                if(validator.validatePassword(text.toString())) {
+                    Log.d("sdf", "만족")
+                } else {
 
+                }
             }
             override fun afterTextChanged(text: Editable?) {}
         })
