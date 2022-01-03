@@ -41,6 +41,9 @@ class SignUpPasswordFragment : BaseFragment<FragmentSignUpPasswordBinding>() {
                 if(validator.validatePassword(text.toString())) {
                     button.setTextColor(ContextCompat.getColor(view.context, R.color.primary))
                     informationTextView.isVisible = false
+                    button.setOnClickListener {
+                        viewModel.nextPage()
+                    }
                     if(viewModel.currentPageIndex.value == 1) {
                         button.setOnClickListener {
                             findNavController().navigate(R.id.action_signup_password_to_signup_finish)
@@ -49,6 +52,7 @@ class SignUpPasswordFragment : BaseFragment<FragmentSignUpPasswordBinding>() {
                 } else {
                     button.setTextColor(ContextCompat.getColor(view.context, R.color.gray_d))
                     informationTextView.isVisible = true
+                    button.setOnClickListener {}
                 }
             }
             override fun afterTextChanged(text: Editable?) {}
