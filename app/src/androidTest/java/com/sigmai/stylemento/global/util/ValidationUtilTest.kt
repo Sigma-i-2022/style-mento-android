@@ -6,7 +6,7 @@ import org.junit.Test
 internal class ValidationUtilTest {
 
     @Test
-    fun validateEmailForValidatedCase() {
+    fun validateEmailForValidCase() {
         val validator = ValidationUtil()
         val email = "example@gmail.com"
 
@@ -36,6 +36,42 @@ internal class ValidationUtilTest {
     }
 
     @Test
-    fun validatePassword() {
+    fun validatePasswordForValidCase() {
+        val validator = ValidationUtil()
+        val password = "abcd1234"
+
+        val result = validator.validatePassword(password)
+
+        assertEquals(result, true)
+    }
+
+    @Test
+    fun validatePasswordForInvalidCase1() {
+        val validator = ValidationUtil()
+        val password = "abcdefgh"
+
+        val result = validator.validatePassword(password)
+
+        assertEquals(result, false)
+    }
+
+    @Test
+    fun validatePasswordForInvalidCase2() {
+        val validator = ValidationUtil()
+        val password = "12345678"
+
+        val result = validator.validatePassword(password)
+
+        assertEquals(result, false)
+    }
+
+    @Test
+    fun validatePasswordForInvalidCase3() {
+        val validator = ValidationUtil()
+        val password = "a123456"
+
+        val result = validator.validatePassword(password)
+
+        assertEquals(result, false)
     }
 }
