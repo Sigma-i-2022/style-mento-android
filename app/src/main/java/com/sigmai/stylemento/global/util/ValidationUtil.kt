@@ -1,11 +1,11 @@
 package com.sigmai.stylemento.global.util
 
 class ValidationUtil {
-    fun validateEmail() : Boolean {
+    fun validateEmail(email: String) : Boolean {
         return true
     }
 
-    fun validatePassword() : Boolean {
+    fun validatePassword(password: String) : Boolean {
         return true
     }
 }
