@@ -5,11 +5,11 @@ import androidx.lifecycle.ViewModel
 
 class SignUpEmailViewModel : ViewModel() {
     companion object {
-        const val NUMBER_OF_PAGE = 3
+        const val NUMBER_OF_PAGE = 2
     }
     val currentPageIndex = MutableLiveData(0)
-    val pageTitle = arrayListOf("이메일 주소를 입력해주세요", "비밀번호를 입력해주세요", "비밀번호를 \n다시 한 번 입력해주세요")
-    var inputText = arrayListOf(MutableLiveData<String?>(), MutableLiveData<String?>(), MutableLiveData<String?>())
+    val pageTitle = arrayListOf("이메일 주소를 입력해주세요", "메일로 인증코드를 보내드렸어요\n확인 후 입력해주세요")
+    var inputText = arrayListOf(MutableLiveData<String?>(), MutableLiveData<String?>())
 
     fun nextPage() {
         val nextPage = currentPageIndex.value!! + 1
