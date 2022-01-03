@@ -3,7 +3,7 @@ package com.sigmai.stylemento.feature.signup
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SignUpViewModel : ViewModel() {
+class SignUpEmailViewModel : ViewModel() {
     companion object {
         const val NUMBER_OF_PAGE = 3
     }

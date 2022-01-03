@@ -13,10 +13,9 @@ import com.sigmai.stylemento.global.base.BaseFragment
 
 class SignUpEmailFragment : BaseFragment<FragmentSignUpEmailBinding>() {
     override val layoutResourceId = R.layout.fragment_sign_up_email
-    private val viewModel: SignUpViewModel by viewModels()
+    private val viewModel: SignUpEmailViewModel by viewModels()
 
     override fun initDataBinding() {
-        super.initDataBinding()
         binding.viewModel = viewModel
     }
 
