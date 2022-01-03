@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentSignUpEmailBinding
 import com.sigmai.stylemento.global.base.BaseFragment
@@ -37,9 +38,13 @@ class SignUpEmailFragment : BaseFragment<FragmentSignUpEmailBinding>() {
 
                 if(validator.validateEmail(text.toString())) {
                     setButtonType(button, 2)
+                    button.setOnClickListener {
+                        viewModel.nextPage()
+                    }
                 }
                 else {
                     setButtonType(button, 1)
+                    button.setOnClickListener {}
                 }
             }
             override fun afterTextChanged(text: Editable?) {}

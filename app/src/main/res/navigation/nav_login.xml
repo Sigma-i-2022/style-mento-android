@@ -12,12 +12,22 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_login_to_signup"
-            app:destination="@id/signup" />
+            app:destination="@id/signup_email" />
     </fragment>
 
     <fragment
-        android:id="@+id/signup"
+        android:id="@+id/signup_email"
         android:name="com.sigmai.stylemento.feature.signup.SignUpEmailFragment"
-        android:label="signup"
-        tools:layout="@layout/fragment_sign_up_email"/>
+        android:label="email"
+        tools:layout="@layout/fragment_sign_up_email">
+        <action
+            android:id="@+id/action_signup_email_to_signup_password"
+            app:destination="@id/signup_password" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signup_password"
+        android:name="com.sigmai.stylemento.feature.signup.SignUpPasswordFragment"
+        android:label="password"
+        tools:layout="@layout/fragment_sign_up_password"/>
 </navigation>
