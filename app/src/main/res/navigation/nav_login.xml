@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/signup"
-        android:name="com.sigmai.stylemento.feature.signup.SignUpFragment"
+        android:name="com.sigmai.stylemento.feature.signup.SignUpEmailFragment"
         android:label="signup"
-        tools:layout="@layout/fragment_sign_up"/>
+        tools:layout="@layout/fragment_sign_up_email"/>
 </navigation>
