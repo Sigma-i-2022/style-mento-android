@@ -3,14 +3,9 @@ package com.sigmai.stylemento.feature.signup
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
@@ -34,33 +29,13 @@ class SignUpPasswordFragment : BaseFragment<FragmentSignUpPasswordBinding>() {
             override fun onTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 viewModel.inputText[viewModel.currentPageIndex.value!!].postValue(text.toString())
 
-                val validator = ValidationUtil()
                 val button = view.findViewById<Button>(R.id.signup_next_button)
 
-                if(validate(text.toString())) {
-                    if(validator.validatePassword(text.toString())) {
-                        viewModel.isValidPassword[viewModel.currentPageIndex.value!!].postValue(false)
-                        button.setOnClickListener {
-                            viewModel.nextPage()
-                        }
-                    } else {
-                        viewModel.isValidPassword[viewModel.currentPageIndex.value!!].postValue(true)
-                        button.setOnClickListener {}
-                    }
+                button.setOnClickListener {
+                    viewModel.nextPage(findNavController())
                 }
-                else {
-                    if(validate(text.toString())) {
-                        viewModel.isValidPassword[viewModel.currentPageIndex.value!!].postValue(false)
-                        if(viewModel.currentPageIndex.value == 1) {
-                            button.setOnClickListener {
-                                findNavController().navigate(R.id.action_signup_password_to_signup_finish)
-                            }
-                        }
-                    } else {
-                        viewModel.isValidPassword[viewModel.currentPageIndex.value!!].postValue(true)
-                        button.setOnClickListener {}
-                    }
-                }
+
+                viewModel.isValidPassword[viewModel.currentPageIndex.value!!].postValue(validate(text.toString()))
             }
             override fun afterTextChanged(text: Editable?) {}
         })

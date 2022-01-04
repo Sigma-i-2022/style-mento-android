@@ -2,6 +2,8 @@ package com.sigmai.stylemento.feature.signup
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavController
+import com.sigmai.stylemento.R
 
 class SignUpPasswordViewModel : ViewModel() {
     companion object {
@@ -13,10 +15,17 @@ class SignUpPasswordViewModel : ViewModel() {
     val information = listOf("영문과 숫자를 포함한 8자 이상의 비밀번호로 구성해주세요.", "비밀번호가 일치하지 않습니다.")
     val isValidPassword = listOf(MutableLiveData(false), MutableLiveData(false))
 
-    fun nextPage() {
-        val nextPage = currentPageIndex.value!! + 1
-        if(nextPage < NUMBER_OF_PAGE)
-            currentPageIndex.postValue(nextPage)
+    fun nextPage(navController: NavController?) {
+        if(!isValidPassword[currentPageIndex.value!!].value!!) return
+
+        if(currentPageIndex.value!! == 0) {
+            val nextPage = currentPageIndex.value!! + 1
+            if(nextPage < SignUpEmailViewModel.NUMBER_OF_PAGE)
+                currentPageIndex.postValue(nextPage)
+        }
+        else {
+            navController?.navigate(R.id.action_signup_password_to_signup_finish)
+        }
     }
 
     fun previousPage() {
