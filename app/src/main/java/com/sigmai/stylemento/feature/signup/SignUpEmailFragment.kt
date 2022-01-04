@@ -30,35 +30,22 @@ class SignUpEmailFragment : BaseFragment<FragmentSignUpEmailBinding>() {
                 viewModel.inputText[viewModel.currentPageIndex.value!!].postValue(text.toString())
 
                 val button = view.findViewById<Button>(R.id.button_in_email)
-                val validator = ValidationUtil()
 
-                if(viewModel.currentPageIndex.value == 1) {
-                    if(text?.length == 4) {
-                        button.setOnClickListener {
-                            findNavController().navigate(R.id.action_signup_email_to_signup_password)
-                        }
-                        viewModel.isClickable[viewModel.currentPageIndex.value!!].postValue(true)
-                    }
-                    else {
-                        button.setOnClickListener {}
-                        viewModel.isClickable[viewModel.currentPageIndex.value!!].postValue(false)
-                    }
+                button.setOnClickListener {
+                    viewModel.nextPage(findNavController())
                 }
 
-                if(viewModel.currentPageIndex.value == 1) return
-
-                if(validator.validateEmail(text.toString())) {
-                    button.setOnClickListener {
-                        viewModel.nextPage()
-                    }
-                    viewModel.isClickable[viewModel.currentPageIndex.value!!].postValue(true)
-                }
-                else {
-                    button.setOnClickListener {}
-                    viewModel.isClickable[viewModel.currentPageIndex.value!!].postValue(false)
-                }
+                viewModel.isClickable[viewModel.currentPageIndex.value!!].postValue(validate(text.toString()))
             }
             override fun afterTextChanged(text: Editable?) {}
         })
+    }
+
+    fun validate(string: String) : Boolean {
+        return if(viewModel.currentPageIndex.value == 0) {
+            ValidationUtil().validateEmail(string)
+        } else {
+            string.length == 4
+        }
     }
 }
