@@ -26,10 +26,8 @@ class SignUpTest {
     @Test
     fun test() {
         onView(withText("이메일로 가입하기")).perform(click())
-        Thread.sleep(1000)
         onView(withId(R.id.signup_edit_text)).perform(typeText("abc123@naver.com"))
         Espresso.pressBack()
-        Thread.sleep(1000)
         onView(withId(R.id.button_in_email)).check(matches(withText("인증번호 받기"))).perform(click())
         onView(withId(R.id.signup_edit_text)).perform(typeText("abcd"))
         Espresso.pressBack()

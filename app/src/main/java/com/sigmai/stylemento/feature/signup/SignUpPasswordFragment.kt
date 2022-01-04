@@ -41,20 +41,20 @@ class SignUpPasswordFragment : BaseFragment<FragmentSignUpPasswordBinding>() {
                 if(viewModel.currentPageIndex.value == 0) {
                     if(validator.validatePassword(text.toString())) {
                         button.setTextColor(ContextCompat.getColor(view.context, R.color.primary))
-                        informationTextView.isVisible = false
+                        viewModel.isValidPassword[viewModel.currentPageIndex.value!!].postValue(false)
                         button.setOnClickListener {
                             viewModel.nextPage()
                         }
                     } else {
                         button.setTextColor(ContextCompat.getColor(view.context, R.color.gray_d))
-                        informationTextView.isVisible = true
+                        viewModel.isValidPassword[viewModel.currentPageIndex.value!!].postValue(true)
                         button.setOnClickListener {}
                     }
                 }
                 else {
                     if(viewModel.inputText[0].value == text.toString()) {
                         button.setTextColor(ContextCompat.getColor(view.context, R.color.primary))
-                        informationTextView.isVisible = false
+                        viewModel.isValidPassword[viewModel.currentPageIndex.value!!].postValue(false)
                         if(viewModel.currentPageIndex.value == 1) {
                             button.setOnClickListener {
                                 findNavController().navigate(R.id.action_signup_password_to_signup_finish)
@@ -62,7 +62,7 @@ class SignUpPasswordFragment : BaseFragment<FragmentSignUpPasswordBinding>() {
                         }
                     } else {
                         button.setTextColor(ContextCompat.getColor(view.context, R.color.gray_d))
-                        informationTextView.isVisible = true
+                        viewModel.isValidPassword[viewModel.currentPageIndex.value!!].postValue(true)
                         button.setOnClickListener {}
                     }
                 }
