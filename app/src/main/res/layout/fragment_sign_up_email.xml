@@ -51,7 +51,7 @@
             android:layout_marginHorizontal="20dp"
             android:text="@{viewModel.buttonText[viewModel.currentPageIndex]}"
             tools:text="인증번호 받기"
-            android:textColor="@color/primary"
+            android:textColor="@{viewModel.isClickable[viewModel.currentPageIndex] ? @color/white : @color/primary}"
             android:background="@drawable/button_background_type_1"/>
         
         <androidx.appcompat.widget.AppCompatButton

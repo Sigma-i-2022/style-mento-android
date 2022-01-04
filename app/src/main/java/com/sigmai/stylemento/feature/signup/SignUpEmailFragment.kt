@@ -1,13 +1,11 @@
 package com.sigmai.stylemento.feature.signup
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -39,11 +37,13 @@ class SignUpEmailFragment : BaseFragment<FragmentSignUpEmailBinding>() {
                         button.setOnClickListener {
                             findNavController().navigate(R.id.action_signup_email_to_signup_password)
                         }
-                        setButtonType(button, 2)
+                        viewModel.isClickable[viewModel.currentPageIndex.value!!].postValue(true)
+                        setButtonType(button, true)
                     }
                     else {
                         button.setOnClickListener {}
-                        setButtonType(button, 1)
+                        viewModel.isClickable[viewModel.currentPageIndex.value!!].postValue(false)
+                        setButtonType(button, false)
                     }
                 }
 
@@ -53,25 +53,25 @@ class SignUpEmailFragment : BaseFragment<FragmentSignUpEmailBinding>() {
                     button.setOnClickListener {
                         viewModel.nextPage()
                     }
-                    setButtonType(button, 2)
+                    viewModel.isClickable[viewModel.currentPageIndex.value!!].postValue(true)
+                    setButtonType(button, true)
                 }
                 else {
                     button.setOnClickListener {}
-                    setButtonType(button, 1)
+                    viewModel.isClickable[viewModel.currentPageIndex.value!!].postValue(false)
+                    setButtonType(button, false)
                 }
             }
             override fun afterTextChanged(text: Editable?) {}
         })
     }
 
-    fun setButtonType(button: Button, type: Int) {
-        if(type == 1) {
-            button.setTextColor(ContextCompat.getColor(button.context, R.color.primary))
-            button.background = ContextCompat.getDrawable(button.context, R.drawable.button_background_type_1)
+    fun setButtonType(button: Button, clickable: Boolean) {
+        if(clickable) {
+            button.background = ContextCompat.getDrawable(button.context, R.drawable.button_background_type_2)
         }
         else {
-            button.setTextColor(ContextCompat.getColor(button.context, R.color.white))
-            button.background = ContextCompat.getDrawable(button.context, R.drawable.button_background_type_2)
+            button.background = ContextCompat.getDrawable(button.context, R.drawable.button_background_type_1)
         }
     }
 }

@@ -2,6 +2,7 @@ package com.sigmai.stylemento.feature.signup
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.sigmai.stylemento.R
 
 class SignUpEmailViewModel : ViewModel() {
     companion object {
@@ -12,6 +13,7 @@ class SignUpEmailViewModel : ViewModel() {
     val hints = listOf("stylemento@naver.com", "")
     val inputText = listOf(MutableLiveData<String?>(), MutableLiveData<String?>())
     val buttonText = listOf("인증번호 받기", "인증하기")
+    val isClickable = arrayListOf(MutableLiveData(false), MutableLiveData(false))
 
     fun nextPage() {
         val nextPage = currentPageIndex.value!! + 1
