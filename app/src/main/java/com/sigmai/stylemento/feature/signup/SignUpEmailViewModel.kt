@@ -11,6 +11,7 @@ class SignUpEmailViewModel : ViewModel() {
     val pageTitle = listOf("이메일 주소를 입력해주세요", "메일로 인증코드를 보내드렸어요\n확인 후 입력해주세요")
     val hints = listOf("stylemento@naver.com", "")
     val inputText = listOf(MutableLiveData<String?>(), MutableLiveData<String?>())
+    val buttonText = listOf("인증번호 받기", "인증하기")
 
     fun nextPage() {
         val nextPage = currentPageIndex.value!! + 1
