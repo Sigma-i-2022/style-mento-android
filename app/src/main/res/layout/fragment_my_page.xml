@@ -27,6 +27,7 @@
                 android:layout_width="16dp"
                 android:layout_height="29dp"
                 android:src="@drawable/ic_launcher_foreground"
+                android:onClick="@{()->viewModel.onBackClick()}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,6 +36,7 @@
                 android:layout_width="19dp"
                 android:layout_height="12dp"
                 android:src="@drawable/ic_launcher_foreground"
+                android:onClick="@{()->viewModel.onRevisionClick()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,14 +70,14 @@
                         android:id="@+id/user_name_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="User_Name"
+                        android:text="@{()->viewModel.testUser.nickname}"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="address"
+                        android:text="@{()->viewModel.testUser.email}"
                         android:textSize="12sp" />
                 </LinearLayout>
 
