@@ -36,24 +36,20 @@ class SignUpPasswordFragment : BaseFragment<FragmentSignUpPasswordBinding>() {
 
                 val validator = ValidationUtil()
                 val button = view.findViewById<Button>(R.id.signup_next_button)
-                val informationTextView = view.findViewById<TextView>(R.id.password_information)
 
                 if(viewModel.currentPageIndex.value == 0) {
                     if(validator.validatePassword(text.toString())) {
-                        button.setTextColor(ContextCompat.getColor(view.context, R.color.primary))
                         viewModel.isValidPassword[viewModel.currentPageIndex.value!!].postValue(false)
                         button.setOnClickListener {
                             viewModel.nextPage()
                         }
                     } else {
-                        button.setTextColor(ContextCompat.getColor(view.context, R.color.gray_d))
                         viewModel.isValidPassword[viewModel.currentPageIndex.value!!].postValue(true)
                         button.setOnClickListener {}
                     }
                 }
                 else {
                     if(viewModel.inputText[0].value == text.toString()) {
-                        button.setTextColor(ContextCompat.getColor(view.context, R.color.primary))
                         viewModel.isValidPassword[viewModel.currentPageIndex.value!!].postValue(false)
                         if(viewModel.currentPageIndex.value == 1) {
                             button.setOnClickListener {
@@ -61,7 +57,6 @@ class SignUpPasswordFragment : BaseFragment<FragmentSignUpPasswordBinding>() {
                             }
                         }
                     } else {
-                        button.setTextColor(ContextCompat.getColor(view.context, R.color.gray_d))
                         viewModel.isValidPassword[viewModel.currentPageIndex.value!!].postValue(true)
                         button.setOnClickListener {}
                     }
