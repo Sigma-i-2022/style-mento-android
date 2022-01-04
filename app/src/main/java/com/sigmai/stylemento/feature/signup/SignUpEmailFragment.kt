@@ -38,12 +38,10 @@ class SignUpEmailFragment : BaseFragment<FragmentSignUpEmailBinding>() {
                             findNavController().navigate(R.id.action_signup_email_to_signup_password)
                         }
                         viewModel.isClickable[viewModel.currentPageIndex.value!!].postValue(true)
-                        setButtonType(button, true)
                     }
                     else {
                         button.setOnClickListener {}
                         viewModel.isClickable[viewModel.currentPageIndex.value!!].postValue(false)
-                        setButtonType(button, false)
                     }
                 }
 
@@ -54,24 +52,13 @@ class SignUpEmailFragment : BaseFragment<FragmentSignUpEmailBinding>() {
                         viewModel.nextPage()
                     }
                     viewModel.isClickable[viewModel.currentPageIndex.value!!].postValue(true)
-                    setButtonType(button, true)
                 }
                 else {
                     button.setOnClickListener {}
                     viewModel.isClickable[viewModel.currentPageIndex.value!!].postValue(false)
-                    setButtonType(button, false)
                 }
             }
             override fun afterTextChanged(text: Editable?) {}
         })
-    }
-
-    fun setButtonType(button: Button, clickable: Boolean) {
-        if(clickable) {
-            button.background = ContextCompat.getDrawable(button.context, R.drawable.button_background_type_2)
-        }
-        else {
-            button.background = ContextCompat.getDrawable(button.context, R.drawable.button_background_type_1)
-        }
     }
 }
