@@ -37,7 +37,7 @@ class SignUpPasswordFragment : BaseFragment<FragmentSignUpPasswordBinding>() {
                 val validator = ValidationUtil()
                 val button = view.findViewById<Button>(R.id.signup_next_button)
 
-                if(viewModel.currentPageIndex.value == 0) {
+                if(validate(text.toString())) {
                     if(validator.validatePassword(text.toString())) {
                         viewModel.isValidPassword[viewModel.currentPageIndex.value!!].postValue(false)
                         button.setOnClickListener {
@@ -49,7 +49,7 @@ class SignUpPasswordFragment : BaseFragment<FragmentSignUpPasswordBinding>() {
                     }
                 }
                 else {
-                    if(viewModel.inputText[0].value == text.toString()) {
+                    if(validate(text.toString())) {
                         viewModel.isValidPassword[viewModel.currentPageIndex.value!!].postValue(false)
                         if(viewModel.currentPageIndex.value == 1) {
                             button.setOnClickListener {
@@ -64,5 +64,13 @@ class SignUpPasswordFragment : BaseFragment<FragmentSignUpPasswordBinding>() {
             }
             override fun afterTextChanged(text: Editable?) {}
         })
+    }
+
+    fun validate(string: String) : Boolean {
+        return if(viewModel.currentPageIndex.value == 0) {
+            ValidationUtil().validatePassword(string)
+        } else {
+            string == viewModel.inputText[0].value
+        }
     }
 }
