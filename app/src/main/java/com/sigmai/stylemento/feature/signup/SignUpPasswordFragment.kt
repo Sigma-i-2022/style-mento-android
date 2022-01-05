@@ -3,14 +3,9 @@ package com.sigmai.stylemento.feature.signup
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
@@ -34,40 +29,23 @@ class SignUpPasswordFragment : BaseFragment<FragmentSignUpPasswordBinding>() {
             override fun onTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 viewModel.inputText[viewModel.currentPageIndex.value!!].postValue(text.toString())
 
-                val validator = ValidationUtil()
                 val button = view.findViewById<Button>(R.id.signup_next_button)
-                val informationTextView = view.findViewById<TextView>(R.id.password_information)
 
-                if(viewModel.currentPageIndex.value == 0) {
-                    if(validator.validatePassword(text.toString())) {
-                        button.setTextColor(ContextCompat.getColor(view.context, R.color.primary))
-                        informationTextView.isVisible = false
-                        button.setOnClickListener {
-                            viewModel.nextPage()
-                        }
-                    } else {
-                        button.setTextColor(ContextCompat.getColor(view.context, R.color.gray_d))
-                        informationTextView.isVisible = true
-                        button.setOnClickListener {}
-                    }
+                button.setOnClickListener {
+                    viewModel.nextPage(findNavController())
                 }
-                else {
-                    if(viewModel.inputText[0].value == text.toString()) {
-                        button.setTextColor(ContextCompat.getColor(view.context, R.color.primary))
-                        informationTextView.isVisible = false
-                        if(viewModel.currentPageIndex.value == 1) {
-                            button.setOnClickListener {
-                                findNavController().navigate(R.id.action_signup_password_to_signup_finish)
-                            }
-                        }
-                    } else {
-                        button.setTextColor(ContextCompat.getColor(view.context, R.color.gray_d))
-                        informationTextView.isVisible = true
-                        button.setOnClickListener {}
-                    }
-                }
+
+                viewModel.isValidPassword[viewModel.currentPageIndex.value!!].postValue(validate(text.toString()))
             }
             override fun afterTextChanged(text: Editable?) {}
         })
+    }
+
+    fun validate(string: String) : Boolean {
+        return if(viewModel.currentPageIndex.value == 0) {
+            ValidationUtil().validatePassword(string)
+        } else {
+            string == viewModel.inputText[0].value
+        }
     }
 }

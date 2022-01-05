@@ -1,13 +1,11 @@
 package com.sigmai.stylemento.feature.signup
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -32,46 +30,22 @@ class SignUpEmailFragment : BaseFragment<FragmentSignUpEmailBinding>() {
                 viewModel.inputText[viewModel.currentPageIndex.value!!].postValue(text.toString())
 
                 val button = view.findViewById<Button>(R.id.button_in_email)
-                val validator = ValidationUtil()
 
-                if(viewModel.currentPageIndex.value == 1) {
-                    if(text?.length == 4) {
-                        button.setOnClickListener {
-                            findNavController().navigate(R.id.action_signup_email_to_signup_password)
-                        }
-                        setButtonType(button, 2)
-                    }
-                    else {
-                        button.setOnClickListener {}
-                        setButtonType(button, 1)
-                    }
+                button.setOnClickListener {
+                    viewModel.nextPage(findNavController())
                 }
 
-                if(viewModel.currentPageIndex.value == 1) return
-
-                if(validator.validateEmail(text.toString())) {
-                    button.setOnClickListener {
-                        viewModel.nextPage()
-                    }
-                    setButtonType(button, 2)
-                }
-                else {
-                    button.setOnClickListener {}
-                    setButtonType(button, 1)
-                }
+                viewModel.isClickable[viewModel.currentPageIndex.value!!].postValue(validate(text.toString()))
             }
             override fun afterTextChanged(text: Editable?) {}
         })
     }
 
-    fun setButtonType(button: Button, type: Int) {
-        if(type == 1) {
-            button.setTextColor(ContextCompat.getColor(button.context, R.color.primary))
-            button.background = ContextCompat.getDrawable(button.context, R.drawable.button_background_type_1)
-        }
-        else {
-            button.setTextColor(ContextCompat.getColor(button.context, R.color.white))
-            button.background = ContextCompat.getDrawable(button.context, R.drawable.button_background_type_2)
+    fun validate(string: String) : Boolean {
+        return if(viewModel.currentPageIndex.value == 0) {
+            ValidationUtil().validateEmail(string)
+        } else {
+            string.length == 4
         }
     }
 }
