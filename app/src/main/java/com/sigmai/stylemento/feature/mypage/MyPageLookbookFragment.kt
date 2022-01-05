@@ -16,14 +16,8 @@ import com.sigmai.stylemento.global.base.BaseFragment
 
 class MyPageLookbookFragment : BaseFragment<FragmentMyPageLookbookBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook
-    private val viewModel: MyPageViewModel by viewModels()
 
     val testDataSet = arrayOf("1", "2", "3")
-
-    override fun initDataBinding() {
-        super.initDataBinding()
-        binding.viewModel = viewModel
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

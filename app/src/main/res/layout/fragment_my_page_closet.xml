@@ -2,13 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-
-        <variable
-            name="viewModel"
-            type="com.sigmai.stylemento.feature.mypage.MyPageViewModel" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -91,7 +84,6 @@
                 android:layout_width="34dp"
                 android:layout_height="34dp"
                 android:src="@drawable/ic_launcher_foreground"
-                android:onClick="@{()->viewModel.onAddClosetClick()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

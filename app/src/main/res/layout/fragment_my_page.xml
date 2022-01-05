@@ -70,14 +70,14 @@
                         android:id="@+id/user_name_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{()->viewModel.testUser.nickname}"
+                        android:text="@{viewModel.testUser.nickname}"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{()->viewModel.testUser.email}"
+                        android:text="@{viewModel.testUser.email}"
                         android:textSize="12sp" />
                 </LinearLayout>
 
