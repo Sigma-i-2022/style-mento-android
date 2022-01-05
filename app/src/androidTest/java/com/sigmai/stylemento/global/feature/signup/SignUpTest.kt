@@ -22,24 +22,45 @@ class SignUpTest {
     @get:Rule
     val activityRule = ActivityTestRule(MainActivity::class.java)
 
-    // 정확한 동작 시나리오
     @Test
     fun test() {
+        clickSignUpButton()
+        typeEmail()
+        typeAuthenticationCode()
+        typePasswordFirst()
+        retypePassword()
+        finishSignUp()
+    }
+
+    fun clickSignUpButton() {
         onView(withText("이메일로 가입하기")).perform(click())
+    }
+
+    fun typeEmail() {
         onView(withId(R.id.signup_edit_text)).perform(typeText("abc123@naver.com"))
         Espresso.pressBack()
         onView(withId(R.id.button_in_email)).check(matches(withText("인증번호 받기"))).perform(click())
+    }
+
+    fun typeAuthenticationCode() {
         onView(withId(R.id.signup_edit_text)).perform(typeText("abcd"))
         Espresso.pressBack()
         onView(withId(R.id.button_in_email)).check(matches(withText("인증하기"))).perform(click())
-        onView(withId(R.id.signup_password_edit_text)).perform(typeText("abcd1234"))
-        Espresso.pressBack()
-        onView(withText("다음")).perform(click())
-        onView(withId(R.id.signup_password_edit_text)).perform(typeText("abcd1234"))
-        Espresso.pressBack()
-        onView(withText("다음")).perform(click())
-        onView(withText("로그인")).perform(click())
     }
 
+    fun typePasswordFirst() {
+        onView(withId(R.id.signup_password_edit_text)).perform(typeText("abcd1234"))
+        Espresso.pressBack()
+        onView(withText("다음")).perform(click())
+    }
 
+    fun retypePassword() {
+        onView(withId(R.id.signup_password_edit_text)).perform(typeText("abcd1234"))
+        Espresso.pressBack()
+        onView(withText("다음")).perform(click())
+    }
+
+    fun finishSignUp() {
+        onView(withText("로그인")).perform(click())
+    }
 }
