@@ -16,11 +16,13 @@ class RecommendedCoordinatorAdapter(val recommendedList: List<RecommendedCoordin
 
     override fun onBindViewHolder(holder: RecommendedViewHolder, position: Int) {
         holder.coordinatorName.text = recommendedList[position].name
+        holder.tag.text = recommendedList[position].tag
     }
 
     override fun getItemCount() = recommendedList.size
 
     inner class RecommendedViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val coordinatorName = view.findViewById<TextView>(R.id.recommended_coordinator_name)
+        val tag = view.findViewById<TextView>(R.id.recommended_tag)
     }
 }
