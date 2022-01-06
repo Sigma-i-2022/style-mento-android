@@ -20,20 +20,15 @@ class MyPageClosetFragment : BaseFragment<FragmentMyPageClosetBinding>() {
 
     val testDataSet = arrayOf("1", "2", "3")
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val v = inflater.inflate(R.layout.fragment_my_page_closet, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val closetRecyclerView : RecyclerView = v.findViewById(R.id.user_closet_recycler)
+        val closetRecyclerView : RecyclerView = view.findViewById(R.id.user_closet_recycler)
         val closetAdapter = UserClosetAdapter(testDataSet)
         val gridLayoutManager = GridLayoutManager(context,3)
 
         closetRecyclerView.adapter = closetAdapter
         gridLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
         closetRecyclerView.layoutManager = gridLayoutManager
-        return v
     }
 }
