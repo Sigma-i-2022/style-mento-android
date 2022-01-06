@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -71,6 +72,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{viewModel.testUser.nickname}"
+                        tools:text="user_name"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -78,6 +80,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{viewModel.testUser.email}"
+                        tools:text="user_email"
                         android:textSize="12sp" />
                 </LinearLayout>
 
@@ -105,7 +108,7 @@
                 android:id="@+id/user_interested_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="관심있는 코디네이터"
+                android:text="관심 코디네이터"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -127,11 +130,44 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/user_interested_recycler" />
 
+            <LinearLayout
+                android:id="@+id/user_option_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/user_line">
+
+                <TextView
+                    android:id="@+id/my_page_closet_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_shadow"
+                    android:text="옷장"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:background="#CECECE" />
+
+                <TextView
+                    android:id="@+id/my_page_lookbook_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_null"
+                    android:text="룩북"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/user_viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/user_line"
+                app:layout_constraintTop_toBottomOf="@id/user_option_layout"
                 app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
