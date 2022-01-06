@@ -28,5 +28,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
         TabLayoutMediator(tabs!!, viewPager!!) { tab, position ->
             tab.setIcon(tabIcons[position])
         }.attach()
+
+        viewPager.isUserInputEnabled = false
     }
 }
