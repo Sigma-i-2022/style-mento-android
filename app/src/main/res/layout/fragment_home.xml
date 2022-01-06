@@ -33,7 +33,7 @@
             android:layout_marginTop="22dp"
             android:layout_marginHorizontal="20dp"
             app:layout_constraintTop_toBottomOf="@id/search_bar"
-            android:backgroundTint="#DDDDDD"
+            android:backgroundTint="@color/gray_f"
             android:background="@drawable/search_bar_background"/>
 
         <TextView
