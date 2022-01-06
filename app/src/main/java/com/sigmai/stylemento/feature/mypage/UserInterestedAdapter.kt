@@ -16,11 +16,10 @@ class UserInterestedAdapter(private val dataSet: Array<String>) :
      * (custom ViewHolder).
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val userInterestedImg: ImageView
+        val userInterestedImg: ImageView = view.findViewById(R.id.user_interested_item_img)
 
         init {
             // Define click listener for the ViewHolder's View.
-            userInterestedImg = view.findViewById(R.id.user_interested_item_img)
         }
     }
 

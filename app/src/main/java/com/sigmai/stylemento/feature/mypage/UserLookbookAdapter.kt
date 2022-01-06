@@ -16,11 +16,10 @@ class UserLookbookAdapter(private val dataSet: Array<String>) :
      * (custom ViewHolder).
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val userLookbookImg: ImageView
+        val userLookbookImg: ImageView = view.findViewById(R.id.user_lookbook_item_img)
 
         init {
             // Define click listener for the ViewHolder's View.
-            userLookbookImg = view.findViewById(R.id.user_lookbook_item_img)
         }
     }
 
