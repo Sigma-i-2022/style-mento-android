@@ -8,135 +8,165 @@
             type="com.sigmai.stylemento.feature.home.HomeViewModel" />
     </data>
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/search_bar"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="35dp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="20dp"
-            android:layout_marginHorizontal="20dp"
-            android:paddingHorizontal="24dp"
-            android:textSize="15sp"
-            android:textColor="@color/black"
-            android:hint="코디네이터를 검색해보세요."
-            android:background="@drawable/search_bar_background"/>
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/banner"
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:layout_marginTop="22dp"
-            android:layout_marginHorizontal="20dp"
-            app:layout_constraintTop_toBottomOf="@id/search_bar"
-            android:backgroundTint="#DDDDDD"
-            android:background="@drawable/search_bar_background"/>
+            <EditText
+                android:id="@+id/search_bar"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/home_notification"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:paddingStart="32dp"
+                android:paddingEnd="24dp"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:hint="코디네이터를 검색해보세요."
+                android:background="@drawable/search_bar_background"/>
 
-        <TextView
-            android:id="@+id/favorite_coordinator"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/banner"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="18dp"
-            android:layout_marginHorizontal="20dp"
-            android:text="관심있는 코디네이터"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="18sp"/>
+            <Button
+                android:id="@+id/home_notification"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:layout_constraintStart_toEndOf="@id/search_bar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/search_bar"
+                app:layout_constraintBottom_toBottomOf="@id/search_bar"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/ic_notification"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/favorite_coordinator_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/favorite_coordinator"
-            android:layout_marginTop="12dp"
-            android:layout_marginHorizontal="20dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="horizontal"/>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:layout_constraintStart_toStartOf="@id/search_bar"
+                app:layout_constraintTop_toTopOf="@id/search_bar"
+                app:layout_constraintBottom_toBottomOf="@id/search_bar"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/ic_search"/>
 
-        <TextView
-            android:id="@+id/booked_advice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/favorite_coordinator_list"
-            android:layout_marginTop="18dp"
-            android:layout_marginHorizontal="20dp"
-            android:text="예약된 상담"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginHorizontal="20dp"
+                app:layout_constraintTop_toBottomOf="@id/search_bar"
+                android:backgroundTint="@color/gray_f"
+                android:background="@drawable/search_bar_background"/>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/booked_advice_card"
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            app:layout_constraintTop_toBottomOf="@id/booked_advice"
-            android:layout_marginTop="12dp"
-            android:layout_marginHorizontal="20dp"
-            android:elevation="8dp"
-            app:cardCornerRadius="15dp"
-            android:orientation="vertical">
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/favorite_coordinator"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/banner"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="18dp"
+                android:layout_marginHorizontal="20dp"
+                android:text="관심있는 코디네이터"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/favorite_coordinator_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/favorite_coordinator"
+                android:layout_marginTop="12dp"
+                android:layout_marginHorizontal="20dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"/>
+
+            <TextView
+                android:id="@+id/booked_advice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/favorite_coordinator_list"
+                android:layout_marginTop="18dp"
+                android:layout_marginHorizontal="20dp"
+                android:text="예약된 상담"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/black"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/booked_advice_card"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                app:layout_constraintTop_toBottomOf="@id/booked_advice"
+                android:layout_marginTop="12dp"
+                android:layout_marginHorizontal="20dp"
+                android:elevation="8dp"
+                app:cardCornerRadius="15dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="24dp"
-                    android:text="예약된 상담이 없습니다."
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="코디네이터와 상담을 예약해보세요."
-                    android:textSize="11sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="24dp"
+                        android:text="예약된 상담이 없습니다."
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:layout_width="163dp"
-                    android:layout_height="32dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:text="코디네이터 보러가기"
-                    android:textSize="11sp"
-                    android:textColor="@color/white"
-                    android:background="@drawable/button_background_type_2"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="코디네이터와 상담을 예약해보세요."
+                        android:textSize="11sp" />
 
-        <TextView
-            android:id="@+id/recommended_coordinator"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/booked_advice_card"
-            android:layout_marginHorizontal="20sp"
-            android:layout_marginTop="18dp"
-            android:text="추천 코디"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="@color/black"/>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="163dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:text="코디네이터 보러가기"
+                        android:textSize="11sp"
+                        android:textColor="@color/white"
+                        android:background="@drawable/button_background_type_2"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recommended_coordinator_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginHorizontal="20dp"
-            app:layout_constraintTop_toBottomOf="@id/recommended_coordinator"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="horizontal"/>
+            <TextView
+                android:id="@+id/recommended_coordinator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/booked_advice_card"
+                android:layout_marginHorizontal="20sp"
+                android:layout_marginTop="18dp"
+                android:text="추천 코디"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/black"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recommended_coordinator_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginHorizontal="20dp"
+                app:layout_constraintTop_toBottomOf="@id/recommended_coordinator"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
 </layout>
 
