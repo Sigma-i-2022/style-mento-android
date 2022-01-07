@@ -2,17 +2,16 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:id="@+id/user_closet_content_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:descendantFocusability="blocksDescendants">
 
         <LinearLayout
             android:id="@+id/user_closet_content_option_layout"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/user_closet_all_text"
@@ -48,14 +47,13 @@
             android:layout_width="34dp"
             android:layout_height="34dp"
             android:src="@drawable/ic_launcher_foreground"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_alignParentEnd="true"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/user_closet_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/user_closet_content_option_layout" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:nestedScrollingEnabled="false"
+            android:layout_below="@id/user_closet_content_option_layout" />
+    </RelativeLayout>
 </layout>
