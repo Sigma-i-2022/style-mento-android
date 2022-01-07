@@ -42,7 +42,8 @@
                 app:layout_constraintBottom_toBottomOf="@id/search_bar"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="20dp"
-                android:background="@drawable/ic_notification"/>
+                android:background="@drawable/ic_notification"
+                android:onClick="@{()->viewModel.startNotificationFragment()}"/>
 
             <ImageView
                 android:layout_width="24dp"

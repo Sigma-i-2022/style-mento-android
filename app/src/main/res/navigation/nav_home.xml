@@ -10,15 +10,15 @@
         android:id="@+id/home"
         android:name="com.sigmai.stylemento.feature.home.HomeFragment"
         android:label="home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_notification"
+            app:destination="@id/notification" />
+    </fragment>
 
-    <!--
-    이 fragment 는 navigation 으로 관리되지 않지만,
-    구조를 시각적으로 확인하기 위해 넣음.
-     -->
     <fragment
-        android:id="@+id/main"
-        android:name="com.sigmai.stylemento.feature.main.MainFragment"
-        android:label="main"
-        tools:layout="@layout/fragment_main"/>
+        android:id="@+id/notification"
+        android:name="com.sigmai.stylemento.feature.home.NotificationFragment"
+        android:label="notification"
+        tools:layout="@layout/fragment_notification" />
 </navigation>
