@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp">
+
+        <TextView
+            android:id="@+id/my_page_closet_dialog_revision_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="수정"
+            android:textSize="11dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/my_page_closet_dialog_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="나의 옷장"
+            android:textSize="14dp"
+            app:layout_constraintStart_toEndOf="@id/my_page_closet_dialog_revision_text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/my_page_closet_dialog_close_text"/>
+        <TextView
+            android:id="@+id/my_page_closet_dialog_close_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="닫기"
+            android:textSize="11dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/my_page_closet_dialog_item_img"
+            android:layout_width="215dp"
+            android:layout_height="242dp"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintTop_toBottomOf="@id/my_page_closet_dialog_title_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/my_page_closet_dialog_category_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="분류"
+            app:layout_constraintTop_toBottomOf="@id/my_page_closet_dialog_item_img"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/my_page_closet_dialog_category_spinner"/>
+        <Spinner
+            android:id="@+id/my_page_closet_dialog_category_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/my_page_closet_dialog_item_img"
+            app:layout_constraintStart_toEndOf="@id/my_page_closet_dialog_category_text"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/my_page_closet_dialog_brand_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="브랜드"
+            app:layout_constraintTop_toBottomOf="@id/my_page_closet_dialog_category_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/my_page_closet_dialog_brand_editText"/>
+        <EditText
+            android:id="@+id/my_page_closet_dialog_brand_editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/my_page_closet_dialog_category_spinner"
+            app:layout_constraintStart_toEndOf="@id/my_page_closet_dialog_brand_text"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/my_page_closet_dialog_itemName_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="제품명"
+            app:layout_constraintTop_toBottomOf="@id/my_page_closet_dialog_brand_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/my_page_closet_dialog_itemName_editText"/>
+        <EditText
+            android:id="@+id/my_page_closet_dialog_itemName_editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/my_page_closet_dialog_brand_editText"
+            app:layout_constraintStart_toEndOf="@id/my_page_closet_dialog_itemName_text"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/my_page_closet_dialog_texture_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="재질"
+            app:layout_constraintTop_toBottomOf="@id/my_page_closet_dialog_itemName_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/my_page_closet_dialog_texture_editText"/>
+        <EditText
+            android:id="@+id/my_page_closet_dialog_texture_editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/my_page_closet_dialog_itemName_editText"
+            app:layout_constraintStart_toEndOf="@id/my_page_closet_dialog_texture_text"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/my_page_closet_dialog_size_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="사이즈"
+            app:layout_constraintTop_toBottomOf="@id/my_page_closet_dialog_texture_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/my_page_closet_dialog_size_editText"/>
+        <EditText
+            android:id="@+id/my_page_closet_dialog_size_editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/my_page_closet_dialog_texture_editText"
+            app:layout_constraintStart_toEndOf="@id/my_page_closet_dialog_size_text"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/my_page_closet_dialog_fit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="나의 핏"
+            app:layout_constraintTop_toBottomOf="@id/my_page_closet_dialog_size_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/my_page_closet_dialog_fit_editText"/>
+        <EditText
+            android:id="@+id/my_page_closet_dialog_fit_editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/my_page_closet_dialog_size_editText"
+            app:layout_constraintStart_toEndOf="@id/my_page_closet_dialog_fit_text"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

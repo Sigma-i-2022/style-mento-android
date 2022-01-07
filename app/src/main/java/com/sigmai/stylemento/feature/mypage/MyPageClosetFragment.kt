@@ -18,22 +18,16 @@ import com.sigmai.stylemento.global.base.BaseFragment
 class MyPageClosetFragment : BaseFragment<FragmentMyPageClosetBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_closet
 
-    val testDataSet = arrayOf("1", "2", "3")
+    val testDataSet = arrayOf("1", "2", "3", "4", "5")
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val v = inflater.inflate(R.layout.fragment_my_page_closet, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val closetRecyclerView : RecyclerView = v.findViewById(R.id.user_closet_recycler)
+        val closetRecyclerView : RecyclerView = view.findViewById(R.id.user_closet_recycler)
         val closetAdapter = UserClosetAdapter(testDataSet)
-        val gridLayoutManager = GridLayoutManager(context,3)
+        val gridLayoutManager = GridLayoutManager(context,3, GridLayoutManager.VERTICAL, false)
 
         closetRecyclerView.adapter = closetAdapter
-        gridLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
         closetRecyclerView.layoutManager = gridLayoutManager
-        return v
     }
 }

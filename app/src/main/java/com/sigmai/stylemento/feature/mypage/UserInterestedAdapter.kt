@@ -16,11 +16,10 @@ class UserInterestedAdapter(private val dataSet: Array<String>) :
      * (custom ViewHolder).
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val userInterestedImg: ImageView
+        val userInterestedImg: ImageView = view.findViewById(R.id.user_interested_item_img)
 
         init {
             // Define click listener for the ViewHolder's View.
-            userInterestedImg = view.findViewById(R.id.user_interested_item_img)
         }
     }
 
@@ -38,7 +37,7 @@ class UserInterestedAdapter(private val dataSet: Array<String>) :
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        //viewHolder.ImageView.text = dataSet[position]
+        viewHolder.userInterestedImg.setImageResource(R.drawable.ic_launcher_foreground)
     }
 
     // Return the size of your dataset (invoked by the layout manager)
