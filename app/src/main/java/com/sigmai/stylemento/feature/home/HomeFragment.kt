@@ -3,6 +3,7 @@ package com.sigmai.stylemento.feature.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.RecommendedCoordinator
@@ -23,6 +24,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
+
+        viewModel.startNotification.observe(this, {
+            findNavController().navigate(R.id.action_home_to_notification)
+        })
     }
 
     fun getUserInfo() {
