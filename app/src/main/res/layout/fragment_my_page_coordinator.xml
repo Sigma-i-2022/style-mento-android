@@ -65,7 +65,7 @@
                         android:layout_height="wrap_content"
                         android:text="@{viewModel.testUser.nickname}"
                         tools:text="coordinator_name"
-                        android:textSize="18sp"
+                        android:textSize="21sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -73,7 +73,7 @@
                         android:layout_height="wrap_content"
                         android:text="@{viewModel.testUser.email}"
                         tools:text="coordinator_email"
-                        android:textSize="12sp" />
+                        android:textSize="14sp" />
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/my_page_coordinator_tag_recycler"
                         android:layout_width="wrap_content"
@@ -84,11 +84,10 @@
                     android:id="@+id/my_page_coordinator_interested_button"
                     android:layout_width="60dp"
                     android:layout_height="30dp"
-                    android:layout_marginStart="62dp"
                     android:layout_marginTop="6dp"
                     android:src="@drawable/ic_launcher_foreground"
-                    app:layout_constraintStart_toEndOf="@id/my_page_coordinator_text_layout"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
