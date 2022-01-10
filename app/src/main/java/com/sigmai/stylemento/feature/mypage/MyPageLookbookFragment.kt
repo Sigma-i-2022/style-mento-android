@@ -1,17 +1,11 @@
 package com.sigmai.stylemento.feature.mypage
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
-import com.sigmai.stylemento.databinding.FragmentMyPageClosetBinding
 import com.sigmai.stylemento.databinding.FragmentMyPageLookbookBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 
@@ -23,7 +17,7 @@ class MyPageLookbookFragment : BaseFragment<FragmentMyPageLookbookBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val lookbookRecyclerView : RecyclerView = view.findViewById(R.id.user_lookbook_recycler)
+        val lookbookRecyclerView : RecyclerView = view.findViewById(R.id.my_page_user_lookbook_recycler)
         val lookbookAdapter = UserLookbookAdapter(testDataSet)
         val gridLayoutManager = GridLayoutManager(context,3, GridLayoutManager.VERTICAL, false)
 
@@ -31,7 +25,7 @@ class MyPageLookbookFragment : BaseFragment<FragmentMyPageLookbookBinding>() {
         lookbookRecyclerView.adapter = lookbookAdapter
         lookbookRecyclerView.layoutManager = gridLayoutManager
 
-        val addButton : ImageView = view.findViewById(R.id.user_lookbook_add_img)
+        val addButton : ImageView = view.findViewById(R.id.my_page_user_lookbook_add_img)
         addButton.setOnClickListener(View.OnClickListener {
             val dialog = UserLookbookAddDialog()
             dialog.show(childFragmentManager, "lookbookDialog")

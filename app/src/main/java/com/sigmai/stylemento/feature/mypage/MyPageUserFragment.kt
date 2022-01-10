@@ -26,7 +26,7 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val interestedRecyclerView : RecyclerView = view.findViewById(R.id.user_interested_recycler)
+        val interestedRecyclerView : RecyclerView = view.findViewById(R.id.my_page_user_interested_recycler)
         val interestedAdapter = UserInterestedAdapter(testDataSet)
         val linearLayoutManager = LinearLayoutManager(context)
 
@@ -34,12 +34,12 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
         interestedRecyclerView.adapter = interestedAdapter
         interestedRecyclerView.layoutManager = linearLayoutManager
 
-        val userViewPager : ViewPager2 = view.findViewById(R.id.user_viewPager)
+        val userViewPager : ViewPager2 = view.findViewById(R.id.my_page_user_viewPager)
         val userAdapter = UserViewPagerAdapter(this)
         userViewPager.adapter = userAdapter
 
-        val closetButton : TextView = view.findViewById(R.id.my_page_closet_button)
-        val lookbookButton : TextView = view.findViewById(R.id.my_page_lookbook_button)
+        val closetButton : TextView = view.findViewById(R.id.my_page_user_closet_button)
+        val lookbookButton : TextView = view.findViewById(R.id.my_page_user_lookbook_button)
         closetButton.setOnClickListener(View.OnClickListener {
             userViewPager.setCurrentItem(0, true)
             lookbookButton.setBackgroundResource(R.drawable.button_null)
@@ -51,7 +51,7 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
             closetButton.setBackgroundResource(R.drawable.button_null)
         })
 
-        val revisionButton : ImageView = view.findViewById(R.id.user_revise_img)
+        val revisionButton : ImageView = view.findViewById(R.id.my_page_user_revise_img)
         revisionButton.setOnClickListener(View.OnClickListener {
             val transaction = parentFragmentManager.beginTransaction()
             transaction.replace(R.id.my_page_frameLayout, MyPageRevisionFragment())
