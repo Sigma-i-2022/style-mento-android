@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -29,5 +30,11 @@ class MyPageClosetFragment : BaseFragment<FragmentMyPageClosetBinding>() {
 
         closetRecyclerView.adapter = closetAdapter
         closetRecyclerView.layoutManager = gridLayoutManager
+
+        val addButton : ImageView = view.findViewById(R.id.user_closet_add_img)
+        addButton.setOnClickListener(View.OnClickListener {
+            val dialog = UserClosetAddDialog()
+            dialog.show(childFragmentManager, "closetDialog")
+        })
     }
 }
