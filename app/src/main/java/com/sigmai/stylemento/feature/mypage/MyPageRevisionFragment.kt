@@ -4,10 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -16,22 +12,23 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageBinding
+import com.sigmai.stylemento.databinding.FragmentMyPageClosetBinding
+import com.sigmai.stylemento.databinding.FragmentMyPageRevisionBinding
 import com.sigmai.stylemento.global.base.BaseFragment
-import kotlin.math.log
 
-class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
-    override val layoutResourceId = R.layout.fragment_my_page
-    private val viewModel: MyPageViewModel by viewModels()
+class MyPageRevisionFragment : BaseFragment<FragmentMyPageRevisionBinding>() {
+    override val layoutResourceId = R.layout.fragment_my_page_revision
 
-    override fun initDataBinding() {
-        super.initDataBinding()
-        binding.viewModel = viewModel
-    }
+    val testDataSet = arrayOf("1", "2", "3", "4", "5")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val transaction = childFragmentManager.beginTransaction().add(R.id.my_page_frameLayout, MyPageUserFragment())
-        transaction.commit()
+        /*val closetRecyclerView : RecyclerView = view.findViewById(R.id.user_closet_recycler)
+        val closetAdapter = UserClosetAdapter(testDataSet)
+        val gridLayoutManager = GridLayoutManager(context,3, GridLayoutManager.VERTICAL, false)
+
+        closetRecyclerView.adapter = closetAdapter
+        closetRecyclerView.layoutManager = gridLayoutManager*/
     }
 }
