@@ -8,7 +8,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/user_closet_add_img"
+                android:id="@+id/user_lookbook_add_img"
                 android:layout_width="34dp"
                 android:layout_height="34dp"
                 android:src="@drawable/ic_launcher_foreground"
@@ -56,6 +56,6 @@
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/user_closet_add_img" />
+                app:layout_constraintTop_toBottomOf="@id/user_lookbook_add_img" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
