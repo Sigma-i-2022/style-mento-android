@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/user_closet_content_layout"
+            android:id="@+id/my_page_user_lookbook_content_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/user_closet_add_img"
+                android:id="@+id/my_page_user_lookbook_add_img"
                 android:layout_width="34dp"
                 android:layout_height="34dp"
                 android:src="@drawable/ic_launcher_foreground"
@@ -16,46 +16,46 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
-                android:id="@+id/user_lookbook_content_option_layout"
+                android:id="@+id/my_page_user_lookbook_content_option_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/user_closet_all_text"
+                    android:id="@+id/my_page_user_lookbook_all_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="전체"
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/user_closet_top_text"
+                    android:id="@+id/my_page_user_lookbook_top_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="상의"
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/user_closet_pants_text"
+                    android:id="@+id/my_page_user_lookbook_pants_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="하의"
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/user_closet_shoes_text"
+                    android:id="@+id/my_page_user_lookbook_shoes_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="신발"
                     android:textSize="14sp" />
             </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/user_lookbook_recycler"
+                android:id="@+id/my_page_user_lookbook_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/user_closet_add_img" />
+                app:layout_constraintTop_toBottomOf="@id/my_page_user_lookbook_add_img" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
