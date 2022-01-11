@@ -39,7 +39,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
             val transaction = childFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment())
             transaction.commit()
         }
-        else{
+        else{ //coordinator my page로 수정
             val transaction = childFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment())
             transaction.commit()
         }
