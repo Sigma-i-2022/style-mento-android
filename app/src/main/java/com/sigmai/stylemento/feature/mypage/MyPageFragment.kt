@@ -31,7 +31,18 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val transaction = childFragmentManager.beginTransaction().add(R.id.my_page_frameLayout, MyPageUserFragment())
-        transaction.commit()
+        setMyPageFragment()
     }
+
+    public fun setMyPageFragment(){
+        if(true){
+            val transaction = childFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment())
+            transaction.commit()
+        }
+        else{
+            val transaction = childFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment())
+            transaction.commit()
+        }
+    }
+
 }
