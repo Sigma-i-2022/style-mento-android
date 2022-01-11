@@ -12,7 +12,8 @@
 
         <include
             android:id="@+id/notification_toolbar"
-            layout="@layout/toolbar"/>
+            layout="@layout/toolbar"
+            app:title='@{"알림"}'/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/notification_recycler_view"
