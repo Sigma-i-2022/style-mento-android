@@ -14,11 +14,12 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical">
+        android:scrollbars="vertical"
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
@@ -77,7 +78,8 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/my_page_coordinator_tag_recycler"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:scrollbars="horizontal"/>
                 </LinearLayout>
 
                 <Button
@@ -127,11 +129,6 @@
                     android:textAlignment="center"
                     android:textSize="18sp" />
 
-                <View
-                    android:layout_width="2dp"
-                    android:layout_height="match_parent"
-                    android:background="#CECECE" />
-
                 <TextView
                     android:id="@+id/my_page_coordinator_reviews_button"
                     android:layout_width="0dp"
@@ -143,6 +140,29 @@
                     android:textSize="18sp" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="10dp"
+                    android:text="채팅하기"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:text="예약하기"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/my_page_coordinator_viewPager"
                 android:layout_width="match_parent"
@@ -151,6 +171,5 @@
                 app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_option_layout"
                 app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.core.widget.NestedScrollView>
 </layout>
