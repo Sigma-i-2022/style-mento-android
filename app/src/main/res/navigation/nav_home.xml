@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/notification"
-        android:name="com.sigmai.stylemento.feature.home.NotificationFragment"
+        android:name="com.sigmai.stylemento.feature.home.notification.NotificationFragment"
         android:label="notification"
         tools:layout="@layout/fragment_notification" />
 </navigation>

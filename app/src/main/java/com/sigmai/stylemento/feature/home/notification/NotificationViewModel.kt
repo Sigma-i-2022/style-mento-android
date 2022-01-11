@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.feature.home
+package com.sigmai.stylemento.feature.home.notification
 
 import androidx.lifecycle.ViewModel
 
