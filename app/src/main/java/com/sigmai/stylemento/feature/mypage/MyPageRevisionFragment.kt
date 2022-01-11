@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -30,5 +31,17 @@ class MyPageRevisionFragment : BaseFragment<FragmentMyPageRevisionBinding>() {
 
         closetRecyclerView.adapter = closetAdapter
         closetRecyclerView.layoutManager = gridLayoutManager*/
+
+        val backButton : ImageView = view.findViewById(R.id.my_page_revision_back_img)
+        backButton.setOnClickListener(View.OnClickListener {
+            if(true){
+                val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment())
+                transaction.commit()
+            }
+            else{
+                val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment())
+                transaction.commit()
+            }
+        })
     }
 }
