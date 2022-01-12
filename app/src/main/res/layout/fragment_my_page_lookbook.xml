@@ -26,6 +26,7 @@
                     android:id="@+id/my_page_user_lookbook_all_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
                     android:text="전체"
                     android:textSize="14sp" />
 
@@ -33,6 +34,7 @@
                     android:id="@+id/my_page_user_lookbook_top_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
                     android:text="상의"
                     android:textSize="14sp" />
 
@@ -40,6 +42,7 @@
                     android:id="@+id/my_page_user_lookbook_pants_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
                     android:text="하의"
                     android:textSize="14sp" />
 
