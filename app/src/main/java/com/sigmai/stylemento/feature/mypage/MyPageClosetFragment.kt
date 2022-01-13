@@ -17,15 +17,13 @@ class MyPageClosetFragment : BaseFragment<FragmentMyPageClosetBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val closetRecyclerView : RecyclerView = view.findViewById(R.id.my_page_user_closet_recycler)
         val closetAdapter = UserClosetAdapter(testDataSet)
         val gridLayoutManager = GridLayoutManager(context,3, GridLayoutManager.VERTICAL, false)
 
-        closetRecyclerView.adapter = closetAdapter
-        closetRecyclerView.layoutManager = gridLayoutManager
+        binding.myPageUserClosetRecycler.adapter = closetAdapter
+        binding.myPageUserClosetRecycler.layoutManager = gridLayoutManager
 
-        val addButton : ImageView = view.findViewById(R.id.my_page_user_closet_add_img)
-        addButton.setOnClickListener(View.OnClickListener {
+        binding.myPageUserClosetAddImg.setOnClickListener(View.OnClickListener {
             val dialog = UserClosetAddDialog()
             dialog.show(childFragmentManager, "closetDialog")
         })

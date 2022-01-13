@@ -17,16 +17,13 @@ class MyPageLookbookFragment : BaseFragment<FragmentMyPageLookbookBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val lookbookRecyclerView : RecyclerView = view.findViewById(R.id.my_page_user_lookbook_recycler)
         val lookbookAdapter = UserLookbookAdapter(testDataSet)
         val gridLayoutManager = GridLayoutManager(context,3, GridLayoutManager.VERTICAL, false)
 
-        //gridLayoutManager.orientation = LinearLayoutManager.VERTICAL
-        lookbookRecyclerView.adapter = lookbookAdapter
-        lookbookRecyclerView.layoutManager = gridLayoutManager
+        binding.myPageUserLookbookRecycler.adapter = lookbookAdapter
+        binding.myPageUserLookbookRecycler.layoutManager = gridLayoutManager
 
-        val addButton : ImageView = view.findViewById(R.id.my_page_user_lookbook_add_img)
-        addButton.setOnClickListener(View.OnClickListener {
+        binding.myPageUserLookbookAddImg.setOnClickListener(View.OnClickListener {
             val dialog = UserLookbookAddDialog()
             dialog.show(childFragmentManager, "lookbookDialog")
         })

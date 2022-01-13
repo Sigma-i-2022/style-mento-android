@@ -32,8 +32,7 @@ class MyPageRevisionFragment : BaseFragment<FragmentMyPageRevisionBinding>() {
         closetRecyclerView.adapter = closetAdapter
         closetRecyclerView.layoutManager = gridLayoutManager*/
 
-        val backButton : ImageView = view.findViewById(R.id.my_page_revision_back_img)
-        backButton.setOnClickListener(View.OnClickListener {
+        binding.myPageRevisionBackImg.setOnClickListener(View.OnClickListener {
             if(true){
                 val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment())
                 transaction.commit()

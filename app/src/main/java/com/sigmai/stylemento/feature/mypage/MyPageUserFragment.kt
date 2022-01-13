@@ -26,33 +26,29 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val interestedRecyclerView : RecyclerView = view.findViewById(R.id.my_page_user_interested_recycler)
         val interestedAdapter = UserInterestedAdapter(testDataSet)
         val linearLayoutManager = LinearLayoutManager(context)
 
         linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
-        interestedRecyclerView.adapter = interestedAdapter
-        interestedRecyclerView.layoutManager = linearLayoutManager
+        binding.myPageUserInterestedRecycler.adapter = interestedAdapter
+        binding.myPageUserInterestedRecycler.layoutManager = linearLayoutManager
 
-        val userViewPager : ViewPager2 = view.findViewById(R.id.my_page_user_viewPager)
         val userAdapter = UserViewPagerAdapter(this)
-        userViewPager.adapter = userAdapter
+        binding.myPageUserViewPager.adapter = userAdapter
+        binding.myPageUserViewPager.isUserInputEnabled = false
 
-        val closetButton : TextView = view.findViewById(R.id.my_page_user_closet_button)
-        val lookbookButton : TextView = view.findViewById(R.id.my_page_user_lookbook_button)
-        closetButton.setOnClickListener(View.OnClickListener {
-            userViewPager.setCurrentItem(0, true)
-            lookbookButton.setBackgroundResource(R.drawable.button_null)
-            closetButton.setBackgroundResource(R.drawable.button_shadow)
+        binding.myPageUserClosetButton.setOnClickListener(View.OnClickListener {
+            binding.myPageUserViewPager.setCurrentItem(0, true)
+            binding.myPageUserLookbookButton.setBackgroundResource(R.drawable.button_null)
+            binding.myPageUserClosetButton.setBackgroundResource(R.drawable.button_shadow)
         })
-        lookbookButton.setOnClickListener(View.OnClickListener {
-            userViewPager.setCurrentItem(1, true)
-            lookbookButton.setBackgroundResource(R.drawable.button_shadow)
-            closetButton.setBackgroundResource(R.drawable.button_null)
+        binding.myPageUserLookbookButton.setOnClickListener(View.OnClickListener {
+            binding.myPageUserViewPager.setCurrentItem(1, true)
+            binding.myPageUserLookbookButton.setBackgroundResource(R.drawable.button_shadow)
+            binding.myPageUserClosetButton.setBackgroundResource(R.drawable.button_null)
         })
 
-        val revisionButton : ImageView = view.findViewById(R.id.my_page_user_revise_img)
-        revisionButton.setOnClickListener(View.OnClickListener {
+        binding.myPageUserReviseImg.setOnClickListener(View.OnClickListener {
             val transaction = parentFragmentManager.beginTransaction()
             transaction.replace(R.id.my_page_frameLayout, MyPageRevisionFragment())
             transaction.commit()
