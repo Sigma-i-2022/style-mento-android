@@ -1,6 +1,8 @@
 package com.sigmai.stylemento.global.constant
 
-enum class ChatType {
-    FROM_ME,
-    TO_ME
+class ChatType {
+    companion object {
+        const val FROM_ME = 0
+        const val TO_ME = 1
+    }
 }

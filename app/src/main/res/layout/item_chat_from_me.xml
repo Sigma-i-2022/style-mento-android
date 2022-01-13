@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="@dimen/horizontal_margin"
         android:paddingHorizontal="12dp"
         android:paddingVertical="10dp"
         tools:text="예시 텍스트"

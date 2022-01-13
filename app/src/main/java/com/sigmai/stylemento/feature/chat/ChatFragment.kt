@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.ChattingRoom
 import com.sigmai.stylemento.databinding.FragmentChatBinding
-import com.sigmai.stylemento.feature.chat.adapter.ChatListAdapter
+import com.sigmai.stylemento.feature.chat.adapter.ChattingRoomListAdapter
 import com.sigmai.stylemento.global.base.BaseFragment
 
 class ChatFragment :BaseFragment<FragmentChatBinding>() {
@@ -22,7 +22,7 @@ class ChatFragment :BaseFragment<FragmentChatBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView: RecyclerView = view.findViewById(R.id.chat_list_recyclerview)
-        recyclerView.adapter = ChatListAdapter(
+        recyclerView.adapter = ChattingRoomListAdapter(
             listOf(
                 ChattingRoom("user_name1", "안녕하세요1"),
                 ChattingRoom("user_name2", "안녕하세요2"),
