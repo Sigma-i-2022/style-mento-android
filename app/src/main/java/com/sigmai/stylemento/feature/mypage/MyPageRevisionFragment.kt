@@ -20,17 +20,17 @@ import com.sigmai.stylemento.global.base.BaseFragment
 class MyPageRevisionFragment : BaseFragment<FragmentMyPageRevisionBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_revision
 
-    val testDataSet = arrayOf("1", "2", "3", "4", "5")
+    val testDataSet = arrayOf("type1", "type2", "type3")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*val closetRecyclerView : RecyclerView = view.findViewById(R.id.user_closet_recycler)
-        val closetAdapter = UserClosetAdapter(testDataSet)
-        val gridLayoutManager = GridLayoutManager(context,3, GridLayoutManager.VERTICAL, false)
+        val tagAdapter = MyPageTagAdapter(testDataSet)
+        val linearLayoutManager = LinearLayoutManager(context)
+        linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
 
-        closetRecyclerView.adapter = closetAdapter
-        closetRecyclerView.layoutManager = gridLayoutManager*/
+        binding.myPageRevisionStyleTagRecyclerView.adapter = tagAdapter
+        binding.myPageRevisionStyleTagRecyclerView.layoutManager = linearLayoutManager
 
         binding.myPageRevisionBackImg.setOnClickListener(View.OnClickListener {
             if(true){
