@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.global.const
+package com.sigmai.stylemento.global.constant
 
 enum class UserType {
     NORMAL,

@@ -1,3 +1,5 @@
 package com.sigmai.stylemento.data.model
 
-data class Chat(val name: String, val summary: String)
+import com.sigmai.stylemento.global.constant.ChatType
+
+data class Chat(val content: String, val type: ChatType)
