@@ -7,14 +7,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Notification
+import com.sigmai.stylemento.databinding.ItemNotificationBinding
 
 class NotificationAdapter(val notificationList: List<Notification>) : RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder>() {
     var notifications: List<Notification>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_notification, parent, false)
-
-        return NotificationViewHolder(view)
+        return NotificationViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: NotificationViewHolder, position: Int) {
@@ -27,7 +26,16 @@ class NotificationAdapter(val notificationList: List<Notification>) : RecyclerVi
         notifications = items
     }
 
-    inner class NotificationViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    class NotificationViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val content = view.findViewById<TextView>(R.id.notification_content)
+
+        companion object {
+            fun from(parent: ViewGroup) : NotificationViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = ItemNotificationBinding.inflate(layoutInflater, parent, false)
+
+                return NotificationViewHolder(binding.root)
+            }
+        }
     }
 }
