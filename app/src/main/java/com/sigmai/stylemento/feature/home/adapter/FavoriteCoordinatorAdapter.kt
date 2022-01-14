@@ -20,10 +20,11 @@ class FavoriteCoordinatorAdapter(val coordinatorList: List<String>) : RecyclerVi
     }
 
     override fun onBindViewHolder(holder: FavoriteCoordinatorViewHolder, position: Int) {
-        //holder.imageView
+        val item = favoriteList!![position]
+        holder.bind(item)
     }
 
-    override fun getItemCount() = coordinatorList.size
+    override fun getItemCount() = favoriteList!!.size
 
     fun setList(items: List<FavoriteCoordinator>) {
         favoriteList = items
@@ -31,6 +32,11 @@ class FavoriteCoordinatorAdapter(val coordinatorList: List<String>) : RecyclerVi
 
     class FavoriteCoordinatorViewHolder(val view: View, val binding: ItemFavoriteCoordinatorBinding) : RecyclerView.ViewHolder(view) {
         val imageView = view.findViewById<ImageView>(R.id.favorite_coordinator_photo)
+
+        fun bind(item: FavoriteCoordinator) {
+            binding.item = item
+            binding.executePendingBindings()
+        }
 
         companion object {
             fun from(parent: ViewGroup) : FavoriteCoordinatorViewHolder {
