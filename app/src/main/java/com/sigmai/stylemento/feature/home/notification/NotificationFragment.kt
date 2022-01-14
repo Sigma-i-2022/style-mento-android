@@ -21,14 +21,6 @@ class NotificationFragment : BaseFragment<FragmentNotificationBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val notificationRecyclerView = view.findViewById<RecyclerView>(R.id.notification_recycler_view)
-        notificationRecyclerView.adapter = NotificationAdapter(
-            listOf(
-                Notification("eqkfeq_te님이 나를 어쩌구했어요1"),
-                Notification("eqkfeq_te님이 나를 어쩌구했어용2"),
-                Notification("eqkfeq_te님이 나를 어쩌구했어요3"),
-                Notification("eqkfeq_te님이 나를 어쩌구했어용4"),
-                Notification("eqkfeq_te님이 나를 어쩌구했어요5")
-            )
-        )
+        notificationRecyclerView.adapter = NotificationAdapter()
     }
 }
