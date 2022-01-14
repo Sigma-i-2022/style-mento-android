@@ -6,8 +6,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
+import com.sigmai.stylemento.data.model.FavoriteCoordinator
 
 class FavoriteCoordinatorAdapter(val coordinatorList: List<String>) : RecyclerView.Adapter<FavoriteCoordinatorAdapter.FavoriteCoordinatorViewHolder>() {
+    var favoriteList: List<FavoriteCoordinator>? = null
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -21,6 +24,10 @@ class FavoriteCoordinatorAdapter(val coordinatorList: List<String>) : RecyclerVi
     }
 
     override fun getItemCount() = coordinatorList.size
+
+    fun setList(items: List<FavoriteCoordinator>) {
+        favoriteList = items
+    }
 
     inner class FavoriteCoordinatorViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val imageView = view.findViewById<ImageView>(R.id.favorite_coordinator_photo)
