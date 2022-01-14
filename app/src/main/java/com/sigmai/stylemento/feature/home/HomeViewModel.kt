@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sigmai.stylemento.data.model.FavoriteCoordinator
+import com.sigmai.stylemento.data.model.Notification
 import com.sigmai.stylemento.data.model.RecommendedCoordinator
 import com.sigmai.stylemento.data.model.User
 import com.sigmai.stylemento.feature.home.adapter.RecommendedCoordinatorAdapter
@@ -30,6 +31,15 @@ class HomeViewModel : ViewModel() {
         FavoriteCoordinator("1"),
         FavoriteCoordinator("1"),
         FavoriteCoordinator("1")
+    )
+
+    val dummyList = listOf(
+        Notification("eqkfeq_te님이 나를 어쩌구했어요1"),
+        Notification("eqkfeq_te님이 나를 어쩌구했어용2"),
+        Notification("eqkfeq_te님이 나를 어쩌구했어요3"),
+        Notification("eqkfeq_te님이 나를 어쩌구했어용4"),
+        Notification("eqkfeq_te님이 나를 어쩌구했어요5"),
+        Notification("eqkfeq_te님이 나를 어쩌구했어요6")
     )
 
     fun startNotificationFragment() {
