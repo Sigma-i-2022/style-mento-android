@@ -9,6 +9,8 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Notification
 
 class NotificationAdapter(val notificationList: List<Notification>) : RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder>() {
+    var notifications: List<Notification>? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_notification, parent, false)
 
@@ -20,6 +22,10 @@ class NotificationAdapter(val notificationList: List<Notification>) : RecyclerVi
     }
 
     override fun getItemCount() = notificationList.size
+
+    fun setList(items: List<Notification>) {
+        notifications = items
+    }
 
     inner class NotificationViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val content = view.findViewById<TextView>(R.id.notification_content)
