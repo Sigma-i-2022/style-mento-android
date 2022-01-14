@@ -38,7 +38,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         val favoriteRecyclerView = view.findViewById<RecyclerView>(R.id.favorite_coordinator_list)
-        favoriteRecyclerView.adapter = FavoriteCoordinatorAdapter(listOf("1", "2", "3", "1", "2", "3", "1", "2", "3"))
+        favoriteRecyclerView.adapter = FavoriteCoordinatorAdapter()
         val recommendedRecyclerView = view.findViewById<RecyclerView>(R.id.recommended_coordinator_list)
         recommendedRecyclerView.adapter = RecommendedCoordinatorAdapter(viewModel)
     }

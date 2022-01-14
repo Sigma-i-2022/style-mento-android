@@ -9,7 +9,7 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.FavoriteCoordinator
 import com.sigmai.stylemento.databinding.ItemFavoriteCoordinatorBinding
 
-class FavoriteCoordinatorAdapter(val coordinatorList: List<String>) : RecyclerView.Adapter<FavoriteCoordinatorAdapter.FavoriteCoordinatorViewHolder>() {
+class FavoriteCoordinatorAdapter() : RecyclerView.Adapter<FavoriteCoordinatorAdapter.FavoriteCoordinatorViewHolder>() {
     var favoriteList: List<FavoriteCoordinator>? = null
 
     override fun onCreateViewHolder(
