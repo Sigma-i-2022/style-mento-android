@@ -30,7 +30,7 @@ class FavoriteCoordinatorAdapter() : RecyclerView.Adapter<FavoriteCoordinatorAda
         favoriteList = items
     }
 
-    class FavoriteCoordinatorViewHolder(val binding: ItemFavoriteCoordinatorBinding) : RecyclerView.ViewHolder(binding.root) {
+    class FavoriteCoordinatorViewHolder private constructor(val binding: ItemFavoriteCoordinatorBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: FavoriteCoordinator) {
             binding.item = item
             binding.executePendingBindings()

@@ -27,7 +27,7 @@ class RecommendedCoordinatorAdapter(private val viewModel: HomeViewModel) : Recy
         recommendedList = list
     }
 
-    class RecommendedViewHolder(val binding: ItemRecommededCoordinatorBinding) : RecyclerView.ViewHolder(binding.root) {
+    class RecommendedViewHolder private constructor(val binding: ItemRecommededCoordinatorBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(viewModel: HomeViewModel, item: RecommendedCoordinator) {
             binding.viewModel = viewModel
             binding.coordinator = item
