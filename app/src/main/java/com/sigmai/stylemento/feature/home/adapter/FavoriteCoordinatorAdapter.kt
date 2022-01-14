@@ -24,7 +24,7 @@ class FavoriteCoordinatorAdapter : RecyclerView.Adapter<FavoriteCoordinatorAdapt
         holder.bind(item)
     }
 
-    override fun getItemCount() = favoriteList!!.size
+    override fun getItemCount() = favoriteList?.size ?: 0
 
     fun setList(items: List<FavoriteCoordinator>) {
         favoriteList = items

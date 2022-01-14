@@ -18,7 +18,7 @@ class NotificationAdapter : RecyclerView.Adapter<NotificationAdapter.Notificatio
         holder.bind(item)
     }
 
-    override fun getItemCount() = notificationList!!.size
+    override fun getItemCount() = notificationList?.size ?: 0
 
     fun setList(items: List<Notification>) {
         notificationList = items
