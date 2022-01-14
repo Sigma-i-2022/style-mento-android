@@ -30,9 +30,7 @@ class FavoriteCoordinatorAdapter() : RecyclerView.Adapter<FavoriteCoordinatorAda
         favoriteList = items
     }
 
-    class FavoriteCoordinatorViewHolder(val view: View, val binding: ItemFavoriteCoordinatorBinding) : RecyclerView.ViewHolder(view) {
-        val imageView = view.findViewById<ImageView>(R.id.favorite_coordinator_photo)
-
+    class FavoriteCoordinatorViewHolder(val binding: ItemFavoriteCoordinatorBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: FavoriteCoordinator) {
             binding.item = item
             binding.executePendingBindings()
@@ -43,7 +41,7 @@ class FavoriteCoordinatorAdapter() : RecyclerView.Adapter<FavoriteCoordinatorAda
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemFavoriteCoordinatorBinding.inflate(layoutInflater)
 
-                return FavoriteCoordinatorViewHolder(binding.root, binding)
+                return FavoriteCoordinatorViewHolder(binding)
             }
         }
     }
