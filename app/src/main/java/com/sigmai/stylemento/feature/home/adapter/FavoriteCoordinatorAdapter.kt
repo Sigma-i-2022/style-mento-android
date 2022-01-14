@@ -39,7 +39,7 @@ class FavoriteCoordinatorAdapter() : RecyclerView.Adapter<FavoriteCoordinatorAda
         companion object {
             fun from(parent: ViewGroup) : FavoriteCoordinatorViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemFavoriteCoordinatorBinding.inflate(layoutInflater)
+                val binding = ItemFavoriteCoordinatorBinding.inflate(layoutInflater, parent, false)
 
                 return FavoriteCoordinatorViewHolder(binding)
             }
