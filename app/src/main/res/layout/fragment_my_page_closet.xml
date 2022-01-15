@@ -49,7 +49,7 @@
             android:id="@+id/my_page_user_closet_add_img"
             android:layout_width="34dp"
             android:layout_height="34dp"
-            android:src="@drawable/ic_launcher_foreground"
+            android:background="@color/gray_d"
             android:layout_alignParentEnd="true"/>
 
         <androidx.recyclerview.widget.RecyclerView

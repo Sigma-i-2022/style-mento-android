@@ -29,7 +29,7 @@
                 android:id="@+id/my_page_user_back_img"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_launcher_foreground"
+                android:background="@color/gray_d"
                 android:onClick="@{()->viewModel.onBackClick()}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +38,7 @@
                 android:id="@+id/my_page_user_revise_img"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_launcher_foreground"
+                android:background="@color/gray_d"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,7 +54,8 @@
                     android:id="@+id/my_page_user_profile_img"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/ic_launcher_foreground"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/gray_d"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
