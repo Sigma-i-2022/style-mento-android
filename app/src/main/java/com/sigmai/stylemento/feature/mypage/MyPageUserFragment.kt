@@ -51,6 +51,7 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
         binding.myPageUserReviseImg.setOnClickListener(View.OnClickListener {
             val transaction = parentFragmentManager.beginTransaction()
             transaction.replace(R.id.my_page_frameLayout, MyPageRevisionFragment())
+            transaction.addToBackStack(null)
             transaction.commit()
         })
     }

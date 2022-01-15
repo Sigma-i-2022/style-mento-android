@@ -26,7 +26,7 @@ class UserClosetAddDialog : DialogFragment() {
 
     override fun onResume() {
         super.onResume()
-        context?.dialogFragmentResize(this@UserClosetAddDialog, 0.8f, 0.6f)
+        context?.dialogFragmentResize(this@UserClosetAddDialog, 0.8f, 0.7f)
     }
 
 
