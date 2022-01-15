@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.compose.ui.graphics.Color
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -40,12 +41,16 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
         binding.myPageUserClosetButton.setOnClickListener(View.OnClickListener {
             binding.myPageUserViewPager.setCurrentItem(0, true)
             binding.myPageUserLookbookButton.setBackgroundResource(R.drawable.button_null)
+            context?.let { it1 -> binding.myPageUserLookbookButton.setTextColor(it1.getColor(R.color.gray_d)) }
             binding.myPageUserClosetButton.setBackgroundResource(R.drawable.button_shadow)
+            context?.let { it1 -> binding.myPageUserClosetButton.setTextColor(it1.getColor(R.color.black)) }
         })
         binding.myPageUserLookbookButton.setOnClickListener(View.OnClickListener {
             binding.myPageUserViewPager.setCurrentItem(1, true)
             binding.myPageUserLookbookButton.setBackgroundResource(R.drawable.button_shadow)
+            context?.let { it1 -> binding.myPageUserLookbookButton.setTextColor(it1.getColor(R.color.black)) }
             binding.myPageUserClosetButton.setBackgroundResource(R.drawable.button_null)
+            context?.let { it1 -> binding.myPageUserClosetButton.setTextColor(it1.getColor(R.color.gray_d)) }
         })
 
         binding.myPageUserReviseImg.setOnClickListener(View.OnClickListener {
