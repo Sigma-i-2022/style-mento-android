@@ -27,5 +27,29 @@ class MyPageClosetFragment : BaseFragment<FragmentMyPageClosetBinding>() {
             val dialog = UserClosetAddDialog()
             dialog.show(childFragmentManager, "closetDialog")
         })
+
+        binding.myPageUserClosetAllText.setOnClickListener(View.OnClickListener {
+            setAllTextGray()
+            context?.let { binding.myPageUserClosetAllText.setTextColor(it.getColor(R.color.black)) }
+        })
+        binding.myPageUserClosetTopText.setOnClickListener(View.OnClickListener {
+            setAllTextGray()
+            context?.let { binding.myPageUserClosetTopText.setTextColor(it.getColor(R.color.black)) }
+        })
+        binding.myPageUserClosetPantsText.setOnClickListener(View.OnClickListener {
+            setAllTextGray()
+            context?.let { binding.myPageUserClosetPantsText.setTextColor(it.getColor(R.color.black)) }
+        })
+        binding.myPageUserClosetShoesText.setOnClickListener(View.OnClickListener {
+            setAllTextGray()
+            context?.let { binding.myPageUserClosetShoesText.setTextColor(it.getColor(R.color.black)) }
+        })
+    }
+
+    private fun setAllTextGray(){
+        context?.let { binding.myPageUserClosetAllText.setTextColor(it.getColor(R.color.gray_d)) }
+        context?.let { binding.myPageUserClosetTopText.setTextColor(it.getColor(R.color.gray_d)) }
+        context?.let { binding.myPageUserClosetPantsText.setTextColor(it.getColor(R.color.gray_d)) }
+        context?.let { binding.myPageUserClosetShoesText.setTextColor(it.getColor(R.color.gray_d)) }
     }
 }
