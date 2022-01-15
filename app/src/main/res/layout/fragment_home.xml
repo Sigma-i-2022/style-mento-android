@@ -84,6 +84,7 @@
                 app:layout_constraintTop_toBottomOf="@id/favorite_coordinator"
                 android:layout_marginTop="12dp"
                 android:layout_marginHorizontal="20dp"
+                app:favorites="@{viewModel.favoriteList}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="horizontal"/>
 
@@ -162,6 +163,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginHorizontal="20dp"
                 app:layout_constraintTop_toBottomOf="@id/recommended_coordinator"
+                app:items="@{viewModel.list}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="vertical"/>
 

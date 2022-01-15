@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.feature.signup
+package com.sigmai.stylemento.feature.signup.email
 
 import android.os.Bundle
 import android.text.Editable
@@ -6,7 +6,6 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R

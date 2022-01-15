@@ -1,9 +1,10 @@
-package com.sigmai.stylemento.feature.signup
+package com.sigmai.stylemento.feature.signup.password
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.sigmai.stylemento.R
+import com.sigmai.stylemento.feature.signup.email.SignUpEmailViewModel
 
 class SignUpPasswordViewModel : ViewModel() {
     companion object {

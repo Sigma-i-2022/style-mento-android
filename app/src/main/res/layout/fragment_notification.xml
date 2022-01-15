@@ -3,26 +3,27 @@
     <data>
         <variable
             name="viewModel"
-            type="com.sigmai.stylemento.feature.home.NotificationViewModel" />
+            type="com.sigmai.stylemento.feature.home.notification.NotificationViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="Notification"/>
+        <include
+            android:id="@+id/notification_toolbar"
+            layout="@layout/toolbar"
+            app:title='@{"알림"}'/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/notification_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/notification_toolbar"
+            android:layout_marginHorizontal="20dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"/>
+            android:orientation="vertical"
+            app:notifications="@{viewModel.dummyList}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

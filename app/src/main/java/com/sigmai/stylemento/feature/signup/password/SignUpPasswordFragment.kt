@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.feature.signup
+package com.sigmai.stylemento.feature.signup.password
 
 import android.os.Bundle
 import android.text.Editable

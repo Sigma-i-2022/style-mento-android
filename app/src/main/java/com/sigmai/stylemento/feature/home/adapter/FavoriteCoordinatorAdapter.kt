@@ -6,23 +6,43 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
+import com.sigmai.stylemento.data.model.FavoriteCoordinator
+import com.sigmai.stylemento.databinding.ItemFavoriteCoordinatorBinding
 
-class FavoriteCoordinatorAdapter(val coordinatorList: List<String>) : RecyclerView.Adapter<FavoriteCoordinatorAdapter.FavoriteCoordinatorViewHolder>() {
+class FavoriteCoordinatorAdapter : RecyclerView.Adapter<FavoriteCoordinatorAdapter.FavoriteCoordinatorViewHolder>() {
+    var favoriteList: List<FavoriteCoordinator>? = null
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): FavoriteCoordinatorViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_favorite_coordinator, parent, false)
-        return FavoriteCoordinatorViewHolder(view)
+        return FavoriteCoordinatorViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: FavoriteCoordinatorViewHolder, position: Int) {
-        //holder.imageView
+        val item = favoriteList!![position]
+        holder.bind(item)
     }
 
-    override fun getItemCount() = coordinatorList.size
+    override fun getItemCount() = favoriteList?.size ?: 0
 
-    inner class FavoriteCoordinatorViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val imageView = view.findViewById<ImageView>(R.id.favorite_coordinator_photo)
+    fun setList(items: List<FavoriteCoordinator>) {
+        favoriteList = items
+    }
+
+    class FavoriteCoordinatorViewHolder private constructor(val binding: ItemFavoriteCoordinatorBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: FavoriteCoordinator) {
+            binding.item = item
+            binding.executePendingBindings()
+        }
+
+        companion object {
+            fun from(parent: ViewGroup) : FavoriteCoordinatorViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = ItemFavoriteCoordinatorBinding.inflate(layoutInflater, parent, false)
+
+                return FavoriteCoordinatorViewHolder(binding)
+            }
+        }
     }
 }

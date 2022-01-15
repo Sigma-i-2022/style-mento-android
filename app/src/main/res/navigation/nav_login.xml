@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/signup_email"
-        android:name="com.sigmai.stylemento.feature.signup.SignUpEmailFragment"
+        android:name="com.sigmai.stylemento.feature.signup.email.SignUpEmailFragment"
         android:label="email"
         tools:layout="@layout/fragment_sign_up_email">
         <action
@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/signup_password"
-        android:name="com.sigmai.stylemento.feature.signup.SignUpPasswordFragment"
+        android:name="com.sigmai.stylemento.feature.signup.password.SignUpPasswordFragment"
         android:label="password"
         tools:layout="@layout/fragment_sign_up_password">
         <action

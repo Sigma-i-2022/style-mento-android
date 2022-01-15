@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StyleMento">
-        <activity android:name=".feature.login.LoginHostActivity"></activity>
+        <activity
+            android:name=".feature.chat.chat_room.ChatRoomActivity"
+            android:exported="false" />
+        <activity android:name=".feature.login.LoginHostActivity" />
         <activity
             android:name=".feature.splash.SplashActivity"
             android:exported="true">
