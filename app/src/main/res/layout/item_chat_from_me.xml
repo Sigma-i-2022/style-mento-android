@@ -22,6 +22,7 @@
             android:paddingHorizontal="12dp"
             android:paddingVertical="10dp"
             tools:text="예시 텍스트"
+            android:text="@{item.content}"
             android:background="@drawable/button_background_type_2"/>
 
         <TextView
