@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Chat
+import com.sigmai.stylemento.databinding.ItemChatFromMeBinding
+import com.sigmai.stylemento.databinding.ItemChatToMeBinding
 import com.sigmai.stylemento.global.constant.ChatType
 import java.lang.IllegalArgumentException
 
@@ -16,16 +18,8 @@ class ChatAdapter(private val chatList: List<Chat>) : RecyclerView.Adapter<ChatA
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
         return when(viewType) {
-            ChatType.FROM_ME -> {
-                val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_chat_from_me, parent, false)
-                ChatFromMeViewHolder(view)
-            }
-            ChatType.TO_ME -> {
-                val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_chat_to_me, parent, false)
-                ChatToMeViewHolder(view)
-            }
+            ChatType.FROM_ME -> ChatFromMeViewHolder.from(parent)
+            ChatType.TO_ME -> ChatToMeViewHolder.from(parent)
             else -> throw IllegalArgumentException("UNKNOWN VIEW TYPE")
         }
     }
@@ -46,15 +40,33 @@ class ChatAdapter(private val chatList: List<Chat>) : RecyclerView.Adapter<ChatA
         return chatList[position].type
     }
 
-    abstract inner class ChatViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    abstract class ChatViewHolder protected constructor(val view: View) : RecyclerView.ViewHolder(view) {
         abstract val content: TextView
     }
 
-    inner class ChatFromMeViewHolder(view: View) : ChatViewHolder(view) {
+    class ChatFromMeViewHolder(view: View) : ChatViewHolder(view) {
         override val content: TextView = view.findViewById(R.id.chat_from_me)
+
+        companion object {
+            fun from(parent: ViewGroup) : ChatViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = ItemChatFromMeBinding.inflate(layoutInflater, parent, false)
+
+                return ChatFromMeViewHolder(binding.root)
+            }
+        }
     }
 
-    inner class ChatToMeViewHolder(view: View) : ChatViewHolder(view) {
+    class ChatToMeViewHolder(view: View) : ChatViewHolder(view) {
         override val content: TextView = view.findViewById(R.id.chat_to_me)
+
+        companion object {
+            fun from(parent: ViewGroup) : ChatViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = ItemChatToMeBinding.inflate(layoutInflater, parent, false)
+
+                return ChatToMeViewHolder(binding.root)
+            }
+        }
     }
 }

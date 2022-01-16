@@ -25,7 +25,7 @@ class ChattingRoomListAdapter : RecyclerView.Adapter<ChattingRoomListAdapter.Cha
         tempList = items
     }
 
-    class ChattingRoomViewHolder(val binding: ItemChatListBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ChattingRoomViewHolder private constructor(val binding: ItemChatListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ChattingRoom) {
             binding.item = item
 
