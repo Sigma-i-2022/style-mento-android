@@ -11,6 +11,8 @@ import com.sigmai.stylemento.data.model.ChattingRoom
 import com.sigmai.stylemento.feature.chat.chat_room.ChatRoomActivity
 
 class ChattingRoomListAdapter(val chattingRoomList : List<ChattingRoom>) : RecyclerView.Adapter<ChattingRoomListAdapter.ChattingRoomViewHolder>() {
+    var tempList: List<ChattingRoom>? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChattingRoomViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_chat_list, parent, false)
 
@@ -23,6 +25,10 @@ class ChattingRoomListAdapter(val chattingRoomList : List<ChattingRoom>) : Recyc
     }
 
     override fun getItemCount() = chattingRoomList.size
+
+    fun setList(items: List<ChattingRoom>) {
+        tempList = items
+    }
 
     inner class ChattingRoomViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.findViewById(R.id.chat_list_name)

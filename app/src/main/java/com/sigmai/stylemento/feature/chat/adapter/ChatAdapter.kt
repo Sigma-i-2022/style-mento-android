@@ -12,6 +12,8 @@ import com.sigmai.stylemento.global.constant.ChatType
 import java.lang.IllegalArgumentException
 
 class ChatAdapter(private val chatList: List<Chat>) : RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
+    var tempList: List<Chat>? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
         return when(viewType) {
             ChatType.FROM_ME -> {
@@ -35,6 +37,10 @@ class ChatAdapter(private val chatList: List<Chat>) : RecyclerView.Adapter<ChatA
     }
 
     override fun getItemCount() = chatList.size
+
+    fun setList(items: List<Chat>) {
+        tempList = items
+    }
 
     override fun getItemViewType(position: Int): Int {
         return chatList[position].type
