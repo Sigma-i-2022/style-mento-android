@@ -74,7 +74,7 @@
                         android:id="@+id/my_page_user_name_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.testUser.nickname}"
+                        android:text="@{viewModel.testUser.userName}"
                         tools:text="user_name"
                         android:textStyle="bold"
                         style="@style/header3"/>
@@ -82,7 +82,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.testUser.email}"
+                        android:text="@{viewModel.testUser.userEmail}"
                         tools:text="user_email"
                         android:textColor="@color/gray_8"
                         style="@style/body1"/>
@@ -93,7 +93,6 @@
                 android:id="@+id/my_page_user_introduction_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Introduction"
                 android:textStyle="bold"
                 style="@style/body1"
                 android:layout_marginTop="12dp"
