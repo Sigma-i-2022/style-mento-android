@@ -26,7 +26,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginHorizontal="20dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"/>
+            android:orientation="vertical"
+            app:chattingRooms="@{viewModel.chattingRoomList}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
