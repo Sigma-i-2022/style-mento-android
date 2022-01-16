@@ -4,17 +4,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Chat
 import com.sigmai.stylemento.databinding.ItemChatFromMeBinding
 import com.sigmai.stylemento.databinding.ItemChatToMeBinding
 import com.sigmai.stylemento.global.constant.ChatType
 import java.lang.IllegalArgumentException
 
-class ChatAdapter(private val chatList: List<Chat>) : RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
-    var tempList: List<Chat>? = null
+class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
+    var ChatList: List<Chat>? = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
         return when(viewType) {
@@ -25,47 +23,51 @@ class ChatAdapter(private val chatList: List<Chat>) : RecyclerView.Adapter<ChatA
     }
 
     override fun onBindViewHolder(holder: ChatViewHolder, position: Int) {
-        Log.d("tag", "${position} : ${holder}")
-        if(holder is ChatFromMeViewHolder) holder.content.text = chatList[position].content
-        if(holder is ChatToMeViewHolder) holder.content.text = chatList[position].content
+        val item = ChatList!![position]
+
+        if(holder is ChatFromMeViewHolder) holder.bind(item)
+        if(holder is ChatToMeViewHolder) holder.bind(item)
     }
 
-    override fun getItemCount() = chatList.size
-
-    fun setList(items: List<Chat>) {
-        tempList = items
-    }
+    override fun getItemCount() = ChatList!!.size
 
     override fun getItemViewType(position: Int): Int {
-        return chatList[position].type
+        return ChatList!![position].type
     }
 
-    abstract class ChatViewHolder protected constructor(val view: View) : RecyclerView.ViewHolder(view) {
-        abstract val content: TextView
+    fun setList(items: List<Chat>) {
+        Log.e("setList", "호출!!")
+        ChatList = items
     }
 
-    class ChatFromMeViewHolder(view: View) : ChatViewHolder(view) {
-        override val content: TextView = view.findViewById(R.id.chat_from_me)
+    abstract class ChatViewHolder protected constructor(val view: View) : RecyclerView.ViewHolder(view)
+
+    class ChatFromMeViewHolder(val binding: ItemChatFromMeBinding) : ChatViewHolder(binding.root) {
+        fun bind(item: Chat) {
+            binding.item = item
+        }
 
         companion object {
             fun from(parent: ViewGroup) : ChatViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemChatFromMeBinding.inflate(layoutInflater, parent, false)
 
-                return ChatFromMeViewHolder(binding.root)
+                return ChatFromMeViewHolder(binding)
             }
         }
     }
 
-    class ChatToMeViewHolder(view: View) : ChatViewHolder(view) {
-        override val content: TextView = view.findViewById(R.id.chat_to_me)
+    class ChatToMeViewHolder(val binding: ItemChatToMeBinding) : ChatViewHolder(binding.root) {
+        fun bind(item: Chat) {
+            binding.item = item
+        }
 
         companion object {
             fun from(parent: ViewGroup) : ChatViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemChatToMeBinding.inflate(layoutInflater, parent, false)
 
-                return ChatToMeViewHolder(binding.root)
+                return ChatToMeViewHolder(binding)
             }
         }
     }

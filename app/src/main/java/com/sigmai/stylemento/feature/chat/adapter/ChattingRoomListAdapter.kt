@@ -9,20 +9,20 @@ import com.sigmai.stylemento.databinding.ItemChatListBinding
 import com.sigmai.stylemento.feature.chat.chat_room.ChatRoomActivity
 
 class ChattingRoomListAdapter : RecyclerView.Adapter<ChattingRoomListAdapter.ChattingRoomViewHolder>() {
-    var tempList: List<ChattingRoom>? = null
+    private var chattingRooms: List<ChattingRoom>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChattingRoomViewHolder {
         return ChattingRoomViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: ChattingRoomViewHolder, position: Int) {
-        holder.bind(tempList!![position])
+        holder.bind(chattingRooms!![position])
     }
 
-    override fun getItemCount() = tempList!!.size
+    override fun getItemCount() = chattingRooms?.size ?: 0
 
     fun setList(items: List<ChattingRoom>) {
-        tempList = items
+        chattingRooms = items
     }
 
     class ChattingRoomViewHolder private constructor(val binding: ItemChatListBinding) : RecyclerView.ViewHolder(binding.root) {

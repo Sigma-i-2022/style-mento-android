@@ -16,13 +16,6 @@ class ChatRoomActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         val recyclerView = findViewById<RecyclerView>(R.id.chatting_list)
-        val dummyList = listOf(
-            Chat("아무말1", ChatType.FROM_ME),
-            Chat("아무말2", ChatType.FROM_ME),
-            Chat("아무말3", ChatType.TO_ME),
-            Chat("아무말4", ChatType.FROM_ME),
-            Chat("아무말5", ChatType.TO_ME),
-        )
-        recyclerView.adapter = ChatAdapter(dummyList)
+        recyclerView.adapter = ChatAdapter()
     }
 }
