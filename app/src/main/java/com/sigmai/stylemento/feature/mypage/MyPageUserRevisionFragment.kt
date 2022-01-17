@@ -8,7 +8,7 @@ import android.widget.TextView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageUserRevisionBinding
 import com.sigmai.stylemento.global.base.BaseFragment
-import com.sigmai.stylemento.data.model.TestUser
+import com.sigmai.stylemento.data.model.Client
 
 class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_user_revision
@@ -25,7 +25,7 @@ class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBindin
             backToMyPage()
         })
 
-        binding.myPageUserRevisionIntroductionEditText.setText(TestUser.getUserIntroduction())
+        binding.myPageUserRevisionIntroductionEditText.setText(Client.getUserIntroduction())
         binding.myPageUserRevisionIntroductionEditText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
             }
@@ -40,7 +40,7 @@ class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBindin
 
         binding.myPageUserRevisionSaveButton.setOnClickListener(View.OnClickListener {
             if(!introductionText.equals(null))
-                TestUser.setUserIntroduction(introductionText!!)
+                Client.setUserIntroduction(introductionText!!)
             backToMyPage()
         })
     }

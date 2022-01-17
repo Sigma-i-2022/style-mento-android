@@ -23,15 +23,15 @@ class MyPageClosetFragment : BaseFragment<FragmentMyPageClosetBinding>() {
         binding.myPageUserClosetRecycler.adapter = closetAdapter
         binding.myPageUserClosetRecycler.layoutManager = gridLayoutManager
 
-        /*binding.myPageUserClosetAddImg.setOnClickListener(View.OnClickListener {
+        binding.myPageUserClosetAddImg.setOnClickListener(View.OnClickListener {
             val dialog = UserClosetAddDialog()
             dialog.show(childFragmentManager, "closetDialog")
-        })*/
-        binding.myPageUserClosetAddImg.setOnClickListener(View.OnClickListener {
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.my_page_frameLayout, MyPageClosetAddFragment())
-            transaction.commit()
         })
+        /*binding.myPageUserClosetAddImg.setOnClickListener(View.OnClickListener {
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.my_page_frameLayout, MyPageUserRevisionFragment())
+            transaction.commit()
+        })*/
 
         binding.myPageUserClosetAllText.setOnClickListener(View.OnClickListener {
             setAllTextGray()

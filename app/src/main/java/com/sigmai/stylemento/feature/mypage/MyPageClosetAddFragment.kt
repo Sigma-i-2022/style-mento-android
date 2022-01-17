@@ -2,12 +2,8 @@ package com.sigmai.stylemento.feature.mypage
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageClosetAddBinding
-import com.sigmai.stylemento.databinding.FragmentMyPageClosetBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 
 class MyPageClosetAddFragment : BaseFragment<FragmentMyPageClosetAddBinding>() {
@@ -21,9 +17,6 @@ class MyPageClosetAddFragment : BaseFragment<FragmentMyPageClosetAddBinding>() {
             backToMyPage()
         })
         binding.myPageClosetAddImgSelectionLayout.visibility = View.GONE
-
-
-
     }
 
     private fun backToMyPage(){

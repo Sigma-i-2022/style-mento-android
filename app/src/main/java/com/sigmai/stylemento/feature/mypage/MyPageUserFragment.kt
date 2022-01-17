@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageUserBinding
 import com.sigmai.stylemento.global.base.BaseFragment
-import com.sigmai.stylemento.data.model.TestUser
+import com.sigmai.stylemento.data.model.Client
 
 class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_user
@@ -56,6 +56,6 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
             transaction.commit()
         })
 
-        binding.myPageUserIntroductionText.text = TestUser.getUserIntroduction()
+        binding.myPageUserIntroductionText.text = Client.getUserIntroduction()
     }
 }
