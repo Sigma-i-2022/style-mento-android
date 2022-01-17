@@ -7,10 +7,10 @@ import com.sigmai.stylemento.global.constant.TextureType
 data class ClosetItem(
     val owner : String,
     val photoUrl: String,
-    var category : String = "",
+    var category : ItemCategoryType = ItemCategoryType.NULL,
     var itemName : String = "",
     var brand : String = "",
-    var texture : String = "",
+    var texture : TextureType = TextureType.NULL,
     var size : String = "",
-    var myFit : String = ""
+    var myFit : FitType = FitType.NULL
 )
