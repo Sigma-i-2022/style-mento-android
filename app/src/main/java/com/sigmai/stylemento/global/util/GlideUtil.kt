@@ -11,7 +11,7 @@ object GlideUtil {
         Glide.with(view.context)
             .load(url)
             .error(R.drawable.logo)
-            .transform(CenterCrop(), RoundedCorners(999))
+            .circleCrop()
             .into(view)
     }
 }

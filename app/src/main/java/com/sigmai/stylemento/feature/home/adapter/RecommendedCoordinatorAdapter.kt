@@ -1,12 +1,16 @@
 package com.sigmai.stylemento.feature.home.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.RecommendedCoordinator
 import com.sigmai.stylemento.databinding.ItemRecommededCoordinatorBinding
 import com.sigmai.stylemento.feature.home.HomeViewModel
+import com.sigmai.stylemento.global.util.GlideUtil
 
 class RecommendedCoordinatorAdapter(private val viewModel: HomeViewModel) : RecyclerView.Adapter<RecommendedCoordinatorAdapter.RecommendedViewHolder>() {
     var recommendedList: List<RecommendedCoordinator>? = null
@@ -32,6 +36,12 @@ class RecommendedCoordinatorAdapter(private val viewModel: HomeViewModel) : Recy
             binding.viewModel = viewModel
             binding.coordinator = item
             binding.executePendingBindings()
+
+            val view = binding.recommendedCoordinatorPhoto
+            Glide.with(view.context)
+                .load("https://picsum.photos/240")
+                .error(R.drawable.logo)
+                .into(view)
         }
 
         companion object {
