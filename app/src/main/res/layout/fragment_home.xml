@@ -29,7 +29,7 @@
                 android:paddingEnd="24dp"
                 android:textSize="15sp"
                 android:textColor="@color/black"
-                android:hint="코디네이터를 검색해보세요."
+                android:hint="@string/search_bar_hint"
                 android:background="@drawable/search_bar_background"/>
 
             <Button
@@ -72,7 +72,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="18dp"
                 android:layout_marginHorizontal="20dp"
-                android:text="관심있는 코디네이터"
+                android:text="@string/favorite_coordinator"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
@@ -95,7 +95,7 @@
                 app:layout_constraintTop_toBottomOf="@id/favorite_coordinator_list"
                 android:layout_marginTop="18dp"
                 android:layout_marginHorizontal="20dp"
-                android:text="예약된 상담"
+                android:text="@string/booked_advice"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:textColor="@color/black"/>
@@ -121,23 +121,16 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="24dp"
-                        android:text="예약된 상담이 없습니다."
+                        android:text="@string/no_booked_advice"
                         android:textSize="16sp"
                         android:textColor="@color/black"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="코디네이터와 상담을 예약해보세요."
-                        android:textSize="11sp" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:layout_width="163dp"
                         android:layout_height="32dp"
                         android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:text="코디네이터 보러가기"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/confirm_reservation"
                         android:textSize="11sp"
                         android:textColor="@color/white"
                         android:background="@drawable/button_background_type_2"/>
@@ -151,7 +144,7 @@
                 app:layout_constraintTop_toBottomOf="@id/booked_advice_card"
                 android:layout_marginHorizontal="20sp"
                 android:layout_marginTop="18dp"
-                android:text="추천 코디"
+                android:text="@string/recommended_coordinator"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:textColor="@color/black"/>

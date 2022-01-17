@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">Style Mento</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <!-- Home -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_bar_hint">코디네이터를 검색해보세요.</string>
+    <string name="favorite_coordinator">관심있는 코디네이터</string>
+    <string name="booked_advice">예약된 상담</string>
+    <string name="no_booked_advice">아직 예약된 상담이 없습니다.</string>
+    <string name="confirm_reservation">예약내역 확인하기</string>
+    <string name="recommended_coordinator">추천 코디네이터</string>
 </resources>
