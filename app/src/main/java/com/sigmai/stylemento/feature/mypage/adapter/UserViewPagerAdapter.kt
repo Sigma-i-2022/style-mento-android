@@ -1,11 +1,9 @@
-package com.sigmai.stylemento.feature.mypage
+package com.sigmai.stylemento.feature.mypage.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.sigmai.stylemento.feature.host.ChatHostFragment
-import com.sigmai.stylemento.feature.host.CoordinatorHostFragment
-import com.sigmai.stylemento.feature.host.HomeHostFragment
-import com.sigmai.stylemento.feature.host.MyPageHostFragment
+import com.sigmai.stylemento.feature.mypage.MyPageClosetFragment
+import com.sigmai.stylemento.feature.mypage.MyPageLookbookFragment
 import java.lang.Exception
 
 class UserViewPagerAdapter(f : Fragment) : FragmentStateAdapter(f){
