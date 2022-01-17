@@ -8,6 +8,8 @@ object Client {
     private var nickname : String = "Test1"
     private var email : String = "Test@Email"
     private var introduction : String = ""
+    private var closetItems : List<ClosetItem>? = null
+    //private var lookbookItems : List<ClosetItem>? = null
 
     fun setUserName(nickname : String){
         Client.nickname = nickname
@@ -18,6 +20,9 @@ object Client {
     fun setUserIntroduction(introduction : String){
         Client.introduction = introduction
     }
+    fun setClosetItems(items : List<ClosetItem>?){
+        closetItems = items
+    }
     fun getUserName() : String{
         return nickname
     }
@@ -26,5 +31,8 @@ object Client {
     }
     fun getUserIntroduction() : String{
         return introduction
+    }
+    fun getClosetItems() : List<ClosetItem>?{
+        return closetItems
     }
 }
