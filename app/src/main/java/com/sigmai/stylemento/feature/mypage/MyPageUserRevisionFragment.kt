@@ -15,7 +15,7 @@ class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBindin
 
     val testDataSet = arrayOf("type1", "type2", "type3")
 
-    var introductionText : String ?= null
+    var introductionText : String = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,8 +39,7 @@ class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBindin
         })
 
         binding.myPageUserRevisionSaveButton.setOnClickListener(View.OnClickListener {
-            if(!introductionText.equals(null))
-                Client.setUserIntroduction(introductionText!!)
+            Client.setUserIntroduction(introductionText)
             backToMyPage()
         })
     }

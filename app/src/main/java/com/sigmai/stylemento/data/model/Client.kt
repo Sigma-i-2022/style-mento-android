@@ -5,9 +5,9 @@ import com.sigmai.stylemento.global.constant.UserType
 
 object Client {
     private var ClientType : UserType = UserType.NORMAL
-    private var nickname : String ?= "Test1"
-    private var email : String ?= "Test@Email"
-    private var introduction : String ?= null
+    private var nickname : String = "Test1"
+    private var email : String = "Test@Email"
+    private var introduction : String = ""
 
     fun setUserName(nickname : String){
         Client.nickname = nickname
@@ -18,13 +18,13 @@ object Client {
     fun setUserIntroduction(introduction : String){
         Client.introduction = introduction
     }
-    fun getUserName() : String?{
+    fun getUserName() : String{
         return nickname
     }
-    fun getUserEmail() : String?{
+    fun getUserEmail() : String{
         return email
     }
-    fun getUserIntroduction() : String?{
+    fun getUserIntroduction() : String{
         return introduction
     }
 }
