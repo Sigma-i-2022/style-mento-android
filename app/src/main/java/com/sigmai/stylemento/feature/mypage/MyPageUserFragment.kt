@@ -26,11 +26,8 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         val interestedAdapter = UserInterestedAdapter(testDataSet)
-        val linearLayoutManager = LinearLayoutManager(context)
 
-        linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
         binding.myPageUserInterestedRecycler.adapter = interestedAdapter
-        binding.myPageUserInterestedRecycler.layoutManager = linearLayoutManager
 
         val userAdapter = UserViewPagerAdapter(this)
         binding.myPageUserViewPager.adapter = userAdapter
