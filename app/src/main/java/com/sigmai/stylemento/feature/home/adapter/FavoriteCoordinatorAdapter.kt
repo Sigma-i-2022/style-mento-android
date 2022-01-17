@@ -1,10 +1,14 @@
 package com.sigmai.stylemento.feature.home.adapter
 
 import android.view.LayoutInflater
+import android.view.RoundedCorner
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.FavoriteCoordinator
 import com.sigmai.stylemento.databinding.ItemFavoriteCoordinatorBinding
@@ -34,6 +38,11 @@ class FavoriteCoordinatorAdapter : RecyclerView.Adapter<FavoriteCoordinatorAdapt
         fun bind(item: FavoriteCoordinator) {
             binding.item = item
             binding.executePendingBindings()
+            Glide.with(binding.root.context)
+                .load("https://picsum.photos/200")
+                .error(R.drawable.logo)
+                .transform(CenterCrop(), RoundedCorners(999))
+                .into(binding.favoriteCoordinatorPhoto)
         }
 
         companion object {

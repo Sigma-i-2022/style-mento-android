@@ -3,6 +3,7 @@ package com.sigmai.stylemento.feature.home.notification
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Notification
@@ -22,5 +23,12 @@ class NotificationFragment : BaseFragment<FragmentNotificationBinding>() {
         super.onViewCreated(view, savedInstanceState)
         val notificationRecyclerView = view.findViewById<RecyclerView>(R.id.notification_recycler_view)
         notificationRecyclerView.adapter = NotificationAdapter()
+
+        viewModel.backPressEvent.observe(
+            this,
+            {
+                findNavController().navigateUp()
+            }
+        )
     }
 }
