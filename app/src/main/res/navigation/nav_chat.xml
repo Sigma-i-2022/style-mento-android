@@ -10,14 +10,5 @@
         android:name="com.sigmai.stylemento.feature.chat.ChatFragment"
         android:label="chat"
         tools:layout="@layout/fragment_chat">
-        <action
-            android:id="@+id/action_chat_to_chat_room"
-            app:destination="@id/chat_room" />
     </fragment>
-
-    <fragment
-        android:id="@+id/chat_room"
-        android:name="com.sigmai.stylemento.feature.chat.chat_room.CharRoomFragment"
-        android:label="chat_room"
-        tools:layout="@layout/fragment_chat_room"/>
 </navigation>
