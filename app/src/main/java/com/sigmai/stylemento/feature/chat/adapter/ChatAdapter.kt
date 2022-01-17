@@ -1,6 +1,5 @@
 package com.sigmai.stylemento.feature.chat.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,7 @@ import com.sigmai.stylemento.global.constant.ChatType
 import java.lang.IllegalArgumentException
 
 class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
-    var ChatList: List<Chat>? = listOf()
+    var chatList: List<Chat>? = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
         return when(viewType) {
@@ -23,21 +22,20 @@ class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ChatViewHolder, position: Int) {
-        val item = ChatList!![position]
+        val item = chatList!![position]
 
         if(holder is ChatFromMeViewHolder) holder.bind(item)
         if(holder is ChatToMeViewHolder) holder.bind(item)
     }
 
-    override fun getItemCount() = ChatList!!.size
+    override fun getItemCount() = chatList!!.size
 
     override fun getItemViewType(position: Int): Int {
-        return ChatList!![position].type
+        return chatList!![position].type
     }
 
     fun setList(items: List<Chat>) {
-        Log.e("setList", "호출!!")
-        ChatList = items
+        chatList = items
     }
 
     abstract class ChatViewHolder protected constructor(val view: View) : RecyclerView.ViewHolder(view)

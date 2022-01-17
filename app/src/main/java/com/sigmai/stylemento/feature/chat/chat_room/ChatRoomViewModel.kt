@@ -5,8 +5,6 @@ import com.sigmai.stylemento.data.model.Chat
 import com.sigmai.stylemento.global.constant.ChatType
 
 class ChatRoomViewModel : ViewModel() {
-    val test = "아무아알"
-
     val dummyList = listOf(
         Chat("아무말1", ChatType.FROM_ME),
         Chat("아무말2", ChatType.FROM_ME),
