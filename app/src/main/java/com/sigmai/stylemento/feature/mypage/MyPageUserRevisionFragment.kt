@@ -48,15 +48,4 @@ class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBindin
         val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment())
         transaction.commit()
     }
-
-    inner class EnterListener : TextView.OnEditorActionListener {
-        override fun onEditorAction(
-            v: TextView?,
-            actionId: Int,
-            event: android.view.KeyEvent?
-        ): Boolean {
-            introductionText = binding.myPageUserRevisionIntroductionEditText.text.toString()
-            return true
-        }
-    }
 }
