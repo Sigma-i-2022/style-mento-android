@@ -33,7 +33,8 @@ class MyPageClosetFragment : BaseFragment<FragmentMyPageClosetBinding>() {
             transaction?.replace(R.id.my_page_frameLayout, MyPageClosetAddFragment())
             transaction?.commit()
         })
-
+        
+        //나중에 뷰모델로 다시 구현
         binding.myPageUserClosetAllText.setOnClickListener(View.OnClickListener {
             setAllTextGray()
             context?.let { binding.myPageUserClosetAllText.setTextColor(it.getColor(R.color.black)) }
