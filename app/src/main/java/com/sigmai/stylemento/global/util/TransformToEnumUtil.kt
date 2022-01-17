@@ -5,9 +5,9 @@ import com.sigmai.stylemento.global.constant.ItemCategoryType
 import com.sigmai.stylemento.global.constant.TextureType
 import java.lang.Exception
 
-class transformToEnumUtil {
+class TransformToEnumUtil {
     fun getItemCategoryType(position: Int) : ItemCategoryType {
-        return when(position + 1) {
+        return when(position) {
             0 -> ItemCategoryType.NULL
             1 -> ItemCategoryType.TOP
             2 -> ItemCategoryType.PANTS
@@ -16,7 +16,7 @@ class transformToEnumUtil {
         }
     }
     fun getTextureType(position: Int) : TextureType {
-        return when(position + 1) {
+        return when(position) {
             0 -> TextureType.NULL
             1 -> TextureType.TEXTURE1
             2 -> TextureType.TEXTURE2
@@ -27,7 +27,7 @@ class transformToEnumUtil {
         }
     }
     fun getFitType(position: Int) : FitType {
-        return when(position + 1) {
+        return when(position) {
             0 -> FitType.NULL
             1 -> FitType.TYPE1
             2 -> FitType.TYPE2
