@@ -10,6 +10,7 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.ClosetItem
 import com.sigmai.stylemento.databinding.FragmentMyPageClosetAddBinding
+import com.sigmai.stylemento.feature.mypage.dialog.UserClosetImageSelectionDialog
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.constant.FitType
 import com.sigmai.stylemento.global.constant.ItemCategoryType
@@ -32,10 +33,14 @@ class MyPageClosetAddFragment : BaseFragment<FragmentMyPageClosetAddBinding>() {
         binding.myPageClosetAddBackImg.setOnClickListener(View.OnClickListener {
             backToMyPage()
         })
-        binding.myPageClosetAddImgSelectionLayout.visibility = View.GONE
 
         setSpinnerLayout()
         setEditTextLayout()
+
+        binding.myPageClosetAddItemImg.setOnClickListener(View.OnClickListener {
+            val dialog = UserClosetImageSelectionDialog()
+            dialog.show(childFragmentManager, "ImageSelectionDialog")
+        })
 
         binding.myPageClosetAddSaveButton.setOnClickListener(View.OnClickListener {
             var closetItem = ClosetItem(Client.getUserName(), "img", category, brand, itemName, texture, size, myFit)
@@ -43,6 +48,7 @@ class MyPageClosetAddFragment : BaseFragment<FragmentMyPageClosetAddBinding>() {
             backToMyPage()
         })
     }
+
     private fun setSpinnerLayout(){
         binding.myPageClosetAddCategorySpinner.adapter = context?.let {
             ArrayAdapter.createFromResource(
