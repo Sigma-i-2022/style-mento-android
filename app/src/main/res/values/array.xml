@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="itemCategoryList">
+        <item>상의</item>
+        <item>하의</item>
+        <item>신발</item>
+    </string-array>
+    <string-array name="textureList">
+        <item>TEXTURE1</item>
+        <item>TEXTURE2</item>
+        <item>TEXTURE3</item>
+        <item>TEXTURE4</item>
+        <item>TEXTURE5</item>
+    </string-array>
+    <string-array name="fitList">
+        <item>TYPE1</item>
+        <item>TYPE2</item>
+        <item>TYPE3</item>
+        <item>TYPE4</item>
+        <item>TYPE5</item>
+    </string-array>
+</resources>
