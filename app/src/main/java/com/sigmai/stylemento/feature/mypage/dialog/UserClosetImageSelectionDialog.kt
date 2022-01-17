@@ -13,7 +13,7 @@ import com.sigmai.stylemento.databinding.DialogFragmentMyPageClosetBinding
 import com.sigmai.stylemento.global.base.BaseDialogFragment
 
 class UserClosetImageSelectionDialog : BaseDialogFragment<DialogFragmentMyPageClosetBinding>() {
-    override val layoutResourceId = R.layout.dialog_fragment_my_page_closet
+    override val layoutResourceId = R.layout.dialog_fragment_my_page_closet_image_selection
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
