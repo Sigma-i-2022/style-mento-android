@@ -19,10 +19,10 @@ class HomeViewModel : ViewModel() {
     val startNotification = SingleLiveEvent<Any>()
 
     val list = listOf(
-        RecommendedCoordinator("name1", "tag5"),
-        RecommendedCoordinator("name2", "tag6"),
-        RecommendedCoordinator("name9", "tag7"),
-        RecommendedCoordinator("name4", "tag8")
+        RecommendedCoordinator("algosketch", listOf("#미니멀")),
+        RecommendedCoordinator("name2", listOf("#미니멀", "#캐주얼")),
+        RecommendedCoordinator("name9", listOf("#캐주얼")),
+        RecommendedCoordinator("name4", listOf("#미니멀", "#캐주얼"))
     )
 
     val favoriteList = listOf(
