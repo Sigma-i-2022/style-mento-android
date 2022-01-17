@@ -48,7 +48,6 @@ class MyPageClosetAddFragment : BaseFragment<FragmentMyPageClosetAddBinding>() {
             backToMyPage()
         })
     }
-
     private fun setSpinnerLayout(){
         binding.myPageClosetAddCategorySpinner.adapter = context?.let {
             ArrayAdapter.createFromResource(
