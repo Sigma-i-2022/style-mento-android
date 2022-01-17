@@ -7,20 +7,20 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
+import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.databinding.FragmentMyPageClosetBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 
 class MyPageClosetFragment : BaseFragment<FragmentMyPageClosetBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_closet
 
-    val testDataSet = arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20")
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val closetAdapter = UserClosetAdapter(testDataSet)
+        val closetAdapter = UserClosetAdapter()
         val gridLayoutManager = GridLayoutManager(context,3, GridLayoutManager.VERTICAL, false)
 
+        closetAdapter.setDataSet(Client.getClosetItems())
         binding.myPageUserClosetRecycler.adapter = closetAdapter
         binding.myPageUserClosetRecycler.layoutManager = gridLayoutManager
 
@@ -30,12 +30,8 @@ class MyPageClosetFragment : BaseFragment<FragmentMyPageClosetBinding>() {
         })*/
         binding.myPageUserClosetAddImg.setOnClickListener(View.OnClickListener {
             val transaction = parentFragment?.parentFragmentManager?.beginTransaction()
-            if (transaction != null) {
-                transaction.replace(R.id.my_page_frameLayout, MyPageClosetAddFragment())
-            }
-            if (transaction != null) {
-                transaction.commit()
-            }
+            transaction?.replace(R.id.my_page_frameLayout, MyPageClosetAddFragment())
+            transaction?.commit()
         })
 
         binding.myPageUserClosetAllText.setOnClickListener(View.OnClickListener {
