@@ -6,15 +6,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
+import com.sigmai.stylemento.data.model.ClosetItem
 
 
-class UserClosetAdapter(private val dataSet: Array<String>) :
-    RecyclerView.Adapter<UserClosetAdapter.ViewHolder>() {
+class UserClosetAdapter : RecyclerView.Adapter<UserClosetAdapter.ViewHolder>() {
+    private var dataSet: List<ClosetItem> ?= null
 
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder).
-     */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val userClosetImg: ImageView = view.findViewById(R.id.user_closet_item_img)
 
@@ -40,7 +37,13 @@ class UserClosetAdapter(private val dataSet: Array<String>) :
         viewHolder.userClosetImg.setImageResource(R.drawable.ic_launcher_foreground)
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount() = dataSet.size
+    override fun getItemCount(): Int{
+        if(dataSet != null)
+            return dataSet!!.size
+        return 0
+    }
 
+    fun setDataSet(items : List<ClosetItem>?){
+        dataSet = items
+    }
 }
