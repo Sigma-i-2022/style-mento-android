@@ -8,7 +8,7 @@ object Client {
     private var nickname : String = "Test1"
     private var email : String = "Test@Email"
     private var introduction : String = ""
-    private var closetItems : List<ClosetItem>? = null
+    private var closetItems : MutableList<ClosetItem> = mutableListOf()
     //private var lookbookItems : List<ClosetItem>? = null
 
     fun setUserName(nickname : String){
@@ -20,7 +20,7 @@ object Client {
     fun setUserIntroduction(introduction : String){
         Client.introduction = introduction
     }
-    fun setClosetItems(items : List<ClosetItem>?){
+    fun setClosetItems(items : MutableList<ClosetItem>){
         closetItems = items
     }
     fun getUserName() : String{
@@ -35,4 +35,8 @@ object Client {
     fun getClosetItems() : List<ClosetItem>?{
         return closetItems
     }
+    fun addClosetItem(item : ClosetItem){
+        closetItems.add(item)
+    }
+
 }
