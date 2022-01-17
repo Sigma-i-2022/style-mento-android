@@ -1,12 +1,11 @@
 package com.sigmai.stylemento.feature.mypage
 
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import com.sigmai.stylemento.data.model.User
+import com.sigmai.stylemento.data.model.Client
 
 class MyPageViewModel : ViewModel() {
-    val testUser  = User("test1", "testEmail")
+    val testUser  = Client
 
     fun onBackClick(){
 

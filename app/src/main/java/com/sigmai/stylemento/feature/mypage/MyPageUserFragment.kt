@@ -2,16 +2,12 @@ package com.sigmai.stylemento.feature.mypage
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.compose.ui.graphics.Color
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageUserBinding
 import com.sigmai.stylemento.global.base.BaseFragment
+import com.sigmai.stylemento.data.model.Client
 
 class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_user
@@ -55,9 +51,11 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
 
         binding.myPageUserReviseImg.setOnClickListener(View.OnClickListener {
             val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.my_page_frameLayout, MyPageRevisionFragment())
+            transaction.replace(R.id.my_page_frameLayout, MyPageUserRevisionFragment())
             transaction.addToBackStack(null)
             transaction.commit()
         })
+
+        binding.myPageUserIntroductionText.text = Client.getUserIntroduction()
     }
 }

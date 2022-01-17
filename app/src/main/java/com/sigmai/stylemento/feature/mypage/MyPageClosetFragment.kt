@@ -27,6 +27,11 @@ class MyPageClosetFragment : BaseFragment<FragmentMyPageClosetBinding>() {
             val dialog = UserClosetAddDialog()
             dialog.show(childFragmentManager, "closetDialog")
         })
+        /*binding.myPageUserClosetAddImg.setOnClickListener(View.OnClickListener {
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.my_page_frameLayout, MyPageUserRevisionFragment())
+            transaction.commit()
+        })*/
 
         binding.myPageUserClosetAllText.setOnClickListener(View.OnClickListener {
             setAllTextGray()
