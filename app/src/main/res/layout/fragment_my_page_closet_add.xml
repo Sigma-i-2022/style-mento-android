@@ -10,8 +10,7 @@
             android:id="@+id/my_page_closet_add_scrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical"
-            android:layout_above="@id/my_page_closet_add_img_selection_layout">
+            android:scrollbars="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
