@@ -2,13 +2,11 @@ package com.sigmai.stylemento.feature.mypage
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.databinding.FragmentMyPageClosetBinding
+import com.sigmai.stylemento.feature.mypage.adapter.UserClosetAdapter
 import com.sigmai.stylemento.global.base.BaseFragment
 
 class MyPageClosetFragment : BaseFragment<FragmentMyPageClosetBinding>() {
@@ -24,10 +22,6 @@ class MyPageClosetFragment : BaseFragment<FragmentMyPageClosetBinding>() {
         binding.myPageUserClosetRecycler.adapter = closetAdapter
         binding.myPageUserClosetRecycler.layoutManager = gridLayoutManager
 
-        /*binding.myPageUserClosetAddImg.setOnClickListener(View.OnClickListener {
-            val dialog = UserClosetAddDialog()
-            dialog.show(childFragmentManager, "closetDialog")
-        })*/
         binding.myPageUserClosetAddImg.setOnClickListener(View.OnClickListener {
             val transaction = parentFragment?.parentFragmentManager?.beginTransaction()
             transaction?.replace(R.id.my_page_frameLayout, MyPageClosetAddFragment())
