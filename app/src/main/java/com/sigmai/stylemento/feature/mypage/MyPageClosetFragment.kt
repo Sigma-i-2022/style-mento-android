@@ -15,7 +15,7 @@ class MyPageClosetFragment : BaseFragment<FragmentMyPageClosetBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val closetAdapter = UserClosetAdapter()
+        val closetAdapter = UserClosetAdapter(this)
         val gridLayoutManager = GridLayoutManager(context,3, GridLayoutManager.VERTICAL, false)
 
         closetAdapter.setDataSet(Client.getClosetItems())
@@ -53,4 +53,5 @@ class MyPageClosetFragment : BaseFragment<FragmentMyPageClosetBinding>() {
         context?.let { binding.myPageUserClosetPantsText.setTextColor(it.getColor(R.color.gray_d)) }
         context?.let { binding.myPageUserClosetShoesText.setTextColor(it.getColor(R.color.gray_d)) }
     }
+
 }
