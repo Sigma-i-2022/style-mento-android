@@ -4,19 +4,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.ClosetItem
+import com.sigmai.stylemento.feature.mypage.dialog.UserClosetItemDialog
 
 
-class UserClosetAdapter : RecyclerView.Adapter<UserClosetAdapter.ViewHolder>() {
+class UserClosetAdapter(private val parentFragment : Fragment) : RecyclerView.Adapter<UserClosetAdapter.ViewHolder>() {
     private var dataSet: List<ClosetItem> ?= null
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val userClosetImg: ImageView = view.findViewById(R.id.user_closet_item_img)
 
         init {
-            // Define click listener for the ViewHolder's View.
+            view.setOnClickListener(View.OnClickListener {
+                val position : Int = adapterPosition
+                val dialog = dataSet?.let { it1 -> UserClosetItemDialog(it1.get(position)) }
+                if (dialog != null) {
+                    dialog.show(parentFragment.childFragmentManager, "closetItemDialog")
+                }
+            })
         }
     }
 
