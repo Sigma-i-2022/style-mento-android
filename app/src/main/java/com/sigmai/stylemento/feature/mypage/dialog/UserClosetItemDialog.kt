@@ -25,6 +25,7 @@ class UserClosetItemDialog(private val f : Fragment, private val item : ClosetIt
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        ownerCheck()
         textBinding()
 
         binding.myPageClosetDialogRevisionText.setOnClickListener(View.OnClickListener {
@@ -57,7 +58,12 @@ class UserClosetItemDialog(private val f : Fragment, private val item : ClosetIt
         })
 
     }
-
+    private fun ownerCheck(){
+        if(Client.getUserName().equals(item.owner)){
+            binding.myPageClosetDialogItemImg.visibility = View.INVISIBLE
+            binding.myPageClosetDialogRevisionText.visibility = View.INVISIBLE
+        }
+    }
     private fun textBinding(){
         binding.myPageClosetDialogCategoryText.text = TransformToStringUtil().getItemCategoryString(item.category)
         binding.myPageClosetDialogBrandText.text = item.brand
