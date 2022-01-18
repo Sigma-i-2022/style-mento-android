@@ -78,10 +78,17 @@
                         android:layout_marginStart="18dp"
                         android:layout_marginEnd="60dp"
                         android:background="@color/trans_parent" />
-                    <Spinner
-                        android:id="@+id/my_page_closet_add_category_spinner"
+                    <TextView
+                        android:id="@+id/my_page_closet_add_category_text"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:text="선택"
+                        style="@style/header4"/>
+                    <ImageView
+                        android:id="@+id/my_page_closet_add_category_button"
+                        android:background="@color/gray_d"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"/>
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/my_page_closet_add_brand_layout"
@@ -145,10 +152,16 @@
                         android:layout_marginStart="18dp"
                         android:layout_marginEnd="60dp"
                         android:background="@color/trans_parent" />
-                    <Spinner
-                        android:id="@+id/my_page_closet_add_texture_spinner"
+                    <TextView
+                        android:id="@+id/my_page_closet_add_texture_text"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        style="@style/header4"/>
+                    <ImageView
+                        android:id="@+id/my_page_closet_add_texture_button"
+                        android:background="@color/gray_d"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"/>
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/my_page_closet_add_size_layout"
@@ -189,10 +202,16 @@
                         android:layout_marginStart="18dp"
                         android:layout_marginEnd="36dp"
                         android:background="@color/trans_parent" />
-                    <Spinner
-                        android:id="@+id/my_page_closet_add_fit_spinner"
+                    <TextView
+                        android:id="@+id/my_page_closet_add_fit_text"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        style="@style/header4"/>
+                    <ImageView
+                        android:id="@+id/my_page_closet_add_fit_button"
+                        android:background="@color/gray_d"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"/>
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
