@@ -26,12 +26,8 @@ import com.sigmai.stylemento.global.util.TransformToStringUtil
 class MyPageClosetAddFragment : BaseFragment<FragmentMyPageClosetAddBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_closet_add
 
-    private var category : ItemCategoryType = ItemCategoryType.NULL
-    private var brand : String = ""
-    private var itemName : String = ""
-    private var texture : TextureType = TextureType.NULL
-    private var size : String = ""
-    private var myFit : FitType = FitType.NULL
+    private var closetItem : ClosetItem = ClosetItem(Client.getUserName(), "", ItemCategoryType.NULL, "", "",
+        TextureType.NULL, "", FitType.NULL)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,7 +39,6 @@ class MyPageClosetAddFragment : BaseFragment<FragmentMyPageClosetAddBinding>() {
         setEditTextLayout()
 
         binding.myPageClosetAddSaveButton.setOnClickListener(View.OnClickListener {
-            var closetItem = ClosetItem(Client.getUserName(), "img", category, brand, itemName, texture, size, myFit)
             Client.addClosetItem(closetItem)
             backToMyPage()
         })
@@ -68,40 +63,7 @@ class MyPageClosetAddFragment : BaseFragment<FragmentMyPageClosetAddBinding>() {
             dialog.show(childFragmentManager, "ImageSelectionDialog")
         })
     }
-    private fun setSpinnerLayout(){
-        /*binding.myPageClosetAddCategorySpinner.adapter = context?.let {
-            ArrayAdapter.createFromResource(
-                it, R.array.itemCategoryList, android.R.layout.simple_spinner_item)
-        }
-        binding.myPageClosetAddCategorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-            override fun onItemSelected(parent: AdapterView<*>?,view: View?, position: Int, id: Long) {
-                category = TransformToEnumUtil().getItemCategoryType(position)
-            }
-        }
 
-        binding.myPageClosetAddTextureSpinner.adapter = context?.let {
-            ArrayAdapter.createFromResource(
-                it, R.array.textureList, android.R.layout.simple_spinner_item)
-        }
-        binding.myPageClosetAddTextureSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-            override fun onItemSelected(parent: AdapterView<*>?,view: View?, position: Int, id: Long) {
-                texture = TransformToEnumUtil().getTextureType(position)
-            }
-        }
-
-        binding.myPageClosetAddFitSpinner.adapter = context?.let {
-            ArrayAdapter.createFromResource(
-                it, R.array.fitList, android.R.layout.simple_spinner_item)
-        }
-        binding.myPageClosetAddFitSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-            override fun onItemSelected(parent: AdapterView<*>?,view: View?, position: Int, id: Long) {
-                myFit = TransformToEnumUtil().getFitType(position)
-            }
-        }*/
-    }
     private fun setEditTextLayout(){
         binding.myPageClosetAddBrandEditText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
@@ -111,7 +73,7 @@ class MyPageClosetAddFragment : BaseFragment<FragmentMyPageClosetAddBinding>() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                brand = p0.toString()
+                closetItem.brand = p0.toString()
             }
         })
         binding.myPageClosetAddItemNameEditText.addTextChangedListener(object : TextWatcher {
@@ -122,7 +84,7 @@ class MyPageClosetAddFragment : BaseFragment<FragmentMyPageClosetAddBinding>() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                itemName = p0.toString()
+                closetItem.itemName = p0.toString()
             }
         })
         binding.myPageClosetAddSizeEditText.addTextChangedListener(object : TextWatcher {
@@ -133,7 +95,7 @@ class MyPageClosetAddFragment : BaseFragment<FragmentMyPageClosetAddBinding>() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                size = p0.toString()
+                closetItem.size = p0.toString()
             }
         })
     }
@@ -144,15 +106,15 @@ class MyPageClosetAddFragment : BaseFragment<FragmentMyPageClosetAddBinding>() {
     }
 
     fun setCategory(categoryType: ItemCategoryType){
-        category = categoryType
-        binding.myPageClosetAddCategoryText.text = TransformToStringUtil().getItemCategoryString(category)
+        closetItem.category = categoryType
+        binding.myPageClosetAddCategoryText.text = TransformToStringUtil().getItemCategoryString(closetItem.category)
     }
     fun setTexture(textureType: TextureType){
-        texture = textureType
-        binding.myPageClosetAddTextureText.text = TransformToStringUtil().getTextureString(texture)
+        closetItem.texture = textureType
+        binding.myPageClosetAddTextureText.text = TransformToStringUtil().getTextureString(closetItem.texture)
     }
     fun setFit(fitType: FitType){
-        myFit = fitType
-        binding.myPageClosetAddFitText.text = TransformToStringUtil().getFitString(myFit)
+        closetItem.myFit = fitType
+        binding.myPageClosetAddFitText.text = TransformToStringUtil().getFitString(closetItem.myFit)
     }
 }
