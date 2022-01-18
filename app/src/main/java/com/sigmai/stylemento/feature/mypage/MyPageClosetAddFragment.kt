@@ -39,10 +39,7 @@ class MyPageClosetAddFragment : BaseFragment<FragmentMyPageClosetAddBinding>() {
         binding.myPageClosetAddBackImg.setOnClickListener(View.OnClickListener {
             backToMyPage()
         })
-        Log.d("111category: ", "testtest")
-        //setSpinnerLayout()
         setDialogLayout()
-        Log.d("3: ", "testtest")
         setEditTextLayout()
 
         binding.myPageClosetAddSaveButton.setOnClickListener(View.OnClickListener {
