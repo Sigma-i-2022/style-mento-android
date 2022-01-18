@@ -24,7 +24,7 @@
                 android:text="면"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"/>
             <TextView
@@ -35,7 +35,7 @@
                 android:text="울"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"/>
             <TextView
@@ -46,7 +46,7 @@
                 android:text="폴리에스테르"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"/>
             <TextView
@@ -67,7 +67,8 @@
             android:gravity="center"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/my_page_closet_texture_layout_1">
+            app:layout_constraintTop_toBottomOf="@id/my_page_closet_texture_layout_1"
+            app:layout_constraintStart_toStartOf="parent">
             <TextView
                 android:id="@+id/my_page_closet_category_acryl_text"
                 android:layout_width="wrap_content"
@@ -76,7 +77,7 @@
                 android:text="아크릴"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"/>
             <TextView
@@ -87,7 +88,7 @@
                 android:text="레이온"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"/>
             <TextView
@@ -98,7 +99,7 @@
                 android:text="실크"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"/>
             <TextView
@@ -119,7 +120,8 @@
             android:gravity="center"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/my_page_closet_texture_layout_2">
+            app:layout_constraintTop_toBottomOf="@id/my_page_closet_texture_layout_2"
+            app:layout_constraintStart_toStartOf="parent">
             <TextView
                 android:id="@+id/my_page_closet_category_linen_text"
                 android:layout_width="wrap_content"
@@ -128,7 +130,7 @@
                 android:text="린넨"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"/>
             <TextView
@@ -139,7 +141,7 @@
                 android:text="실켓"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"/>
             <TextView
@@ -150,7 +152,7 @@
                 android:text="데님"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"/>
             <TextView
@@ -171,7 +173,8 @@
             android:gravity="center"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/my_page_closet_texture_layout_3">
+            app:layout_constraintTop_toBottomOf="@id/my_page_closet_texture_layout_3"
+            app:layout_constraintStart_toStartOf="parent">
             <TextView
                 android:id="@+id/my_page_closet_category_tencel_text"
                 android:layout_width="wrap_content"
@@ -180,7 +183,7 @@
                 android:text="텐셀"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"/>
             <TextView
@@ -191,7 +194,7 @@
                 android:text="쭈리원단"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"/>
             <TextView
@@ -202,7 +205,7 @@
                 android:text="옥스퍼드"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"/>
             <TextView
@@ -223,7 +226,8 @@
             android:gravity="center"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/my_page_closet_texture_layout_4">
+            app:layout_constraintTop_toBottomOf="@id/my_page_closet_texture_layout_4"
+            app:layout_constraintStart_toStartOf="parent">
             <TextView
                 android:id="@+id/my_page_closet_category_bunto_text"
                 android:layout_width="wrap_content"
@@ -232,7 +236,7 @@
                 android:text="분또"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"/>
             <TextView
@@ -243,7 +247,7 @@
                 android:text="보카시"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"/>
             <TextView
@@ -254,7 +258,7 @@
                 android:text="트위드"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"/>
             <TextView
@@ -275,7 +279,8 @@
             android:gravity="center"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/my_page_closet_texture_layout_5">
+            app:layout_constraintTop_toBottomOf="@id/my_page_closet_texture_layout_5"
+            app:layout_constraintStart_toStartOf="parent">
             <TextView
                 android:id="@+id/my_page_closet_category_suede_text"
                 android:layout_width="wrap_content"
@@ -284,7 +289,7 @@
                 android:text="스웨이드"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"/>
             <TextView
@@ -295,7 +300,7 @@
                 android:text="자카드"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"/>
             <TextView
@@ -306,7 +311,7 @@
                 android:text="기모"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"/>
             <TextView
@@ -327,7 +332,10 @@
             android:gravity="center"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/my_page_closet_texture_layout_6">
+            android:layout_marginBottom="20dp"
+            app:layout_constraintTop_toBottomOf="@id/my_page_closet_texture_layout_6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
             <TextView
                 android:id="@+id/my_page_closet_category_leather_text"
                 android:layout_width="wrap_content"
@@ -336,7 +344,6 @@
                 android:text="가죽"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginEnd="20dp"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"/>
         </LinearLayout>
