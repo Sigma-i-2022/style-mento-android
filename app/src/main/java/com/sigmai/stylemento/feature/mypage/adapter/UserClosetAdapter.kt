@@ -20,7 +20,7 @@ class UserClosetAdapter(private val parentFragment : Fragment) : RecyclerView.Ad
         init {
             view.setOnClickListener(View.OnClickListener {
                 val position: Int = adapterPosition
-                dataSet?.let { it1 -> UserClosetItemDialog(parentFragment, it1.get(position), position) }
+                dataSet?.let { it1 -> UserClosetItemDialog(parentFragment, it1.get(position).copy(), position) }
                     ?.show(parentFragment.childFragmentManager, "closetItemDialog")
             })
         }
