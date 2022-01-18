@@ -2,13 +2,15 @@ package com.sigmai.stylemento.feature.mypage.dialog
 
 import android.os.Bundle
 import android.view.*
+import androidx.fragment.app.Fragment
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.DialogFragmentMyPageClosetCategorySelectionBinding
 import com.sigmai.stylemento.feature.mypage.MyPageClosetAddFragment
+import com.sigmai.stylemento.feature.mypage.MyPageClosetRevisionFragment
 import com.sigmai.stylemento.global.base.BaseDialogFragment
 import com.sigmai.stylemento.global.constant.ItemCategoryType
 
-class UserClosetCategorySelectionDialog(private val f : MyPageClosetAddFragment) : BaseDialogFragment<DialogFragmentMyPageClosetCategorySelectionBinding>() {
+class UserClosetCategorySelectionDialog(private val f : Fragment) : BaseDialogFragment<DialogFragmentMyPageClosetCategorySelectionBinding>() {
     override val layoutResourceId = R.layout.dialog_fragment_my_page_closet_category_selection
 
     private var category : ItemCategoryType = ItemCategoryType.NULL
@@ -39,7 +41,9 @@ class UserClosetCategorySelectionDialog(private val f : MyPageClosetAddFragment)
 
     override fun dismiss() {
         super.dismiss()
-        f.setCategory(category)
-        
+        when(f){
+            is MyPageClosetAddFragment -> f.setCategory(category)
+            is MyPageClosetRevisionFragment -> f.setCategory(category)
+        }
     }
 }

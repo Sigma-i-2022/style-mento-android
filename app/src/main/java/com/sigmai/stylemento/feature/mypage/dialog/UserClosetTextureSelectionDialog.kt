@@ -2,13 +2,15 @@ package com.sigmai.stylemento.feature.mypage.dialog
 
 import android.os.Bundle
 import android.view.*
+import androidx.fragment.app.Fragment
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.DialogFragmentMyPageClosetTextureSelectionBinding
 import com.sigmai.stylemento.feature.mypage.MyPageClosetAddFragment
+import com.sigmai.stylemento.feature.mypage.MyPageClosetRevisionFragment
 import com.sigmai.stylemento.global.base.BaseDialogFragment
 import com.sigmai.stylemento.global.constant.TextureType
 
-class UserClosetTextureSelectionDialog(private val f : MyPageClosetAddFragment) : BaseDialogFragment<DialogFragmentMyPageClosetTextureSelectionBinding>() {
+class UserClosetTextureSelectionDialog(private val f : Fragment) : BaseDialogFragment<DialogFragmentMyPageClosetTextureSelectionBinding>() {
     override val layoutResourceId = R.layout.dialog_fragment_my_page_closet_texture_selection
     private var texture : TextureType = TextureType.NULL
     override fun onStart() {
@@ -125,6 +127,9 @@ class UserClosetTextureSelectionDialog(private val f : MyPageClosetAddFragment) 
 
     override fun dismiss() {
         super.dismiss()
-        f.setTexture(texture)
+        when(f){
+            is MyPageClosetAddFragment -> f.setTexture(texture)
+            is MyPageClosetRevisionFragment -> f.setTexture(texture)
+        }
     }
 }
