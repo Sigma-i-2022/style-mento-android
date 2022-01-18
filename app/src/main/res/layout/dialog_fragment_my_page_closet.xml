@@ -41,12 +41,12 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@id/my_page_closet_dialog_revision_text"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/my_page_closet_dialog_close_text"/>
+                app:layout_constraintEnd_toStartOf="@id/my_page_closet_dialog_delete_text"/>
             <TextView
-                android:id="@+id/my_page_closet_dialog_close_text"
+                android:id="@+id/my_page_closet_dialog_delete_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="닫기"
+                android:text="삭제"
                 android:textSize="14dp"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
