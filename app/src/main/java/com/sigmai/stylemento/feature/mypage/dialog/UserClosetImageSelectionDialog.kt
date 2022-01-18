@@ -15,12 +15,6 @@ import com.sigmai.stylemento.global.base.BaseDialogFragment
 class UserClosetImageSelectionDialog : BaseDialogFragment<DialogFragmentMyPageClosetBinding>() {
     override val layoutResourceId = R.layout.dialog_fragment_my_page_closet_image_selection
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        setStyle(STYLE_NORMAL, R.style.FullDialog)
-    }
-
     override fun onStart() {
         super.onStart()
         val width = ViewGroup.LayoutParams.MATCH_PARENT
