@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.ClosetItem
@@ -20,11 +19,9 @@ class UserClosetAdapter(private val parentFragment : Fragment) : RecyclerView.Ad
 
         init {
             view.setOnClickListener(View.OnClickListener {
-                val position : Int = adapterPosition
-                val dialog = dataSet?.let { it1 -> UserClosetItemDialog(it1.get(position)) }
-                if (dialog != null) {
-                    dialog.show(parentFragment.childFragmentManager, "closetItemDialog")
-                }
+                val position: Int = adapterPosition
+                dataSet?.let { it1 -> UserClosetItemDialog(parentFragment, it1.get(position), position) }
+                    ?.show(parentFragment.childFragmentManager, "closetItemDialog")
             })
         }
     }
