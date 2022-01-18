@@ -39,4 +39,11 @@ object Client {
         closetItems.add(item)
     }
 
+    fun removeClosetItem(position : Int){
+        closetItems.removeAt(position)
+    }
+    fun reviseClosetItem(item : ClosetItem, position : Int){
+        closetItems.removeAt(position)
+        closetItems.add(position, item)
+    }
 }
