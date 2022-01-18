@@ -21,8 +21,8 @@
                 android:text="상의"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginTop="34dp"
-                android:layout_marginBottom="42dp"/>
+                android:layout_marginTop="17dp"
+                android:layout_marginBottom="21dp"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -34,8 +34,8 @@
                 android:text="하의"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginTop="34dp"
-                android:layout_marginBottom="42dp" />
+                android:layout_marginTop="17dp"
+                android:layout_marginBottom="21dp" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -47,8 +47,8 @@
                 android:text="신발"
                 android:textStyle="bold"
                 style="@style/header4"
-                android:layout_marginTop="34dp"
-                android:layout_marginBottom="42dp" />
+                android:layout_marginTop="17dp"
+                android:layout_marginBottom="21dp" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
