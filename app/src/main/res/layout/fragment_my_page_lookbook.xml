@@ -6,20 +6,45 @@
             android:id="@+id/my_page_user_lookbook_content_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
+            <ImageView
+                android:id="@+id/my_page_user_lookbook_back_img"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@color/gray_d"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="룩북"
+                android:textStyle="bold"
+                style="@style/header3"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"/>
             <ImageView
                 android:id="@+id/my_page_user_lookbook_add_img"
                 android:layout_width="34dp"
                 android:layout_height="34dp"
                 android:background="@color/gray_d"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/gray_f"
+                android:layout_below="@id/my_page_user_lookbook_back_img"
+                android:layout_marginTop="24dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/my_page_user_lookbook_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/my_page_user_lookbook_add_img"/>
+                android:layout_below="@id/my_page_user_lookbook_add_img"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="44dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"/>
         </RelativeLayout>
 </layout>
