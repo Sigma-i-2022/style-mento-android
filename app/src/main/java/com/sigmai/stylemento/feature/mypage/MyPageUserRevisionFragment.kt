@@ -9,6 +9,7 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageUserRevisionBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.data.model.Client
+import com.sigmai.stylemento.feature.mypage.dialog.UserClosetImageSelectionDialog
 
 class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_user_revision
@@ -23,6 +24,11 @@ class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBindin
 
         binding.myPageUserRevisionBackImg.setOnClickListener(View.OnClickListener {
             backToMyPage()
+        })
+
+        binding.myPageUserRevisionProfileImg.setOnClickListener(View.OnClickListener {
+            val dialog = UserClosetImageSelectionDialog()
+            dialog.show(childFragmentManager, "ImageSelectionDialog")
         })
 
         binding.myPageUserRevisionIntroductionEditText.setText(Client.getUserIntroduction())
@@ -43,7 +49,6 @@ class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBindin
             backToMyPage()
         })
     }
-
     private fun backToMyPage(){
         val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment())
         transaction.commit()
