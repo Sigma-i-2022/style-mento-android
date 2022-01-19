@@ -2,6 +2,7 @@ package com.sigmai.stylemento.global.util
 
 import com.sigmai.stylemento.global.constant.FitType
 import com.sigmai.stylemento.global.constant.ItemCategoryType
+import com.sigmai.stylemento.global.constant.TagType
 import com.sigmai.stylemento.global.constant.TextureType
 import java.lang.Exception
 
@@ -53,6 +54,35 @@ class TransformToStringUtil {
             FitType.OVER -> "오버"
             FitType.STANDARD -> "스탠다드"
             FitType.SLIM -> "슬림"
+            else -> throw Exception("It is not exist")
+        }
+    }
+    fun getTagString(type : TagType) : String {
+        return when(type) {
+            TagType.NULL -> ""
+            TagType.CASULAL -> "#캐주얼"
+            TagType.STREET -> "#스트릿"
+            TagType.MODERN -> "#모던"
+            TagType.FEMININE -> "#페미닌"
+            TagType.DANDY -> "#댄디"
+            TagType.MINIMAL -> "#미니멀"
+            TagType.MAXIMAL -> "#맥시멀"
+            TagType.CITY -> "#시티"
+            TagType.AMERICANCASUAL -> "#아메카지"
+            TagType.CLASSIC -> "#클래식"
+            TagType.STUDENT -> "#학생"
+            TagType.OFFICE -> "#직장인"
+            TagType.DATE -> "#데이트"
+            TagType.BLINDDATE -> "#소개팅"
+            TagType.TRAVEL -> "#여행"
+            TagType.PARTY -> "#파티"
+            TagType.COUPLE -> "#커플"
+            TagType.GUEST -> "#하객"
+            TagType.SPRING -> "#봄"
+            TagType.SUMMER -> "#여름"
+            TagType.AUTUMN -> "#가을"
+            TagType.WINTER -> "#겨울"
+            TagType.RAIN -> "#비"
             else -> throw Exception("It is not exist")
         }
     }

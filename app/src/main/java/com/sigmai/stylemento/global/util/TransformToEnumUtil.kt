@@ -2,6 +2,7 @@ package com.sigmai.stylemento.global.util
 
 import com.sigmai.stylemento.global.constant.FitType
 import com.sigmai.stylemento.global.constant.ItemCategoryType
+import com.sigmai.stylemento.global.constant.TagType
 import com.sigmai.stylemento.global.constant.TextureType
 import java.lang.Exception
 
@@ -53,6 +54,36 @@ class TransformToEnumUtil {
             2 -> FitType.OVER
             3 -> FitType.STANDARD
             4 -> FitType.SLIM
+            else -> throw Exception("It is not exist")
+        }
+    }
+
+    fun getTagType(position: Int) : TagType {
+        return when(position){
+            0 -> TagType.NULL
+            1 -> TagType.CASULAL
+            2 -> TagType.STREET
+            3 -> TagType.MODERN
+            4 -> TagType.FEMININE
+            5 -> TagType.DANDY
+            6 -> TagType.MINIMAL
+            7 -> TagType.MAXIMAL
+            8 -> TagType.CITY
+            9 -> TagType.AMERICANCASUAL
+            10 -> TagType.CLASSIC
+            11 -> TagType.STUDENT
+            12 -> TagType.OFFICE
+            13 -> TagType.DATE
+            14 -> TagType.BLINDDATE
+            15 -> TagType.TRAVEL
+            16 -> TagType.PARTY
+            17 -> TagType.COUPLE
+            18 -> TagType.GUEST
+            19 -> TagType.SPRING
+            20 -> TagType.SUMMER
+            21 -> TagType.AUTUMN
+            22 -> TagType.WINTER
+            23 -> TagType.RAIN
             else -> throw Exception("It is not exist")
         }
     }
