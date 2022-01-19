@@ -41,11 +41,8 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
             context?.let { it1 -> binding.myPageUserClosetButton.setTextColor(it1.getColor(R.color.black)) }
         })
         binding.myPageUserLookbookButton.setOnClickListener(View.OnClickListener {
-            binding.myPageUserViewPager.setCurrentItem(1, true)
-            binding.myPageUserLookbookButton.setBackgroundResource(R.drawable.button_shadow)
-            context?.let { it1 -> binding.myPageUserLookbookButton.setTextColor(it1.getColor(R.color.black)) }
-            binding.myPageUserClosetButton.setBackgroundResource(R.drawable.button_null)
-            context?.let { it1 -> binding.myPageUserClosetButton.setTextColor(it1.getColor(R.color.gray_d)) }
+            val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageLookbookFragment())
+            transaction.commit()
         })
 
         binding.myPageUserReviseImg.setOnClickListener(View.OnClickListener {
