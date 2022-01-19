@@ -16,7 +16,7 @@ class MyPageTagAdapter(private val dataSet: Array<String>) :
      * (custom ViewHolder).
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tag: TextView = view.findViewById(R.id.tag)
+        val tag: TextView = view.findViewById(R.id.tag_text)
 
         init {
             // Define click listener for the ViewHolder's View.
