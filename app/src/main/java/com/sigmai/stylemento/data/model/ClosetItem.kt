@@ -6,7 +6,7 @@ import com.sigmai.stylemento.global.constant.TextureType
 
 data class ClosetItem(
     val owner : String,
-    val photoUrl: String,
+    var photoUrl: String = "",
     var category : ItemCategoryType = ItemCategoryType.NULL,
     var itemName : String = "",
     var brand : String = "",
