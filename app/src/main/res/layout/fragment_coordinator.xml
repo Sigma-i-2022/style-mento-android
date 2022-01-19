@@ -32,7 +32,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/style_filters"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"/>
+            android:orientation="vertical"
+            app:coordinators="@{viewModel.dummyList}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
