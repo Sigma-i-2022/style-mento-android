@@ -10,24 +10,23 @@ class CoordinatorAdapter : RecyclerView.Adapter<CoordinatorAdapter.CoordinatorVi
     var coordinatorList: List<Coordinator>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoordinatorViewHolder {
-        TODO("Not yet implemented")
+        return CoordinatorViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: CoordinatorViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val item = coordinatorList!![position]
+        holder.bind(item)
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount() = coordinatorList?.size ?: 0
 
     fun setList(list: List<Coordinator>) {
         coordinatorList = list
     }
 
-    class CoordinatorViewHolder private constructor(binding: ItemCoordinatorBinding) : RecyclerView.ViewHolder(binding.root) {
+    class CoordinatorViewHolder private constructor(val binding: ItemCoordinatorBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Coordinator) {
-
+            binding.item = item
         }
 
         companion object {
