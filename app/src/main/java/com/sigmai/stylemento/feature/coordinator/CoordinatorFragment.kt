@@ -3,6 +3,7 @@ package com.sigmai.stylemento.feature.coordinator
 import androidx.fragment.app.viewModels
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentCoordinatorBinding
+import com.sigmai.stylemento.feature.coordinator.adapter.CoordinatorAdapter
 import com.sigmai.stylemento.global.base.BaseFragment
 
 class CoordinatorFragment : BaseFragment<FragmentCoordinatorBinding>() {
@@ -12,5 +13,11 @@ class CoordinatorFragment : BaseFragment<FragmentCoordinatorBinding>() {
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
+
+        setupAdapter()
+    }
+
+    fun setupAdapter() {
+        binding.coordinatorList.adapter = CoordinatorAdapter()
     }
 }
