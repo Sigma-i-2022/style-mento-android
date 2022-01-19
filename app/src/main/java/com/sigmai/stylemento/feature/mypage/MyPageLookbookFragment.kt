@@ -18,14 +18,15 @@ class MyPageLookbookFragment : BaseFragment<FragmentMyPageLookbookBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         val lookbookAdapter = UserLookbookAdapter(testDataSet)
-        val gridLayoutManager = GridLayoutManager(context,3, GridLayoutManager.VERTICAL, false)
-
         binding.myPageUserLookbookRecycler.adapter = lookbookAdapter
-        binding.myPageUserLookbookRecycler.layoutManager = gridLayoutManager
 
+        binding.myPageUserLookbookBackImg.setOnClickListener(View.OnClickListener {
+            val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment())
+            transaction.commit()
+        })
         binding.myPageUserLookbookAddImg.setOnClickListener(View.OnClickListener {
-            val dialog = UserLookbookAddDialog()
-            dialog.show(childFragmentManager, "lookbookDialog")
+            val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageLookbookAddFragment())
+            transaction.commit()
         })
     }
 }
