@@ -10,10 +10,7 @@ data class LookbookItem(
     var photoUrl: String,
     var deltail : String = "",
     var top : String = "",
-    var topInfo : String = "",
     var pants : String = "",
-    var pantsInfo : String = "",
     var shoes : String = "",
-    var shoesInfo : String = "",
     var tags : MutableList<TagType> = mutableListOf()
 )
