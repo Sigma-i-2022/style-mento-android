@@ -80,8 +80,8 @@
             style="@style/header4"
             android:layout_marginEnd="42dp"
             android:background="@color/trans_parent" />
-        <EditText
-            android:id="@+id/my_page_lookbook_add_top_editText"
+        <TextView
+            android:id="@+id/my_page_lookbook_item_top_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/trans_parent"
@@ -104,8 +104,8 @@
             style="@style/header4"
             android:layout_marginEnd="42dp"
             android:background="@color/trans_parent" />
-        <EditText
-            android:id="@+id/my_page_lookbook_add_pants_editText"
+        <TextView
+            android:id="@+id/my_page_lookbook_item_pants_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/trans_parent"
@@ -128,8 +128,8 @@
             style="@style/header4"
             android:layout_marginEnd="42dp"
             android:background="@color/trans_parent" />
-        <EditText
-            android:id="@+id/my_page_lookbook_add_shoes_editText"
+        <TextView
+            android:id="@+id/my_page_lookbook_item_shoes_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/trans_parent"
