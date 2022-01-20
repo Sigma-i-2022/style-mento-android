@@ -1,5 +1,7 @@
 package com.sigmai.stylemento.feature.mypage.adapter
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +14,8 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.ClosetItem
 import com.sigmai.stylemento.data.model.LookbookItem
+import com.sigmai.stylemento.feature.mypage.MyPageLookbookFragment
+import com.sigmai.stylemento.feature.mypage.MyPageUserFragment
 import com.sigmai.stylemento.feature.mypage.dialog.UserClosetItemDialog
 
 
@@ -30,18 +34,10 @@ class UserLookbookAdapter(private val parantFragment : Fragment) : RecyclerView.
         val shoesText : TextView = view.findViewById(R.id.my_page_lookbook_item_shoes_text)
 
         init {
-            //소유자가 다른 경우 수정 삭제 이미지 숨기기 View.GONE
-
-            revisionImg.setOnClickListener(View.OnClickListener {
-
-            })
-            deleteImg.setOnClickListener(View.OnClickListener {
-
-            })
-            if(dataSet?.size!! > 0){
-                val lookbookTagAdapter = TagAdapter()
-                lookbookTagAdapter.setDataSet(dataSet?.get(adapterPosition)?.tags)
-                tagRecycler.adapter = lookbookTagAdapter
+            val position = adapterPosition
+            if(Client.getUserInfo().nickname != dataSet?.get(0)?.owner){
+                revisionImg.visibility = View.GONE
+                deleteImg.visibility = View.GONE
             }
         }
     }
@@ -63,6 +59,37 @@ class UserLookbookAdapter(private val parantFragment : Fragment) : RecyclerView.
         viewHolder.topText.text = dataSet?.get(position)?.top
         viewHolder.pantsText.text = dataSet?.get(position)?.pants
         viewHolder.shoesText.text = dataSet?.get(position)?.shoes
+
+        val lookbookTagAdapter = TagAdapter()
+        lookbookTagAdapter.setDataSet(dataSet?.get(position)?.tags)
+        viewHolder.tagRecycler.adapter = lookbookTagAdapter
+
+        viewHolder.revisionImg.setOnClickListener(View.OnClickListener {
+
+        })
+
+        viewHolder.deleteImg.setOnClickListener(View.OnClickListener {
+            var builder = AlertDialog.Builder(parantFragment.context)
+            builder.setMessage("이 아이템을 삭제 하시겠습니까?")
+
+            var listener = object : DialogInterface.OnClickListener {
+                override fun onClick(p0: DialogInterface?, p1: Int) {
+                    when (p1) {
+                        DialogInterface.BUTTON_POSITIVE -> {
+                            Client.removeLookbookItem(position)
+                            val transaction = parantFragment.parentFragmentManager.beginTransaction()
+                            transaction.replace(R.id.my_page_frameLayout, MyPageLookbookFragment())
+                            transaction.commit()
+                        }
+                    }
+                }
+            }
+
+            builder.setPositiveButton("삭제", listener)
+            builder.setNegativeButton("취소", listener)
+
+            builder.show()
+        })
     }
 
     override fun getItemCount(): Int{
