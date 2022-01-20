@@ -14,6 +14,7 @@ import com.sigmai.stylemento.feature.mypage.MyPageLookbookAddFragment
 import com.sigmai.stylemento.global.base.BaseDialogFragment
 import com.sigmai.stylemento.global.constant.TagType
 import com.sigmai.stylemento.global.constant.TextureType
+import com.sigmai.stylemento.global.util.TransformToEnumUtil
 import com.sigmai.stylemento.global.util.TransformToIntUtil
 
 class UserLookbookTagSelectionDialog(private val f: Fragment) :
@@ -37,6 +38,7 @@ class UserLookbookTagSelectionDialog(private val f: Fragment) :
         super.onViewCreated(view, savedInstanceState)
 
         binding.myPageLookbookTagSaveButton.setOnClickListener(View.OnClickListener {
+            addTags()
             when (f) {
                 is MyPageLookbookAddFragment -> f.setTags(tags)
             }
@@ -86,7 +88,7 @@ class UserLookbookTagSelectionDialog(private val f: Fragment) :
             onTextViewClick(binding.myPageLookbookTagBlindDateText, TagType.BLINDDATE)
         })
         binding.myPageLookbookTagTourText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagStudentText, TagType.TRAVEL)
+            onTextViewClick(binding.myPageLookbookTagTourText, TagType.TRAVEL)
         })
         binding.myPageLookbookTagPartyText.setOnClickListener(View.OnClickListener {
             onTextViewClick(binding.myPageLookbookTagPartyText, TagType.PARTY)
@@ -117,35 +119,24 @@ class UserLookbookTagSelectionDialog(private val f: Fragment) :
     private fun onTextViewClick(textView: TextView, tagType: TagType) {
         val index = intUtil.getTagInt(tagType)
         var state = !tagStates[index]
-        if (!state) {
-            if (removeTag(tagType)) {
-                tagStates[index] = state
-                onTagNumber--
-            }
-        } else if (state && onTagNumber < 4) {
-            tagStates[index] = state
-            tags.add(tagType)
-            tagSize++
-            onTagNumber++
-        } else
-            return
 
-        if (state)
+        if (state && onTagNumber < 4) {
+            onTagNumber++
             textView.setBackgroundResource(R.drawable.button_round_click)
-        else
+            tagStates[index] = state
+        } else if(!state && onTagNumber >= 0) {
+            onTagNumber--
             textView.setBackgroundResource(R.drawable.button_round)
+            tagStates[index] = state
+        }
     }
 
-    private fun removeTag(tagType: TagType): Boolean {
-        if(tagSize <= 0 )
-            return false
-
-        for (i in 0 until tagSize) {
-            if (tags[i].equals(tagType)) {
-                tags.removeAt(i)
-                tagSize--
+    private fun addTags() {
+        val enumUtil = TransformToEnumUtil()
+        for (i: Int in 0 until 24) {
+            if (tagStates[i]) {
+                tags.add(enumUtil.getTagType(i))
             }
         }
-        return false
     }
 }
