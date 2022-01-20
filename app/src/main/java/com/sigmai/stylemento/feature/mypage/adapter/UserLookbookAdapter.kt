@@ -15,6 +15,7 @@ import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.ClosetItem
 import com.sigmai.stylemento.data.model.LookbookItem
 import com.sigmai.stylemento.feature.mypage.MyPageLookbookFragment
+import com.sigmai.stylemento.feature.mypage.MyPageLookbookRevisionFragment
 import com.sigmai.stylemento.feature.mypage.MyPageUserFragment
 import com.sigmai.stylemento.feature.mypage.dialog.UserClosetItemDialog
 
@@ -65,7 +66,9 @@ class UserLookbookAdapter(private val parantFragment : Fragment) : RecyclerView.
         viewHolder.tagRecycler.adapter = lookbookTagAdapter
 
         viewHolder.revisionImg.setOnClickListener(View.OnClickListener {
-
+            val transaction = parantFragment.parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.my_page_frameLayout, MyPageLookbookRevisionFragment(dataSet!!.get(position).copy(), position))
+            transaction.commit()
         })
 
         viewHolder.deleteImg.setOnClickListener(View.OnClickListener {
