@@ -83,6 +83,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="선택"
+                        android:textColor="@color/gray_8"
                         style="@style/header4"/>
                     <ImageView
                         android:id="@+id/my_page_closet_revision_category_button"
@@ -156,6 +157,8 @@
                         android:id="@+id/my_page_closet_revision_texture_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="선택"
+                        android:textColor="@color/gray_8"
                         style="@style/header4"/>
                     <ImageView
                         android:id="@+id/my_page_closet_revision_texture_button"
@@ -206,6 +209,8 @@
                         android:id="@+id/my_page_closet_revision_fit_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="선택"
+                        android:textColor="@color/gray_8"
                         style="@style/header4"/>
                     <ImageView
                         android:id="@+id/my_page_closet_revision_fit_button"
