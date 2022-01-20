@@ -4,7 +4,14 @@ import com.sigmai.stylemento.global.constant.UserType
 
 
 object Client {
-    private var userInfo = User(UserType.NORMAL, "test", "test@email")
+    private var clientType : UserType = UserType.NORMAL
+    fun getClientType() : UserType{
+        return clientType
+    }
+    fun setClientType(type : UserType){
+        clientType = type
+    }
+    private var userInfo = User("test", "test@email")
     fun getUserInfo() : User{
         return userInfo
     }
