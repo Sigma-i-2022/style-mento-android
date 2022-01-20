@@ -11,6 +11,7 @@ import com.sigmai.stylemento.databinding.DialogFragmentMyPageLookbookTagSelectio
 import com.sigmai.stylemento.feature.mypage.MyPageClosetAddFragment
 import com.sigmai.stylemento.feature.mypage.MyPageClosetRevisionFragment
 import com.sigmai.stylemento.feature.mypage.MyPageLookbookAddFragment
+import com.sigmai.stylemento.feature.mypage.MyPageLookbookRevisionFragment
 import com.sigmai.stylemento.global.base.BaseDialogFragment
 import com.sigmai.stylemento.global.constant.TagType
 import com.sigmai.stylemento.global.constant.TextureType
@@ -41,6 +42,7 @@ class UserLookbookTagSelectionDialog(private val f: Fragment) :
             addTags()
             when (f) {
                 is MyPageLookbookAddFragment -> f.setTags(tags)
+                is MyPageLookbookRevisionFragment -> f.setTags(tags)
             }
             dismiss()
         })
