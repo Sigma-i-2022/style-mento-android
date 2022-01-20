@@ -38,10 +38,11 @@ class UserLookbookAdapter(private val parantFragment : Fragment) : RecyclerView.
             deleteImg.setOnClickListener(View.OnClickListener {
 
             })
-
-            val lookbookTagAdapter = TagAdapter()
-            lookbookTagAdapter.setDataSet(dataSet?.get(adapterPosition)?.tags)
-            tagRecycler.adapter = lookbookTagAdapter
+            if(dataSet?.size!! > 0){
+                val lookbookTagAdapter = TagAdapter()
+                lookbookTagAdapter.setDataSet(dataSet?.get(adapterPosition)?.tags)
+                tagRecycler.adapter = lookbookTagAdapter
+            }
         }
     }
 
