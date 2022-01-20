@@ -10,7 +10,7 @@
                 android:id="@+id/my_page_user_lookbook_back_img"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="@color/gray_d"
+                android:background="@drawable/ic_arrow_back"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="20dp"
                 android:layout_marginHorizontal="@dimen/horizontal_margin"/>

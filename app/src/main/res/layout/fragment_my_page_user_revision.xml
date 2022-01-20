@@ -20,7 +20,7 @@
                     android:id="@+id/my_page_user_revision_back_img"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@color/gray_d"
+                    android:background="@drawable/ic_arrow_back"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

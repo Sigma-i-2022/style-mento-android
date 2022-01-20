@@ -58,7 +58,7 @@
                 android:id="@+id/my_page_user_closet_add_img"
                 android:layout_width="34dp"
                 android:layout_height="34dp"
-                android:background="@color/gray_d"
+                android:background="@drawable/ic_plus"
                 android:layout_alignParentEnd="true"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
