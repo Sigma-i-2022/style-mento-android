@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.sigmai.stylemento.R
+import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.databinding.FragmentMyPageLookbookBinding
 import com.sigmai.stylemento.feature.mypage.adapter.UserLookbookAdapter
 import com.sigmai.stylemento.feature.mypage.dialog.UserLookbookAddDialog
@@ -17,7 +18,8 @@ class MyPageLookbookFragment : BaseFragment<FragmentMyPageLookbookBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val lookbookAdapter = UserLookbookAdapter(testDataSet)
+        val lookbookAdapter = UserLookbookAdapter(this)
+        lookbookAdapter.setDataSet(Client.getLookbookItems())
         binding.myPageUserLookbookRecycler.adapter = lookbookAdapter
 
         binding.myPageUserLookbookBackImg.setOnClickListener(View.OnClickListener {
