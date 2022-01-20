@@ -4,7 +4,7 @@ import com.sigmai.stylemento.global.constant.UserType
 
 
 object Client {
-    private var userInfo = User(UserType.NORMAL, "test", "test@email")
+    var userInfo = User(UserType.NORMAL, "test", "test@email")
 
     fun addClosetItem(item : ClosetItem){
         userInfo.closetItems.add(item)
