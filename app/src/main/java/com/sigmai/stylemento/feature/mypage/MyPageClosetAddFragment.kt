@@ -26,7 +26,7 @@ import com.sigmai.stylemento.global.util.TransformToStringUtil
 class MyPageClosetAddFragment : BaseFragment<FragmentMyPageClosetAddBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_closet_add
 
-    private var closetItem : ClosetItem = ClosetItem(Client.getUserName(), "", ItemCategoryType.NULL, "", "",
+    private var closetItem : ClosetItem = ClosetItem(Client.getUserInfo().nickname, "", ItemCategoryType.NULL, "", "",
         TextureType.NULL, "", FitType.NULL)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -59,7 +59,7 @@ class UserClosetItemDialog(private val f : Fragment, private val item : ClosetIt
 
     }
     private fun ownerCheck(){
-        if(!Client.getUserName().equals(item.owner)){
+        if(!Client.getUserInfo().nickname.equals(item.owner)){
             binding.myPageClosetDialogDeleteText.visibility = View.INVISIBLE
             binding.myPageClosetDialogRevisionText.visibility = View.INVISIBLE
         }

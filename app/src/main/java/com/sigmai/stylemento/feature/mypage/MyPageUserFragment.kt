@@ -8,6 +8,7 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageUserBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.data.model.Client
+import com.sigmai.stylemento.data.model.User
 import com.sigmai.stylemento.feature.mypage.adapter.UserInterestedAdapter
 import com.sigmai.stylemento.feature.mypage.adapter.UserViewPagerAdapter
 
@@ -52,6 +53,8 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
             transaction.commit()
         })
 
-        binding.myPageUserIntroductionText.text = Client.getUserIntroduction()
+        binding.myPageUserNameText.text = Client.getUserInfo().nickname
+        binding.myPageUserEmailText.text = Client.getUserInfo().email
+        binding.myPageUserIntroductionText.text = Client.getUserInfo().introduction
     }
 }

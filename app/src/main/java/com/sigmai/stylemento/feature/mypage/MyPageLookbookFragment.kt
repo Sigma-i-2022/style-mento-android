@@ -19,7 +19,7 @@ class MyPageLookbookFragment : BaseFragment<FragmentMyPageLookbookBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         val lookbookAdapter = UserLookbookAdapter(this)
-        lookbookAdapter.setDataSet(Client.getLookbookItems())
+        lookbookAdapter.setDataSet(Client.getUserInfo().lookbookItems)
         binding.myPageUserLookbookRecycler.adapter = lookbookAdapter
 
         binding.myPageUserLookbookBackImg.setOnClickListener(View.OnClickListener {

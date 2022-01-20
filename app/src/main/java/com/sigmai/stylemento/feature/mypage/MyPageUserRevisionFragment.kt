@@ -31,7 +31,7 @@ class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBindin
             dialog.show(childFragmentManager, "ImageSelectionDialog")
         })
 
-        binding.myPageUserRevisionIntroductionEditText.setText(Client.getUserIntroduction())
+        binding.myPageUserRevisionIntroductionEditText.setText(Client.getUserInfo().introduction)
         binding.myPageUserRevisionIntroductionEditText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
             }
@@ -45,7 +45,7 @@ class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBindin
         })
 
         binding.myPageUserRevisionSaveButton.setOnClickListener(View.OnClickListener {
-            Client.setUserIntroduction(introductionText)
+            Client.getUserInfo().introduction = introductionText
             backToMyPage()
         })
     }

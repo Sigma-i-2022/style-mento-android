@@ -18,7 +18,7 @@ class MyPageClosetFragment : BaseFragment<FragmentMyPageClosetBinding>() {
         val closetAdapter = UserClosetAdapter(this)
         val gridLayoutManager = GridLayoutManager(context,3, GridLayoutManager.VERTICAL, false)
 
-        closetAdapter.setDataSet(Client.getClosetItems())
+        closetAdapter.setDataSet(Client.getUserInfo().closetItems)
         binding.myPageUserClosetRecycler.adapter = closetAdapter
         binding.myPageUserClosetRecycler.layoutManager = gridLayoutManager
 

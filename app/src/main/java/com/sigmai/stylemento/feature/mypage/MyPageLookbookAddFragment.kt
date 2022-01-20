@@ -28,7 +28,7 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_add
 
     private var tags : MutableList<TagType> = mutableListOf()
-    private var lookbookItem : LookbookItem = LookbookItem(Client.getUserName(), "", "", "", "", "", tags)
+    private var lookbookItem : LookbookItem = LookbookItem(Client.getUserInfo().nickname, "", "", "", "", "", tags)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
