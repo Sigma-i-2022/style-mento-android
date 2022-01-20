@@ -44,7 +44,7 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
         })
 
         binding.myPageLookbookRevisionSaveButton.setOnClickListener(View.OnClickListener {
-            Client.addLookbookItem(lookbookItem)
+            Client.reviseLookbookItem(lookbookItem, position)
             backToMyPage()
         })
 
