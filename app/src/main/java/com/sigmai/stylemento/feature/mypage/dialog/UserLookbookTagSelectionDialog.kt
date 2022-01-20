@@ -1,6 +1,7 @@
 package com.sigmai.stylemento.feature.mypage.dialog
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -19,6 +20,7 @@ class UserLookbookTagSelectionDialog(private val f: Fragment) :
     BaseDialogFragment<DialogFragmentMyPageLookbookTagSelectionBinding>() {
     override val layoutResourceId = R.layout.dialog_fragment_my_page_lookbook_tag_selection
     private var tags: MutableList<TagType> = mutableListOf()
+    private var tagSize: Int = 0
     private var tagStates: Array<Boolean> = Array(24) { false }
     private var onTagNumber: Int = 0
     private val intUtil = TransformToIntUtil()
@@ -38,6 +40,7 @@ class UserLookbookTagSelectionDialog(private val f: Fragment) :
             when (f) {
                 is MyPageLookbookAddFragment -> f.setTags(tags)
             }
+            dismiss()
         })
 
         binding.myPageLookbookTagCasulalText.setOnClickListener(View.OnClickListener {
@@ -112,31 +115,35 @@ class UserLookbookTagSelectionDialog(private val f: Fragment) :
     }
 
     private fun onTextViewClick(textView: TextView, tagType: TagType) {
-
-        var state = !tagStates[intUtil.getTagInt(tagType)]
-        if (state && onTagNumber < 4) {
-            tags.add(tagType)
-            onTagNumber++
-        }
+        val index = intUtil.getTagInt(tagType)
+        var state = !tagStates[index]
         if (!state) {
-            if (removeTag(tagType))
+            if (removeTag(tagType)) {
+                tagStates[index] = state
                 onTagNumber--
-        }
-        else
+            }
+        } else if (state && onTagNumber < 4) {
+            tagStates[index] = state
+            tags.add(tagType)
+            tagSize++
+            onTagNumber++
+        } else
             return
 
-        tagStates[intUtil.getTagInt(tagType)] = state
-
-        if(state)
+        if (state)
             textView.setBackgroundResource(R.drawable.button_round_click)
         else
             textView.setBackgroundResource(R.drawable.button_round)
     }
 
     private fun removeTag(tagType: TagType): Boolean {
-        for (i in tags) {
-            if (i.equals(tagType)) {
-                tags.remove(i)
+        if(tagSize <= 0 )
+            return false
+
+        for (i in 0 until tagSize) {
+            if (tags[i].equals(tagType)) {
+                tags.removeAt(i)
+                tagSize--
             }
         }
         return false
