@@ -101,7 +101,7 @@ class MyPageClosetAddFragment : BaseFragment<FragmentMyPageClosetAddBinding>() {
     }
 
     private fun backToMyPage(){
-        val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment())
+        val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment(0))
         transaction.commit()
     }
 

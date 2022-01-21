@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageUserBinding
 import com.sigmai.stylemento.global.base.BaseFragment
@@ -12,7 +13,7 @@ import com.sigmai.stylemento.data.model.User
 import com.sigmai.stylemento.feature.mypage.adapter.UserInterestedAdapter
 import com.sigmai.stylemento.feature.mypage.adapter.UserViewPagerAdapter
 
-class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
+class MyPageUserFragment(private val showMenu : Int) : BaseFragment<FragmentMyPageUserBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_user
     private val viewModel: MyPageViewModel by viewModels()
 
@@ -29,21 +30,22 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
         val interestedAdapter = UserInterestedAdapter(testDataSet)
 
         binding.myPageUserInterestedRecycler.adapter = interestedAdapter
+        if(showMenu == 0)
+            showCloset()
+        else if(showMenu == 1)
+            showLookbook()
 
-        val userAdapter = UserViewPagerAdapter(this)
-        binding.myPageUserViewPager.adapter = userAdapter
-        binding.myPageUserViewPager.isUserInputEnabled = false
+        /*binding.myPageUserViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+            }
+        })*/
 
         binding.myPageUserClosetButton.setOnClickListener(View.OnClickListener {
-            binding.myPageUserViewPager.setCurrentItem(0, true)
-            binding.myPageUserLookbookButton.setBackgroundResource(R.drawable.button_null)
-            context?.let { it1 -> binding.myPageUserLookbookButton.setTextColor(it1.getColor(R.color.gray_d)) }
-            binding.myPageUserClosetButton.setBackgroundResource(R.drawable.button_shadow)
-            context?.let { it1 -> binding.myPageUserClosetButton.setTextColor(it1.getColor(R.color.black)) }
+            showCloset()
         })
         binding.myPageUserLookbookButton.setOnClickListener(View.OnClickListener {
-            val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageLookbookFragment())
-            transaction.commit()
+            showLookbook()
         })
 
         binding.myPageUserReviseImg.setOnClickListener(View.OnClickListener {
@@ -56,5 +58,35 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
         binding.myPageUserNameText.text = Client.getUserInfo().nickname
         binding.myPageUserEmailText.text = Client.getUserInfo().email
         binding.myPageUserIntroductionText.text = Client.getUserInfo().introduction
+
     }
+
+    private fun showCloset(){
+        val userAdapter = UserViewPagerAdapter(this, MyPageClosetFragment())
+        binding.myPageUserViewPager.adapter = userAdapter
+        binding.myPageUserViewPager.isUserInputEnabled = false
+
+        binding.myPageUserLookbookButton.setBackgroundResource(R.drawable.button_null)
+        context?.let { it1 -> binding.myPageUserLookbookButton.setTextColor(it1.getColor(R.color.gray_d)) }
+        binding.myPageUserClosetButton.setBackgroundResource(R.drawable.button_shadow)
+        context?.let { it1 -> binding.myPageUserClosetButton.setTextColor(it1.getColor(R.color.black)) }
+    }
+    private fun showLookbook(){
+        val userAdapter = UserViewPagerAdapter(this, MyPageLookbookFragment())
+        binding.myPageUserViewPager.adapter = userAdapter
+        binding.myPageUserViewPager.isUserInputEnabled = false
+
+        binding.myPageUserClosetButton.setBackgroundResource(R.drawable.button_null)
+        context?.let { it1 -> binding.myPageUserClosetButton.setTextColor(it1.getColor(R.color.gray_d)) }
+        binding.myPageUserLookbookButton.setBackgroundResource(R.drawable.button_shadow)
+        context?.let { it1 -> binding.myPageUserLookbookButton.setTextColor(it1.getColor(R.color.black)) }
+    }
+
+    /*private fun dataBingingViewPager(position : Int){
+        (binding.myPageUserViewPager.adapter as UserViewPagerAdapter).apply {
+            fragments = arrayOf(MyPageClosetFragment(), MyPageLookbookFragment())
+            notifyDataSetChanged()
+        }
+        binding.myPageUserViewPager.setCurrentItem(position, true)
+    }*/
 }

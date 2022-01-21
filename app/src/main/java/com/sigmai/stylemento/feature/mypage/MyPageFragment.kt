@@ -36,12 +36,12 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
 
     public fun setMyPageFragment(){
         if(true){
-            val transaction = childFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment())
+            val transaction = childFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment(0))
             transaction.addToBackStack(null)
             transaction.commit()
         }
         else{ //coordinator my page로 수정
-            val transaction = childFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment())
+            val transaction = childFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment(0))
             transaction.addToBackStack(null)
             transaction.commit()
         }
