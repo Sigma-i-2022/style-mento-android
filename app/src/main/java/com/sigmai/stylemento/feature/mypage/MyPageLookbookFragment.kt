@@ -13,22 +13,20 @@ import com.sigmai.stylemento.global.base.BaseFragment
 class MyPageLookbookFragment : BaseFragment<FragmentMyPageLookbookBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook
 
-    val testDataSet = arrayOf("1", "2", "3", "4", "5")
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val lookbookAdapter = UserLookbookAdapter(this)
+        val gridLayoutManager = GridLayoutManager(context,3, GridLayoutManager.VERTICAL, false)
+
         lookbookAdapter.setDataSet(Client.getUserInfo().lookbookItems)
         binding.myPageUserLookbookRecycler.adapter = lookbookAdapter
+        binding.myPageUserLookbookRecycler.layoutManager = gridLayoutManager
 
-        binding.myPageUserLookbookBackImg.setOnClickListener(View.OnClickListener {
-            val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment())
-            transaction.commit()
-        })
         binding.myPageUserLookbookAddImg.setOnClickListener(View.OnClickListener {
-            val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageLookbookAddFragment())
-            transaction.commit()
+            val transaction = parentFragment?.parentFragmentManager?.beginTransaction()
+            transaction?.replace(R.id.my_page_frameLayout, MyPageLookbookAddFragment())
+            transaction?.commit()
         })
     }
 }
