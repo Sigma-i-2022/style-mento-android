@@ -9,8 +9,7 @@ import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.LookbookItem
 import com.sigmai.stylemento.databinding.FragmentMyPageLookbookRevisionBinding
 import com.sigmai.stylemento.feature.mypage.user.adapter.TagAdapter
-import com.sigmai.stylemento.feature.mypage.dialog.*
-import com.sigmai.stylemento.feature.mypage.user.dialog.UserLookbookTagSelectionDialog
+import com.sigmai.stylemento.feature.mypage.user.dialog.*
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.constant.TagType
 

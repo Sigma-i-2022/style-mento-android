@@ -1,15 +1,8 @@
 package com.sigmai.stylemento.feature.mypage.user.dialog
 
-import android.content.Context
-import android.graphics.Color
-import android.graphics.Point
-import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.DialogFragment
 import com.sigmai.stylemento.R
-import com.sigmai.stylemento.databinding.DialogFragmentMyPageClosetBinding
 import com.sigmai.stylemento.databinding.DialogFragmentMyPageUserImageSelectionBinding
 import com.sigmai.stylemento.global.base.BaseDialogFragment
 
