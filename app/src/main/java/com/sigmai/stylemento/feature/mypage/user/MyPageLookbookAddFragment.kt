@@ -26,6 +26,11 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
             backToMyPage()
         })
 
+        binding.myPageLookbookAddItemImg.setOnClickListener(View.OnClickListener {
+            val dialog = UserLookbookImageSelectionDialog()
+            dialog.show(childFragmentManager, "ImageSelectionDialog")
+        })
+
         setEditTextLayout()
 
         binding.myPageLookbookAddSaveButton.setOnClickListener(View.OnClickListener {

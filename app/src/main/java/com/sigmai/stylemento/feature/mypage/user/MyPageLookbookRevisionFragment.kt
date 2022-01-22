@@ -31,6 +31,11 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
             backToMyPage()
         })
 
+        binding.myPageLookbookRevisionItemImg.setOnClickListener(View.OnClickListener {
+            val dialog = UserLookbookImageSelectionDialog()
+            dialog.show(childFragmentManager, "ImageSelectionDialog")
+        })
+
         binding.myPageLookbookRevisionSaveButton.setOnClickListener(View.OnClickListener {
             Client.reviseLookbookItem(lookbookItem, position)
             backToMyPage()
