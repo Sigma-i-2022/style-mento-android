@@ -16,7 +16,6 @@ import com.sigmai.stylemento.feature.mypage.adapter.UserViewPagerAdapter
 class MyPageUserFragment(private val showMenu : Int) : BaseFragment<FragmentMyPageUserBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_user
     private val viewModel: MyPageViewModel by viewModels()
-
     val testDataSet = arrayOf("1", "2", "3", "4", "5")
 
     override fun initDataBinding() {
@@ -30,16 +29,19 @@ class MyPageUserFragment(private val showMenu : Int) : BaseFragment<FragmentMyPa
         val interestedAdapter = UserInterestedAdapter(testDataSet)
 
         binding.myPageUserInterestedRecycler.adapter = interestedAdapter
-        if(showMenu == 0)
-            showCloset()
-        else if(showMenu == 1)
-            showLookbook()
 
-        /*binding.myPageUserViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-            }
-        })*/
+        val userAdapter = UserViewPagerAdapter(this)
+        binding.myPageUserViewPager.isUserInputEnabled = false
+        if(showMenu == 0){
+            userAdapter.setMenu(0)
+            binding.myPageUserViewPager.adapter = userAdapter
+            showCloset()
+        }
+        else if(showMenu == 1) {
+            userAdapter.setMenu(1)
+            binding.myPageUserViewPager.adapter = userAdapter
+            showLookbook()
+        }
 
         binding.myPageUserClosetButton.setOnClickListener(View.OnClickListener {
             showCloset()
@@ -62,9 +64,10 @@ class MyPageUserFragment(private val showMenu : Int) : BaseFragment<FragmentMyPa
     }
 
     private fun showCloset(){
-        val userAdapter = UserViewPagerAdapter(this, MyPageClosetFragment())
-        binding.myPageUserViewPager.adapter = userAdapter
-        binding.myPageUserViewPager.isUserInputEnabled = false
+        if(showMenu == 0)
+            binding.myPageUserViewPager.setCurrentItem(0, true)
+        else
+            binding.myPageUserViewPager.setCurrentItem(1, true)
 
         binding.myPageUserLookbookButton.setBackgroundResource(R.drawable.button_null)
         context?.let { it1 -> binding.myPageUserLookbookButton.setTextColor(it1.getColor(R.color.gray_d)) }
@@ -72,9 +75,10 @@ class MyPageUserFragment(private val showMenu : Int) : BaseFragment<FragmentMyPa
         context?.let { it1 -> binding.myPageUserClosetButton.setTextColor(it1.getColor(R.color.black)) }
     }
     private fun showLookbook(){
-        val userAdapter = UserViewPagerAdapter(this, MyPageLookbookFragment())
-        binding.myPageUserViewPager.adapter = userAdapter
-        binding.myPageUserViewPager.isUserInputEnabled = false
+        if(showMenu == 1)
+            binding.myPageUserViewPager.setCurrentItem(0, true)
+        else
+            binding.myPageUserViewPager.setCurrentItem(1, true)
 
         binding.myPageUserClosetButton.setBackgroundResource(R.drawable.button_null)
         context?.let { it1 -> binding.myPageUserClosetButton.setTextColor(it1.getColor(R.color.gray_d)) }
