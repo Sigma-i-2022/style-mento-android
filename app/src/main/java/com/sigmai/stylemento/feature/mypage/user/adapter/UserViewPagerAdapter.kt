@@ -1,9 +1,9 @@
-package com.sigmai.stylemento.feature.mypage.adapter
+package com.sigmai.stylemento.feature.mypage.user.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.sigmai.stylemento.feature.mypage.MyPageClosetFragment
-import com.sigmai.stylemento.feature.mypage.MyPageLookbookFragment
+import com.sigmai.stylemento.feature.mypage.user.MyPageClosetFragment
+import com.sigmai.stylemento.feature.mypage.user.MyPageLookbookFragment
 import java.lang.Exception
 
 class UserViewPagerAdapter(f : Fragment) : FragmentStateAdapter(f){

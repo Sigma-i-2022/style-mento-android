@@ -1,17 +1,14 @@
-package com.sigmai.stylemento.feature.mypage
+package com.sigmai.stylemento.feature.mypage.user
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager2.widget.ViewPager2
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageUserBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.data.model.Client
-import com.sigmai.stylemento.data.model.User
-import com.sigmai.stylemento.feature.mypage.adapter.UserInterestedAdapter
-import com.sigmai.stylemento.feature.mypage.adapter.UserViewPagerAdapter
+import com.sigmai.stylemento.feature.mypage.user.adapter.UserInterestedAdapter
+import com.sigmai.stylemento.feature.mypage.user.adapter.UserViewPagerAdapter
 
 class MyPageUserFragment(private val showMenu : Int) : BaseFragment<FragmentMyPageUserBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_user

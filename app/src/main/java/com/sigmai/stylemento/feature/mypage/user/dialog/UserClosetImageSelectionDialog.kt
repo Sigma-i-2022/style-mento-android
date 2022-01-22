@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.feature.mypage.dialog
+package com.sigmai.stylemento.feature.mypage.user.dialog
 
 import android.content.Context
 import android.graphics.Color

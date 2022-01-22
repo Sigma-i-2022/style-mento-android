@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.feature.mypage
+package com.sigmai.stylemento.feature.mypage.user
 
 import android.view.View
 import androidx.lifecycle.ViewModel

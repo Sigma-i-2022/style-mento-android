@@ -1,28 +1,18 @@
-package com.sigmai.stylemento.feature.mypage
+package com.sigmai.stylemento.feature.mypage.user
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
-import com.sigmai.stylemento.data.model.ClosetItem
 import com.sigmai.stylemento.data.model.LookbookItem
-import com.sigmai.stylemento.databinding.FragmentMyPageClosetAddBinding
 import com.sigmai.stylemento.databinding.FragmentMyPageLookbookAddBinding
-import com.sigmai.stylemento.feature.mypage.adapter.TagAdapter
+import com.sigmai.stylemento.feature.mypage.user.adapter.TagAdapter
 import com.sigmai.stylemento.feature.mypage.dialog.*
+import com.sigmai.stylemento.feature.mypage.user.dialog.UserLookbookTagSelectionDialog
 import com.sigmai.stylemento.global.base.BaseFragment
-import com.sigmai.stylemento.global.constant.FitType
-import com.sigmai.stylemento.global.constant.ItemCategoryType
 import com.sigmai.stylemento.global.constant.TagType
-import com.sigmai.stylemento.global.constant.TextureType
-import com.sigmai.stylemento.global.util.TransformToEnumUtil
-import com.sigmai.stylemento.global.util.TransformToStringUtil
 
 class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_add

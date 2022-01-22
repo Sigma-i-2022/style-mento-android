@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.feature.mypage
+package com.sigmai.stylemento.feature.mypage.user
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -8,7 +8,7 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.LookbookItem
 import com.sigmai.stylemento.databinding.FragmentMyPageLookbookItemBinding
-import com.sigmai.stylemento.feature.mypage.adapter.TagAdapter
+import com.sigmai.stylemento.feature.mypage.user.adapter.TagAdapter
 import com.sigmai.stylemento.global.base.BaseFragment
 
 class MyPageLookbookItemFragment(private val lookbookItem : LookbookItem, private val position : Int) : BaseFragment<FragmentMyPageLookbookItemBinding>() {

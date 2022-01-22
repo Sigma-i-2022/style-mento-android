@@ -1,12 +1,12 @@
-package com.sigmai.stylemento.feature.mypage.dialog
+package com.sigmai.stylemento.feature.mypage.user.dialog
 
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.DialogFragmentMyPageClosetTextureSelectionBinding
-import com.sigmai.stylemento.feature.mypage.MyPageClosetAddFragment
-import com.sigmai.stylemento.feature.mypage.MyPageClosetRevisionFragment
+import com.sigmai.stylemento.feature.mypage.user.MyPageClosetAddFragment
+import com.sigmai.stylemento.feature.mypage.user.MyPageClosetRevisionFragment
 import com.sigmai.stylemento.global.base.BaseDialogFragment
 import com.sigmai.stylemento.global.constant.TextureType
 
