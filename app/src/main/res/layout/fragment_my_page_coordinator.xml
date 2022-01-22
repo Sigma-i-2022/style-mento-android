@@ -14,24 +14,33 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:scrollbars="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
             android:descendantFocusability="blocksDescendants">
 
             <ImageView
-                android:id="@+id/coordiantor_back_img"
+                android:id="@+id/my_page_coordiantor_back_img"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="@color/gray_d"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:background="@drawable/ic_arrow_back"
                 android:onClick="@{()->viewModel.onBackClick()}"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/my_page_coordiantor_revision_img"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:background="@drawable/ic_pencil"
+                android:onClick="@{()->viewModel.onBackClick()}"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,8 +48,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/coordiantor_back_img">
+                app:layout_constraintTop_toBottomOf="@id/my_page_coordiantor_back_img">
 
                 <ImageView
                     android:id="@+id/my_page_coordinator_img"
@@ -55,7 +65,7 @@
                     android:id="@+id/my_page_coordinator_text_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="14dp"
                     android:orientation="vertical"
                     app:layout_constraintStart_toEndOf="@id/my_page_coordinator_img"
@@ -65,41 +75,45 @@
                         android:id="@+id/my_page_coordinator_name_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        tools:text="coordinator_name"
-                        android:textSize="21sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        style="@style/header3"
+                        tools:text="coordinator_name" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        tools:text="coordinator_email"
-                        android:textSize="14sp" />
+                        android:layout_marginTop="1dp"
+                        android:textColor="@color/gray_8"
+                        style="@style/body1"
+                        tools:text="coordinator_email" />
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/my_page_coordinator_tag_recycler"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
                         android:orientation="horizontal"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
                 </LinearLayout>
 
                 <Button
                     android:id="@+id/my_page_coordinator_interested_button"
-                    android:layout_width="60dp"
-                    android:layout_height="30dp"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
                     android:layout_marginTop="6dp"
-                    android:src="@drawable/ic_launcher_foreground"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    android:background="@drawable/bg_circle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/my_page_coordinator_introduction_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Introduction"
-                android:textSize="14sp"
-                android:textStyle="bold"
                 android:layout_marginTop="14dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:textStyle="bold"
+                style="@style/body1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_layout" />
 
@@ -107,8 +121,8 @@
                 android:id="@+id/my_page_coordinator_line"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#CECECE"
                 android:layout_marginTop="22dp"
+                android:background="#CECECE"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_introduction_text" />
 
@@ -116,6 +130,7 @@
                 android:id="@+id/my_page_coordinator_option_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/my_page_coordinator_line">
 
@@ -125,9 +140,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/button_shadow"
-                    android:text="작품"
+                    android:text="옷장"
                     android:textAlignment="center"
-                    android:textSize="18sp" />
+                    style="@style/header4"
+                    android:paddingBottom="15dp" />
 
                 <TextView
                     android:id="@+id/my_page_coordinator_reviews_button"
@@ -135,41 +151,51 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/button_null"
-                    android:text="리뷰"
+                    android:text="룩북"
+                    android:textColor="@color/gray_d"
                     android:textAlignment="center"
-                    android:textSize="18sp" />
+                    style="@style/header4"
+                    android:paddingBottom="15dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
                     android:text="채팅하기"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    style="@style/header4"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:paddingVertical="12dp"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginStart="10dp"
+                    android:layout_weight="1"
                     android:text="예약하기"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    style="@style/header4"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:paddingVertical="12dp"/>
             </LinearLayout>
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/my_page_coordinator_viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
                 android:nestedScrollingEnabled="false"
-                app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_option_layout"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_option_layout" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

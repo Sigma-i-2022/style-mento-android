@@ -1,5 +1,5 @@
 package com.sigmai.stylemento.feature.mypage.user.dialog
-
+/*
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
@@ -137,3 +137,4 @@ class UserLookbookTagSelectionDialog(private val f: Fragment) :
         }
     }
 }
+*/

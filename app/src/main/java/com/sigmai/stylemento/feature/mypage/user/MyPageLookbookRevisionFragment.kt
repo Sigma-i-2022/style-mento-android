@@ -31,15 +31,20 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
             backToMyPage()
         })
 
+        binding.myPageLookbookRevisionItemImg.setOnClickListener(View.OnClickListener {
+            val dialog = UserLookbookImageSelectionDialog()
+            dialog.show(childFragmentManager, "ImageSelectionDialog")
+        })
+
         binding.myPageLookbookRevisionSaveButton.setOnClickListener(View.OnClickListener {
             Client.reviseLookbookItem(lookbookItem, position)
             backToMyPage()
         })
 
-        binding.myPageLookbookRevisionTagAddImg.setOnClickListener(View.OnClickListener {
-            val dialog = UserLookbookTagSelectionDialog(this)
-            dialog.show(childFragmentManager, "TagSelectionDialog")
-        })
+//        binding.myPageLookbookRevisionTagAddImg.setOnClickListener(View.OnClickListener {
+//            val dialog = UserLookbookTagSelectionDialog(this)
+//            dialog.show(childFragmentManager, "TagSelectionDialog")
+//        })
     }
     private fun setTextInit(){
         binding.myPageLookbookRevisionDetailEditText.setText(lookbookItem.deltail)
