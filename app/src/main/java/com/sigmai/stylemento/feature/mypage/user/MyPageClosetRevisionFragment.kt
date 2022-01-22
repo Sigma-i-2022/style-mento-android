@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.feature.mypage
+package com.sigmai.stylemento.feature.mypage.user
 
 import android.os.Bundle
 import android.text.Editable
@@ -8,16 +8,15 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.ClosetItem
 import com.sigmai.stylemento.databinding.FragmentMyPageClosetRevisionBinding
-import com.sigmai.stylemento.feature.mypage.dialog.UserClosetCategorySelectionDialog
-import com.sigmai.stylemento.feature.mypage.dialog.UserClosetFitSelectionDialog
-import com.sigmai.stylemento.feature.mypage.dialog.UserClosetImageSelectionDialog
-import com.sigmai.stylemento.feature.mypage.dialog.UserClosetTextureSelectionDialog
+import com.sigmai.stylemento.feature.mypage.user.dialog.UserClosetCategorySelectionDialog
+import com.sigmai.stylemento.feature.mypage.user.dialog.UserClosetFitSelectionDialog
+import com.sigmai.stylemento.feature.mypage.user.dialog.UserClosetImageSelectionDialog
+import com.sigmai.stylemento.feature.mypage.user.dialog.UserClosetTextureSelectionDialog
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.constant.FitType
 import com.sigmai.stylemento.global.constant.ItemCategoryType
 import com.sigmai.stylemento.global.constant.TextureType
 import com.sigmai.stylemento.global.util.TransformToStringUtil
-import java.text.FieldPosition
 
 class MyPageClosetRevisionFragment(private var closetItem : ClosetItem, private val position: Int) : BaseFragment<FragmentMyPageClosetRevisionBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_closet_revision

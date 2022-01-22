@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.feature.mypage.adapter
+package com.sigmai.stylemento.feature.mypage.user.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.ClosetItem
-import com.sigmai.stylemento.feature.mypage.dialog.UserClosetItemDialog
+import com.sigmai.stylemento.feature.mypage.user.dialog.UserClosetItemDialog
 
 
 class UserClosetAdapter(private val parentFragment : Fragment) : RecyclerView.Adapter<UserClosetAdapter.ViewHolder>() {

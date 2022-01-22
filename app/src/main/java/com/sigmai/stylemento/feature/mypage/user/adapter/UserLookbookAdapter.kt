@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.feature.mypage.adapter
+package com.sigmai.stylemento.feature.mypage.user.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.LookbookItem
-import com.sigmai.stylemento.feature.mypage.MyPageLookbookAddFragment
-import com.sigmai.stylemento.feature.mypage.MyPageLookbookItemFragment
-import com.sigmai.stylemento.feature.mypage.dialog.UserClosetItemDialog
+import com.sigmai.stylemento.feature.mypage.user.MyPageLookbookItemFragment
 
 
 class UserLookbookAdapter(private val parantFragment : Fragment) : RecyclerView.Adapter<UserLookbookAdapter.ViewHolder>() {

@@ -1,15 +1,14 @@
-package com.sigmai.stylemento.feature.mypage
+package com.sigmai.stylemento.feature.mypage.user
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.TextView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageUserRevisionBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.data.model.Client
-import com.sigmai.stylemento.feature.mypage.dialog.UserClosetImageSelectionDialog
+import com.sigmai.stylemento.feature.mypage.user.dialog.UserClosetImageSelectionDialog
 
 class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_user_revision

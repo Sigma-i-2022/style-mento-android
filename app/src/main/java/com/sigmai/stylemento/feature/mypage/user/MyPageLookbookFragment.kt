@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.feature.mypage
+package com.sigmai.stylemento.feature.mypage.user
 
 import android.os.Bundle
 import android.view.View
@@ -6,8 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.databinding.FragmentMyPageLookbookBinding
-import com.sigmai.stylemento.feature.mypage.adapter.UserLookbookAdapter
-import com.sigmai.stylemento.feature.mypage.dialog.UserLookbookAddDialog
+import com.sigmai.stylemento.feature.mypage.user.adapter.UserLookbookAdapter
 import com.sigmai.stylemento.global.base.BaseFragment
 
 class MyPageLookbookFragment : BaseFragment<FragmentMyPageLookbookBinding>() {

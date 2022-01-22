@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.feature.mypage.dialog
+package com.sigmai.stylemento.feature.mypage.user.dialog
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -9,8 +9,8 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.ClosetItem
 import com.sigmai.stylemento.databinding.DialogFragmentMyPageClosetBinding
-import com.sigmai.stylemento.feature.mypage.MyPageClosetRevisionFragment
-import com.sigmai.stylemento.feature.mypage.MyPageUserFragment
+import com.sigmai.stylemento.feature.mypage.user.MyPageClosetRevisionFragment
+import com.sigmai.stylemento.feature.mypage.user.MyPageUserFragment
 import com.sigmai.stylemento.global.base.BaseDialogFragment
 import com.sigmai.stylemento.global.util.TransformToStringUtil
 

@@ -1,18 +1,13 @@
-package com.sigmai.stylemento.feature.mypage.adapter
+package com.sigmai.stylemento.feature.mypage.user.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
-import com.sigmai.stylemento.data.model.LookbookItem
 import com.sigmai.stylemento.global.constant.TagType
 import com.sigmai.stylemento.global.util.TransformToStringUtil
-import org.w3c.dom.Text
 
 
 class TagAdapter : RecyclerView.Adapter<TagAdapter.ViewHolder>() {
