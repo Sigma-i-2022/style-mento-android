@@ -5,7 +5,7 @@ import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.sigmai.stylemento.R
-import com.sigmai.stylemento.databinding.DialogFragmentMyPageLookbookTagSelectionBinding
+import com.sigmai.stylemento.databinding.DialogTagSelectionBinding
 import com.sigmai.stylemento.feature.mypage.user.MyPageLookbookAddFragment
 import com.sigmai.stylemento.feature.mypage.user.MyPageLookbookRevisionFragment
 import com.sigmai.stylemento.global.base.BaseDialogFragment
@@ -14,8 +14,8 @@ import com.sigmai.stylemento.global.util.TransformToEnumUtil
 import com.sigmai.stylemento.global.util.TransformToIntUtil
 
 class UserLookbookTagSelectionDialog(private val f: Fragment) :
-    BaseDialogFragment<DialogFragmentMyPageLookbookTagSelectionBinding>() {
-    override val layoutResourceId = R.layout.dialog_fragment_my_page_lookbook_tag_selection
+    BaseDialogFragment<DialogTagSelectionBinding>() {
+    override val layoutResourceId = R.layout.dialog_tag_selection
     private var tags: MutableList<TagType> = mutableListOf()
     private var tagSize: Int = 0
     private var tagStates: Array<Boolean> = Array(24) { false }
@@ -33,7 +33,7 @@ class UserLookbookTagSelectionDialog(private val f: Fragment) :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.myPageLookbookTagSaveButton.setOnClickListener(View.OnClickListener {
+        binding.tagSelectionSaveButton.setOnClickListener(View.OnClickListener {
             addTags()
             when (f) {
                 is MyPageLookbookAddFragment -> f.setTags(tags)
@@ -42,74 +42,74 @@ class UserLookbookTagSelectionDialog(private val f: Fragment) :
             dismiss()
         })
 
-        binding.myPageLookbookTagCasulalText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagCasulalText, TagType.CASULAL)
+        binding.tagSelectionCasulalText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionCasulalText, TagType.CASULAL)
         })
-        binding.myPageLookbookTagStreetText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagStreetText, TagType.STREET)
+        binding.tagSelectionStreetText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionStreetText, TagType.STREET)
         })
-        binding.myPageLookbookTagModernText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagModernText, TagType.MODERN)
+        binding.tagSelectionModernText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionModernText, TagType.MODERN)
         })
-        binding.myPageLookbookTagFeminineText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagFeminineText, TagType.FEMININE)
+        binding.tagSelectionFeminineText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionFeminineText, TagType.FEMININE)
         })
-        binding.myPageLookbookTagDandyText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagDandyText, TagType.DANDY)
+        binding.tagSelectionDandyText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionDandyText, TagType.DANDY)
         })
-        binding.myPageLookbookTagMinimalText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagMinimalText, TagType.MINIMAL)
+        binding.tagSelectionMinimalText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionMinimalText, TagType.MINIMAL)
         })
-        binding.myPageLookbookTagMaximalText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagMaximalText, TagType.MAXIMAL)
+        binding.tagSelectionMaximalText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionMaximalText, TagType.MAXIMAL)
         })
-        binding.myPageLookbookTagCityText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagCityText, TagType.CITY)
+        binding.tagSelectionCityText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionCityText, TagType.CITY)
         })
-        binding.myPageLookbookTagAmericanCasualText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagAmericanCasualText, TagType.AMERICANCASUAL)
+        binding.tagSelectionAmericanCasualText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionAmericanCasualText, TagType.AMERICANCASUAL)
         })
-        binding.myPageLookbookTagClassicText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagClassicText, TagType.CLASSIC)
+        binding.tagSelectionClassicText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionClassicText, TagType.CLASSIC)
         })
-        binding.myPageLookbookTagStudentText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagStudentText, TagType.STUDENT)
+        binding.tagSelectionStudentText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionStudentText, TagType.STUDENT)
         })
-        binding.myPageLookbookTagOfficeText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagOfficeText, TagType.OFFICE)
+        binding.tagSelectionOfficeText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionOfficeText, TagType.OFFICE)
         })
-        binding.myPageLookbookTagDateText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagDateText, TagType.DATE)
+        binding.tagSelectionDateText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionDateText, TagType.DATE)
         })
-        binding.myPageLookbookTagBlindDateText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagBlindDateText, TagType.BLINDDATE)
+        binding.tagSelectionBlindDateText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionBlindDateText, TagType.BLINDDATE)
         })
-        binding.myPageLookbookTagTourText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagTourText, TagType.TRAVEL)
+        binding.tagSelectionTourText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionTourText, TagType.TRAVEL)
         })
-        binding.myPageLookbookTagPartyText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagPartyText, TagType.PARTY)
+        binding.tagSelectionPartyText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionPartyText, TagType.PARTY)
         })
-        binding.myPageLookbookTagCoupleText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagCoupleText, TagType.COUPLE)
+        binding.tagSelectionCoupleText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionCoupleText, TagType.COUPLE)
         })
-        binding.myPageLookbookTagGuestText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagGuestText, TagType.GUEST)
+        binding.tagSelectionGuestText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionGuestText, TagType.GUEST)
         })
-        binding.myPageLookbookTagSpringText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagSpringText, TagType.SPRING)
+        binding.tagSelectionSpringText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionSpringText, TagType.SPRING)
         })
-        binding.myPageLookbookTagSummerText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagSummerText, TagType.SUMMER)
+        binding.tagSelectionSummerText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionSummerText, TagType.SUMMER)
         })
-        binding.myPageLookbookTagAutumnText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagAutumnText, TagType.AUTUMN)
+        binding.tagSelectionAutumnText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionAutumnText, TagType.AUTUMN)
         })
-        binding.myPageLookbookTagWinterText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagWinterText, TagType.WINTER)
+        binding.tagSelectionWinterText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionWinterText, TagType.WINTER)
         })
-        binding.myPageLookbookTagRainText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.myPageLookbookTagRainText, TagType.RAIN)
+        binding.tagSelectionRainText.setOnClickListener(View.OnClickListener {
+            onTextViewClick(binding.tagSelectionRainText, TagType.RAIN)
         })
     }
 

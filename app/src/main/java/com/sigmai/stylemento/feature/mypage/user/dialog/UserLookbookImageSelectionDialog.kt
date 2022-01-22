@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.*
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.DialogFragmentMyPageClosetBinding
+import com.sigmai.stylemento.databinding.DialogImageSelectionBinding
 import com.sigmai.stylemento.global.base.BaseDialogFragment
 
-class UserLookbookImageSelectionDialog : BaseDialogFragment<DialogFragmentMyPageClosetBinding>() {
-    override val layoutResourceId = R.layout.dialog_fragment_my_page_lookbook_image_selection
+class UserLookbookImageSelectionDialog : BaseDialogFragment<DialogImageSelectionBinding>() {
+    override val layoutResourceId = R.layout.dialog_image_selection
 
     override fun onStart() {
         super.onStart()
