@@ -1,10 +1,11 @@
-package com.sigmai.stylemento.feature.mypage.user
+package com.sigmai.stylemento.feature.mypage
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageBinding
+import com.sigmai.stylemento.feature.mypage.user.MyPageUserFragment
 import com.sigmai.stylemento.global.base.BaseFragment
 
 class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
