@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -20,16 +21,15 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="60dp"/>
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:background="@drawable/tab_background"
-            app:tabIconTint="@color/primary"
-            app:tabIndicator="@null">
-        </com.google.android.material.tabs.TabLayout>
-
-
+            app:menu="@menu/bottom_navigation"
+            app:itemIconTint="@color/primary"
+            app:labelVisibilityMode="unlabeled"
+            app:itemIconSize="40dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
