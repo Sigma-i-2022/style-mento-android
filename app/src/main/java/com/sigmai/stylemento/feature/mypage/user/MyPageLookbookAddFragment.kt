@@ -38,10 +38,10 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
             backToMyPage()
         })
 
-//        binding.myPageLookbookAddTagAddImg.setOnClickListener(View.OnClickListener {
-//            val dialog = UserLookbookTagSelectionDialog(this)
-//            dialog.show(childFragmentManager, "TagSelectionDialog")
-//        })
+       binding.myPageLookbookAddTagAddImg.setOnClickListener(View.OnClickListener {
+            val dialog = UserLookbookTagSelectionDialog(this)
+            dialog.show(childFragmentManager, "TagSelectionDialog")
+        })
     }
 
     private fun setEditTextLayout(){

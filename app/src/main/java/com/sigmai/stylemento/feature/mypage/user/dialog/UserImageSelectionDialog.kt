@@ -3,7 +3,6 @@ package com.sigmai.stylemento.feature.mypage.user.dialog
 import android.os.Bundle
 import android.view.*
 import com.sigmai.stylemento.R
-import com.sigmai.stylemento.databinding.DialogFragmentMyPageClosetBinding
 import com.sigmai.stylemento.databinding.DialogImageSelectionBinding
 import com.sigmai.stylemento.global.base.BaseDialogFragment
 

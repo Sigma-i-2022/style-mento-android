@@ -41,10 +41,10 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
             backToMyPage()
         })
 
-//        binding.myPageLookbookRevisionTagAddImg.setOnClickListener(View.OnClickListener {
-//            val dialog = UserLookbookTagSelectionDialog(this)
-//            dialog.show(childFragmentManager, "TagSelectionDialog")
-//        })
+        binding.myPageLookbookRevisionTagAddImg.setOnClickListener(View.OnClickListener {
+            val dialog = UserLookbookTagSelectionDialog(this)
+            dialog.show(childFragmentManager, "TagSelectionDialog")
+        })
     }
     private fun setTextInit(){
         binding.myPageLookbookRevisionDetailEditText.setText(lookbookItem.deltail)
