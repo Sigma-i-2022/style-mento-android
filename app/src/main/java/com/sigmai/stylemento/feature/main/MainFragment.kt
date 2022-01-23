@@ -23,21 +23,17 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
     }
 
     fun setBottomNavigation() {
-        val viewPager  = view?.findViewById<ViewPager2>(R.id.main_viewpager)
-        val pagerAdapter = MainPagerAdapter(this)
-
-        viewPager?.apply {
-            adapter = pagerAdapter
+        binding.mainViewpager.apply {
+            adapter = MainPagerAdapter(this@MainFragment)
             isUserInputEnabled = false
+            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+
+                    binding.bottomNavigation.selectedItemId = pages[position]
+                }
+            })
         }
-
-        viewPager?.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-
-                binding.bottomNavigation.selectedItemId = pages[position]
-            }
-        })
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             binding.mainViewpager.currentItem =
