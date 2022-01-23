@@ -7,6 +7,7 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.databinding.FragmentMyPageCoordinatorBinding
 import com.sigmai.stylemento.feature.mypage.MyPageViewModel
+import com.sigmai.stylemento.feature.mypage.TagAdapter
 import com.sigmai.stylemento.global.base.BaseFragment
 
 class MyPageCoordinatorFragment(private val showMenu : Int) : BaseFragment<FragmentMyPageCoordinatorBinding>() {
@@ -52,6 +53,10 @@ class MyPageCoordinatorFragment(private val showMenu : Int) : BaseFragment<Fragm
         binding.myPageCoordinatorNameText.text = Client.getCoordinatorInfo().nickname
         binding.myPageCoordinatorEmailText.text = Client.getCoordinatorInfo().email
         binding.myPageCoordinatorIntroductionText.text = Client.getCoordinatorInfo().introduction
+
+        val tagAdapter = TagAdapter()
+        tagAdapter.setDataSet(Client.getCoordinatorInfo().styleTags)
+        binding.myPageCoordinatorTagRecycler.adapter = tagAdapter
 
     }
 
