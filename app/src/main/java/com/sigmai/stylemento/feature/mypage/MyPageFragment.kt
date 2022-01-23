@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageBinding
+import com.sigmai.stylemento.feature.mypage.coordinator.MyPageCoordinatorFragment
 import com.sigmai.stylemento.feature.mypage.user.MyPageUserFragment
 import com.sigmai.stylemento.global.base.BaseFragment
 
@@ -24,13 +25,13 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
     }
 
     public fun setMyPageFragment(){
-        if(true){
+        if(false){
             val transaction = childFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment(0))
             transaction.addToBackStack(null)
             transaction.commit()
         }
-        else{ //coordinator my page로 수정
-            val transaction = childFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment(0))
+        else{
+            val transaction = childFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageCoordinatorFragment(0))
             transaction.addToBackStack(null)
             transaction.commit()
         }
