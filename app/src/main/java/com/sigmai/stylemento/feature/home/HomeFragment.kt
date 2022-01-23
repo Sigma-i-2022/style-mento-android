@@ -26,7 +26,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         binding.viewModel = viewModel
 
         viewModel.startNotification.observe(this, {
-            findNavController().navigate(R.id.action_home_to_notification)
+            findNavController().navigate(R.id.action_main_to_notification_m)
         })
     }
 
