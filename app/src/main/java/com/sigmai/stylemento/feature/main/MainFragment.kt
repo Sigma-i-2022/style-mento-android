@@ -1,5 +1,6 @@
 package com.sigmai.stylemento.feature.main
 
+import android.view.MenuItem
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -17,6 +18,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
         super.initState()
 
         setViewPager()
+        setBottomNavigation()
     }
 
     fun setViewPager() {
@@ -30,5 +32,54 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
 //        }.attach()
 //
 //        viewPager.isUserInputEnabled = false
+    }
+
+    fun setBottomNavigation() {
+        val viewPager  = view?.findViewById<ViewPager2>(R.id.main_viewpager)
+        val pagerAdapter = MainPagerAdapter(this)
+
+        viewPager?.apply {
+            adapter = pagerAdapter
+            isUserInputEnabled = false
+        }
+
+        viewPager?.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+
+                binding.bottomNavigation.selectedItemId = when(position) {
+                    0 -> R.id.page_home
+                    1 -> R.id.page_coordinator
+                    2 -> R.id.page_chat
+                    3 -> R.id.page_my
+                    else -> throw Exception("알 수 없는 탭입니다.")
+                }
+            }
+        })
+
+        binding.bottomNavigation.setOnNavigationItemSelectedListener { navigationSelected(it) }
+    }
+
+    private fun navigationSelected(item: MenuItem): Boolean {
+        val checked = item.setChecked(true)
+        return when (checked.itemId) {
+            R.id.page_home -> {
+                binding.mainViewpager.currentItem = 0
+                true
+            }
+            R.id.page_coordinator -> {
+                binding.mainViewpager.currentItem = 1
+                true
+            }
+            R.id.page_chat -> {
+                binding.mainViewpager.currentItem = 2
+                true
+            }
+            R.id.page_my -> {
+                binding.mainViewpager.currentItem = 3
+                true
+            }
+            else -> false
+        }
     }
 }

@@ -15,4 +15,9 @@
         android:enabled="true"
         android:title="채팅"
         android:icon="@drawable/tab_chat"/>
+    <item
+        android:id="@+id/page_my"
+        android:enabled="true"
+        android:title="나"
+        android:icon="@drawable/tab_person"/>
 </menu>
