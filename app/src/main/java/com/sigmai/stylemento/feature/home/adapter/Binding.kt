@@ -20,3 +20,8 @@ fun setNotifications(listView: RecyclerView, items: List<Notification>) {
 fun setRecommendations(listView: RecyclerView, items: List<RecommendedCoordinator>) {
     (listView.adapter as RecommendedCoordinatorAdapter).setList(items)
 }
+
+@BindingAdapter("app:tags")
+fun setTags(listView: RecyclerView, items: List<String>) {
+    (listView.adapter as TagAdapter).setList(items)
+}
