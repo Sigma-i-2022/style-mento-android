@@ -2,8 +2,6 @@ package com.sigmai.stylemento.feature.main
 
 import android.view.MenuItem
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMainBinding
 import com.sigmai.stylemento.feature.main.adapter.MainPagerAdapter
@@ -41,14 +39,12 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
             }
         })
 
-        binding.bottomNavigation.setOnNavigationItemSelectedListener { navigationSelected(it) }
-    }
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            binding.mainViewpager.currentItem =
+                positions[item.itemId]
+                ?: throw Exception("알 수 없는 탭입니다.")
 
-    private fun navigationSelected(item: MenuItem): Boolean {
-        item.isChecked = true
-
-        binding.mainViewpager.currentItem = positions[item.itemId] ?: throw Exception("알 수 없는 탭입니다.")
-
-        return true
+            true
+        }
     }
 }
