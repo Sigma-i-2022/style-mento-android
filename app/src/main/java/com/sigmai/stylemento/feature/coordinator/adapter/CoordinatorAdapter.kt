@@ -36,7 +36,7 @@ class CoordinatorAdapter : ListAdapter<Coordinator, CoordinatorAdapter.Coordinat
 
 class TempDiffCallback : DiffUtil.ItemCallback<Coordinator>() {
     override fun areItemsTheSame(oldItem: Coordinator, newItem: Coordinator): Boolean {
-        return oldItem == newItem
+        return oldItem === newItem
     }
 
     override fun areContentsTheSame(oldItem: Coordinator, newItem: Coordinator): Boolean {

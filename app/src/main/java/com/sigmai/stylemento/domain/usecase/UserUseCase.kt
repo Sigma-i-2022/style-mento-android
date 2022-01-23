@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.global.usecase
+package com.sigmai.stylemento.domain.usecase
 
 import com.sigmai.stylemento.data.model.User
 import com.sigmai.stylemento.data.repository.UserRepository
