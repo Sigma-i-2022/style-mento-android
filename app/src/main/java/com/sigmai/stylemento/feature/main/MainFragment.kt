@@ -1,5 +1,6 @@
 package com.sigmai.stylemento.feature.main
 
+import android.view.MenuItem
 import androidx.viewpager2.widget.ViewPager2
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMainBinding
@@ -25,23 +26,25 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
         binding.mainViewpager.apply {
             adapter = MainPagerAdapter(this@MainFragment)
             isUserInputEnabled = false
-            registerOnPageChangeCallback(pageChangeCallback)
+            registerOnPageChangeCallback(onPageChangeCallback)
         }
 
-        binding.bottomNavigation.setOnItemSelectedListener { item ->
-            binding.mainViewpager.currentItem =
-                positions[item.itemId]
-                ?: throw Exception("알 수 없는 탭입니다.")
-
-            true
-        }
+        binding.bottomNavigation.setOnItemSelectedListener { onItemSelected(it) }
     }
 
-    private val pageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
+    private val onPageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
         override fun onPageSelected(position: Int) {
             super.onPageSelected(position)
 
             binding.bottomNavigation.selectedItemId = pages[position]
         }
+    }
+
+    private fun onItemSelected(item: MenuItem) : Boolean {
+        binding.mainViewpager.currentItem =
+            positions[item.itemId]
+                ?: throw Exception("알 수 없는 탭입니다.")
+
+        return true
     }
 }
