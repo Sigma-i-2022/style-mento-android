@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.sigmai.stylemento.feature.mypage.user.MyPageViewModel" />
+            type="com.sigmai.stylemento.feature.mypage.MyPageViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -28,7 +28,6 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/ic_arrow_back"
-                android:onClick="@{()->viewModel.onBackClick()}"
                 android:layout_marginHorizontal="@dimen/horizontal_margin"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
