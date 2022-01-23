@@ -2,26 +2,20 @@ package com.sigmai.stylemento.feature.coordinator.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.data.model.Coordinator
 import com.sigmai.stylemento.databinding.ItemCoordinatorBinding
 
-class CoordinatorAdapter : RecyclerView.Adapter<CoordinatorAdapter.CoordinatorViewHolder>() {
-    var coordinatorList: List<Coordinator>? = null
-
+class CoordinatorAdapter : ListAdapter<Coordinator, CoordinatorAdapter.CoordinatorViewHolder>(TempDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoordinatorViewHolder {
         return CoordinatorViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: CoordinatorViewHolder, position: Int) {
-        val item = coordinatorList!![position]
+        val item = getItem(position)
         holder.bind(item)
-    }
-
-    override fun getItemCount() = coordinatorList?.size ?: 0
-
-    fun setList(list: List<Coordinator>) {
-        coordinatorList = list
     }
 
     class CoordinatorViewHolder private constructor(val binding: ItemCoordinatorBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -37,5 +31,15 @@ class CoordinatorAdapter : RecyclerView.Adapter<CoordinatorAdapter.CoordinatorVi
                 return CoordinatorViewHolder(binding)
             }
         }
+    }
+}
+
+class TempDiffCallback : DiffUtil.ItemCallback<Coordinator>() {
+    override fun areItemsTheSame(oldItem: Coordinator, newItem: Coordinator): Boolean {
+        return oldItem == newItem
+    }
+
+    override fun areContentsTheSame(oldItem: Coordinator, newItem: Coordinator): Boolean {
+        return oldItem == newItem
     }
 }

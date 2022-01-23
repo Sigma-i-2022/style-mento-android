@@ -6,5 +6,5 @@ import com.sigmai.stylemento.data.model.Coordinator
 
 @BindingAdapter("app:coordinators")
 fun setList(recyclerView: RecyclerView, list: List<Coordinator>) {
-    (recyclerView.adapter as CoordinatorAdapter).setList(list)
+    (recyclerView.adapter as CoordinatorAdapter).submitList(list)
 }
