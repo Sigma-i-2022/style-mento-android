@@ -7,6 +7,7 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageUserBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.data.model.Client
+import com.sigmai.stylemento.feature.mypage.MyPageViewModel
 import com.sigmai.stylemento.feature.mypage.user.adapter.UserInterestedAdapter
 import com.sigmai.stylemento.feature.mypage.user.adapter.UserViewPagerAdapter
 
@@ -82,12 +83,4 @@ class MyPageUserFragment(private val showMenu : Int) : BaseFragment<FragmentMyPa
         binding.myPageUserLookbookButton.setBackgroundResource(R.drawable.button_shadow)
         context?.let { it1 -> binding.myPageUserLookbookButton.setTextColor(it1.getColor(R.color.black)) }
     }
-
-    /*private fun dataBingingViewPager(position : Int){
-        (binding.myPageUserViewPager.adapter as UserViewPagerAdapter).apply {
-            fragments = arrayOf(MyPageClosetFragment(), MyPageLookbookFragment())
-            notifyDataSetChanged()
-        }
-        binding.myPageUserViewPager.setCurrentItem(position, true)
-    }*/
 }
