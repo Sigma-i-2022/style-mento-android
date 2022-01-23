@@ -6,19 +6,22 @@
     android:id="@+id/nav_main"
     app:startDestination="@id/home">
 
-    <fragment
-        android:id="@+id/home"
-        android:name="com.sigmai.stylemento.feature.home.HomeFragment"
-        android:label="home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_home_to_notification"
-            app:destination="@id/notification" />
-    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/home"-->
+<!--        android:name="com.sigmai.stylemento.feature.home.HomeFragment"-->
+<!--        android:label="home"-->
+<!--        tools:layout="@layout/fragment_home" >-->
+<!--        <action-->
+<!--            android:id="@+id/action_home_to_notification"-->
+<!--            app:destination="@id/notification" />-->
+<!--    </fragment>-->
 
-    <fragment
-        android:id="@+id/notification"
-        android:name="com.sigmai.stylemento.feature.home.notification.NotificationFragment"
-        android:label="notification"
-        tools:layout="@layout/fragment_notification" />
+<!--    <fragment-->
+<!--        android:id="@+id/notification"-->
+<!--        android:name="com.sigmai.stylemento.feature.home.notification.NotificationFragment"-->
+<!--        android:label="notification"-->
+<!--        tools:layout="@layout/fragment_notification" />-->
+<!--    -->
+<!--    <fragment-->
+<!--        android:id="@+id/chat"/>-->
 </navigation>

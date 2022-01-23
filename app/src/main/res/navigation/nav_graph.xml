@@ -11,12 +11,12 @@
         tools:layout="@layout/fragment_main"
         android:label="main">
         <action
-            android:id="@+id/action_main_to_notification_m"
-            app:destination="@id/notification_m" />
+            android:id="@+id/action_main_to_notification"
+            app:destination="@id/notification" />
     </fragment>
 
     <fragment
-        android:id="@+id/notification_m"
+        android:id="@+id/notification"
         android:name="com.sigmai.stylemento.feature.home.notification.NotificationFragment"
         android:label="notification"
         tools:layout="@layout/fragment_notification" />

@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
-import com.sigmai.stylemento.data.model.RecommendedCoordinator
 import com.sigmai.stylemento.databinding.FragmentHomeBinding
 import com.sigmai.stylemento.feature.home.adapter.FavoriteCoordinatorAdapter
 import com.sigmai.stylemento.feature.home.adapter.RecommendedCoordinatorAdapter
@@ -26,7 +24,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         binding.viewModel = viewModel
 
         viewModel.startNotification.observe(this, {
-            findNavController().navigate(R.id.action_main_to_notification_m)
+            findNavController().navigate(R.id.action_main_to_notification)
         })
     }
 
