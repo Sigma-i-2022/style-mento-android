@@ -17,6 +17,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun initState() {
         super.initState()
         getUserInfo()
+        setupAdapter()
     }
 
     override fun initDataBinding() {
@@ -32,13 +33,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         viewModel.getUserInfo()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        setupAdapter()
-    }
-
-    fun setupAdapter() {
+    private fun setupAdapter() {
         binding.favoriteCoordinatorList.adapter = FavoriteCoordinatorAdapter()
         binding.recommendedCoordinatorList.adapter = RecommendedCoordinatorAdapter(viewModel)
     }
