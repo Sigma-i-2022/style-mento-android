@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.sigmai.stylemento.R
 
+@Deprecated("여러 개의 NavHost -> 한 개로 리팩터링하면서 필요 없어짐")
 class MyPageHostFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,

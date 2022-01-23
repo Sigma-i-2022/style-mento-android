@@ -3,7 +3,9 @@ package com.sigmai.stylemento.feature.chat.adapter
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.ChattingRoom
 import com.sigmai.stylemento.databinding.ItemChatListBinding
 import com.sigmai.stylemento.feature.chat.chat_room.ChatRoomActivity
@@ -30,8 +32,7 @@ class ChattingRoomListAdapter : RecyclerView.Adapter<ChattingRoomListAdapter.Cha
             binding.item = item
 
             binding.root.setOnClickListener {
-                val intent = Intent(binding.root.context, ChatRoomActivity::class.java)
-                binding.root.context.startActivity(intent)
+                binding.root.findNavController().navigate(R.id.action_main_to_chat_room)
             }
         }
 

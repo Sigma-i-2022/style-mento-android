@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_main_to_notification"
             app:destination="@id/notification" />
+        <action
+            android:id="@+id/action_main_to_chat_room"
+            app:destination="@id/chat_room" />
     </fragment>
 
     <fragment
@@ -20,4 +23,10 @@
         android:name="com.sigmai.stylemento.feature.home.notification.NotificationFragment"
         android:label="notification"
         tools:layout="@layout/fragment_notification" />
+
+    <fragment
+        android:id="@+id/chat_room"
+        android:name="com.sigmai.stylemento.feature.chat.ChattingRoomFragment"
+        android:label="chatting room"
+        tools:layout="@layout/fragment_chat_room" />
 </navigation>
