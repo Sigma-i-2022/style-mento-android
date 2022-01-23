@@ -19,7 +19,6 @@ object Client {
         this.userInfo = userInfo
     }
 
-
     fun addClosetItem(item : ClosetItem){
         userInfo.closetItems.add(item)
     }
@@ -39,6 +38,34 @@ object Client {
     fun reviseLookbookItem(item : LookbookItem, position : Int){
         userInfo.lookbookItems.removeAt(position)
         userInfo.lookbookItems.add(position, item)
+    }
+
+    private var coordinatorInfo = Coordinator("testCordi", "test@email")
+    fun getCoordinatorInfo() : Coordinator{
+        return coordinatorInfo
+    }
+    fun setCoordinatorInfo(userInfo : Coordinator){
+        this.coordinatorInfo = userInfo
+    }
+    fun addWorkItem(item : WorkItem){
+        coordinatorInfo.workItems.add(item)
+    }
+    fun removeWorkItem(position : Int){
+        coordinatorInfo.workItems.removeAt(position)
+    }
+    fun reviseWorkItem(item : WorkItem, position : Int){
+        coordinatorInfo.workItems.removeAt(position)
+        coordinatorInfo.workItems.add(position, item)
+    }
+    fun addReviewItem(item : ReviewItem){
+        coordinatorInfo.reviews.add(item)
+    }
+    fun removeReviewItem(position : Int){
+        coordinatorInfo.reviews.removeAt(position)
+    }
+    fun reviseReviewItem(item : ReviewItem, position : Int){
+        coordinatorInfo.reviews.removeAt(position)
+        coordinatorInfo.reviews.add(position, item)
     }
 
 }
