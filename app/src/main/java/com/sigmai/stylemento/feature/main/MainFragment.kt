@@ -11,27 +11,16 @@ import com.sigmai.stylemento.global.base.BaseFragment
 
 class MainFragment : BaseFragment<FragmentMainBinding>() {
     override val layoutResourceId = R.layout.fragment_main
-
-    private val tabIcons = arrayListOf(R.drawable.tab_home, R.drawable.tab_clothes, R.drawable.tab_chat, R.drawable.tab_person)
+    private val pages = mapOf(
+        0 to R.id.page_home,
+        1 to R.id.page_coordinator,
+        2 to R.id.page_chat,
+        3 to R.id.page_my)
 
     override fun initState() {
         super.initState()
 
-        setViewPager()
         setBottomNavigation()
-    }
-
-    fun setViewPager() {
-//        val tabs = view?.findViewById<TabLayout>(R.id.tabs)
-//        val viewPager  = view?.findViewById<ViewPager2>(R.id.main_viewpager)
-//        val pagerAdapter = MainPagerAdapter(this)
-//
-//        viewPager?.adapter = pagerAdapter
-//        TabLayoutMediator(tabs!!, viewPager!!) { tab, position ->
-//            tab.setIcon(tabIcons[position])
-//        }.attach()
-//
-//        viewPager.isUserInputEnabled = false
     }
 
     fun setBottomNavigation() {
@@ -47,13 +36,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
 
-                binding.bottomNavigation.selectedItemId = when(position) {
-                    0 -> R.id.page_home
-                    1 -> R.id.page_coordinator
-                    2 -> R.id.page_chat
-                    3 -> R.id.page_my
-                    else -> throw Exception("알 수 없는 탭입니다.")
-                }
+                binding.bottomNavigation.selectedItemId = pages[position] ?: throw Exception("알 수 없는 탭입니다.")
             }
         })
 
