@@ -35,6 +35,7 @@ class RecommendedCoordinatorAdapter(private val viewModel: HomeViewModel) : Recy
         fun bind(viewModel: HomeViewModel, item: RecommendedCoordinator) {
             binding.viewModel = viewModel
             binding.coordinator = item
+            binding.homeTags.adapter = TagAdapter()
             binding.executePendingBindings()
 
             val view = binding.recommendedCoordinatorPhoto

@@ -49,50 +49,17 @@
             android:textColor="@color/black"
             android:textSize="13sp"/>
 
-        <TextView
-            android:id="@+id/recommended_tag1"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/home_tags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/recommend_card_view"
             app:layout_constraintTop_toBottomOf="@id/recommended_coordinator_name"
             android:layout_marginTop="8dp"
             android:layout_marginStart="12dp"
-            android:paddingHorizontal="6dp"
-            android:paddingVertical="2dp"
-            tools:text="#미니멀"
-            android:text="@{coordinator.tag[0]}"
-            android:textSize="10sp"
-            android:background="@drawable/outlined_tag_background"/>
-
-        <TextView
-            android:id="@+id/recommended_tag2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/recommended_tag1"
-            app:layout_constraintStart_toEndOf="@id/recommended_tag1"
-            android:layout_marginStart="6dp"
-            android:paddingHorizontal="6dp"
-            android:paddingVertical="2dp"
-            tools:text="#미니멀"
-            android:text="@{coordinator.tag[1]}"
-            android:textSize="10sp"
-            android:background="@drawable/outlined_tag_background"
-            android:visibility="@{coordinator.tag[1].length() > 0 ? View.VISIBLE : View.INVISIBLE}"/>
-
-        <TextView
-            android:id="@+id/recommended_tag3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/recommended_tag1"
-            app:layout_constraintStart_toEndOf="@id/recommended_tag2"
-            android:layout_marginStart="6dp"
-            android:paddingHorizontal="6dp"
-            android:paddingVertical="2dp"
-            tools:text="#미니멀"
-            android:text="@{coordinator.tag[2]}"
-            android:textSize="10sp"
-            android:background="@drawable/outlined_tag_background"
-            android:visibility="@{coordinator.tag[2].length() > 0 ? View.VISIBLE : View.INVISIBLE}"/>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            app:tags="@{coordinator.tag}"/>
 
         <View
             android:layout_width="16dp"
