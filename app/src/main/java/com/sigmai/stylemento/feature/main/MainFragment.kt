@@ -20,15 +20,15 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
     }
 
     fun setViewPager() {
-        val tabs = view?.findViewById<TabLayout>(R.id.tabs)
-        val viewPager  = view?.findViewById<ViewPager2>(R.id.main_viewpager)
-        val pagerAdapter = MainPagerAdapter(this)
-
-        viewPager?.adapter = pagerAdapter
-        TabLayoutMediator(tabs!!, viewPager!!) { tab, position ->
-            tab.setIcon(tabIcons[position])
-        }.attach()
-
-        viewPager.isUserInputEnabled = false
+//        val tabs = view?.findViewById<TabLayout>(R.id.tabs)
+//        val viewPager  = view?.findViewById<ViewPager2>(R.id.main_viewpager)
+//        val pagerAdapter = MainPagerAdapter(this)
+//
+//        viewPager?.adapter = pagerAdapter
+//        TabLayoutMediator(tabs!!, viewPager!!) { tab, position ->
+//            tab.setIcon(tabIcons[position])
+//        }.attach()
+//
+//        viewPager.isUserInputEnabled = false
     }
 }
