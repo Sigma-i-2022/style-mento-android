@@ -8,6 +8,7 @@ import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.databinding.FragmentMyPageCoordinatorBinding
 import com.sigmai.stylemento.feature.mypage.MyPageViewModel
 import com.sigmai.stylemento.feature.mypage.TagAdapter
+import com.sigmai.stylemento.feature.mypage.coordinator.adapter.CoordinatorViewPagerAdapter
 import com.sigmai.stylemento.global.base.BaseFragment
 
 class MyPageCoordinatorFragment(private val showMenu : Int) : BaseFragment<FragmentMyPageCoordinatorBinding>() {
@@ -23,18 +24,18 @@ class MyPageCoordinatorFragment(private val showMenu : Int) : BaseFragment<Fragm
         super.onViewCreated(view, savedInstanceState)
 
 
-        /*val userAdapter = UserViewPagerAdapter(this)
-        binding.myPageUserViewPager.isUserInputEnabled = false
+        val coordinatorAdapter = CoordinatorViewPagerAdapter(this)
+        binding.myPageCoordinatorViewPager.isUserInputEnabled = false
         if(showMenu == 0){
-            userAdapter.setMenu(0)
-            binding.myPageUserViewPager.adapter = userAdapter
-            showCloset()
+            coordinatorAdapter.setMenu(0)
+            binding.myPageCoordinatorViewPager.adapter = coordinatorAdapter
+            showWork()
         }
         else if(showMenu == 1) {
-            userAdapter.setMenu(1)
-            binding.myPageUserViewPager.adapter = userAdapter
-            showLookbook()
-        }*/
+            coordinatorAdapter.setMenu(1)
+            binding.myPageCoordinatorViewPager.adapter = coordinatorAdapter
+            showReview()
+        }
 
         binding.myPageCoordinatorWorkButton.setOnClickListener(View.OnClickListener {
             showWork()
@@ -61,25 +62,25 @@ class MyPageCoordinatorFragment(private val showMenu : Int) : BaseFragment<Fragm
     }
 
     private fun showWork(){
-        /*if(showMenu == 0)
-            binding.myPageUserViewPager.setCurrentItem(0, true)
+        if(showMenu == 0)
+            binding.myPageCoordinatorViewPager.setCurrentItem(0, true)
         else
-            binding.myPageUserViewPager.setCurrentItem(1, true)
+            binding.myPageCoordinatorViewPager.setCurrentItem(1, true)
 
-        binding.myPageUserLookbookButton.setBackgroundResource(R.drawable.button_null)
-        context?.let { it1 -> binding.myPageUserLookbookButton.setTextColor(it1.getColor(R.color.gray_d)) }
-        binding.myPageUserClosetButton.setBackgroundResource(R.drawable.button_shadow)
-        context?.let { it1 -> binding.myPageUserClosetButton.setTextColor(it1.getColor(R.color.black)) }*/
+        binding.myPageCoordinatorReviewsButton.setBackgroundResource(R.drawable.button_null)
+        context?.let { it1 -> binding.myPageCoordinatorReviewsButton.setTextColor(it1.getColor(R.color.gray_d)) }
+        binding.myPageCoordinatorWorkButton.setBackgroundResource(R.drawable.button_shadow)
+        context?.let { it1 -> binding.myPageCoordinatorWorkButton.setTextColor(it1.getColor(R.color.black)) }
     }
     private fun showReview(){
-        /*if(showMenu == 1)
-            binding.myPageUserViewPager.setCurrentItem(0, true)
+        if(showMenu == 1)
+            binding.myPageCoordinatorViewPager.setCurrentItem(0, true)
         else
-            binding.myPageUserViewPager.setCurrentItem(1, true)
+            binding.myPageCoordinatorViewPager.setCurrentItem(1, true)
 
-        binding.myPageUserClosetButton.setBackgroundResource(R.drawable.button_null)
-        context?.let { it1 -> binding.myPageUserClosetButton.setTextColor(it1.getColor(R.color.gray_d)) }
-        binding.myPageUserLookbookButton.setBackgroundResource(R.drawable.button_shadow)
-        context?.let { it1 -> binding.myPageUserLookbookButton.setTextColor(it1.getColor(R.color.black)) }*/
+        binding.myPageCoordinatorWorkButton.setBackgroundResource(R.drawable.button_null)
+        context?.let { it1 -> binding.myPageCoordinatorWorkButton.setTextColor(it1.getColor(R.color.gray_d)) }
+        binding.myPageCoordinatorReviewsButton.setBackgroundResource(R.drawable.button_shadow)
+        context?.let { it1 -> binding.myPageCoordinatorReviewsButton.setTextColor(it1.getColor(R.color.black)) }
     }
 }
