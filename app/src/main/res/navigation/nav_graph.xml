@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/main">
+
+    <fragment
+        android:id="@+id/main"
+        android:name="com.sigmai.stylemento.feature.main.MainFragment"
+        tools:layout="@layout/fragment_main"
+        android:label="main">
+        <action
+            android:id="@+id/action_main_to_notification"
+            app:destination="@id/notification" />
+        <action
+            android:id="@+id/action_main_to_chat_room"
+            app:destination="@id/chat_room" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/notification"
+        android:name="com.sigmai.stylemento.feature.home.notification.NotificationFragment"
+        android:label="notification"
+        tools:layout="@layout/fragment_notification" />
+
+    <fragment
+        android:id="@+id/chat_room"
+        android:name="com.sigmai.stylemento.feature.chat.ChattingRoomFragment"
+        android:label="chatting room"
+        tools:layout="@layout/fragment_chat_room" />
+</navigation>
