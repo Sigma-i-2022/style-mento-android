@@ -11,11 +11,12 @@ import com.sigmai.stylemento.global.base.BaseFragment
 
 class MainFragment : BaseFragment<FragmentMainBinding>() {
     override val layoutResourceId = R.layout.fragment_main
-    private val pages = mapOf(
-        0 to R.id.page_home,
-        1 to R.id.page_coordinator,
-        2 to R.id.page_chat,
-        3 to R.id.page_my)
+    private val pages = listOf(R.id.page_home, R.id.page_coordinator, R.id.page_chat, R.id.page_my)
+    private val positions = mapOf(
+        R.id.page_home to 0,
+        R.id.page_coordinator to 1,
+        R.id.page_chat to 2,
+        R.id.page_my to 3)
 
     override fun initState() {
         super.initState()
@@ -36,7 +37,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
 
-                binding.bottomNavigation.selectedItemId = pages[position] ?: throw Exception("알 수 없는 탭입니다.")
+                binding.bottomNavigation.selectedItemId = pages[position]
             }
         })
 
@@ -44,25 +45,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
     }
 
     private fun navigationSelected(item: MenuItem): Boolean {
-        val checked = item.setChecked(true)
-        return when (checked.itemId) {
-            R.id.page_home -> {
-                binding.mainViewpager.currentItem = 0
-                true
-            }
-            R.id.page_coordinator -> {
-                binding.mainViewpager.currentItem = 1
-                true
-            }
-            R.id.page_chat -> {
-                binding.mainViewpager.currentItem = 2
-                true
-            }
-            R.id.page_my -> {
-                binding.mainViewpager.currentItem = 3
-                true
-            }
-            else -> false
-        }
+        item.isChecked = true
+
+        binding.mainViewpager.currentItem = positions[item.itemId] ?: throw Exception("알 수 없는 탭입니다.")
+
+        return true
     }
 }
