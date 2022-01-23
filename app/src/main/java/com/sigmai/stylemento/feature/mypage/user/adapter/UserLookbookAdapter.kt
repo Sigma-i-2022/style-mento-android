@@ -32,7 +32,7 @@ class UserLookbookAdapter(private val parantFragment : Fragment) : RecyclerView.
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.user_lookbook_item, viewGroup, false)
+            .inflate(R.layout.item_user_lookbook, viewGroup, false)
 
         return ViewHolder(view)
     }

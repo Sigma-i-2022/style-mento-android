@@ -26,7 +26,7 @@ class TagAdapter : RecyclerView.Adapter<TagAdapter.ViewHolder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.tag_item, viewGroup, false)
+            .inflate(R.layout.item_tag, viewGroup, false)
 
         return ViewHolder(view)
     }

@@ -30,7 +30,7 @@ class UserClosetAdapter(private val parentFragment : Fragment) : RecyclerView.Ad
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.user_closet_item, viewGroup, false)
+            .inflate(R.layout.item_user_closet, viewGroup, false)
 
         return ViewHolder(view)
     }
