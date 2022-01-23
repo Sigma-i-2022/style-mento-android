@@ -16,7 +16,6 @@ import com.sigmai.stylemento.global.util.TransformToIntUtil
 class UserLookbookTagSelectionDialog(private val f: Fragment) : BaseDialogFragment<DialogTagSelectionBinding>() {
     override val layoutResourceId = R.layout.dialog_tag_selection
     private var tags: MutableList<TagType> = mutableListOf()
-    private var tagSize: Int = 0
     private var tagStates: Array<Boolean> = Array(24) { false }
     private var onTagNumber: Int = 0
     private val intUtil = TransformToIntUtil()
