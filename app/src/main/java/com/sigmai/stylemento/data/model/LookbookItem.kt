@@ -7,7 +7,7 @@ import com.sigmai.stylemento.global.constant.TextureType
 
 data class LookbookItem(
     val owner : String,
-    var photoUrl: String,
+    var photoUrl: String = "",
     var deltail : String = "",
     var top : String = "",
     var pants : String = "",
