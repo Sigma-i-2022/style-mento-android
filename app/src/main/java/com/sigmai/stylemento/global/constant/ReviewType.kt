@@ -1,6 +1,8 @@
 package com.sigmai.stylemento.global.constant
 
-enum class ReviewType {
-    NORMAL,
-    REPLY
+class ReviewType {
+    companion object {
+        const val NORMAL = 0
+        const val REPLY = 1
+    }
 }
