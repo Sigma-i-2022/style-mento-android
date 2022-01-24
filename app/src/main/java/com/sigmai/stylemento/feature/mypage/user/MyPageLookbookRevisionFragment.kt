@@ -16,13 +16,12 @@ import com.sigmai.stylemento.global.constant.TagType
 class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, private val position : Int) : BaseFragment<FragmentMyPageLookbookRevisionBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_revision
 
-    private var tags : MutableList<TagType> = mutableListOf()
+    private val tagAdapter = TagAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setTextInit()
-        val tagAdapter = TagAdapter()
         tagAdapter.setDataSet(lookbookItem.tags)
         binding.myPageLookbookRevisionTagRecycler.adapter = tagAdapter
 
@@ -107,7 +106,6 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
 
     fun setTags(tagTypes: MutableList<TagType>){
         lookbookItem.tags = tagTypes
-        val tagAdapter = TagAdapter()
         tagAdapter.setDataSet(lookbookItem.tags)
         binding.myPageLookbookRevisionTagRecycler.adapter = tagAdapter
     }
