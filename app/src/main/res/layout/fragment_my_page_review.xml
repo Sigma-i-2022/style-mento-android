@@ -55,6 +55,8 @@
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="false"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/my_page_review_content_option_layout" />
+            android:layout_below="@id/my_page_review_content_option_layout"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
     </RelativeLayout>
 </layout>
