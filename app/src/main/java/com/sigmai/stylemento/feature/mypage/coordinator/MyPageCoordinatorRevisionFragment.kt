@@ -68,7 +68,6 @@ class MyPageCoordinatorRevisionFragment : BaseFragment<FragmentMyPageCoordinator
     }
     fun setTags(tagTypes: MutableList<TagType>){
         tags = tagTypes
-        //val tagAdapter = TagAdapter()
         tagAdapter.setDataSet(tags)
         binding.myPageCoordinatorRevisionStyleTagRecyclerView.adapter = tagAdapter
     }
