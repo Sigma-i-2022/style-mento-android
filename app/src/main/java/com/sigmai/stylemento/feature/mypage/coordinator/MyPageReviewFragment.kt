@@ -15,11 +15,15 @@ import com.sigmai.stylemento.global.base.BaseFragment
 class MyPageReviewFragment : BaseFragment<FragmentMyPageReviewBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_review
 
+    private val reviewAdapter = ReviewAdapter(this)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val reviewAdapter = ReviewAdapter()
+        reviewAdapter.setList(Client.getCoordinatorInfo().reviews)
+        binding.myPageReviewRecycler.adapter = reviewAdapter
+    }
 
+    fun updateAdapter(){
         reviewAdapter.setList(Client.getCoordinatorInfo().reviews)
         binding.myPageReviewRecycler.adapter = reviewAdapter
     }
