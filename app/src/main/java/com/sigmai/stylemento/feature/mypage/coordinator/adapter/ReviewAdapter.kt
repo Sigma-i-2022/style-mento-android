@@ -12,10 +12,11 @@ import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.ReviewItem
 import com.sigmai.stylemento.databinding.ItemReviewBinding
 import com.sigmai.stylemento.databinding.ItemReviewReplyBinding
+import com.sigmai.stylemento.feature.mypage.coordinator.MyPageReviewFragment
 import com.sigmai.stylemento.global.constant.ReviewType
 import java.lang.IllegalArgumentException
 
-class ReviewAdapter : RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
+class ReviewAdapter(private val f : MyPageReviewFragment) : RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
     var reviewList: MutableList<ReviewItem>? = mutableListOf()
     val context : String = ""
 
@@ -33,37 +34,16 @@ class ReviewAdapter : RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
         if(holder is ReviewNormalViewHolder){
             holder.bind(item)
             holder.view.setOnClickListener(View.OnClickListener {
-                val item = ReviewItem(ReviewType.REPLY, "coordi1", "")
-                Client.addReviewItemAt(item, position + 1)
-                reviewList!!.add(position + 1, item)
+                if(Client.getReviewItemAt(position + 1).type == ReviewType.NORMAL){
+                    val item = ReviewItem(ReviewType.REPLY, "coordi1", "")
+                    Client.addReviewItemAt(item, position + 1)
+                    f.updateAdapter()
+                }
             })
         }
         else if(holder is ReviewReplyViewHolder){
             holder.bind(item)
-
-            var content : String = ""
-            holder.view.setOnClickListener(View.OnClickListener {
-                holder.replyEditText.addTextChangedListener(object : TextWatcher {
-                    override fun afterTextChanged(p0: Editable?) {
-                        if (p0.toString() == ""){
-                            Client.removeReviewItem(position)
-                            reviewList!!.removeAt(position)
-                        }
-                        else{
-                            val item = ReviewItem(ReviewType.REPLY, "coordi1", "", 0, p0.toString())
-                            Client.reviseReviewItem(item, position)
-                            reviseList(item, position)
-                        }
-                    }
-
-                    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    }
-
-                    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                        content = p0.toString()
-                    }
-                })
-            })
+            f.updateAdapter()
         }
     }
 
@@ -102,6 +82,26 @@ class ReviewAdapter : RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
         val replyEditText = view.findViewById<EditText>(R.id.review_item_reply_content_editText)
         fun bind(item: ReviewItem) {
             binding.item = item
+            replyEditText.requestFocus()
+
+            var content : String = ""
+            replyEditText.addTextChangedListener(object : TextWatcher {
+                override fun afterTextChanged(p0: Editable?) {
+                    if (content == ""){
+                    }
+                    else{
+                        val item = ReviewItem(ReviewType.REPLY, "coordi1", "", 0, content)
+                        Client.reviseReviewItem(item, adapterPosition)
+                    }
+                }
+
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    content = p0.toString()
+                }
+            })
         }
 
         companion object {
