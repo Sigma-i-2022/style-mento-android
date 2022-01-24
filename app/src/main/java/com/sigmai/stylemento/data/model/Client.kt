@@ -60,6 +60,9 @@ object Client {
     fun addReviewItem(item : ReviewItem){
         coordinatorInfo.reviews.add(item)
     }
+    fun addReviewItemAt(item : ReviewItem, position : Int){
+        coordinatorInfo.reviews.add(position, item)
+    }
     fun removeReviewItem(position : Int){
         coordinatorInfo.reviews.removeAt(position)
     }
