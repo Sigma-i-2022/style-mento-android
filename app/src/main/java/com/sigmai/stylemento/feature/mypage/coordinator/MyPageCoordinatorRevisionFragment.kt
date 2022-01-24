@@ -16,7 +16,6 @@ import com.sigmai.stylemento.global.constant.TagType
 class MyPageCoordinatorRevisionFragment : BaseFragment<FragmentMyPageCoordinatorRevisionBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_coordinator_revision
 
-    val testDataSet = arrayOf("type1", "type2", "type3")
     private var tags : MutableList<TagType> = mutableListOf()
     private val tagAdapter = TagAdapter()
 
