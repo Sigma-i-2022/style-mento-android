@@ -13,7 +13,7 @@ import com.sigmai.stylemento.global.base.BaseFragment
 
 class MyPageWorkItemFragment(private val workItem : WorkItem, private val position : Int) : BaseFragment<FragmentMyPageWorkItemBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_work_item
-
+    private var detailState = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -24,6 +24,7 @@ class MyPageWorkItemFragment(private val workItem : WorkItem, private val positi
         })
 
         dataBinding()
+        setOnClickDetail()
     }
 
     private fun dataBinding(){
@@ -64,6 +65,18 @@ class MyPageWorkItemFragment(private val workItem : WorkItem, private val positi
             builder.setNegativeButton("취소", listener)
 
             builder.show()
+        })
+    }
+    private fun setOnClickDetail(){
+        binding.myPageWorkItemDetail.setOnClickListener(View.OnClickListener {
+            if(detailState == 0){
+                binding.myPageWorkItemDetail.maxLines = 10
+                detailState = 1
+            }
+            else{
+                binding.myPageWorkItemDetail.maxLines = 2
+                detailState = 0
+            }
         })
     }
 }

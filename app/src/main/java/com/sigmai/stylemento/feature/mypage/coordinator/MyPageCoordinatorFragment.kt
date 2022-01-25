@@ -18,7 +18,7 @@ import com.sigmai.stylemento.global.constant.ReviewType
 class MyPageCoordinatorFragment(private var showMenu : Int) : BaseFragment<FragmentMyPageCoordinatorBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_coordinator
     private val viewModel: MyPageViewModel by viewModels()
-
+    private var introductionState = 0
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
@@ -66,6 +66,7 @@ class MyPageCoordinatorFragment(private var showMenu : Int) : BaseFragment<Fragm
         binding.myPageCoordinatorButtonLayout.visibility = View.GONE
         binding.myPageCoordinatorReplyLayout.visibility = View.GONE
 
+        setOnClickIntroduction()
     }
 
     private fun showWork(){
@@ -90,7 +91,18 @@ class MyPageCoordinatorFragment(private var showMenu : Int) : BaseFragment<Fragm
         binding.myPageCoordinatorReviewsButton.setBackgroundResource(R.drawable.button_shadow)
         context?.let { it1 -> binding.myPageCoordinatorReviewsButton.setTextColor(it1.getColor(R.color.black)) }
     }
-
+    private fun setOnClickIntroduction(){
+        binding.myPageCoordinatorIntroductionText.setOnClickListener(View.OnClickListener {
+            if(introductionState == 0){
+                binding.myPageCoordinatorIntroductionText.maxLines = 10
+                introductionState = 1
+            }
+            else{
+                binding.myPageCoordinatorIntroductionText.maxLines = 3
+                introductionState = 0
+            }
+        })
+    }
     fun reply(position : Int){
 
         var content : String = ""
