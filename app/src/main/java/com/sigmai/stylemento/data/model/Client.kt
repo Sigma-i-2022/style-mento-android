@@ -61,7 +61,10 @@ object Client {
         coordinatorInfo.reviews.add(item)
     }
     fun addReviewItemAt(item : ReviewItem, position : Int){
-        coordinatorInfo.reviews.add(position, item)
+        if(coordinatorInfo.reviews.size == position)
+            coordinatorInfo.reviews.add(item)
+        else
+            coordinatorInfo.reviews.add(position, item)
     }
     fun getReviewItemAt(position: Int) : ReviewItem?{
         if(coordinatorInfo.reviews.size == position)
