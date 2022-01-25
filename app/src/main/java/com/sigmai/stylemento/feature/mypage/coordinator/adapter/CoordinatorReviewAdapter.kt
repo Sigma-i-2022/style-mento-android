@@ -13,12 +13,13 @@ import com.sigmai.stylemento.feature.mypage.coordinator.MyPageReviewFragment
 import com.sigmai.stylemento.global.constant.ReviewType
 import java.lang.IllegalArgumentException
 
-class CoordinatorReviewAdapter(private val f : MyPageReviewFragment) : RecyclerView.Adapter<CoordinatorReviewAdapter.ReviewViewHolder>() {
+class CoordinatorReviewAdapter(private val f: MyPageReviewFragment) :
+    RecyclerView.Adapter<CoordinatorReviewAdapter.ReviewViewHolder>() {
     var reviewList: MutableList<ReviewItem>? = mutableListOf()
-    val context : String = ""
+    val context: String = ""
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
-        return when(viewType) {
+        return when (viewType) {
             ReviewType.NORMAL -> ReviewNormalViewHolder.from(parent)
             ReviewType.REPLY -> ReviewReplyViewHolder.from(parent)
             else -> throw IllegalArgumentException("UNKNOWN VIEW TYPE")
@@ -28,18 +29,17 @@ class CoordinatorReviewAdapter(private val f : MyPageReviewFragment) : RecyclerV
     override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {
         val item = reviewList!![position]
 
-        if(holder is ReviewNormalViewHolder){
+        if (holder is ReviewNormalViewHolder) {
             holder.bind(item)
             holder.view.setOnClickListener(View.OnClickListener {
                 val item = Client.getReviewItemAt(position + 1)
-                if(item == null || item.type == ReviewType.NORMAL){
-                    if(f.parentFragment is MyPageCoordinatorFragment){
+                if (item == null || item.type == ReviewType.NORMAL) {
+                    if (f.parentFragment is MyPageCoordinatorFragment) {
                         (f.parentFragment as MyPageCoordinatorFragment).reply(position + 1)
                     }
                 }
             })
-        }
-        else if(holder is ReviewReplyViewHolder){
+        } else if (holder is ReviewReplyViewHolder) {
             holder.bind(item)
         }
     }
@@ -54,15 +54,28 @@ class CoordinatorReviewAdapter(private val f : MyPageReviewFragment) : RecyclerV
         reviewList = items
     }
 
-    abstract class ReviewViewHolder protected constructor(val view: View) : RecyclerView.ViewHolder(view)
+    abstract class ReviewViewHolder protected constructor(val view: View) :
+        RecyclerView.ViewHolder(view)
 
     class ReviewNormalViewHolder(val binding: ItemReviewBinding) : ReviewViewHolder(binding.root) {
+        private var reviewState = 0
         fun bind(item: ReviewItem) {
             binding.item = item
             binding.reviewItemRating.rating = item.star.toFloat()
+            binding.reviewItemContentEditText.setOnClickListener(View.OnClickListener {
+                if (reviewState == 0) {
+                    binding.reviewItemContentEditText.maxLines = 10
+                    reviewState = 1
+                } else {
+                    binding.reviewItemContentEditText.maxLines = 2
+                    reviewState = 0
+                }
+            })
+
         }
+
         companion object {
-            fun from(parent: ViewGroup) : ReviewViewHolder {
+            fun from(parent: ViewGroup): ReviewViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemReviewBinding.inflate(layoutInflater, parent, false)
 
@@ -72,12 +85,22 @@ class CoordinatorReviewAdapter(private val f : MyPageReviewFragment) : RecyclerV
     }
 
     class ReviewReplyViewHolder(val binding: ItemReviewReplyBinding) : ReviewViewHolder(binding.root) {
+        private var replyState = 0
         fun bind(item: ReviewItem) {
             binding.item = item
+            binding.reviewItemReplyContentEditText.setOnClickListener(View.OnClickListener {
+                if (replyState == 0) {
+                    binding.reviewItemReplyContentEditText.maxLines = 10
+                    replyState = 1
+                } else {
+                    binding.reviewItemReplyContentEditText.maxLines = 2
+                    replyState = 0
+                }
+            })
         }
 
         companion object {
-            fun from(parent: ViewGroup) : ReviewViewHolder {
+            fun from(parent: ViewGroup): ReviewViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemReviewReplyBinding.inflate(layoutInflater, parent, false)
 

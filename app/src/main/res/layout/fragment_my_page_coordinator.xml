@@ -10,9 +10,11 @@
             name="viewModel"
             type="com.sigmai.stylemento.feature.mypage.MyPageViewModel" />
     </data>
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -47,8 +49,8 @@
                     android:id="@+id/my_page_coordinator_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:layout_marginTop="6dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_back_img">
 
@@ -73,19 +75,19 @@
 
                         <TextView
                             android:id="@+id/my_page_coordinator_name_text"
+                            style="@style/header3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
-                            style="@style/header3"
                             tools:text="coordinator_name" />
 
                         <TextView
                             android:id="@+id/my_page_coordinator_email_text"
+                            style="@style/body1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="1dp"
                             android:textColor="@color/gray_8"
-                            style="@style/body1"
                             tools:text="coordinator_email" />
 
                         <androidx.recyclerview.widget.RecyclerView
@@ -103,20 +105,20 @@
                         android:layout_height="34dp"
                         android:layout_marginTop="6dp"
                         android:background="@drawable/bg_circle"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"/>
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
                     android:id="@+id/my_page_coordinator_introduction_text"
+                    style="@style/body1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    android:textStyle="bold"
-                    android:maxLines="3"
+                    android:layout_marginTop="14dp"
                     android:ellipsize="end"
-                    style="@style/body1"
+                    android:maxLines="3"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_layout" />
 
@@ -124,8 +126,8 @@
                     android:id="@+id/my_page_coordinator_line"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:layout_marginTop="22dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:layout_marginTop="22dp"
                     android:background="#CECECE"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_introduction_text" />
@@ -140,26 +142,26 @@
 
                     <TextView
                         android:id="@+id/my_page_coordinator_work_button"
+                        style="@style/header4"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/button_shadow"
+                        android:paddingBottom="15dp"
                         android:text="작품"
-                        android:textAlignment="center"
-                        style="@style/header4"
-                        android:paddingBottom="15dp" />
+                        android:textAlignment="center" />
 
                     <TextView
                         android:id="@+id/my_page_coordinator_reviews_button"
+                        style="@style/header4"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/button_null"
+                        android:paddingBottom="15dp"
                         android:text="리뷰"
-                        android:textColor="@color/gray_d"
                         android:textAlignment="center"
-                        style="@style/header4"
-                        android:paddingBottom="15dp" />
+                        android:textColor="@color/gray_d" />
                 </LinearLayout>
 
                 <androidx.viewpager2.widget.ViewPager2
@@ -177,73 +179,68 @@
             android:id="@+id/my_page_coordinator_button_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/horizontal_margin"
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="@dimen/horizontal_margin">
 
             <Button
+                style="@style/header4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
+                android:paddingVertical="12dp"
                 android:text="채팅하기"
-                style="@style/header4"
                 android:textColor="@color/white"
-                android:textStyle="bold"
-                android:paddingVertical="12dp"/>
+                android:textStyle="bold" />
 
             <Button
+                style="@style/header4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
+                android:paddingVertical="12dp"
                 android:text="예약하기"
-                style="@style/header4"
                 android:textColor="@color/white"
-                android:textStyle="bold"
-                android:paddingVertical="12dp"/>
+                android:textStyle="bold" />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/my_page_coordinator_reply_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true">
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:background="@color/primary"/>
+            android:layout_alignParentBottom="true"
+            android:background="@color/primary">
 
-            <androidx.cardview.widget.CardView
+
+            <EditText
+                android:id="@+id/my_page_coordinator_reply_textEdit"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:paddingStart="6dp"
                 android:background="@color/white"
-                app:cardCornerRadius="12dp">
+                android:hint="메시지를 입력하세요"
+                android:maxLength="500"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/my_page_coordinator_reply_send_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <EditText
-                    android:id="@+id/my_page_coordinator_reply_textEdit"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="6dp"
-                    android:paddingEnd="12dp"
-                    android:hint="메시지를 입력하세요"
-                    android:inputType="text"
-                    android:background="@color/white"/>
-
-                <TextView
-                    android:id="@+id/my_page_coordinator_reply_send_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end|center_vertical"
-                    android:layout_marginEnd="12dp"
-                    android:text="전송"
-                    style="@style/header5"
-                    android:textColor="@color/primary"
-                    android:background="@color/white"/>
-            </androidx.cardview.widget.CardView>
+            <ImageView
+                android:id="@+id/my_page_coordinator_reply_send_text"
+                style="@style/header5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/white"
+                android:text="전송"
+                android:textColor="@color/primary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </RelativeLayout>
