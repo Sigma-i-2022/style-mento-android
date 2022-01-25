@@ -45,7 +45,6 @@ class ReviewAdapter(private val f : MyPageReviewFragment) : RecyclerView.Adapter
         }
         else if(holder is ReviewReplyViewHolder){
             holder.bind(item)
-            f.updateAdapter()
         }
     }
 
