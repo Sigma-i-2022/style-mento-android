@@ -1,13 +1,9 @@
 package com.sigmai.stylemento.feature.mypage.coordinator.adapter
 
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
-import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.ReviewItem
 import com.sigmai.stylemento.databinding.ItemReviewBinding
@@ -17,7 +13,7 @@ import com.sigmai.stylemento.feature.mypage.coordinator.MyPageReviewFragment
 import com.sigmai.stylemento.global.constant.ReviewType
 import java.lang.IllegalArgumentException
 
-class ReviewAdapter(private val f : MyPageReviewFragment) : RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
+class CoordinatorReviewAdapter(private val f : MyPageReviewFragment) : RecyclerView.Adapter<CoordinatorReviewAdapter.ReviewViewHolder>() {
     var reviewList: MutableList<ReviewItem>? = mutableListOf()
     val context : String = ""
 
