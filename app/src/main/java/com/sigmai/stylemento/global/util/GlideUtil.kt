@@ -29,7 +29,7 @@ object GlideUtil {
     }
 
     fun getRandomImageUrl() : String {
-        val randomNumber = (150..250).random()
+        val randomNumber = (180..250).random()
         return "https://picsum.photos/$randomNumber"
     }
 }
