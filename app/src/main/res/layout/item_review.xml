@@ -55,11 +55,21 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/review_item_reply_add_img"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@color/gray_d"/>
+                <TextView
+                    android:id="@+id/review_item_height_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="000.0cm"
+                    android:textColor="@color/gray_d"
+                    style="@style/body2"
+                    android:layout_marginEnd="4dp"/>
+                <TextView
+                    android:id="@+id/review_item_weight_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00.0kg"
+                    android:textColor="@color/gray_d"
+                    style="@style/body2"/>
             </LinearLayout>
             <TextView
                 android:id="@+id/review_item_time_text"
