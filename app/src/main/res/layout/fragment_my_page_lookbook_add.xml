@@ -78,6 +78,7 @@
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:textColor="@color/gray_6"
                     style="@style/body1"
+                    android:maxLength="100"
                     app:layout_constraintTop_toBottomOf="@id/my_page_lookbook_add_detail_title_text"
                     app:layout_constraintStart_toStartOf="parent"/>
                 <TextView

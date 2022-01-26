@@ -13,7 +13,7 @@ import com.sigmai.stylemento.global.base.BaseFragment
 
 class MyPageLookbookItemFragment(private val lookbookItem : LookbookItem, private val position : Int) : BaseFragment<FragmentMyPageLookbookItemBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_item
-
+    private var detailState = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -65,6 +65,18 @@ class MyPageLookbookItemFragment(private val lookbookItem : LookbookItem, privat
             builder.setNegativeButton("취소", listener)
 
             builder.show()
+        })
+    }
+    private fun setOnClickIntroduction(){
+        binding.myPageUserLookbookItemDetail.setOnClickListener(View.OnClickListener {
+            if(detailState == 0){
+                binding.myPageUserLookbookItemDetail.maxLines = 10
+                detailState = 1
+            }
+            else{
+                binding.myPageUserLookbookItemDetail.maxLines = 2
+                detailState = 0
+            }
         })
     }
 }
