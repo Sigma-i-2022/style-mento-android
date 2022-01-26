@@ -11,5 +11,6 @@ data class ReviewItem(
     var photoUrl: String = "",
     var star: Int = 0,
     var content: String = "",
-    var time: String = ""
+    var time: String = "",
+    var idx : Int = 0
 )

@@ -12,5 +12,6 @@ data class ClosetItem(
     var brand : String = "",
     var texture : TextureType = TextureType.NULL,
     var size : String = "",
-    var myFit : FitType = FitType.NULL
+    var myFit : FitType = FitType.NULL,
+    var idx : Int = 0
 )

@@ -13,5 +13,6 @@ data class LookbookItem(
     var pants : String = "",
     var shoes : String = "",
     var tags : MutableList<TagType> = mutableListOf(),
-    var time : String = ""
+    var time : String = "",
+    var idx : Int = 0
 )
