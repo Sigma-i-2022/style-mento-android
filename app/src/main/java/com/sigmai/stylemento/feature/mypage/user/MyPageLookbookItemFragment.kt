@@ -32,6 +32,7 @@ class MyPageLookbookItemFragment(private val lookbookItem : LookbookItem, privat
         binding.myPageLookbookItemTopText.text = lookbookItem.top
         binding.myPageLookbookItemPantsText.text = lookbookItem.pants
         binding.myPageLookbookItemShoesText.text = lookbookItem.shoes
+        binding.myPageLookbookItemTimeText.text = lookbookItem.time
 
         val lookbookTagAdapter = TagAdapter()
         lookbookTagAdapter.setDataSet(lookbookItem.tags)
