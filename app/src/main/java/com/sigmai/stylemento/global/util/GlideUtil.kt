@@ -27,4 +27,9 @@ object GlideUtil {
             .transform(CenterCrop(), RoundedCorners(radiusWithPixel))
             .into(view)
     }
+
+    fun getRandomImageUrl() : String {
+        val randomNumber = (150..250).random()
+        return "https://picsum.photos/$randomNumber"
+    }
 }

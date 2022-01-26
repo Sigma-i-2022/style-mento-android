@@ -2,6 +2,7 @@ package com.sigmai.stylemento.domain.usecase
 
 import com.sigmai.stylemento.domain.entity.Piece
 import com.sigmai.stylemento.domain.entity.TempCoordinator
+import com.sigmai.stylemento.global.util.GlideUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -9,7 +10,7 @@ class GetCoordinatorListUseCase {
     private val dummy = listOf(
         TempCoordinator(
             id = 1,
-            imageUrl = "https://picsum.photos/199",
+            imageUrl = GlideUtil.getRandomImageUrl(),
             nickname = "algosketch",
             email = "algosketch@gmail.com",
             introduction = "개발자입니다.",
