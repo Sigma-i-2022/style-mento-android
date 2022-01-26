@@ -12,5 +12,6 @@ data class WorkItem(
     var top : String = "",
     var pants : String = "",
     var shoes : String = "",
-    var tags : MutableList<TagType> = mutableListOf()
+    var tags : MutableList<TagType> = mutableListOf(),
+    var time : String = ""
 )
