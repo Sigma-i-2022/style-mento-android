@@ -2,6 +2,7 @@ package com.sigmai.stylemento.feature.coordinator.adapter
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.sigmai.stylemento.domain.entity.Piece
 import com.sigmai.stylemento.domain.entity.TempCoordinator
 
 @BindingAdapter("app:coordinators")
@@ -10,6 +11,6 @@ fun setCoordinators(recyclerView: RecyclerView, list: List<TempCoordinator>) {
 }
 
 @BindingAdapter("app:horizontalPiece")
-fun setHorizontalPieces(recyclerView: RecyclerView, list: List<String>) {
+fun setHorizontalPieces(recyclerView: RecyclerView, list: List<Piece>) {
     (recyclerView.adapter as HorizontalPieceAdapter).setList(list)
 }
