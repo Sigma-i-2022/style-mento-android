@@ -44,7 +44,7 @@
             app:layout_constraintTop_toTopOf="@id/recommend_card_view"
             android:layout_marginTop="12dp"
             android:layout_marginStart="12dp"
-            tools:text="jenny_eqet"
+            tools:text="use_name"
             android:text="@{coordinator.name}"
             android:textColor="@color/black"
             android:textSize="13sp"/>

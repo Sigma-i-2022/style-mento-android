@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.databinding.ItemCoordinatorBinding
 import com.sigmai.stylemento.domain.entity.TempCoordinator
+import com.sigmai.stylemento.feature.home.adapter.TagAdapter
 import com.sigmai.stylemento.global.util.GlideUtil
 
 class CoordinatorAdapter : ListAdapter<TempCoordinator, CoordinatorAdapter.CoordinatorViewHolder>(TempDiffCallback()) {
@@ -22,7 +23,9 @@ class CoordinatorAdapter : ListAdapter<TempCoordinator, CoordinatorAdapter.Coord
     class CoordinatorViewHolder private constructor(val binding: ItemCoordinatorBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: TempCoordinator) {
             binding.item = item
-            GlideUtil.setImage(item.imageUrl, binding.coordinatorPhoto)
+            GlideUtil.setImageWithRadius(item.imageUrl, binding.coordinatorPhoto, 12)
+            binding.coordinatorTags.adapter = TagAdapter()
+            binding.executePendingBindings()
         }
 
         companion object {

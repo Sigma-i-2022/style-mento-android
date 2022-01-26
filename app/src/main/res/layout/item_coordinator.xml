@@ -45,6 +45,17 @@
             android:src="@{item.favorite ? @drawable/ic_filled_heart : @drawable/ic_outline_heart}"/>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/coordinator_tags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/coordinator_nickname"
+            app:layout_constraintStart_toStartOf="@id/coordinator_nickname"
+            android:layout_marginTop="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            app:tags="@{item.tagList}"/>
+
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/piece_list"
             android:layout_width="match_parent"
             android:layout_height="90dp"
