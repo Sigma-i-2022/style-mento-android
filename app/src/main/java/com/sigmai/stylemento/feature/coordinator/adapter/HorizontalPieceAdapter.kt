@@ -27,7 +27,7 @@ class HorizontalPieceAdapter : RecyclerView.Adapter<HorizontalPieceAdapter.Horiz
 
     class HorizontalPieceViewHolder(val binding: ItemPieceBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Piece) {
-            GlideUtil.setImageWithRadius(GlideUtil.getRandomImageUrl(), binding.piecePicture, 12)
+            GlideUtil.setImageWithRadius(item.imageUrl, binding.piecePicture, 12)
             binding.executePendingBindings()
         }
 

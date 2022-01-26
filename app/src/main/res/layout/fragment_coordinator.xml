@@ -9,32 +9,35 @@
             type="com.sigmai.stylemento.feature.coordinator.CoordinatorViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <include
-            android:id="@+id/coordinator_toolbar"
-            layout="@layout/toolbar"
-            app:title='@{"코디네이터"}'/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/style_filters"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/coordinator_toolbar"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="horizontal"/>
-        
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/coordinator_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/style_filters"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"
-            app:coordinators="@{viewModel.dummyList}"/>
+            android:layout_height="match_parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <include
+                android:id="@+id/coordinator_toolbar"
+                layout="@layout/toolbar"
+                app:title='@{"코디네이터"}'/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/style_filters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/coordinator_toolbar"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/coordinator_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/style_filters"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                app:coordinators="@{viewModel.dummyList}"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
 
