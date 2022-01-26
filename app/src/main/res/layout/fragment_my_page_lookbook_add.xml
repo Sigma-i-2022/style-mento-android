@@ -147,6 +147,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/trans_parent"
                         android:hint="입력"
+                        android:maxLength="30"
                         style="@style/header4"/>
                 </LinearLayout>
                 <LinearLayout
@@ -171,6 +172,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/trans_parent"
                         android:hint="입력"
+                        android:maxLength="30"
                         style="@style/header4"/>
                 </LinearLayout>
                 <LinearLayout
@@ -195,6 +197,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/trans_parent"
                         android:hint="입력"
+                        android:maxLength="30"
                         style="@style/header4"/>
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
