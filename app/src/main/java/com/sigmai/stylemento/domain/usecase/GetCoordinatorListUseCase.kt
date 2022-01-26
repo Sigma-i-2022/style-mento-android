@@ -27,7 +27,7 @@ class GetCoordinatorListUseCase {
         ),
         TempCoordinator(
             id = 2,
-            imageUrl = "https://picsum.photos/198",
+            imageUrl = GlideUtil.getRandomImageUrl(),
             nickname = "아무말대잔치",
             email = "algosketch@gmail.com",
             introduction = "개발자입니다.",
@@ -40,11 +40,11 @@ class GetCoordinatorListUseCase {
             reviewList = listOf(),
             isFavorite = true,
             numberOfHeart = 13,
-            tagList = listOf("미니멀", "댄디")
+            tagList = listOf("댄디")
         ),
         TempCoordinator(
             id = 3,
-            imageUrl = "https://picsum.photos/197",
+            imageUrl = GlideUtil.getRandomImageUrl(),
             nickname = "HamBP",
             email = "algosketch@gmail.com",
             introduction = "개발자입니다.",
@@ -58,6 +58,40 @@ class GetCoordinatorListUseCase {
             isFavorite = false,
             numberOfHeart = 13,
             tagList = listOf("미니멀", "댄디")
+        ),
+        TempCoordinator(
+            id = 4,
+            imageUrl = GlideUtil.getRandomImageUrl(),
+            nickname = "HamBP",
+            email = "algosketch@gmail.com",
+            introduction = "개발자입니다.",
+            pieceList = listOf(
+                Piece(1, "https://picsum.photos/200", "엄청난 작품입니다.", listOf("댄디", "미니멀")),
+                Piece(1, "https://picsum.photos/201", "엄청난 작품입니다. 그럼 이만", listOf("미니멀")),
+                Piece(1, "https://picsum.photos/202", "엄청난 작품..!!", listOf("댄디"))
+            ),
+            rating = 4,
+            reviewList = listOf(),
+            isFavorite = false,
+            numberOfHeart = 13,
+            tagList = listOf("미니멀", "댄디")
+        ),
+        TempCoordinator(
+            id = 5,
+            imageUrl = GlideUtil.getRandomImageUrl(),
+            nickname = "HamBP",
+            email = "algosketch@gmail.com",
+            introduction = "개발자입니다.",
+            pieceList = listOf(
+                Piece(1, "https://picsum.photos/200", "엄청난 작품입니다.", listOf("댄디", "미니멀")),
+                Piece(1, "https://picsum.photos/201", "엄청난 작품입니다. 그럼 이만", listOf("미니멀")),
+                Piece(1, "https://picsum.photos/202", "엄청난 작품..!!", listOf("댄디"))
+            ),
+            rating = 4,
+            reviewList = listOf(),
+            isFavorite = false,
+            numberOfHeart = 13,
+            tagList = listOf("미니멀")
         )
     )
 

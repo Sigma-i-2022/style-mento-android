@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-    <data>
-        <variable
-            name="item"
-            type="com.sigmai.stylemento.data.model.Coordinator" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="75dp"
@@ -13,6 +7,7 @@
         android:layout_marginEnd="14dp">
 
         <ImageView
+            android:id="@+id/piece_picture"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/background_radius_12"

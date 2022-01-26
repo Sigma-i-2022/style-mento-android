@@ -25,6 +25,7 @@ class CoordinatorAdapter : ListAdapter<TempCoordinator, CoordinatorAdapter.Coord
             binding.item = item
             GlideUtil.setImageWithRadius(item.imageUrl, binding.coordinatorPhoto, 12)
             binding.coordinatorTags.adapter = TagAdapter()
+            binding.pieceList.adapter = HorizontalPieceAdapter()
             binding.executePendingBindings()
         }
 
