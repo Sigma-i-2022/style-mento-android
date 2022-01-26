@@ -115,7 +115,7 @@ class UserLookbookTagSelectionDialog(private val f: Fragment) : BaseDialogFragme
         val index = intUtil.getTagInt(tagType)
         var state = !tagStates[index]
 
-        if (state && onTagNumber < 4) {
+        if (state && onTagNumber < 3) {
             onTagNumber++
             textView.setBackgroundResource(R.drawable.button_round_click)
             tagStates[index] = state

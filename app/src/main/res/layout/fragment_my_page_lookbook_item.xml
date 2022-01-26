@@ -44,7 +44,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginHorizontal="@dimen/horizontal_margin">
-
+                <TextView
+                    android:id="@+id/my_page_lookbook_item_time_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0000.00.00"
+                    style="@style/body1"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
                 <ImageView
                     android:id="@+id/my_page_user_lookbook_item_revision"
                     android:layout_width="30dp"
@@ -79,6 +87,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/my_page_user_lookbook_item_img" />
 

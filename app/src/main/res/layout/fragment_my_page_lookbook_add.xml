@@ -78,6 +78,7 @@
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:textColor="@color/gray_6"
                     style="@style/body1"
+                    android:maxLength="100"
                     app:layout_constraintTop_toBottomOf="@id/my_page_lookbook_add_detail_title_text"
                     app:layout_constraintStart_toStartOf="parent"/>
                 <TextView
@@ -146,6 +147,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/trans_parent"
                         android:hint="입력"
+                        android:maxLength="30"
                         style="@style/header4"/>
                 </LinearLayout>
                 <LinearLayout
@@ -170,6 +172,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/trans_parent"
                         android:hint="입력"
+                        android:maxLength="30"
                         style="@style/header4"/>
                 </LinearLayout>
                 <LinearLayout
@@ -194,6 +197,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/trans_parent"
                         android:hint="입력"
+                        android:maxLength="30"
                         style="@style/header4"/>
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>

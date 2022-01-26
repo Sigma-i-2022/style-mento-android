@@ -16,6 +16,8 @@ class MyPageUserFragment(private val showMenu : Int) : BaseFragment<FragmentMyPa
     private val viewModel: MyPageViewModel by viewModels()
     val testDataSet = arrayOf("1", "2", "3", "4", "5")
 
+    private var introductionState = 0
+
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
@@ -82,5 +84,17 @@ class MyPageUserFragment(private val showMenu : Int) : BaseFragment<FragmentMyPa
         context?.let { it1 -> binding.myPageUserClosetButton.setTextColor(it1.getColor(R.color.gray_d)) }
         binding.myPageUserLookbookButton.setBackgroundResource(R.drawable.button_shadow)
         context?.let { it1 -> binding.myPageUserLookbookButton.setTextColor(it1.getColor(R.color.black)) }
+    }
+    private fun setOnClickIntroduction(){
+        binding.myPageUserIntroductionText.setOnClickListener(View.OnClickListener {
+            if(introductionState == 0){
+                binding.myPageUserIntroductionText.maxLines = 10
+                introductionState = 1
+            }
+            else{
+                binding.myPageUserIntroductionText.maxLines = 3
+                introductionState = 0
+            }
+        })
     }
 }

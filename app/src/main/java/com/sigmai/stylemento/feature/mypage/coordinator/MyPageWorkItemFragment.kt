@@ -33,6 +33,7 @@ class MyPageWorkItemFragment(private val workItem : WorkItem, private val positi
         binding.myPageWorkItemTopText.text = workItem.top
         binding.myPageWorkItemPantsText.text = workItem.pants
         binding.myPageWorkItemShoesText.text = workItem.shoes
+        binding.myPageWorkItemTimeText.text = workItem.time
 
         val workTagAdapter = TagAdapter()
         workTagAdapter.setDataSet(workItem.tags)
