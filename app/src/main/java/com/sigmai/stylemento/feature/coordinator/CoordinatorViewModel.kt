@@ -8,12 +8,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CoordinatorViewModel : ViewModel() {
-    var dummyList: List<TempCoordinator>? = null
+    val dummyList = mutableListOf<TempCoordinator>()
 
     init {
         CoroutineScope(Dispatchers.IO).launch {
             val getCoordinatorListUseCase = GetCoordinatorListUseCase()
-            dummyList = getCoordinatorListUseCase()
+            dummyList.clear()
+            dummyList.addAll(getCoordinatorListUseCase())
         }
     }
 }
