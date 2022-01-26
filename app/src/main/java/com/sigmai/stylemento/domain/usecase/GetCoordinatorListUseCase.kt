@@ -1,12 +1,11 @@
 package com.sigmai.stylemento.domain.usecase
 
 import com.sigmai.stylemento.domain.entity.Piece
-import com.sigmai.stylemento.domain.entity.Review
 import com.sigmai.stylemento.domain.entity.TempCoordinator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class GetCoordinatorListUseCase() {
+class GetCoordinatorListUseCase {
     private val dummy = listOf(
         TempCoordinator(
             id = 1,
@@ -26,9 +25,9 @@ class GetCoordinatorListUseCase() {
             tagList = listOf("미니멀", "댄디")
         ),
         TempCoordinator(
-            id = 1,
-            imageUrl = "https://picsum.photos/199",
-            nickname = "algosketch",
+            id = 2,
+            imageUrl = "https://picsum.photos/198",
+            nickname = "아무말대잔치",
             email = "algosketch@gmail.com",
             introduction = "개발자입니다.",
             pieceList = listOf(
@@ -38,14 +37,14 @@ class GetCoordinatorListUseCase() {
             ),
             rating = 4,
             reviewList = listOf(),
-            isFavorite = false,
+            isFavorite = true,
             numberOfHeart = 13,
             tagList = listOf("미니멀", "댄디")
         ),
         TempCoordinator(
-            id = 1,
-            imageUrl = "https://picsum.photos/199",
-            nickname = "algosketch",
+            id = 3,
+            imageUrl = "https://picsum.photos/197",
+            nickname = "HamBP",
             email = "algosketch@gmail.com",
             introduction = "개발자입니다.",
             pieceList = listOf(

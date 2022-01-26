@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.sigmai.stylemento.data.model.Coordinator
 import com.sigmai.stylemento.databinding.ItemCoordinatorBinding
+import com.sigmai.stylemento.domain.entity.TempCoordinator
+import com.sigmai.stylemento.global.util.GlideUtil
 
-class CoordinatorAdapter : ListAdapter<Coordinator, CoordinatorAdapter.CoordinatorViewHolder>(TempDiffCallback()) {
+class CoordinatorAdapter : ListAdapter<TempCoordinator, CoordinatorAdapter.CoordinatorViewHolder>(TempDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoordinatorViewHolder {
         return CoordinatorViewHolder.from(parent)
     }
@@ -19,8 +20,9 @@ class CoordinatorAdapter : ListAdapter<Coordinator, CoordinatorAdapter.Coordinat
     }
 
     class CoordinatorViewHolder private constructor(val binding: ItemCoordinatorBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Coordinator) {
+        fun bind(item: TempCoordinator) {
             binding.item = item
+            GlideUtil.setImage(item.imageUrl, binding.coordinatorPhoto)
         }
 
         companion object {
@@ -34,12 +36,12 @@ class CoordinatorAdapter : ListAdapter<Coordinator, CoordinatorAdapter.Coordinat
     }
 }
 
-class TempDiffCallback : DiffUtil.ItemCallback<Coordinator>() {
-    override fun areItemsTheSame(oldItem: Coordinator, newItem: Coordinator): Boolean {
+class TempDiffCallback : DiffUtil.ItemCallback<TempCoordinator>() {
+    override fun areItemsTheSame(oldItem: TempCoordinator, newItem: TempCoordinator): Boolean {
         return oldItem === newItem
     }
 
-    override fun areContentsTheSame(oldItem: Coordinator, newItem: Coordinator): Boolean {
+    override fun areContentsTheSame(oldItem: TempCoordinator, newItem: TempCoordinator): Boolean {
         return oldItem == newItem
     }
 }
