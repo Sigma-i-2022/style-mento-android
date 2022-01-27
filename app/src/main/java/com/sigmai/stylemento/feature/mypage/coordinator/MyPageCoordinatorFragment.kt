@@ -1,9 +1,13 @@
 package com.sigmai.stylemento.feature.mypage.coordinator
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.viewModels
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
@@ -67,6 +71,7 @@ class MyPageCoordinatorFragment(private var showMenu : Int) : BaseFragment<Fragm
         binding.myPageCoordinatorReplyLayout.visibility = View.GONE
 
         setOnClickIntroduction()
+
     }
 
     private fun showWork(){
@@ -109,6 +114,9 @@ class MyPageCoordinatorFragment(private var showMenu : Int) : BaseFragment<Fragm
         binding.myPageCoordinatorReplyLayout.visibility = View.VISIBLE
         binding.myPageCoordinatorReplyTextEdit.setText("")
         binding.myPageCoordinatorReplyTextEdit.requestFocus()
+        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+        imm?.showSoftInput(binding.myPageCoordinatorReplyTextEdit, 0)
+
         binding.myPageCoordinatorReplyTextEdit.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
 
@@ -125,6 +133,8 @@ class MyPageCoordinatorFragment(private var showMenu : Int) : BaseFragment<Fragm
         binding.myPageCoordinatorReplySendText.setOnClickListener(View.OnClickListener {
             Client.addReviewItemAt(ReviewItem(ReviewType.REPLY, Client.getCoordinatorInfo().nickname, "", 0, content), position)
             binding.myPageCoordinatorReplyLayout.visibility = View.GONE
+            val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+            imm?.hideSoftInputFromWindow(view?.windowToken, 0)
 
             val coordinatorAdapter = CoordinatorViewPagerAdapter(this)
             showMenu = 1
