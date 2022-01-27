@@ -22,7 +22,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
             android:layout_toEndOf="@id/write_review_img"
-            android:text="아이템 수정"
+            android:text="후기 작성"
             android:textStyle="bold" />
 
         <View
