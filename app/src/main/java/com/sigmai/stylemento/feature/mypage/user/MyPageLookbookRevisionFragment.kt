@@ -100,7 +100,7 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
     }
 
     private fun backToMyPage(){
-        val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment(1))
+        val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment(Client.getUserInfo(), 1))
         transaction.commit()
     }
 

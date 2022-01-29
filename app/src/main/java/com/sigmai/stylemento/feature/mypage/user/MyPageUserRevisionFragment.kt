@@ -13,9 +13,7 @@ import com.sigmai.stylemento.feature.mypage.user.dialog.UserClosetImageSelection
 class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_user_revision
 
-    val testDataSet = arrayOf("type1", "type2", "type3")
-
-    var introductionText : String = ""
+    private var introductionText : String = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -49,7 +47,7 @@ class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBindin
         })
     }
     private fun backToMyPage(){
-        val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment(0))
+        val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment(Client.getUserInfo(), 0))
         transaction.commit()
     }
 }
