@@ -9,11 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.LookbookItem
+import com.sigmai.stylemento.data.model.User
 import com.sigmai.stylemento.feature.mypage.user.MyPageLookbookItemFragment
 
 
-class UserLookbookAdapter(private val parantFragment : Fragment) : RecyclerView.Adapter<UserLookbookAdapter.ViewHolder>() {
-    private var dataSet: List<LookbookItem> ?= null
+class UserLookbookAdapter(private val owner : User, private val parantFragment : Fragment) : RecyclerView.Adapter<UserLookbookAdapter.ViewHolder>() {
+    private var dataSet: List<LookbookItem> = owner.lookbookItems
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val userLookbookImg: ImageView = view.findViewById(R.id.user_lookbook_item_img)
@@ -22,7 +23,7 @@ class UserLookbookAdapter(private val parantFragment : Fragment) : RecyclerView.
             view.setOnClickListener(View.OnClickListener {
                 val position: Int = adapterPosition
                 val transaction = parantFragment.parentFragment?.parentFragmentManager?.beginTransaction()
-                transaction?.replace(R.id.my_page_frameLayout, MyPageLookbookItemFragment(Client.getUserInfo().lookbookItems.get(position), position))
+                transaction?.replace(R.id.my_page_frameLayout, MyPageLookbookItemFragment(owner, position))
                 transaction?.commit()
             })
         }
@@ -43,12 +44,10 @@ class UserLookbookAdapter(private val parantFragment : Fragment) : RecyclerView.
     }
 
     override fun getItemCount(): Int{
-        if(dataSet != null)
-            return dataSet!!.size
-        return 0
+        return dataSet.size
     }
 
-    fun setDataSet(items : List<LookbookItem>?){
+    fun setDataSet(items : List<LookbookItem>){
         dataSet = items
     }
 

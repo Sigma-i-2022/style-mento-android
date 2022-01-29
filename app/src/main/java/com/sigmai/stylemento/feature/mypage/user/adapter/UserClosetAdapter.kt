@@ -8,11 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.ClosetItem
+import com.sigmai.stylemento.data.model.User
 import com.sigmai.stylemento.feature.mypage.user.dialog.UserClosetItemDialog
 
 
-class UserClosetAdapter(private val parentFragment : Fragment) : RecyclerView.Adapter<UserClosetAdapter.ViewHolder>() {
-    private var dataSet: List<ClosetItem> ?= null
+class UserClosetAdapter(private val owner : User, private val parentFragment : Fragment) : RecyclerView.Adapter<UserClosetAdapter.ViewHolder>() {
+    private var dataSet: List<ClosetItem> = owner.closetItems
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val userClosetImg: ImageView = view.findViewById(R.id.user_closet_item_img)
@@ -20,8 +21,7 @@ class UserClosetAdapter(private val parentFragment : Fragment) : RecyclerView.Ad
         init {
             view.setOnClickListener(View.OnClickListener {
                 val position: Int = adapterPosition
-                dataSet?.let { it1 -> UserClosetItemDialog(parentFragment, it1.get(position).copy(), position) }
-                    ?.show(parentFragment.childFragmentManager, "closetItemDialog")
+                UserClosetItemDialog(parentFragment, owner, position).show(parentFragment.childFragmentManager, "closetItemDialog")
             })
         }
     }
@@ -44,12 +44,10 @@ class UserClosetAdapter(private val parentFragment : Fragment) : RecyclerView.Ad
     }
 
     override fun getItemCount(): Int{
-        if(dataSet != null)
-            return dataSet!!.size
-        return 0
+        return dataSet.size
     }
 
-    fun setDataSet(items : List<ClosetItem>?){
+    fun setDataSet(items : List<ClosetItem>){
         dataSet = items
     }
 }
