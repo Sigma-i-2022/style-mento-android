@@ -30,7 +30,7 @@ class MyPageUserFragment(private val owner : User, private val showMenu : Int) :
 
         binding.myPageUserInterestedRecycler.adapter = interestedAdapter
 
-        val userAdapter = UserViewPagerAdapter(this)
+        val userAdapter = UserViewPagerAdapter(this, owner)
         binding.myPageUserViewPager.isUserInputEnabled = false
         if(showMenu == 0){
             userAdapter.setMenu(0)

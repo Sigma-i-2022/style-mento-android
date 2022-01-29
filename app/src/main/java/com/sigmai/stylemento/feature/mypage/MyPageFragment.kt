@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.sigmai.stylemento.R
+import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.databinding.FragmentMyPageBinding
 import com.sigmai.stylemento.feature.mypage.coordinator.MyPageCoordinatorFragment
 import com.sigmai.stylemento.feature.mypage.user.MyPageUserFragment
@@ -26,7 +27,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
 
     public fun setMyPageFragment(){
         if(false){
-            val transaction = childFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment(0))
+            val transaction = childFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment(Client.getUserInfo(), 0))
             transaction.addToBackStack(null)
             transaction.commit()
         }

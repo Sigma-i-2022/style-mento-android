@@ -16,7 +16,7 @@ class MyPageLookbookFragment(private val owner : User) : BaseFragment<FragmentMy
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val lookbookAdapter = UserLookbookAdapter(this)
+        val lookbookAdapter = UserLookbookAdapter(owner, this)
         val gridLayoutManager = GridLayoutManager(context,3, GridLayoutManager.VERTICAL, false)
 
         lookbookAdapter.setDataSet(owner.lookbookItems)

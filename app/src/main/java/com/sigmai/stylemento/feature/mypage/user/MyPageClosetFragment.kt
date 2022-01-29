@@ -16,7 +16,7 @@ class MyPageClosetFragment(private val owner: User) : BaseFragment<FragmentMyPag
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val closetAdapter = UserClosetAdapter(this)
+        val closetAdapter = UserClosetAdapter(owner, this)
         val gridLayoutManager = GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
 
         closetAdapter.setDataSet(owner.closetItems)
