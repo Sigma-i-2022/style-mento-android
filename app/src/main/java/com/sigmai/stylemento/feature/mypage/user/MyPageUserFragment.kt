@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.sigmai.stylemento.R
+import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.databinding.FragmentMyPageUserBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.data.model.User
@@ -50,13 +51,6 @@ class MyPageUserFragment(private val owner : User, private val showMenu : Int) :
             showLookbook()
         })
 
-        binding.myPageUserReviseImg.setOnClickListener(View.OnClickListener {
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.my_page_frameLayout, MyPageUserRevisionFragment())
-            transaction.addToBackStack(null)
-            transaction.commit()
-        })
-
         binding.myPageUserNameText.text = owner.nickname
         binding.myPageUserEmailText.text = owner.email
         binding.myPageUserIntroductionText.text = owner.introduction
@@ -64,6 +58,21 @@ class MyPageUserFragment(private val owner : User, private val showMenu : Int) :
             setOnClickIntroduction()
         })
 
+    }
+
+    private fun ownerCheck(){
+        if(owner.email == Client.getUserInfo().email){
+            binding.myPageUserReviseImg.setOnClickListener(View.OnClickListener {
+                val transaction = parentFragmentManager.beginTransaction()
+                transaction.replace(R.id.my_page_frameLayout, MyPageUserRevisionFragment())
+                transaction.addToBackStack(null)
+                transaction.commit()
+            })
+        }
+        else{
+            binding.myPageUserReviseImg.visibility = View.GONE
+            binding.myPageUserChatButton.visibility = View.GONE
+        }
     }
 
     private fun showCloset(){

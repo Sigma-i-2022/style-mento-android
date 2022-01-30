@@ -11,170 +11,190 @@
             type="com.sigmai.stylemento.feature.mypage.MyPageViewModel" />
     </data>
 
-    <androidx.core.widget.NestedScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        android:fillViewport="true">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:descendantFocusability="blocksDescendants">
-
-            <ImageView
-                android:id="@+id/my_page_user_back_img"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_arrow_back"
-                android:layout_marginHorizontal="@dimen/horizontal_margin"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/my_page_user_revise_img"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_pencil"
-                android:layout_marginHorizontal="@dimen/horizontal_margin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:fillViewport="true"
+            android:scrollbars="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/my_page_user_profile_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:layout_marginHorizontal="@dimen/horizontal_margin"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/my_page_user_back_img">
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:descendantFocusability="blocksDescendants">
 
                 <ImageView
-                    android:id="@+id/my_page_user_profile_img"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/bg_circle"
-                    android:backgroundTint="@color/gray_d"
+                    android:id="@+id/my_page_user_back_img"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:background="@drawable/ic_arrow_back"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <LinearLayout
-                    android:id="@+id/my_page_user_profile_text_layout"
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/my_page_user_revise_img"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:background="@drawable/ic_pencil"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/my_page_user_profile_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:layout_marginTop="6dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_user_back_img">
+
+                    <ImageView
+                        android:id="@+id/my_page_user_profile_img"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/bg_circle"
+                        android:backgroundTint="@color/gray_d"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/my_page_user_profile_text_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="14dp"
+                        android:orientation="vertical"
+                        app:layout_constraintStart_toEndOf="@id/my_page_user_profile_img"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/my_page_user_name_text"
+                            style="@style/header3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            tools:text="user_name" />
+
+                        <TextView
+                            android:id="@+id/my_page_user_email_text"
+                            style="@style/body1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray_8"
+                            tools:text="user_email" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/my_page_user_introduction_text"
+                    style="@style/body1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_user_profile_layout" />
+
+                <TextView
+                    android:id="@+id/my_page_user_interested_text"
+                    style="@style/body1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginTop="14dp"
-                    android:orientation="vertical"
-                    app:layout_constraintStart_toEndOf="@id/my_page_user_profile_img"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="9dp"
+                    android:text="관심 코디네이터"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_user_introduction_text" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/my_page_user_interested_recycler"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:scrollbars="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_user_interested_text" />
+
+                <View
+                    android:id="@+id/my_page_user_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:layout_marginTop="20dp"
+                    android:background="#CECECE"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_user_interested_recycler" />
+
+                <LinearLayout
+                    android:id="@+id/my_page_user_option_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/my_page_user_line">
 
                     <TextView
-                        android:id="@+id/my_page_user_name_text"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/my_page_user_closet_button"
+                        style="@style/header4"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        tools:text="user_name"
-                        android:textStyle="bold"
-                        style="@style/header3"/>
+                        android:layout_weight="1"
+                        android:background="@drawable/button_shadow"
+                        android:paddingBottom="15dp"
+                        android:text="옷장"
+                        android:textAlignment="center" />
 
                     <TextView
-                        android:id="@+id/my_page_user_email_text"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/my_page_user_lookbook_button"
+                        style="@style/header4"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        tools:text="user_email"
-                        android:textColor="@color/gray_8"
-                        style="@style/body1"/>
+                        android:layout_weight="1"
+                        android:background="@drawable/button_null"
+                        android:paddingBottom="15dp"
+                        android:text="룩북"
+                        android:textAlignment="center"
+                        android:textColor="@color/gray_d" />
                 </LinearLayout>
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/my_page_user_viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_user_option_layout" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/my_page_user_introduction_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                style="@style/body1"
-                android:maxLines="3"
-                android:ellipsize="end"
-                android:layout_marginTop="12dp"
-                android:layout_marginHorizontal="@dimen/horizontal_margin"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/my_page_user_profile_layout" />
+        </androidx.core.widget.NestedScrollView>
 
-            <TextView
-                android:id="@+id/my_page_user_interested_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="관심 코디네이터"
-                android:textStyle="bold"
-                style="@style/body1"
-                android:layout_marginTop="9dp"
-                android:layout_marginHorizontal="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/my_page_user_introduction_text" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/my_page_user_interested_recycler"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scrollbars="horizontal"
-                android:layout_marginTop="8dp"
-                android:layout_marginHorizontal="@dimen/horizontal_margin"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:orientation="horizontal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/my_page_user_interested_text" />
-
-            <View
-                android:id="@+id/my_page_user_line"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#CECECE"
-                android:layout_marginTop="20dp"
-                android:layout_marginHorizontal="@dimen/horizontal_margin"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/my_page_user_interested_recycler" />
-
-            <LinearLayout
-                android:id="@+id/my_page_user_option_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/horizontal_margin"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/my_page_user_line">
-
-                <TextView
-                    android:id="@+id/my_page_user_closet_button"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_shadow"
-                    android:text="옷장"
-                    android:textAlignment="center"
-                    style="@style/header4"
-                    android:paddingBottom="15dp"/>
-
-                <TextView
-                    android:id="@+id/my_page_user_lookbook_button"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_null"
-                    android:text="룩북"
-                    android:textColor="@color/gray_d"
-                    android:textAlignment="center"
-                    style="@style/header4"
-                    android:paddingBottom="15dp"/>
-            </LinearLayout>
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/my_page_user_viewPager"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:layout_marginHorizontal="@dimen/horizontal_margin"
-                app:layout_constraintTop_toBottomOf="@id/my_page_user_option_layout"
-                app:layout_constraintStart_toStartOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.core.widget.NestedScrollView>
+        <Button
+            android:id="@+id/my_page_user_chat_button"
+            style="@style/header4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:paddingVertical="12dp"
+            android:text="채팅하기"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </RelativeLayout>
 </layout>
