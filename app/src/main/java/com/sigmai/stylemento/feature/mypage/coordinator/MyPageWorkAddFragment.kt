@@ -93,7 +93,7 @@ class MyPageWorkAddFragment : BaseFragment<FragmentMyPageWorkAddBinding>() {
     }
 
     private fun backToMyPage(){
-        val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageCoordinatorFragment(0))
+        val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageCoordinatorFragment(Client.getCoordinatorInfo(), 0))
         transaction.commit()
     }
 

@@ -62,7 +62,7 @@ class MyPageCoordinatorRevisionFragment : BaseFragment<FragmentMyPageCoordinator
         binding.myPageCoordinatorRevisionStyleTagRecyclerView.adapter = tagAdapter
     }
     private fun backToMyPage(){
-        val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageCoordinatorFragment(0))
+        val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageCoordinatorFragment(Client.getCoordinatorInfo(), 0))
         transaction.commit()
     }
     fun setTags(tagTypes: MutableList<TagType>){

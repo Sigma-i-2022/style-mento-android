@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.DialogTagSelectionBinding
 import com.sigmai.stylemento.feature.mypage.coordinator.MyPageCoordinatorRevisionFragment
+import com.sigmai.stylemento.feature.mypage.coordinator.MyPageWorkRevisionFragment
 import com.sigmai.stylemento.feature.mypage.user.MyPageLookbookAddFragment
 import com.sigmai.stylemento.feature.mypage.user.MyPageLookbookRevisionFragment
 import com.sigmai.stylemento.global.base.BaseDialogFragment
@@ -36,7 +37,6 @@ class CoordinatorTagSelectionDialog(private val f: Fragment) : BaseDialogFragmen
             addTags()
             when (f) {
                 is MyPageCoordinatorRevisionFragment -> f.setTags(tags)
-                //is MyPageLookbookRevisionFragment -> f.setTags(tags)
             }
             dismiss()
         })

@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.viewModels
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
+import com.sigmai.stylemento.data.model.Coordinator
 import com.sigmai.stylemento.data.model.ReviewItem
 import com.sigmai.stylemento.databinding.FragmentMyPageCoordinatorBinding
 import com.sigmai.stylemento.feature.mypage.MyPageViewModel
@@ -19,7 +20,7 @@ import com.sigmai.stylemento.feature.mypage.coordinator.adapter.CoordinatorViewP
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.constant.ReviewType
 
-class MyPageCoordinatorFragment(private var showMenu : Int) : BaseFragment<FragmentMyPageCoordinatorBinding>() {
+class MyPageCoordinatorFragment(private val owner : Coordinator, private var showMenu : Int) : BaseFragment<FragmentMyPageCoordinatorBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_coordinator
     private val viewModel: MyPageViewModel by viewModels()
     private var introductionState = 0
@@ -32,7 +33,7 @@ class MyPageCoordinatorFragment(private var showMenu : Int) : BaseFragment<Fragm
         super.onViewCreated(view, savedInstanceState)
 
 
-        val coordinatorAdapter = CoordinatorViewPagerAdapter(this)
+        val coordinatorAdapter = CoordinatorViewPagerAdapter(this, owner)
         binding.myPageCoordinatorViewPager.isUserInputEnabled = false
         if(showMenu == 0){
             coordinatorAdapter.setMenu(0)
@@ -59,21 +60,23 @@ class MyPageCoordinatorFragment(private var showMenu : Int) : BaseFragment<Fragm
             transaction.commit()
         })
 
-        binding.myPageCoordinatorNameText.text = Client.getCoordinatorInfo().nickname
-        binding.myPageCoordinatorEmailText.text = Client.getCoordinatorInfo().email
-        binding.myPageCoordinatorIntroductionText.text = Client.getCoordinatorInfo().introduction
+        binding.myPageCoordinatorNameText.text = owner.nickname
+        binding.myPageCoordinatorEmailText.text = owner.email
+        binding.myPageCoordinatorIntroductionText.text = owner.introduction
 
         val tagAdapter = TagAdapter()
-        tagAdapter.setDataSet(Client.getCoordinatorInfo().styleTags)
+        tagAdapter.setDataSet(owner.styleTags)
         binding.myPageCoordinatorTagRecycler.adapter = tagAdapter
-
-        binding.myPageCoordinatorButtonLayout.visibility = View.GONE
-        binding.myPageCoordinatorReplyLayout.visibility = View.GONE
 
         setOnClickIntroduction()
 
     }
-
+    private fun ownerCheck(){
+        if(owner.email == Client.getCoordinatorInfo().email){
+            binding.myPageCoordinatorButtonLayout.visibility = View.GONE
+            binding.myPageCoordinatorReplyLayout.visibility = View.GONE
+        }
+    }
     private fun showWork(){
         if(showMenu == 0)
             binding.myPageCoordinatorViewPager.setCurrentItem(0, true)
@@ -136,7 +139,7 @@ class MyPageCoordinatorFragment(private var showMenu : Int) : BaseFragment<Fragm
             val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
             imm?.hideSoftInputFromWindow(view?.windowToken, 0)
 
-            val coordinatorAdapter = CoordinatorViewPagerAdapter(this)
+            val coordinatorAdapter = CoordinatorViewPagerAdapter(this, Client.getCoordinatorInfo())
             showMenu = 1
             coordinatorAdapter.setMenu(1)
             binding.myPageCoordinatorViewPager.adapter = coordinatorAdapter

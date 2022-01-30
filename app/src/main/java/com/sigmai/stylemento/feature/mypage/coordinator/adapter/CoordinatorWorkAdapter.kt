@@ -8,12 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
+import com.sigmai.stylemento.data.model.Coordinator
 import com.sigmai.stylemento.data.model.WorkItem
 import com.sigmai.stylemento.feature.mypage.coordinator.MyPageWorkItemFragment
 
 
-class CoordinatorWorkAdapter(private val parantFragment : Fragment) : RecyclerView.Adapter<CoordinatorWorkAdapter.ViewHolder>() {
-    private var dataSet: List<WorkItem> ?= null
+class CoordinatorWorkAdapter(private val parantFragment : Fragment, private val owner : Coordinator) : RecyclerView.Adapter<CoordinatorWorkAdapter.ViewHolder>() {
+    private var dataSet: List<WorkItem> = owner.workItems
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val userWorkImg: ImageView = view.findViewById(R.id.coordinator_work_item_img)
@@ -22,7 +23,7 @@ class CoordinatorWorkAdapter(private val parantFragment : Fragment) : RecyclerVi
             view.setOnClickListener(View.OnClickListener {
                 val position: Int = adapterPosition
                 val transaction = parantFragment.parentFragment?.parentFragmentManager?.beginTransaction()
-                transaction?.replace(R.id.my_page_frameLayout, MyPageWorkItemFragment(Client.getCoordinatorInfo().workItems.get(position), position))
+                transaction?.replace(R.id.my_page_frameLayout, MyPageWorkItemFragment(owner, position))
                 transaction?.commit()
             })
         }
@@ -43,12 +44,10 @@ class CoordinatorWorkAdapter(private val parantFragment : Fragment) : RecyclerVi
     }
 
     override fun getItemCount(): Int{
-        if(dataSet != null)
-            return dataSet!!.size
-        return 0
+        return dataSet.size
     }
 
-    fun setDataSet(items : List<WorkItem>?){
+    fun setDataSet(items : List<WorkItem>){
         dataSet = items
     }
 

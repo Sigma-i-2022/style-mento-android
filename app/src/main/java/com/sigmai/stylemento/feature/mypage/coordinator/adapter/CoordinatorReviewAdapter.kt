@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.data.model.Client
+import com.sigmai.stylemento.data.model.Coordinator
 import com.sigmai.stylemento.data.model.ReviewItem
 import com.sigmai.stylemento.databinding.ItemReviewBinding
 import com.sigmai.stylemento.databinding.ItemReviewReplyBinding
@@ -13,9 +14,9 @@ import com.sigmai.stylemento.feature.mypage.coordinator.MyPageReviewFragment
 import com.sigmai.stylemento.global.constant.ReviewType
 import java.lang.IllegalArgumentException
 
-class CoordinatorReviewAdapter(private val f: MyPageReviewFragment) :
+class CoordinatorReviewAdapter(private val f: MyPageReviewFragment, private val owner : Coordinator) :
     RecyclerView.Adapter<CoordinatorReviewAdapter.ReviewViewHolder>() {
-    var reviewList: MutableList<ReviewItem>? = mutableListOf()
+    var reviewList: MutableList<ReviewItem> = owner.reviews
     val context: String = ""
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
@@ -27,27 +28,29 @@ class CoordinatorReviewAdapter(private val f: MyPageReviewFragment) :
     }
 
     override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {
-        val item = reviewList!![position]
+        val item = reviewList[position]
 
         if (holder is ReviewNormalViewHolder) {
             holder.bind(item)
-            holder.view.setOnClickListener(View.OnClickListener {
-                val item = Client.getReviewItemAt(position + 1)
-                if (item == null || item.type == ReviewType.NORMAL) {
-                    if (f.parentFragment is MyPageCoordinatorFragment) {
-                        (f.parentFragment as MyPageCoordinatorFragment).reply(position + 1)
+            if(owner.email == Client.getCoordinatorInfo().email){
+                holder.view.setOnClickListener(View.OnClickListener {
+                    val nextItem = Client.getReviewItemAt(position + 1)
+                    if (nextItem == null || nextItem.type == ReviewType.NORMAL) {
+                        if (f.parentFragment is MyPageCoordinatorFragment) {
+                            (f.parentFragment as MyPageCoordinatorFragment).reply(position + 1)
+                        }
                     }
-                }
-            })
+                })
+            }
         } else if (holder is ReviewReplyViewHolder) {
             holder.bind(item)
         }
     }
 
-    override fun getItemCount() = reviewList!!.size
+    override fun getItemCount() = reviewList.size
 
     override fun getItemViewType(position: Int): Int {
-        return reviewList!![position].type
+        return reviewList[position].type
     }
 
     fun setList(items: MutableList<ReviewItem>) {
