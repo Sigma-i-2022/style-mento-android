@@ -184,6 +184,7 @@
             android:layout_marginHorizontal="@dimen/horizontal_margin">
 
             <Button
+                android:id="@+id/my_page_coordinator_chat_button"
                 style="@style/header4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -195,6 +196,7 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/my_page_coordinator_reservation_button"
                 style="@style/header4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
