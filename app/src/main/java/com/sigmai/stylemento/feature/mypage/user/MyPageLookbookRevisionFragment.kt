@@ -9,11 +9,14 @@ import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.LookbookItem
 import com.sigmai.stylemento.databinding.FragmentMyPageLookbookRevisionBinding
 import com.sigmai.stylemento.feature.mypage.TagAdapter
+import com.sigmai.stylemento.feature.mypage.TagSelectionDialog
 import com.sigmai.stylemento.feature.mypage.user.dialog.*
 import com.sigmai.stylemento.global.base.BaseFragment
+import com.sigmai.stylemento.global.base.HavingTag
 import com.sigmai.stylemento.global.constant.TagType
 
-class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, private val position : Int) : BaseFragment<FragmentMyPageLookbookRevisionBinding>() {
+class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, private val position : Int)
+    : BaseFragment<FragmentMyPageLookbookRevisionBinding>(), HavingTag {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_revision
 
     private val tagAdapter = TagAdapter()
@@ -41,7 +44,7 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
         })
 
         binding.myPageLookbookRevisionTagAddImg.setOnClickListener(View.OnClickListener {
-            val dialog = UserLookbookTagSelectionDialog(this)
+            val dialog = TagSelectionDialog(this)
             dialog.show(childFragmentManager, "TagSelectionDialog")
         })
     }
@@ -104,7 +107,7 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
         transaction.commit()
     }
 
-    fun setTags(tagTypes: MutableList<TagType>){
+    override fun setTags(tagTypes: MutableList<TagType>){
         lookbookItem.tags = tagTypes
         tagAdapter.setDataSet(lookbookItem.tags)
         binding.myPageLookbookRevisionTagRecycler.adapter = tagAdapter

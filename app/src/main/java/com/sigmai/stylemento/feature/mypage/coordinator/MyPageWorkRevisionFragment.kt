@@ -9,12 +9,14 @@ import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.WorkItem
 import com.sigmai.stylemento.databinding.FragmentMyPageWorkRevisionBinding
 import com.sigmai.stylemento.feature.mypage.TagAdapter
+import com.sigmai.stylemento.feature.mypage.TagSelectionDialog
 import com.sigmai.stylemento.feature.mypage.coordinator.dialog.CoordinatorWorkImageSelectionDialog
-import com.sigmai.stylemento.feature.mypage.coordinator.dialog.CoordinatorWorkTagSelectionDialog
 import com.sigmai.stylemento.global.base.BaseFragment
+import com.sigmai.stylemento.global.base.HavingTag
 import com.sigmai.stylemento.global.constant.TagType
 
-class MyPageWorkRevisionFragment(private var workItem : WorkItem, private val position : Int) : BaseFragment<FragmentMyPageWorkRevisionBinding>() {
+class MyPageWorkRevisionFragment(private var workItem : WorkItem, private val position : Int)
+    : BaseFragment<FragmentMyPageWorkRevisionBinding>(), HavingTag {
     override val layoutResourceId = R.layout.fragment_my_page_work_revision
 
     private val tagAdapter = TagAdapter()
@@ -42,7 +44,7 @@ class MyPageWorkRevisionFragment(private var workItem : WorkItem, private val po
         })
 
         binding.myPageWorkRevisionTagAddImg.setOnClickListener(View.OnClickListener {
-            val dialog = CoordinatorWorkTagSelectionDialog(this)
+            val dialog = TagSelectionDialog(this)
             dialog.show(childFragmentManager, "TagSelectionDialog")
         })
     }
@@ -105,7 +107,7 @@ class MyPageWorkRevisionFragment(private var workItem : WorkItem, private val po
         transaction.commit()
     }
 
-    fun setTags(tagTypes: MutableList<TagType>){
+    override fun setTags(tagTypes: MutableList<TagType>){
         workItem.tags = tagTypes
         tagAdapter.setDataSet(workItem.tags)
         binding.myPageWorkRevisionTagRecycler.adapter = tagAdapter

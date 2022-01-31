@@ -9,11 +9,12 @@ import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.databinding.FragmentMyPageCoordinatorRevisionBinding
 import com.sigmai.stylemento.feature.mypage.coordinator.dialog.CoordinatorImageSelectionDialog
-import com.sigmai.stylemento.feature.mypage.coordinator.dialog.CoordinatorTagSelectionDialog
 import com.sigmai.stylemento.feature.mypage.TagAdapter
+import com.sigmai.stylemento.feature.mypage.TagSelectionDialog
+import com.sigmai.stylemento.global.base.HavingTag
 import com.sigmai.stylemento.global.constant.TagType
 
-class MyPageCoordinatorRevisionFragment : BaseFragment<FragmentMyPageCoordinatorRevisionBinding>() {
+class MyPageCoordinatorRevisionFragment : BaseFragment<FragmentMyPageCoordinatorRevisionBinding>(), HavingTag {
     override val layoutResourceId = R.layout.fragment_my_page_coordinator_revision
 
     private var tags : MutableList<TagType> = mutableListOf()
@@ -54,7 +55,7 @@ class MyPageCoordinatorRevisionFragment : BaseFragment<FragmentMyPageCoordinator
         })
 
         binding.myPageCoordinatorRevisionStyleTagAdd.setOnClickListener(View.OnClickListener {
-            val dialog = CoordinatorTagSelectionDialog(this)
+            val dialog = TagSelectionDialog(this)
             dialog.show(childFragmentManager, "TagSelectionDialog")
         })
 
@@ -65,7 +66,7 @@ class MyPageCoordinatorRevisionFragment : BaseFragment<FragmentMyPageCoordinator
         val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageCoordinatorFragment(Client.getCoordinatorInfo(), 0))
         transaction.commit()
     }
-    fun setTags(tagTypes: MutableList<TagType>){
+    override fun setTags(tagTypes: MutableList<TagType>){
         tags = tagTypes
         tagAdapter.setDataSet(tags)
         binding.myPageCoordinatorRevisionStyleTagRecyclerView.adapter = tagAdapter

@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.feature.mypage.coordinator.dialog
+package com.sigmai.stylemento.feature.mypage
 
 import android.os.Bundle
 import android.view.*
@@ -12,11 +12,12 @@ import com.sigmai.stylemento.feature.mypage.coordinator.MyPageWorkRevisionFragme
 import com.sigmai.stylemento.feature.mypage.user.MyPageLookbookAddFragment
 import com.sigmai.stylemento.feature.mypage.user.MyPageLookbookRevisionFragment
 import com.sigmai.stylemento.global.base.BaseDialogFragment
+import com.sigmai.stylemento.global.base.HavingTag
 import com.sigmai.stylemento.global.constant.TagType
 import com.sigmai.stylemento.global.util.TransformToEnumUtil
 import com.sigmai.stylemento.global.util.TransformToIntUtil
 
-class CoordinatorWorkTagSelectionDialog(private val f: Fragment) : BaseDialogFragment<DialogTagSelectionBinding>() {
+class TagSelectionDialog(private val havingTag : HavingTag) : BaseDialogFragment<DialogTagSelectionBinding>() {
     override val layoutResourceId = R.layout.dialog_tag_selection
     private var tags: MutableList<TagType> = mutableListOf()
     private var tagStates: Array<Boolean> = Array(24) { false }
@@ -36,10 +37,7 @@ class CoordinatorWorkTagSelectionDialog(private val f: Fragment) : BaseDialogFra
 
         binding.tagSelectionSaveButton.setOnClickListener(View.OnClickListener {
             addTags()
-            when (f) {
-                is MyPageWorkAddFragment -> f.setTags(tags)
-                is MyPageWorkRevisionFragment -> f.setTags(tags)
-            }
+            havingTag.setTags(tags)
             dismiss()
         })
 
