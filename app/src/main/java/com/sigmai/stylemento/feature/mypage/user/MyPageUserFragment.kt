@@ -58,6 +58,7 @@ class MyPageUserFragment(private val owner : User, private val showMenu : Int) :
             setOnClickIntroduction()
         })
 
+        ownerCheck()
     }
 
     private fun ownerCheck(){
