@@ -69,7 +69,7 @@ class MyPageCoordinatorFragment(private val owner : Coordinator, private var sho
         binding.myPageCoordinatorTagRecycler.adapter = tagAdapter
 
         setOnClickIntroduction()
-
+        ownerCheck()
     }
     private fun ownerCheck(){
         if(owner.email == Client.getCoordinatorInfo().email){

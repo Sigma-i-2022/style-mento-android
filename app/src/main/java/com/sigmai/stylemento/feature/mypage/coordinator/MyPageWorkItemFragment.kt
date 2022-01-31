@@ -22,6 +22,7 @@ class MyPageWorkItemFragment(private val owner : Coordinator, private val positi
 
         dataBinding()
         setOnClickDetail()
+        ownerCheck()
     }
     private fun ownerCheck(){
         if(owner.email == Client.getCoordinatorInfo().email){
