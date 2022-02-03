@@ -120,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/my_page_user_line">
+                    app:layout_constraintTop_toBottomOf="@id/my_page_user_introduction_text">
 
                     <TextView
                         android:id="@+id/my_page_user_lookbook_button"
@@ -131,8 +131,7 @@
                         android:background="@drawable/button_shadow"
                         android:paddingBottom="15dp"
                         android:text="룩북"
-                        android:textAlignment="center"
-                        android:textColor="@color/gray_d" />
+                        android:textAlignment="center" />
                 </LinearLayout>
 
                 <androidx.viewpager2.widget.ViewPager2
