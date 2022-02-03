@@ -12,10 +12,9 @@ import com.sigmai.stylemento.feature.mypage.MyPageViewModel
 import com.sigmai.stylemento.feature.mypage.user.adapter.UserInterestedAdapter
 import com.sigmai.stylemento.feature.mypage.user.adapter.UserViewPagerAdapter
 
-class MyPageUserFragment(private val owner : User, private val showMenu : Int) : BaseFragment<FragmentMyPageUserBinding>() {
+class MyPageUserFragment(private val owner : User) : BaseFragment<FragmentMyPageUserBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_user
     private val viewModel: MyPageViewModel by viewModels()
-    val testDataSet = arrayOf("1", "2", "3", "4", "5")
 
     private var introductionState = 0
 
@@ -27,29 +26,11 @@ class MyPageUserFragment(private val owner : User, private val showMenu : Int) :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val interestedAdapter = UserInterestedAdapter(testDataSet)
-
-        binding.myPageUserInterestedRecycler.adapter = interestedAdapter
-
         val userAdapter = UserViewPagerAdapter(this, owner)
         binding.myPageUserViewPager.isUserInputEnabled = false
-        if(showMenu == 0){
-            userAdapter.setMenu(0)
-            binding.myPageUserViewPager.adapter = userAdapter
-            showCloset()
-        }
-        else if(showMenu == 1) {
-            userAdapter.setMenu(1)
-            binding.myPageUserViewPager.adapter = userAdapter
-            showLookbook()
-        }
 
-        binding.myPageUserClosetButton.setOnClickListener(View.OnClickListener {
-            showCloset()
-        })
-        binding.myPageUserLookbookButton.setOnClickListener(View.OnClickListener {
-            showLookbook()
-        })
+
+        binding.myPageUserViewPager.adapter = userAdapter
 
         binding.myPageUserNameText.text = owner.nickname
         binding.myPageUserEmailText.text = owner.email
@@ -76,28 +57,6 @@ class MyPageUserFragment(private val owner : User, private val showMenu : Int) :
         }
     }
 
-    private fun showCloset(){
-        if(showMenu == 0)
-            binding.myPageUserViewPager.setCurrentItem(0, true)
-        else
-            binding.myPageUserViewPager.setCurrentItem(1, true)
-
-        binding.myPageUserLookbookButton.setBackgroundResource(R.drawable.button_null)
-        context?.let { it1 -> binding.myPageUserLookbookButton.setTextColor(it1.getColor(R.color.gray_d)) }
-        binding.myPageUserClosetButton.setBackgroundResource(R.drawable.button_shadow)
-        context?.let { it1 -> binding.myPageUserClosetButton.setTextColor(it1.getColor(R.color.black)) }
-    }
-    private fun showLookbook(){
-        if(showMenu == 1)
-            binding.myPageUserViewPager.setCurrentItem(0, true)
-        else
-            binding.myPageUserViewPager.setCurrentItem(1, true)
-
-        binding.myPageUserClosetButton.setBackgroundResource(R.drawable.button_null)
-        context?.let { it1 -> binding.myPageUserClosetButton.setTextColor(it1.getColor(R.color.gray_d)) }
-        binding.myPageUserLookbookButton.setBackgroundResource(R.drawable.button_shadow)
-        context?.let { it1 -> binding.myPageUserLookbookButton.setTextColor(it1.getColor(R.color.black)) }
-    }
     private fun setOnClickIntroduction(){
         binding.myPageUserIntroductionText.setOnClickListener(View.OnClickListener {
             if(introductionState == 0){
