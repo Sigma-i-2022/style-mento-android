@@ -9,6 +9,7 @@ import com.sigmai.stylemento.databinding.FragmentMyPageBinding
 import com.sigmai.stylemento.feature.mypage.coordinator.MyPageCoordinatorFragment
 import com.sigmai.stylemento.feature.mypage.user.MyPageUserFragment
 import com.sigmai.stylemento.global.base.BaseFragment
+import com.sigmai.stylemento.global.constant.UserType
 
 class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page
@@ -26,7 +27,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
     }
 
     private fun setMyPageFragment(){
-        if(true){
+        if(Client.getClientType() == UserType.NORMAL){
             val transaction = childFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment(Client.getUserInfo()))
             transaction.addToBackStack(null)
             transaction.commit()
