@@ -20,6 +20,13 @@ class MyPageWorkRevisionFragment(private var workItem : WorkItem, private val po
     override val layoutResourceId = R.layout.fragment_my_page_work_revision
 
     private val tagAdapter = TagAdapter()
+    private val textWatcher = object : TextWatcher {
+        override fun afterTextChanged(p0: Editable?) {}
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            workItem.deltail = p0.toString()
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,50 +63,10 @@ class MyPageWorkRevisionFragment(private var workItem : WorkItem, private val po
     }
 
     private fun setEditTextLayout(){
-        binding.myPageWorkRevisionDetailEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                workItem.deltail = p0.toString()
-            }
-        })
-        binding.myPageWorkRevisionTopEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                workItem.top = p0.toString()
-            }
-        })
-        binding.myPageWorkRevisionPantsEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                workItem.pants = p0.toString()
-            }
-        })
-        binding.myPageWorkRevisionShoesEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                workItem.shoes = p0.toString()
-            }
-        })
+        binding.myPageWorkRevisionDetailEditText.addTextChangedListener(textWatcher)
+        binding.myPageWorkRevisionTopEditText.addTextChangedListener(textWatcher)
+        binding.myPageWorkRevisionPantsEditText.addTextChangedListener(textWatcher)
+        binding.myPageWorkRevisionShoesEditText.addTextChangedListener(textWatcher)
     }
 
     private fun backToMyPage(){
