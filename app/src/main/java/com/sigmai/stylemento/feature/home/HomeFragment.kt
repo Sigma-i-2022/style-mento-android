@@ -1,13 +1,9 @@
 package com.sigmai.stylemento.feature.home
 
-import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentHomeBinding
-import com.sigmai.stylemento.feature.home.adapter.FavoriteCoordinatorAdapter
-import com.sigmai.stylemento.feature.home.adapter.RecommendedCoordinatorAdapter
 import com.sigmai.stylemento.global.base.BaseFragment
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
@@ -17,7 +13,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun initState() {
         super.initState()
         getUserInfo()
-        setupAdapter()
     }
 
     override fun initDataBinding() {
@@ -31,10 +26,5 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     fun getUserInfo() {
         viewModel.getUserInfo()
-    }
-
-    private fun setupAdapter() {
-        binding.favoriteCoordinatorList.adapter = FavoriteCoordinatorAdapter()
-        binding.recommendedCoordinatorList.adapter = RecommendedCoordinatorAdapter(viewModel)
     }
 }
