@@ -50,10 +50,10 @@ class MyPageUserFragment(private val owner : User) : BaseFragment<FragmentMyPage
                 transaction.addToBackStack(null)
                 transaction.commit()
             })
+            binding.myPageUserChatButton.visibility = View.GONE
         }
         else{
             binding.myPageUserReviseImg.visibility = View.GONE
-            binding.myPageUserChatButton.visibility = View.GONE
         }
     }
 
