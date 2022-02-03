@@ -31,26 +31,26 @@ class MyPageWorkAddFragment : BaseFragment<FragmentMyPageWorkAddBinding>(), Havi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.myPageWorkAddBackImg.setOnClickListener(View.OnClickListener {
+        binding.myPageWorkAddBackImg.setOnClickListener{
             backToMyPage()
-        })
+        }
 
-        binding.myPageWorkAddItemImg.setOnClickListener(View.OnClickListener {
+        binding.myPageWorkAddItemImg.setOnClickListener{
             val dialog = CoordinatorWorkImageSelectionDialog()
             dialog.show(childFragmentManager, "ImageSelectionDialog")
-        })
+        }
 
         setEditTextLayout()
 
-        binding.myPageWorkAddSaveButton.setOnClickListener(View.OnClickListener {
+        binding.myPageWorkAddSaveButton.setOnClickListener{
             Client.addWorkItem(workItem)
             backToMyPage()
-        })
+        }
 
-       binding.myPageWorkAddTagAddImg.setOnClickListener(View.OnClickListener {
+       binding.myPageWorkAddTagAddImg.setOnClickListener{
             val dialog = TagSelectionDialog(this)
             dialog.show(childFragmentManager, "TagSelectionDialog")
-        })
+        }
     }
 
     private fun setEditTextLayout(){
