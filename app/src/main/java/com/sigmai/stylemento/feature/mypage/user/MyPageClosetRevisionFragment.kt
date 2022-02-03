@@ -103,8 +103,8 @@ class MyPageClosetRevisionFragment(private var closetItem : ClosetItem, private 
     }
 
     private fun backToMyPage(){
-        val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment(Client.getUserInfo(), 0))
-        transaction.commit()
+        //val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment(Client.getUserInfo(), 0))
+        //transaction.commit()
     }
 
     fun setCategory(categoryType: ItemCategoryType){

@@ -52,7 +52,7 @@ class UserClosetItemDialog(private val f : Fragment, private val owner : User, p
                             DialogInterface.BUTTON_POSITIVE -> {
                                 Client.removeClosetItem(position)
                                 val transaction = f.parentFragment?.parentFragmentManager?.beginTransaction()
-                                transaction?.replace(R.id.my_page_frameLayout, MyPageUserFragment(Client.getUserInfo(), 0))
+                                //transaction?.replace(R.id.my_page_frameLayout, MyPageUserFragment(Client.getUserInfo(), 0))
                                 transaction?.commit()
                             }
                         }

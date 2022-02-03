@@ -46,14 +46,14 @@ class MyPageLookbookItemFragment(private val owner : User, private val position 
             binding.myPageUserLookbookItemRevision.visibility = View.GONE
             binding.myPageUserLookbookItemDelete.visibility = View.GONE
             binding.myPageUserLookbookBackImg.setOnClickListener(View.OnClickListener {
-                val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment(owner, 1))
+                val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment(owner))
                 transaction.commit()
             })
         }
         else {
             binding.myPageUserLookbookBackImg.setOnClickListener(View.OnClickListener {
                 val transaction = parentFragmentManager.beginTransaction()
-                    .replace(R.id.my_page_frameLayout, MyPageUserFragment(Client.getUserInfo(), 1))
+                    .replace(R.id.my_page_frameLayout, MyPageUserFragment(Client.getUserInfo()))
                 transaction.commit()
             })
 
@@ -78,7 +78,7 @@ class MyPageLookbookItemFragment(private val owner : User, private val position 
                                 val transaction = parentFragmentManager.beginTransaction()
                                 transaction.replace(
                                     R.id.my_page_frameLayout,
-                                    MyPageUserFragment(Client.getUserInfo(), 1)
+                                    MyPageUserFragment(Client.getUserInfo())
                                 )
                                 transaction.commit()
                             }

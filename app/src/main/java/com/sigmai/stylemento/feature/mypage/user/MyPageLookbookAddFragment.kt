@@ -94,7 +94,7 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
     }
 
     private fun backToMyPage(){
-        val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment(Client.getUserInfo(), 1))
+        val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment(Client.getUserInfo()))
         transaction.commit()
     }
 
