@@ -248,20 +248,22 @@
                     style="@style/header5"
                     app:layout_constraintTop_toBottomOf="@id/write_review_content_background"
                     app:layout_constraintStart_toStartOf="parent"/>
+
                 <TextView
                     android:id="@+id/write_review_notification_content_text"
+                    style="@style/body2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="16dp"
                     android:text="- 작성하신 후기는 다른 회원들에게 공개됩니다.\n
                     - 댓글은 스타일멘토에서 확인하지 않습니다.\n
                     - 신체정보(성별, 키, 몸무게)는 수집/이용 동의 시 후기 서비스 제공 목적으로만 이용됩니다.\n
                     - 작성하신 후기는 다른 회원들에게 공개됩니다.\n"
-                    style="@style/body2"
                     android:textColor="@color/gray_d"
-                    app:layout_constraintTop_toBottomOf="@id/write_review_notification_text"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/write_review_notification_text" />
 
                 <ImageView
                     android:id="@+id/write_review_all_agree_img"
@@ -341,6 +343,7 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/write_review_save_button"
                 style="@style/header4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
