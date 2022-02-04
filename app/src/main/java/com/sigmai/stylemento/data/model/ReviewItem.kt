@@ -8,11 +8,10 @@ import com.sigmai.stylemento.global.constant.TextureType
 data class ReviewItem(
     val type: Int,
     val owner : String,
+    var content: String = "",
     var photoUrl: String = "",
     var star: Int = 0,
-    var content: String = "",
     var time: String = "",
-    var idx : Int = 0,
     var height : Float = 0f,
     var weight : Float = 0f
 )
