@@ -7,7 +7,7 @@ import com.sigmai.stylemento.feature.mypage.user.MyPageClosetFragment
 import com.sigmai.stylemento.feature.mypage.user.MyPageLookbookFragment
 import java.lang.Exception
 
-class UserViewPagerAdapter(f : Fragment, private val owner : User) : FragmentStateAdapter(f){
+class UserViewPagerAdapter(f : Fragment) : FragmentStateAdapter(f){
     private var menu : Int = 0
     override fun getItemCount(): Int = 2
 
@@ -25,7 +25,7 @@ class UserViewPagerAdapter(f : Fragment, private val owner : User) : FragmentSta
                 else -> throw Exception("존재하지 않는 탭입니다.")
             }
         }*/
-        return MyPageLookbookFragment(owner)
+        return MyPageLookbookFragment()
     }
     fun setMenu(i : Int){
         menu = i
