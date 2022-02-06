@@ -35,7 +35,6 @@ class MyPageLookbookFragment() : BaseFragment<FragmentMyPageLookbookBinding>() {
         val lookbookAdapter = UserLookbookAdapter(this)
         val gridLayoutManager = GridLayoutManager(context,3, GridLayoutManager.VERTICAL, false)
 
-        lookbookAdapter.setDataSet(viewModel.user.value?.lookbookItems!!)
         binding.myPageUserLookbookRecycler.adapter = lookbookAdapter
         binding.myPageUserLookbookRecycler.layoutManager = gridLayoutManager
 
