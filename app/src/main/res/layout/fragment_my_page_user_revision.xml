@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.sigmai.stylemento.feature.mypage.user.MyPageUserRevisionViewModel" />
+    </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,6 +30,7 @@
                     android:layout_height="30dp"
                     android:background="@drawable/ic_arrow_back"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:onClick="@{()->viewModel.onBackClick()}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,7 +50,8 @@
                     android:id="@+id/my_page_user_revision_name_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="user_name"
+                    android:text="@{viewModel.user.nickname}"
+                    tools:text="user_name"
                     style="@style/header3"
                     android:textStyle="bold"
                     android:background="@color/trans_parent"
