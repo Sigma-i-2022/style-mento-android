@@ -42,6 +42,7 @@
                     android:layout_height="30dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:background="@drawable/ic_pencil"
+                    android:onClick="@{()->viewModel.onRevisionClick()}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -123,6 +124,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:layout_marginTop="20dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/my_page_user_introduction_text">
 
