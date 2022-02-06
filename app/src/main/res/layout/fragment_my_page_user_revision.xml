@@ -106,6 +106,7 @@
             android:text="저장"
             android:textColor="@color/white"
             style="@style/header4"
+            android:onClick="@{()->viewModel.onSaveClick()}"
             android:layout_alignParentBottom="true"/>
     </RelativeLayout>
 </layout>
