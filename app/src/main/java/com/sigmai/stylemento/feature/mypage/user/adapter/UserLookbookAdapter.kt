@@ -23,7 +23,7 @@ class UserLookbookAdapter(private val parantFragment : Fragment) : RecyclerView.
             view.setOnClickListener(View.OnClickListener {
                 val position: Int = adapterPosition
                 val transaction = parantFragment.parentFragment?.parentFragmentManager?.beginTransaction()
-                transaction?.replace(R.id.my_page_frameLayout, MyPageLookbookItemFragment(owner, position))
+                transaction?.replace(R.id.my_page_frameLayout, MyPageLookbookItemFragment(dataSet.get(position), position))
                 transaction?.commit()
             })
         }
