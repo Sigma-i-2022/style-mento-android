@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.fragment.app.viewModels
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.LookbookItem
@@ -18,8 +19,30 @@ import com.sigmai.stylemento.global.constant.TagType
 class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, private val position : Int)
     : BaseFragment<FragmentMyPageLookbookRevisionBinding>(), HavingTag {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_revision
+    private val viewModel: MyPageLookbookRevisionViewModel by viewModels()
 
     private val tagAdapter = TagAdapter()
+
+    override fun initState() {
+        super.initState()
+        viewModel.getUserInfo()
+    }
+    override fun initDataBinding() {
+        super.initDataBinding()
+        binding.viewModel = viewModel
+
+        viewModel.startBack.observe(this, {
+            backToMyPage()
+        })
+        viewModel.startSave.observe(this, {
+            Client.reviseLookbookItem(lookbookItem, position)
+            backToMyPage()
+        })
+        viewModel.startTagAdd.observe(this, {
+            val dialog = TagSelectionDialog(this)
+            dialog.show(childFragmentManager, "TagSelectionDialog")
+        })
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,23 +52,10 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
         binding.myPageLookbookRevisionTagRecycler.adapter = tagAdapter
 
         setEditTextLayout()
-        binding.myPageLookbookRevisionBackImg.setOnClickListener(View.OnClickListener {
-            backToMyPage()
-        })
 
         binding.myPageLookbookRevisionItemImg.setOnClickListener(View.OnClickListener {
             val dialog = UserLookbookImageSelectionDialog()
             dialog.show(childFragmentManager, "ImageSelectionDialog")
-        })
-
-        binding.myPageLookbookRevisionSaveButton.setOnClickListener(View.OnClickListener {
-            Client.reviseLookbookItem(lookbookItem, position)
-            backToMyPage()
-        })
-
-        binding.myPageLookbookRevisionTagAddImg.setOnClickListener(View.OnClickListener {
-            val dialog = TagSelectionDialog(this)
-            dialog.show(childFragmentManager, "TagSelectionDialog")
         })
     }
     private fun setTextInit(){
