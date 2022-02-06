@@ -134,7 +134,7 @@ class MyPageCoordinatorFragment(private val owner : Coordinator, private var sho
         })
 
         binding.myPageCoordinatorReplySendText.setOnClickListener(View.OnClickListener {
-            Client.addReviewItemAt(ReviewItem(ReviewType.REPLY, Client.getCoordinatorInfo().nickname, "", 0, content), position)
+            //Client.addReviewItemAt(ReviewItem(ReviewType.REPLY, Client.getCoordinatorInfo().nickname, "", 0, content), position)
             binding.myPageCoordinatorReplyLayout.visibility = View.GONE
             val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
             imm?.hideSoftInputFromWindow(view?.windowToken, 0)
