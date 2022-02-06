@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.fragment.app.viewModels
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.LookbookItem
@@ -17,16 +18,34 @@ import com.sigmai.stylemento.global.constant.TagType
 
 class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>(), HavingTag {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_add
+    private val viewModel: MyPageLookbookAddViewModel by viewModels()
 
     private val tagAdapter = TagAdapter()
     private var lookbookItem : LookbookItem = LookbookItem(Client.getUserInfo().nickname)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun initState() {
+        super.initState()
+        viewModel.getUserInfo()
+    }
+    override fun initDataBinding() {
+        super.initDataBinding()
+        binding.viewModel = viewModel
 
-        binding.myPageLookbookAddBackImg.setOnClickListener(View.OnClickListener {
+        viewModel.startBack.observe(this, {
             backToMyPage()
         })
+        viewModel.startSave.observe(this, {
+            Client.addLookbookItem(lookbookItem)
+            backToMyPage()
+        })
+        viewModel.startTagAdd.observe(this, {
+            val dialog = TagSelectionDialog(this)
+            dialog.show(childFragmentManager, "TagSelectionDialog")
+        })
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.myPageLookbookAddItemImg.setOnClickListener(View.OnClickListener {
             val dialog = UserLookbookImageSelectionDialog()
@@ -34,16 +53,6 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
         })
 
         setEditTextLayout()
-
-        binding.myPageLookbookAddSaveButton.setOnClickListener(View.OnClickListener {
-            Client.addLookbookItem(lookbookItem)
-            backToMyPage()
-        })
-
-       binding.myPageLookbookAddTagAddImg.setOnClickListener(View.OnClickListener {
-            val dialog = TagSelectionDialog(this)
-            dialog.show(childFragmentManager, "TagSelectionDialog")
-        })
     }
 
     private fun setEditTextLayout(){
@@ -94,7 +103,7 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
     }
 
     private fun backToMyPage(){
-        val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment(Client.getUserInfo()))
+        val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment())
         transaction.commit()
     }
 
