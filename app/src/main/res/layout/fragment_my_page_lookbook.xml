@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.sigmai.stylemento.feature.mypage.user.MyPageLookbookViewModel" />
+    </data>
 
     <RelativeLayout
         android:id="@+id/my_page_user_lookbook_content_layout"
@@ -19,6 +25,7 @@
                 android:layout_height="34dp"
                 android:layout_alignParentEnd="true"
                 android:background="@drawable/ic_plus"
+                android:onClick="@{()->viewModel.onAddLookbookClick()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
