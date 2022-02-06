@@ -14,7 +14,7 @@ import com.sigmai.stylemento.feature.mypage.user.MyPageLookbookItemFragment
 
 
 class UserLookbookAdapter(private val parantFragment : Fragment) : RecyclerView.Adapter<UserLookbookAdapter.ViewHolder>() {
-    private var dataSet: List<LookbookItem> = listOf()
+    private var dataSet: List<LookbookItem> = Client.getUserInfo().lookbookItems
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val userLookbookImg: ImageView = view.findViewById(R.id.user_lookbook_item_img)
