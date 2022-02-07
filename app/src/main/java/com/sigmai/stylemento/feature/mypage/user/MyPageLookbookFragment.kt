@@ -5,9 +5,9 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.sigmai.stylemento.R
-import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.databinding.FragmentMyPageLookbookBinding
 import com.sigmai.stylemento.feature.mypage.user.adapter.UserLookbookAdapter
+import com.sigmai.stylemento.feature.mypage.user.viewModel.MyPageLookbookViewModel
 import com.sigmai.stylemento.global.base.BaseFragment
 
 class MyPageLookbookFragment() : BaseFragment<FragmentMyPageLookbookBinding>() {

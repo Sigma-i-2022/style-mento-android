@@ -12,6 +12,7 @@ import com.sigmai.stylemento.databinding.FragmentMyPageLookbookAddBinding
 import com.sigmai.stylemento.feature.mypage.TagAdapter
 import com.sigmai.stylemento.feature.mypage.TagSelectionDialog
 import com.sigmai.stylemento.feature.mypage.user.dialog.*
+import com.sigmai.stylemento.feature.mypage.user.viewModel.MyPageLookbookAddViewModel
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.base.HavingTag
 import com.sigmai.stylemento.global.constant.TagType

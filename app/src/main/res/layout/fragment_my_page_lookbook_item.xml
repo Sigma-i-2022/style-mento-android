@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.sigmai.stylemento.feature.mypage.user.MyPageLookbookItemViewModel" />
+            type="com.sigmai.stylemento.feature.mypage.user.viewModel.MyPageLookbookItemViewModel" />
     </data>
 
     <RelativeLayout

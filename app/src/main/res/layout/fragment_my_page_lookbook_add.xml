@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.sigmai.stylemento.feature.mypage.user.MyPageLookbookAddViewModel" />
+            type="com.sigmai.stylemento.feature.mypage.user.viewModel.MyPageLookbookAddViewModel" />
     </data>
     <RelativeLayout
         android:layout_width="match_parent"

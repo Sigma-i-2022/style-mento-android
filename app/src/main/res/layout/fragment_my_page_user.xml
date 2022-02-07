@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.sigmai.stylemento.feature.mypage.user.MyPageUserViewModel" />
+            type="com.sigmai.stylemento.feature.mypage.user.viewModel.MyPageUserViewModel" />
     </data>
 
     <RelativeLayout

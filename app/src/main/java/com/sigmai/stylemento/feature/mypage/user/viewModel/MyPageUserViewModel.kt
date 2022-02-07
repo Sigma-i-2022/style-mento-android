@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.feature.mypage.user
+package com.sigmai.stylemento.feature.mypage.user.viewModel
 
 import android.view.View
 import androidx.lifecycle.LiveData
@@ -10,24 +10,20 @@ import com.sigmai.stylemento.di.AppConfigs
 import com.sigmai.stylemento.domain.usecase.UserUseCase
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 
-class MyPageLookbookAddViewModel : ViewModel() {
+class MyPageUserViewModel : ViewModel() {
     private val _user = MutableLiveData<User>()
     private val userUseCase: UserUseCase = UserUseCase(AppConfigs.userRepository)
 
     val user: LiveData<User> get() = _user
 
-    val startBack = SingleLiveEvent<Any>()
-    val startSave = SingleLiveEvent<Any>()
-    val startTagAdd = SingleLiveEvent<Any>()
+    val startRevision = SingleLiveEvent<Any>()
+    val startInstruction = SingleLiveEvent<Any>()
 
-    fun onBackClick(){
-        startBack.call()
+    fun onRevisionClick(){
+        startRevision.call()
     }
-    fun onSaveClick(){
-        startSave.call()
-    }
-    fun onTagAddClick(){
-        startTagAdd.call()
+    fun onInstructionClick(){
+        startInstruction.call()
     }
 
     fun getUserInfo() {

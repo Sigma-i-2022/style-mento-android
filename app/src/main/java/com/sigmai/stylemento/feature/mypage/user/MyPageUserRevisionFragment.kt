@@ -10,6 +10,7 @@ import com.sigmai.stylemento.databinding.FragmentMyPageUserRevisionBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.feature.mypage.user.dialog.UserClosetImageSelectionDialog
+import com.sigmai.stylemento.feature.mypage.user.viewModel.MyPageUserRevisionViewModel
 
 class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_user_revision

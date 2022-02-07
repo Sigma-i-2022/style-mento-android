@@ -3,11 +3,11 @@ package com.sigmai.stylemento.feature.mypage.user
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageUserBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.feature.mypage.user.adapter.UserViewPagerAdapter
+import com.sigmai.stylemento.feature.mypage.user.viewModel.MyPageUserViewModel
 
 class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_user
