@@ -9,38 +9,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.LookbookItem
-import com.sigmai.stylemento.data.model.User
+import com.sigmai.stylemento.databinding.ItemPieceBinding
 import com.sigmai.stylemento.feature.mypage.user.MyPageLookbookItemFragment
+import com.sigmai.stylemento.databinding.ItemUserLookbookBinding
+import com.sigmai.stylemento.feature.coordinator.adapter.HorizontalPieceAdapter
 
 
-class UserLookbookAdapter(private val parantFragment : Fragment) : RecyclerView.Adapter<UserLookbookAdapter.ViewHolder>() {
+class UserLookbookAdapter(private val parentFragment : Fragment) : RecyclerView.Adapter<UserLookbookAdapter.ViewHolder>() {
     private var dataSet: List<LookbookItem> = Client.getUserInfo().lookbookItems
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val userLookbookImg: ImageView = view.findViewById(R.id.user_lookbook_item_img)
-
-        init {
-            view.setOnClickListener(View.OnClickListener {
-                val position: Int = adapterPosition
-                val transaction = parantFragment.parentFragment?.parentFragmentManager?.beginTransaction()
-                transaction?.replace(R.id.my_page_frameLayout, MyPageLookbookItemFragment(dataSet.get(position), position))
-                transaction?.commit()
-            })
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder.from(parent)
     }
 
-    // Create new views (invoked by the layout manager)
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        // Create a new view, which defines the UI of the list item
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item_user_lookbook, viewGroup, false)
-
-        return ViewHolder(view)
-    }
-
-    // Replace the contents of a view (invoked by the layout manager)
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.userLookbookImg.setImageResource(R.drawable.ic_launcher_foreground)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(parentFragment, dataSet[position])
     }
 
     override fun getItemCount(): Int{
@@ -49,6 +32,28 @@ class UserLookbookAdapter(private val parantFragment : Fragment) : RecyclerView.
 
     fun setDataSet(items : List<LookbookItem>){
         dataSet = items
+    }
+
+
+    class ViewHolder(val binding : ItemUserLookbookBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(parentFragment : Fragment, item : LookbookItem){
+            binding.userLookbookItemImg.setImageResource(R.drawable.ic_launcher_foreground)
+            binding.root.setOnClickListener(View.OnClickListener {
+                val position: Int = adapterPosition
+                val transaction = parentFragment.parentFragment?.parentFragmentManager?.beginTransaction()
+                transaction?.replace(R.id.my_page_frameLayout, MyPageLookbookItemFragment(item, position))
+                transaction?.commit()
+            })
+        }
+
+        companion object {
+            fun from(parent: ViewGroup) : UserLookbookAdapter.ViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = ItemUserLookbookBinding.inflate(layoutInflater, parent, false)
+
+                return UserLookbookAdapter.ViewHolder(binding)
+            }
+        }
     }
 
 }
