@@ -12,7 +12,7 @@ object GlideUtil {
     fun setImage(url: String?, view: ImageView) {
         Glide.with(view.context)
             .load(url)
-            .error(R.drawable.logo)
+            .error(R.drawable.ic_logo)
             .circleCrop()
             .into(view)
     }
@@ -23,7 +23,7 @@ object GlideUtil {
 
         Glide.with(view.context)
             .load(url)
-            .error(R.drawable.logo)
+            .error(R.drawable.ic_logo)
             .transform(CenterCrop(), RoundedCorners(radiusWithPixel))
             .into(view)
     }
