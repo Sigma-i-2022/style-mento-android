@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.sigmai.stylemento.feature.mypage.MyPageViewModel" />
+            type="com.sigmai.stylemento.feature.mypage.coordinator.viewModel.MyPageCoordinatorViewModel" />
     </data>
 
     <RelativeLayout
@@ -43,6 +43,7 @@
                     android:layout_height="30dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:background="@drawable/ic_pencil"
+                    android:onClick="@{()->viewModel.onRevisionClick()}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -80,7 +81,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
-                            tools:text="coordinator_name" />
+                            tools:text="coordinator_name"
+                            android:text="@{viewModel.coordinator.nickname}"/>
 
                         <TextView
                             android:id="@+id/my_page_coordinator_email_text"
@@ -89,7 +91,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="1dp"
                             android:textColor="@color/gray_8"
-                            tools:text="coordinator_email" />
+                            tools:text="coordinator_email"
+                            android:text="@{viewModel.coordinator.email}"/>
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/my_page_coordinator_tag_recycler"
@@ -99,15 +102,6 @@
                             android:orientation="horizontal"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
                     </LinearLayout>
-
-                    <Button
-                        android:id="@+id/my_page_coordinator_like_button"
-                        android:layout_width="34dp"
-                        android:layout_height="34dp"
-                        android:layout_marginTop="6dp"
-                        android:background="@drawable/bg_circle"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
@@ -120,6 +114,8 @@
                     android:ellipsize="end"
                     android:maxLines="3"
                     android:textStyle="bold"
+                    android:text="@{viewModel.coordinator.introduction}"
+                    android:onClick="@{()->viewModel.onInstructionClick()}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_profile_layout" />
 
@@ -150,7 +146,8 @@
                         android:background="@drawable/button_shadow"
                         android:paddingBottom="15dp"
                         android:text="작품"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:onClick="@{()->viewModel.onWorkClick()}" />
 
                     <TextView
                         android:id="@+id/my_page_coordinator_reviews_button"
@@ -162,7 +159,8 @@
                         android:paddingBottom="15dp"
                         android:text="리뷰"
                         android:textAlignment="center"
-                        android:textColor="@color/gray_d" />
+                        android:textColor="@color/gray_d"
+                        android:onClick="@{()->viewModel.onReviewClick()}"/>
                 </LinearLayout>
 
                 <androidx.viewpager2.widget.ViewPager2

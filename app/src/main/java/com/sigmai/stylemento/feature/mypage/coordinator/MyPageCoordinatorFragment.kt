@@ -17,23 +17,53 @@ import com.sigmai.stylemento.databinding.FragmentMyPageCoordinatorBinding
 import com.sigmai.stylemento.feature.mypage.MyPageViewModel
 import com.sigmai.stylemento.feature.mypage.TagAdapter
 import com.sigmai.stylemento.feature.mypage.coordinator.adapter.CoordinatorViewPagerAdapter
+import com.sigmai.stylemento.feature.mypage.coordinator.viewModel.MyPageCoordinatorViewModel
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.constant.ReviewType
 
-class MyPageCoordinatorFragment(private val owner : Coordinator, private var showMenu : Int) : BaseFragment<FragmentMyPageCoordinatorBinding>() {
+class MyPageCoordinatorFragment(private var showMenu : Int) : BaseFragment<FragmentMyPageCoordinatorBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_coordinator
-    private val viewModel: MyPageViewModel by viewModels()
+    private val viewModel: MyPageCoordinatorViewModel by viewModels()
     private var introductionState = 0
+
+    override fun initState() {
+        super.initState()
+        viewModel.getCoordinatorInfo()
+    }
+
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
+
+        viewModel.startInstruction.observe(this, {
+            if(introductionState == 0){
+                binding.myPageCoordinatorIntroductionText.maxLines = 10
+                introductionState = 1
+            }
+            else{
+                binding.myPageCoordinatorIntroductionText.maxLines = 3
+                introductionState = 0
+            }
+        })
+        viewModel.startRevision.observe(this, {
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.my_page_frameLayout, MyPageCoordinatorRevisionFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        })
+        viewModel.startWork.observe(this, {
+            showWork()
+        })
+        viewModel.startReview.observe(this, {
+            showReview()
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val coordinatorAdapter = CoordinatorViewPagerAdapter(this, owner)
+        val coordinatorAdapter = CoordinatorViewPagerAdapter(this)
         binding.myPageCoordinatorViewPager.isUserInputEnabled = false
         if(showMenu == 0){
             coordinatorAdapter.setMenu(0)
@@ -46,37 +76,14 @@ class MyPageCoordinatorFragment(private val owner : Coordinator, private var sho
             showReview()
         }
 
-        binding.myPageCoordinatorWorkButton.setOnClickListener(View.OnClickListener {
-            showWork()
-        })
-        binding.myPageCoordinatorReviewsButton.setOnClickListener(View.OnClickListener {
-            showReview()
-        })
-
-        binding.myPageCoordinatorRevisionImg.setOnClickListener(View.OnClickListener {
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.my_page_frameLayout, MyPageCoordinatorRevisionFragment())
-            transaction.addToBackStack(null)
-            transaction.commit()
-        })
-
-        binding.myPageCoordinatorNameText.text = owner.nickname
-        binding.myPageCoordinatorEmailText.text = owner.email
-        binding.myPageCoordinatorIntroductionText.text = owner.introduction
-
         val tagAdapter = TagAdapter()
-        tagAdapter.setDataSet(owner.styleTags)
+        tagAdapter.setDataSet(Client.getCoordinatorInfo().styleTags)
         binding.myPageCoordinatorTagRecycler.adapter = tagAdapter
 
-        setOnClickIntroduction()
-        ownerCheck()
+        binding.myPageCoordinatorButtonLayout.visibility = View.GONE
+        binding.myPageCoordinatorReplyLayout.visibility = View.GONE
     }
-    private fun ownerCheck(){
-        if(owner.email == Client.getCoordinatorInfo().email){
-            binding.myPageCoordinatorButtonLayout.visibility = View.GONE
-            binding.myPageCoordinatorReplyLayout.visibility = View.GONE
-        }
-    }
+
     private fun showWork(){
         if(showMenu == 0)
             binding.myPageCoordinatorViewPager.setCurrentItem(0, true)
@@ -98,18 +105,6 @@ class MyPageCoordinatorFragment(private val owner : Coordinator, private var sho
         context?.let { it1 -> binding.myPageCoordinatorWorkButton.setTextColor(it1.getColor(R.color.gray_d)) }
         binding.myPageCoordinatorReviewsButton.setBackgroundResource(R.drawable.button_shadow)
         context?.let { it1 -> binding.myPageCoordinatorReviewsButton.setTextColor(it1.getColor(R.color.black)) }
-    }
-    private fun setOnClickIntroduction(){
-        binding.myPageCoordinatorIntroductionText.setOnClickListener(View.OnClickListener {
-            if(introductionState == 0){
-                binding.myPageCoordinatorIntroductionText.maxLines = 10
-                introductionState = 1
-            }
-            else{
-                binding.myPageCoordinatorIntroductionText.maxLines = 3
-                introductionState = 0
-            }
-        })
     }
     fun reply(position : Int){
 
@@ -134,12 +129,12 @@ class MyPageCoordinatorFragment(private val owner : Coordinator, private var sho
         })
 
         binding.myPageCoordinatorReplySendText.setOnClickListener(View.OnClickListener {
-            //Client.addReviewItemAt(ReviewItem(ReviewType.REPLY, Client.getCoordinatorInfo().nickname, "", 0, content), position)
+            Client.addReviewItemAt(ReviewItem(ReviewType.REPLY, Client.getCoordinatorInfo().nickname, content), position)
             binding.myPageCoordinatorReplyLayout.visibility = View.GONE
             val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
             imm?.hideSoftInputFromWindow(view?.windowToken, 0)
 
-            val coordinatorAdapter = CoordinatorViewPagerAdapter(this, Client.getCoordinatorInfo())
+            val coordinatorAdapter = CoordinatorViewPagerAdapter(this)
             showMenu = 1
             coordinatorAdapter.setMenu(1)
             binding.myPageCoordinatorViewPager.adapter = coordinatorAdapter

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
 
+        <variable
+            name="viewModel"
+            type="com.sigmai.stylemento.feature.mypage.coordinator.viewModel.MyPageWorkViewModel" />
+    </data>
     <RelativeLayout
         android:id="@+id/my_page_work_content_layout"
         android:layout_width="match_parent"
@@ -27,6 +32,7 @@
                 android:layout_height="34dp"
                 android:background="@drawable/ic_plus"
                 android:layout_alignParentEnd="true"
+                android:onClick="@{()->viewModel.onAdditionClick()}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>

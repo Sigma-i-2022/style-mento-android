@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
 
+        <variable
+            name="viewModel"
+            type="com.sigmai.stylemento.feature.mypage.coordinator.viewModel.MyPageWorkItemViewModel" />
+    </data>
     <RelativeLayout
         android:id="@+id/my_page_work_content_layout"
         android:layout_width="match_parent"
@@ -14,7 +19,8 @@
             android:layout_alignParentStart="true"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:layout_marginTop="20dp"
-            android:background="@drawable/ic_arrow_back" />
+            android:background="@drawable/ic_arrow_back"
+            android:onClick="@{()->viewModel.onBackClick()}"/>
 
         <TextView
             style="@style/header3"
@@ -59,6 +65,7 @@
                     android:layout_height="30dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/ic_pencil"
+                    android:onClick="@{()->viewModel.onRevisionClick()}"
                     app:layout_constraintEnd_toStartOf="@id/my_page_work_item_delete"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,6 +74,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:background="@color/gray_d"
+                    android:onClick="@{()->viewModel.onDeleteClick()}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

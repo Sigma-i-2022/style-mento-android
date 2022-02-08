@@ -2,6 +2,12 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.sigmai.stylemento.feature.mypage.coordinator.viewModel.MyPageCoordinatorRevisionViewModel" />
+    </data>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,6 +27,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:background="@drawable/ic_arrow_back"
+                    android:onClick="@{()->viewModel.onBackClick()}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,7 +47,7 @@
                     android:id="@+id/my_page_coordinator_revision_name_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="user_name"
+                    android:text="@{viewModel.coordinator.nickname}"
                     style="@style/header3"
                     android:textStyle="bold"
                     android:background="@color/trans_parent"
@@ -102,6 +109,7 @@
                     android:background="@drawable/ic_plus"
                     android:layout_marginTop="29dp"
                     android:layout_marginHorizontal="10dp"
+                    android:onClick="@{()->viewModel.onTagAdditionClick()}"
                     app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_revision_introduction_editText"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -128,6 +136,7 @@
             android:text="저장"
             android:textColor="@color/white"
             style="@style/header4"
+            android:onClick="@{()->viewModel.onSaveClick()}"
             android:layout_alignParentBottom="true"/>
     </RelativeLayout>
 </layout>

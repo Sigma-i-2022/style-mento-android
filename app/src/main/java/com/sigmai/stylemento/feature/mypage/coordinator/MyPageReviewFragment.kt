@@ -9,14 +9,14 @@ import com.sigmai.stylemento.databinding.FragmentMyPageReviewBinding
 import com.sigmai.stylemento.feature.mypage.coordinator.adapter.CoordinatorReviewAdapter
 import com.sigmai.stylemento.global.base.BaseFragment
 
-class MyPageReviewFragment(private val owner : Coordinator) : BaseFragment<FragmentMyPageReviewBinding>() {
+class MyPageReviewFragment() : BaseFragment<FragmentMyPageReviewBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_review
 
-    private val reviewAdapter = CoordinatorReviewAdapter(this, owner)
+    private val reviewAdapter = CoordinatorReviewAdapter(this)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        reviewAdapter.setList(owner.reviews)
+        reviewAdapter.setList(Client.getCoordinatorInfo().reviews)
         binding.myPageReviewRecycler.adapter = reviewAdapter
     }
 }

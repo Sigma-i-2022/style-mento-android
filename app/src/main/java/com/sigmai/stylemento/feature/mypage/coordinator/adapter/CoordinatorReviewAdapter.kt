@@ -14,9 +14,9 @@ import com.sigmai.stylemento.feature.mypage.coordinator.MyPageReviewFragment
 import com.sigmai.stylemento.global.constant.ReviewType
 import java.lang.IllegalArgumentException
 
-class CoordinatorReviewAdapter(private val f: MyPageReviewFragment, private val owner : Coordinator) :
+class CoordinatorReviewAdapter(private val f: MyPageReviewFragment) :
     RecyclerView.Adapter<CoordinatorReviewAdapter.ReviewViewHolder>() {
-    var reviewList: MutableList<ReviewItem> = owner.reviews
+    var reviewList: MutableList<ReviewItem> = Client.getCoordinatorInfo().reviews
     val context: String = ""
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
@@ -32,16 +32,13 @@ class CoordinatorReviewAdapter(private val f: MyPageReviewFragment, private val 
 
         if (holder is ReviewNormalViewHolder) {
             holder.bind(item)
-            if(owner.email == Client.getCoordinatorInfo().email){
-                holder.view.setOnClickListener(View.OnClickListener {
-                    val nextItem = Client.getReviewItemAt(position + 1)
-                    if (nextItem == null || nextItem.type == ReviewType.NORMAL) {
-                        if (f.parentFragment is MyPageCoordinatorFragment) {
-                            (f.parentFragment as MyPageCoordinatorFragment).reply(position + 1)
-                        }
+            holder.view.setOnClickListener(View.OnClickListener {
+                val nextItem = Client.getReviewItemAt(position + 1)
+                if (nextItem == null || nextItem.type == ReviewType.NORMAL) {
+                    if (f.parentFragment is MyPageCoordinatorFragment) { (f.parentFragment as MyPageCoordinatorFragment).reply(position + 1)
                     }
-                })
-            }
+                }
+            })
         } else if (holder is ReviewReplyViewHolder) {
             holder.bind(item)
         }

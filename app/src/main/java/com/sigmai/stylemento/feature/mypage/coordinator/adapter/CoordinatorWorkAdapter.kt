@@ -13,8 +13,8 @@ import com.sigmai.stylemento.data.model.WorkItem
 import com.sigmai.stylemento.feature.mypage.coordinator.MyPageWorkItemFragment
 
 
-class CoordinatorWorkAdapter(private val parantFragment : Fragment, private val owner : Coordinator) : RecyclerView.Adapter<CoordinatorWorkAdapter.ViewHolder>() {
-    private var dataSet: List<WorkItem> = owner.workItems
+class CoordinatorWorkAdapter(private val parantFragment : Fragment) : RecyclerView.Adapter<CoordinatorWorkAdapter.ViewHolder>() {
+    private var dataSet: List<WorkItem> = Client.getCoordinatorInfo().workItems
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val userWorkImg: ImageView = view.findViewById(R.id.coordinator_work_item_img)
@@ -23,7 +23,7 @@ class CoordinatorWorkAdapter(private val parantFragment : Fragment, private val 
             view.setOnClickListener(View.OnClickListener {
                 val position: Int = adapterPosition
                 val transaction = parantFragment.parentFragment?.parentFragmentManager?.beginTransaction()
-                transaction?.replace(R.id.my_page_frameLayout, MyPageWorkItemFragment(owner, position))
+                transaction?.replace(R.id.my_page_frameLayout, MyPageWorkItemFragment(dataSet[position], position))
                 transaction?.commit()
             })
         }

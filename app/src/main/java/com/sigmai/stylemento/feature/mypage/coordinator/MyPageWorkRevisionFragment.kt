@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.fragment.app.viewModels
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.WorkItem
@@ -11,6 +12,8 @@ import com.sigmai.stylemento.databinding.FragmentMyPageWorkRevisionBinding
 import com.sigmai.stylemento.feature.mypage.TagAdapter
 import com.sigmai.stylemento.feature.mypage.TagSelectionDialog
 import com.sigmai.stylemento.feature.mypage.coordinator.dialog.CoordinatorWorkImageSelectionDialog
+import com.sigmai.stylemento.feature.mypage.coordinator.viewModel.MyPageWorkAddViewModel
+import com.sigmai.stylemento.feature.mypage.coordinator.viewModel.MyPageWorkRevisionViewModel
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.base.HavingTag
 import com.sigmai.stylemento.global.constant.TagType
@@ -18,7 +21,29 @@ import com.sigmai.stylemento.global.constant.TagType
 class MyPageWorkRevisionFragment(private var workItem : WorkItem, private val position : Int)
     : BaseFragment<FragmentMyPageWorkRevisionBinding>(), HavingTag {
     override val layoutResourceId = R.layout.fragment_my_page_work_revision
+    private val viewModel: MyPageWorkRevisionViewModel by viewModels()
 
+    override fun initState() {
+        super.initState()
+        viewModel.getCoordinatorInfo()
+    }
+
+    override fun initDataBinding() {
+        super.initDataBinding()
+        binding.viewModel = viewModel
+
+        viewModel.startBack.observe(this, {
+            backToMyPage()
+        })
+        viewModel.startSave.observe(this, {
+            Client.reviseWorkItem(workItem, position)
+            backToMyPage()
+        })
+        viewModel.startTagAddition.observe(this, {
+            val dialog = TagSelectionDialog(this)
+            dialog.show(childFragmentManager, "TagSelectionDialog")
+        })
+    }
     private val tagAdapter = TagAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,23 +54,10 @@ class MyPageWorkRevisionFragment(private var workItem : WorkItem, private val po
         binding.myPageWorkRevisionTagRecycler.adapter = tagAdapter
 
         setEditTextLayout()
-        binding.myPageWorkRevisionBackImg.setOnClickListener(View.OnClickListener {
-            backToMyPage()
-        })
 
         binding.myPageWorkRevisionItemImg.setOnClickListener(View.OnClickListener {
             val dialog = CoordinatorWorkImageSelectionDialog()
             dialog.show(childFragmentManager, "ImageSelectionDialog")
-        })
-
-        binding.myPageWorkRevisionSaveButton.setOnClickListener(View.OnClickListener {
-            Client.reviseWorkItem(workItem, position)
-            backToMyPage()
-        })
-
-        binding.myPageWorkRevisionTagAddImg.setOnClickListener(View.OnClickListener {
-            val dialog = TagSelectionDialog(this)
-            dialog.show(childFragmentManager, "TagSelectionDialog")
         })
     }
     private fun setTextInit(){
@@ -103,7 +115,7 @@ class MyPageWorkRevisionFragment(private var workItem : WorkItem, private val po
     }
 
     private fun backToMyPage(){
-        val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageCoordinatorFragment(Client.getCoordinatorInfo(), 0))
+        val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageCoordinatorFragment(0))
         transaction.commit()
     }
 
