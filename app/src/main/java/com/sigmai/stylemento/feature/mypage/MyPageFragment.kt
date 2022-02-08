@@ -33,7 +33,8 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
             transaction.commit()
         }
         else{
-            val transaction = childFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageCoordinatorFragment(Client.getCoordinatorInfo(), 0))
+            /* todo : pull 받은 코드가 컴파일되지 않아 임의로 수정한 부분. */
+            val transaction = childFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageCoordinatorFragment(1))
             transaction.addToBackStack(null)
             transaction.commit()
         }
