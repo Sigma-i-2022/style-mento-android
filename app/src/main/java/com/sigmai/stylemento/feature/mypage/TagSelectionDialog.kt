@@ -32,43 +32,19 @@ class TagSelectionDialog(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tagSelectionStyleTags.adapter = SampleTagAdapter(
-            listOf(
-                TransformToStringUtil().getTagString(TagType.CASULAL),
-                TransformToStringUtil().getTagString(TagType.STREET),
-                TransformToStringUtil().getTagString(TagType.MODERN),
-                TransformToStringUtil().getTagString(TagType.FEMININE),
-                TransformToStringUtil().getTagString(TagType.DANDY),
-                TransformToStringUtil().getTagString(TagType.MINIMAL),
-                TransformToStringUtil().getTagString(TagType.MAXIMAL),
-                TransformToStringUtil().getTagString(TagType.CITY),
-                TransformToStringUtil().getTagString(TagType.AMERICANCASUAL),
-                TransformToStringUtil().getTagString(TagType.CLASSIC)
-            )
-        )
+        val styleTagList = TagType.getStyleTagList().map { tagType ->
+            TransformToStringUtil().getTagString(tagType)
+        }
+        val situationTagList = TagType.getSituationTagList().map { tagType ->
+            TransformToStringUtil().getTagString(tagType)
+        }
+        val weatherTagList = TagType.getWeatherTagList().map { tagType ->
+            TransformToStringUtil().getTagString(tagType)
+        }
 
-        binding.tagSelectionSituationTags.adapter = SampleTagAdapter(
-            listOf(
-                TransformToStringUtil().getTagString(TagType.STUDENT),
-                TransformToStringUtil().getTagString(TagType.OFFICE),
-                TransformToStringUtil().getTagString(TagType.DATE),
-                TransformToStringUtil().getTagString(TagType.BLINDDATE),
-                TransformToStringUtil().getTagString(TagType.TRAVEL),
-                TransformToStringUtil().getTagString(TagType.PARTY),
-                TransformToStringUtil().getTagString(TagType.COUPLE),
-                TransformToStringUtil().getTagString(TagType.GUEST),
-            )
-        )
-
-        binding.tagSelectionWeatherTags.adapter = SampleTagAdapter(
-            listOf(
-                TransformToStringUtil().getTagString(TagType.SPRING),
-                TransformToStringUtil().getTagString(TagType.SUMMER),
-                TransformToStringUtil().getTagString(TagType.AUTUMN),
-                TransformToStringUtil().getTagString(TagType.WINTER),
-                TransformToStringUtil().getTagString(TagType.RAIN),
-            )
-        )
+        binding.tagSelectionStyleTags.adapter = SampleTagAdapter(styleTagList)
+        binding.tagSelectionStyleTags.adapter = SampleTagAdapter(situationTagList)
+        binding.tagSelectionStyleTags.adapter = SampleTagAdapter(weatherTagList)
 
         binding.tagSelectionSaveButton.setOnClickListener{
             val selectedTagList1 = (binding.tagSelectionStyleTags.adapter as SampleTagAdapter).selectedTags
