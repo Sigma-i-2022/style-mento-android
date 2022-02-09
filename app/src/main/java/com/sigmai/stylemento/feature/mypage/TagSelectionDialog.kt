@@ -6,9 +6,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.DialogTagSelectionBinding
+import com.sigmai.stylemento.feature.mypage.adapter.SampleTagAdapter
 import com.sigmai.stylemento.feature.mypage.coordinator.MyPageCoordinatorRevisionFragment
 import com.sigmai.stylemento.feature.mypage.coordinator.MyPageWorkAddFragment
 import com.sigmai.stylemento.feature.mypage.coordinator.MyPageWorkRevisionFragment
+import com.sigmai.stylemento.feature.mypage.user.HavingTag2
 import com.sigmai.stylemento.feature.mypage.user.MyPageLookbookAddFragment
 import com.sigmai.stylemento.feature.mypage.user.MyPageLookbookRevisionFragment
 import com.sigmai.stylemento.global.base.BaseDialogFragment
@@ -16,8 +18,9 @@ import com.sigmai.stylemento.global.base.HavingTag
 import com.sigmai.stylemento.global.constant.TagType
 import com.sigmai.stylemento.global.util.TransformToEnumUtil
 import com.sigmai.stylemento.global.util.TransformToIntUtil
+import com.sigmai.stylemento.global.util.TransformToStringUtil
 
-class TagSelectionDialog(private val havingTag : HavingTag) : BaseDialogFragment<DialogTagSelectionBinding>() {
+class TagSelectionDialog(private val havingTag : HavingTag, private val havingTag2: HavingTag2? = null) : BaseDialogFragment<DialogTagSelectionBinding>() {
     override val layoutResourceId = R.layout.dialog_tag_selection
     private var tags: MutableList<TagType> = mutableListOf()
     private var tagStates: Array<Boolean> = Array(24) { false }
@@ -35,42 +38,31 @@ class TagSelectionDialog(private val havingTag : HavingTag) : BaseDialogFragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.tagSelectionStyleTags.adapter = SampleTagAdapter(
+            listOf(
+                TransformToStringUtil().getTagString(TagType.CASULAL),
+                TransformToStringUtil().getTagString(TagType.STREET),
+                TransformToStringUtil().getTagString(TagType.MODERN),
+                TransformToStringUtil().getTagString(TagType.FEMININE),
+                TransformToStringUtil().getTagString(TagType.DANDY),
+                TransformToStringUtil().getTagString(TagType.MINIMAL),
+                TransformToStringUtil().getTagString(TagType.MAXIMAL),
+                TransformToStringUtil().getTagString(TagType.CITY),
+                TransformToStringUtil().getTagString(TagType.AMERICANCASUAL),
+                TransformToStringUtil().getTagString(TagType.CLASSIC)
+            )
+        )
+
         binding.tagSelectionSaveButton.setOnClickListener(View.OnClickListener {
-            addTags()
-            havingTag.setTags(tags)
+//            addTags()
+//            havingTag.setTags(tags)
+
+            val selectedTagList = (binding.tagSelectionStyleTags.adapter as SampleTagAdapter).selectedTags
+            havingTag2?.setTagList(selectedTagList)
             dismiss()
         })
 
-        binding.tagSelectionCasulalText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.tagSelectionCasulalText, TagType.CASULAL)
-        })
-        binding.tagSelectionStreetText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.tagSelectionStreetText, TagType.STREET)
-        })
-        binding.tagSelectionModernText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.tagSelectionModernText, TagType.MODERN)
-        })
-        binding.tagSelectionFeminineText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.tagSelectionFeminineText, TagType.FEMININE)
-        })
-        binding.tagSelectionDandyText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.tagSelectionDandyText, TagType.DANDY)
-        })
-        binding.tagSelectionMinimalText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.tagSelectionMinimalText, TagType.MINIMAL)
-        })
-        binding.tagSelectionMaximalText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.tagSelectionMaximalText, TagType.MAXIMAL)
-        })
-        binding.tagSelectionCityText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.tagSelectionCityText, TagType.CITY)
-        })
-        binding.tagSelectionAmericanCasualText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.tagSelectionAmericanCasualText, TagType.AMERICANCASUAL)
-        })
-        binding.tagSelectionClassicText.setOnClickListener(View.OnClickListener {
-            onTextViewClick(binding.tagSelectionClassicText, TagType.CLASSIC)
-        })
+
         binding.tagSelectionStudentText.setOnClickListener(View.OnClickListener {
             onTextViewClick(binding.tagSelectionStudentText, TagType.STUDENT)
         })

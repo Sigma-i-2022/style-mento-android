@@ -11,17 +11,17 @@ import com.sigmai.stylemento.data.model.LookbookItem
 import com.sigmai.stylemento.databinding.FragmentMyPageLookbookAddBinding
 import com.sigmai.stylemento.feature.mypage.TagAdapter
 import com.sigmai.stylemento.feature.mypage.TagSelectionDialog
+import com.sigmai.stylemento.feature.mypage.adapter.SampleTagAdapter
 import com.sigmai.stylemento.feature.mypage.user.dialog.*
 import com.sigmai.stylemento.feature.mypage.user.viewModel.MyPageLookbookAddViewModel
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.base.HavingTag
 import com.sigmai.stylemento.global.constant.TagType
 
-class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>(), HavingTag {
+class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>(), HavingTag, HavingTag2 {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_add
     private val viewModel: MyPageLookbookAddViewModel by viewModels()
 
-    private val tagAdapter = TagAdapter()
     private var lookbookItem : LookbookItem = LookbookItem(Client.getUserInfo().nickname)
 
     override fun initState() {
@@ -40,7 +40,7 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
             backToMyPage()
         })
         viewModel.startTagAdd.observe(this, {
-            val dialog = TagSelectionDialog(this)
+            val dialog = TagSelectionDialog(this, this)
             dialog.show(childFragmentManager, "TagSelectionDialog")
         })
     }
@@ -108,9 +108,18 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
         transaction.commit()
     }
 
-    override fun setTags(tagTypes: MutableList<TagType>){
-        lookbookItem.tags = tagTypes
-        tagAdapter.setDataSet(lookbookItem.tags)
+    override fun setTags(tagTypes: MutableList<TagType>) {
+//        lookbookItem.tags = tagTypes
+//        tagAdapter.setDataSet(lookbookItem.tags)
+//        binding.myPageLookbookAddTagRecycler.adapter = tagAdapter
+    }
+
+    override fun setTagList(tagList: List<String>) {
+        val tagAdapter = SampleTagAdapter(tagList, false)
         binding.myPageLookbookAddTagRecycler.adapter = tagAdapter
     }
+}
+
+interface HavingTag2 {
+    fun setTagList(tagList: List<String>)
 }
