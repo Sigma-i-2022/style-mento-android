@@ -58,50 +58,10 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
     }
 
     private fun setEditTextLayout(){
-        binding.myPageLookbookAddDetailEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                lookbookItem.deltail = p0.toString()
-            }
-        })
-        binding.myPageLookbookAddTopEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                lookbookItem.top = p0.toString()
-            }
-        })
-        binding.myPageLookbookAddPantsEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                lookbookItem.pants = p0.toString()
-            }
-        })
-        binding.myPageLookbookAddShoesEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                lookbookItem.shoes = p0.toString()
-            }
-        })
+        binding.myPageLookbookAddDetailEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "detail"))
+        binding.myPageLookbookAddTopEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "top"))
+        binding.myPageLookbookAddPantsEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "pants"))
+        binding.myPageLookbookAddShoesEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "shoes"))
     }
 
     private fun backToMyPage(){

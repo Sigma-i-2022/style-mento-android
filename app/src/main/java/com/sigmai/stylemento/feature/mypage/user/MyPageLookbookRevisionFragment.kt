@@ -60,7 +60,7 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
         })
     }
     private fun setTextInit(){
-        binding.myPageLookbookRevisionDetailEditText.setText(lookbookItem.deltail)
+        binding.myPageLookbookRevisionDetailEditText.setText(lookbookItem.detail)
         binding.myPageLookbookRevisionTopEditText.setText(lookbookItem.top)
         binding.myPageLookbookRevisionPantsEditText.setText(lookbookItem.pants)
         binding.myPageLookbookRevisionShoesEditText.setText(lookbookItem.shoes)
@@ -75,7 +75,7 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                lookbookItem.deltail = p0.toString()
+                lookbookItem.detail = p0.toString()
             }
         })
         binding.myPageLookbookRevisionTopEditText.addTextChangedListener(object : TextWatcher {

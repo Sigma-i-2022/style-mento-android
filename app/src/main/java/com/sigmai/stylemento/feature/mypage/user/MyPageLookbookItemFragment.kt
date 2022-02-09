@@ -63,7 +63,7 @@ class MyPageLookbookItemFragment(private val lookbookItem: LookbookItem, private
 
     private fun dataBinding() {
         binding.myPageUserLookbookItemImg.setImageResource(R.drawable.ic_launcher_foreground)
-        binding.myPageUserLookbookItemDetail.text = lookbookItem.deltail
+        binding.myPageUserLookbookItemDetail.text = lookbookItem.detail
         binding.myPageLookbookItemTopText.text = lookbookItem.top
         binding.myPageLookbookItemPantsText.text = lookbookItem.pants
         binding.myPageLookbookItemShoesText.text = lookbookItem.shoes
