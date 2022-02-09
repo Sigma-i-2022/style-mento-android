@@ -8,15 +8,15 @@ import android.widget.TextView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.DialogTagSelectionBinding
 import com.sigmai.stylemento.feature.mypage.adapter.SampleTagAdapter
-import com.sigmai.stylemento.feature.mypage.user.HavingTag2
 import com.sigmai.stylemento.global.base.BaseDialogFragment
 import com.sigmai.stylemento.global.base.HavingTag
+import com.sigmai.stylemento.global.base.HavingTag2
 import com.sigmai.stylemento.global.constant.TagType
 import com.sigmai.stylemento.global.util.TransformToIntUtil
 import com.sigmai.stylemento.global.util.TransformToStringUtil
 
 class TagSelectionDialog(
-    private val havingTag: HavingTag,
+    private val havingTag: HavingTag? = null,
     private val havingTag2: HavingTag2? = null
 ) : BaseDialogFragment<DialogTagSelectionBinding>() {
     override val layoutResourceId = R.layout.dialog_tag_selection

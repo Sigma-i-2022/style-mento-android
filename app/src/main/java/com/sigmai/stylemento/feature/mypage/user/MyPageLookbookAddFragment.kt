@@ -16,9 +16,10 @@ import com.sigmai.stylemento.feature.mypage.user.dialog.*
 import com.sigmai.stylemento.feature.mypage.user.viewModel.MyPageLookbookAddViewModel
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.base.HavingTag
+import com.sigmai.stylemento.global.base.HavingTag2
 import com.sigmai.stylemento.global.constant.TagType
 
-class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>(), HavingTag, HavingTag2 {
+class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>(), HavingTag2 {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_add
     private val viewModel: MyPageLookbookAddViewModel by viewModels()
 
@@ -40,7 +41,7 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
             backToMyPage()
         })
         viewModel.startTagAdd.observe(this, {
-            val dialog = TagSelectionDialog(this, this)
+            val dialog = TagSelectionDialog(havingTag2 = this)
             dialog.show(childFragmentManager, "TagSelectionDialog")
         })
     }
@@ -108,18 +109,8 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
         transaction.commit()
     }
 
-    override fun setTags(tagTypes: MutableList<TagType>) {
-//        lookbookItem.tags = tagTypes
-//        tagAdapter.setDataSet(lookbookItem.tags)
-//        binding.myPageLookbookAddTagRecycler.adapter = tagAdapter
-    }
-
     override fun setTagList(tagList: List<String>) {
         val tagAdapter = SampleTagAdapter(tagList, false)
         binding.myPageLookbookAddTagRecycler.adapter = tagAdapter
     }
-}
-
-interface HavingTag2 {
-    fun setTagList(tagList: List<String>)
 }
