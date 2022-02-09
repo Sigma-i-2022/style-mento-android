@@ -4,9 +4,10 @@ import android.os.Bundle
 import android.view.*
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.DialogImageSelectionBinding
+import com.sigmai.stylemento.feature.mypage.user.MyPageUserRevisionFragment
 import com.sigmai.stylemento.global.base.BaseDialogFragment
 
-class UserImageSelectionDialog : BaseDialogFragment<DialogImageSelectionBinding>() {
+class UserImageSelectionDialog(private val f : MyPageUserRevisionFragment) : BaseDialogFragment<DialogImageSelectionBinding>() {
     override val layoutResourceId = R.layout.dialog_image_selection
 
     override fun onStart() {
@@ -20,6 +21,9 @@ class UserImageSelectionDialog : BaseDialogFragment<DialogImageSelectionBinding>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        binding.imgSelectionAlbumSelectionImg.setOnClickListener(View.OnClickListener {
+            f.getImage()
+            dismiss()
+        })
     }
 }
