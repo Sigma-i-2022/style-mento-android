@@ -25,7 +25,4 @@ enum class TagType {
     AUTUMN,
     WINTER,
     RAIN,
-
-
-
 }
