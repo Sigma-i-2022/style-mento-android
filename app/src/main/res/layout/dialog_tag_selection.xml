@@ -43,129 +43,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tag_selection_style_tags" />
 
-        <LinearLayout
-            android:id="@+id/tag_selection_layout_3"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tag_selection_situation_tags"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            app:layout_constraintTop_toBottomOf="@id/tag_selection_situation_text"
             android:layout_marginTop="15dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tag_selection_situation_text">
-
-            <TextView
-                android:id="@+id/tag_selection_student_text"
-                style="@style/body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/button_round"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp"
-                android:text="#학생"
-                android:textColor="@color/gray_8"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tag_selection_office_text"
-                style="@style/body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/button_round"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp"
-                android:text="#직장인"
-                android:textColor="@color/gray_8"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tag_selection_date_text"
-                style="@style/body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/button_round"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp"
-                android:text="#데이트"
-                android:textColor="@color/gray_8"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tag_selection_blindDate_text"
-                style="@style/body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/button_round"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp"
-                android:text="#소개팅"
-                android:textColor="@color/gray_8"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tag_selection_tour_text"
-                style="@style/body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/button_round"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp"
-                android:text="#여행"
-                android:textColor="@color/gray_8"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/tag_selection_layout_4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
-            android:layout_marginTop="15dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tag_selection_layout_3">
-
-            <TextView
-                android:id="@+id/tag_selection_party_text"
-                style="@style/body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/button_round"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp"
-                android:text="#파티"
-                android:textColor="@color/gray_8"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tag_selection_couple_text"
-                style="@style/body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/button_round"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp"
-                android:text="#커플"
-                android:textColor="@color/gray_8"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tag_selection_guest_text"
-                style="@style/body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/button_round"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp"
-                android:text="#하객"
-                android:textColor="@color/gray_8"
-                android:textStyle="bold" />
-        </LinearLayout>
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="5"
+            android:orientation="vertical"/>
 
         <TextView
             android:id="@+id/tag_selection_weather_text"
@@ -177,82 +64,18 @@
             android:text="계절/날씨"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tag_selection_layout_4" />
+            app:layout_constraintTop_toBottomOf="@id/tag_selection_situation_tags" />
 
-        <LinearLayout
-            android:id="@+id/tag_selection_layout_5"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tag_selection_weather_tags"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            app:layout_constraintTop_toBottomOf="@id/tag_selection_weather_text"
             android:layout_marginTop="15dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tag_selection_weather_text">
-
-            <TextView
-                android:id="@+id/tag_selection_spring_text"
-                style="@style/body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/button_round"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp"
-                android:text="#봄"
-                android:textColor="@color/gray_8"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tag_selection_summer_text"
-                style="@style/body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/button_round"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp"
-                android:text="#여름"
-                android:textColor="@color/gray_8"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tag_selection_autumn_text"
-                style="@style/body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/button_round"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp"
-                android:text="#가을"
-                android:textColor="@color/gray_8"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tag_selection_winter_text"
-                style="@style/body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/button_round"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp"
-                android:text="#겨울"
-                android:textColor="@color/gray_8"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tag_selection_rain_text"
-                style="@style/body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/button_round"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp"
-                android:text="#비"
-                android:textColor="@color/gray_8"
-                android:textStyle="bold" />
-        </LinearLayout>
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="5"
+            android:orientation="vertical"/>
 
         <Button
             android:id="@+id/tag_selection_save_button"
@@ -266,6 +89,6 @@
             android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tag_selection_layout_5" />
+            app:layout_constraintTop_toBottomOf="@id/tag_selection_weather_tags" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
