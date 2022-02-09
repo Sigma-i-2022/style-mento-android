@@ -43,8 +43,8 @@ class TagSelectionDialog(
         }
 
         binding.tagSelectionStyleTags.adapter = SampleTagAdapter(styleTagList)
-        binding.tagSelectionStyleTags.adapter = SampleTagAdapter(situationTagList)
-        binding.tagSelectionStyleTags.adapter = SampleTagAdapter(weatherTagList)
+        binding.tagSelectionSituationTags.adapter = SampleTagAdapter(situationTagList)
+        binding.tagSelectionWeatherTags.adapter = SampleTagAdapter(weatherTagList)
 
         binding.tagSelectionSaveButton.setOnClickListener{
             val selectedTagList1 = (binding.tagSelectionStyleTags.adapter as SampleTagAdapter).selectedTags
