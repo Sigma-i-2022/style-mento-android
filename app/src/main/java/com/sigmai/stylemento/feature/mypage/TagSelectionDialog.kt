@@ -20,9 +20,6 @@ class TagSelectionDialog(
     private val havingTag2: HavingTag2? = null
 ) : BaseDialogFragment<DialogTagSelectionBinding>() {
     override val layoutResourceId = R.layout.dialog_tag_selection
-    private var tagStates: Array<Boolean> = Array(24) { false }
-    private var onTagNumber: Int = 0
-    private val intUtil = TransformToIntUtil()
 
     override fun onStart() {
         super.onStart()
@@ -80,21 +77,6 @@ class TagSelectionDialog(
             val selectedTagList = selectedTagList1 + selectedTagList2 + selectedTagList3
             havingTag2?.setTagList(selectedTagList)
             dismiss()
-        }
-    }
-
-    private fun onTextViewClick(textView: TextView, tagType: TagType) {
-        val index = intUtil.getTagInt(tagType)
-        var state = !tagStates[index]
-
-        if (state && onTagNumber < 3) {
-            onTagNumber++
-            textView.setBackgroundResource(R.drawable.button_round_click)
-            tagStates[index] = state
-        } else if (!state && onTagNumber >= 0) {
-            onTagNumber--
-            textView.setBackgroundResource(R.drawable.button_round)
-            tagStates[index] = state
         }
     }
 }
