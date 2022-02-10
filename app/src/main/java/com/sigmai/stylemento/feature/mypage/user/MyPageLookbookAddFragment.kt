@@ -35,6 +35,7 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
             findNavController().popBackStack()
         })
         viewModel.startSave.observe(this, {
+            setTime()
             Client.addLookbookItem(lookbookItem)
             findNavController().popBackStack()
         })
@@ -60,6 +61,11 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
         binding.myPageLookbookAddTopEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "top"))
         binding.myPageLookbookAddPantsEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "pants"))
         binding.myPageLookbookAddShoesEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "shoes"))
+    }
+    private fun setTime(){
+        val currentTime : Long = System.currentTimeMillis()
+        val dataFormat = SimpleDateFormat("yyyy-MM-dd")
+        lookbookItem.time = dataFormat.format(currentTime)
     }
 
     override fun setTagList(tagList: List<String>) {
