@@ -22,12 +22,12 @@ class MyPageLookbookRevisionFragment(private val position : Int)
     : BaseFragment<FragmentMyPageLookbookRevisionBinding>(), HavingTag {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_revision
     private val viewModel: MyPageLookbookRevisionViewModel by viewModels()
-    private var lookbookItem = Client.getUserInfo().lookbookItems[position]
+    private var lookbookItem = Client.getUserInfo().lookbookItems[position].copy()
 
     private val tagAdapter = TagAdapter()
     override fun initState() {
         super.initState()
-        viewModel.setItemInfo(Client.getUserInfo().lookbookItems[position])
+        viewModel.setItemInfo(lookbookItem)
     }
     override fun initDataBinding() {
         super.initDataBinding()
