@@ -5,6 +5,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.LookbookItem
@@ -34,11 +35,11 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
         binding.viewModel = viewModel
 
         viewModel.startBack.observe(this, {
-            backToMyPage()
+            findNavController().popBackStack()
         })
         viewModel.startSave.observe(this, {
             Client.addLookbookItem(lookbookItem)
-            backToMyPage()
+            findNavController().popBackStack()
         })
         viewModel.startTagAdd.observe(this, {
             val dialog = TagSelectionDialog(havingTag2 = this)
@@ -62,11 +63,6 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
         binding.myPageLookbookAddTopEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "top"))
         binding.myPageLookbookAddPantsEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "pants"))
         binding.myPageLookbookAddShoesEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "shoes"))
-    }
-
-    private fun backToMyPage(){
-        val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment())
-        transaction.commit()
     }
 
     override fun setTagList(tagList: List<String>) {

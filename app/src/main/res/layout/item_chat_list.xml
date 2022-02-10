@@ -36,10 +36,11 @@
 
         <TextView
             android:id="@+id/chat_list_summary"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/chat_list_name"
             app:layout_constraintStart_toEndOf="@id/chat_list_photo"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="8dp"
             tools:text="밥은 먹었니?"
             android:text="@{item.summary}"
