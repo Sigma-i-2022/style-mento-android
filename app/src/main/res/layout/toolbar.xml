@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:tools="http://schemas.android.com/tools">
     <data>
+        <import type="android.view.View"/>
+        <variable
+            name="disableBackButton"
+            type="Boolean" />
         <variable
             name="title"
             type="String" />
@@ -20,9 +24,10 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="@dimen/horizontal_margin"
             android:background="@drawable/ic_arrow_back"
-            android:backgroundTint="@color/black"/>
+            android:backgroundTint="@color/black"
+            android:visibility="@{disableBackButton ? View.GONE : View.VISIBLE }"/>
 
         <TextView
             android:id="@+id/toolbar_title"
@@ -31,7 +36,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/toolbar_back"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="20dp"
             style="@style/header3"
             android:text="@{title}"
             tools:text="제목"/>

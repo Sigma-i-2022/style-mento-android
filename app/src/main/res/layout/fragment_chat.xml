@@ -15,7 +15,8 @@
         <include
             android:id="@+id/chat_toolbar"
             layout="@layout/toolbar"
-            app:title='@{"채팅"}'/>
+            app:title='@{"채팅"}'
+            app:disableBackButton="@{true}"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/chat_list_recyclerview"
