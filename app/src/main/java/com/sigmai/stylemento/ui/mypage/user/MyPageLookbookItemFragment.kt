@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.databinding.FragmentMyPageLookbookItemBinding
+import com.sigmai.stylemento.domain.usecase.GetLookbookItemUseCase
 import com.sigmai.stylemento.ui.mypage.TagAdapter
 import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageLookbookItemViewModel
 import com.sigmai.stylemento.global.base.BaseFragment
@@ -16,13 +17,14 @@ import com.sigmai.stylemento.global.base.BaseFragment
 class MyPageLookbookItemFragment(private var position: Int = 1) : BaseFragment<FragmentMyPageLookbookItemBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_item
     private val viewModel: MyPageLookbookItemViewModel by viewModels()
+    private val getLookbookItemUseCase = GetLookbookItemUseCase()
 
     private var detailState = 0
 
     override fun initState() {
         super.initState()
         position = arguments?.getInt("position")!!
-        viewModel.setItemInfo(Client.getUserInfo().lookbookItems[position])
+        viewModel.setItemInfo(getLookbookItemUseCase(position))
     }
 
     override fun initDataBinding() {
