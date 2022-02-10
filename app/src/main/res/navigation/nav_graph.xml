@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_main_to_chat_room"
             app:destination="@id/chat_room" />
+        <action
+            android:id="@+id/action_main_to_lookbook_add"
+            app:destination="@id/lookbook_add" />
     </fragment>
 
     <fragment
@@ -29,4 +32,10 @@
         android:name="com.sigmai.stylemento.feature.chat.ChattingRoomFragment"
         android:label="chatting room"
         tools:layout="@layout/fragment_chat_room" />
+
+    <fragment
+        android:id="@+id/lookbook_add"
+        android:name="com.sigmai.stylemento.feature.mypage.user.MyPageLookbookAddFragment"
+        android:label="look book add"
+        tools:layout="@layout/fragment_my_page_lookbook_add" />
 </navigation>
