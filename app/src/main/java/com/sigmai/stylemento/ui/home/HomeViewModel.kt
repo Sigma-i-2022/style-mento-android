@@ -7,7 +7,7 @@ import com.sigmai.stylemento.data.model.FavoriteCoordinator
 import com.sigmai.stylemento.data.model.RecommendedCoordinator
 import com.sigmai.stylemento.data.model.User
 import com.sigmai.stylemento.di.AppConfigs
-import com.sigmai.stylemento.domain.usecase.UserUseCase
+import com.sigmai.stylemento.domain.usecase.GetUserUseCase
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
     private val _user = MutableLiveData<User>()
-    private val userUseCase: UserUseCase = UserUseCase(AppConfigs.userRepository)
+    private val getUserUseCase: GetUserUseCase = GetUserUseCase(AppConfigs.userRepository)
     private val getRecommendedCoordinatorListUseCase = AppConfigs.getRecommendedCoordinatorListUseCase
 
     val user: LiveData<User> get() = _user
@@ -41,6 +41,6 @@ class HomeViewModel : ViewModel() {
     }
 
     fun getUserInfo() {
-        _user.postValue(userUseCase.getUser())
+        _user.postValue(getUserUseCase())
     }
 }
