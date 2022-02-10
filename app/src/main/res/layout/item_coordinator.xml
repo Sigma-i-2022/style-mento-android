@@ -37,15 +37,6 @@
             android:textSize="14sp"
             tools:text="jenny_eqet" />
 
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            app:layout_constraintTop_toTopOf="@id/coordinator_nickname"
-            app:layout_constraintBottom_toBottomOf="@id/coordinator_nickname"
-            app:layout_constraintStart_toEndOf="@id/coordinator_nickname"
-            android:layout_marginStart="12dp"
-            android:src="@{item.favorite ? @drawable/ic_filled_heart : @drawable/ic_outline_heart}"/>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/coordinator_tags"
             android:layout_width="wrap_content"
