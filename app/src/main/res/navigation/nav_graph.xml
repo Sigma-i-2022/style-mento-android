@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_main_to_lookbook_add"
             app:destination="@id/lookbook_add" />
+        <action
+            android:id="@+id/action_main_to_lookbook_item"
+            app:destination="@id/lookbook_item" />
     </fragment>
 
     <fragment
@@ -38,4 +41,18 @@
         android:name="com.sigmai.stylemento.ui.mypage.user.MyPageLookbookAddFragment"
         android:label="look book add"
         tools:layout="@layout/fragment_my_page_lookbook_add" />
+
+    <fragment
+        android:id="@+id/lookbook_item"
+        android:name="com.sigmai.stylemento.ui.mypage.user.MyPageLookbookItemFragment"
+        android:label="look book detail"
+        tools:layout="@layout/fragment_my_page_lookbook_item">
+        <argument
+            android:name="position"
+            app:argType="integer"
+            android:defaultValue="0"/>
+        <action
+            android:id="@+id/action_lookbook_item_to_lookbook_add"
+            app:destination="@id/lookbook_add" />
+    </fragment>
 </navigation>

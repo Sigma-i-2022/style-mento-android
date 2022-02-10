@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.databinding.FragmentMyPageLookbookItemBinding
@@ -12,7 +13,7 @@ import com.sigmai.stylemento.ui.mypage.TagAdapter
 import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageLookbookItemViewModel
 import com.sigmai.stylemento.global.base.BaseFragment
 
-class MyPageLookbookItemFragment(private val position: Int) : BaseFragment<FragmentMyPageLookbookItemBinding>() {
+class MyPageLookbookItemFragment(private var position: Int = 1) : BaseFragment<FragmentMyPageLookbookItemBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_item
     private val viewModel: MyPageLookbookItemViewModel by viewModels()
 
@@ -20,6 +21,7 @@ class MyPageLookbookItemFragment(private val position: Int) : BaseFragment<Fragm
 
     override fun initState() {
         super.initState()
+        position = arguments?.getInt("position")!!
         viewModel.setItemInfo(Client.getUserInfo().lookbookItems[position])
     }
 
@@ -28,17 +30,19 @@ class MyPageLookbookItemFragment(private val position: Int) : BaseFragment<Fragm
         binding.viewModel = viewModel
 
         viewModel.startBack.observe(this, {
-            val transaction = parentFragmentManager.beginTransaction()
-                .replace(R.id.my_page_frameLayout, MyPageUserFragment())
-            transaction.commit()
+//            val transaction = parentFragmentManager.beginTransaction()
+//                .replace(R.id.my_page_frameLayout, MyPageUserFragment())
+//            transaction.commit()
+            findNavController().navigateUp()
         })
         viewModel.startRevision.observe(this, {
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(
-                R.id.my_page_frameLayout,
-                MyPageLookbookRevisionFragment(position)
-            )
-            transaction.commit()
+//            val transaction = parentFragmentManager.beginTransaction()
+//            transaction.replace(
+//                R.id.my_page_frameLayout,
+//                MyPageLookbookRevisionFragment(position)
+//            )
+//            transaction.commit()
+            findNavController().navigate(R.id.action_lookbook_item_to_lookbook_add)
         })
         viewModel.startDelete.observe(this, {
             setDeleteDialog()
