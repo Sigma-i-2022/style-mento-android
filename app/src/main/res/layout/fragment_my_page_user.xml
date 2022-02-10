@@ -101,9 +101,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:maxLines="3"
-                    android:textStyle="bold"
+                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="8dp"
+                    android:background="@drawable/background_radius_12"
+                    android:backgroundTint="@color/gray_f"
                     android:text="@{viewModel.user.introduction}"
                     android:onClick="@{()->viewModel.onInstructionClick()}"
                     app:layout_constraintStart_toStartOf="parent"
@@ -111,43 +112,34 @@
 
                 <View
                     android:id="@+id/my_page_user_line"
-                    android:layout_width="200dp"
+                    android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:layout_marginTop="20dp"
-                    android:background="#CECECE"
+                    android:background="#D1D1D1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/my_page_user_introduction_text" />
 
-                <LinearLayout
-                    android:id="@+id/my_page_user_option_layout"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/my_page_user_lookbook_button"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    android:layout_marginTop="20dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_user_introduction_text">
-
-                    <TextView
-                        android:id="@+id/my_page_user_lookbook_button"
-                        style="@style/header4"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/button_shadow"
-                        android:paddingBottom="15dp"
-                        android:text="룩북"
-                        android:textAlignment="center" />
-                </LinearLayout>
+                    app:layout_constraintTop_toBottomOf="@id/my_page_user_line"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:text="스타일 룩북"
+                    style="@style/header4"/>
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/my_page_user_viewPager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:nestedScrollingEnabled="false"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_user_option_layout" />
+                    app:layout_constraintTop_toBottomOf="@id/my_page_user_lookbook_button" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
