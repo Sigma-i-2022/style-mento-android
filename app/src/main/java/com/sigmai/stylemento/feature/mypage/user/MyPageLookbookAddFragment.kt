@@ -19,6 +19,7 @@ import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.base.HavingTag
 import com.sigmai.stylemento.global.base.HavingTag2
 import com.sigmai.stylemento.global.constant.TagType
+import java.text.SimpleDateFormat
 
 class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>(), HavingTag2 {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_add
@@ -26,10 +27,6 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
 
     private var lookbookItem : LookbookItem = LookbookItem(Client.getUserInfo().nickname)
 
-    override fun initState() {
-        super.initState()
-        viewModel.getUserInfo()
-    }
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
