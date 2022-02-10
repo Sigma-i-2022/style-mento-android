@@ -3,6 +3,7 @@ package com.sigmai.stylemento.feature.mypage.user
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageLookbookBinding
@@ -22,11 +23,9 @@ class MyPageLookbookFragment() : BaseFragment<FragmentMyPageLookbookBinding>() {
         super.initDataBinding()
         binding.viewModel = viewModel
 
-        viewModel.startAddLookbook.observe(this, {
-            val transaction = parentFragment?.parentFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.my_page_frameLayout, MyPageLookbookAddFragment())
-            transaction?.commit()
-        })
+        viewModel.startAddLookbook.observe(this) {
+            findNavController().navigate(R.id.action_main_to_lookbook_add)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
