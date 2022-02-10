@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.sigmai.stylemento.feature.home.HomeViewModel" />
+            type="com.sigmai.stylemento.ui.home.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

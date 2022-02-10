@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/login"
-        android:name="com.sigmai.stylemento.feature.login.LoginFragment"
+        android:name="com.sigmai.stylemento.ui.login.LoginFragment"
         android:label="login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/signup_email"
-        android:name="com.sigmai.stylemento.feature.signup.email.SignUpEmailFragment"
+        android:name="com.sigmai.stylemento.ui.signup.email.SignUpEmailFragment"
         android:label="email"
         tools:layout="@layout/fragment_sign_up_email">
         <action
@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/signup_password"
-        android:name="com.sigmai.stylemento.feature.signup.password.SignUpPasswordFragment"
+        android:name="com.sigmai.stylemento.ui.signup.password.SignUpPasswordFragment"
         android:label="password"
         tools:layout="@layout/fragment_sign_up_password">
         <action
@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/signup_finish"
-        android:name="com.sigmai.stylemento.feature.signup.SignUpFinishFragment"
+        android:name="com.sigmai.stylemento.ui.signup.SignUpFinishFragment"
         android:label="signup finish"
         tools:layout="@layout/fragment_sign_up_finish">
         <action

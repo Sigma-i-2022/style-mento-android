@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.sigmai.stylemento.feature.home.notification.NotificationViewModel" />
+            type="com.sigmai.stylemento.ui.home.notification.NotificationViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

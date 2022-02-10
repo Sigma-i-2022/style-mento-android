@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/main"
-        android:name="com.sigmai.stylemento.feature.main.MainFragment"
+        android:name="com.sigmai.stylemento.ui.main.MainFragment"
         tools:layout="@layout/fragment_main"
         android:label="main">
         <action
@@ -23,19 +23,19 @@
 
     <fragment
         android:id="@+id/notification"
-        android:name="com.sigmai.stylemento.feature.home.notification.NotificationFragment"
+        android:name="com.sigmai.stylemento.ui.home.notification.NotificationFragment"
         android:label="notification"
         tools:layout="@layout/fragment_notification" />
 
     <fragment
         android:id="@+id/chat_room"
-        android:name="com.sigmai.stylemento.feature.chat.ChattingRoomFragment"
+        android:name="com.sigmai.stylemento.ui.chat.ChattingRoomFragment"
         android:label="chatting room"
         tools:layout="@layout/fragment_chat_room" />
 
     <fragment
         android:id="@+id/lookbook_add"
-        android:name="com.sigmai.stylemento.feature.mypage.user.MyPageLookbookAddFragment"
+        android:name="com.sigmai.stylemento.ui.mypage.user.MyPageLookbookAddFragment"
         android:label="look book add"
         tools:layout="@layout/fragment_my_page_lookbook_add" />
 </navigation>

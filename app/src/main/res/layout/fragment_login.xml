@@ -5,13 +5,13 @@
     <data>
         <variable
             name="viewModel"
-            type="com.sigmai.stylemento.feature.login.LoginViewModel" />
+            type="com.sigmai.stylemento.ui.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".feature.login.LoginFragment">
+        tools:context=".ui.login.LoginFragment">
 
         <ScrollView
             android:layout_width="match_parent"

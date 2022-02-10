@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.sigmai.stylemento.feature.mypage.coordinator.viewModel.MyPageWorkRevisionViewModel" />
+            type="com.sigmai.stylemento.ui.mypage.coordinator.viewModel.MyPageWorkRevisionViewModel" />
     </data>
     <RelativeLayout
         android:layout_width="match_parent"

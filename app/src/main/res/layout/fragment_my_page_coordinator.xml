@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.sigmai.stylemento.feature.mypage.coordinator.viewModel.MyPageCoordinatorViewModel" />
+            type="com.sigmai.stylemento.ui.mypage.coordinator.viewModel.MyPageCoordinatorViewModel" />
     </data>
 
     <RelativeLayout

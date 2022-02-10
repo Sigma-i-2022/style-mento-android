@@ -10,8 +10,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import com.sigmai.stylemento.R
-import com.sigmai.stylemento.feature.main.MainActivity
-import org.hamcrest.CoreMatchers.containsString
+import com.sigmai.stylemento.ui.main.MainActivity
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
