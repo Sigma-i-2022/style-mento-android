@@ -12,8 +12,9 @@ import com.sigmai.stylemento.databinding.FragmentMyPageLookbookItemBinding
 import com.sigmai.stylemento.feature.mypage.TagAdapter
 import com.sigmai.stylemento.feature.mypage.user.viewModel.MyPageLookbookItemViewModel
 import com.sigmai.stylemento.global.base.BaseFragment
+import java.util.concurrent.ConcurrentLinkedDeque
 
-class MyPageLookbookItemFragment(private val lookbookItem: LookbookItem, private val position: Int) : BaseFragment<FragmentMyPageLookbookItemBinding>() {
+class MyPageLookbookItemFragment(private val position: Int) : BaseFragment<FragmentMyPageLookbookItemBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_item
     private val viewModel: MyPageLookbookItemViewModel by viewModels()
 
@@ -21,7 +22,7 @@ class MyPageLookbookItemFragment(private val lookbookItem: LookbookItem, private
 
     override fun initState() {
         super.initState()
-        viewModel.getUserInfo()
+        viewModel.setItemInfo(Client.getUserInfo().lookbookItems[position])
     }
 
     override fun initDataBinding() {
@@ -37,7 +38,7 @@ class MyPageLookbookItemFragment(private val lookbookItem: LookbookItem, private
             val transaction = parentFragmentManager.beginTransaction()
             transaction.replace(
                 R.id.my_page_frameLayout,
-                MyPageLookbookRevisionFragment(lookbookItem.copy(), position)
+                MyPageLookbookRevisionFragment(position)
             )
             transaction.commit()
         })
@@ -63,14 +64,9 @@ class MyPageLookbookItemFragment(private val lookbookItem: LookbookItem, private
 
     private fun dataBinding() {
         binding.myPageUserLookbookItemImg.setImageResource(R.drawable.ic_launcher_foreground)
-        binding.myPageUserLookbookItemDetail.text = lookbookItem.detail
-        binding.myPageLookbookItemTopText.text = lookbookItem.top
-        binding.myPageLookbookItemPantsText.text = lookbookItem.pants
-        binding.myPageLookbookItemShoesText.text = lookbookItem.shoes
-        binding.myPageLookbookItemTimeText.text = lookbookItem.time
 
         val lookbookTagAdapter = TagAdapter()
-        lookbookTagAdapter.setDataSet(lookbookItem.tags)
+        lookbookTagAdapter.setDataSet(viewModel.item.value?.tags)
         binding.myPageUserLookbookItemTagRecycler.adapter = lookbookTagAdapter
 
     }

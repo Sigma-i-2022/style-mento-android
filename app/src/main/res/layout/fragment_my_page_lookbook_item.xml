@@ -55,7 +55,7 @@
                     android:id="@+id/my_page_lookbook_item_time_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0000.00.00"
+                    android:text="@{viewModel.item.time}"
                     style="@style/body1"
                     android:layout_marginTop="10dp"
                     app:layout_constraintTop_toTopOf="parent"
@@ -99,6 +99,7 @@
                     android:maxLines="2"
                     android:ellipsize="end"
                     android:onClick="@{()->viewModel.onInstructionClick()}"
+                    android:text="@{viewModel.item.detail}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/my_page_user_lookbook_item_img" />
 
@@ -148,7 +149,8 @@
                         style="@style/header4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/trans_parent" />
+                        android:background="@color/trans_parent"
+                        android:text="@{viewModel.item.top}"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -174,7 +176,8 @@
                         style="@style/header4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/trans_parent" />
+                        android:background="@color/trans_parent"
+                        android:text="@{viewModel.item.pants}"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -200,7 +203,8 @@
                         style="@style/header4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/trans_parent" />
+                        android:background="@color/trans_parent"
+                        android:text="@{viewModel.item.shoes}"/>
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

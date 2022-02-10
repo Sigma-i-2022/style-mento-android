@@ -15,10 +15,6 @@ class MyPageLookbookFragment() : BaseFragment<FragmentMyPageLookbookBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook
     private val viewModel: MyPageLookbookViewModel by viewModels()
 
-    override fun initState() {
-        super.initState()
-        viewModel.getUserInfo()
-    }
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel

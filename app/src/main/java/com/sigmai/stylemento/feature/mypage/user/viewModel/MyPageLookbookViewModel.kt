@@ -11,19 +11,9 @@ import com.sigmai.stylemento.domain.usecase.UserUseCase
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 
 class MyPageLookbookViewModel : ViewModel() {
-    private val _user = MutableLiveData<User>()
-    private val userUseCase: UserUseCase = UserUseCase(AppConfigs.userRepository)
-
-    val user: LiveData<User> get() = _user
-
     val startAddLookbook = SingleLiveEvent<Any>()
 
     fun onAddLookbookClick(){
         startAddLookbook.call()
-    }
-
-    fun getUserInfo() {
-        //_user.postValue(userUseCase.getUser())
-        _user.postValue(Client.getUserInfo())
     }
 }

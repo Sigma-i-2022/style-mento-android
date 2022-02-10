@@ -11,11 +11,6 @@ import com.sigmai.stylemento.domain.usecase.UserUseCase
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 
 class MyPageLookbookAddViewModel : ViewModel() {
-    private val _user = MutableLiveData<User>()
-    private val userUseCase: UserUseCase = UserUseCase(AppConfigs.userRepository)
-
-    val user: LiveData<User> get() = _user
-
     val startBack = SingleLiveEvent<Any>()
     val startSave = SingleLiveEvent<Any>()
     val startTagAdd = SingleLiveEvent<Any>()
@@ -28,10 +23,5 @@ class MyPageLookbookAddViewModel : ViewModel() {
     }
     fun onTagAddClick(){
         startTagAdd.call()
-    }
-
-    fun getUserInfo() {
-        //_user.postValue(userUseCase.getUser())
-        _user.postValue(Client.getUserInfo())
     }
 }

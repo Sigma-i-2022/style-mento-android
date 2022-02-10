@@ -17,7 +17,7 @@ import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.base.HavingTag
 import com.sigmai.stylemento.global.constant.TagType
 
-class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, private val position : Int)
+class MyPageLookbookRevisionFragment(private val position : Int)
     : BaseFragment<FragmentMyPageLookbookRevisionBinding>(), HavingTag {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_revision
     private val viewModel: MyPageLookbookRevisionViewModel by viewModels()
@@ -26,7 +26,7 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
 
     override fun initState() {
         super.initState()
-        viewModel.getUserInfo()
+        viewModel.setItemInfo(Client.getUserInfo().lookbookItems[position])
     }
     override fun initDataBinding() {
         super.initDataBinding()
@@ -36,7 +36,7 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
             backToMyPage()
         })
         viewModel.startSave.observe(this, {
-            Client.reviseLookbookItem(lookbookItem, position)
+            Client.reviseLookbookItem(viewModel.item.value!!, position)
             backToMyPage()
         })
         viewModel.startTagAdd.observe(this, {
@@ -48,8 +48,7 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setTextInit()
-        tagAdapter.setDataSet(lookbookItem.tags)
+        tagAdapter.setDataSet(viewModel.item.value?.tags)
         binding.myPageLookbookRevisionTagRecycler.adapter = tagAdapter
 
         setEditTextLayout()
@@ -58,12 +57,6 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
             val dialog = UserLookbookImageSelectionDialog()
             dialog.show(childFragmentManager, "ImageSelectionDialog")
         })
-    }
-    private fun setTextInit(){
-        binding.myPageLookbookRevisionDetailEditText.setText(lookbookItem.detail)
-        binding.myPageLookbookRevisionTopEditText.setText(lookbookItem.top)
-        binding.myPageLookbookRevisionPantsEditText.setText(lookbookItem.pants)
-        binding.myPageLookbookRevisionShoesEditText.setText(lookbookItem.shoes)
     }
 
     private fun setEditTextLayout(){
@@ -75,7 +68,7 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                lookbookItem.detail = p0.toString()
+                viewModel.item.value!!.detail = p0.toString()
             }
         })
         binding.myPageLookbookRevisionTopEditText.addTextChangedListener(object : TextWatcher {
@@ -86,7 +79,7 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                lookbookItem.top = p0.toString()
+                viewModel.item.value!!.top = p0.toString()
             }
         })
         binding.myPageLookbookRevisionPantsEditText.addTextChangedListener(object : TextWatcher {
@@ -97,7 +90,7 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                lookbookItem.pants = p0.toString()
+                viewModel.item.value!!.pants = p0.toString()
             }
         })
         binding.myPageLookbookRevisionShoesEditText.addTextChangedListener(object : TextWatcher {
@@ -108,7 +101,7 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                lookbookItem.shoes = p0.toString()
+                viewModel.item.value!!.shoes = p0.toString()
             }
         })
     }
@@ -119,8 +112,8 @@ class MyPageLookbookRevisionFragment(private var lookbookItem : LookbookItem, pr
     }
 
     override fun setTags(tagTypes: MutableList<TagType>){
-        lookbookItem.tags = tagTypes
-        tagAdapter.setDataSet(lookbookItem.tags)
+        viewModel.item.value!!.tags = tagTypes
+        tagAdapter.setDataSet(tagTypes)
         binding.myPageLookbookRevisionTagRecycler.adapter = tagAdapter
     }
 }
