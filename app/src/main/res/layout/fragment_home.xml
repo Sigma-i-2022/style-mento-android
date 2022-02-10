@@ -40,7 +40,7 @@
                 android:background="@drawable/ic_notification"
                 android:onClick="@{()->viewModel.startNotificationFragment()}"/>
 
-            <TextView
+            <View
                 android:id="@+id/banner"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
@@ -50,11 +50,97 @@
                 android:backgroundTint="@color/gray_f"
                 android:background="@drawable/search_bar_background"/>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/move_coordinator_page"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                app:layout_constraintTop_toBottomOf="@id/banner"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/move_my_page"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:background="@drawable/background_radius_12"
+                android:backgroundTint="@color/primary">
+
+                <TextView
+                    android:id="@+id/tv_move_coordinator_page"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="12dp"
+                    android:text="코디네이터"
+                    android:textColor="@color/white"
+                    android:textSize="21sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/tv_move_coordinator_page"
+                    android:layout_marginHorizontal="12dp"
+                    android:text="나만의 개인 코디네이터를 찾아보세요"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <View
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_margin="12dp"
+                    android:background="@drawable/ic_filled_clothes"
+                    android:backgroundTint="#55568C"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/move_my_page"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                app:layout_constraintTop_toTopOf="@id/move_coordinator_page"
+                app:layout_constraintStart_toEndOf="@id/move_coordinator_page"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="@dimen/horizontal_margin"
+                android:background="@drawable/background_radius_12"
+                android:backgroundTint="@color/primary">
+
+                <TextView
+                    android:id="@+id/tv_move_my_page"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="12dp"
+                    android:text="마이페이지"
+                    android:textColor="@color/white"
+                    android:textSize="21sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/tv_move_my_page"
+                    android:layout_marginHorizontal="12dp"
+                    android:text="나를 꾸며보세요"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <View
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_margin="12dp"
+                    android:background="@drawable/ic_filled_person"
+                    android:backgroundTint="#55568C"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <TextView
                 android:id="@+id/booked_advice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/banner"
+                app:layout_constraintTop_toBottomOf="@id/move_coordinator_page"
                 android:layout_marginTop="20dp"
                 android:layout_marginHorizontal="20dp"
                 android:text="@string/booked_advice"
@@ -69,7 +155,6 @@
                 app:layout_constraintTop_toBottomOf="@id/booked_advice"
                 android:layout_marginTop="8dp"
                 android:layout_marginHorizontal="20dp"
-                android:elevation="8dp"
                 app:cardCornerRadius="15dp"
                 android:orientation="vertical">
 
