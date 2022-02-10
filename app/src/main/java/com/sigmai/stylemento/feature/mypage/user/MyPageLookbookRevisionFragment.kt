@@ -16,14 +16,15 @@ import com.sigmai.stylemento.feature.mypage.user.viewModel.MyPageLookbookRevisio
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.base.HavingTag
 import com.sigmai.stylemento.global.constant.TagType
+import java.text.SimpleDateFormat
 
 class MyPageLookbookRevisionFragment(private val position : Int)
     : BaseFragment<FragmentMyPageLookbookRevisionBinding>(), HavingTag {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_revision
     private val viewModel: MyPageLookbookRevisionViewModel by viewModels()
+    private var lookbookItem = Client.getUserInfo().lookbookItems[position]
 
     private val tagAdapter = TagAdapter()
-
     override fun initState() {
         super.initState()
         viewModel.setItemInfo(Client.getUserInfo().lookbookItems[position])
@@ -31,12 +32,12 @@ class MyPageLookbookRevisionFragment(private val position : Int)
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
-
         viewModel.startBack.observe(this, {
             backToMyPage()
         })
         viewModel.startSave.observe(this, {
-            Client.reviseLookbookItem(viewModel.item.value!!, position)
+            setTime()
+            Client.reviseLookbookItem(lookbookItem, position)
             backToMyPage()
         })
         viewModel.startTagAdd.observe(this, {
@@ -48,7 +49,7 @@ class MyPageLookbookRevisionFragment(private val position : Int)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tagAdapter.setDataSet(viewModel.item.value?.tags)
+        tagAdapter.setDataSet(lookbookItem.tags)
         binding.myPageLookbookRevisionTagRecycler.adapter = tagAdapter
 
         setEditTextLayout()
@@ -60,50 +61,16 @@ class MyPageLookbookRevisionFragment(private val position : Int)
     }
 
     private fun setEditTextLayout(){
-        binding.myPageLookbookRevisionDetailEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
+        binding.myPageLookbookRevisionDetailEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "detail"))
+        binding.myPageLookbookRevisionTopEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "top"))
+        binding.myPageLookbookRevisionPantsEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "pants"))
+        binding.myPageLookbookRevisionShoesEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "shoes"))
+    }
 
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                viewModel.item.value!!.detail = p0.toString()
-            }
-        })
-        binding.myPageLookbookRevisionTopEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                viewModel.item.value!!.top = p0.toString()
-            }
-        })
-        binding.myPageLookbookRevisionPantsEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                viewModel.item.value!!.pants = p0.toString()
-            }
-        })
-        binding.myPageLookbookRevisionShoesEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                viewModel.item.value!!.shoes = p0.toString()
-            }
-        })
+    private fun setTime(){
+        val currentTime : Long = System.currentTimeMillis()
+        val dataFormat = SimpleDateFormat("yyyy-MM-dd")
+        lookbookItem.time = dataFormat.format(currentTime)
     }
 
     private fun backToMyPage(){
@@ -112,7 +79,7 @@ class MyPageLookbookRevisionFragment(private val position : Int)
     }
 
     override fun setTags(tagTypes: MutableList<TagType>){
-        viewModel.item.value!!.tags = tagTypes
+        lookbookItem.tags = tagTypes
         tagAdapter.setDataSet(tagTypes)
         binding.myPageLookbookRevisionTagRecycler.adapter = tagAdapter
     }
