@@ -8,9 +8,6 @@
         <variable
             name="title"
             type="String" />
-        <variable
-            name="viewModel"
-            type="com.sigmai.stylemento.global.view.ToolbarViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
