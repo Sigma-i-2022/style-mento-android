@@ -2,6 +2,8 @@ package com.sigmai.stylemento.feature.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import androidx.navigation.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.ActivityMainBinding
 import com.sigmai.stylemento.feature.login.LoginHostActivity
@@ -15,5 +17,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         val targetIntent = Intent(this, LoginHostActivity::class.java)
         startActivity(targetIntent)
+    }
+
+    fun onClickBack(view: View) {
+        view.findNavController().navigateUp()
     }
 }
