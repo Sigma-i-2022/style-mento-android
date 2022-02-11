@@ -3,6 +3,7 @@ package com.sigmai.stylemento.ui.mypage.user
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageUserBinding
 import com.sigmai.stylemento.global.base.BaseFragment
@@ -24,10 +25,7 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
         binding.viewModel = viewModel
 
         viewModel.startRevision.observe(this, {
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.my_page_frameLayout, MyPageUserRevisionFragment())
-            transaction.addToBackStack(null)
-            transaction.commit()
+            findNavController().navigate(R.id.action_main_to_user_revision)
         })
         viewModel.startInstruction.observe(this, {
             if(introductionState == 0){

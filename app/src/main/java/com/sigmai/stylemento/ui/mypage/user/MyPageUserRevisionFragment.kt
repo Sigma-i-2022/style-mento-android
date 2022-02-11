@@ -8,6 +8,7 @@ import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageUserRevisionBinding
@@ -30,11 +31,11 @@ class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBindin
         binding.viewModel = viewModel
 
         viewModel.startBack.observe(this, {
-            backToMyPage()
+            findNavController().navigateUp()
         })
         viewModel.startSave.observe(this, {
             Client.getUserInfo().introduction = introductionText
-            backToMyPage()
+            findNavController().navigateUp()
         })
     }
 
@@ -70,10 +71,6 @@ class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBindin
             //}
         }
 
-    }
-    private fun backToMyPage(){
-        val transaction = parentFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment())
-        transaction.commit()
     }
 
     fun getImage(){
