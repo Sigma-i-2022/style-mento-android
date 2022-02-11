@@ -8,6 +8,9 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.LookbookItem
 import com.sigmai.stylemento.databinding.FragmentMyPageLookbookAddBinding
+import com.sigmai.stylemento.di.AppConfigs
+import com.sigmai.stylemento.domain.usecase.GetLookbookItemUseCase
+import com.sigmai.stylemento.domain.usecase.GetUserUseCase
 import com.sigmai.stylemento.ui.mypage.TagSelectionDialog
 import com.sigmai.stylemento.ui.mypage.adapter.SampleTagAdapter
 import com.sigmai.stylemento.ui.mypage.user.dialog.*
@@ -20,8 +23,22 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_add
     private val viewModel: MyPageLookbookAddViewModel by viewModels()
 
-    private var lookbookItem : LookbookItem = LookbookItem(Client.getUserInfo().nickname)
+    private lateinit var lookbookItem : LookbookItem
+    private val getLookbookItemUseCase = GetLookbookItemUseCase()
 
+    private var position = -1
+    override fun initState() {
+        super.initState()
+        position = arguments?.getInt("position")!!
+        if(position >= 0){
+            lookbookItem = getLookbookItemUseCase(position).copy()
+            binding.myPageLookbookAddSaveButton.text = "수정"
+        }
+        else{
+            val getUserUseCase = GetUserUseCase(AppConfigs.userRepository)
+            lookbookItem = LookbookItem(getUserUseCase().nickname)
+        }
+    }
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
@@ -31,7 +48,10 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
         })
         viewModel.startSave.observe(this, {
             setTime()
-            Client.addLookbookItem(lookbookItem)
+            if(position >= 0)
+                Client.reviseLookbookItem(lookbookItem, position)
+            else
+                Client.addLookbookItem(lookbookItem)
             findNavController().popBackStack()
         })
         viewModel.startTagAdd.observe(this, {
@@ -49,8 +69,14 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
         })
 
         setEditTextLayout()
+        setTextInit()
     }
-
+    private fun setTextInit(){
+        binding.myPageLookbookAddDetailEditText.setText(lookbookItem.detail)
+        binding.myPageLookbookAddTopEditText.setText(lookbookItem.top)
+        binding.myPageLookbookAddPantsEditText.setText(lookbookItem.pants)
+        binding.myPageLookbookAddShoesEditText.setText(lookbookItem.shoes)
+    }
     private fun setEditTextLayout(){
         binding.myPageLookbookAddDetailEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "detail"))
         binding.myPageLookbookAddTopEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "top"))

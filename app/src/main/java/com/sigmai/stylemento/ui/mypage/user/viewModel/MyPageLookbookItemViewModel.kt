@@ -29,7 +29,7 @@ class MyPageLookbookItemViewModel : ViewModel() {
         startInstruction.call()
     }
 
-    fun setItemInfo(item : LookbookItem) {
+    fun setItemInfo(item: LookbookItem) {
         _item.postValue(item)
     }
 }

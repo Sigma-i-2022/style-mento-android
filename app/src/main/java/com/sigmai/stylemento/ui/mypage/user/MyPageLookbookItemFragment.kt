@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
@@ -14,10 +15,11 @@ import com.sigmai.stylemento.ui.mypage.TagAdapter
 import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageLookbookItemViewModel
 import com.sigmai.stylemento.global.base.BaseFragment
 
-class MyPageLookbookItemFragment(private var position: Int = 1) : BaseFragment<FragmentMyPageLookbookItemBinding>() {
+class MyPageLookbookItemFragment() : BaseFragment<FragmentMyPageLookbookItemBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_item
     private val viewModel: MyPageLookbookItemViewModel by viewModels()
     private val getLookbookItemUseCase = GetLookbookItemUseCase()
+    private var position: Int = 0
 
     private var detailState = 0
 
@@ -32,19 +34,11 @@ class MyPageLookbookItemFragment(private var position: Int = 1) : BaseFragment<F
         binding.viewModel = viewModel
 
         viewModel.startBack.observe(this, {
-//            val transaction = parentFragmentManager.beginTransaction()
-//                .replace(R.id.my_page_frameLayout, MyPageUserFragment())
-//            transaction.commit()
             findNavController().navigateUp()
         })
         viewModel.startRevision.observe(this, {
-//            val transaction = parentFragmentManager.beginTransaction()
-//            transaction.replace(
-//                R.id.my_page_frameLayout,
-//                MyPageLookbookRevisionFragment(position)
-//            )
-//            transaction.commit()
-            findNavController().navigate(R.id.action_lookbook_item_to_lookbook_add)
+            val bundle = bundleOf("position" to position)
+            findNavController().navigate(R.id.action_lookbook_item_to_lookbook_add, bundle)
         })
         viewModel.startDelete.observe(this, {
             setDeleteDialog()
@@ -84,12 +78,7 @@ class MyPageLookbookItemFragment(private var position: Int = 1) : BaseFragment<F
                 when (p1) {
                     DialogInterface.BUTTON_POSITIVE -> {
                         Client.removeLookbookItem(position)
-                        val transaction = parentFragmentManager.beginTransaction()
-                        transaction.replace(
-                            R.id.my_page_frameLayout,
-                            MyPageUserFragment()
-                        )
-                        transaction.commit()
+                        findNavController().navigateUp()
                     }
                 }
             }

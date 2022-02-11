@@ -2,6 +2,7 @@ package com.sigmai.stylemento.ui.mypage.user
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -21,7 +22,8 @@ class MyPageLookbookFragment() : BaseFragment<FragmentMyPageLookbookBinding>() {
         binding.viewModel = viewModel
 
         viewModel.startAddLookbook.observe(this) {
-            findNavController().navigate(R.id.action_main_to_lookbook_add)
+            val bundle = bundleOf("position" to -1)
+            findNavController().navigate(R.id.action_main_to_lookbook_add, bundle)
         }
     }
 
