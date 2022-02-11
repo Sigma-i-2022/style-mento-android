@@ -26,7 +26,6 @@ class MyPageUserRevisionViewModel : ViewModel() {
     }
 
     fun getUserInfo() {
-        //_user.postValue(userUseCase.getUser())
-        _user.postValue(Client.getUserInfo())
+        _user.postValue(getUserUseCase())
     }
 }
