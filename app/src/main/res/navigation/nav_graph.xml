@@ -17,11 +17,23 @@
             android:id="@+id/action_main_to_chat_room"
             app:destination="@id/chat_room" />
         <action
+            android:id="@+id/action_main_to_user_revision"
+            app:destination="@id/user_revision" />
+        <action
             android:id="@+id/action_main_to_lookbook_add"
             app:destination="@id/lookbook_add" />
         <action
             android:id="@+id/action_main_to_lookbook_item"
             app:destination="@id/lookbook_item" />
+        <action
+            android:id="@+id/action_main_to_coordinator_revision"
+            app:destination="@id/coordinator_revision" />
+        <action
+            android:id="@+id/action_main_to_work_item"
+            app:destination="@id/work_item" />
+        <action
+            android:id="@+id/action_main_to_work_add"
+            app:destination="@id/work_add" />
     </fragment>
 
     <fragment
@@ -35,7 +47,11 @@
         android:name="com.sigmai.stylemento.ui.chat.ChattingRoomFragment"
         android:label="chatting room"
         tools:layout="@layout/fragment_chat_room" />
-
+    <fragment
+        android:id="@+id/user_revision"
+        android:name="com.sigmai.stylemento.ui.mypage.user.MyPageUserRevisionFragment"
+        android:label="user revision"
+        tools:layout="@layout/fragment_my_page_user_revision"/>
     <fragment
         android:id="@+id/lookbook_add"
         android:name="com.sigmai.stylemento.ui.mypage.user.MyPageLookbookAddFragment"
@@ -54,5 +70,29 @@
         <action
             android:id="@+id/action_lookbook_item_to_lookbook_add"
             app:destination="@id/lookbook_add" />
+    </fragment>
+    <fragment
+        android:id="@+id/coordinator_revision"
+        android:name="com.sigmai.stylemento.ui.mypage.coordinator.MyPageCoordinatorRevisionFragment"
+        android:label="coordinator revision"
+        tools:layout="@layout/fragment_my_page_coordinator_revision"/>
+    <fragment
+        android:id="@+id/work_add"
+        android:name="com.sigmai.stylemento.ui.mypage.coordinator.MyPageWorkAddFragment"
+        android:label="work add"
+        tools:layout="@layout/fragment_my_page_work_add" />
+
+    <fragment
+        android:id="@+id/work_item"
+        android:name="com.sigmai.stylemento.ui.mypage.coordinator.MyPageWorkItemFragment"
+        android:label="work detail"
+        tools:layout="@layout/fragment_my_page_work_item">
+        <argument
+            android:name="position"
+            app:argType="integer"
+            android:defaultValue="0"/>
+        <action
+            android:id="@+id/action_work_item_to_work_add"
+            app:destination="@id/work_add" />
     </fragment>
 </navigation>
