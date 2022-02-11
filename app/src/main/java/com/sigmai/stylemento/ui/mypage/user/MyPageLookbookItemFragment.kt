@@ -18,7 +18,6 @@ import com.sigmai.stylemento.global.base.BaseFragment
 class MyPageLookbookItemFragment() : BaseFragment<FragmentMyPageLookbookItemBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_item
     private val viewModel: MyPageLookbookItemViewModel by viewModels()
-    private val getLookbookItemUseCase = GetLookbookItemUseCase()
     private var position: Int = 0
 
     private var detailState = 0
@@ -26,7 +25,7 @@ class MyPageLookbookItemFragment() : BaseFragment<FragmentMyPageLookbookItemBind
     override fun initState() {
         super.initState()
         position = arguments?.getInt("position")!!
-        viewModel.setItemInfo(getLookbookItemUseCase(position))
+        viewModel.setItemInfo(position)
     }
 
     override fun initDataBinding() {

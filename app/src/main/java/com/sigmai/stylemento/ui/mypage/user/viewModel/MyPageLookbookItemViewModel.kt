@@ -4,10 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sigmai.stylemento.data.model.LookbookItem
+import com.sigmai.stylemento.domain.usecase.GetLookbookItemUseCase
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 
 class MyPageLookbookItemViewModel : ViewModel() {
     private val _item = MutableLiveData<LookbookItem>()
+    private val getLookbookItemUseCase = GetLookbookItemUseCase()
 
     val item: LiveData<LookbookItem> get() = _item
 
@@ -29,7 +31,7 @@ class MyPageLookbookItemViewModel : ViewModel() {
         startInstruction.call()
     }
 
-    fun setItemInfo(item: LookbookItem) {
-        _item.postValue(item)
+    fun setItemInfo(position : Int) {
+        _item.postValue(getLookbookItemUseCase(position))
     }
 }
