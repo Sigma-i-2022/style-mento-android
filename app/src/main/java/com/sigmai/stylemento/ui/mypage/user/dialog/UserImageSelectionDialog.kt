@@ -6,8 +6,9 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.DialogImageSelectionBinding
 import com.sigmai.stylemento.ui.mypage.user.MyPageUserRevisionFragment
 import com.sigmai.stylemento.global.base.BaseDialogFragment
+import com.sigmai.stylemento.global.base.HavingImage
 
-class UserImageSelectionDialog(private val f : MyPageUserRevisionFragment) : BaseDialogFragment<DialogImageSelectionBinding>() {
+class UserImageSelectionDialog(private val f : HavingImage) : BaseDialogFragment<DialogImageSelectionBinding>() {
     override val layoutResourceId = R.layout.dialog_image_selection
 
     override fun onStart() {
