@@ -1,6 +1,7 @@
 package com.sigmai.stylemento.ui.mypage.user
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,14 +15,16 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageUserRevisionBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.data.model.Client
+import com.sigmai.stylemento.global.base.HavingImage
 import com.sigmai.stylemento.ui.mypage.user.dialog.UserImageSelectionDialog
 import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageUserRevisionViewModel
+import java.net.URI
 
-class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBinding>() {
+class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBinding>(), HavingImage {
     override val layoutResourceId = R.layout.fragment_my_page_user_revision
     private val viewModel: MyPageUserRevisionViewModel by viewModels()
-    private lateinit var getResult : ActivityResultLauncher<Intent>
-
+    override lateinit var getResult : ActivityResultLauncher<Intent>
+    private var uri : Uri? = Client.getUserInfo().profile
     override fun initState() {
         super.initState()
         viewModel.getUserInfo()
@@ -35,6 +38,7 @@ class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBindin
         })
         viewModel.startSave.observe(this, {
             Client.getUserInfo().introduction = introductionText
+            Client.getUserInfo().profile = uri
             findNavController().navigateUp()
         })
     }
@@ -61,22 +65,16 @@ class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBindin
                 introductionText = p0.toString()
             }
         })
+        Glide.with(this).load(uri).into(binding.myPageUserRevisionProfileImg)
 
-       getResult = registerForActivityResult(
+        getResult = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()){
             //if(it.data?.type == "Image/*"){
                 val intent = it.data
-                val uri = intent?.data
+                uri = intent?.data
                 Glide.with(this).load(uri).into(binding.myPageUserRevisionProfileImg)
             //}
         }
 
-    }
-
-    fun getImage(){
-        val intent = Intent()
-        intent.type = "Image/*"
-        intent.action = Intent.ACTION_GET_CONTENT
-        getResult.launch(intent)
     }
 }

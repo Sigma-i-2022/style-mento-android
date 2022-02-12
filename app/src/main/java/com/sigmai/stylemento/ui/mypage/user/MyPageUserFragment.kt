@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.sigmai.stylemento.R
+import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.databinding.FragmentMyPageUserBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.ui.mypage.user.adapter.UserViewPagerAdapter
@@ -46,5 +48,7 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
         val userAdapter = UserViewPagerAdapter(this)
         binding.myPageUserViewPager.isUserInputEnabled = false
         binding.myPageUserViewPager.adapter = userAdapter
+
+        Glide.with(this).load(Client.getUserInfo().profile).into(binding.myPageUserProfileImg)
     }
 }
