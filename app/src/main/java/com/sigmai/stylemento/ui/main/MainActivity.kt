@@ -36,9 +36,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         var cameraPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
         var readPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
 
-        if (cameraPermission != PackageManager.PERMISSION_GRANTED) {
+        /*if (cameraPermission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), REQ_CAMERA_PERMISSION)
-        }
+        }*/
         if (readPermission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), REQ_STORAGE_PERMISSION)
         }
