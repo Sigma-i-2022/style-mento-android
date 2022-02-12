@@ -2,6 +2,7 @@ package com.sigmai.stylemento.ui.mypage.user
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
@@ -23,7 +24,9 @@ import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageUserRevisionViewMode
 class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBinding>(), HavingImage {
     override val layoutResourceId = R.layout.fragment_my_page_user_revision
     private val viewModel: MyPageUserRevisionViewModel by viewModels()
-    override lateinit var getResult : ActivityResultLauncher<Intent>
+
+    override lateinit var getResultFromCamera : ActivityResultLauncher<Intent>
+    override lateinit var getResultFromGallery : ActivityResultLauncher<Intent>
     private var uri : Uri? = Client.getUserInfo().profile
     override fun initState() {
         super.initState()
@@ -66,8 +69,15 @@ class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBindin
             }
         })
         Glide.with(this).load(uri).into(binding.myPageUserRevisionProfileImg)
+        getResultFromCamera = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()){
+            if(it.resultCode == Activity.RESULT_OK){
+                val imageBitmap = it.data?.extras?.get("data") as Bitmap
+                binding.myPageUserRevisionProfileImg.setImageBitmap(imageBitmap)
+            }
+        }
 
-        getResult = registerForActivityResult(
+        getResultFromGallery = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()){
             if(it.resultCode == Activity.RESULT_OK){
                 val intent = it.data

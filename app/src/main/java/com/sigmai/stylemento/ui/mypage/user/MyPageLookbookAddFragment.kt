@@ -26,7 +26,8 @@ import java.text.SimpleDateFormat
 class MyPageLookbookAddFragment() : BaseFragment<FragmentMyPageLookbookAddBinding>(), HavingTag2, HavingImage {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_add
     private val viewModel: MyPageLookbookAddViewModel by viewModels()
-    override lateinit var getResult: ActivityResultLauncher<Intent>
+    override lateinit var getResultFromCamera: ActivityResultLauncher<Intent>
+    override lateinit var getResultFromGallery: ActivityResultLauncher<Intent>
 
     private lateinit var lookbookItem : LookbookItem
     private val getLookbookItemUseCase = GetLookbookItemUseCase()
