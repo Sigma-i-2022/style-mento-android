@@ -23,7 +23,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        checkPermission()
         val targetIntent = Intent(this, LoginHostActivity::class.java)
         startActivity(targetIntent)
 
@@ -33,14 +32,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         view.findNavController().navigateUp()
     }
 
-    private fun checkPermission(){
+    fun checkPermission(){
         var cameraPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
         var readPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
 
-        if (cameraPermission == PackageManager.PERMISSION_DENIED) {
+        if (cameraPermission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), REQ_CAMERA_PERMISSION)
         }
-        if (readPermission == PackageManager.PERMISSION_DENIED) {
+        if (readPermission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), REQ_STORAGE_PERMISSION)
         }
     }
