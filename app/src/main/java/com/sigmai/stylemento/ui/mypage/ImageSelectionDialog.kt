@@ -26,7 +26,6 @@ class ImageSelectionDialog(private val f : HavingImage) : BaseDialogFragment<Dia
             context?.let { it1 -> f.getImageFromCamera(it1) }
             dismiss()
         })
-
         binding.imgSelectionAlbumSelectionImg.setOnClickListener(View.OnClickListener {
             context?.let { it1 -> f.getImageFromGallery(it1) }
             dismiss()
