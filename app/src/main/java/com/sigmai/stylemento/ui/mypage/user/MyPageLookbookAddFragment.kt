@@ -1,7 +1,9 @@
 package com.sigmai.stylemento.ui.mypage.user
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.ActivityResultLauncher
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
@@ -16,12 +18,15 @@ import com.sigmai.stylemento.ui.mypage.adapter.SampleTagAdapter
 import com.sigmai.stylemento.ui.mypage.user.dialog.*
 import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageLookbookAddViewModel
 import com.sigmai.stylemento.global.base.BaseFragment
+import com.sigmai.stylemento.global.base.HavingImage
 import com.sigmai.stylemento.global.base.HavingTag2
+import com.sigmai.stylemento.ui.mypage.ImageSelectionDialog
 import java.text.SimpleDateFormat
 
-class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>(), HavingTag2 {
+class MyPageLookbookAddFragment() : BaseFragment<FragmentMyPageLookbookAddBinding>(), HavingTag2, HavingImage {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_add
     private val viewModel: MyPageLookbookAddViewModel by viewModels()
+    override lateinit var getResult: ActivityResultLauncher<Intent>
 
     private lateinit var lookbookItem : LookbookItem
     private val getLookbookItemUseCase = GetLookbookItemUseCase()
@@ -64,7 +69,7 @@ class MyPageLookbookAddFragment : BaseFragment<FragmentMyPageLookbookAddBinding>
         super.onViewCreated(view, savedInstanceState)
 
         binding.myPageLookbookAddItemImg.setOnClickListener(View.OnClickListener {
-            val dialog = UserLookbookImageSelectionDialog()
+            val dialog = ImageSelectionDialog(this)
             dialog.show(childFragmentManager, "ImageSelectionDialog")
         })
 

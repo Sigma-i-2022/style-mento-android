@@ -17,9 +17,8 @@ import com.sigmai.stylemento.databinding.FragmentMyPageUserRevisionBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.global.base.HavingImage
-import com.sigmai.stylemento.ui.mypage.user.dialog.UserImageSelectionDialog
+import com.sigmai.stylemento.ui.mypage.ImageSelectionDialog
 import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageUserRevisionViewModel
-import java.net.URI
 
 class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBinding>(), HavingImage {
     override val layoutResourceId = R.layout.fragment_my_page_user_revision
@@ -50,7 +49,7 @@ class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBindin
         super.onViewCreated(view, savedInstanceState)
 
         binding.myPageUserRevisionProfileImg.setOnClickListener(View.OnClickListener {
-            val dialog = UserImageSelectionDialog(this)
+            val dialog = ImageSelectionDialog(this)
             dialog.show(childFragmentManager, "ImageSelectionDialog")
         })
 

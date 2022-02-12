@@ -10,13 +10,13 @@ import com.sigmai.stylemento.data.model.ClosetItem
 import com.sigmai.stylemento.databinding.FragmentMyPageClosetRevisionBinding
 import com.sigmai.stylemento.ui.mypage.user.dialog.UserClosetCategorySelectionDialog
 import com.sigmai.stylemento.ui.mypage.user.dialog.UserClosetFitSelectionDialog
-import com.sigmai.stylemento.ui.mypage.user.dialog.UserClosetImageSelectionDialog
 import com.sigmai.stylemento.ui.mypage.user.dialog.UserClosetTextureSelectionDialog
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.constant.FitType
 import com.sigmai.stylemento.global.constant.ItemCategoryType
 import com.sigmai.stylemento.global.constant.TextureType
 import com.sigmai.stylemento.global.util.TransformToStringUtil
+import com.sigmai.stylemento.ui.mypage.ImageSelectionDialog
 
 class MyPageClosetRevisionFragment(private var closetItem : ClosetItem, private val position: Int) : BaseFragment<FragmentMyPageClosetRevisionBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_closet_revision
@@ -61,8 +61,8 @@ class MyPageClosetRevisionFragment(private var closetItem : ClosetItem, private 
         })
 
         binding.myPageClosetRevisionItemImg.setOnClickListener(View.OnClickListener {
-            val dialog = UserClosetImageSelectionDialog()
-            dialog.show(childFragmentManager, "ImageSelectionDialog")
+            //val dialog = ImageSelectionDialog()
+            //dialog.show(childFragmentManager, "ImageSelectionDialog")
         })
     }
 

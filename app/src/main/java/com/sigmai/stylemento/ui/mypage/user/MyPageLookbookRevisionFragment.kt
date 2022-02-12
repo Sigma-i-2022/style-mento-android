@@ -13,6 +13,7 @@ import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageLookbookRevisionView
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.base.HavingTag
 import com.sigmai.stylemento.global.constant.TagType
+import com.sigmai.stylemento.ui.mypage.ImageSelectionDialog
 import java.text.SimpleDateFormat
 
 class MyPageLookbookRevisionFragment(private val position : Int)
@@ -52,8 +53,8 @@ class MyPageLookbookRevisionFragment(private val position : Int)
         setEditTextLayout()
 
         binding.myPageLookbookRevisionItemImg.setOnClickListener(View.OnClickListener {
-            val dialog = UserLookbookImageSelectionDialog()
-            dialog.show(childFragmentManager, "ImageSelectionDialog")
+            //val dialog = ImageSelectionDialog()
+            //dialog.show(childFragmentManager, "ImageSelectionDialog")
         })
     }
 
