@@ -1,5 +1,6 @@
 package com.sigmai.stylemento.ui.mypage.user
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -69,11 +70,11 @@ class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBindin
 
         getResult = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()){
-            //if(it.data?.type == "Image/*"){
+            if(it.resultCode == Activity.RESULT_OK){
                 val intent = it.data
                 uri = intent?.data
                 Glide.with(this).load(uri).into(binding.myPageUserRevisionProfileImg)
-            //}
+            }
         }
 
     }
