@@ -8,6 +8,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.ReviewItem
@@ -75,6 +76,8 @@ class MyPageCoordinatorFragment(private var showMenu : Int) : BaseFragment<Fragm
 
         binding.myPageCoordinatorButtonLayout.visibility = View.GONE
         binding.myPageCoordinatorReplyLayout.visibility = View.GONE
+
+        Glide.with(this).load(Client.getCoordinatorInfo().profile).into(binding.myPageCoordinatorImg)
     }
 
     private fun showWork(){
