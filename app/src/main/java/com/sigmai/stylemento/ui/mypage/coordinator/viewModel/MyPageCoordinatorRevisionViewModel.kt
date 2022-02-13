@@ -5,10 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.Coordinator
+import com.sigmai.stylemento.di.AppConfigs
+import com.sigmai.stylemento.domain.usecase.GetCoordinatorUseCase
+import com.sigmai.stylemento.domain.usecase.GetUserUseCase
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 
 class MyPageCoordinatorRevisionViewModel : ViewModel() {
     private val _coordinator = MutableLiveData<Coordinator>()
+    private val getCoordinatorUseCase: GetCoordinatorUseCase = GetCoordinatorUseCase(AppConfigs.coordinatorRepository)
 
     val coordinator: LiveData<Coordinator> get() = _coordinator
 
@@ -27,6 +31,6 @@ class MyPageCoordinatorRevisionViewModel : ViewModel() {
     }
 
     fun getCoordinatorInfo() {
-        _coordinator.postValue(Client.getCoordinatorInfo())
+        _coordinator.postValue(getCoordinatorUseCase())
     }
 }
