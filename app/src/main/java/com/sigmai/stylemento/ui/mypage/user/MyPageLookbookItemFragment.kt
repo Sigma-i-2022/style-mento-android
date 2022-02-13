@@ -7,6 +7,7 @@ import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.databinding.FragmentMyPageLookbookItemBinding
@@ -56,16 +57,11 @@ class MyPageLookbookItemFragment() : BaseFragment<FragmentMyPageLookbookItemBind
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        dataBinding()
-    }
-
-    private fun dataBinding() {
-        binding.myPageUserLookbookItemImg.setImageResource(R.drawable.ic_launcher_foreground)
+        Glide.with(this).load(viewModel.item.value?.photoUrl).into(binding.myPageUserLookbookItemImg)
 
         val lookbookTagAdapter = TagAdapter()
         lookbookTagAdapter.setDataSet(viewModel.item.value?.tags)
         binding.myPageUserLookbookItemTagRecycler.adapter = lookbookTagAdapter
-
     }
 
     private fun setDeleteDialog() {
