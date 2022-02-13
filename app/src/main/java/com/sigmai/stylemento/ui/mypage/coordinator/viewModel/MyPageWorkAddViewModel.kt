@@ -8,10 +8,6 @@ import com.sigmai.stylemento.data.model.Coordinator
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 
 class MyPageWorkAddViewModel : ViewModel() {
-    private val _coordinator = MutableLiveData<Coordinator>()
-
-    val coordinator: LiveData<Coordinator> get() = _coordinator
-
     val startBack = SingleLiveEvent<Any>()
     val startSave = SingleLiveEvent<Any>()
     val startTagAddition = SingleLiveEvent<Any>()
@@ -24,9 +20,5 @@ class MyPageWorkAddViewModel : ViewModel() {
     }
     fun onTagAdditionClick() {
         startTagAddition.call()
-    }
-
-    fun getCoordinatorInfo() {
-        _coordinator.postValue(Client.getCoordinatorInfo())
     }
 }
