@@ -30,7 +30,7 @@ class MyPageLookbookFragment() : BaseFragment<FragmentMyPageLookbookBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val lookbookAdapter = UserLookbookAdapter(this)
+        val lookbookAdapter = UserLookbookAdapter()
         val gridLayoutManager = GridLayoutManager(context,3, GridLayoutManager.VERTICAL, false)
 
         binding.myPageUserLookbookRecycler.adapter = lookbookAdapter
