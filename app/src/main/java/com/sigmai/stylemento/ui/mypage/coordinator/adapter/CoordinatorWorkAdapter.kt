@@ -1,5 +1,6 @@
 package com.sigmai.stylemento.ui.mypage.coordinator.adapter
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,15 +21,15 @@ import com.sigmai.stylemento.ui.mypage.user.adapter.UserLookbookAdapter
 import com.sigmai.stylemento.ui.mypage.user.adapter.UserLookbookAdapter.ViewHolder.Companion.from
 
 
-class CoordinatorWorkAdapter(private val parentFragment : Fragment) : RecyclerView.Adapter<CoordinatorWorkAdapter.ViewHolder>() {
+class CoordinatorWorkAdapter : RecyclerView.Adapter<CoordinatorWorkAdapter.ViewHolder>() {
     private var dataSet: List<WorkItem> = Client.getCoordinatorInfo().workItems
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
     }
 
-    override fun onBindViewHolder(holder: CoordinatorWorkAdapter.ViewHolder, position: Int) {
-        holder.bind(parentFragment, dataSet[position])
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(dataSet[position])
     }
 
     override fun getItemCount(): Int{
@@ -40,8 +41,13 @@ class CoordinatorWorkAdapter(private val parentFragment : Fragment) : RecyclerVi
     }
 
     class ViewHolder(val binding : ItemCoordinatorWorkBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(parentFragment : Fragment, item : WorkItem){
-            Glide.with(parentFragment).load(item.photoUrl).into(binding.coordinatorWorkItemImg)
+        fun bind(item : WorkItem){
+            if (item.photoUrl == Uri.EMPTY)
+                binding.coordinatorWorkItemImg.setImageResource(R.drawable.ic_launcher_foreground)
+            else
+                Glide.with(binding.coordinatorWorkItemImg).load(item.photoUrl)
+                    .placeholder(R.drawable.ic_launcher_foreground)
+                    .into(binding.coordinatorWorkItemImg)
             binding.root.setOnClickListener(View.OnClickListener {
                 val bundle = bundleOf("position" to adapterPosition)
                 it.findNavController().navigate(R.id.action_main_to_work_item, bundle)

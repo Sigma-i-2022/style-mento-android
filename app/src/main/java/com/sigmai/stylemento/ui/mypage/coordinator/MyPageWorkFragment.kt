@@ -29,7 +29,7 @@ class MyPageWorkFragment() : BaseFragment<FragmentMyPageWorkBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val workAdapter = CoordinatorWorkAdapter(this)
+        val workAdapter = CoordinatorWorkAdapter()
         val gridLayoutManager = GridLayoutManager(context,3, GridLayoutManager.VERTICAL, false)
 
         binding.myPageWorkRecycler.adapter = workAdapter

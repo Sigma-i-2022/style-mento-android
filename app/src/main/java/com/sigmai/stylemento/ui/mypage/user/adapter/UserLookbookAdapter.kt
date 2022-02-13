@@ -19,7 +19,7 @@ import com.sigmai.stylemento.databinding.ItemUserLookbookBinding
 import com.sigmai.stylemento.domain.usecase.GetLookbookItemUseCase
 
 
-class UserLookbookAdapter() : RecyclerView.Adapter<UserLookbookAdapter.ViewHolder>() {
+class UserLookbookAdapter : RecyclerView.Adapter<UserLookbookAdapter.ViewHolder>() {
     private var dataSet: List<LookbookItem> = Client.getUserInfo().lookbookItems
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
