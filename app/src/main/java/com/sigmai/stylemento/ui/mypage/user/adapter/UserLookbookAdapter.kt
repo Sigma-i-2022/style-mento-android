@@ -7,6 +7,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.LookbookItem
@@ -22,7 +23,7 @@ class UserLookbookAdapter(private val parentFragment : Fragment) : RecyclerView.
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(parentFragment)
+        holder.bind(parentFragment, dataSet[position])
     }
 
     override fun getItemCount(): Int{
@@ -35,13 +36,9 @@ class UserLookbookAdapter(private val parentFragment : Fragment) : RecyclerView.
 
 
     class ViewHolder(val binding : ItemUserLookbookBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(parentFragment : Fragment){
-            binding.userLookbookItemImg.setImageResource(R.drawable.ic_launcher_foreground)
+        fun bind(parentFragment : Fragment, item : LookbookItem){
+            Glide.with(parentFragment).load(item.photoUrl).into(binding.userLookbookItemImg)
             binding.root.setOnClickListener(View.OnClickListener {
-//                val position: Int = adapterPosition
-//                val transaction = parentFragment.parentFragment?.parentFragmentManager?.beginTransaction()
-//                transaction?.replace(R.id.my_page_frameLayout, MyPageLookbookItemFragment(position))
-//                transaction?.commit()
                 val bundle = bundleOf("position" to adapterPosition)
                 it.findNavController().navigate(R.id.action_main_to_lookbook_item, bundle)
             })
