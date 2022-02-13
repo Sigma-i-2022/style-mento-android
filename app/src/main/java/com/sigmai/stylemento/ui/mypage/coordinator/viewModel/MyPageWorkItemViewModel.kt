@@ -8,10 +8,6 @@ import com.sigmai.stylemento.data.model.Coordinator
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 
 class MyPageWorkItemViewModel : ViewModel() {
-    private val _coordinator = MutableLiveData<Coordinator>()
-
-    val coordinator: LiveData<Coordinator> get() = _coordinator
-
     val startBack = SingleLiveEvent<Any>()
     val startRevision = SingleLiveEvent<Any>()
     val startDelete = SingleLiveEvent<Any>()
@@ -24,9 +20,5 @@ class MyPageWorkItemViewModel : ViewModel() {
     }
     fun onDeleteClick() {
         startDelete.call()
-    }
-
-    fun getCoordinatorInfo() {
-        _coordinator.postValue(Client.getCoordinatorInfo())
     }
 }
