@@ -50,6 +50,7 @@ class MyPageWorkAddFragment : BaseFragment<FragmentMyPageWorkAddBinding>(), Havi
         position = arguments?.getInt("position")!!
         if(position >= 0){
             workItem = getWorkItemUseCase(position).copy()
+            binding.myPageWorkTitleText.text = "아이템 수정"
             binding.myPageWorkAddSaveButton.text = "수정"
         }
         else{

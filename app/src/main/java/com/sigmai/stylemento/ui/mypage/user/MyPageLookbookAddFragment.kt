@@ -41,6 +41,7 @@ class MyPageLookbookAddFragment() : BaseFragment<FragmentMyPageLookbookAddBindin
         position = arguments?.getInt("position")!!
         if(position >= 0){
             lookbookItem = getLookbookItemUseCase(position).copy()
+            binding.myPageLookbookTitleText.text = "아이템 수정"
             binding.myPageLookbookAddSaveButton.text = "수정"
         }
         else{
