@@ -1,11 +1,13 @@
 package com.sigmai.stylemento.data.model
 
+import android.net.Uri
 import com.sigmai.stylemento.global.constant.ReviewType
 import com.sigmai.stylemento.global.constant.TagType
 
 data class Coordinator(
     val nickname: String,
     var email: String = "",
+    var profile: Uri? = Uri.EMPTY,
     var introduction: String = "",
     var likes: Int = 0,
     var styleTags: MutableList<TagType> = mutableListOf(),
