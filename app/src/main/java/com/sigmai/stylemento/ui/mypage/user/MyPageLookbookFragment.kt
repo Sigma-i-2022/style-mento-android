@@ -21,10 +21,10 @@ class MyPageLookbookFragment() : BaseFragment<FragmentMyPageLookbookBinding>() {
         super.initDataBinding()
         binding.viewModel = viewModel
 
-        viewModel.startAddLookbook.observe(this) {
+        viewModel.startAddLookbook.observe(this, {
             val bundle = bundleOf("position" to -1)
             findNavController().navigate(R.id.action_main_to_lookbook_add, bundle)
-        }
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
