@@ -2,7 +2,9 @@ package com.sigmai.stylemento.ui.mypage.coordinator
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageWorkBinding
@@ -14,19 +16,13 @@ class MyPageWorkFragment() : BaseFragment<FragmentMyPageWorkBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_work
     private val viewModel: MyPageWorkViewModel by viewModels()
 
-    override fun initState() {
-        super.initState()
-        viewModel.getCoordinatorInfo()
-    }
-
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
 
         viewModel.startAddition.observe(this, {
-            val transaction = parentFragment?.parentFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.my_page_frameLayout, MyPageWorkAddFragment())
-            transaction?.commit()
+            val bundle = bundleOf("position" to -1)
+            findNavController().navigate(R.id.action_main_to_lookbook_add, bundle)
         })
     }
 
