@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.ReviewItem
@@ -42,10 +43,7 @@ class MyPageCoordinatorFragment(private var showMenu : Int) : BaseFragment<Fragm
             }
         })
         viewModel.startRevision.observe(this, {
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.my_page_frameLayout, MyPageCoordinatorRevisionFragment())
-            transaction.addToBackStack(null)
-            transaction.commit()
+            findNavController().navigate(R.id.action_main_to_coordinator_revision)
         })
         viewModel.startWork.observe(this, {
             showWork()
@@ -57,7 +55,6 @@ class MyPageCoordinatorFragment(private var showMenu : Int) : BaseFragment<Fragm
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         val coordinatorAdapter = CoordinatorViewPagerAdapter(this)
         binding.myPageCoordinatorViewPager.isUserInputEnabled = false
