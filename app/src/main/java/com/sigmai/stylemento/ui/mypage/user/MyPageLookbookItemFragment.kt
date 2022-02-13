@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
+import com.sigmai.stylemento.data.model.LookbookItem
 import com.sigmai.stylemento.databinding.FragmentMyPageLookbookItemBinding
 import com.sigmai.stylemento.domain.usecase.GetLookbookItemUseCase
 import com.sigmai.stylemento.ui.mypage.TagAdapter
@@ -19,6 +20,9 @@ import com.sigmai.stylemento.global.base.BaseFragment
 class MyPageLookbookItemFragment() : BaseFragment<FragmentMyPageLookbookItemBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_item
     private val viewModel: MyPageLookbookItemViewModel by viewModels()
+
+    private lateinit var lookbookItem : LookbookItem
+    private val getLookbookItemUseCase = GetLookbookItemUseCase()
     private var position: Int = 0
 
     private var detailState = 0
@@ -27,6 +31,7 @@ class MyPageLookbookItemFragment() : BaseFragment<FragmentMyPageLookbookItemBind
         super.initState()
         position = arguments?.getInt("position")!!
         viewModel.setItemInfo(position)
+        lookbookItem = getLookbookItemUseCase(position)
     }
 
     override fun initDataBinding() {
@@ -57,10 +62,10 @@ class MyPageLookbookItemFragment() : BaseFragment<FragmentMyPageLookbookItemBind
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Glide.with(this).load(viewModel.item.value?.photoUrl).into(binding.myPageUserLookbookItemImg)
+        Glide.with(this).load(lookbookItem.photoUrl).into(binding.myPageUserLookbookItemImg)
 
         val lookbookTagAdapter = TagAdapter()
-        lookbookTagAdapter.setDataSet(viewModel.item.value?.tags)
+        lookbookTagAdapter.setDataSet(lookbookItem.tags)
         binding.myPageUserLookbookItemTagRecycler.adapter = lookbookTagAdapter
     }
 
