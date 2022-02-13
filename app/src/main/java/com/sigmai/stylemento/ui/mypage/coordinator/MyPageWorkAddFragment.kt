@@ -9,23 +9,29 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.WorkItem
 import com.sigmai.stylemento.databinding.FragmentMyPageWorkAddBinding
+import com.sigmai.stylemento.domain.usecase.GetLookbookItemUseCase
+import com.sigmai.stylemento.domain.usecase.GetWorkItemUseCase
 import com.sigmai.stylemento.ui.mypage.TagAdapter
 import com.sigmai.stylemento.ui.mypage.TagSelectionDialog
 import com.sigmai.stylemento.ui.mypage.coordinator.dialog.CoordinatorWorkImageSelectionDialog
 import com.sigmai.stylemento.ui.mypage.coordinator.viewModel.MyPageWorkAddViewModel
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.base.HavingTag
+import com.sigmai.stylemento.global.base.HavingTag2
 import com.sigmai.stylemento.global.constant.TagType
+import com.sigmai.stylemento.ui.mypage.adapter.SampleTagAdapter
+import com.sigmai.stylemento.ui.mypage.user.AdditionPageTextWatcher
 
-class MyPageWorkAddFragment : BaseFragment<FragmentMyPageWorkAddBinding>(), HavingTag {
+class MyPageWorkAddFragment : BaseFragment<FragmentMyPageWorkAddBinding>(), HavingTag2 {
     override val layoutResourceId = R.layout.fragment_my_page_work_add
     private val viewModel: MyPageWorkAddViewModel by viewModels()
     private val tagAdapter = TagAdapter()
-    private var workItem : WorkItem = WorkItem(Client.getUserInfo().nickname)
+
+    private lateinit var workItem : WorkItem
+    private val getWorkItemUseCase = GetWorkItemUseCase()
 
     override fun initState() {
         super.initState()
-        viewModel.getCoordinatorInfo()
     }
 
     override fun initDataBinding() {
@@ -40,7 +46,7 @@ class MyPageWorkAddFragment : BaseFragment<FragmentMyPageWorkAddBinding>(), Havi
             backToMyPage()
         })
         viewModel.startTagAddition.observe(this, {
-            val dialog = TagSelectionDialog(this)
+            val dialog = TagSelectionDialog(havingTag2 = this)
             dialog.show(childFragmentManager, "TagSelectionDialog")
         })
     }
@@ -57,50 +63,10 @@ class MyPageWorkAddFragment : BaseFragment<FragmentMyPageWorkAddBinding>(), Havi
     }
 
     private fun setEditTextLayout(){
-        binding.myPageWorkAddDetailEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                workItem.deltail = p0.toString()
-            }
-        })
-        binding.myPageWorkAddTopEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                workItem.top = p0.toString()
-            }
-        })
-        binding.myPageWorkAddPantsEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                workItem.pants = p0.toString()
-            }
-        })
-        binding.myPageWorkAddShoesEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                workItem.shoes = p0.toString()
-            }
-        })
+        binding.myPageWorkAddDetailEditText.addTextChangedListener(AdditionPageTextWatcher(workItem, "detail"))
+        binding.myPageWorkAddTopEditText.addTextChangedListener(AdditionPageTextWatcher(workItem, "top"))
+        binding.myPageWorkAddPantsEditText.addTextChangedListener(AdditionPageTextWatcher(workItem, "pants"))
+        binding.myPageWorkAddShoesEditText.addTextChangedListener(AdditionPageTextWatcher(workItem, "shoes"))
     }
 
     private fun backToMyPage(){
@@ -108,9 +74,8 @@ class MyPageWorkAddFragment : BaseFragment<FragmentMyPageWorkAddBinding>(), Havi
         transaction.commit()
     }
 
-    override fun setTags(tagTypes: MutableList<TagType>){
-        workItem.tags = tagTypes
-        tagAdapter.setDataSet(workItem.tags)
+    override fun setTagList(tagList: List<String>) {
+        val tagAdapter = SampleTagAdapter(tagList, false)
         binding.myPageWorkAddTagRecycler.adapter = tagAdapter
     }
 }
