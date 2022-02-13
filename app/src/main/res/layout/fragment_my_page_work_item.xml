@@ -97,6 +97,7 @@
                     android:layout_marginTop="6dp"
                     android:maxLines="2"
                     android:ellipsize="end"
+                    android:onClick="@{()->viewModel.onIntroductionClick()}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/my_page_work_item_img" />
 
