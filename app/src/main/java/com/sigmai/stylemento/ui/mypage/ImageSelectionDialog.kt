@@ -22,10 +22,6 @@ class ImageSelectionDialog(private val f : HavingImage) : BaseDialogFragment<Dia
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.imgSelectionCameraImg.setOnClickListener(View.OnClickListener {
-            context?.let { it1 -> f.getImageFromCamera(it1) }
-            dismiss()
-        })
         binding.imgSelectionAlbumSelectionImg.setOnClickListener(View.OnClickListener {
             context?.let { it1 -> f.getImageFromGallery(it1) }
             dismiss()
