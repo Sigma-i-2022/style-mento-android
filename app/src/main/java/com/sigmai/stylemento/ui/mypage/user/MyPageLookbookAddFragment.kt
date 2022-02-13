@@ -1,11 +1,14 @@
 package com.sigmai.stylemento.ui.mypage.user
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.LookbookItem
@@ -76,6 +79,16 @@ class MyPageLookbookAddFragment() : BaseFragment<FragmentMyPageLookbookAddBindin
 
         setEditTextLayout()
         setTextInit()
+
+        getResultFromGallery = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()){
+            if(it.resultCode == Activity.RESULT_OK){
+                val intent = it.data
+                val uri = intent?.data
+                lookbookItem.photoUrl = uri
+                Glide.with(this).load(uri).into(binding.myPageLookbookAddItemImg)
+            }
+        }
     }
     private fun setTextInit(){
         binding.myPageLookbookAddDetailEditText.setText(lookbookItem.detail)
