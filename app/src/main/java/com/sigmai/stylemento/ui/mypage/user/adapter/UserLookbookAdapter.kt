@@ -45,7 +45,7 @@ class UserLookbookAdapter() : RecyclerView.Adapter<UserLookbookAdapter.ViewHolde
                 binding.userLookbookItemImg.setImageResource(R.drawable.ic_launcher_foreground)
             else
                 Glide.with(binding.userLookbookItemImg).load(item.photoUrl)
-                    .placeholder(R.drawable.ic_launcher_background)
+                    .placeholder(R.drawable.ic_launcher_foreground)
                     .into(binding.userLookbookItemImg)
             binding.root.setOnClickListener(View.OnClickListener {
                 val bundle = bundleOf("position" to adapterPosition)
