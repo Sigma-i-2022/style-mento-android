@@ -9,7 +9,7 @@ import com.sigmai.stylemento.global.constant.TextureType
 data class WorkItem(
     val owner : String,
     var photoUrl: Uri? = Uri.EMPTY,
-    var deltail : String = "",
+    var detail : String = "",
     var top : String = "",
     var pants : String = "",
     var shoes : String = "",
