@@ -69,13 +69,13 @@ class MyPageUserRevisionFragment : BaseFragment<FragmentMyPageUserRevisionBindin
             }
         })
         Glide.with(this).load(uri).into(binding.myPageUserRevisionProfileImg)
-        getResultFromCamera = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()){
-            if(it.resultCode == Activity.RESULT_OK){
-                val imageBitmap = it.data?.extras?.get("data") as Bitmap
-                binding.myPageUserRevisionProfileImg.setImageBitmap(imageBitmap)
-            }
-        }
+//        getResultFromCamera = registerForActivityResult(
+//            ActivityResultContracts.StartActivityForResult()){
+//            if(it.resultCode == Activity.RESULT_OK){
+//                val imageBitmap = it.data?.extras?.get("data") as Bitmap
+//                binding.myPageUserRevisionProfileImg.setImageBitmap(imageBitmap)
+//            }
+//        }
 
         getResultFromGallery = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()){
