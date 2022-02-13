@@ -81,9 +81,7 @@ class MyPageWorkItemFragment() : BaseFragment<FragmentMyPageWorkItemBinding>() {
                 when (p1) {
                     DialogInterface.BUTTON_POSITIVE -> {
                         Client.removeWorkItem(position)
-                        val transaction = parentFragmentManager.beginTransaction()
-                        transaction.replace(R.id.my_page_frameLayout, MyPageCoordinatorFragment(0))
-                        transaction.commit()
+                        findNavController().popBackStack()
                     }
                 }
             }
