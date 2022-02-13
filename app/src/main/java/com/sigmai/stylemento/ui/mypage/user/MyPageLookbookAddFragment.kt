@@ -80,6 +80,7 @@ class MyPageLookbookAddFragment() : BaseFragment<FragmentMyPageLookbookAddBindin
         setEditTextLayout()
         setTextInit()
 
+        Glide.with(this).load(lookbookItem.photoUrl).into(binding.myPageLookbookAddItemImg)
         getResultFromGallery = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()){
             if(it.resultCode == Activity.RESULT_OK){
