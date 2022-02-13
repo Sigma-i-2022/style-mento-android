@@ -60,7 +60,7 @@ class MyPageWorkRevisionFragment(private var workItem : WorkItem, private val po
         })
     }
     private fun setTextInit(){
-        binding.myPageWorkRevisionDetailEditText.setText(workItem.deltail)
+        binding.myPageWorkRevisionDetailEditText.setText(workItem.detail)
         binding.myPageWorkRevisionTopEditText.setText(workItem.top)
         binding.myPageWorkRevisionPantsEditText.setText(workItem.pants)
         binding.myPageWorkRevisionShoesEditText.setText(workItem.shoes)
@@ -75,7 +75,7 @@ class MyPageWorkRevisionFragment(private var workItem : WorkItem, private val po
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                workItem.deltail = p0.toString()
+                workItem.detail = p0.toString()
             }
         })
         binding.myPageWorkRevisionTopEditText.addTextChangedListener(object : TextWatcher {
