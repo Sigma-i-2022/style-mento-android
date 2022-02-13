@@ -4,42 +4,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
+import com.sigmai.stylemento.data.model.LookbookItem
 import com.sigmai.stylemento.data.model.WorkItem
+import com.sigmai.stylemento.databinding.ItemCoordinatorWorkBinding
+import com.sigmai.stylemento.databinding.ItemUserLookbookBinding
 import com.sigmai.stylemento.ui.mypage.coordinator.MyPageWorkItemFragment
+import com.sigmai.stylemento.ui.mypage.user.adapter.UserLookbookAdapter
+import com.sigmai.stylemento.ui.mypage.user.adapter.UserLookbookAdapter.ViewHolder.Companion.from
 
 
-class CoordinatorWorkAdapter(private val parantFragment : Fragment) : RecyclerView.Adapter<CoordinatorWorkAdapter.ViewHolder>() {
+class CoordinatorWorkAdapter(private val parentFragment : Fragment) : RecyclerView.Adapter<CoordinatorWorkAdapter.ViewHolder>() {
     private var dataSet: List<WorkItem> = Client.getCoordinatorInfo().workItems
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val userWorkImg: ImageView = view.findViewById(R.id.coordinator_work_item_img)
-
-        init {
-            view.setOnClickListener(View.OnClickListener {
-                val position: Int = adapterPosition
-                val transaction = parantFragment.parentFragment?.parentFragmentManager?.beginTransaction()
-                transaction?.replace(R.id.my_page_frameLayout, MyPageWorkItemFragment(dataSet[position], position))
-                transaction?.commit()
-            })
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder.from(parent)
     }
 
-    // Create new views (invoked by the layout manager)
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        // Create a new view, which defines the UI of the list item
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item_coordinator_work, viewGroup, false)
-
-        return ViewHolder(view)
-    }
-
-    // Replace the contents of a view (invoked by the layout manager)
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.userWorkImg.setImageResource(R.drawable.ic_launcher_foreground)
+    override fun onBindViewHolder(holder: CoordinatorWorkAdapter.ViewHolder, position: Int) {
+        holder.bind(parentFragment, dataSet[position])
     }
 
     override fun getItemCount(): Int{
@@ -50,4 +39,22 @@ class CoordinatorWorkAdapter(private val parantFragment : Fragment) : RecyclerVi
         dataSet = items
     }
 
+    class ViewHolder(val binding : ItemCoordinatorWorkBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(parentFragment : Fragment, item : WorkItem){
+            Glide.with(parentFragment).load(item.photoUrl).into(binding.coordinatorWorkItemImg)
+            binding.root.setOnClickListener(View.OnClickListener {
+                val bundle = bundleOf("position" to adapterPosition)
+                it.findNavController().navigate(R.id.action_main_to_work_item, bundle)
+            })
+        }
+
+        companion object {
+            fun from(parent: ViewGroup) : CoordinatorWorkAdapter.ViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = ItemCoordinatorWorkBinding.inflate(layoutInflater, parent, false)
+
+                return CoordinatorWorkAdapter.ViewHolder(binding)
+            }
+        }
+    }
 }
