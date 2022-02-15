@@ -49,7 +49,7 @@ class UserLookbookAdapter : RecyclerView.Adapter<UserLookbookAdapter.ViewHolder>
                     .into(binding.userLookbookItemImg)
             binding.root.setOnClickListener(View.OnClickListener {
                 val bundle = bundleOf("position" to adapterPosition)
-                it.findNavController().navigate(R.id.action_main_to_lookbook_item, bundle)
+                it.findNavController().navigate(R.id.action_main_to_lookbook_scroll, bundle)
             })
         }
 
