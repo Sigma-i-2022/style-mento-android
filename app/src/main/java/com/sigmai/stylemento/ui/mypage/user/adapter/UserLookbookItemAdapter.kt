@@ -46,6 +46,7 @@ class UserLookbookItemAdapter(private val parentFragment : MyPageLookbookScrollF
 
 
     class ViewHolder(val binding: ItemLookbookScrollBinding) : RecyclerView.ViewHolder(binding.root) {
+        private var detailState = 0
         fun bind(item: LookbookItem, parentFragment: MyPageLookbookScrollFragment) {
             if (item.photoUrl == Uri.EMPTY)
                 binding.myPageUserLookbookScrollImg.setImageResource(R.drawable.ic_launcher_foreground)
@@ -72,6 +73,7 @@ class UserLookbookItemAdapter(private val parentFragment : MyPageLookbookScrollF
             binding.myPageUserLookbookScrollDelete.setOnClickListener(View.OnClickListener {
                 setDeleteDialog(it, adapterPosition, parentFragment)
             })
+            setListener()
         }
 
         private fun setDeleteDialog(it : View, position: Int, parentFragment: MyPageLookbookScrollFragment) {
@@ -94,6 +96,19 @@ class UserLookbookItemAdapter(private val parentFragment : MyPageLookbookScrollF
 
             builder.show()
         }
+
+        private fun setListener(){
+            binding.myPageUserLookbookScrollDetail.setOnClickListener(View.OnClickListener {
+                if (detailState == 0) {
+                    binding.myPageUserLookbookScrollDetail.maxLines = 10
+                    detailState = 1
+                } else {
+                    binding.myPageUserLookbookScrollDetail.maxLines = 2
+                    detailState = 0
+                }
+            })
+        }
+
         companion object {
             fun from(parent: ViewGroup): UserLookbookItemAdapter.ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
