@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageLookbookScrollViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/my_page_user_lookbook_content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/my_page_user_lookbook_back_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="20dp"
+            android:onClick="@{()->viewModel.onBackClick()}"
+            android:background="@drawable/ic_arrow_back" />
+
+        <TextView
+            style="@style/header3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="룩북"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/my_page_user_lookbook_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/my_page_user_lookbook_back_img"
+            android:layout_marginTop="24dp"
+            android:background="@color/gray_f" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/my_page_user_lookbook_scroll_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/my_page_user_lookbook_line"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+    </RelativeLayout>
+</layout>
