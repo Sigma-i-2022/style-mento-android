@@ -26,6 +26,7 @@ class MyPageLookbookScrollFragment() : BaseFragment<FragmentMyPageLookbookScroll
     private val viewModel: MyPageLookbookScrollViewModel by viewModels()
 
     private var position = 0
+    private lateinit var lookbookItemAdapter : UserLookbookItemAdapter
     override fun initState() {
         super.initState()
         position = arguments?.getInt("position")!!
@@ -43,8 +44,17 @@ class MyPageLookbookScrollFragment() : BaseFragment<FragmentMyPageLookbookScroll
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val lookbookTagAdapter = UserLookbookItemAdapter()
-        binding.myPageUserLookbookScrollRecycler.adapter = lookbookTagAdapter
+        lookbookItemAdapter = UserLookbookItemAdapter(this)
+        binding.myPageUserLookbookScrollRecycler.adapter = lookbookItemAdapter
         binding.myPageUserLookbookScrollRecycler.scrollToPosition(position)
+    }
+
+    fun updateAdapter(position : Int){
+        lookbookItemAdapter = UserLookbookItemAdapter(this)
+        binding.myPageUserLookbookScrollRecycler.adapter = lookbookItemAdapter
+        if(lookbookItemAdapter.itemCount == position)
+            binding.myPageUserLookbookScrollRecycler.scrollToPosition(position - 1)
+        else
+            binding.myPageUserLookbookScrollRecycler.scrollToPosition(position)
     }
 }

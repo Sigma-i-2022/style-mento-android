@@ -22,9 +22,10 @@ import com.sigmai.stylemento.ui.mypage.user.MyPageLookbookItemFragment
 import com.sigmai.stylemento.databinding.ItemUserLookbookBinding
 import com.sigmai.stylemento.domain.usecase.GetLookbookItemUseCase
 import com.sigmai.stylemento.ui.mypage.TagAdapter
+import com.sigmai.stylemento.ui.mypage.user.MyPageLookbookScrollFragment
 
 
-class UserLookbookItemAdapter : RecyclerView.Adapter<UserLookbookItemAdapter.ViewHolder>() {
+class UserLookbookItemAdapter(private val parentFragment : MyPageLookbookScrollFragment) : RecyclerView.Adapter<UserLookbookItemAdapter.ViewHolder>() {
     private var dataSet: List<LookbookItem> = Client.getUserInfo().lookbookItems
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,7 +33,7 @@ class UserLookbookItemAdapter : RecyclerView.Adapter<UserLookbookItemAdapter.Vie
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(dataSet[position])
+        holder.bind(dataSet[position], parentFragment)
     }
 
     override fun getItemCount(): Int {
@@ -45,7 +46,7 @@ class UserLookbookItemAdapter : RecyclerView.Adapter<UserLookbookItemAdapter.Vie
 
 
     class ViewHolder(val binding: ItemLookbookScrollBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: LookbookItem) {
+        fun bind(item: LookbookItem, parentFragment: MyPageLookbookScrollFragment) {
             if (item.photoUrl == Uri.EMPTY)
                 binding.myPageUserLookbookScrollImg.setImageResource(R.drawable.ic_launcher_foreground)
             else
@@ -69,11 +70,11 @@ class UserLookbookItemAdapter : RecyclerView.Adapter<UserLookbookItemAdapter.Vie
             })
 
             binding.myPageUserLookbookScrollDelete.setOnClickListener(View.OnClickListener {
-                setDeleteDialog(it, adapterPosition)
+                setDeleteDialog(it, adapterPosition, parentFragment)
             })
         }
 
-        private fun setDeleteDialog(it : View, position: Int) {
+        private fun setDeleteDialog(it : View, position: Int, parentFragment: MyPageLookbookScrollFragment) {
             var builder = AlertDialog.Builder(it.context)
             builder.setMessage("이 아이템을 삭제 하시겠습니까?")
 
@@ -82,7 +83,7 @@ class UserLookbookItemAdapter : RecyclerView.Adapter<UserLookbookItemAdapter.Vie
                     when (p1) {
                         DialogInterface.BUTTON_POSITIVE -> {
                             Client.removeLookbookItem(position)
-                            it.findNavController().navigateUp()
+                            parentFragment.updateAdapter(position)
                         }
                     }
                 }
