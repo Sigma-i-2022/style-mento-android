@@ -1,9 +1,15 @@
 package com.sigmai.stylemento.ui.mypage.user
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.hardware.input.InputManager
 import android.os.Bundle
+import android.text.InputType
+import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
@@ -34,6 +40,7 @@ class MyPageLookbookAddFragment() : BaseFragment<FragmentMyPageLookbookAddBindin
 
     private lateinit var lookbookItem : LookbookItem
     private val getLookbookItemUseCase = GetLookbookItemUseCase()
+    private val inputManager = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
 
     private var position = -1
     override fun initState() {
@@ -54,6 +61,7 @@ class MyPageLookbookAddFragment() : BaseFragment<FragmentMyPageLookbookAddBindin
         binding.viewModel = viewModel
 
         viewModel.startBack.observe(this, {
+            //inputManager?.hideSoftInputFromWindow(binding.myPageLookbookAddDetailEditText.windowToken, 0)
             findNavController().popBackStack()
         })
         viewModel.startSave.observe(this, {
@@ -62,6 +70,7 @@ class MyPageLookbookAddFragment() : BaseFragment<FragmentMyPageLookbookAddBindin
                 Client.reviseLookbookItem(lookbookItem, position)
             else
                 Client.addLookbookItem(lookbookItem)
+            //inputManager?.hideSoftInputFromWindow(binding.myPageLookbookAddDetailEditText.windowToken, 0)
             findNavController().popBackStack()
         })
         viewModel.startTagAdd.observe(this, {
