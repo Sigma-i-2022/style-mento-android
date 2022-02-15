@@ -65,4 +65,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }
         }
     }
+
+    override fun onRestart() {
+        super.onRestart()
+    }
 }
