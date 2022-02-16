@@ -22,22 +22,16 @@ class UserLookbookItemAdapter2(private val parentFragment: MyPageLookbookScrollF
     RecyclerView.Adapter<UserLookbookItemAdapter2.ViewHolder>() {
     private var dataSet: List<LookbookItem> = Client.getUserInfo().lookbookItems
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
-    }
-
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder.from(parent)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(dataSet[position], parentFragment)
     }
 
-    override fun getItemCount(): Int {
-        return dataSet.size
-    }
+    override fun getItemCount() = dataSet.size
 
     fun setDataSet(items: List<LookbookItem>) {
         dataSet = items
     }
-
 
     class ViewHolder(val binding: ItemLookbookScrollBinding) :
         RecyclerView.ViewHolder(binding.root) {
