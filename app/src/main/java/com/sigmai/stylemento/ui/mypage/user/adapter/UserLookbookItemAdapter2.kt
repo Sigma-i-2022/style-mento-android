@@ -51,33 +51,11 @@ class UserLookbookItemAdapter2(private val dataSet: List<LookbookItem>, private 
             }
 
             binding.myPageUserLookbookScrollDelete.setOnClickListener{
-                setDeleteDialog(it, adapterPosition, viewModel)
+                viewModel.setDeleteDialog(it, adapterPosition)
             }
             setListener()
 
             binding.executePendingBindings()
-        }
-
-        private fun setDeleteDialog(
-            it: View,
-            position: Int,
-            viewModel: MyPageLookbookScrollViewModel
-        ) {
-            val builder = AlertDialog.Builder(it.context)
-            builder.setMessage("이 아이템을 삭제 하시겠습니까?")
-
-            val listener = DialogInterface.OnClickListener { p0, p1 ->
-                when (p1) {
-                    DialogInterface.BUTTON_POSITIVE -> {
-                        viewModel.updateAdapterAfterDeleteLookbook(position)
-                    }
-                }
-            }
-
-            builder.setPositiveButton("삭제", listener)
-            builder.setNegativeButton("취소", listener)
-
-            builder.show()
         }
 
         private fun setListener() {

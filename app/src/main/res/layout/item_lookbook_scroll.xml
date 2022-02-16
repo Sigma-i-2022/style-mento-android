@@ -4,6 +4,9 @@
         <variable
             name="item"
             type="com.sigmai.stylemento.data.model.LookbookItem" />
+        <variable
+            name="viewModel"
+            type="com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageLookbookScrollViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
