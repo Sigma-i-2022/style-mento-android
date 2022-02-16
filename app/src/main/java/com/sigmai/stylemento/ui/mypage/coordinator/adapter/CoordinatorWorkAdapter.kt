@@ -50,7 +50,7 @@ class CoordinatorWorkAdapter : RecyclerView.Adapter<CoordinatorWorkAdapter.ViewH
                     .into(binding.coordinatorWorkItemImg)
             binding.root.setOnClickListener(View.OnClickListener {
                 val bundle = bundleOf("position" to adapterPosition)
-                it.findNavController().navigate(R.id.action_main_to_work_item, bundle)
+                it.findNavController().navigate(R.id.action_main_to_work_scroll, bundle)
             })
         }
 
