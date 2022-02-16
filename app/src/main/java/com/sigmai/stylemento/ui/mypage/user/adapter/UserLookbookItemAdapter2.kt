@@ -43,14 +43,14 @@ class UserLookbookItemAdapter2(private val parentFragment: MyPageLookbookScrollF
             lookbookTagAdapter.setDataSet(item.tags)
             binding.myPageUserLookbookScrollTagRecycler.adapter = lookbookTagAdapter
 
-            binding.myPageUserLookbookScrollRevision.setOnClickListener(View.OnClickListener {
+            binding.myPageUserLookbookScrollRevision.setOnClickListener {
                 val bundle = bundleOf("position" to adapterPosition)
                 it.findNavController().navigate(R.id.action_lookbook_scroll_to_lookbook_add, bundle)
-            })
+            }
 
-            binding.myPageUserLookbookScrollDelete.setOnClickListener(View.OnClickListener {
+            binding.myPageUserLookbookScrollDelete.setOnClickListener{
                 setDeleteDialog(it, adapterPosition, parentFragment)
-            })
+            }
             setListener()
 
             binding.executePendingBindings()
@@ -68,7 +68,7 @@ class UserLookbookItemAdapter2(private val parentFragment: MyPageLookbookScrollF
                 when (p1) {
                     DialogInterface.BUTTON_POSITIVE -> {
                         Client.removeLookbookItem(position)
-                        parentFragment.updateAdapter(position)
+                        parentFragment.updateAdapterAfterDeleteLookbook(position)
                     }
                 }
             }

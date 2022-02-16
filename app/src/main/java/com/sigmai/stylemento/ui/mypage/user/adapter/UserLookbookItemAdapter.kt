@@ -82,7 +82,7 @@ class UserLookbookItemAdapter(private val parentFragment : MyPageLookbookScrollF
                     when (p1) {
                         DialogInterface.BUTTON_POSITIVE -> {
                             Client.removeLookbookItem(position)
-                            parentFragment.updateAdapter(position)
+                            parentFragment.updateAdapterAfterDeleteLookbook(position)
                         }
                     }
                 }
