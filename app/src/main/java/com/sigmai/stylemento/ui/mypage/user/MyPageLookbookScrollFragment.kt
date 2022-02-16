@@ -39,15 +39,14 @@ class MyPageLookbookScrollFragment() : BaseFragment<FragmentMyPageLookbookScroll
             findNavController().navigateUp()
         })
 
-        binding.myPageUserLookbookScrollRecycler.adapter = UserLookbookItemAdapter2(this, Client.getUserInfo().lookbookItems)
+        binding.myPageUserLookbookScrollRecycler.adapter = UserLookbookItemAdapter2(Client.getUserInfo().lookbookItems, viewModel)
         viewModel.position.observe(this) {
             binding.myPageUserLookbookScrollRecycler.scrollToPosition(viewModel.position.value!!)
         }
     }
 
     fun updateAdapterAfterDeleteLookbook(position : Int) {
-        val adapter = UserLookbookItemAdapter2(this, Client.getUserInfo().lookbookItems)
-        binding.myPageUserLookbookScrollRecycler.adapter = adapter
-        binding.myPageUserLookbookScrollRecycler.scrollToPosition(position - 1)
+        binding.myPageUserLookbookScrollRecycler.adapter!!.notifyDataSetChanged()
+        viewModel.updateAdapterAfterDeleteLookbook(position)
     }
 }

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -16,13 +17,14 @@ import com.sigmai.stylemento.data.model.LookbookItem
 import com.sigmai.stylemento.databinding.ItemLookbookScrollBinding
 import com.sigmai.stylemento.ui.mypage.TagAdapter
 import com.sigmai.stylemento.ui.mypage.user.MyPageLookbookScrollFragment
+import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageLookbookScrollViewModel
 
 // todo : UserLookbookItemAdapter 를 사용하고 있는 곳은 이 Adapter 를 사용하도록 변경해야 함.
-class UserLookbookItemAdapter2(private val parentFragment: MyPageLookbookScrollFragment, private val dataSet: List<LookbookItem>) :
+class UserLookbookItemAdapter2(private val dataSet: List<LookbookItem>, private val viewModel: MyPageLookbookScrollViewModel) :
     RecyclerView.Adapter<UserLookbookItemAdapter2.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder.from(parent)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(dataSet[position], parentFragment)
+        holder.bind(dataSet[position], viewModel)
     }
 
     override fun getItemCount() = dataSet.size
@@ -30,7 +32,7 @@ class UserLookbookItemAdapter2(private val parentFragment: MyPageLookbookScrollF
     class ViewHolder(val binding: ItemLookbookScrollBinding) :
         RecyclerView.ViewHolder(binding.root) {
         private var detailState = 0
-        fun bind(item: LookbookItem, parentFragment: MyPageLookbookScrollFragment) {
+        fun bind(item: LookbookItem, viewModel: MyPageLookbookScrollViewModel) {
             binding.item = item
             if (item.photoUrl == Uri.EMPTY)
                 binding.myPageUserLookbookScrollImg.setImageResource(R.drawable.ic_launcher_foreground)
@@ -49,7 +51,7 @@ class UserLookbookItemAdapter2(private val parentFragment: MyPageLookbookScrollF
             }
 
             binding.myPageUserLookbookScrollDelete.setOnClickListener{
-                setDeleteDialog(it, adapterPosition, parentFragment)
+                setDeleteDialog(it, adapterPosition, viewModel)
             }
             setListener()
 
@@ -59,7 +61,7 @@ class UserLookbookItemAdapter2(private val parentFragment: MyPageLookbookScrollF
         private fun setDeleteDialog(
             it: View,
             position: Int,
-            parentFragment: MyPageLookbookScrollFragment
+            viewModel: MyPageLookbookScrollViewModel
         ) {
             val builder = AlertDialog.Builder(it.context)
             builder.setMessage("이 아이템을 삭제 하시겠습니까?")
@@ -67,8 +69,7 @@ class UserLookbookItemAdapter2(private val parentFragment: MyPageLookbookScrollF
             val listener = DialogInterface.OnClickListener { p0, p1 ->
                 when (p1) {
                     DialogInterface.BUTTON_POSITIVE -> {
-                        Client.removeLookbookItem(position)
-                        parentFragment.updateAdapterAfterDeleteLookbook(position)
+                        viewModel.updateAdapterAfterDeleteLookbook(position)
                     }
                 }
             }
