@@ -19,6 +19,7 @@ import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageLookbookItemViewMode
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.ui.mypage.user.adapter.UserLookbookAdapter
 import com.sigmai.stylemento.ui.mypage.user.adapter.UserLookbookItemAdapter
+import com.sigmai.stylemento.ui.mypage.user.adapter.UserLookbookItemAdapter2
 import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageLookbookScrollViewModel
 
 class MyPageLookbookScrollFragment() : BaseFragment<FragmentMyPageLookbookScrollBinding>() {
@@ -26,7 +27,6 @@ class MyPageLookbookScrollFragment() : BaseFragment<FragmentMyPageLookbookScroll
     private val viewModel: MyPageLookbookScrollViewModel by viewModels()
 
     private var position = 0
-    private lateinit var lookbookItemAdapter : UserLookbookItemAdapter
     override fun initState() {
         super.initState()
         position = arguments?.getInt("position")!!
@@ -44,15 +44,14 @@ class MyPageLookbookScrollFragment() : BaseFragment<FragmentMyPageLookbookScroll
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        lookbookItemAdapter = UserLookbookItemAdapter(this)
-        binding.myPageUserLookbookScrollRecycler.adapter = lookbookItemAdapter
+        binding.myPageUserLookbookScrollRecycler.adapter = UserLookbookItemAdapter2(this, Client.getUserInfo().lookbookItems)
         binding.myPageUserLookbookScrollRecycler.scrollToPosition(position)
     }
 
     fun updateAdapter(position : Int){
-        lookbookItemAdapter = UserLookbookItemAdapter(this)
-        binding.myPageUserLookbookScrollRecycler.adapter = lookbookItemAdapter
-        if(lookbookItemAdapter.itemCount == position)
+        val adapter = UserLookbookItemAdapter(this)
+        binding.myPageUserLookbookScrollRecycler.adapter = UserLookbookItemAdapter(this)
+        if(adapter.itemCount == position)
             binding.myPageUserLookbookScrollRecycler.scrollToPosition(position - 1)
         else
             binding.myPageUserLookbookScrollRecycler.scrollToPosition(position)
