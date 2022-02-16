@@ -57,7 +57,7 @@ class CoordinatorWorkItemAdapter(private val parentFragment : MyPageWorkScrollFr
 
             binding.myPageCoordinatorWorkScrollRevision.setOnClickListener(View.OnClickListener {
                 val bundle = bundleOf("position" to adapterPosition)
-                it.findNavController().navigate(R.id.action_lookbook_scroll_to_lookbook_add, bundle)
+                it.findNavController().navigate(R.id.action_work_scroll_to_work_add, bundle)
             })
 
             binding.myPageCoordinatorWorkScrollDelete.setOnClickListener(View.OnClickListener {
