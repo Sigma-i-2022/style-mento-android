@@ -3,8 +3,6 @@ package com.sigmai.stylemento.ui.mypage.coordinator
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -13,26 +11,18 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
-import com.sigmai.stylemento.data.model.LookbookItem
 import com.sigmai.stylemento.data.model.WorkItem
 import com.sigmai.stylemento.databinding.FragmentMyPageWorkAddBinding
 import com.sigmai.stylemento.di.AppConfigs
-import com.sigmai.stylemento.domain.usecase.GetCoordinatorUseCase
-import com.sigmai.stylemento.domain.usecase.GetLookbookItemUseCase
-import com.sigmai.stylemento.domain.usecase.GetUserUseCase
+import com.sigmai.stylemento.domain.usecase.coordinator.GetCoordinatorUseCase
 import com.sigmai.stylemento.domain.usecase.GetWorkItemUseCase
-import com.sigmai.stylemento.ui.mypage.TagAdapter
 import com.sigmai.stylemento.ui.mypage.TagSelectionDialog
-import com.sigmai.stylemento.ui.mypage.coordinator.dialog.CoordinatorWorkImageSelectionDialog
 import com.sigmai.stylemento.ui.mypage.coordinator.viewModel.MyPageWorkAddViewModel
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.base.HavingImage
-import com.sigmai.stylemento.global.base.HavingTag
 import com.sigmai.stylemento.global.base.HavingTag2
-import com.sigmai.stylemento.global.constant.TagType
 import com.sigmai.stylemento.ui.mypage.ImageSelectionDialog
 import com.sigmai.stylemento.ui.mypage.adapter.SampleTagAdapter
-import com.sigmai.stylemento.ui.mypage.user.AdditionPageTextWatcher
 import java.text.SimpleDateFormat
 
 class MyPageWorkAddFragment : BaseFragment<FragmentMyPageWorkAddBinding>(), HavingTag2, HavingImage {

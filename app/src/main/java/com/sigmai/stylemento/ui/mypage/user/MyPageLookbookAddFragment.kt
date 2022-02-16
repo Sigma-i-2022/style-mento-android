@@ -3,13 +3,9 @@ package com.sigmai.stylemento.ui.mypage.user
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.hardware.input.InputManager
 import android.os.Bundle
-import android.text.InputType
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
@@ -21,10 +17,9 @@ import com.sigmai.stylemento.data.model.LookbookItem
 import com.sigmai.stylemento.databinding.FragmentMyPageLookbookAddBinding
 import com.sigmai.stylemento.di.AppConfigs
 import com.sigmai.stylemento.domain.usecase.GetLookbookItemUseCase
-import com.sigmai.stylemento.domain.usecase.GetUserUseCase
+import com.sigmai.stylemento.domain.usecase.user.GetUserUseCase
 import com.sigmai.stylemento.ui.mypage.TagSelectionDialog
 import com.sigmai.stylemento.ui.mypage.adapter.SampleTagAdapter
-import com.sigmai.stylemento.ui.mypage.user.dialog.*
 import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageLookbookAddViewModel
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.base.HavingImage

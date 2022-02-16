@@ -7,7 +7,7 @@ import com.sigmai.stylemento.data.model.FavoriteCoordinator
 import com.sigmai.stylemento.data.model.RecommendedCoordinator
 import com.sigmai.stylemento.data.model.User
 import com.sigmai.stylemento.di.AppConfigs
-import com.sigmai.stylemento.domain.usecase.GetUserUseCase
+import com.sigmai.stylemento.domain.usecase.user.GetUserUseCase
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

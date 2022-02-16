@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.domain.usecase
+package com.sigmai.stylemento.domain.usecase.coordinator
 
 import com.sigmai.stylemento.domain.entity.Piece
 import com.sigmai.stylemento.domain.entity.TempCoordinator
