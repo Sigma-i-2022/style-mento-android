@@ -35,21 +35,16 @@ class UserLookbookItemAdapter2(private val dataSet: List<LookbookItem>, private 
         fun bind(item: LookbookItem, viewModel: MyPageLookbookScrollViewModel) {
             binding.item = item
             setImage(item)
+            setAdapter(item)
+            setListener(viewModel)
 
+            binding.executePendingBindings()
+        }
+
+        private fun setAdapter(item: LookbookItem) {
             val lookbookTagAdapter = TagAdapter()
             lookbookTagAdapter.setDataSet(item.tags)
             binding.myPageUserLookbookScrollTagRecycler.adapter = lookbookTagAdapter
-
-            binding.myPageUserLookbookScrollRevision.setOnClickListener {
-                viewModel.onClickRevision(it, adapterPosition)
-            }
-
-            binding.myPageUserLookbookScrollDelete.setOnClickListener{
-                viewModel.setDeleteDialog(it, adapterPosition)
-            }
-            setListener()
-
-            binding.executePendingBindings()
         }
 
         private fun setImage(item: LookbookItem) {
@@ -61,7 +56,15 @@ class UserLookbookItemAdapter2(private val dataSet: List<LookbookItem>, private 
                     .into(binding.myPageUserLookbookScrollImg)
         }
 
-        private fun setListener() {
+        private fun setListener(viewModel: MyPageLookbookScrollViewModel) {
+            binding.myPageUserLookbookScrollRevision.setOnClickListener {
+                viewModel.onClickRevision(it, adapterPosition)
+            }
+
+            binding.myPageUserLookbookScrollDelete.setOnClickListener{
+                viewModel.setDeleteDialog(it, adapterPosition)
+            }
+
             binding.myPageUserLookbookScrollDetail.setOnClickListener {
                 if (detailState == 0) {
                     binding.myPageUserLookbookScrollDetail.maxLines = 10
