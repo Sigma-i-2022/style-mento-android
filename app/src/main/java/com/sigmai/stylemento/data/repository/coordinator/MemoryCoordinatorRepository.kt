@@ -1,8 +1,7 @@
-package com.sigmai.stylemento.data.repository
+package com.sigmai.stylemento.data.repository.coordinator
 
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.Coordinator
-import com.sigmai.stylemento.data.model.User
 
 class MemoryCoordinatorRepository : CoordinatorRepository {
     override fun getCoordinatorInfo(): Coordinator {
