@@ -26,10 +26,9 @@ class MyPageLookbookScrollFragment() : BaseFragment<FragmentMyPageLookbookScroll
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_scroll
     private val viewModel: MyPageLookbookScrollViewModel by viewModels()
 
-    private var position = 0
     override fun initState() {
         super.initState()
-        position = arguments?.getInt("position")!!
+        viewModel.position.value = arguments?.getInt("position")!!
     }
 
     override fun initDataBinding() {
@@ -39,13 +38,11 @@ class MyPageLookbookScrollFragment() : BaseFragment<FragmentMyPageLookbookScroll
         viewModel.startBack.observe(this, {
             findNavController().navigateUp()
         })
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         binding.myPageUserLookbookScrollRecycler.adapter = UserLookbookItemAdapter2(this, Client.getUserInfo().lookbookItems)
-        binding.myPageUserLookbookScrollRecycler.scrollToPosition(position)
+        viewModel.position.observe(this) {
+            binding.myPageUserLookbookScrollRecycler.scrollToPosition(viewModel.position.value!!)
+        }
     }
 
     fun updateAdapterAfterDeleteLookbook(position : Int){

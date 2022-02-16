@@ -9,6 +9,7 @@ import com.sigmai.stylemento.global.util.SingleLiveEvent
 
 class MyPageLookbookScrollViewModel : ViewModel() {
     val startBack = SingleLiveEvent<Any>()
+    var position = MutableLiveData(0)
 
     fun onBackClick(){
         startBack.call()
