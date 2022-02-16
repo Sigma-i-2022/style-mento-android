@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+    <data>
+        <variable
+            name="item"
+            type="com.sigmai.stylemento.data.model.LookbookItem" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
@@ -12,6 +17,7 @@
             android:layout_height="wrap_content"
             style="@style/body1"
             android:layout_marginTop="10dp"
+            android:text="@{item.time}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
         <ImageView
@@ -50,6 +56,7 @@
             android:layout_marginTop="6dp"
             android:maxLines="2"
             android:ellipsize="end"
+            android:text="@{item.detail}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/my_page_user_lookbook_scroll_img" />
 
@@ -97,6 +104,7 @@
             <TextView
                 android:id="@+id/my_page_lookbook_scroll_top_text"
                 style="@style/header4"
+                android:text="@{item.top}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/trans_parent"/>
@@ -123,6 +131,7 @@
             <TextView
                 android:id="@+id/my_page_lookbook_scroll_pants_text"
                 style="@style/header4"
+                android:text="@{item.pants}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/trans_parent"/>
@@ -149,6 +158,7 @@
             <TextView
                 android:id="@+id/my_page_lookbook_scroll_shoes_text"
                 style="@style/header4"
+                android:text="@{item.shoes}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/trans_parent"/>

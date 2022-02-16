@@ -48,18 +48,13 @@ class UserLookbookItemAdapter(private val parentFragment : MyPageLookbookScrollF
     class ViewHolder(val binding: ItemLookbookScrollBinding) : RecyclerView.ViewHolder(binding.root) {
         private var detailState = 0
         fun bind(item: LookbookItem, parentFragment: MyPageLookbookScrollFragment) {
+            binding.item = item
             if (item.photoUrl == Uri.EMPTY)
                 binding.myPageUserLookbookScrollImg.setImageResource(R.drawable.ic_launcher_foreground)
             else
                 Glide.with(binding.myPageUserLookbookScrollImg).load(item.photoUrl)
                     .placeholder(R.drawable.ic_launcher_foreground)
                     .into(binding.myPageUserLookbookScrollImg)
-
-            binding.myPageUserLookbookScrollDetail.text = item.detail
-            binding.myPageLookbookScrollTimeText.text = item.time
-            binding.myPageLookbookScrollTopText.text = item.top
-            binding.myPageLookbookScrollPantsText.text = item.pants
-            binding.myPageLookbookScrollShoesText.text = item.shoes
 
             val lookbookTagAdapter = TagAdapter()
             lookbookTagAdapter.setDataSet(item.tags)
@@ -74,6 +69,8 @@ class UserLookbookItemAdapter(private val parentFragment : MyPageLookbookScrollF
                 setDeleteDialog(it, adapterPosition, parentFragment)
             })
             setListener()
+
+            binding.executePendingBindings()
         }
 
         private fun setDeleteDialog(it : View, position: Int, parentFragment: MyPageLookbookScrollFragment) {
