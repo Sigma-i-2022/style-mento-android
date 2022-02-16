@@ -29,10 +29,6 @@ class UserLookbookItemAdapter2(private val parentFragment: MyPageLookbookScrollF
 
     override fun getItemCount() = dataSet.size
 
-    fun setDataSet(items: List<LookbookItem>) {
-        dataSet = items
-    }
-
     class ViewHolder(val binding: ItemLookbookScrollBinding) :
         RecyclerView.ViewHolder(binding.root) {
         private var detailState = 0
