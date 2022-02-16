@@ -34,12 +34,7 @@ class UserLookbookItemAdapter2(private val dataSet: List<LookbookItem>, private 
         private var detailState = 0
         fun bind(item: LookbookItem, viewModel: MyPageLookbookScrollViewModel) {
             binding.item = item
-            if (item.photoUrl == Uri.EMPTY)
-                binding.myPageUserLookbookScrollImg.setImageResource(R.drawable.ic_launcher_foreground)
-            else
-                Glide.with(binding.myPageUserLookbookScrollImg).load(item.photoUrl)
-                    .placeholder(R.drawable.ic_launcher_foreground)
-                    .into(binding.myPageUserLookbookScrollImg)
+            setImage(item)
 
             val lookbookTagAdapter = TagAdapter()
             lookbookTagAdapter.setDataSet(item.tags)
@@ -55,6 +50,15 @@ class UserLookbookItemAdapter2(private val dataSet: List<LookbookItem>, private 
             setListener()
 
             binding.executePendingBindings()
+        }
+
+        private fun setImage(item: LookbookItem) {
+            if (item.photoUrl == Uri.EMPTY)
+                binding.myPageUserLookbookScrollImg.setImageResource(R.drawable.ic_launcher_foreground)
+            else
+                Glide.with(binding.myPageUserLookbookScrollImg).load(item.photoUrl)
+                    .placeholder(R.drawable.ic_launcher_foreground)
+                    .into(binding.myPageUserLookbookScrollImg)
         }
 
         private fun setListener() {
