@@ -18,10 +18,8 @@ import com.sigmai.stylemento.ui.mypage.TagAdapter
 import com.sigmai.stylemento.ui.mypage.user.MyPageLookbookScrollFragment
 
 // todo : UserLookbookItemAdapter 를 사용하고 있는 곳은 이 Adapter 를 사용하도록 변경해야 함.
-class UserLookbookItemAdapter2(private val parentFragment: MyPageLookbookScrollFragment) :
+class UserLookbookItemAdapter2(private val parentFragment: MyPageLookbookScrollFragment, private val dataSet: List<LookbookItem>) :
     RecyclerView.Adapter<UserLookbookItemAdapter2.ViewHolder>() {
-    private var dataSet: List<LookbookItem> = Client.getUserInfo().lookbookItems
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder.from(parent)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(dataSet[position], parentFragment)
