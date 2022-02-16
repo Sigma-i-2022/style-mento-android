@@ -45,12 +45,9 @@ class MyPageLookbookScrollFragment() : BaseFragment<FragmentMyPageLookbookScroll
         }
     }
 
-    fun updateAdapterAfterDeleteLookbook(position : Int){
-        val adapter = UserLookbookItemAdapter(this)
-        binding.myPageUserLookbookScrollRecycler.adapter = UserLookbookItemAdapter2(this, Client.getUserInfo().lookbookItems)
-        if(adapter.itemCount == position)
-            binding.myPageUserLookbookScrollRecycler.scrollToPosition(position - 1)
-        else
-            binding.myPageUserLookbookScrollRecycler.scrollToPosition(position)
+    fun updateAdapterAfterDeleteLookbook(position : Int) {
+        val adapter = UserLookbookItemAdapter2(this, Client.getUserInfo().lookbookItems)
+        binding.myPageUserLookbookScrollRecycler.adapter = adapter
+        binding.myPageUserLookbookScrollRecycler.scrollToPosition(position - 1)
     }
 }
