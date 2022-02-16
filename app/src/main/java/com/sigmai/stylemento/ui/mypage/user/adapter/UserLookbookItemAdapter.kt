@@ -11,18 +11,14 @@ import com.sigmai.stylemento.databinding.ItemLookbookScrollBinding
 import com.sigmai.stylemento.ui.mypage.TagAdapter
 import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageLookbookScrollViewModel
 
-class UserLookbookItemAdapter2(
+class UserLookbookItemAdapter(
     private val dataSet: List<LookbookItem>,
     private val viewModel: MyPageLookbookScrollViewModel
-) :
-    RecyclerView.Adapter<UserLookbookItemAdapter2.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder.from(parent)
-
+) : RecyclerView.Adapter<UserLookbookItemAdapter.ViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder.from(parent)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(dataSet[position], viewModel)
     }
-
     override fun getItemCount() = dataSet.size
 
     class ViewHolder(val binding: ItemLookbookScrollBinding) :

@@ -6,7 +6,7 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.databinding.FragmentMyPageLookbookScrollBinding
 import com.sigmai.stylemento.global.base.BaseFragment
-import com.sigmai.stylemento.ui.mypage.user.adapter.UserLookbookItemAdapter2
+import com.sigmai.stylemento.ui.mypage.user.adapter.UserLookbookItemAdapter
 import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageLookbookScrollViewModel
 
 class MyPageLookbookScrollFragment() : BaseFragment<FragmentMyPageLookbookScrollBinding>() {
@@ -27,7 +27,7 @@ class MyPageLookbookScrollFragment() : BaseFragment<FragmentMyPageLookbookScroll
         })
 
         binding.myPageUserLookbookScrollRecycler.adapter =
-            UserLookbookItemAdapter2(Client.getUserInfo().lookbookItems, viewModel)
+            UserLookbookItemAdapter(Client.getUserInfo().lookbookItems, viewModel)
         viewModel.position.observe(this) {
             binding.myPageUserLookbookScrollRecycler.scrollToPosition(viewModel.position.value!!)
         }

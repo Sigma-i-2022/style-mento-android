@@ -4,16 +4,12 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.view.View
 import androidx.core.os.bundleOf
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
-import com.sigmai.stylemento.data.model.LookbookItem
-import com.sigmai.stylemento.domain.usecase.GetLookbookItemUseCase
 import com.sigmai.stylemento.global.util.SingleLiveEvent
-import com.sigmai.stylemento.ui.mypage.user.adapter.UserLookbookItemAdapter2
 
 class MyPageLookbookScrollViewModel : ViewModel() {
     val startBack = SingleLiveEvent<Any>()
