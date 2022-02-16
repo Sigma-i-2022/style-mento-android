@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_main_to_lookbook_scroll"
             app:destination="@id/lookbook_scroll" />
+        <action
+            android:id="@+id/action_main_to_work_scroll"
+            app:destination="@id/work_scroll" />
     </fragment>
 
     <fragment
@@ -106,5 +109,14 @@
         <action
             android:id="@+id/action_lookbook_scroll_to_lookbook_add"
             app:destination="@id/lookbook_add" />
+    </fragment>
+    <fragment
+        android:id="@+id/work_scroll"
+        android:name="com.sigmai.stylemento.ui.mypage.coordinator.MyPageWorkScrollFragment"
+        android:label="work scroll"
+        tools:layout="@layout/fragment_my_page_work_scroll" >
+        <action
+            android:id="@+id/action_work_scroll_to_work_add"
+            app:destination="@id/work_add" />
     </fragment>
 </navigation>
