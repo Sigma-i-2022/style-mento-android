@@ -46,8 +46,7 @@ class UserLookbookItemAdapter2(private val dataSet: List<LookbookItem>, private 
             binding.myPageUserLookbookScrollTagRecycler.adapter = lookbookTagAdapter
 
             binding.myPageUserLookbookScrollRevision.setOnClickListener {
-                val bundle = bundleOf("position" to adapterPosition)
-                it.findNavController().navigate(R.id.action_lookbook_scroll_to_lookbook_add, bundle)
+                viewModel.onClickRevision(it, adapterPosition)
             }
 
             binding.myPageUserLookbookScrollDelete.setOnClickListener{
