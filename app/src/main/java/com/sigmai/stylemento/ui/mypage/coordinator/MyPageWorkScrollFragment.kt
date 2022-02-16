@@ -9,9 +9,8 @@ import com.sigmai.stylemento.databinding.FragmentMyPageWorkScrollBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.ui.mypage.coordinator.adapter.CoordinatorWorkItemAdapter
 import com.sigmai.stylemento.ui.mypage.coordinator.viewModel.MyPageWorkScrollViewModel
-import com.sigmai.stylemento.ui.mypage.user.adapter.UserLookbookItemAdapter
 
-class MyPageWorkScrollFragment() : BaseFragment<FragmentMyPageWorkScrollBinding>() {
+class MyPageWorkScrollFragment : BaseFragment<FragmentMyPageWorkScrollBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_work_scroll
     private val viewModel: MyPageWorkScrollViewModel by viewModels()
 

@@ -1,28 +1,24 @@
 package com.sigmai.stylemento.ui.mypage.user.adapter
 
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.net.Uri
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sigmai.stylemento.R
-import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.data.model.LookbookItem
 import com.sigmai.stylemento.databinding.ItemLookbookScrollBinding
 import com.sigmai.stylemento.ui.mypage.TagAdapter
-import com.sigmai.stylemento.ui.mypage.user.MyPageLookbookScrollFragment
 import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageLookbookScrollViewModel
 
-// todo : UserLookbookItemAdapter 를 사용하고 있는 곳은 이 Adapter 를 사용하도록 변경해야 함.
-class UserLookbookItemAdapter2(private val dataSet: List<LookbookItem>, private val viewModel: MyPageLookbookScrollViewModel) :
+class UserLookbookItemAdapter2(
+    private val dataSet: List<LookbookItem>,
+    private val viewModel: MyPageLookbookScrollViewModel
+) :
     RecyclerView.Adapter<UserLookbookItemAdapter2.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder.from(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
+        ViewHolder.from(parent)
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(dataSet[position], viewModel)
     }
@@ -61,7 +57,7 @@ class UserLookbookItemAdapter2(private val dataSet: List<LookbookItem>, private 
                 viewModel.onClickRevision(it, adapterPosition)
             }
 
-            binding.myPageUserLookbookScrollDelete.setOnClickListener{
+            binding.myPageUserLookbookScrollDelete.setOnClickListener {
                 viewModel.setDeleteDialog(it, adapterPosition)
             }
 
@@ -85,5 +81,4 @@ class UserLookbookItemAdapter2(private val dataSet: List<LookbookItem>, private 
             }
         }
     }
-
 }
