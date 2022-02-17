@@ -9,11 +9,13 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
+import com.sigmai.stylemento.data.model.LookbookItem
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 
 class MyPageLookbookScrollViewModel : ViewModel() {
     val startBack = SingleLiveEvent<Any>()
     var position = MutableLiveData(0)
+    val lookBookList = Client.getUserInfo().lookbookItems
 
     fun onBackClick(){
         startBack.call()

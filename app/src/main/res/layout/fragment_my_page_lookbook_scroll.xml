@@ -44,9 +44,10 @@
             android:id="@+id/my_page_user_lookbook_scroll_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_below="@id/my_page_user_lookbook_line"
+            android:layout_marginTop="10dp"
             android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:lookbooks="@{viewModel.lookBookList}"/>
     </RelativeLayout>
 </layout>
