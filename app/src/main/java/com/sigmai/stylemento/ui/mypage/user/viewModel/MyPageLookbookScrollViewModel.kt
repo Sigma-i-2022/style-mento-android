@@ -20,6 +20,7 @@ class MyPageLookbookScrollViewModel : ViewModel() {
     }
 
     fun onClickRevision(view: View, position: Int) {
+        this.position.value = position
         val bundle = bundleOf("position" to position)
         view.findNavController().navigate(R.id.action_lookbook_scroll_to_lookbook_add, bundle)
     }
