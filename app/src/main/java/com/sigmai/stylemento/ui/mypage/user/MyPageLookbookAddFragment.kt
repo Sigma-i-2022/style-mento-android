@@ -35,7 +35,6 @@ class MyPageLookbookAddFragment() : BaseFragment<FragmentMyPageLookbookAddBindin
 
     private lateinit var lookbookItem : LookbookItem
     private val getLookbookItemUseCase = GetLookbookItemUseCase()
-    private val inputManager = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
 
     private var position = -1
     override fun initState() {
@@ -56,7 +55,6 @@ class MyPageLookbookAddFragment() : BaseFragment<FragmentMyPageLookbookAddBindin
         binding.viewModel = viewModel
 
         viewModel.startBack.observe(this, {
-            //inputManager?.hideSoftInputFromWindow(binding.myPageLookbookAddDetailEditText.windowToken, 0)
             findNavController().popBackStack()
         })
         viewModel.startSave.observe(this, {
@@ -64,8 +62,7 @@ class MyPageLookbookAddFragment() : BaseFragment<FragmentMyPageLookbookAddBindin
             if(position >= 0)
                 Client.reviseLookbookItem(lookbookItem, position)
             else
-                Client.addLookbookItem(lookbookItem)
-            //inputManager?.hideSoftInputFromWindow(binding.myPageLookbookAddDetailEditText.windowToken, 0)
+                Client.addLookbookItem(lookbookItem)s
             findNavController().popBackStack()
         })
         viewModel.startTagAdd.observe(this, {
