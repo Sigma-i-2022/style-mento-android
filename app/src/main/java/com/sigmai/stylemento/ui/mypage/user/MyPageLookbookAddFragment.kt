@@ -62,7 +62,7 @@ class MyPageLookbookAddFragment() : BaseFragment<FragmentMyPageLookbookAddBindin
             if(position >= 0)
                 Client.reviseLookbookItem(lookbookItem, position)
             else
-                Client.addLookbookItem(lookbookItem)s
+                Client.addLookbookItem(lookbookItem)
             findNavController().popBackStack()
         })
         viewModel.startTagAdd.observe(this, {
