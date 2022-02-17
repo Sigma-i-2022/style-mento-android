@@ -32,8 +32,4 @@ class MyPageWorkScrollFragment : BaseFragment<FragmentMyPageWorkScrollBinding>()
             binding.myPageCoordinatorWorkScrollRecycler.scrollToPosition(viewModel.position.value!!)
         })
     }
-
-    fun updateAdapter(position: Int) {
-        binding.myPageCoordinatorWorkScrollRecycler.adapter!!.notifyDataSetChanged()
-    }
 }
