@@ -4,11 +4,14 @@
         <variable
             name="item"
             type="com.sigmai.stylemento.data.model.WorkItem" />
+        <variable
+            name="viewModel"
+            type="com.sigmai.stylemento.ui.mypage.coordinator.viewModel.MyPageWorkScrollViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginHorizontal="@dimen/horizontal_margin">
         <TextView
