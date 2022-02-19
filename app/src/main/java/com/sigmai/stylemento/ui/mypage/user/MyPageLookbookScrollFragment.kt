@@ -9,7 +9,7 @@ import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.ui.mypage.user.adapter.UserLookbookItemAdapter
 import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageLookbookScrollViewModel
 
-class MyPageLookbookScrollFragment() : BaseFragment<FragmentMyPageLookbookScrollBinding>() {
+class MyPageLookbookScrollFragment : BaseFragment<FragmentMyPageLookbookScrollBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_lookbook_scroll
     private val viewModel: MyPageLookbookScrollViewModel by viewModels()
 
@@ -27,15 +27,11 @@ class MyPageLookbookScrollFragment() : BaseFragment<FragmentMyPageLookbookScroll
         })
 
         binding.myPageUserLookbookScrollRecycler.adapter =
-            UserLookbookItemAdapter(Client.getUserInfo().lookbookItems, viewModel)
+            UserLookbookItemAdapter(viewModel)
         viewModel.position.observe(this) {
             binding.myPageUserLookbookScrollRecycler.adapter =
                 UserLookbookItemAdapter(Client.getUserInfo().lookbookItems, viewModel)
             binding.myPageUserLookbookScrollRecycler.scrollToPosition(viewModel.position.value!!)
         }
-    }
-
-    fun updateAdapterAfterDeleteLookbook(position: Int) {
-        binding.myPageUserLookbookScrollRecycler.adapter!!.notifyDataSetChanged()
     }
 }

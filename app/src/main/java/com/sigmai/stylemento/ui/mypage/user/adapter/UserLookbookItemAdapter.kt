@@ -3,6 +3,8 @@ package com.sigmai.stylemento.ui.mypage.user.adapter
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sigmai.stylemento.R
@@ -12,14 +14,12 @@ import com.sigmai.stylemento.ui.mypage.TagAdapter
 import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageLookbookScrollViewModel
 
 class UserLookbookItemAdapter(
-    private val dataSet: List<LookbookItem>,
     private val viewModel: MyPageLookbookScrollViewModel
-) : RecyclerView.Adapter<UserLookbookItemAdapter.ViewHolder>() {
+) : ListAdapter<LookbookItem, UserLookbookItemAdapter.ViewHolder>(LookBookItemDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder.from(parent)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(dataSet[position], viewModel)
+        holder.bind(getItem(position), viewModel)
     }
-    override fun getItemCount() = dataSet.size
 
     class ViewHolder(val binding: ItemLookbookScrollBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -76,5 +76,16 @@ class UserLookbookItemAdapter(
                 return ViewHolder(binding)
             }
         }
+    }
+}
+
+// TODO : 임시 구현으로 나중에 id 값 비교 등으로 수정해야 함.
+class LookBookItemDiffCallback() : DiffUtil.ItemCallback<LookbookItem>() {
+    override fun areItemsTheSame(oldItem: LookbookItem, newItem: LookbookItem): Boolean {
+        return oldItem === newItem
+    }
+
+    override fun areContentsTheSame(oldItem: LookbookItem, newItem: LookbookItem): Boolean {
+        return oldItem == newItem
     }
 }
