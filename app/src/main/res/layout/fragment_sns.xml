@@ -26,13 +26,15 @@
             android:textStyle="bold"
             android:textSize="27sp"/>
 
-        <EditText
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/sns_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/sns_title"
             android:layout_marginTop="40dp"
-            android:layout_marginHorizontal="@dimen/horizontal_margin"/>
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"/>
         
         <View
             android:layout_width="34dp"
@@ -52,6 +54,7 @@
             android:layout_marginBottom="20dp"
             android:layout_marginStart="@dimen/horizontal_margin"
             app:layout_constraintEnd_toStartOf="@id/form_applying"
+            android:background="@drawable/outline_radius_12"
             android:text="이전으로"
             android:textColor="@color/gray_8"
             android:textSize="18sp"
@@ -67,6 +70,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="15dp"
             android:layout_marginBottom="20dp"
+            android:background="@drawable/background_radius_12"
+            android:backgroundTint="@color/primary"
             android:text="신청하기"
             android:textSize="18sp"
             android:textStyle="bold"
