@@ -184,11 +184,57 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <View
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_coordinator_application"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="28dp"
                 app:layout_constraintTop_toBottomOf="@id/booked_advice_card"
-                android:layout_marginTop="20dp"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="12dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                app:cardCornerRadius="12dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingStart="15dp"
+                    android:text="코디네이터가 되어보실래요?"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary"
+                    android:textSize="14sp"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                app:layout_constraintTop_toTopOf="@id/card_coordinator_application"
+                app:layout_constraintBottom_toBottomOf="@id/card_coordinator_application"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                app:cardCornerRadius="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="34dp"
+                    android:text="코디네이터 신청하기"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:background="@drawable/outline_radius_12"/>
+
+                <View
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/ic_arrow_right"
+                    android:backgroundTint="@color/primary"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginEnd="16dp"/>
+            </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

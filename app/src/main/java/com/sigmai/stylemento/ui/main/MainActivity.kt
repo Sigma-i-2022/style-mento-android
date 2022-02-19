@@ -23,8 +23,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val targetIntent = Intent(this, LoginHostActivity::class.java)
-        startActivity(targetIntent)
+        /**
+         * LoginActivity 를 띄우려면 이 주석을 제거하세요.
+         */
+//        val targetIntent = Intent(this, LoginHostActivity::class.java)
+//        startActivity(targetIntent)
 
     }
 
