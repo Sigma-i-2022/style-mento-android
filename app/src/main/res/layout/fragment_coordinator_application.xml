@@ -45,6 +45,10 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/application_title"
                 android:layout_marginTop="88dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:textColor="@color/white"
+                android:textSize="26sp"
+                android:textStyle="bold"
                 android:text="코디네이터가 되어\n패션감각을 뽐내보세요." />
 
             <TextView
@@ -53,6 +57,9 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/application_title2"
                 android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:textColor="@color/primary"
+                android:textSize="14sp"
                 android:text="전문 코디네이터가 아니어도 옷을 잘 입는 분이라면\n스타일멘토 코디네이터에 도전하실 수 있습니다." />
 
             <TextView
@@ -61,6 +68,10 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/application_background"
                 android:layout_marginTop="135dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary"
                 android:text="코디네이터 신청 전,\n필요한 자료를 미리\n준비해주세요." />
 
             <TextView
@@ -69,6 +80,9 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/application_title3"
                 android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:textColor="@color/primary"
+                android:textSize="14sp"
                 android:text="1. 코디네이터 소개(인스타 팔로워, 전문 셀러 여부, 학과 등), 참고용 홈페이지나 SNS주소" />
 
             <TextView
@@ -77,6 +91,9 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/application_description2"
                 android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:textColor="@color/primary"
+                android:textSize="14sp"
                 android:text="2. 직접 코디한 포트폴리오 작움픈 필수!\n첨부파일 호은 확인 링크" />
 
             <View
@@ -93,6 +110,10 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="@id/application_background2"
                 android:layout_marginTop="135dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
                 android:text="간혹,\n신청 결과가\n안 좋을 수도 있습니다." />
 
             <TextView
@@ -101,6 +122,9 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/application_title4"
                 android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:textColor="@color/primary"
+                android:textSize="14sp"
                 android:text="심사에 참고할 자료가 부족하거나\n부적절한 내용이 포함되는 경우,\n거절될 수 있는 점 양해 부탁드립니다." />
 
             <View
@@ -115,6 +139,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="@id/application_background3"
                 android:layout_marginTop="70dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
                 android:text="이제\n코디네이터가 될 준비가\n되셨나요?"/>
 
             <androidx.appcompat.widget.AppCompatButton
