@@ -40,7 +40,16 @@
         <action
             android:id="@+id/action_main_to_work_scroll"
             app:destination="@id/work_scroll" />
+        <action
+            android:id="@+id/action_main_to_application"
+            app:destination="@id/application" />
     </fragment>
+
+    <fragment
+        android:id="@+id/application"
+        android:name="com.sigmai.stylemento.ui.coordinator_application.CoordinatorApplicationFragment"
+        android:label="application"
+        tools:layout="@layout/fragment_coordinator_application"/>
 
     <fragment
         android:id="@+id/notification"
