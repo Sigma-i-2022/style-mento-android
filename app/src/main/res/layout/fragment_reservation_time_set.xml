@@ -8,7 +8,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/reservation_back_img"
+            android:id="@+id/reservation_time_set_back_img"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentStart="true"
@@ -29,12 +29,12 @@
             android:id="@+id/reservation_line"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:layout_below="@id/reservation_back_img"
+            android:layout_below="@id/reservation_time_set_back_img"
             android:layout_marginTop="24dp"
             android:background="@color/gray_f" />
 
         <ScrollView
-            android:id="@+id/reservation_scroll_recycler"
+            android:id="@+id/reservation_time_set_scroll_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/reservation_line"
