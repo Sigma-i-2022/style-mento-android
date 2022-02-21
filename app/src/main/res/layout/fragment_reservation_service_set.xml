@@ -26,7 +26,7 @@
             android:textStyle="bold" />
 
         <View
-            android:id="@+id/reservation_line"
+            android:id="@+id/reservation_service_line"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_below="@id/reservation_time_set_back_img"
@@ -36,7 +36,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/reservation_line"
+            android:layout_below="@id/reservation_service_line"
             android:layout_marginTop="10dp">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -52,7 +52,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
                 <ImageView
-                    android:id="@+id/reservation_service_style_feedback_img"
+                    android:id="@+id/reservation_payment_payer_img"
                     android:layout_width="150dp"
                     android:layout_height="100dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
@@ -65,7 +65,7 @@
                     android:layout_height="100dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:src="@drawable/ic_launcher_foreground"
-                    app:layout_constraintTop_toTopOf="@id/reservation_service_style_feedback_img"
+                    app:layout_constraintTop_toTopOf="@id/reservation_payment_payer_img"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
                 <TextView
@@ -76,7 +76,7 @@
                     style="@style/header3"
                     android:textColor="@color/primary"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    app:layout_constraintTop_toBottomOf="@id/reservation_service_style_feedback_img"
+                    app:layout_constraintTop_toBottomOf="@id/reservation_payment_payer_img"
                     app:layout_constraintStart_toStartOf="parent"/>
                 <ImageView
                     android:id="@+id/reservation_service_chatting_img"
