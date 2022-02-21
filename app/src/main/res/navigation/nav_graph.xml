@@ -49,7 +49,11 @@
         android:id="@+id/application"
         android:name="com.sigmai.stylemento.ui.coordinator_application.CoordinatorApplicationFragment"
         android:label="application"
-        tools:layout="@layout/fragment_coordinator_application"/>
+        tools:layout="@layout/fragment_coordinator_application">
+        <action
+            android:id="@+id/action_application_to_application_viewpager"
+            app:destination="@id/application_viewpager" />
+    </fragment>
 
     <fragment
         android:id="@+id/notification"
@@ -128,4 +132,8 @@
             android:id="@+id/action_work_scroll_to_work_add"
             app:destination="@id/work_add" />
     </fragment>
+
+    <fragment
+        android:id="@+id/application_viewpager"
+        android:name="com.sigmai.stylemento.ui.coordinator_application.ApplicationViewPagerFragment"/>
 </navigation>
