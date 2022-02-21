@@ -14,6 +14,8 @@ class ApplicationViewPagerFragment : BaseFragment<FragmentApplicationViewPagerBi
         super.initDataBinding()
         binding.viewModel = viewModel
         binding.applicationViewpager.adapter = ApplicationViewPagerAdapter(this)
-        println("뷰모델1 $viewModel")
+        viewModel.moveNextPageEvent.observe(this) {
+            binding.applicationViewpager.currentItem = 1
+        }
     }
 }

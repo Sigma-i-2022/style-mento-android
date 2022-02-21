@@ -12,6 +12,6 @@ class FormFragment : BaseFragment<FragmentFormBinding>() {
 
     override fun initDataBinding() {
         super.initDataBinding()
-        println("뷰모델2 $viewModel")
+        binding.viewModel = viewModel
     }
 }
