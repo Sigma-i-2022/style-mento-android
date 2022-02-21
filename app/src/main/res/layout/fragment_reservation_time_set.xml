@@ -34,7 +34,6 @@
             android:background="@color/gray_f" />
 
         <ScrollView
-            android:id="@+id/reservation_time_set_scroll_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/reservation_line"
