@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
-        android:id="@+id/reservation_content_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -123,7 +122,8 @@
                             style="@style/header4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="서비스명" />
+                            android:text="서비스명"
+                            android:textColor="@color/gray_8"/>
 
                         <View
                             android:layout_width="0dp"
@@ -149,7 +149,8 @@
                             style="@style/header4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="서비스 방식" />
+                            android:text="서비스 방식"
+                            android:textColor="@color/gray_8"/>
 
                         <View
                             android:layout_width="0dp"
@@ -175,7 +176,8 @@
                             style="@style/header4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="가격" />
+                            android:text="가격"
+                            android:textColor="@color/gray_8"/>
 
                         <View
                             android:layout_width="0dp"
@@ -201,7 +203,8 @@
                             style="@style/header4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="날짜" />
+                            android:text="날짜"
+                            android:textColor="@color/gray_8"/>
 
                         <View
                             android:layout_width="0dp"
@@ -227,7 +230,8 @@
                             style="@style/header4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="시간" />
+                            android:text="시간"
+                            android:textColor="@color/gray_8"/>
 
                         <View
                             android:layout_width="0dp"
@@ -271,6 +275,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="결제 수단"
+                            android:textColor="@color/gray_8"
                             style="@style/header4"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/reservation_complete_pay_way_text" />
@@ -295,6 +300,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="총 주문금액"
+                            android:textColor="@color/gray_8"
                             style="@style/header4"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/reservation_complete_pay_way_text" />
