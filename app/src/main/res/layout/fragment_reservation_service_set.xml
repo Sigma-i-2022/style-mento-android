@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/reservation_time_set_back_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_arrow_back" />
+
+        <TextView
+            style="@style/header3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="예약하기"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/reservation_service_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/reservation_time_set_back_img"
+            android:layout_marginTop="24dp"
+            android:background="@color/gray_f" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/reservation_service_line"
+            android:layout_marginTop="10dp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/reservation_service_type_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="서비스 종류"
+                    style="@style/header3"
+                    android:textColor="@color/primary"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+                <ImageView
+                    android:id="@+id/reservation_payment_payer_img"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:src="@drawable/ic_launcher_foreground"
+                    app:layout_constraintTop_toBottomOf="@id/reservation_service_type_text"
+                    app:layout_constraintStart_toStartOf="parent"/>
+                <ImageView
+                    android:id="@+id/reservation_service_coordi_recommendation_img"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:src="@drawable/ic_launcher_foreground"
+                    app:layout_constraintTop_toTopOf="@id/reservation_payment_payer_img"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/reservation_service_way_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="서비스 방식"
+                    style="@style/header3"
+                    android:textColor="@color/primary"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    app:layout_constraintTop_toBottomOf="@id/reservation_payment_payer_img"
+                    app:layout_constraintStart_toStartOf="parent"/>
+                <ImageView
+                    android:id="@+id/reservation_service_chatting_img"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:src="@drawable/ic_launcher_foreground"
+                    app:layout_constraintTop_toBottomOf="@id/reservation_service_way_text"
+                    app:layout_constraintStart_toStartOf="parent"/>
+                <ImageView
+                    android:id="@+id/reservation_service_face_to_face_img"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:src="@drawable/ic_launcher_foreground"
+                    app:layout_constraintTop_toTopOf="@id/reservation_service_chatting_img"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+                <TextView
+                    android:id="@+id/reservation_service_request_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="서비스 요청사항"
+                    style="@style/header3"
+                    android:textColor="@color/primary"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    app:layout_constraintTop_toBottomOf="@id/reservation_service_chatting_img"
+                    app:layout_constraintStart_toStartOf="parent"/>
+                <EditText
+                    android:id="@+id/reservation_service_request_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    app:layout_constraintTop_toBottomOf="@id/reservation_service_request_text"
+                    app:layout_constraintStart_toStartOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+        <Button
+            android:id="@+id/reservation_time_selection_next_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="예약하기"
+            style="@style/header3"
+            android:textColor="@color/white"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+</layout>
