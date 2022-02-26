@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
+<data>
+    <variable
+        name="viewModel"
+        type="com.sigmai.stylemento.ui.reservation.viewModel.ReservationServiceSetViewModel" />
+</data>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -13,7 +17,8 @@
             android:layout_alignParentStart="true"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:layout_marginTop="20dp"
-            android:background="@drawable/ic_arrow_back" />
+            android:background="@drawable/ic_arrow_back"
+            android:onClick="@{()->viewModel.onBackClick()}"/>
 
         <TextView
             style="@style/header3"
@@ -51,7 +56,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
                 <ImageView
-                    android:id="@+id/reservation_payment_payer_img"
+                    android:id="@+id/reservation_service_feedback_img"
                     android:layout_width="150dp"
                     android:layout_height="100dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
@@ -64,7 +69,7 @@
                     android:layout_height="100dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:src="@drawable/ic_launcher_foreground"
-                    app:layout_constraintTop_toTopOf="@id/reservation_payment_payer_img"
+                    app:layout_constraintTop_toTopOf="@id/reservation_service_feedback_img"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
                 <TextView
@@ -75,7 +80,7 @@
                     style="@style/header3"
                     android:textColor="@color/primary"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    app:layout_constraintTop_toBottomOf="@id/reservation_payment_payer_img"
+                    app:layout_constraintTop_toBottomOf="@id/reservation_service_feedback_img"
                     app:layout_constraintStart_toStartOf="parent"/>
                 <ImageView
                     android:id="@+id/reservation_service_chatting_img"
@@ -112,15 +117,17 @@
                     app:layout_constraintStart_toStartOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
+
         <Button
             android:id="@+id/reservation_time_selection_next_button"
+            style="@style/header3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="예약하기"
-            style="@style/header3"
-            android:textColor="@color/white"
+            android:layout_alignParentBottom="true"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:layout_marginBottom="10dp"
-            android:layout_alignParentBottom="true"/>
+            android:text="예약하기"
+            android:textColor="@color/white"
+            android:onClick="@{()->viewModel.onReservationClick()}"/>
     </RelativeLayout>
 </layout>
