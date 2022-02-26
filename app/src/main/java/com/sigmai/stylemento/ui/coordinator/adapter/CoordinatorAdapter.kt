@@ -6,11 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.databinding.ItemCoordinatorBinding
-import com.sigmai.stylemento.domain.entity.TempCoordinator
+import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.ui.home.adapter.TagAdapter
 import com.sigmai.stylemento.global.util.GlideUtil
 
-class CoordinatorAdapter : ListAdapter<TempCoordinator, CoordinatorAdapter.CoordinatorViewHolder>(TempDiffCallback()) {
+class CoordinatorAdapter : ListAdapter<Coordinator, CoordinatorAdapter.CoordinatorViewHolder>(TempDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoordinatorViewHolder {
         return CoordinatorViewHolder.from(parent)
     }
@@ -21,7 +21,7 @@ class CoordinatorAdapter : ListAdapter<TempCoordinator, CoordinatorAdapter.Coord
     }
 
     class CoordinatorViewHolder private constructor(val binding: ItemCoordinatorBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: TempCoordinator) {
+        fun bind(item: Coordinator) {
             binding.item = item
             GlideUtil.setImageWithRadius(item.imageUrl, binding.coordinatorPhoto, 12)
             binding.coordinatorTags.adapter = TagAdapter()
@@ -40,12 +40,12 @@ class CoordinatorAdapter : ListAdapter<TempCoordinator, CoordinatorAdapter.Coord
     }
 }
 
-class TempDiffCallback : DiffUtil.ItemCallback<TempCoordinator>() {
-    override fun areItemsTheSame(oldItem: TempCoordinator, newItem: TempCoordinator): Boolean {
+class TempDiffCallback : DiffUtil.ItemCallback<Coordinator>() {
+    override fun areItemsTheSame(oldItem: Coordinator, newItem: Coordinator): Boolean {
         return oldItem === newItem
     }
 
-    override fun areContentsTheSame(oldItem: TempCoordinator, newItem: TempCoordinator): Boolean {
+    override fun areContentsTheSame(oldItem: Coordinator, newItem: Coordinator): Boolean {
         return oldItem == newItem
     }
 }

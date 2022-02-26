@@ -1,6 +1,9 @@
-package com.sigmai.stylemento.domain.entity
+package com.sigmai.stylemento.data.model
 
-data class TempCoordinator(
+import com.sigmai.stylemento.domain.entity.Piece
+import com.sigmai.stylemento.domain.entity.Review
+
+data class CoordinatorResponse(
     val id: Long,
     val imageUrl: String?,
     val nickname: String,

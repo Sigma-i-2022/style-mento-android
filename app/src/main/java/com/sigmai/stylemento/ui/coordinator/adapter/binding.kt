@@ -3,10 +3,10 @@ package com.sigmai.stylemento.ui.coordinator.adapter
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.domain.entity.Piece
-import com.sigmai.stylemento.domain.entity.TempCoordinator
+import com.sigmai.stylemento.domain.entity.Coordinator
 
 @BindingAdapter("app:coordinators")
-fun setCoordinators(recyclerView: RecyclerView, list: List<TempCoordinator>) {
+fun setCoordinators(recyclerView: RecyclerView, list: List<Coordinator>) {
     (recyclerView.adapter as CoordinatorAdapter).submitList(list)
 }
 

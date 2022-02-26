@@ -1,14 +1,14 @@
 package com.sigmai.stylemento.domain.usecase.coordinator
 
 import com.sigmai.stylemento.domain.entity.Piece
-import com.sigmai.stylemento.domain.entity.TempCoordinator
+import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.global.util.GlideUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class GetCoordinatorListUseCase {
     private val dummy = listOf(
-        TempCoordinator(
+        Coordinator(
             id = 1,
             imageUrl = GlideUtil.getRandomImageUrl(),
             nickname = "algosketch",
@@ -27,7 +27,7 @@ class GetCoordinatorListUseCase {
             numberOfHeart = 13,
             tagList = listOf("미니멀", "댄디")
         ),
-        TempCoordinator(
+        Coordinator(
             id = 2,
             imageUrl = GlideUtil.getRandomImageUrl(),
             nickname = "아무말대잔치",
@@ -46,7 +46,7 @@ class GetCoordinatorListUseCase {
             numberOfHeart = 13,
             tagList = listOf("댄디")
         ),
-        TempCoordinator(
+        Coordinator(
             id = 3,
             imageUrl = GlideUtil.getRandomImageUrl(),
             nickname = "HamBP",
@@ -65,7 +65,7 @@ class GetCoordinatorListUseCase {
             numberOfHeart = 13,
             tagList = listOf("미니멀", "댄디")
         ),
-        TempCoordinator(
+        Coordinator(
             id = 4,
             imageUrl = GlideUtil.getRandomImageUrl(),
             nickname = "HamBP",
@@ -84,7 +84,7 @@ class GetCoordinatorListUseCase {
             numberOfHeart = 13,
             tagList = listOf("미니멀", "댄디")
         ),
-        TempCoordinator(
+        Coordinator(
             id = 5,
             imageUrl = GlideUtil.getRandomImageUrl(),
             nickname = "HamBP",

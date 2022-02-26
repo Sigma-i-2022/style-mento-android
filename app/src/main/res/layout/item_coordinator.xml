@@ -7,7 +7,7 @@
         <import type="com.sigmai.stylemento.domain.entity.Piece"/>
         <variable
             name="item"
-            type="com.sigmai.stylemento.domain.entity.TempCoordinator" />
+            type="com.sigmai.stylemento.domain.entity.Coordinator" />
     </data>
     
     <androidx.constraintlayout.widget.ConstraintLayout
