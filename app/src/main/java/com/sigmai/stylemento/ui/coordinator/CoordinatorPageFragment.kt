@@ -60,9 +60,8 @@ class CoordinatorPageFragment() :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val coordinatorAdapter = CoordinatorPageViewPagerAdapter(this)
         binding.coordinatorPageViewPager.isUserInputEnabled = false
-        binding.coordinatorPageViewPager.adapter = coordinatorAdapter
+        binding.coordinatorPageViewPager.adapter = CoordinatorPageViewPagerAdapter(this)
         showWork()
 
         val tagAdapter = TagAdapter()
