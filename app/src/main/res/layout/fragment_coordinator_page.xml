@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.sigmai.stylemento.ui.mypage.coordinator.viewModel.MyPageCoordinatorViewModel" />
+            type="com.sigmai.stylemento.ui.coordinator.CoordinatorPageViewModel" />
     </data>
 
     <RelativeLayout
@@ -22,33 +22,33 @@
             android:scrollbars="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/my_page_coordinator_layout"
+                android:id="@+id/coordinator_page_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
                 android:descendantFocusability="blocksDescendants">
 
                 <ImageView
-                    android:id="@+id/my_page_coordinator_revision_img"
+                    android:id="@+id/coordinator_page_back_img"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    android:background="@drawable/ic_pencil"
-                    android:onClick="@{()->viewModel.onRevisionClick()}"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@drawable/ic_arrow_back"
+                    android:onClick="@{()->viewModel.onBackClick()}"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/my_page_coordinator_profile_layout"
+                    android:id="@+id/coordinator_page_profile_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:layout_marginTop="6dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_revision_img">
+                    app:layout_constraintTop_toBottomOf="@id/coordinator_page_back_img">
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/my_page_coordinator_img"
+                        android:id="@+id/coordinator_page_img"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:background="@drawable/bg_circle"
@@ -57,17 +57,17 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <LinearLayout
-                        android:id="@+id/my_page_coordinator_text_layout"
+                        android:id="@+id/coordinator_page_text_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="14dp"
                         android:orientation="vertical"
-                        app:layout_constraintStart_toEndOf="@id/my_page_coordinator_img"
+                        app:layout_constraintStart_toEndOf="@id/coordinator_page_img"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
-                            android:id="@+id/my_page_coordinator_name_text"
+                            android:id="@+id/coordinator_page_name_text"
                             style="@style/header3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
                             android:text="@{viewModel.coordinator.nickname}"/>
 
                         <TextView
-                            android:id="@+id/my_page_coordinator_email_text"
+                            android:id="@+id/coordinator_page_email_text"
                             style="@style/body1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                             android:text="@{viewModel.coordinator.email}"/>
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/my_page_coordinator_tag_recycler"
+                            android:id="@+id/coordinator_page_tag_recycler"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
@@ -96,7 +96,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
-                    android:id="@+id/my_page_coordinator_introduction_text"
+                    android:id="@+id/coordinator_page_introduction_text"
                     style="@style/body1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -108,28 +108,28 @@
                     android:text="@{viewModel.coordinator.introduction}"
                     android:onClick="@{()->viewModel.onInstructionClick()}"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_profile_layout" />
+                    app:layout_constraintTop_toBottomOf="@id/coordinator_page_profile_layout" />
 
                 <View
-                    android:id="@+id/my_page_coordinator_line"
+                    android:id="@+id/coordinator_page_line"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:layout_marginTop="22dp"
                     android:background="#CECECE"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_introduction_text" />
+                    app:layout_constraintTop_toBottomOf="@id/coordinator_page_introduction_text" />
 
                 <LinearLayout
-                    android:id="@+id/my_page_coordinator_option_layout"
+                    android:id="@+id/coordinator_page_option_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_line">
+                    app:layout_constraintTop_toBottomOf="@id/coordinator_page_line">
 
                     <TextView
-                        android:id="@+id/my_page_coordinator_work_button"
+                        android:id="@+id/coordinator_page_work_button"
                         style="@style/header4"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -141,7 +141,7 @@
                         android:onClick="@{()->viewModel.onWorkClick()}" />
 
                     <TextView
-                        android:id="@+id/my_page_coordinator_reviews_button"
+                        android:id="@+id/coordinator_page_reviews_button"
                         style="@style/header4"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -155,25 +155,25 @@
                 </LinearLayout>
 
                 <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/my_page_coordinator_viewPager"
+                    android:id="@+id/coordinator_page_viewPager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:nestedScrollingEnabled="false"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_option_layout" />
+                    app:layout_constraintTop_toBottomOf="@id/coordinator_page_option_layout" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 
         <LinearLayout
-            android:id="@+id/my_page_coordinator_button_layout"
+            android:id="@+id/coordinator_page_button_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginHorizontal="@dimen/horizontal_margin">
 
             <Button
-                android:id="@+id/my_page_coordinator_chat_button"
+                android:id="@+id/coordinator_page_chat_button"
                 style="@style/header4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -185,7 +185,7 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/my_page_coordinator_reservation_button"
+                android:id="@+id/coordinator_page_reservation_button"
                 style="@style/header4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -196,45 +196,6 @@
                 android:textColor="@color/white"
                 android:textStyle="bold" />
         </LinearLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/my_page_coordinator_reply_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@color/primary">
-
-
-            <EditText
-                android:id="@+id/my_page_coordinator_reply_textEdit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginBottom="8dp"
-                android:paddingStart="6dp"
-                android:background="@color/white"
-                android:hint="메시지를 입력하세요"
-                android:maxLength="500"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/my_page_coordinator_reply_send_text"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/my_page_coordinator_reply_send_text"
-                style="@style/header5"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginBottom="8dp"
-                android:background="@color/white"
-                android:text="전송"
-                android:textColor="@color/primary"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
     </RelativeLayout>
 
 </layout>

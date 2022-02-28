@@ -2,9 +2,12 @@ package com.sigmai.stylemento.ui.coordinator.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.ItemCoordinatorBinding
 import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.ui.home.adapter.TagAdapter
@@ -27,6 +30,11 @@ class CoordinatorAdapter : ListAdapter<Coordinator, CoordinatorAdapter.Coordinat
             binding.coordinatorTags.adapter = TagAdapter()
             binding.pieceList.adapter = HorizontalPieceAdapter()
             binding.executePendingBindings()
+
+            binding.root.setOnClickListener {
+                val bundle = bundleOf("position" to adapterPosition)
+                it.findNavController().navigate(R.id.action_main_to_coordinator_page, bundle)
+            }
         }
 
         companion object {

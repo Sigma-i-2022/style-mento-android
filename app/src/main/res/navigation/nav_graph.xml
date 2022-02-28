@@ -23,14 +23,8 @@
             android:id="@+id/action_main_to_lookbook_add"
             app:destination="@id/lookbook_add" />
         <action
-            android:id="@+id/action_main_to_lookbook_item"
-            app:destination="@id/lookbook_item" />
-        <action
             android:id="@+id/action_main_to_coordinator_revision"
             app:destination="@id/coordinator_revision" />
-        <action
-            android:id="@+id/action_main_to_work_item"
-            app:destination="@id/work_item" />
         <action
             android:id="@+id/action_main_to_work_add"
             app:destination="@id/work_add" />
@@ -43,6 +37,9 @@
         <action
             android:id="@+id/action_main_to_application"
             app:destination="@id/application" />
+        <action
+            android:id="@+id/action_main_to_coordinator_page"
+            app:destination="@id/coordinator_page" />
     </fragment>
 
     <fragment
@@ -78,19 +75,6 @@
         tools:layout="@layout/fragment_my_page_lookbook_add" />
 
     <fragment
-        android:id="@+id/lookbook_item"
-        android:name="com.sigmai.stylemento.ui.mypage.user.MyPageLookbookItemFragment"
-        android:label="look book detail"
-        tools:layout="@layout/fragment_my_page_lookbook_item">
-        <argument
-            android:name="position"
-            app:argType="integer"
-            android:defaultValue="0"/>
-        <action
-            android:id="@+id/action_lookbook_item_to_lookbook_add"
-            app:destination="@id/lookbook_add" />
-    </fragment>
-    <fragment
         android:id="@+id/coordinator_revision"
         android:name="com.sigmai.stylemento.ui.mypage.coordinator.MyPageCoordinatorRevisionFragment"
         android:label="coordinator revision"
@@ -101,19 +85,6 @@
         android:label="work add"
         tools:layout="@layout/fragment_my_page_work_add" />
 
-    <fragment
-        android:id="@+id/work_item"
-        android:name="com.sigmai.stylemento.ui.mypage.coordinator.MyPageWorkItemFragment"
-        android:label="work detail"
-        tools:layout="@layout/fragment_my_page_work_item">
-        <argument
-            android:name="position"
-            app:argType="integer"
-            android:defaultValue="0"/>
-        <action
-            android:id="@+id/action_work_item_to_work_add"
-            app:destination="@id/work_add" />
-    </fragment>
     <fragment
         android:id="@+id/lookbook_scroll"
         android:name="com.sigmai.stylemento.ui.mypage.user.MyPageLookbookScrollFragment"
@@ -132,7 +103,12 @@
             android:id="@+id/action_work_scroll_to_work_add"
             app:destination="@id/work_add" />
     </fragment>
-
+    <fragment
+        android:id="@+id/coordinator_page"
+        android:name="com.sigmai.stylemento.ui.coordinator.CoordinatorPageFragment"
+        android:label="coordinator page"
+        tools:layout="@layout/fragment_coordinator_page" >
+    </fragment>
     <fragment
         android:id="@+id/application_viewpager"
         android:name="com.sigmai.stylemento.ui.coordinator_application.ApplicationViewPagerFragment"/>
