@@ -40,7 +40,6 @@ class MyPageWorkItemFragment() : BaseFragment<FragmentMyPageWorkItemBinding>() {
         })
         viewModel.startRevision.observe(this, {
             val bundle = bundleOf("position" to position)
-            findNavController().navigate(R.id.action_work_item_to_work_add, bundle)
         })
         viewModel.startDelete.observe(this, {
             setDeleteDialog()

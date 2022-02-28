@@ -43,7 +43,6 @@ class MyPageLookbookItemFragment() : BaseFragment<FragmentMyPageLookbookItemBind
         })
         viewModel.startRevision.observe(this, {
             val bundle = bundleOf("position" to position)
-            findNavController().navigate(R.id.action_lookbook_item_to_lookbook_add, bundle)
         })
         viewModel.startDelete.observe(this, {
             setDeleteDialog()

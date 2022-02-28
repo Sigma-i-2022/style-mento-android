@@ -30,7 +30,7 @@ class MyPageLookbookScrollFragment : BaseFragment<FragmentMyPageLookbookScrollBi
             UserLookbookItemAdapter(viewModel)
         viewModel.position.observe(this) {
             binding.myPageUserLookbookScrollRecycler.adapter =
-                UserLookbookItemAdapter(Client.getUserInfo().lookbookItems, viewModel)
+                UserLookbookItemAdapter(viewModel)
             binding.myPageUserLookbookScrollRecycler.scrollToPosition(viewModel.position.value!!)
         }
     }
