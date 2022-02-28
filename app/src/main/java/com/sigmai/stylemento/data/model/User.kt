@@ -9,5 +9,6 @@ data class User(
     var profile: Uri? = Uri.EMPTY,
     var introduction: String = "",
     var closetItems: MutableList<ClosetItem> = mutableListOf(),
-    var lookbookItems: MutableList<LookbookItem> = mutableListOf()
+    var lookbookItems: MutableList<LookbookItem> = mutableListOf(),
+    var receipts: MutableList<Receipt> = mutableListOf()
 )

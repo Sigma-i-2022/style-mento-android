@@ -21,5 +21,6 @@ data class Coordinator(
             "Hello World!" +
             "Hello World!" +
             "Hello World!", "0000.00.00"),
-        ReviewItem(ReviewType.NORMAL, "user2", "", "",5, "Hello World!", "0000.00.00"))
+        ReviewItem(ReviewType.NORMAL, "user2", "", "",5, "Hello World!", "0000.00.00")),
+    var receipts: MutableList<Receipt> = mutableListOf()
 )
