@@ -19,3 +19,8 @@ fun setHorizontalPieces(recyclerView: RecyclerView, list: List<Piece>) {
 fun setGridPieces(recyclerView: RecyclerView, list:List<Piece>?){
     (recyclerView.adapter as CoordinatorPageWorkAdapter).setDataSet(list)
 }
+
+@BindingAdapter("app:pieces")
+fun setPieces(recyclerView: RecyclerView, list:List<Piece>?){
+    (recyclerView.adapter as CoordinatorPagePieceItemAdapter).submitList(list)
+}

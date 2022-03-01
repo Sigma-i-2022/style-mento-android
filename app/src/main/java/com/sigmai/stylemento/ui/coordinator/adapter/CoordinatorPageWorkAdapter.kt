@@ -53,6 +53,7 @@ class CoordinatorPageWorkAdapter : RecyclerView.Adapter<CoordinatorPageWorkAdapt
                 .into(binding.coordinatorWorkItemImg)
             binding.root.setOnClickListener {
                 val bundle = bundleOf("position" to adapterPosition)
+                it.findNavController().navigate(R.id.action_coordinator_page_to_coordinator_page_piece_scroll, bundle)
             }
         }
 

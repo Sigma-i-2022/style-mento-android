@@ -78,7 +78,8 @@
         android:id="@+id/coordinator_revision"
         android:name="com.sigmai.stylemento.ui.mypage.coordinator.MyPageCoordinatorRevisionFragment"
         android:label="coordinator revision"
-        tools:layout="@layout/fragment_my_page_coordinator_revision"/>
+        tools:layout="@layout/fragment_my_page_coordinator_revision">
+    </fragment>
     <fragment
         android:id="@+id/work_add"
         android:name="com.sigmai.stylemento.ui.mypage.coordinator.MyPageWorkAddFragment"
@@ -108,6 +109,15 @@
         android:name="com.sigmai.stylemento.ui.coordinator.CoordinatorPageFragment"
         android:label="coordinator page"
         tools:layout="@layout/fragment_coordinator_page" >
+        <action
+            android:id="@+id/action_coordinator_page_to_coordinator_page_piece_scroll"
+            app:destination="@id/coordinator_page_piece_scroll" />
+    </fragment>
+    <fragment
+        android:id="@+id/coordinator_page_piece_scroll"
+        android:name="com.sigmai.stylemento.ui.coordinator.adapter.CoordinatorPagePieceScrollFragment"
+        android:label="coordinator pieces page"
+        tools:layout="@layout/fragment_coordinator_page_work_scroll" >
     </fragment>
     <fragment
         android:id="@+id/application_viewpager"

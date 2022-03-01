@@ -18,11 +18,11 @@ class DummyCoordinatorDataSource {
             email = "algosketch@gmail.com",
             introduction = "개발자입니다.",
             pieceList = listOf(
-                Piece(1, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀")),
-                Piece(2, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀")),
-                Piece(3, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀")),
-                Piece(4, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀")),
-                Piece(5, GlideUtil.getRandomImageUrl(), "엄청난 작품..!!", listOf("댄디"))
+                Piece(1, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀"), "2022-01-01"),
+                Piece(2, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀"), "2022-01-01"),
+                Piece(3, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀"), "2022-01-01"),
+                Piece(4, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀"), "2022-01-01"),
+                Piece(5, GlideUtil.getRandomImageUrl(), "엄청난 작품..!!", listOf("댄디"), "2022-01-01")
             ),
             rating = 4,
             reviewList = listOf(),
@@ -37,11 +37,11 @@ class DummyCoordinatorDataSource {
             email = "algosketch@gmail.com",
             introduction = "개발자입니다.",
             pieceList = listOf(
-                Piece(1, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀")),
-                Piece(2, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀")),
-                Piece(3, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀")),
-                Piece(4, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀")),
-                Piece(5, GlideUtil.getRandomImageUrl(), "엄청난 작품..!!", listOf("댄디"))
+                Piece(1, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀"), "2022-01-01"),
+                Piece(2, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀"), "2022-01-01"),
+                Piece(3, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀"), "2022-01-01"),
+                Piece(4, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀"), "2022-01-01"),
+                Piece(5, GlideUtil.getRandomImageUrl(), "엄청난 작품..!!", listOf("댄디"), "2022-01-01")
             ),
             rating = 4,
             reviewList = listOf(),
@@ -56,11 +56,11 @@ class DummyCoordinatorDataSource {
             email = "algosketch@gmail.com",
             introduction = "개발자입니다.",
             pieceList = listOf(
-                Piece(1, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀")),
-                Piece(2, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀")),
-                Piece(3, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀")),
-                Piece(4, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀")),
-                Piece(5, GlideUtil.getRandomImageUrl(), "엄청난 작품..!!", listOf("댄디"))
+                Piece(1, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀"), "2022-01-01"),
+                Piece(2, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀"), "2022-01-01"),
+                Piece(3, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀"), "2022-01-01"),
+                Piece(4, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀"), "2022-01-01"),
+                Piece(5, GlideUtil.getRandomImageUrl(), "엄청난 작품..!!", listOf("댄디"), "2022-01-01")
             ),
             rating = 4,
             reviewList = listOf(),
@@ -75,11 +75,11 @@ class DummyCoordinatorDataSource {
             email = "algosketch@gmail.com",
             introduction = "개발자입니다.",
             pieceList = listOf(
-                Piece(1, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀")),
-                Piece(2, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀")),
-                Piece(3, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀")),
-                Piece(4, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀")),
-                Piece(5, GlideUtil.getRandomImageUrl(), "엄청난 작품..!!", listOf("댄디"))
+                Piece(1, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀"), "2022-01-01"),
+                Piece(2, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀"), "2022-01-01"),
+                Piece(3, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀"), "2022-01-01"),
+                Piece(4, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀"), "2022-01-01"),
+                Piece(5, GlideUtil.getRandomImageUrl(), "엄청난 작품..!!", listOf("댄디"), "2022-01-01")
             ),
             rating = 4,
             reviewList = listOf(),
@@ -94,11 +94,11 @@ class DummyCoordinatorDataSource {
             email = "algosketch@gmail.com",
             introduction = "개발자입니다.",
             pieceList = listOf(
-                Piece(1, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀")),
-                Piece(2, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀")),
-                Piece(3, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀")),
-                Piece(4, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀")),
-                Piece(5, GlideUtil.getRandomImageUrl(), "엄청난 작품..!!", listOf("댄디"))
+                Piece(1, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀"), "2022-01-01"),
+                Piece(2, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀"), "2022-01-01"),
+                Piece(3, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다.", listOf("댄디", "미니멀"), "2022-01-01"),
+                Piece(4, GlideUtil.getRandomImageUrl(), "엄청난 작품입니다. 그럼 이만", listOf("미니멀"), "2022-01-01"),
+                Piece(5, GlideUtil.getRandomImageUrl(), "엄청난 작품..!!", listOf("댄디"), "2022-01-01")
             ),
             rating = 4,
             reviewList = listOf(),
