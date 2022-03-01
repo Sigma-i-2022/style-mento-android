@@ -12,7 +12,7 @@
             android:background="@color/gray_d"
             android:layout_marginTop="1dp"
             android:layout_marginStart="1dp"
-            app:layout_constraintHorizontal_weight="1"
+            android:scaleType="centerCrop"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             />

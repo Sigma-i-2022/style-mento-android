@@ -39,16 +39,18 @@ class CoordinatorPageWorkAdapter : RecyclerView.Adapter<CoordinatorPageWorkAdapt
         return dataSet.size
     }
 
-    fun setDataSet(items : List<Piece>){
-        dataSet.clear()
-        dataSet.addAll(items)
-        Log.d("size: ", dataSet.size.toString())
+    fun setDataSet(items : List<Piece>?){
+        if(items != null){
+            dataSet.clear()
+            dataSet.addAll(items)
+        }
     }
 
     class ViewHolder(val binding : ItemCoordinatorWorkBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item : Piece){
-            GlideUtil.setImage(item.imageUrl, binding.coordinatorWorkItemImg)
-            //binding.coordinatorWorkItemImg.setImageResource(R.drawable.ic_launcher_foreground)
+            Glide.with(binding.coordinatorWorkItemImg).load(item.imageUrl)
+                .placeholder(R.drawable.ic_launcher_foreground)
+                .into(binding.coordinatorWorkItemImg)
             binding.root.setOnClickListener {
                 val bundle = bundleOf("position" to adapterPosition)
             }
