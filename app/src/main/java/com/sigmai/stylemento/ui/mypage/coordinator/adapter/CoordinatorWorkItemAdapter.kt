@@ -43,34 +43,34 @@ class CoordinatorWorkItemAdapter(
         private fun setAdapter(item: WorkItem) {
             val workTagAdapter = TagAdapter()
             workTagAdapter.setDataSet(item.tags)
-            binding.myPageCoordinatorWorkScrollTagRecycler.adapter = workTagAdapter
+            binding.itemWorkScrollTagRecycler.adapter = workTagAdapter
         }
 
         private fun setImage(item: WorkItem) {
             if (item.photoUrl == Uri.EMPTY)
-                binding.myPageCoordinatorWorkScrollImg.setImageResource(R.drawable.ic_launcher_foreground)
+                binding.itemWorkScrollImg.setImageResource(R.drawable.ic_launcher_foreground)
             else
-                Glide.with(binding.myPageCoordinatorWorkScrollImg).load(item.photoUrl)
+                Glide.with(binding.itemWorkScrollImg).load(item.photoUrl)
                     .placeholder(R.drawable.ic_launcher_foreground)
-                    .into(binding.myPageCoordinatorWorkScrollImg)
+                    .into(binding.itemWorkScrollImg)
         }
 
         private fun setListener(viewModel: MyPageWorkScrollViewModel) {
 
-            binding.myPageCoordinatorWorkScrollRevision.setOnClickListener {
+            binding.itemWorkScrollRevision.setOnClickListener {
                 viewModel.onClickRevision(it, adapterPosition)
             }
 
-            binding.myPageCoordinatorWorkScrollDelete.setOnClickListener {
+            binding.itemWorkScrollDelete.setOnClickListener {
                 viewModel.setDeleteDialog(it, adapterPosition)
             }
 
-            binding.myPageCoordinatorWorkScrollDetail.setOnClickListener {
+            binding.itemWorkScrollDetail.setOnClickListener {
                 if (detailState == 0) {
-                    binding.myPageCoordinatorWorkScrollDetail.maxLines = 10
+                    binding.itemWorkScrollDetail.maxLines = 10
                     detailState = 1
                 } else {
-                    binding.myPageCoordinatorWorkScrollDetail.maxLines = 2
+                    binding.itemWorkScrollDetail.maxLines = 2
                     detailState = 0
                 }
             }

@@ -36,33 +36,33 @@ class UserLookbookItemAdapter(
         private fun setAdapter(item: LookbookItem) {
             val lookbookTagAdapter = TagAdapter()
             lookbookTagAdapter.setDataSet(item.tags)
-            binding.myPageUserLookbookScrollTagRecycler.adapter = lookbookTagAdapter
+            binding.itemLookbookScrollTagRecycler.adapter = lookbookTagAdapter
         }
 
         private fun setImage(item: LookbookItem) {
             if (item.photoUrl == Uri.EMPTY)
-                binding.myPageUserLookbookScrollImg.setImageResource(R.drawable.ic_launcher_foreground)
+                binding.itemLookbookScrollImg.setImageResource(R.drawable.ic_launcher_foreground)
             else
-                Glide.with(binding.myPageUserLookbookScrollImg).load(item.photoUrl)
+                Glide.with(binding.itemLookbookScrollImg).load(item.photoUrl)
                     .placeholder(R.drawable.ic_launcher_foreground)
-                    .into(binding.myPageUserLookbookScrollImg)
+                    .into(binding.itemLookbookScrollImg)
         }
 
         private fun setListener(viewModel: MyPageLookbookScrollViewModel) {
-            binding.myPageUserLookbookScrollRevision.setOnClickListener {
+            binding.itemLookbookScrollRevision.setOnClickListener {
                 viewModel.onClickRevision(it, adapterPosition)
             }
 
-            binding.myPageUserLookbookScrollDelete.setOnClickListener {
+            binding.itemLookbookScrollDelete.setOnClickListener {
                 viewModel.setDeleteDialog(it, adapterPosition)
             }
 
-            binding.myPageUserLookbookScrollDetail.setOnClickListener {
+            binding.itemLookbookScrollDetail.setOnClickListener {
                 if (detailState == 0) {
-                    binding.myPageUserLookbookScrollDetail.maxLines = 10
+                    binding.itemLookbookScrollDetail.maxLines = 10
                     detailState = 1
                 } else {
-                    binding.myPageUserLookbookScrollDetail.maxLines = 2
+                    binding.itemLookbookScrollDetail.maxLines = 2
                     detailState = 0
                 }
             }
