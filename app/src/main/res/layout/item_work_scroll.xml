@@ -15,7 +15,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginHorizontal="@dimen/horizontal_margin">
         <TextView
-            android:id="@+id/my_page_lookbook_scroll_time_text"
+            android:id="@+id/item_work_scroll_time_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/body1"
@@ -24,16 +24,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
         <ImageView
-            android:id="@+id/my_page_coordinator_work_scroll_revision"
+            android:id="@+id/item_work_scroll_revision"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/ic_pencil"
-            app:layout_constraintEnd_toStartOf="@id/my_page_coordinator_work_scroll_delete"
+            app:layout_constraintEnd_toStartOf="@id/item_work_scroll_delete"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/my_page_coordinator_work_scroll_delete"
+            android:id="@+id/item_work_scroll_delete"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@color/gray_d"
@@ -41,7 +41,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/my_page_coordinator_work_scroll_img"
+            android:id="@+id/item_work_scroll_img"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="4dp"
@@ -49,10 +49,10 @@
             android:src="@drawable/ic_launcher_foreground"
             app:layout_constraintDimensionRatio="5:6"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_work_scroll_revision" />
+            app:layout_constraintTop_toBottomOf="@id/item_work_scroll_revision" />
 
         <TextView
-            android:id="@+id/my_page_coordinator_work_scroll_detail"
+            android:id="@+id/item_work_scroll_detail"
             style="@style/body1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,10 +61,10 @@
             android:ellipsize="end"
             android:text="@{item.detail}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_work_scroll_img" />
+            app:layout_constraintTop_toBottomOf="@id/item_work_scroll_img" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/my_page_coordinator_work_scroll_tag_recycler"
+            android:id="@+id/item_work_scroll_tag_recycler"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
@@ -72,10 +72,10 @@
             android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_work_scroll_detail" />
+            app:layout_constraintTop_toBottomOf="@id/item_work_scroll_detail" />
 
         <TextView
-            android:id="@+id/my_page_coordinator_work_scroll_coordi_info_text"
+            android:id="@+id/item_work_scroll_coordi_info_text"
             style="@style/header4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -84,17 +84,17 @@
             android:textColor="@color/primary"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_work_scroll_tag_recycler" />
+            app:layout_constraintTop_toBottomOf="@id/item_work_scroll_tag_recycler" />
 
         <LinearLayout
-            android:id="@+id/my_page_lookbook_scroll_top_layout"
+            android:id="@+id/item_work_scroll_top_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:layout_marginTop="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/my_page_coordinator_work_scroll_coordi_info_text">
+            app:layout_constraintTop_toBottomOf="@id/item_work_scroll_coordi_info_text">
 
             <TextView
                 style="@style/header4"
@@ -105,7 +105,7 @@
                 android:text="상의" />
 
             <TextView
-                android:id="@+id/my_page_lookbook_scroll_top_text"
+                android:id="@+id/item_work_scroll_top_text"
                 style="@style/header4"
                 android:text="@{item.top}"
                 android:layout_width="wrap_content"
@@ -114,14 +114,14 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/my_page_lookbook_scroll_pants_layout"
+            android:id="@+id/item_work_scroll_pants_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:layout_marginTop="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/my_page_lookbook_scroll_top_layout">
+            app:layout_constraintTop_toBottomOf="@id/item_work_scroll_top_layout">
 
             <TextView
                 style="@style/header4"
@@ -132,7 +132,7 @@
                 android:text="하의" />
 
             <TextView
-                android:id="@+id/my_page_lookbook_scroll_pants_text"
+                android:id="@+id/item_work_scroll_pants_text"
                 style="@style/header4"
                 android:text="@{item.pants}"
                 android:layout_width="wrap_content"
@@ -141,14 +141,14 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/my_page_lookbook_scroll_shoes_layout"
+            android:id="@+id/item_work_scroll_shoes_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:layout_marginTop="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/my_page_lookbook_scroll_pants_layout">
+            app:layout_constraintTop_toBottomOf="@id/item_work_scroll_pants_layout">
 
             <TextView
                 style="@style/header4"
@@ -159,7 +159,7 @@
                 android:text="신발" />
 
             <TextView
-                android:id="@+id/my_page_lookbook_scroll_shoes_text"
+                android:id="@+id/item_work_scroll_shoes_text"
                 style="@style/header4"
                 android:text="@{item.shoes}"
                 android:layout_width="wrap_content"
