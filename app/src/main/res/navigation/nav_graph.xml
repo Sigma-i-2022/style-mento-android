@@ -112,6 +112,9 @@
         <action
             android:id="@+id/action_coordinator_page_to_coordinator_page_piece_scroll"
             app:destination="@id/coordinator_page_piece_scroll" />
+        <action
+            android:id="@+id/action_coordinator_page_to_reservation_time_page"
+            app:destination="@id/reservation_time_page" />
     </fragment>
     <fragment
         android:id="@+id/coordinator_page_piece_scroll"
@@ -122,4 +125,19 @@
     <fragment
         android:id="@+id/application_viewpager"
         android:name="com.sigmai.stylemento.ui.coordinator_application.ApplicationViewPagerFragment"/>
+    <fragment
+        android:id="@+id/reservation_time_page"
+        android:name="com.sigmai.stylemento.ui.reservation.ReservationTimeSetFragment"
+        android:label="reservation time page"
+        tools:layout="@layout/fragment_reservation_time_set">
+        <action
+            android:id="@+id/action_reservation_time_page_to_reservation_service_page"
+            app:destination="@id/reservation_service_page" />
+    </fragment>
+    <fragment
+        android:id="@+id/reservation_service_page"
+        android:name="com.sigmai.stylemento.ui.reservation.ReservationServiceSetFragment"
+        android:label="reservation service page"
+        tools:layout="@layout/fragment_reservation_service_set">
+    </fragment>
 </navigation>

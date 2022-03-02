@@ -18,6 +18,8 @@ class CoordinatorPageViewModel : ViewModel() {
     val startInstruction = SingleLiveEvent<Any>()
     val startWork = SingleLiveEvent<Any>()
     val startReview = SingleLiveEvent<Any>()
+    val startChat = SingleLiveEvent<Any>()
+    val startReserve = SingleLiveEvent<Any>()
 
     fun onBackClick(){
         startBack.call()
@@ -30,6 +32,12 @@ class CoordinatorPageViewModel : ViewModel() {
     }
     fun onReviewClick(){
         startReview.call()
+    }
+    fun onChatClick(){
+        startChat.call()
+    }
+    fun onReserveClick(){
+        startReserve.call()
     }
 
     fun getCoordinatorInfo(position : Int) {

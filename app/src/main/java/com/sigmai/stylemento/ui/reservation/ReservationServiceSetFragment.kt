@@ -5,6 +5,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentReservationServiceSetBinding
 import com.sigmai.stylemento.databinding.FragmentReservationTimeSetBinding
@@ -22,7 +23,7 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
         binding.viewModel = viewModel
 
         viewModel.startBack.observe(this) {
-
+            findNavController().navigateUp()
         }
         viewModel.startReservation.observe(this) {
 

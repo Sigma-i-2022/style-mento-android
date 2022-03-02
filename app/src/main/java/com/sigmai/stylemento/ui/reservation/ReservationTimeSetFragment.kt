@@ -3,6 +3,7 @@ package com.sigmai.stylemento.ui.reservation
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentReservationTimeSetBinding
 import com.sigmai.stylemento.global.base.BaseFragment
@@ -18,10 +19,10 @@ class ReservationTimeSetFragment : BaseFragment<FragmentReservationTimeSetBindin
         binding.viewModel = viewModel
 
         viewModel.startBack.observe(this) {
-
+            findNavController().navigateUp()
         }
         viewModel.startNext.observe(this) {
-
+            findNavController().navigate(R.id.action_reservation_time_page_to_reservation_service_page)
         }
 
         setCalendar()

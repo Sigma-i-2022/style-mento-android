@@ -55,6 +55,13 @@ class CoordinatorPageFragment() :
         viewModel.startReview.observe(this) {
             showReview()
         }
+        viewModel.startChat.observe(this){
+
+        }
+        viewModel.startReserve.observe(this){
+            findNavController().navigate(R.id.action_coordinator_page_to_reservation_time_page)
+        }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
