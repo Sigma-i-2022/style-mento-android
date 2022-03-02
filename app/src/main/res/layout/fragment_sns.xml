@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.sigmai.stylemento.ui.coordinator_application.ApplicationViewPagerViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -76,6 +81,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:onClick="@{(view)->viewModel.onClickComplete(view)}"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

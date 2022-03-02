@@ -124,7 +124,13 @@
     </fragment>
     <fragment
         android:id="@+id/application_viewpager"
-        android:name="com.sigmai.stylemento.ui.coordinator_application.ApplicationViewPagerFragment"/>
+        android:name="com.sigmai.stylemento.ui.coordinator_application.ApplicationViewPagerFragment"
+        android:label="application viewpager"
+        tools:layout="@layout/fragment_application_view_pager">
+        <action
+            android:id="@+id/action_application_viewpager_to_application_finish"
+            app:destination="@id/application_finish" />
+    </fragment>
     <fragment
         android:id="@+id/reservation_time_page"
         android:name="com.sigmai.stylemento.ui.reservation.ReservationTimeSetFragment"
@@ -140,4 +146,10 @@
         android:label="reservation service page"
         tools:layout="@layout/fragment_reservation_service_set">
     </fragment>
+
+    <fragment
+        android:id="@+id/application_finish"
+        android:name="com.sigmai.stylemento.ui.coordinator_application.ApplicationFinishFragment"
+        android:label="application finish"
+        tools:layout="@layout/fragment_application_finish"/>
 </navigation>
