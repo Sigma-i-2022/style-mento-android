@@ -12,40 +12,41 @@
             android:id="@+id/my_page_review_content_option_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
 
-                <TextView
-                    android:id="@+id/my_page_review_all_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:text="전체"
-                    style="@style/body1" />
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent">-->
 
-                <TextView
-                    android:id="@+id/my_page_review_top_down_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:text="별점 높은 순"
-                    android:textColor="@color/gray_d"
-                    style="@style/body1" />
+<!--                <TextView-->
+<!--                    android:id="@+id/my_page_review_all_text"-->
+<!--                    style="@style/body1"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginEnd="10dp"-->
+<!--                    android:text="전체" />-->
 
-                <TextView
-                    android:id="@+id/my_page_review_down_top_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:text="별점 낮은 순"
-                    android:textColor="@color/gray_d"
-                    style="@style/body1" />
+<!--                <TextView-->
+<!--                    android:id="@+id/my_page_review_top_down_text"-->
+<!--                    style="@style/body1"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginEnd="10dp"-->
+<!--                    android:text="별점 높은 순"-->
+<!--                    android:textColor="@color/gray_d" />-->
 
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/my_page_review_down_top_text"-->
+<!--                    style="@style/body1"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginEnd="10dp"-->
+<!--                    android:text="별점 낮은 순"-->
+<!--                    android:textColor="@color/gray_d" />-->
+
+<!--            </LinearLayout>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
