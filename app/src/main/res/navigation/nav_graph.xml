@@ -151,5 +151,11 @@
         android:id="@+id/application_finish"
         android:name="com.sigmai.stylemento.ui.coordinator_application.ApplicationFinishFragment"
         android:label="application finish"
-        tools:layout="@layout/fragment_application_finish"/>
+        tools:layout="@layout/fragment_application_finish">
+        <action
+            android:id="@+id/action_application_finish_to_main"
+            app:destination="@id/main"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
