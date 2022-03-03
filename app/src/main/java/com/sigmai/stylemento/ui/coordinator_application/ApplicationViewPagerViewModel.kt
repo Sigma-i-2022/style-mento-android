@@ -7,6 +7,8 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 
 class ApplicationViewPagerViewModel : ViewModel() {
+    val snsList = mutableListOf<String>()
+
     val moveNextPageEvent = SingleLiveEvent<Any>()
 
     fun onClickNext() {
@@ -16,5 +18,9 @@ class ApplicationViewPagerViewModel : ViewModel() {
     fun onClickComplete(view: View) {
         val navController = view.findNavController()
         navController.navigate(R.id.action_application_viewpager_to_application_finish)
+    }
+
+    fun onClickAdd() {
+        snsList.add("")
     }
 }
