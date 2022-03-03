@@ -59,7 +59,7 @@ class CoordinatorPageFragment() :
 
         }
         viewModel.startReserve.observe(this){
-            findNavController().navigate(R.id.action_coordinator_page_to_reservation_time_page)
+            findNavController().navigate(R.id.action_coordinator_page_to_reservation_time_page, arguments)
         }
 
     }
