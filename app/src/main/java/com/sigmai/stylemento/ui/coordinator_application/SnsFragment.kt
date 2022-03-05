@@ -13,4 +13,8 @@ class SnsFragment : BaseFragment<FragmentSnsBinding>() {
         super.initDataBinding()
         binding.viewModel = viewModel
     }
+
+    override fun initState() {
+        binding.snsList.adapter = SnsAdapter()
+    }
 }

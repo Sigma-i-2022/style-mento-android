@@ -16,6 +16,10 @@ class SnsAdapter : RecyclerView.Adapter<SnsAdapter.ViewHolder>() {
 
     override fun getItemCount() = list?.size ?: 0
 
+    fun submitList(list: List<String>) {
+        this.list = list
+    }
+
     class ViewHolder(private val binding: ItemSnsInputBinding) : RecyclerView.ViewHolder(binding.root) {
         companion object {
             fun from(parent: ViewGroup) : ViewHolder {
