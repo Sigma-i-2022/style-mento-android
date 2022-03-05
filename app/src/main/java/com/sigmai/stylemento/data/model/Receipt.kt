@@ -7,5 +7,5 @@ data class Receipt(
     val serviceWay : String,
     val price : Int,
     val date : String,
-    val time : String
+    val time : List<String> = listOf()
 )
