@@ -145,6 +145,24 @@
         android:name="com.sigmai.stylemento.ui.reservation.ReservationServiceSetFragment"
         android:label="reservation service page"
         tools:layout="@layout/fragment_reservation_service_set">
+        <action
+            android:id="@+id/action_reservation_service_page_to_reservation_payment_page"
+            app:destination="@id/reservation_payment_page" />
+    </fragment>
+    <fragment
+        android:id="@+id/reservation_payment_page"
+        android:name="com.sigmai.stylemento.ui.reservation.ReservationPaymentFragment"
+        android:label="reservation payment page"
+        tools:layout="@layout/fragment_reservation_payment">
+        <action
+            android:id="@+id/action_reservation_payment_page_to_reservation_payment_complete_page"
+            app:destination="@id/reservation_payment_complete_page" />
+    </fragment>
+    <fragment
+        android:id="@+id/reservation_payment_complete_page"
+        android:name="com.sigmai.stylemento.ui.reservation.ReservationPaymentCompleteFragment"
+        android:label="reservation payment complete page"
+        tools:layout="@layout/fragment_reservation_payment_complete">
     </fragment>
 
     <fragment
