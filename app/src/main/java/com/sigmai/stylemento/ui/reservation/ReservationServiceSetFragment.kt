@@ -7,6 +7,9 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
+import com.sigmai.stylemento.data.model.Coordinator
+import com.sigmai.stylemento.data.model.Receipt
+import com.sigmai.stylemento.data.model.User
 import com.sigmai.stylemento.databinding.FragmentReservationServiceSetBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
@@ -23,6 +26,11 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
             findNavController().navigateUp()
         }
         viewModel.startNext.observe(this) {
+            val receipt = viewModel.receipt
+            if(viewModel.serviceType.value == 0) receipt.value!!.serviceName = "스타일 피드백"
+            else if(viewModel.serviceType.value == 1) receipt.value!!.serviceName = "구매 추천"
+            if(viewModel.serviceWay.value == 0) receipt.value!!.serviceWay = "채팅"
+            else if(viewModel.serviceWay.value == 1) receipt.value!!.serviceWay = "화상"
             findNavController().navigate(R.id.action_reservation_service_page_to_reservation_payment_page)
         }
         setImageClick()
@@ -33,6 +41,7 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
         super.onViewCreated(view, savedInstanceState)
         viewInit()
 
+        viewModel.setReceipt(Receipt(Coordinator("11"), User("22", "email")))
         binding.reservationServiceRequestEditText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
             }

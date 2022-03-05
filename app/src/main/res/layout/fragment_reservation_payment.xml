@@ -134,7 +134,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="end"
-                            android:text="service_name" />
+                            android:text="@{viewModel.receipt.serviceName}" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -161,7 +161,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="end"
-                            android:text="service_way" />
+                            android:text="@{viewModel.receipt.serviceWay}" />
                     </LinearLayout>
 
                     <LinearLayout
