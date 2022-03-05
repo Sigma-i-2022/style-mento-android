@@ -1,13 +1,14 @@
 package com.sigmai.stylemento.ui.coordinator_application
 
 import android.view.View
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 
 class ApplicationViewPagerViewModel : ViewModel() {
-    val snsList = mutableListOf<String>("123@nasd", "fsd", "address")
+    val snsList = MutableLiveData(mutableListOf("123@nasd", "fsd", "address"))
 
     val moveNextPageEvent = SingleLiveEvent<Any>()
 
@@ -21,6 +22,7 @@ class ApplicationViewPagerViewModel : ViewModel() {
     }
 
     fun onClickAdd() {
-        snsList.add("")
+        snsList.value!!.add("")
+        snsList.value = snsList.value!!.toMutableList()
     }
 }

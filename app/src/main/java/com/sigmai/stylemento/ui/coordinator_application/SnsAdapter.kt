@@ -7,6 +7,10 @@ import com.sigmai.stylemento.databinding.ItemSnsInputBinding
 
 class SnsAdapter : RecyclerView.Adapter<SnsAdapter.ViewHolder>() {
     var list: List<String>? = null
+        set(value) {
+            field = value
+            notifyItemRangeChanged(0, value!!.size)
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder.from(parent)
 

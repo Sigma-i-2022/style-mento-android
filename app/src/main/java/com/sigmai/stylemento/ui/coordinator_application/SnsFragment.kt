@@ -16,5 +16,6 @@ class SnsFragment : BaseFragment<FragmentSnsBinding>() {
 
     override fun initState() {
         binding.snsList.adapter = SnsAdapter()
+        binding.snsList.itemAnimator = null
     }
 }
