@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.TimeItem
 import com.sigmai.stylemento.databinding.ItemTimeSelectorBinding
-import com.sigmai.stylemento.ui.reservation.TimeUtil
+import com.sigmai.stylemento.global.util.TimeUtil
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
 
 

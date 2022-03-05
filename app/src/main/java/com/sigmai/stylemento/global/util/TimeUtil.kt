@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.ui.reservation
+package com.sigmai.stylemento.global.util
 
 import com.sigmai.stylemento.data.model.TimeItem
 
