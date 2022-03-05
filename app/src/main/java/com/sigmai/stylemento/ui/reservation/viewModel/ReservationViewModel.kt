@@ -14,6 +14,7 @@ class ReservationViewModel : ViewModel() {
 
     val coordinator: LiveData<Coordinator> get() = _coordinator
     val receipt: LiveData<Receipt> get() = _receipt
+    private val timeCheck = Array(28){false}
 
     fun getCoordinatorInfo(position : Int) {
         _coordinator.postValue(Coordinator.from(DummyCoordinatorDataSource().getCoordinatorList()[position]))
@@ -21,7 +22,9 @@ class ReservationViewModel : ViewModel() {
     fun setReceipt(item : Receipt){
         _receipt.postValue(item)
     }
-
+    fun toggleTimeCheck(position: Int){
+        timeCheck[position] = !timeCheck[position]
+    }
     val startBack = SingleLiveEvent<Any>()
     val startNext = SingleLiveEvent<Any>()
 

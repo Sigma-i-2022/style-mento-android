@@ -5,11 +5,9 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
-import com.sigmai.stylemento.data.repository.datasource.DummyCoordinatorDataSource
 import com.sigmai.stylemento.databinding.FragmentReservationTimeSetBinding
-import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.global.base.BaseFragment
-import com.sigmai.stylemento.ui.reservation.viewModel.ReservationTimeSetViewModel
+import com.sigmai.stylemento.ui.reservation.adapter.TimeSelectorAdapter
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
 import java.text.SimpleDateFormat
 
@@ -40,7 +38,7 @@ class ReservationTimeSetFragment : BaseFragment<FragmentReservationTimeSetBindin
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        binding.reservationTimeSelectionRecycler.adapter = TimeSelectorAdapter(viewModel)
     }
 
     fun setCalendar() {
