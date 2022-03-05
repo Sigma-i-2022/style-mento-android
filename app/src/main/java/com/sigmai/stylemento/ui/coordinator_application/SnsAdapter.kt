@@ -31,7 +31,7 @@ class SnsAdapter : RecyclerView.Adapter<SnsAdapter.ViewHolder>() {
         }
 
         fun bind(address: String) {
-//            binding.address.text = address
+            binding.address.setText(address)
         }
     }
 }

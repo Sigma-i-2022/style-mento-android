@@ -11,6 +11,7 @@
             android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:paddingHorizontal="8dp"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/outlined_radius_6"/>
 
