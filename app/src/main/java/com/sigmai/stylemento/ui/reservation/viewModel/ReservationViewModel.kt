@@ -14,17 +14,15 @@ class ReservationViewModel : ViewModel() {
 
     val coordinator: LiveData<Coordinator> get() = _coordinator
     val receipt: LiveData<Receipt> get() = _receipt
-    private val timeCheck = Array(28){false}
 
-    fun getCoordinatorInfo(position : Int) {
+    fun getCoordinatorInfo(position: Int) {
         _coordinator.postValue(Coordinator.from(DummyCoordinatorDataSource().getCoordinatorList()[position]))
     }
-    fun setReceipt(item : Receipt){
+
+    fun setReceipt(item: Receipt) {
         _receipt.postValue(item)
     }
-    fun toggleTimeCheck(position: Int){
-        timeCheck[position] = !timeCheck[position]
-    }
+
     val startBack = SingleLiveEvent<Any>()
     val startNext = SingleLiveEvent<Any>()
 
@@ -33,22 +31,43 @@ class ReservationViewModel : ViewModel() {
     val startChatting = SingleLiveEvent<Any>()
     val startFaceToFace = SingleLiveEvent<Any>()
 
-    fun onBackClick(){
+    private var _serviceType = MutableLiveData<Int>(-1)
+    private var _serviceWay = MutableLiveData<Int>(-1)
+    private var _requestText = MutableLiveData<String>("")
+
+    val serviceType : LiveData<Int> get() = _serviceType
+    val serviceWay : LiveData<Int> get() = _serviceWay
+    val requestText : LiveData<String> get() = _requestText
+
+    fun onBackClick() {
         startBack.call()
     }
-    fun onNextClick(){
+
+    fun onNextClick() {
         startNext.call()
     }
-    fun onFeedbackClick(){
+
+    fun onFeedbackClick() {
+        _serviceType.value = if (_serviceType.value == 0) -1 else 0
         startFeedback.call()
     }
-    fun onRecommendClick(){
+
+    fun onRecommendClick() {
+        _serviceType.value = if (_serviceType.value == 1) -1 else 1
         startRecommend.call()
     }
-    fun onChattingClick(){
+
+    fun onChattingClick() {
+        _serviceWay.value = if (_serviceWay.value == 0) -1 else 0
         startChatting.call()
     }
-    fun onFaceToFaceClick(){
+
+    fun onFaceToFaceClick() {
+        _serviceWay.value = if (_serviceWay.value == 1) -1 else 1
         startFaceToFace.call()
+    }
+
+    fun setRequestText(text : String){
+        _requestText.value = text
     }
 }
