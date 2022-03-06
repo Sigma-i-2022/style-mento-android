@@ -70,4 +70,31 @@ class ReservationViewModel : ViewModel() {
     fun setRequestText(text : String){
         _requestText.value = text
     }
+
+    private var _isAllSelected = MutableLiveData<Boolean>(false)
+    private var _isFirstSelected = MutableLiveData<Boolean>(false)
+    private var _isSecondSelected = MutableLiveData<Boolean>(false)
+    val isAllSelected : LiveData<Boolean> get() = _isAllSelected
+    val isFirstSelected : LiveData<Boolean> get() = _isFirstSelected
+    val isSecondSelected : LiveData<Boolean> get() = _isSecondSelected
+
+    fun onAllClick(){
+        if(_isAllSelected.value!!){
+            _isFirstSelected.value = false
+            _isSecondSelected.value = false
+        }
+        else{
+            _isFirstSelected.value = true
+            _isSecondSelected.value = true
+        }
+        _isAllSelected.value = !_isAllSelected.value!!
+    }
+    fun onFirstClick(){
+        _isAllSelected.value = !_isFirstSelected.value!! && _isSecondSelected.value!!
+        _isFirstSelected.value = !_isFirstSelected.value!!
+    }
+    fun onSecondClick(){
+        _isAllSelected.value = !_isSecondSelected.value!! && _isFirstSelected.value!!
+        _isSecondSelected.value = !_isSecondSelected.value!!
+    }
 }
