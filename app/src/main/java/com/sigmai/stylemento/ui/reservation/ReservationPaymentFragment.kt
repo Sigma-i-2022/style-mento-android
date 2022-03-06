@@ -30,11 +30,59 @@ class ReservationPaymentFragment : BaseFragment<FragmentReservationPaymentBindin
         viewModel.startNext.observe(this) {
             findNavController().navigate(R.id.action_reservation_payment_page_to_reservation_payment_complete_page)
         }
+        observeSelection()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        checkButtonEnabled()
+        viewInit()
     }
-
+    private fun viewInit(){
+        if(viewModel.isAllSelected.value!!)
+            binding.reservationPaymentAllAgreeImg.setBackgroundResource(R.drawable.button_background_type_1)
+        else
+            binding.reservationPaymentAllAgreeImg.setBackgroundResource(R.color.trans_parent)
+        if(viewModel.isAllSelected.value!!)
+            binding.reservationPaymentFirstAgreeImg.setBackgroundResource(R.drawable.button_background_type_1)
+        else
+            binding.reservationPaymentFirstAgreeImg.setBackgroundResource(R.color.trans_parent)
+        if(viewModel.isAllSelected.value!!)
+            binding.reservationPaymentSecondAgreeImg.setBackgroundResource(R.drawable.button_background_type_1)
+        else
+            binding.reservationPaymentSecondAgreeImg.setBackgroundResource(R.color.trans_parent)
+    }
+    private fun observeSelection(){
+        viewModel.isAllSelected.observe(this){
+            if(viewModel.isAllSelected.value!!)
+                binding.reservationPaymentAllAgreeImg.setBackgroundResource(R.drawable.button_background_type_1)
+            else
+                binding.reservationPaymentAllAgreeImg.setBackgroundResource(R.color.trans_parent)
+            checkButtonEnabled()
+        }
+        viewModel.isFirstSelected.observe(this){
+            if(viewModel.isFirstSelected.value!!)
+                binding.reservationPaymentFirstAgreeImg.setBackgroundResource(R.drawable.button_background_type_1)
+            else
+                binding.reservationPaymentFirstAgreeImg.setBackgroundResource(R.color.trans_parent)
+            checkButtonEnabled()
+        }
+        viewModel.isSecondSelected.observe(this){
+            if(viewModel.isSecondSelected.value!!)
+                binding.reservationPaymentSecondAgreeImg.setBackgroundResource(R.drawable.button_background_type_1)
+            else
+                binding.reservationPaymentSecondAgreeImg.setBackgroundResource(R.color.trans_parent)
+            checkButtonEnabled()
+        }
+    }
+    private fun checkButtonEnabled(){
+        if(viewModel.isAllSelected.value!!){
+            binding.reservationPaymentNextButton.isEnabled = true
+            binding.reservationPaymentNextButton.setBackgroundResource(R.color.primary)
+        }
+        else{
+            binding.reservationPaymentNextButton.isEnabled = false
+            binding.reservationPaymentNextButton.setBackgroundResource(R.color.gray_d)
+        }
+    }
 }
