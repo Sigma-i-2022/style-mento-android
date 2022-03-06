@@ -18,7 +18,7 @@ class TimeSelectorAdapter(private val viewModel : ReservationViewModel) : Recycl
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(dataSet[position], viewModel)
+        holder.bind(dataSet[position], this, position)
     }
 
     override fun getItemCount(): Int {
@@ -26,17 +26,15 @@ class TimeSelectorAdapter(private val viewModel : ReservationViewModel) : Recycl
     }
 
     class ViewHolder(val binding: ItemTimeSelectorBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: TimeItem, viewModel: ReservationViewModel) {
+        fun bind(item: TimeItem, adapter: TimeSelectorAdapter, position: Int) {
             binding.item = item.time
-            binding.timeSelectorImg.setOnClickListener {
-                Log.d("curText", item.time)
-                Log.d("isChecked", item.isChecked.toString())
-                item.isChecked = !item.isChecked
 
-                if(item.isChecked)
-                    binding.timeSelectorImg.setImageResource(R.drawable.button_background_type_4)
-                else
-                    binding.timeSelectorImg.setImageResource(R.drawable.button_background_type_3)
+            if(item.isChecked) binding.timeSelectorImg.setImageResource(R.drawable.button_background_type_4)
+            else binding.timeSelectorImg.setImageResource(R.drawable.button_background_type_3)
+
+            binding.timeSelectorImg.setOnClickListener {
+                item.isChecked = !item.isChecked
+                adapter.notifyItemChanged(position)
             }
             binding.executePendingBindings()
         }
