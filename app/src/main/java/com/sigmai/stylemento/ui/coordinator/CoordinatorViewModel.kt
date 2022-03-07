@@ -1,6 +1,10 @@
 package com.sigmai.stylemento.ui.coordinator
 
+import android.view.View
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModel
+import androidx.navigation.findNavController
+import com.sigmai.stylemento.R
 import com.sigmai.stylemento.di.AppConfigs
 import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.domain.usecase.coordinator.GetCoordinatorListUseCase
@@ -17,5 +21,11 @@ class CoordinatorViewModel : ViewModel() {
             dummyList.clear()
             dummyList.addAll(getCoordinatorListUseCase())
         }
+    }
+
+    fun onClickCoordinatorProfile(view: View, position: Int) {
+        val bundle = bundleOf("position" to position)
+        val navController = view.findNavController()
+        navController.navigate(R.id.action_main_to_coordinator_page, bundle)
     }
 }

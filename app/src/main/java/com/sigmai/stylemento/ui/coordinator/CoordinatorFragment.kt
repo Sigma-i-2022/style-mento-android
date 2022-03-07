@@ -18,6 +18,6 @@ class CoordinatorFragment : BaseFragment<FragmentCoordinatorBinding>() {
     }
 
     fun setupAdapter() {
-        binding.coordinatorList.adapter = CoordinatorAdapter()
+        binding.coordinatorList.adapter = CoordinatorAdapter(viewModel)
     }
 }

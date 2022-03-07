@@ -12,10 +12,11 @@ import com.sigmai.stylemento.databinding.ItemCoordinatorBinding
 import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.ui.home.adapter.TagAdapter
 import com.sigmai.stylemento.global.util.GlideUtil
+import com.sigmai.stylemento.ui.coordinator.CoordinatorViewModel
 
-class CoordinatorAdapter : ListAdapter<Coordinator, CoordinatorAdapter.CoordinatorViewHolder>(TempDiffCallback()) {
+class CoordinatorAdapter(val viewModel: CoordinatorViewModel) : ListAdapter<Coordinator, CoordinatorAdapter.CoordinatorViewHolder>(CoordinatorDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoordinatorViewHolder {
-        return CoordinatorViewHolder.from(parent)
+        return CoordinatorViewHolder.from(parent, viewModel)
     }
 
     override fun onBindViewHolder(holder: CoordinatorViewHolder, position: Int) {
@@ -23,32 +24,32 @@ class CoordinatorAdapter : ListAdapter<Coordinator, CoordinatorAdapter.Coordinat
         holder.bind(item)
     }
 
-    class CoordinatorViewHolder private constructor(val binding: ItemCoordinatorBinding) : RecyclerView.ViewHolder(binding.root) {
+    class CoordinatorViewHolder private constructor(val binding: ItemCoordinatorBinding, val viewModel: CoordinatorViewModel) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Coordinator) {
             binding.item = item
             GlideUtil.setImageWithRadius(item.imageUrl, binding.coordinatorPhoto, 12)
             binding.coordinatorTags.adapter = TagAdapter()
             binding.pieceList.adapter = HorizontalPieceAdapter()
-            binding.executePendingBindings()
 
             binding.root.setOnClickListener {
-                val bundle = bundleOf("position" to adapterPosition)
-                it.findNavController().navigate(R.id.action_main_to_coordinator_page, bundle)
+                viewModel.onClickCoordinatorProfile(it, adapterPosition)
             }
+
+            binding.executePendingBindings()
         }
 
         companion object {
-            fun from(parent: ViewGroup) : CoordinatorViewHolder {
+            fun from(parent: ViewGroup, viewModel: CoordinatorViewModel) : CoordinatorViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemCoordinatorBinding.inflate(layoutInflater, parent, false)
 
-                return CoordinatorViewHolder(binding)
+                return CoordinatorViewHolder(binding, viewModel)
             }
         }
     }
 }
 
-class TempDiffCallback : DiffUtil.ItemCallback<Coordinator>() {
+class CoordinatorDiffCallback : DiffUtil.ItemCallback<Coordinator>() {
     override fun areItemsTheSame(oldItem: Coordinator, newItem: Coordinator): Boolean {
         return oldItem === newItem
     }
