@@ -9,6 +9,8 @@ import com.sigmai.stylemento.global.util.SingleLiveEvent
 
 class ApplicationViewPagerViewModel : ViewModel() {
     val snsList = MutableLiveData(mutableListOf(""))
+    val introduction = MutableLiveData("")
+    val textLength = MutableLiveData(0)
 
     val moveNextPageEvent = SingleLiveEvent<Any>()
 

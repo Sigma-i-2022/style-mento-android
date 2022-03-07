@@ -13,5 +13,8 @@ class FormFragment : BaseFragment<FragmentFormBinding>() {
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
+        viewModel.introduction.observe(this) {
+            viewModel.textLength.value = it.length
+        }
     }
 }

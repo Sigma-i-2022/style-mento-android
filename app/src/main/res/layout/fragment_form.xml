@@ -37,10 +37,26 @@
             app:layout_constraintTop_toBottomOf="@id/form_title"
             android:layout_marginTop="24dp"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:padding="16dp"
             android:background="@drawable/outlined_rectangle"
-            android:maxLength="300"/>
+            android:maxLength="300"
+            android:text="@={viewModel.introduction}"
+            android:gravity="start|top"/>
 
         <TextView
+            android:id="@+id/max_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/button_next"
+            app:layout_constraintBottom_toBottomOf="@id/button_next"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text='@{viewModel.textLength + "/300자"}'
+            android:textSize="12sp"
+            android:textColor="@color/gray_d"/>
+
+        <TextView
+            android:id="@+id/button_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
