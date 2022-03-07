@@ -51,7 +51,7 @@
             app:layout_constraintTop_toBottomOf="@id/sns_list"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
-            android:onClick="@{()->viewModel.onClickAdd()}"/>
+            android:onClick="@{()->viewModel.onAdd()}"/>
         
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/form_previous"
@@ -66,7 +66,8 @@
             android:text="이전으로"
             android:textColor="@color/gray_8"
             android:textSize="18sp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:onClick="@{(view)->viewModel.onPrevious(view)}"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/form_applying"
@@ -85,6 +86,6 @@
             android:textStyle="bold"
             android:textColor="@color/white"
             android:gravity="center"
-            android:onClick="@{(view)->viewModel.onClickComplete(view)}"/>
+            android:onClick="@{(view)->viewModel.onComplete(view)}"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

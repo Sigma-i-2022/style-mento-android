@@ -17,5 +17,8 @@ class ApplicationViewPagerFragment : BaseFragment<FragmentApplicationViewPagerBi
         viewModel.moveNextPageEvent.observe(this) {
             binding.applicationViewpager.currentItem = 1
         }
+        viewModel.movePreviousEvent.observe(this) {
+            binding.applicationViewpager.currentItem = 0
+        }
     }
 }

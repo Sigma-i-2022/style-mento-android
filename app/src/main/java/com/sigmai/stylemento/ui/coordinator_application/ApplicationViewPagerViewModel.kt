@@ -13,17 +13,22 @@ class ApplicationViewPagerViewModel : ViewModel() {
     val textLength = MutableLiveData(0)
 
     val moveNextPageEvent = SingleLiveEvent<Any>()
+    val movePreviousEvent = SingleLiveEvent<Any>()
 
-    fun onClickNext() {
+    fun onPrevious(view: View) {
+        movePreviousEvent.call()
+    }
+
+    fun onNext() {
         moveNextPageEvent.call()
     }
 
-    fun onClickComplete(view: View) {
+    fun onComplete(view: View) {
         val navController = view.findNavController()
         navController.navigate(R.id.action_application_viewpager_to_application_finish)
     }
 
-    fun onClickAdd() {
+    fun onAdd() {
         snsList.value!!.add("")
         snsList.value = snsList.value!!.toMutableList()
     }
