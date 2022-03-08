@@ -25,8 +25,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/body1"
-            app:layout_constraintTop_toTopOf="item_work_scroll_time_text"
-            app:layout_constraintStart_toEndOf="item_work_scroll_time_text"/>
+            app:layout_constraintTop_toTopOf="@id/item_work_scroll_time_text"
+            app:layout_constraintStart_toEndOf="@id/item_work_scroll_time_text"/>
         <ImageView
             android:id="@+id/item_work_scroll_revision"
             android:layout_width="30dp"

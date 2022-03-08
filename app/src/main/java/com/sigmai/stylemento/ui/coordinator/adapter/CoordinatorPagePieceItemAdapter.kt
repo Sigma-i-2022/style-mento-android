@@ -26,6 +26,8 @@ class CoordinatorPagePieceItemAdapter : ListAdapter<Piece, CoordinatorPagePieceI
         private var detailState = 0
         fun bind(item: Piece) {
             binding.item = item
+            if(item.isModified)
+                binding.itemPieceScrollModifiedText.text = "(수정됨)"
             setImage(item)
             setAdapter(item)
             setListener()
