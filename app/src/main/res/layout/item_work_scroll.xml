@@ -20,6 +20,13 @@
             android:text="@{item.time}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            android:id="@+id/item_work_scroll_modified_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/body1"
+            app:layout_constraintTop_toTopOf="item_work_scroll_time_text"
+            app:layout_constraintStart_toEndOf="item_work_scroll_time_text"/>
         <ImageView
             android:id="@+id/item_work_scroll_revision"
             android:layout_width="30dp"

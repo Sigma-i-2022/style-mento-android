@@ -32,6 +32,8 @@ class CoordinatorWorkItemAdapter(
         private var detailState = 0
         fun bind(item: WorkItem, viewModel: MyPageWorkScrollViewModel) {
             binding.item = item
+            if(item.isModified)
+                binding.itemWorkScrollModifiedText.text = "(수정됨)"
 
             setAdapter(item)
             setImage(item)
