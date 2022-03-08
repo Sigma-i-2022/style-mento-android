@@ -42,10 +42,10 @@ class MyPageWorkAddFragment : BaseFragment<FragmentMyPageWorkAddBinding>(), Havi
             workItem = getWorkItemUseCase(position).copy()
             binding.myPageWorkTitleText.text = "아이템 수정"
             binding.myPageWorkAddSaveButton.text = "수정"
+            workItem.isModified = true
         }
         else{
-            val getCoordinatorUseCase = GetCoordinatorUseCase(AppConfigs.coordinatorRepository)
-            workItem = WorkItem(getCoordinatorUseCase().nickname)
+            workItem = WorkItem()
         }
     }
 
@@ -53,21 +53,21 @@ class MyPageWorkAddFragment : BaseFragment<FragmentMyPageWorkAddBinding>(), Havi
         super.initDataBinding()
         binding.viewModel = viewModel
 
-        viewModel.startBack.observe(this, {
+        viewModel.startBack.observe(this) {
             findNavController().popBackStack()
-        })
-        viewModel.startSave.observe(this, {
+        }
+        viewModel.startSave.observe(this) {
             setTime()
-            if(position >= 0)
+            if (position >= 0)
                 Client.reviseWorkItem(workItem, position)
             else
                 Client.addWorkItem(workItem)
             findNavController().popBackStack()
-        })
-        viewModel.startTagAddition.observe(this, {
+        }
+        viewModel.startTagAddition.observe(this) {
             val dialog = TagSelectionDialog(havingTag2 = this)
             dialog.show(childFragmentManager, "TagSelectionDialog")
-        })
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -95,16 +95,22 @@ class MyPageWorkAddFragment : BaseFragment<FragmentMyPageWorkAddBinding>(), Havi
 
     private fun setTextInit(){
         binding.myPageWorkAddDetailEditText.setText(workItem.detail)
+        binding.myPageWorkAddModelHeightEditText.setText(workItem.height)
+        binding.myPageWorkAddModelWeightEditText.setText(workItem.weight)
         binding.myPageWorkAddTopEditText.setText(workItem.top)
         binding.myPageWorkAddPantsEditText.setText(workItem.pants)
         binding.myPageWorkAddShoesEditText.setText(workItem.shoes)
+        binding.myPageWorkAddOtherEditText.setText(workItem.other)
     }
 
     private fun setEditTextLayout(){
         binding.myPageWorkAddDetailEditText.addTextChangedListener(AdditionPageTextWatcher(workItem, "detail"))
+        binding.myPageWorkAddModelHeightEditText.addTextChangedListener(AdditionPageTextWatcher(workItem, "height"))
+        binding.myPageWorkAddModelWeightEditText.addTextChangedListener(AdditionPageTextWatcher(workItem, "weight"))
         binding.myPageWorkAddTopEditText.addTextChangedListener(AdditionPageTextWatcher(workItem, "top"))
         binding.myPageWorkAddPantsEditText.addTextChangedListener(AdditionPageTextWatcher(workItem, "pants"))
         binding.myPageWorkAddShoesEditText.addTextChangedListener(AdditionPageTextWatcher(workItem, "shoes"))
+        binding.myPageWorkAddOtherEditText.addTextChangedListener(AdditionPageTextWatcher(workItem, "other"))
     }
 
     private fun setTime(){

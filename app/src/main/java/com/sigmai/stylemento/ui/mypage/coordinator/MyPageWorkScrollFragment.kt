@@ -22,14 +22,16 @@ class MyPageWorkScrollFragment : BaseFragment<FragmentMyPageWorkScrollBinding>()
         super.initDataBinding()
         binding.viewModel = viewModel
 
-        viewModel.startBack.observe(this, {
+        viewModel.startBack.observe(this) {
             findNavController().navigateUp()
-        })
+        }
 
         binding.myPageCoordinatorWorkScrollRecycler.adapter =
             CoordinatorWorkItemAdapter(Client.getCoordinatorInfo().workItems, viewModel)
-        viewModel.position.observe(this, {
+        viewModel.position.observe(this) {
+            binding.myPageCoordinatorWorkScrollRecycler.adapter =
+                CoordinatorWorkItemAdapter(Client.getCoordinatorInfo().workItems, viewModel)
             binding.myPageCoordinatorWorkScrollRecycler.scrollToPosition(viewModel.position.value!!)
-        })
+        }
     }
 }

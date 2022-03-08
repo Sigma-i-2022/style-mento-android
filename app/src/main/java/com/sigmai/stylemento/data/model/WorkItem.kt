@@ -7,13 +7,15 @@ import com.sigmai.stylemento.global.constant.TagType
 import com.sigmai.stylemento.global.constant.TextureType
 
 data class WorkItem(
-    val owner : String,
     var photoUrl: Uri? = Uri.EMPTY,
     var detail : String = "",
+    var height : String = "",
+    var weight : String = "",
     var top : String = "",
     var pants : String = "",
     var shoes : String = "",
+    var other : String = "",
     var tags : MutableList<TagType> = mutableListOf(),
     var time : String = "",
-    var idx : Int = 0
+    var isModified : Boolean = false
 )

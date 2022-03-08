@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp">
+
         <ScrollView
             android:id="@+id/my_page_work_add_scrollView"
             android:layout_width="match_parent"
@@ -21,194 +22,361 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <ImageView
                     android:id="@+id/my_page_work_add_back_img"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/ic_arrow_back"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:background="@drawable/ic_arrow_back"
                     android:onClick="@{()->viewModel.onBackClick()}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:id="@+id/my_page_work_title_text"
+                    style="@style/header3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="아이템 추가"
                     android:textStyle="bold"
-                    style="@style/header3"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:id="@+id/my_page_work_add_save_button"
+                    style="@style/header3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="추가"
-                    android:textStyle="bold"
-                    style="@style/header3"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:onClick="@{()->viewModel.onSaveClick()}"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    android:text="추가"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <View
                     android:id="@+id/my_page_work_add_header_line"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/gray_f"
                     android:layout_marginTop="14dp"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_back_img"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    android:background="@color/gray_f"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_back_img" />
 
                 <ImageView
                     android:id="@+id/my_page_work_add_item_img"
                     android:layout_width="228dp"
                     android:layout_height="262dp"
                     android:layout_marginTop="37dp"
+                    android:background="@color/gray_d"
                     android:src="@drawable/ic_launcher_foreground"
-                    android:background ="@color/gray_d"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_header_line"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_header_line" />
+
                 <TextView
                     android:id="@+id/my_page_work_add_detail_title_text"
+                    style="@style/header4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="설명"
-                    style="@style/header4"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:layout_marginTop="20dp"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_item_img"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    android:text="설명"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_item_img" />
+
                 <EditText
                     android:id="@+id/my_page_work_add_detail_editText"
+                    style="@style/body1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    android:textColor="@color/gray_6"
                     android:maxLength="100"
-                    style="@style/body1"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_detail_title_text"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    android:textColor="@color/gray_6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_detail_title_text" />
+
                 <TextView
                     android:id="@+id/my_page_work_add_tag_title_text"
+                    style="@style/header4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="태그"
-                    style="@style/header4"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="60dp"
                     android:background="@color/trans_parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_detail_editText"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    android:text="스타일 태그"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_detail_editText" />
+
                 <ImageView
                     android:id="@+id/my_page_work_add_tag_add_img"
                     android:layout_width="34dp"
                     android:layout_height="34dp"
-                    android:background="@drawable/ic_plus"
                     android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/ic_plus"
                     android:onClick="@{()->viewModel.onTagAdditionClick()}"
-                    app:layout_constraintTop_toBottomOf="@+id/my_page_work_add_detail_editText"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/my_page_work_add_detail_editText" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/my_page_work_add_tag_recycler"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_tag_title_text"
-                    app:layout_constraintStart_toStartOf="parent">
-                </androidx.recyclerview.widget.RecyclerView>
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_tag_title_text"/>
+
+                <TextView
+                    android:id="@+id/my_page_work_add_model_info_title"
+                    style="@style/header4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/trans_parent"
+                    android:text="모델 정보"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_tag_recycler" />
+
+                <LinearLayout
+                    android:id="@+id/my_page_work_add_model_height_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_model_info_title">
+
+                    <TextView
+                        style="@style/header4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/trans_parent"
+                        android:text="키" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <EditText
+                        android:id="@+id/my_page_work_add_model_height_editText"
+                        style="@style/header4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/trans_parent"
+                        android:gravity="end"
+                        android:hint="입력"
+                        android:inputType="number"
+                        android:maxLength="30" />
+
+                    <TextView
+                        style="@style/header4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="cm" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/my_page_work_add_model_weight_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_model_height_layout">
+
+                    <TextView
+                        style="@style/header4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/trans_parent"
+                        android:text="몸무게" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <EditText
+                        android:id="@+id/my_page_work_add_model_weight_editText"
+                        style="@style/header4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/trans_parent"
+                        android:gravity="end"
+                        android:hint="입력"
+                        android:inputType="number"
+                        android:maxLength="30" />
+
+                    <TextView
+                        style="@style/header4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="kg" />
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/my_page_work_add_coordi_info_title"
+                    style="@style/header4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="코디 정보"
-                    style="@style/header4"
-                    android:layout_marginTop="16dp"
                     android:layout_marginStart="18dp"
-                    android:layout_marginEnd="60dp"
+                    android:layout_marginTop="16dp"
                     android:background="@color/trans_parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_tag_recycler"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    android:text="코디 정보"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_model_weight_layout" />
+
                 <LinearLayout
                     android:id="@+id/my_page_work_add_top_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_coordi_info_title"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_coordi_info_title">
+
                     <TextView
+                        style="@style/header4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="상의"
-                        style="@style/header4"
                         android:layout_marginEnd="42dp"
-                        android:background="@color/trans_parent" />
+                        android:background="@color/trans_parent"
+                        android:text="상의" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
                     <EditText
                         android:id="@+id/my_page_work_add_top_editText"
+                        style="@style/header4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/trans_parent"
+                        android:gravity="end"
                         android:hint="입력"
-                        android:maxLength="30"
-                        style="@style/header4"/>
+                        android:maxLength="30" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/my_page_work_add_pants_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_top_layout"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_top_layout">
+
                     <TextView
+                        style="@style/header4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="하의"
-                        style="@style/header4"
                         android:layout_marginEnd="42dp"
-                        android:background="@color/trans_parent" />
+                        android:background="@color/trans_parent"
+                        android:text="하의" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
                     <EditText
                         android:id="@+id/my_page_work_add_pants_editText"
+                        style="@style/header4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/trans_parent"
+                        android:gravity="end"
                         android:hint="입력"
-                        android:maxLength="30"
-                        style="@style/header4"/>
+                        android:maxLength="30" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/my_page_work_add_shoes_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_pants_layout"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_pants_layout">
+
                     <TextView
+                        style="@style/header4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="신발"
-                        style="@style/header4"
                         android:layout_marginEnd="42dp"
-                        android:background="@color/trans_parent" />
+                        android:background="@color/trans_parent"
+                        android:text="신발" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
                     <EditText
                         android:id="@+id/my_page_work_add_shoes_editText"
+                        style="@style/header4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/trans_parent"
+                        android:gravity="end"
                         android:hint="입력"
-                        android:maxLength="30"
-                        style="@style/header4"/>
+                        android:maxLength="30" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/my_page_work_add_other_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_work_add_shoes_layout">
+
+                    <TextView
+                        style="@style/header4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="42dp"
+                        android:background="@color/trans_parent"
+                        android:text="기타" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <EditText
+                        android:id="@+id/my_page_work_add_other_editText"
+                        style="@style/header4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/trans_parent"
+                        android:gravity="end"
+                        android:hint="입력"
+                        android:maxLength="30" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

@@ -10,9 +10,12 @@ class AdditionPageTextWatcher(var targetItem: WorkItem, val target: String) : Te
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
         when(target) {
             "detail" -> targetItem.detail = s!!.toString()
+            "height" -> targetItem.height = s!!.toString()
+            "weight" -> targetItem.weight = s!!.toString()
             "top" -> targetItem.top = s!!.toString()
             "pants" -> targetItem.pants = s!!.toString()
             "shoes" -> targetItem.shoes = s!!.toString()
+            "other" -> targetItem.other = s!!.toString()
             else -> return
         }
     }
