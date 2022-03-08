@@ -6,11 +6,11 @@ data class Piece(
     val content: String,
     val tags: List<String>,
     val time: String,
-    var height : String = "",
-    var weight : String = "",
-    var top : String = "",
-    var pants : String = "",
-    var shoes : String = "",
-    var other : String = "",
-    var isModified : Boolean = false
+    val height : String,
+    val weight : String,
+    val top : String,
+    val pants : String,
+    val shoes : String,
+    val other : String,
+    val isModified : Boolean
 )
