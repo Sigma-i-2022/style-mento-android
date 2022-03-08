@@ -12,6 +12,7 @@ class AdditionPageTextWatcher(var targetItem: LookbookItem, val target: String) 
             "top" -> targetItem.top = s!!.toString()
             "pants" -> targetItem.pants = s!!.toString()
             "shoes" -> targetItem.shoes = s!!.toString()
+            "other" -> targetItem.other = s!!.toString()
             else -> return
         }
     }

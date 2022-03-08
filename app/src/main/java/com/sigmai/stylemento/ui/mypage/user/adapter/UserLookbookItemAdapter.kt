@@ -26,6 +26,8 @@ class UserLookbookItemAdapter(
         private var detailState = 0
         fun bind(item: LookbookItem, viewModel: MyPageLookbookScrollViewModel) {
             binding.item = item
+            if(item.isModified)
+                binding.itemLookbookScrollModifiedText.text = "(수정됨)"
             setImage(item)
             setAdapter(item)
             setListener(viewModel)

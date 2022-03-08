@@ -4,9 +4,6 @@
         <variable
             name="item"
             type="com.sigmai.stylemento.data.model.LookbookItem" />
-        <variable
-            name="viewModel"
-            type="com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageLookbookScrollViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -23,6 +20,13 @@
             android:text="@{item.time}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            android:id="@+id/item_lookbook_scroll_modified_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/body1"
+            app:layout_constraintTop_toTopOf="@id/item_lookbook_scroll_time_text"
+            app:layout_constraintStart_toEndOf="@id/item_lookbook_scroll_time_text"/>
         <ImageView
             android:id="@+id/item_lookbook_scroll_revision"
             android:layout_width="30dp"
@@ -100,10 +104,12 @@
                 style="@style/header4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="42dp"
                 android:background="@color/trans_parent"
                 android:text="상의" />
-
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
             <TextView
                 android:id="@+id/item_lookbook_scroll_top_text"
                 style="@style/header4"
@@ -127,10 +133,12 @@
                 style="@style/header4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="42dp"
                 android:background="@color/trans_parent"
                 android:text="하의" />
-
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
             <TextView
                 android:id="@+id/item_lookbook_scroll_pants_text"
                 style="@style/header4"
@@ -154,14 +162,44 @@
                 style="@style/header4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="42dp"
                 android:background="@color/trans_parent"
                 android:text="신발" />
-
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
             <TextView
                 android:id="@+id/item_lookbook_scroll_shoes_text"
                 style="@style/header4"
                 android:text="@{item.shoes}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/trans_parent"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/item_lookbook_scroll_other_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_lookbook_scroll_shoes_layout">
+
+            <TextView
+                style="@style/header4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/trans_parent"
+                android:text="기타" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/item_lookbook_scroll_other_text"
+                style="@style/header4"
+                android:text="@{item.other}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/trans_parent"/>

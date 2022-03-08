@@ -90,10 +90,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="스타일 태그"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
                     style="@style/header4"
                     android:layout_marginTop="24dp"
                     android:layout_marginStart="18dp"
-                    android:layout_marginEnd="60dp"
                     android:background="@color/trans_parent"
                     app:layout_constraintTop_toBottomOf="@id/my_page_lookbook_add_detail_editText"
                     app:layout_constraintStart_toStartOf="parent"/>
@@ -109,14 +110,14 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/my_page_lookbook_add_tag_recycler"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/my_page_lookbook_add_tag_title_text"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:orientation="horizontal"
                     app:spanCount="5"/>
 
                 <View
@@ -133,10 +134,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="코디 정보"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
                     style="@style/header4"
                     android:layout_marginTop="16dp"
                     android:layout_marginStart="18dp"
-                    android:layout_marginEnd="60dp"
                     android:background="@color/trans_parent"
                     app:layout_constraintTop_toBottomOf="@id/my_page_lookbook_add_divider"
                     app:layout_constraintStart_toStartOf="parent"/>
@@ -154,14 +156,18 @@
                         android:layout_height="wrap_content"
                         android:text="상의"
                         style="@style/header4"
-                        android:layout_marginEnd="42dp"
                         android:background="@color/trans_parent" />
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
                     <EditText
                         android:id="@+id/my_page_lookbook_add_top_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/trans_parent"
                         android:hint="입력"
+                        android:gravity="end"
                         android:maxLength="30"
                         style="@style/header4"/>
                 </LinearLayout>
@@ -178,15 +184,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="하의"
+                        android:gravity="end"
                         style="@style/header4"
-                        android:layout_marginEnd="42dp"
                         android:background="@color/trans_parent" />
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
                     <EditText
                         android:id="@+id/my_page_lookbook_add_pants_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/trans_parent"
                         android:hint="입력"
+                        android:gravity="end"
                         android:maxLength="30"
                         style="@style/header4"/>
                 </LinearLayout>
@@ -204,14 +215,47 @@
                         android:layout_height="wrap_content"
                         android:text="신발"
                         style="@style/header4"
-                        android:layout_marginEnd="42dp"
                         android:background="@color/trans_parent" />
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
                     <EditText
                         android:id="@+id/my_page_lookbook_add_shoes_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/trans_parent"
                         android:hint="입력"
+                        android:gravity="end"
+                        android:maxLength="30"
+                        style="@style/header4"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/my_page_lookbook_add_other_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_lookbook_add_shoes_layout"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="기타"
+                        style="@style/header4"
+                        android:background="@color/trans_parent" />
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+                    <EditText
+                        android:id="@+id/my_page_lookbook_add_other_editText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/trans_parent"
+                        android:hint="입력"
+                        android:gravity="end"
                         android:maxLength="30"
                         style="@style/header4"/>
                 </LinearLayout>

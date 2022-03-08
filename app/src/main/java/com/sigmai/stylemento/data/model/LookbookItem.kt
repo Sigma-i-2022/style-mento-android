@@ -7,13 +7,13 @@ import com.sigmai.stylemento.global.constant.TagType
 import com.sigmai.stylemento.global.constant.TextureType
 
 data class LookbookItem(
-    val owner : String,
     var photoUrl: Uri? = Uri.EMPTY,
     var detail : String = "",
     var top : String = "",
     var pants : String = "",
     var shoes : String = "",
+    var other : String = "",
     var tags : List<TagType> = listOf(),
     var time : String = "",
-    var idx : Int = 0
+    var isModified : Boolean = false
 )

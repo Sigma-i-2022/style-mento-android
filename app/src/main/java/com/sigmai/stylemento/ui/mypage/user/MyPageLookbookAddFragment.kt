@@ -44,31 +44,31 @@ class MyPageLookbookAddFragment() : BaseFragment<FragmentMyPageLookbookAddBindin
             lookbookItem = getLookbookItemUseCase(position).copy()
             binding.myPageLookbookTitleText.text = "아이템 수정"
             binding.myPageLookbookAddSaveButton.text = "수정"
+            lookbookItem.isModified = true
         }
         else{
-            val getUserUseCase = GetUserUseCase(AppConfigs.userRepository)
-            lookbookItem = LookbookItem(getUserUseCase().nickname)
+            lookbookItem = LookbookItem()
         }
     }
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
 
-        viewModel.startBack.observe(this, {
+        viewModel.startBack.observe(this) {
             findNavController().popBackStack()
-        })
-        viewModel.startSave.observe(this, {
+        }
+        viewModel.startSave.observe(this) {
             setTime()
-            if(position >= 0)
+            if (position >= 0)
                 Client.reviseLookbookItem(lookbookItem, position)
             else
                 Client.addLookbookItem(lookbookItem)
             findNavController().popBackStack()
-        })
-        viewModel.startTagAdd.observe(this, {
+        }
+        viewModel.startTagAdd.observe(this) {
             val dialog = TagSelectionDialog(havingTag2 = this)
             dialog.show(childFragmentManager, "TagSelectionDialog")
-        })
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -98,12 +98,14 @@ class MyPageLookbookAddFragment() : BaseFragment<FragmentMyPageLookbookAddBindin
         binding.myPageLookbookAddTopEditText.setText(lookbookItem.top)
         binding.myPageLookbookAddPantsEditText.setText(lookbookItem.pants)
         binding.myPageLookbookAddShoesEditText.setText(lookbookItem.shoes)
+        binding.myPageLookbookAddOtherEditText.setText(lookbookItem.other)
     }
     private fun setEditTextLayout(){
         binding.myPageLookbookAddDetailEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "detail"))
         binding.myPageLookbookAddTopEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "top"))
         binding.myPageLookbookAddPantsEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "pants"))
         binding.myPageLookbookAddShoesEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "shoes"))
+        binding.myPageLookbookAddOtherEditText.addTextChangedListener(AdditionPageTextWatcher(lookbookItem, "other"))
     }
     private fun setTime(){
         val currentTime : Long = System.currentTimeMillis()
