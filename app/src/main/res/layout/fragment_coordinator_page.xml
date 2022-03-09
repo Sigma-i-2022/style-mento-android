@@ -54,7 +54,8 @@
                         android:background="@drawable/bg_circle"
                         android:backgroundTint="@color/gray_d"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:imageUrlCircle="@{viewModel.coordinator.imageUrl}"/>
 
                     <LinearLayout
                         android:id="@+id/coordinator_page_text_layout"

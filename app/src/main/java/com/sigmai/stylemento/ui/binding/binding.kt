@@ -6,9 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.global.util.GlideUtil
 import com.sigmai.stylemento.ui.home.adapter.TagAdapter
 
-@BindingAdapter("app:imageUrl")
-fun bindImageUrl(view: ImageView, imageUrl: String) {
+@BindingAdapter("app:imageUrl12")
+fun bindImageUrlRadius12(view: ImageView, imageUrl: String) {
     GlideUtil.setImageWithRadius(imageUrl, view, 12)
+}
+
+@BindingAdapter("app:imageUrlCircle")
+fun bindImageUrlCircle(view: ImageView, imageUrl: String?) {
+    GlideUtil.setImageCircle(imageUrl, view)
 }
 
 @BindingAdapter("app:tags")

@@ -28,6 +28,14 @@ object GlideUtil {
             .into(view)
     }
 
+    fun setImageCircle(url: String?, view: ImageView) {
+        Glide.with(view.context)
+            .load(url)
+            .error(R.drawable.ic_logo)
+            .circleCrop()
+            .into(view)
+    }
+
     fun getRandomImageUrl() : String {
         val randomNumber = (180..250).random()
         return "https://picsum.photos/$randomNumber"

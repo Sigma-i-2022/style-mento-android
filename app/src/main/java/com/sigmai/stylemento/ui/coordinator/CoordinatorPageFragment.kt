@@ -1,10 +1,7 @@
 package com.sigmai.stylemento.ui.coordinator
 
-import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentCoordinatorPageBinding
 import com.sigmai.stylemento.global.base.BaseFragment
@@ -15,7 +12,6 @@ class CoordinatorPageFragment :
     BaseFragment<FragmentCoordinatorPageBinding>() {
     override val layoutResourceId = R.layout.fragment_coordinator_page
     private val viewModel: CoordinatorPageViewModel by activityViewModels()
-    private var introductionState = 0
 
     override fun initDataBinding() {
         super.initDataBinding()
@@ -26,7 +22,6 @@ class CoordinatorPageFragment :
     }
 
     override fun initState() {
-        super.initState()
         val position = arguments?.getInt("position")!!
         viewModel.getCoordinatorInfo(position)
     }
@@ -47,12 +42,5 @@ class CoordinatorPageFragment :
         binding.coordinatorPageViewPager.isUserInputEnabled = false
         binding.coordinatorPageViewPager.adapter = CoordinatorPageViewPagerAdapter(this)
         binding.coordinatorPageTagRecycler.adapter = TagAdapter()
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        Glide.with(this).load(viewModel.coordinator.value?.imageUrl)
-            .into(binding.coordinatorPageImg)
     }
 }
