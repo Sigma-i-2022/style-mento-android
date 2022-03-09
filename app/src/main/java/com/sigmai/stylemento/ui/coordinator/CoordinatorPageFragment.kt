@@ -17,17 +17,21 @@ class CoordinatorPageFragment :
     private val viewModel: CoordinatorPageViewModel by activityViewModels()
     private var introductionState = 0
 
-    private var position: Int = 0
-    override fun initState() {
-        super.initState()
-        position = arguments?.getInt("position")!!
-        viewModel.getCoordinatorInfo(position)
-    }
-
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
 
+        setupRecyclerView()
+        setupObserver()
+    }
+
+    override fun initState() {
+        super.initState()
+        val position = arguments?.getInt("position")!!
+        viewModel.getCoordinatorInfo(position)
+    }
+
+    private fun setupObserver() {
         viewModel.extendingIntroductionEvent.observe(this) {
             if (introductionState == 0) {
                 binding.coordinatorPageIntroductionText.maxLines = 10
@@ -46,10 +50,9 @@ class CoordinatorPageFragment :
                 arguments
             )
         }
-        recyclerView()
     }
 
-    private fun recyclerView() {
+    private fun setupRecyclerView() {
         binding.coordinatorPageViewPager.isUserInputEnabled = false
         binding.coordinatorPageViewPager.adapter = CoordinatorPageViewPagerAdapter(this)
         binding.coordinatorPageTagRecycler.adapter = TagAdapter()
