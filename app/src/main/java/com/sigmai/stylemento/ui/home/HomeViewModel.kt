@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.findNavController
 import com.sigmai.stylemento.R
-import com.sigmai.stylemento.data.model.FavoriteCoordinator
 import com.sigmai.stylemento.data.model.RecommendedCoordinator
 import com.sigmai.stylemento.data.model.User
 import com.sigmai.stylemento.di.AppConfigs
@@ -30,14 +29,6 @@ class HomeViewModel : ViewModel() {
             recommendedCoordinatorList = getRecommendedCoordinatorListUseCase()
         }
     }
-
-    val favoriteList = listOf(
-        FavoriteCoordinator("1"),
-        FavoriteCoordinator("1"),
-        FavoriteCoordinator("1"),
-        FavoriteCoordinator("1"),
-        FavoriteCoordinator("1")
-    )
 
     fun startNotificationFragment() {
         startNotification.call()
