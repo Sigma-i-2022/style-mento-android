@@ -32,15 +32,6 @@ class CoordinatorPageFragment :
     }
 
     private fun setupObserver() {
-        viewModel.extendingIntroductionEvent.observe(this) {
-            if (introductionState == 0) {
-                binding.coordinatorPageIntroductionText.maxLines = 10
-                introductionState = 1
-            } else {
-                binding.coordinatorPageIntroductionText.maxLines = 3
-                introductionState = 0
-            }
-        }
         viewModel.startBack.observe(this) {
             findNavController().navigateUp()
         }
