@@ -16,8 +16,6 @@ class CoordinatorPageViewModel : ViewModel() {
 
     val startBack = SingleLiveEvent<Any>()
     val startInstruction = SingleLiveEvent<Any>()
-    val startWork = SingleLiveEvent<Any>()
-    val startReview = SingleLiveEvent<Any>()
     val startChat = SingleLiveEvent<Any>()
     val startReserve = SingleLiveEvent<Any>()
 
@@ -26,12 +24,6 @@ class CoordinatorPageViewModel : ViewModel() {
     }
     fun onInstructionClick(){
         startInstruction.call()
-    }
-    fun onWorkClick(){
-        startWork.call()
-    }
-    fun onReviewClick(){
-        startReview.call()
     }
     fun onChatClick(){
         startChat.call()

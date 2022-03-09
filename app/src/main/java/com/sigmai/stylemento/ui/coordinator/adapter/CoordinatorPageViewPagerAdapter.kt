@@ -9,9 +9,12 @@ import java.lang.Exception
 
 class CoordinatorPageViewPagerAdapter(f : Fragment) : FragmentStateAdapter(f){
     override fun getItemCount(): Int = 2
-    private val fragments = listOf<Fragment>(CoordinatorPageWorkFragment(), MyPageReviewFragment())
 
     override fun createFragment(position: Int): Fragment {
-        return fragments[position]
+        return when(position) {
+            0 -> CoordinatorPageWorkFragment()
+            1 -> MyPageReviewFragment()
+            else -> throw Exception("FragmentStateAdapter, 잘못된 position 입니다.")
+        }
     }
 }
