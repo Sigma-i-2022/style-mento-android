@@ -8,8 +8,3 @@ import com.sigmai.stylemento.data.model.Notification
 fun setNotifications(listView: RecyclerView, items: List<Notification>) {
     (listView.adapter as NotificationAdapter).setList(items)
 }
-
-@BindingAdapter("app:tags")
-fun setTags(listView: RecyclerView, items: List<String>) {
-    (listView.adapter as TagAdapter).setList(items)
-}

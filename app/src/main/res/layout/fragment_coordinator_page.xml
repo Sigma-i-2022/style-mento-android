@@ -34,7 +34,7 @@
                     android:layout_height="30dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:background="@drawable/ic_arrow_back"
-                    android:onClick="@{()->viewModel.onBackClick()}"
+                    android:onClick="@{()->viewModel.onBack()}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -90,7 +90,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:orientation="horizontal"
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/item_tag"
+                            tools:itemCount="3"
+                            app:tags="@{viewModel.coordinator.tagList}"/>
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -105,7 +108,7 @@
                     android:maxLines="3"
                     android:textStyle="bold"
                     android:text="@{viewModel.coordinator.introduction}"
-                    android:onClick="@{()->viewModel.onInstructionClick()}"
+                    android:onClick="@{()->viewModel.onInstruction()}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/coordinator_page_profile_layout" />
 
