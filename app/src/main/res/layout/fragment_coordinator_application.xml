@@ -44,7 +44,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:background="@drawable/ic_close"
-                    android:backgroundTint="#55568C"/>
+                    android:backgroundTint="#55568C"
+                    android:onClick="@{()->viewModel.onFinish()}"/>
 
                 <TextView
                     android:id="@+id/application_title"

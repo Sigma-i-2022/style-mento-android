@@ -1,6 +1,5 @@
 package com.sigmai.stylemento.ui.coordinator_application
 
-import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
@@ -14,5 +13,14 @@ class CoordinatorApplicationFragment : BaseFragment<FragmentCoordinatorApplicati
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
+
+        setupObserver()
+    }
+
+    private fun setupObserver() {
+        viewModel.finishEvent.observe(this) {
+            val navController = findNavController()
+            navController.navigateUp()
+        }
     }
 }
