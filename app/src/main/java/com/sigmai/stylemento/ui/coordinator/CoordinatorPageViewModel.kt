@@ -12,13 +12,9 @@ class CoordinatorPageViewModel : ViewModel() {
     val coordinator: LiveData<Coordinator> get() = _coordinator
     val isExtended = MutableLiveData(false)
 
-    val startBack = SingleLiveEvent<Any>()
     val startChat = SingleLiveEvent<Any>()
     val startReserve = SingleLiveEvent<Any>()
 
-    fun onBack(){
-        startBack.call()
-    }
     fun onClickInstruction(){
         isExtended.value = !(isExtended.value!!)
     }

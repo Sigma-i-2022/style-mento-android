@@ -42,7 +42,7 @@ class SmToolbar(context: Context, attrs: AttributeSet) : Toolbar(context, attrs)
         inflate(context, R.layout.view_toolbar, this)
 
         val titleTextView = findViewById<TextView>(R.id.title)
-        val backButton = findViewById<ImageButton>(R.id.back_button)
+        val backButton = findViewById<Button>(R.id.back_button)
 
         titleTextView.text = title
         backButton.visibility = if(showBackButton) View.VISIBLE else View.GONE

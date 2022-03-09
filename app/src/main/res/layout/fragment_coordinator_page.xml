@@ -25,27 +25,26 @@
                 android:id="@+id/coordinator_page_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
                 android:descendantFocusability="blocksDescendants">
 
-                <ImageView
-                    android:id="@+id/coordinator_page_back_img"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    android:background="@drawable/ic_arrow_back"
-                    android:onClick="@{()->viewModel.onBack()}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <com.sigmai.stylemento.global.component.SmToolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@color/white"
+                    android:elevation="8dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:title="코디네이터"
+                    app:showBackButton="true"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/coordinator_page_profile_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="16dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/coordinator_page_back_img">
+                    app:layout_constraintTop_toBottomOf="@id/toolbar">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/coordinator_page_img"

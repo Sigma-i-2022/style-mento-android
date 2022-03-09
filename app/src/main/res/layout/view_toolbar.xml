@@ -16,8 +16,8 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         tools:ignore="ContentDescription"
-        android:layout_marginStart="@dimen/horizontal_margin"
-        android:background="@drawable/ic_arrow_back"/>
+        android:background="@drawable/ic_arrow_back"
+        android:layout_gravity="start"/>
 
     <TextView
         android:id="@+id/title"

@@ -13,39 +13,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/coordinator_page_work_back_img"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginHorizontal="@dimen/horizontal_margin"
-            android:layout_marginTop="20dp"
-            android:onClick="@{()->viewModel.onBack()}"
-            android:background="@drawable/ic_arrow_back" />
-
-        <TextView
-            style="@style/header3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:text="작품"
-            android:textStyle="bold" />
-
-        <View
-            android:id="@+id/coordinator_page_work_line"
+        <com.sigmai.stylemento.global.component.SmToolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@id/coordinator_page_work_back_img"
-            android:layout_marginTop="24dp"
-            android:background="@color/gray_f" />
+            android:layout_height="70dp"
+            android:background="@color/white"
+            android:elevation="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="작품"
+            app:showBackButton="true"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/coordinator_page_work_scroll_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/coordinator_page_work_line"
+            android:layout_below="@id/toolbar"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:pieces="@{viewModel.coordinator.pieceList}"/>

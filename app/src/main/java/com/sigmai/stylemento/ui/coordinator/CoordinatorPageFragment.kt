@@ -19,6 +19,7 @@ class CoordinatorPageFragment :
 
         setupRecyclerView()
         setupObserver()
+        setupButton()
     }
 
     override fun initState() {
@@ -26,10 +27,13 @@ class CoordinatorPageFragment :
         viewModel.getCoordinatorInfo(position)
     }
 
-    private fun setupObserver() {
-        viewModel.startBack.observe(this) {
+    private fun setupButton() {
+        binding.toolbar.setOnBackListener {
             findNavController().navigateUp()
         }
+    }
+
+    private fun setupObserver() {
         viewModel.startReserve.observe(this) {
             findNavController().navigate(
                 R.id.action_coordinator_page_to_reservation_time_page,

@@ -26,10 +26,6 @@ class CoordinatorPagePieceScrollFragment : BaseFragment<FragmentCoordinatorPageW
         super.initDataBinding()
         binding.viewModel = viewModel
 
-        viewModel.startBack.observe(this) {
-            findNavController().navigateUp()
-        }
-
         binding.coordinatorPageWorkScrollRecycler.adapter = CoordinatorPagePieceItemAdapter()
         binding.coordinatorPageWorkScrollRecycler.scrollToPosition(position)
 //        viewModel.position.observe(this) {
