@@ -25,7 +25,8 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="@dimen/horizontal_margin"
             android:background="@drawable/background_radius_12"
-            tools:backgroundTint="@color/primary"/>
+            tools:backgroundTint="@color/primary"
+            app:imageUrl="@{item.imageUrl}"/>
 
         <TextView
             android:id="@+id/coordinator_nickname"

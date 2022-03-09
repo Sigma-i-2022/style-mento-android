@@ -2,19 +2,16 @@ package com.sigmai.stylemento.ui.coordinator.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.ItemCoordinatorBinding
 import com.sigmai.stylemento.domain.entity.Coordinator
-import com.sigmai.stylemento.ui.home.adapter.TagAdapter
-import com.sigmai.stylemento.global.util.GlideUtil
 import com.sigmai.stylemento.ui.coordinator.CoordinatorViewModel
+import com.sigmai.stylemento.ui.home.adapter.TagAdapter
 
-class CoordinatorAdapter(val viewModel: CoordinatorViewModel) : ListAdapter<Coordinator, CoordinatorAdapter.CoordinatorViewHolder>(CoordinatorDiffCallback()) {
+class CoordinatorAdapter(val viewModel: CoordinatorViewModel) :
+    ListAdapter<Coordinator, CoordinatorAdapter.CoordinatorViewHolder>(CoordinatorDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoordinatorViewHolder {
         return CoordinatorViewHolder.from(parent, viewModel)
     }
@@ -24,10 +21,12 @@ class CoordinatorAdapter(val viewModel: CoordinatorViewModel) : ListAdapter<Coor
         holder.bind(item)
     }
 
-    class CoordinatorViewHolder private constructor(val binding: ItemCoordinatorBinding, val viewModel: CoordinatorViewModel) : RecyclerView.ViewHolder(binding.root) {
+    class CoordinatorViewHolder private constructor(
+        val binding: ItemCoordinatorBinding,
+        val viewModel: CoordinatorViewModel
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Coordinator) {
             binding.item = item
-            GlideUtil.setImageWithRadius(item.imageUrl, binding.coordinatorPhoto, 12)
             binding.coordinatorTags.adapter = TagAdapter()
             binding.pieceList.adapter = HorizontalPieceAdapter()
 
@@ -39,7 +38,7 @@ class CoordinatorAdapter(val viewModel: CoordinatorViewModel) : ListAdapter<Coor
         }
 
         companion object {
-            fun from(parent: ViewGroup, viewModel: CoordinatorViewModel) : CoordinatorViewHolder {
+            fun from(parent: ViewGroup, viewModel: CoordinatorViewModel): CoordinatorViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemCoordinatorBinding.inflate(layoutInflater, parent, false)
 
