@@ -14,6 +14,7 @@ class ApplicationViewPagerViewModel : ViewModel() {
 
     val moveNextPageEvent = SingleLiveEvent<Any>()
     val movePreviousEvent = SingleLiveEvent<Any>()
+    val finishEvent = SingleLiveEvent<Any>()
 
     fun onPrevious(view: View) {
         movePreviousEvent.call()
@@ -31,5 +32,9 @@ class ApplicationViewPagerViewModel : ViewModel() {
     fun onAdd() {
         snsList.value!!.add("")
         snsList.value = snsList.value!!.toMutableList()
+    }
+
+    fun onFinish() {
+        finishEvent.call()
     }
 }
