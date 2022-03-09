@@ -33,4 +33,8 @@
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
+    <style name="customTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
