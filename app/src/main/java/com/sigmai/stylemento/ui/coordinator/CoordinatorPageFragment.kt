@@ -46,16 +46,17 @@ class CoordinatorPageFragment :
                 arguments
             )
         }
+        recyclerView()
+    }
+
+    private fun recyclerView() {
+        binding.coordinatorPageViewPager.isUserInputEnabled = false
+        binding.coordinatorPageViewPager.adapter = CoordinatorPageViewPagerAdapter(this)
+        binding.coordinatorPageTagRecycler.adapter = TagAdapter()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.coordinatorPageViewPager.isUserInputEnabled = false
-        binding.coordinatorPageViewPager.adapter = CoordinatorPageViewPagerAdapter(this)
-
-        val tagAdapter = TagAdapter()
-        binding.coordinatorPageTagRecycler.adapter = tagAdapter
 
         Glide.with(this).load(viewModel.coordinator.value?.imageUrl)
             .into(binding.coordinatorPageImg)
