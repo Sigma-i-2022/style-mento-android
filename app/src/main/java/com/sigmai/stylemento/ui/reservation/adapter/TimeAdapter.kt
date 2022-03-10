@@ -11,14 +11,14 @@ import com.sigmai.stylemento.global.util.TimeUtil
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
 
 
-class TimeSelectorAdapter(private val viewModel : ReservationViewModel) : RecyclerView.Adapter<TimeSelectorAdapter.ViewHolder>() {
-    private val dataSet = TimeUtil.timeList
+class TimeAdapter(items : List<String>) : RecyclerView.Adapter<TimeAdapter.ViewHolder>() {
+    private val dataSet = items
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(dataSet[position], this, position)
+        holder.bind(dataSet[position])
     }
 
     override fun getItemCount(): Int {
@@ -26,25 +26,17 @@ class TimeSelectorAdapter(private val viewModel : ReservationViewModel) : Recycl
     }
 
     class ViewHolder(val binding: ItemTimeSelectorBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: TimeItem, adapter: TimeSelectorAdapter, position: Int) {
-            binding.item = item.time
-
-            if(item.isChecked) binding.timeSelectorText.setBackgroundResource(R.drawable.button_background_type_2)
-            else binding.timeSelectorText.setBackgroundResource(R.drawable.button_background_type_1)
-
-            binding.root.setOnClickListener {
-                item.isChecked = !item.isChecked
-                adapter.notifyItemChanged(position)
-            }
+        fun bind(item: String) {
+            binding.item = item
             binding.executePendingBindings()
         }
 
         companion object {
-            fun from(parent: ViewGroup): TimeSelectorAdapter.ViewHolder {
+            fun from(parent: ViewGroup): TimeAdapter.ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemTimeSelectorBinding.inflate(layoutInflater, parent, false)
 
-                return TimeSelectorAdapter.ViewHolder(binding)
+                return TimeAdapter.ViewHolder(binding)
             }
         }
     }

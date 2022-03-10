@@ -186,9 +186,13 @@
                             android:id="@+id/reservation_payment_service_price_text"
                             style="@style/header4"
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            style="@style/header4"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="end"
-                            android:text="service_price" />
+                            android:text="원" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -215,14 +219,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="end"
-                            android:text="service_date" />
+                            android:text="@{viewModel.receipt.date}" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
                             style="@style/header4"
@@ -231,21 +235,15 @@
                             android:text="시간"
                             android:textColor="@color/gray_8"/>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_weight="1" />
-
-                        <TextView
-                            android:id="@+id/reservation_payment_service_time_text"
-                            style="@style/header4"
-                            android:layout_width="wrap_content"
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/reservation_payment_service_time_recycler"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="end"
-                            android:text="service_time" />
+                            android:layout_marginTop="4dp"
+                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                            app:spanCount="5" />
                     </LinearLayout>
                 </LinearLayout>
-
                 <TextView
                     android:id="@+id/reservation_payment_pay_way_text"
                     style="@style/header3"
@@ -342,7 +340,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    android:layout_marginStart="20dp"
                     android:layout_marginTop="12dp"
                     android:onClick="@{()->viewModel.onNextClick()}"
                     android:paddingVertical="12dp"

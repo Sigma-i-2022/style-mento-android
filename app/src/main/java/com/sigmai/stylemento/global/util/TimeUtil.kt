@@ -4,6 +4,8 @@ import com.sigmai.stylemento.data.model.TimeItem
 
 object TimeUtil {
     val timeList = listOf(
+        TimeItem("08:00"),
+        TimeItem("08:30"),
         TimeItem("09:00"),
         TimeItem("09:30"),
         TimeItem("10:00"),
@@ -33,4 +35,13 @@ object TimeUtil {
         TimeItem("22:00"),
         TimeItem("22:30")
     )
+
+    fun getSelectedTimeList(timeList : List<TimeItem>) : List<String>{
+        val list = mutableListOf<String>()
+        for(item in timeList){
+            if(item.isChecked)
+                list.add(item.time)
+        }
+        return list
+    }
 }

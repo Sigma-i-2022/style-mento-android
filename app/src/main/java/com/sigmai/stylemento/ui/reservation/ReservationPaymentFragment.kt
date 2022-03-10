@@ -11,6 +11,7 @@ import com.sigmai.stylemento.databinding.FragmentReservationPaymentBinding
 import com.sigmai.stylemento.databinding.FragmentReservationServiceSetBinding
 import com.sigmai.stylemento.databinding.FragmentReservationTimeSetBinding
 import com.sigmai.stylemento.global.base.BaseFragment
+import com.sigmai.stylemento.ui.reservation.adapter.TimeAdapter
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationServiceSetViewModel
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationTimeSetViewModel
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
@@ -39,6 +40,9 @@ class ReservationPaymentFragment : BaseFragment<FragmentReservationPaymentBindin
         viewInit()
     }
     private fun viewInit(){
+        binding.reservationPaymentServicePriceText.text = viewModel.receipt.value!!.price.toString()
+        binding.reservationPaymentServiceTimeRecycler.adapter = TimeAdapter(viewModel.receipt.value!!.time)
+
         if(viewModel.isAllSelected.value!!)
             binding.reservationPaymentAllAgreeImg.setBackgroundResource(R.drawable.button_background_type_1)
         else

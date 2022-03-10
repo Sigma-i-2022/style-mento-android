@@ -12,7 +12,9 @@ import com.sigmai.stylemento.data.model.Receipt
 import com.sigmai.stylemento.data.model.User
 import com.sigmai.stylemento.databinding.FragmentReservationServiceSetBinding
 import com.sigmai.stylemento.global.base.BaseFragment
+import com.sigmai.stylemento.global.util.TimeUtil
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
+import java.text.SimpleDateFormat
 
 class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSetBinding>() {
     override val layoutResourceId = R.layout.fragment_reservation_service_set
@@ -26,11 +28,7 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
             findNavController().navigateUp()
         }
         viewModel.startNext.observe(this) {
-            val receipt = viewModel.receipt
-            if(viewModel.serviceType.value == 0) receipt.value!!.serviceName = "스타일 피드백"
-            else if(viewModel.serviceType.value == 1) receipt.value!!.serviceName = "구매 추천"
-            if(viewModel.serviceWay.value == 0) receipt.value!!.serviceWay = "채팅"
-            else if(viewModel.serviceWay.value == 1) receipt.value!!.serviceWay = "화상"
+            setReceipt()
             findNavController().navigate(R.id.action_reservation_service_page_to_reservation_payment_page)
         }
         setImageClick()
@@ -110,7 +108,8 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
     }
     private fun checkButtonEnabled(){
         if(viewModel.serviceType.value != -1 && viewModel.serviceWay.value != -1 &&
-                viewModel.requestText.value!!.length > 5){
+            viewModel.requestText.value!!.isNotEmpty()
+        ){
             binding.reservationTimeSelectionNextButton.isEnabled = true
             binding.reservationTimeSelectionNextButton.setBackgroundResource(R.color.primary)
         }
@@ -118,5 +117,18 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
             binding.reservationTimeSelectionNextButton.isEnabled = false
             binding.reservationTimeSelectionNextButton.setBackgroundResource(R.color.gray_d)
         }
+    }
+    private fun setReceipt(){
+        val receipt = viewModel.receipt
+        if(viewModel.serviceType.value == 0) receipt.value!!.serviceName = "스타일 피드백"
+        else if(viewModel.serviceType.value == 1) receipt.value!!.serviceName = "구매 추천"
+        if(viewModel.serviceWay.value == 0) receipt.value!!.serviceWay = "채팅"
+        else if(viewModel.serviceWay.value == 1) receipt.value!!.serviceWay = "화상"
+
+        receipt.value!!.price = 3000
+        val currentTime : Long = System.currentTimeMillis()
+        val dataFormat = SimpleDateFormat("yyyy년 MM월 dd일")
+        receipt.value!!.date = dataFormat.format(currentTime)
+        receipt.value!!.time = TimeUtil.getSelectedTimeList(TimeUtil.timeList)
     }
 }
