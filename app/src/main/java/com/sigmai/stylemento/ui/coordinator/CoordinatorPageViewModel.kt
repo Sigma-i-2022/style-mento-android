@@ -3,11 +3,15 @@ package com.sigmai.stylemento.ui.coordinator
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sigmai.stylemento.data.repository.datasource.DummyCoordinatorDataSource
+import androidx.lifecycle.viewModelScope
+import com.sigmai.stylemento.data.repository.coordinator.DummyCoordinatorRepository
 import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.global.util.SingleLiveEvent
+import kotlinx.coroutines.launch
 
 class CoordinatorPageViewModel : ViewModel() {
+    val repository = DummyCoordinatorRepository()
+
     private val _coordinator = MutableLiveData<Coordinator>()
     val coordinator: LiveData<Coordinator> get() = _coordinator
     val isExtended = MutableLiveData(false)
@@ -26,6 +30,8 @@ class CoordinatorPageViewModel : ViewModel() {
     }
 
     fun loadCoordinatorInfo(position : Int) {
-        _coordinator.postValue(Coordinator.from(DummyCoordinatorDataSource().getCoordinatorList()[position]))
+        viewModelScope.launch {
+            _coordinator.postValue(Coordinator.from( repository.getCoordinatorList()[position]))
+        }
     }
 }
