@@ -13,6 +13,7 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.ActivityMainBinding
 import com.sigmai.stylemento.ui.login.LoginHostActivity
 import com.sigmai.stylemento.global.base.BaseActivity
+import timber.log.Timber
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override val layoutResourceId = R.layout.activity_main
@@ -22,6 +23,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Timber.plant(Timber.DebugTree())
 
         /**
          * LoginActivity 를 띄우려면 이 주석을 제거하세요.
