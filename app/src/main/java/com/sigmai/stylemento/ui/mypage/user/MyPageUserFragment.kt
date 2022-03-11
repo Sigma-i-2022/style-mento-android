@@ -49,6 +49,6 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
         binding.myPageUserViewPager.isUserInputEnabled = false
         binding.myPageUserViewPager.adapter = userAdapter
 
-        Glide.with(this).load(Client.getUserInfo().profile).into(binding.myPageUserProfileImg)
+//        Glide.with(this).load(Client.getUserInfo().profile).into(binding.myPageUserProfileImg)
     }
 }

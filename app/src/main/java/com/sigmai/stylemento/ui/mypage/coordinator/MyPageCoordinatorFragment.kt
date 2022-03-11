@@ -75,8 +75,8 @@ class MyPageCoordinatorFragment(private var showMenu: Int) :
 
         binding.myPageCoordinatorReplyLayout.visibility = View.GONE
 
-        Glide.with(this).load(Client.getCoordinatorInfo().profile)
-            .into(binding.myPageCoordinatorImg)
+//        Glide.with(this).load(Client.getCoordinatorInfo().profile)
+//            .into(binding.myPageCoordinatorImg)
     }
 
     private fun showWork() {
