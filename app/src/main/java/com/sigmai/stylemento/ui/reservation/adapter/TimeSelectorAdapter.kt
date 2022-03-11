@@ -11,7 +11,7 @@ import com.sigmai.stylemento.global.util.TimeUtil
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
 
 
-class TimeSelectorAdapter(private val viewModel : ReservationViewModel) : RecyclerView.Adapter<TimeSelectorAdapter.ViewHolder>() {
+class TimeSelectorAdapter(viewModel: ReservationViewModel) : RecyclerView.Adapter<TimeSelectorAdapter.ViewHolder>() {
     private val dataSet = TimeUtil.timeList
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)

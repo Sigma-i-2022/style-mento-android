@@ -4,9 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sigmai.stylemento.data.model.Receipt
+import com.sigmai.stylemento.data.model.TimeItem
 import com.sigmai.stylemento.data.repository.datasource.DummyCoordinatorDataSource
 import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.global.util.SingleLiveEvent
+import com.sigmai.stylemento.global.util.TimeUtil
 
 class ReservationViewModel : ViewModel() {
     private val _coordinator = MutableLiveData<Coordinator>()

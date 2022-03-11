@@ -125,10 +125,9 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
         if(viewModel.serviceWay.value == 0) receipt.value!!.serviceWay = "채팅"
         else if(viewModel.serviceWay.value == 1) receipt.value!!.serviceWay = "화상"
 
+        val date = arguments?.getString("date")!!
+        viewModel.receipt.value!!.date = date
+        viewModel.receipt.value!!.time = TimeUtil.getSelectedTimeList(TimeUtil.timeList)
         receipt.value!!.price = 3000
-        val currentTime : Long = System.currentTimeMillis()
-        val dataFormat = SimpleDateFormat("yyyy년 MM월 dd일")
-        receipt.value!!.date = dataFormat.format(currentTime)
-        receipt.value!!.time = TimeUtil.getSelectedTimeList(TimeUtil.timeList)
     }
 }

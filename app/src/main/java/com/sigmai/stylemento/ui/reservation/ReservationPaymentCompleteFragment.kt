@@ -13,6 +13,7 @@ import com.sigmai.stylemento.databinding.FragmentReservationPaymentCompleteBindi
 import com.sigmai.stylemento.databinding.FragmentReservationServiceSetBinding
 import com.sigmai.stylemento.databinding.FragmentReservationTimeSetBinding
 import com.sigmai.stylemento.global.base.BaseFragment
+import com.sigmai.stylemento.ui.reservation.adapter.TimeAdapter
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationServiceSetViewModel
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationTimeSetViewModel
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
@@ -34,6 +35,9 @@ class ReservationPaymentCompleteFragment : BaseFragment<FragmentReservationPayme
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.reservationCompletePayWayPriceText.text = viewModel.receipt.value!!.price.toString()
+        binding.reservationCompleteServicePriceText.text = viewModel.receipt.value!!.price.toString()
+        binding.reservationCompleteServiceTimeRecycler.adapter = TimeAdapter(viewModel.receipt.value!!.time)
         Glide.with(this).load(viewModel.coordinator.value?.imageUrl)
             .into(binding.reservationCompleteCoordinatorImg)
     }
