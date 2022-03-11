@@ -25,7 +25,7 @@ class CoordinatorPageViewModel : ViewModel() {
         startReserve.call()
     }
 
-    fun getCoordinatorInfo(position : Int) {
+    fun loadCoordinatorInfo(position : Int) {
         _coordinator.postValue(Coordinator.from(DummyCoordinatorDataSource().getCoordinatorList()[position]))
     }
 }

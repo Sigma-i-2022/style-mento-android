@@ -2,7 +2,6 @@ package com.sigmai.stylemento.ui.coordinator
 
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentCoordinatorPageBinding
@@ -26,7 +25,7 @@ class CoordinatorPageFragment :
 
     override fun initState() {
         val position = arguments?.getInt("position")!!
-        viewModel.getCoordinatorInfo(position)
+        viewModel.loadCoordinatorInfo(position)
     }
 
     private fun setupButton() {
