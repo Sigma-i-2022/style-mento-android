@@ -1,5 +1,6 @@
 package com.sigmai.stylemento.ui.coordinator
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
@@ -17,9 +18,19 @@ class CoordinatorPageWorkFragment : BaseFragment<FragmentCoordinatorPageWorkBind
         binding.viewModel = viewModel
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun initState() {
+        setupObserver()
+        setupRecyclerViewAdapter()
+    }
 
+    @SuppressLint("NotifyDataSetChanged")
+    private fun setupObserver() {
+        viewModel.coordinator.observe(this) {
+            binding.coordinatorPageWorkRecycler.adapter!!.notifyDataSetChanged()
+        }
+    }
+
+    private fun setupRecyclerViewAdapter() {
         binding.coordinatorPageWorkRecycler.adapter = CoordinatorPageWorkAdapter()
     }
 }
