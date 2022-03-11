@@ -39,8 +39,8 @@ object GlideUtil {
 
         Glide.with(view.context)
             .load(url)
-            .placeholder(R.drawable.ic_logo)
-            .error(R.drawable.ic_logo)
+            .placeholder(R.drawable.ic_default_photo)
+            .error(R.drawable.ic_default_photo)
             .circleCrop()
             .into(view)
     }

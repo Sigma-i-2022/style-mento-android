@@ -1,14 +1,13 @@
 package com.sigmai.stylemento.domain.entity
 
-import java.util.*
-
 data class Review(
     val rating: Int,
     val nickname: String,
-    val profileImageUrl: String?,
-    val tall: Int?,
-    val weight: Int?,
-    val date: Date?,
+    val profileImageUrl: String? = null,
+    val tall: Int? = null,
+    val weight: Int? = null,
+    val date: String? = null,
     val content: String,
-    val reply: Reply
+    val reply: String? = null,
+    val hasReply: Boolean
 )
