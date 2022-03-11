@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:tools="http://schemas.android.com/tools">
-
     <data>
-
         <variable
             name="item"
             type="com.sigmai.stylemento.data.model.ReviewItem" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,12 +83,22 @@
             android:id="@+id/review_item_content_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
+            android:layout_marginTop="8dp"
             android:backgroundTint="@color/trans_parent"
             android:ellipsize="end"
             android:maxLines="2"
             android:text="@{item.content}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/review_item_owner_img" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_radius_12"
+            android:backgroundTint="@color/gray_f"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/review_item_content_editText"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
