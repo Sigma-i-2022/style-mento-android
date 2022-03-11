@@ -2,6 +2,8 @@ package com.sigmai.stylemento.ui.coordinator
 
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentCoordinatorPageBinding
 import com.sigmai.stylemento.global.base.BaseFragment
@@ -43,8 +45,16 @@ class CoordinatorPageFragment :
     }
 
     private fun setupRecyclerView() {
-        binding.coordinatorPageViewPager.isUserInputEnabled = false
-        binding.coordinatorPageViewPager.adapter = CoordinatorPageViewPagerAdapter(this)
+        binding.coordinatorPageViewPager.apply {
+            isUserInputEnabled = false
+            adapter = CoordinatorPageViewPagerAdapter(this@CoordinatorPageFragment)
+            binding.tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(tab: TabLayout.Tab?) { currentItem = tab!!.position }
+                override fun onTabUnselected(tab: TabLayout.Tab?) {}
+                override fun onTabReselected(tab: TabLayout.Tab?) {}
+            })
+        }
+
         binding.coordinatorPageTagRecycler.adapter = TagAdapter()
     }
 }

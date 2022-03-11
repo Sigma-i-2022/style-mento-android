@@ -1,6 +1,7 @@
 package com.sigmai.stylemento.ui.mypage.coordinator
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.Client
