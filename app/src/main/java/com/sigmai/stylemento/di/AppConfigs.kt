@@ -12,7 +12,7 @@ import com.sigmai.stylemento.ui.coordinator_application.ApplicationViewPagerView
 
 object AppConfigs {
     val userRepository: UserRepository = UserRepositoryImpl()
-    val coordinatorRepository: CoordinatorRepository = DummyCoordinatorRepository(DummyCoordinatorDataSource())
+    val coordinatorRepository: CoordinatorRepository = DummyCoordinatorRepository()
     val getCoordinatorListUseCase: GetCoordinatorListUseCase = GetCoordinatorListUseCase(coordinatorRepository)
     val getRecommendedCoordinatorListUseCase = GetRecommendedCoordinatorListUseCase()
 
