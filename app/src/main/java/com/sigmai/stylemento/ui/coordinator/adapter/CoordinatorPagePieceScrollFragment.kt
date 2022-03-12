@@ -18,11 +18,18 @@ class CoordinatorPagePieceScrollFragment : BaseFragment<FragmentCoordinatorPageW
 
     override fun initState() {
         setupRecyclerView()
+        setupButton()
     }
 
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
+    }
+
+    private fun setupButton() {
+        binding.toolbar.setOnBackListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun setupRecyclerView() {
