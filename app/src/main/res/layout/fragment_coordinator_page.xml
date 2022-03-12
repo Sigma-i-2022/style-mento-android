@@ -3,8 +3,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.sigmai.stylemento.ui.coordinator.CoordinatorPageViewModel" />
@@ -32,63 +35,61 @@
                     android:layout_height="70dp"
                     android:background="@color/white"
                     android:elevation="8dp"
+                    app:isMyPage="@{viewModel.isMyPage}"
                     app:layout_constraintTop_toTopOf="parent"
                     app:showBackButton="true"
                     app:title="코디네이터"
-                    tools:layout_editor_absoluteX="0dp"
-                    app:isMyPage="@{viewModel.isMyPage}"/>
+                    tools:layout_editor_absoluteX="0dp" />
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/coordinator_page_img"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:background="@drawable/bg_circle"
-                        android:backgroundTint="@color/gray_d"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/toolbar"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginStart="@dimen/horizontal_margin"
-                        app:imageUrlCircle="@{viewModel.coordinator.imageUrl}"/>
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/coordinator_page_img"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="@dimen/horizontal_margin"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/gray_d"
+                    app:imageUrlCircle="@{viewModel.coordinator.imageUrl}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-                    <LinearLayout
-                        android:id="@+id/coordinator_page_text_layout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:orientation="vertical"
-                        app:layout_constraintStart_toEndOf="@id/coordinator_page_img"
-                        app:layout_constraintTop_toTopOf="@id/coordinator_page_img">
+                <TextView
+                    android:id="@+id/coordinator_page_name_text"
+                    style="@style/header3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@{viewModel.coordinator.nickname}"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/coordinator_page_img"
+                    app:layout_constraintTop_toTopOf="@id/coordinator_page_img"
+                    tools:text="coordinator_name" />
 
-                        <TextView
-                            android:id="@+id/coordinator_page_name_text"
-                            style="@style/header3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            tools:text="coordinator_name"
-                            android:text="@{viewModel.coordinator.nickname}"/>
+                <TextView
+                    android:id="@+id/coordinator_page_email_text"
+                    style="@style/body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:text="@{viewModel.coordinator.email}"
+                    android:textColor="@color/gray_8"
+                    app:layout_constraintStart_toStartOf="@id/coordinator_page_name_text"
+                    app:layout_constraintTop_toBottomOf="@id/coordinator_page_name_text"
+                    app:layout_goneMarginTop="4dp"
+                    tools:text="coordinator_email" />
 
-                        <TextView
-                            android:id="@+id/coordinator_page_email_text"
-                            style="@style/body1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="1dp"
-                            android:textColor="@color/gray_8"
-                            tools:text="coordinator_email"
-                            android:text="@{viewModel.coordinator.email}"/>
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/coordinator_page_tag_recycler"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:orientation="horizontal"
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                            tools:listitem="@layout/item_tag"
-                            tools:itemCount="3"
-                            app:tags="@{viewModel.coordinator.tagList}"/>
-                    </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/coordinator_page_tag_recycler"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="@id/coordinator_page_img"
+                    app:layout_constraintStart_toStartOf="@id/coordinator_page_name_text"
+                    app:tags="@{viewModel.coordinator.tagList}"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_tag"/>
 
                 <TextView
                     android:id="@+id/coordinator_page_introduction_text"
@@ -128,16 +129,18 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/coordinator_page_line"
                     app:tabSelectedTextColor="@color/black"
-                    app:tabTextColor="@color/gray_d"
-                    app:tabTextAppearance="@style/customTabText">
+                    app:tabTextAppearance="@style/customTabText"
+                    app:tabTextColor="@color/gray_d">
+
                     <com.google.android.material.tabs.TabItem
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="작품"/>
+                        android:text="작품" />
+
                     <com.google.android.material.tabs.TabItem
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="리뷰"/>
+                        android:text="리뷰" />
                 </com.google.android.material.tabs.TabLayout>
 
                 <androidx.viewpager2.widget.ViewPager2
@@ -157,11 +160,11 @@
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:layout_alignParentBottom="true"
-            android:paddingHorizontal="@dimen/horizontal_margin"
-            android:paddingBottom="20dp"
-            android:paddingTop="15dp"
             android:background="@color/white"
             android:elevation="8dp"
+            android:paddingHorizontal="@dimen/horizontal_margin"
+            android:paddingTop="15dp"
+            android:paddingBottom="20dp"
             android:visibility="@{viewModel.isMyPage ? View.GONE : View.VISIBLE}">
 
             <androidx.appcompat.widget.AppCompatButton
