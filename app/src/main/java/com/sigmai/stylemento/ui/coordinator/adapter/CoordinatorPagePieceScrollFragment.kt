@@ -16,22 +16,19 @@ class CoordinatorPagePieceScrollFragment : BaseFragment<FragmentCoordinatorPageW
     override val layoutResourceId = R.layout.fragment_coordinator_page_work_scroll
     private val viewModel: CoordinatorPageViewModel by activityViewModels()
 
-    private var position: Int = 0
     override fun initState() {
-        super.initState()
-        position = arguments?.getInt("position") ?: 0
+        setupRecyclerView()
     }
 
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
+    }
+
+    private fun setupRecyclerView() {
+        val position = arguments?.getInt("position") ?: 0
 
         binding.coordinatorPageWorkScrollRecycler.adapter = CoordinatorPagePieceItemAdapter()
         binding.coordinatorPageWorkScrollRecycler.scrollToPosition(position)
-//        viewModel.position.observe(this) {
-//            binding.coordinatorPageWorkScrollRecycler.adapter =
-//                CoordinatorPagePieceItemAdapter()
-//            binding.coordinatorPageWorkScrollRecycler.scrollToPosition(viewModel.position.value!!)
-//        }
     }
 }
