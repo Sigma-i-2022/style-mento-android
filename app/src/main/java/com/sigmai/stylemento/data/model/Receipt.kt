@@ -7,6 +7,8 @@ data class Receipt(
     var serviceWay : String = "",
     var price : Int = 0,
     var date : String = "",
-    var time : List<String> = listOf(),
-    var paymentWay : String = ""
+    var timeList : List<String> = listOf(),
+    var paymentWay : String = "",
+    var time : String = "",
+    var state : Int = 0
 )
