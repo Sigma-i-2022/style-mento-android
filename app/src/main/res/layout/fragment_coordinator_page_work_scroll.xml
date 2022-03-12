@@ -8,7 +8,7 @@
             type="com.sigmai.stylemento.ui.coordinator.CoordinatorPageViewModel" />
     </data>
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/coordinator_page_work_content_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -27,10 +27,9 @@
             android:id="@+id/coordinator_page_work_scroll_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/toolbar"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:pieces="@{viewModel.coordinator.pieceList}"/>
-    </RelativeLayout>
+            app:pieces="@{viewModel.coordinator.pieceList}"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
