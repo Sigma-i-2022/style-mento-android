@@ -33,6 +33,9 @@ class CoordinatorPageFragment(private val isMyPage: Boolean = false) :
         binding.toolbar.setOnBackListener {
             findNavController().navigateUp()
         }
+        binding.toolbar.setOnEditListener {
+            findNavController().navigate(R.id.action_main_to_coordinator_revision)
+        }
     }
 
     private fun setupObserver() {
