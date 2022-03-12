@@ -127,7 +127,11 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
 
         val date = arguments?.getString("date")!!
         viewModel.receipt.value!!.date = date
-        viewModel.receipt.value!!.time = TimeUtil.getSelectedTimeList(TimeUtil.timeList)
+        viewModel.receipt.value!!.timeList = TimeUtil.getSelectedTimeList(TimeUtil.timeList)
         receipt.value!!.price = 3000
+
+        val currentTime : Long = System.currentTimeMillis()
+        val dataFormat = SimpleDateFormat("yyyy.MM.dd")
+        receipt.value!!.time = dataFormat.format(currentTime)
     }
 }
