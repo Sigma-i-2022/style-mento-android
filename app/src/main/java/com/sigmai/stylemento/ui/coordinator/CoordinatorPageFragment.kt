@@ -26,6 +26,9 @@ class CoordinatorPageFragment :
     override fun initState() {
         val position = arguments?.getInt("position")!!
         viewModel.loadCoordinatorInfo(position)
+
+        val isMyPage = arguments?.getBoolean("me", false)
+        viewModel.isMyPage.value = isMyPage
     }
 
     private fun setupButton() {

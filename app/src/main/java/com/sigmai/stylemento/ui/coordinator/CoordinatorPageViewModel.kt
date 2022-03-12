@@ -14,6 +14,8 @@ class CoordinatorPageViewModel : ViewModel() {
 
     private val _coordinator = MutableLiveData<Coordinator>()
     val coordinator: LiveData<Coordinator> get() = _coordinator
+
+    val isMyPage = MutableLiveData(false)
     val isExtended = MutableLiveData(false)
 
     val startChat = SingleLiveEvent<Any>()
