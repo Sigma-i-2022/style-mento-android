@@ -121,9 +121,9 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
     private fun setReceipt(){
         val receipt = viewModel.receipt
         if(viewModel.serviceType.value == 0) receipt.value!!.serviceName = "스타일 피드백"
-        else if(viewModel.serviceType.value == 1) receipt.value!!.serviceName = "구매 추천"
-        if(viewModel.serviceWay.value == 0) receipt.value!!.serviceWay = "채팅"
-        else if(viewModel.serviceWay.value == 1) receipt.value!!.serviceWay = "화상"
+        else if(viewModel.serviceType.value == 1) receipt.value!!.serviceName = "코디 or 구매 추천"
+        if(viewModel.serviceWay.value == 0) receipt.value!!.serviceWay = "문자채팅(오픈채팅)"
+        else if(viewModel.serviceWay.value == 1) receipt.value!!.serviceWay = "화상대면(ZOOM)"
 
         val date = arguments?.getString("date")!!
         viewModel.receipt.value!!.date = date
