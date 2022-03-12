@@ -1,6 +1,7 @@
 package com.sigmai.stylemento.global.component
 
 import android.content.Context
+import android.media.Image
 import android.util.AttributeSet
 import android.view.View
 import android.widget.Button
@@ -60,6 +61,13 @@ class SmToolbar(context: Context, attrs: AttributeSet) : Toolbar(context, attrs)
     fun setOnBackListener(action: (view: View)->Unit) {
         val backButton = findViewById<Button>(R.id.back_button)
         backButton.setOnClickListener {
+            action(it)
+        }
+    }
+
+    fun setOnEditListener(action: (view: View)->Unit) {
+        val editButton = findViewById<ImageButton>(R.id.edit_profile)
+        editButton.setOnClickListener {
             action(it)
         }
     }
