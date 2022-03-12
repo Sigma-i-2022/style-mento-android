@@ -9,7 +9,7 @@ import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.ui.coordinator.adapter.CoordinatorPageViewPagerAdapter
 import com.sigmai.stylemento.ui.home.adapter.TagAdapter
 
-class CoordinatorPageFragment :
+class CoordinatorPageFragment(private val isMyPage: Boolean = false) :
     BaseFragment<FragmentCoordinatorPageBinding>() {
     override val layoutResourceId = R.layout.fragment_coordinator_page
     private val viewModel: CoordinatorPageViewModel by activityViewModels()
@@ -24,10 +24,8 @@ class CoordinatorPageFragment :
     }
 
     override fun initState() {
-        val position = arguments?.getInt("position")!!
+        val position = arguments?.getInt("position") ?: 0
         viewModel.loadCoordinatorInfo(position)
-
-        val isMyPage = arguments?.getBoolean("me", false)
         viewModel.isMyPage.value = isMyPage
     }
 
