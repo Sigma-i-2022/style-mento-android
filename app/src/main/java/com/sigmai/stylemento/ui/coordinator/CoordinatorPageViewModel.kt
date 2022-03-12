@@ -44,7 +44,7 @@ class CoordinatorPageViewModel : ViewModel() {
     fun onClickPiece(view: View, position: Int) {
         val bundle = bundleOf("position" to position)
         val navController = view.findNavController()
-        if(isMyPage.value!!) navController.navigate(R.id.action_main_to_coordinator_page_piece_scroll)
+        if(isMyPage.value!!) navController.navigate(R.id.action_main_to_coordinator_page_piece_scroll, bundle)
         else navController.navigate(R.id.action_coordinator_page_to_coordinator_page_piece_scroll, bundle)
     }
 }
