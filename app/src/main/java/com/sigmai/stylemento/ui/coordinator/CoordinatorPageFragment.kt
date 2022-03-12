@@ -1,5 +1,6 @@
 package com.sigmai.stylemento.ui.coordinator
 
+import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayout
@@ -52,7 +53,17 @@ class CoordinatorPageFragment(private val isMyPage: Boolean = false) :
             isUserInputEnabled = false
             adapter = CoordinatorPageViewPagerAdapter(this@CoordinatorPageFragment)
             binding.tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-                override fun onTabSelected(tab: TabLayout.Tab?) { currentItem = tab!!.position }
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+                    val position = tab!!.position
+                    currentItem = position
+                    if(viewModel.isMyPage.value!!) {
+                        if(position == 1) {
+                            binding.addPiece.visibility = View.INVISIBLE
+                        } else {
+                            binding.addPiece.visibility = View.VISIBLE
+                        }
+                    }
+                }
                 override fun onTabUnselected(tab: TabLayout.Tab?) {}
                 override fun onTabReselected(tab: TabLayout.Tab?) {}
             })
