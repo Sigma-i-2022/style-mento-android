@@ -16,6 +16,12 @@ class SmToolbar(context: Context, attrs: AttributeSet) : Toolbar(context, attrs)
             rootView?.findViewById<TextView>(R.id.title)?.text = value
         }
 
+    private var isMyPage: Boolean = false
+        set(value) {
+            field = value
+            rootView?.findViewById<ImageButton>(R.id.edit_profile)?.visibility = if(value) View.VISIBLE else View.GONE
+        }
+
     private var showBackButton: Boolean = false
 
     init {
@@ -31,6 +37,7 @@ class SmToolbar(context: Context, attrs: AttributeSet) : Toolbar(context, attrs)
         ).apply {
             try {
                 showBackButton = getBoolean(R.styleable.SmToolbar_showBackButton, false)
+                isMyPage = getBoolean(R.styleable.SmToolbar_isMyPage, false)
                 title = getString(R.styleable.SmToolbar_title) ?: ""
             } finally {
                 recycle()
@@ -43,9 +50,11 @@ class SmToolbar(context: Context, attrs: AttributeSet) : Toolbar(context, attrs)
 
         val titleTextView = findViewById<TextView>(R.id.title)
         val backButton = findViewById<Button>(R.id.back_button)
+        val editButton = findViewById<ImageButton>(R.id.edit_profile)
 
         titleTextView.text = title
         backButton.visibility = if(showBackButton) View.VISIBLE else View.GONE
+        editButton.visibility = if(isMyPage) View.VISIBLE else View.GONE
     }
 
     fun setOnBackListener(action: (view: View)->Unit) {
@@ -57,5 +66,9 @@ class SmToolbar(context: Context, attrs: AttributeSet) : Toolbar(context, attrs)
 
     override fun setTitle(title: CharSequence?) {
         this.title = title.toString()
+    }
+
+    fun setIsMyPage(isMyPage: Boolean) {
+        this.isMyPage = isMyPage
     }
 }

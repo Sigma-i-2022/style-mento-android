@@ -28,4 +28,13 @@
         android:textStyle="bold"
         tools:text="제목"
         android:layout_gravity="center"/>
+
+    <ImageButton
+        android:id="@+id/edit_profile"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_pencil"
+        android:background="@null"
+        android:layout_gravity="end"
+        android:layout_marginEnd="@dimen/horizontal_margin"/>
 </androidx.appcompat.widget.Toolbar>
