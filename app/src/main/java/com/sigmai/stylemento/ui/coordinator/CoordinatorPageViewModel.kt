@@ -1,9 +1,13 @@
 package com.sigmai.stylemento.ui.coordinator
 
+import android.view.View
+import androidx.core.os.bundleOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.findNavController
+import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.repository.coordinator.DummyCoordinatorRepository
 import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.global.util.SingleLiveEvent
@@ -35,5 +39,12 @@ class CoordinatorPageViewModel : ViewModel() {
         viewModelScope.launch {
             _coordinator.postValue(Coordinator.from( repository.getCoordinatorList()[position]))
         }
+    }
+
+    fun onClickPiece(view: View, position: Int) {
+        val bundle = bundleOf("position" to position)
+        val navController = view.findNavController()
+        if(isMyPage.value!!) navController.navigate(R.id.action_main_to_coordinator_page_piece_scroll)
+        else navController.navigate(R.id.action_coordinator_page_to_coordinator_page_piece_scroll, bundle)
     }
 }

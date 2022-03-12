@@ -57,11 +57,8 @@ class CoordinatorPageFragment(private val isMyPage: Boolean = false) :
                     val position = tab!!.position
                     currentItem = position
                     if(viewModel.isMyPage.value!!) {
-                        if(position == 1) {
-                            binding.addPiece.visibility = View.INVISIBLE
-                        } else {
-                            binding.addPiece.visibility = View.VISIBLE
-                        }
+                        if(position == 1) binding.addPiece.visibility = View.INVISIBLE
+                        else binding.addPiece.visibility = View.VISIBLE
                     }
                 }
                 override fun onTabUnselected(tab: TabLayout.Tab?) {}

@@ -1,34 +1,20 @@
 package com.sigmai.stylemento.ui.coordinator.adapter
 
-import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sigmai.stylemento.R
-import com.sigmai.stylemento.data.model.Client
-import com.sigmai.stylemento.data.model.LookbookItem
-import com.sigmai.stylemento.data.model.WorkItem
 import com.sigmai.stylemento.databinding.ItemCoordinatorWorkBinding
-import com.sigmai.stylemento.databinding.ItemUserLookbookBinding
 import com.sigmai.stylemento.domain.entity.Piece
-import com.sigmai.stylemento.global.util.GlideUtil
-import com.sigmai.stylemento.ui.mypage.coordinator.MyPageWorkItemFragment
-import com.sigmai.stylemento.ui.mypage.user.adapter.UserLookbookAdapter
-import com.sigmai.stylemento.ui.mypage.user.adapter.UserLookbookAdapter.ViewHolder.Companion.from
+import com.sigmai.stylemento.ui.coordinator.CoordinatorPageViewModel
 
 
-class CoordinatorPageWorkAdapter : RecyclerView.Adapter<CoordinatorPageWorkAdapter.ViewHolder>() {
+class CoordinatorPageWorkAdapter(val viewModel: CoordinatorPageViewModel) : RecyclerView.Adapter<CoordinatorPageWorkAdapter.ViewHolder>() {
     private val dataSet = mutableListOf<Piece>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
+        return ViewHolder.from(parent, viewModel)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -46,23 +32,22 @@ class CoordinatorPageWorkAdapter : RecyclerView.Adapter<CoordinatorPageWorkAdapt
         }
     }
 
-    class ViewHolder(val binding : ItemCoordinatorWorkBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(val binding : ItemCoordinatorWorkBinding, val viewModel: CoordinatorPageViewModel) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item : Piece){
             Glide.with(binding.coordinatorWorkItemImg).load(item.imageUrl)
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .into(binding.coordinatorWorkItemImg)
             binding.root.setOnClickListener {
-                val bundle = bundleOf("position" to adapterPosition)
-                it.findNavController().navigate(R.id.action_coordinator_page_to_coordinator_page_piece_scroll, bundle)
+                viewModel.onClickPiece(it, adapterPosition)
             }
         }
 
         companion object {
-            fun from(parent: ViewGroup) : CoordinatorPageWorkAdapter.ViewHolder {
+            fun from(parent: ViewGroup, viewModel: CoordinatorPageViewModel) : ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemCoordinatorWorkBinding.inflate(layoutInflater, parent, false)
 
-                return CoordinatorPageWorkAdapter.ViewHolder(binding)
+                return ViewHolder(binding, viewModel)
             }
         }
     }

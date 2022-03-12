@@ -19,7 +19,7 @@ class CoordinatorPagePieceScrollFragment : BaseFragment<FragmentCoordinatorPageW
     private var position: Int = 0
     override fun initState() {
         super.initState()
-        position = arguments?.getInt("position")!!
+        position = arguments?.getInt("position") ?: 0
     }
 
     override fun initDataBinding() {

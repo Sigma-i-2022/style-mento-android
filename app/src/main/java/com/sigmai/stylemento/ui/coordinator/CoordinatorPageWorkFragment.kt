@@ -31,6 +31,6 @@ class CoordinatorPageWorkFragment : BaseFragment<FragmentCoordinatorPageWorkBind
     }
 
     private fun setupRecyclerViewAdapter() {
-        binding.coordinatorPageWorkRecycler.adapter = CoordinatorPageWorkAdapter()
+        binding.coordinatorPageWorkRecycler.adapter = CoordinatorPageWorkAdapter(viewModel)
     }
 }
