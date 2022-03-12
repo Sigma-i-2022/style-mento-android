@@ -9,5 +9,6 @@ data class Receipt(
     var date : String = "",
     var timeList : List<String> = listOf(),
     var paymentWay : String = "",
-    var time : String = ""
+    var time : String = "",
+    var state : Int = 0
 )
