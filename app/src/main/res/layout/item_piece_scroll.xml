@@ -1,32 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
+
         <variable
             name="item"
             type="com.sigmai.stylemento.domain.entity.Piece" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginHorizontal="@dimen/horizontal_margin">
+        android:layout_marginHorizontal="@dimen/horizontal_margin"
+        android:layout_marginTop="4dp">
+
         <TextView
             android:id="@+id/item_piece_scroll_time_text"
+            style="@style/body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/body1"
             android:layout_marginTop="10dp"
             android:text="@{item.time}"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/item_piece_scroll_modified_text"
+            style="@style/body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/body1"
-            app:layout_constraintTop_toTopOf="@id/item_piece_scroll_time_text"
-            app:layout_constraintStart_toEndOf="@id/item_piece_scroll_time_text"/>
+            app:layout_constraintStart_toEndOf="@id/item_piece_scroll_time_text"
+            app:layout_constraintTop_toTopOf="@id/item_piece_scroll_time_text" />
+
+        <View
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="@drawable/ic_more_horiz"
+            app:layout_constraintBottom_toBottomOf="@id/item_piece_scroll_time_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/item_piece_scroll_time_text" />
 
         <ImageView
             android:id="@+id/item_piece_scroll_img"
@@ -45,8 +58,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:maxLines="2"
             android:ellipsize="end"
+            android:maxLines="2"
             android:text="@{item.content}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_piece_scroll_img" />
@@ -64,30 +77,32 @@
 
         <TextView
             android:id="@+id/item_piece_scroll_model_info_title"
+            style="@style/header4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/trans_parent"
             android:text="모델 정보"
             android:textColor="@color/primary"
             android:textStyle="bold"
-            style="@style/header4"
-            android:layout_marginTop="16dp"
-            android:background="@color/trans_parent"
-            app:layout_constraintTop_toBottomOf="@id/item_piece_scroll_tag_recycler"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_piece_scroll_tag_recycler" />
+
         <LinearLayout
             android:id="@+id/item_piece_scroll_model_height_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            app:layout_constraintTop_toBottomOf="@id/item_piece_scroll_model_info_title"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/item_piece_scroll_model_info_title">
+
             <TextView
+                style="@style/header4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="키"
-                style="@style/header4"
-                android:background="@color/trans_parent" />
+                android:background="@color/trans_parent"
+                android:text="키" />
 
             <View
                 android:layout_width="0dp"
@@ -96,46 +111,53 @@
 
             <TextView
                 android:id="@+id/item_piece_scroll_model_height_text"
+                style="@style/header4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{item.height}"
-                style="@style/header4"/>
+                android:text="@{item.height}" />
+
             <TextView
+                style="@style/header4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="cm"
-                style="@style/header4"/>
+                android:text="cm" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/item_piece_scroll_model_weight_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            app:layout_constraintTop_toBottomOf="@id/item_piece_scroll_model_height_layout"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/item_piece_scroll_model_height_layout">
+
             <TextView
+                style="@style/header4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="몸무게"
-                style="@style/header4"
-                android:background="@color/trans_parent" />
+                android:background="@color/trans_parent"
+                android:text="몸무게" />
+
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
+
             <TextView
                 android:id="@+id/item_piece_scroll_model_weight_text"
+                style="@style/header4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{item.weight}"
-                style="@style/header4"/>
+                android:text="@{item.weight}" />
+
             <TextView
+                style="@style/header4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="kg"
-                style="@style/header4"/>
+                android:text="kg" />
         </LinearLayout>
+
         <TextView
             android:id="@+id/item_piece_scroll_coordi_info_text"
             style="@style/header4"
@@ -163,17 +185,19 @@
                 android:layout_height="wrap_content"
                 android:background="@color/trans_parent"
                 android:text="상의" />
+
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
+
             <TextView
                 android:id="@+id/item_piece_scroll_top_text"
                 style="@style/header4"
-                android:text="@{item.top}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/trans_parent" />
+                android:background="@color/trans_parent"
+                android:text="@{item.top}" />
         </LinearLayout>
 
         <LinearLayout
@@ -191,17 +215,19 @@
                 android:layout_height="wrap_content"
                 android:background="@color/trans_parent"
                 android:text="하의" />
+
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
+
             <TextView
                 android:id="@+id/item_piece_scroll_pants_text"
                 style="@style/header4"
-                android:text="@{item.pants}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/trans_parent" />
+                android:background="@color/trans_parent"
+                android:text="@{item.pants}" />
         </LinearLayout>
 
         <LinearLayout
@@ -219,18 +245,21 @@
                 android:layout_height="wrap_content"
                 android:background="@color/trans_parent"
                 android:text="신발" />
+
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
+
             <TextView
                 android:id="@+id/item_piece_scroll_shoes_text"
                 style="@style/header4"
-                android:text="@{item.shoes}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/trans_parent" />
+                android:background="@color/trans_parent"
+                android:text="@{item.shoes}" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/item_piece_scroll_other_layout"
             android:layout_width="match_parent"
@@ -246,17 +275,19 @@
                 android:layout_height="wrap_content"
                 android:background="@color/trans_parent"
                 android:text="기타" />
+
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
+
             <TextView
                 android:id="@+id/item_piece_scroll_other_text"
                 style="@style/header4"
-                android:text="@{item.other}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/trans_parent" />
+                android:background="@color/trans_parent"
+                android:text="@{item.other}" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

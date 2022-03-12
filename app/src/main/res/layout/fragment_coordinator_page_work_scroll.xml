@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
 
         <variable
@@ -30,6 +31,8 @@
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:pieces="@{viewModel.coordinator.pieceList}"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"/>
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            tools:listitem="@layout/item_piece_scroll"
+            tools:itemCount="3"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
