@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.ItemCoordinatorWorkBinding
 import com.sigmai.stylemento.domain.entity.Piece
-import com.sigmai.stylemento.ui.coordinator.CoordinatorPageViewModel
+import com.sigmai.stylemento.ui.coordinator.coordinatorpage.CoordinatorPageViewModel
 
 
 class CoordinatorPageWorkAdapter(val viewModel: CoordinatorPageViewModel) : RecyclerView.Adapter<CoordinatorPageWorkAdapter.ViewHolder>() {

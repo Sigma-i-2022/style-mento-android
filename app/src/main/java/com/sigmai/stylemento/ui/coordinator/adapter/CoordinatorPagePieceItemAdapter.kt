@@ -1,7 +1,6 @@
 package com.sigmai.stylemento.ui.coordinator.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -11,7 +10,6 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.ItemPieceScrollBinding
 import com.sigmai.stylemento.domain.entity.Piece
 import com.sigmai.stylemento.global.component.SmBottomSheet
-import com.sigmai.stylemento.ui.coordinator.CoordinatorPageViewModel
 import com.sigmai.stylemento.ui.home.adapter.TagAdapter
 
 class CoordinatorPagePieceItemAdapter : ListAdapter<Piece, CoordinatorPagePieceItemAdapter.ViewHolder>(WorkItemDiffCallback()) {

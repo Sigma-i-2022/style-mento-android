@@ -4,14 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.sigmai.stylemento.R
-import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.databinding.FragmentMyPageBinding
-import com.sigmai.stylemento.ui.mypage.coordinator.MyPageCoordinatorFragment
 import com.sigmai.stylemento.ui.mypage.user.MyPageUserFragment
 import com.sigmai.stylemento.global.base.BaseFragment
-import com.sigmai.stylemento.global.constant.UserType
-import com.sigmai.stylemento.ui.coordinator.CoordinatorFragment
-import com.sigmai.stylemento.ui.coordinator.CoordinatorPageFragment
+import com.sigmai.stylemento.ui.coordinator.coordinatorpage.CoordinatorPageFragment
 
 class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page
