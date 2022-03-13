@@ -20,7 +20,6 @@ class ReservationPaymentCompleteFragment : BaseFragment<FragmentReservationPayme
         binding.viewModel = viewModel
 
         viewModel.startBack.observe(this) {
-            findNavController().navigateUp()
         }
     }
 

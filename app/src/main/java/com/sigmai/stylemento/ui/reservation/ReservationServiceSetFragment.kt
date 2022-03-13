@@ -7,10 +7,9 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
-import com.sigmai.stylemento.data.model.Coordinator
-import com.sigmai.stylemento.data.model.Receipt
-import com.sigmai.stylemento.data.model.User
 import com.sigmai.stylemento.databinding.FragmentReservationServiceSetBinding
+import com.sigmai.stylemento.domain.entity.Receipt
+import com.sigmai.stylemento.domain.entity.User
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.util.TimeUtil
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
@@ -39,7 +38,6 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
         super.onViewCreated(view, savedInstanceState)
         viewInit()
 
-        viewModel.setReceipt(Receipt(Coordinator("11"), User("22", "email")))
         binding.reservationServiceRequestEditText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
             }
@@ -52,20 +50,21 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
             }
         })
     }
-    private fun viewInit(){
+
+    private fun viewInit() {
         checkButtonEnabled()
 
-        if(viewModel.serviceType.value == 0)
+        if (viewModel.serviceType.value == 0)
             binding.reservationServiceFeedbackImg.setBackgroundResource(R.drawable.button_background_type_1)
-        else if(viewModel.serviceType.value == 1)
+        else if (viewModel.serviceType.value == 1)
             binding.reservationServiceCoordiRecommendationImg.setBackgroundResource(R.drawable.button_background_type_1)
-        if(viewModel.serviceWay.value == 0)
+        if (viewModel.serviceWay.value == 0)
             binding.reservationServiceChattingImg.setBackgroundResource(R.drawable.button_background_type_1)
-        else if(viewModel.serviceWay.value == 1)
+        else if (viewModel.serviceWay.value == 1)
             binding.reservationServiceFaceToFaceImg.setBackgroundResource(R.drawable.button_background_type_1)
     }
 
-    private fun setImageClick(){
+    private fun setImageClick() {
         viewModel.startFeedback.observe(this) {
             binding.reservationServiceCoordiRecommendationImg.setBackgroundResource(R.color.trans_parent)
             if (viewModel.serviceType.value == 0)
@@ -95,43 +94,47 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
                 binding.reservationServiceFaceToFaceImg.setBackgroundResource(R.color.trans_parent)
         }
     }
-    private fun observeInput(){
-        viewModel.serviceType.observe(this){
+
+    private fun observeInput() {
+        viewModel.serviceType.observe(this) {
             checkButtonEnabled()
         }
-        viewModel.serviceWay.observe(this){
+        viewModel.serviceWay.observe(this) {
             checkButtonEnabled()
         }
-        viewModel.requestText.observe(this){
+        viewModel.requestText.observe(this) {
             checkButtonEnabled()
         }
     }
-    private fun checkButtonEnabled(){
-        if(viewModel.serviceType.value != -1 && viewModel.serviceWay.value != -1 &&
+
+    private fun checkButtonEnabled() {
+        if (viewModel.serviceType.value != -1 && viewModel.serviceWay.value != -1 &&
             viewModel.requestText.value!!.isNotEmpty()
-        ){
+        ) {
             binding.reservationTimeSelectionNextButton.isEnabled = true
             binding.reservationTimeSelectionNextButton.setBackgroundResource(R.color.primary)
-        }
-        else{
+        } else {
             binding.reservationTimeSelectionNextButton.isEnabled = false
             binding.reservationTimeSelectionNextButton.setBackgroundResource(R.color.gray_d)
         }
     }
-    private fun setReceipt(){
-        val receipt = viewModel.receipt
-        if(viewModel.serviceType.value == 0) receipt.value!!.serviceName = "스타일 피드백"
-        else if(viewModel.serviceType.value == 1) receipt.value!!.serviceName = "코디 or 구매 추천"
-        if(viewModel.serviceWay.value == 0) receipt.value!!.serviceWay = "문자채팅(오픈채팅)"
-        else if(viewModel.serviceWay.value == 1) receipt.value!!.serviceWay = "화상대면(ZOOM)"
+
+    private fun setReceipt() {
+        val serviceName =
+            if (viewModel.serviceType.value == 0) "스타일 피드백"
+            else "코디 or 구매 추천"
+        val serviceWay =
+            if (viewModel.serviceWay.value == 0) "문자채팅(오픈채팅)"
+            else "화상대면(ZOOM)"
 
         val date = arguments?.getString("date")!!
-        viewModel.receipt.value!!.date = date
-        viewModel.receipt.value!!.timeList = TimeUtil.getSelectedTimeList(TimeUtil.timeList)
-        receipt.value!!.price = 3000
+        val timeList = TimeUtil.getSelectedTimeList(TimeUtil.timeList)
+        val price = 3000
 
-        val currentTime : Long = System.currentTimeMillis()
+        val currentTime: Long = System.currentTimeMillis()
         val dataFormat = SimpleDateFormat("yyyy.MM.dd")
-        receipt.value!!.time = dataFormat.format(currentTime)
+        val time = dataFormat.format(currentTime)
+
+        //viewModel.setReceipt(Receipt(viewModel.coordinator.value!!, viewModel.user.value!!, serviceName, serviceWay, price, date, timeList, "", time, 0))
     }
 }

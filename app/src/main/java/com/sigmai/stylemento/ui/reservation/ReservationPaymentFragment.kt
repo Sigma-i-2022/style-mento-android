@@ -6,7 +6,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentReservationPaymentBinding
+import com.sigmai.stylemento.domain.usecase.PostReceiptUseCase
 import com.sigmai.stylemento.global.base.BaseFragment
+import com.sigmai.stylemento.global.util.TimeUtil
 import com.sigmai.stylemento.ui.reservation.adapter.TimeAdapter
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
 
@@ -22,6 +24,8 @@ class ReservationPaymentFragment : BaseFragment<FragmentReservationPaymentBindin
             findNavController().navigateUp()
         }
         viewModel.startNext.observe(this) {
+            PostReceiptUseCase().invoke(viewModel.receipt.value!!)
+            TimeUtil.resetTimeList()
             findNavController().navigate(R.id.action_reservation_payment_page_to_reservation_payment_complete_page)
         }
         observeSelection()
@@ -40,10 +44,12 @@ class ReservationPaymentFragment : BaseFragment<FragmentReservationPaymentBindin
             binding.reservationPaymentAllAgreeImg.setBackgroundResource(R.drawable.button_background_type_1)
         else
             binding.reservationPaymentAllAgreeImg.setBackgroundResource(R.color.trans_parent)
+
         if(viewModel.isAllSelected.value!!)
             binding.reservationPaymentFirstAgreeImg.setBackgroundResource(R.drawable.button_background_type_1)
         else
             binding.reservationPaymentFirstAgreeImg.setBackgroundResource(R.color.trans_parent)
+
         if(viewModel.isAllSelected.value!!)
             binding.reservationPaymentSecondAgreeImg.setBackgroundResource(R.drawable.button_background_type_1)
         else

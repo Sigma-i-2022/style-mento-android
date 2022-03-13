@@ -29,6 +29,8 @@ class ReservationTimeSetFragment : BaseFragment<FragmentReservationTimeSetBindin
         binding.viewModel = viewModel
 
         viewModel.startBack.observe(this) {
+            TimeUtil.resetTimeList()
+            viewModel.clear()
             findNavController().navigateUp()
         }
         viewModel.startNext.observe(this) {

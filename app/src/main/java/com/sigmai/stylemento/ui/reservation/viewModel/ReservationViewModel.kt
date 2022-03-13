@@ -3,18 +3,19 @@ package com.sigmai.stylemento.ui.reservation.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sigmai.stylemento.data.model.Receipt
-import com.sigmai.stylemento.data.model.TimeItem
 import com.sigmai.stylemento.data.repository.datasource.DummyCoordinatorDataSource
 import com.sigmai.stylemento.domain.entity.Coordinator
+import com.sigmai.stylemento.domain.entity.Receipt
+import com.sigmai.stylemento.domain.entity.User
 import com.sigmai.stylemento.global.util.SingleLiveEvent
-import com.sigmai.stylemento.global.util.TimeUtil
 
 class ReservationViewModel : ViewModel() {
     private val _coordinator = MutableLiveData<Coordinator>()
+    private val _user = MutableLiveData<User>()
     private val _receipt = MutableLiveData<Receipt>()
 
     val coordinator: LiveData<Coordinator> get() = _coordinator
+    val user: LiveData<User> get() = _user
     val receipt: LiveData<Receipt> get() = _receipt
 
     fun getCoordinatorInfo(position: Int) {
@@ -98,5 +99,12 @@ class ReservationViewModel : ViewModel() {
     fun onSecondClick(){
         _isAllSelected.value = !_isSecondSelected.value!! && _isFirstSelected.value!!
         _isSecondSelected.value = !_isSecondSelected.value!!
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+    }
+    fun clear(){
+        onCleared()
     }
 }
