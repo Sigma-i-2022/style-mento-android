@@ -17,7 +17,8 @@
             android:layout_alignParentStart="true"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:layout_marginTop="20dp"
-            android:background="@drawable/ic_arrow_back" />
+            android:background="@drawable/ic_arrow_back"
+            android:onClick="@{()->viewModel.onBackClick()}"/>
 
         <TextView
             style="@style/header3"

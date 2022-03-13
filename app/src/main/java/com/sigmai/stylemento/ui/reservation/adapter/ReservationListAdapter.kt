@@ -36,14 +36,15 @@ class ReservationListAdapter(private val dataSet: List<Receipt>) :
         }
 
         private fun binding(item: Receipt) {
+            binding.reservationListServicePriceText.text = item.price.toString()
             when (item.state) {
                 ReceiptStateType.ACCEPT_BEFORE -> {
-                    setButtonUnable()
+                    turnOffReview()
+                    turnOffBuy()
                 }
                 ReceiptStateType.ACCEPT_AFTER ->{
                     binding.reservationListStateText.text = "예약완료"
-                    binding.reservationListReviewButton.isEnabled = false
-                    binding.reservationListReviewButton.setBackgroundResource(R.color.gray_d)
+                    turnOffReview()
                 }
                 ReceiptStateType.GET_DECISION -> {
                     binding.reservationListStateText.text = "구매확정"
@@ -51,14 +52,14 @@ class ReservationListAdapter(private val dataSet: List<Receipt>) :
                     binding.reservationListDecidedTimeText.visibility = View.VISIBLE
                     binding.reservationListDecidedTimeText.text = item.decidedTime
                     binding.reservationListServiceTimeRecycler.visibility = View.GONE
-                    binding.reservationListReviewButton.isEnabled = false
-                    binding.reservationListReviewButton.setBackgroundResource(R.color.gray_d)
+                    turnOffBuy()
                 }
                 ReceiptStateType.PAYBACK -> {
                     binding.reservationListStateText.text = "환불완료/대기"
                     binding.reservationListCancelButton.visibility = View.GONE
                     binding.reservationListRequestButton.visibility = View.VISIBLE
-                    setButtonUnable()
+                    turnOffReview()
+                    turnOffBuy()
                 }
             }
         }
@@ -81,11 +82,13 @@ class ReservationListAdapter(private val dataSet: List<Receipt>) :
         private fun setAdapter(timeList: List<String>) {
             binding.reservationListServiceTimeRecycler.adapter = TimeAdapter(timeList)
         }
-        private fun setButtonUnable(){
-            binding.reservationListBuyButton.isEnabled = false
-            binding.reservationListBuyButton.setBackgroundResource(R.color.gray_d)
+        private fun turnOffReview(){
             binding.reservationListReviewButton.isEnabled = false
             binding.reservationListReviewButton.setBackgroundResource(R.color.gray_d)
+        }
+        private fun turnOffBuy(){
+            binding.reservationListBuyButton.isEnabled = false
+            binding.reservationListBuyButton.setBackgroundResource(R.color.gray_d)
         }
         companion object {
             fun from(parent: ViewGroup): ReservationListAdapter.ViewHolder {

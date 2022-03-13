@@ -187,6 +187,17 @@
             app:popUpToInclusive="true"/>
     </fragment>
     <fragment
+        android:id="@+id/reservation_user_list_page"
+        android:name="com.sigmai.stylemento.ui.reservation.ReservationUserListFragment"
+        android:label="reservation list page"
+        tools:layout="@layout/fragment_reservation_user_list">
+        <action
+            android:id="@+id/action_reservation_user_list_page_to_main"
+            app:destination="@id/main"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
         android:id="@+id/application_finish"
         android:name="com.sigmai.stylemento.ui.coordinator_application.ApplicationFinishFragment"
         android:label="application finish"
