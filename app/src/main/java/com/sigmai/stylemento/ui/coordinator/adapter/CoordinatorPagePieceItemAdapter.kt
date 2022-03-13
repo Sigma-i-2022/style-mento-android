@@ -25,7 +25,6 @@ class CoordinatorPagePieceItemAdapter(val viewModel: CoordinatorPageViewModel) :
         fun bind(item: Piece, viewModel: CoordinatorPageViewModel) {
             binding.item = item
             binding.viewModel = viewModel
-            setImage(item)
             setAdapter(item)
             setListener()
 
@@ -36,12 +35,6 @@ class CoordinatorPagePieceItemAdapter(val viewModel: CoordinatorPageViewModel) :
             val tagAdapter = TagAdapter()
             tagAdapter.setList(item.tags)
             binding.itemPieceScrollTagRecycler.adapter = tagAdapter
-        }
-
-        private fun setImage(item: Piece) {
-            Glide.with(binding.itemPieceScrollImg).load(item.imageUrl)
-                .placeholder(R.drawable.ic_launcher_foreground)
-                .into(binding.itemPieceScrollImg)
         }
 
         private fun setListener() {
