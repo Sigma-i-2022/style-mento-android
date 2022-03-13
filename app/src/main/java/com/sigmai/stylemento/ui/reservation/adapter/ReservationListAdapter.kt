@@ -41,10 +41,12 @@ class ReservationListAdapter(private val dataSet: List<Receipt>) :
                     setButtonUnable()
                 }
                 ReceiptStateType.ACCEPT_AFTER ->{
+                    binding.reservationListStateText.text = "예약완료"
                     binding.reservationListReviewButton.isEnabled = false
                     binding.reservationListReviewButton.setBackgroundResource(R.color.gray_d)
                 }
                 ReceiptStateType.GET_DECISION -> {
+                    binding.reservationListStateText.text = "구매확정"
                     binding.reservationListCancelButton.visibility = View.GONE
                     binding.reservationListDecidedTimeText.visibility = View.VISIBLE
                     binding.reservationListDecidedTimeText.text = item.decidedTime
@@ -53,6 +55,7 @@ class ReservationListAdapter(private val dataSet: List<Receipt>) :
                     binding.reservationListReviewButton.setBackgroundResource(R.color.gray_d)
                 }
                 ReceiptStateType.PAYBACK -> {
+                    binding.reservationListStateText.text = "환불완료/대기"
                     binding.reservationListCancelButton.visibility = View.GONE
                     binding.reservationListRequestButton.visibility = View.VISIBLE
                     setButtonUnable()
