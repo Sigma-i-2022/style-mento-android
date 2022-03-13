@@ -25,8 +25,6 @@ class CoordinatorPagePieceItemAdapter(val viewModel: CoordinatorPageViewModel) :
         fun bind(item: Piece, viewModel: CoordinatorPageViewModel) {
             binding.item = item
             binding.viewModel = viewModel
-            if(item.isModified)
-                binding.itemPieceScrollModifiedText.text = "(수정됨)"
             setImage(item)
             setAdapter(item)
             setListener()

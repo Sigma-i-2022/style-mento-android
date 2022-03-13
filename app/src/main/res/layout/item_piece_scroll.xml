@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@{item.time}"
+            tools:text="2022.03.14"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,6 +36,8 @@
             style="@style/body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="(수정됨)"
+            android:visibility="@{item.isModified ? View.VISIBLE : View.GONE}"
             app:layout_constraintStart_toEndOf="@id/item_piece_scroll_time_text"
             app:layout_constraintTop_toTopOf="@id/item_piece_scroll_time_text" />
 
