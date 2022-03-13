@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.sigmai.stylemento.ui.reservation.viewModel.ReservationCancelCompleteViewModel" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/reservation_complete_back_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_arrow_back"
+            android:onClick="@{()->viewModel.onBackClick()}" />
+
+        <TextView
+            style="@style/header3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="취소완료"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/reservation_complete_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/reservation_complete_back_img"
+            android:layout_marginTop="24dp"
+            android:background="@color/gray_f" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_circle"
+                        android:backgroundTint="@color/gray_d" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        style="@style/header3"
+                        android:textStyle="bold"
+                        android:text="취소신청 완료!" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        style="@style/body1"
+                        android:textColor="@color/gray_8"
+                        android:textStyle="bold"
+                        android:text="취소처리현황은 주문/예약내역에서 확인할 수 있습니다." />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        style="@style/body1"
+                        android:textColor="@color/gray_8"
+                        android:textStyle="bold"
+                        android:text="결제수단에 따라 환불기간이 다를 수 있습니다." />
+                </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/reservation_complete_list_button"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:text="예약현황"
+                    style="@style/header4"
+                    android:backgroundTint="@color/primary"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:onClick="@{()->viewModel.onBackClick()}"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/reservation_complete_home_button"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:text="코디네이터 게시판"
+                    style="@style/header4"
+                    android:backgroundTint="@color/primary"
+                    android:layout_gravity="end"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:onClick="@{()->viewModel.onNextClick()}"/>
+            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+</layout>

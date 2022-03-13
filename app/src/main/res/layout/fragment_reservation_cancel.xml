@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    <data>
+        <variable
+            name="item"
+            type="com.sigmai.stylemento.domain.entity.Receipt" />
+        <variable
+            name="viewModel"
+            type="com.sigmai.stylemento.ui.reservation.viewModel.ReservationCancelViewModel" />
+    </data>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -13,7 +20,8 @@
             android:layout_alignParentStart="true"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:layout_marginTop="20dp"
-            android:background="@drawable/ic_arrow_back" />
+            android:background="@drawable/ic_arrow_back"
+            android:onClick="@{()->viewModel.onBackClick()}"/>
 
         <TextView
             style="@style/header3"
@@ -21,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:text="주문/결제"
+            android:text="취소신청"
             android:textStyle="bold" />
 
         <View
@@ -57,8 +65,8 @@
                     android:id="@+id/reservation_cancel_coordinator_img"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/bg_circle"
                     android:backgroundTint="@color/gray_d"
                     app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    android:text="user_name"
+                    android:text="@{item.coordinator.nickname}"
                     app:layout_constraintStart_toEndOf="@id/reservation_cancel_coordinator_img"
                     app:layout_constraintTop_toTopOf="@id/reservation_cancel_coordinator_img" />
 
@@ -80,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    android:text="user@email.com"
+                    android:text="@{item.coordinator.email}"
                     app:layout_constraintStart_toEndOf="@id/reservation_cancel_coordinator_img"
                     app:layout_constraintTop_toBottomOf="@id/reservation_cancel_coordinator_name_text" />
 
@@ -104,7 +112,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="서비스명"
-                            android:textColor="@color/gray_8"/>
+                            android:textColor="@color/gray_8" />
 
                         <View
                             android:layout_width="0dp"
@@ -117,8 +125,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="end"
-                            android:text="service_name"
-                            />
+                            android:text="@{item.serviceName}" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -132,7 +139,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="서비스 방식"
-                            android:textColor="@color/gray_8"/>
+                            android:textColor="@color/gray_8" />
 
                         <View
                             android:layout_width="0dp"
@@ -145,8 +152,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="end"
-                            android:text="service_way"
-                            />
+                            android:text="@{item.serviceWay}" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -160,7 +166,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="가격"
-                            android:textColor="@color/gray_8"/>
+                            android:textColor="@color/gray_8" />
 
                         <View
                             android:layout_width="0dp"
@@ -172,8 +178,14 @@
                             style="@style/header4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:gravity="end" />
+
+                        <TextView
+                            style="@style/header4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:gravity="end"
-                            android:text="service_price" />
+                            android:text="원" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -187,7 +199,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="날짜"
-                            android:textColor="@color/gray_8"/>
+                            android:textColor="@color/gray_8" />
 
                         <View
                             android:layout_width="0dp"
@@ -200,7 +212,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="end"
-                            android:text="service_date" />
+                            android:text="@{item.date}" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -214,7 +226,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="시간"
-                            android:textColor="@color/gray_8"/>
+                            android:textColor="@color/gray_8" />
 
                         <View
                             android:layout_width="0dp"
@@ -227,20 +239,67 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="end"
-                            android:text="service_time" />
+                            android:text="@{item.decidedTime}" />
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@color/gray_f" />
                 </LinearLayout>
+
                 <TextView
-                    android:id="@+id/reservation_cancel_pay_way_text"
+                    android:id="@+id/reservation_cancel_reason_text"
+                    style="@style/header3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    android:text="결제 정보"
-                    style="@style/header3"
+                    android:layout_marginTop="10dp"
+                    android:text="취소 사유"
                     android:textColor="@color/primary"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/reservation_cancel_service_information_layout" />
+
+                <View
+                    android:id="@+id/reservation_cancel_reason_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/button_background_type_5"
+                    app:layout_constraintTop_toBottomOf="@id/reservation_cancel_reason_text" />
+                <EditText
+                    android:id="@+id/reservation_cancel_reason_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/trans_parent"
+                    android:maxLength="300"
+                    android:paddingHorizontal="6dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/reservation_cancel_reason_text" />
+                <View
+                    android:id="@+id/reservation_cancel_reason_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/gray_f"
+                    app:layout_constraintTop_toBottomOf="@id/reservation_cancel_reason_background"
+                    app:layout_constraintStart_toStartOf="parent"/>
+                <TextView
+                    android:id="@+id/reservation_cancel_pay_way_text"
+                    style="@style/header3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:layout_marginTop="10dp"
+                    android:text="결제 정보"
+                    android:textColor="@color/primary"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/reservation_cancel_reason_line" />
+
                 <LinearLayout
                     android:id="@+id/reservation_cancel_pay_way_layout"
                     android:layout_width="match_parent"
@@ -248,88 +307,83 @@
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:orientation="vertical"
                     app:layout_constraintTop_toBottomOf="@id/reservation_cancel_pay_way_text">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="10dp">
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
                         <TextView
+                            style="@style/header4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="환불 수단"
-                            style="@style/header4"
                             android:textColor="@color/gray_8"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/reservation_cancel_pay_way_text" />
+
                         <View
                             android:layout_width="0dp"
                             android:layout_height="0dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1" />
+
                         <TextView
                             android:id="@+id/reservation_cancel_pay_way_type_text"
+                            style="@style/header4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
                             android:layout_gravity="end"
-                            android:text="pay_way"
-                            style="@style/header4" />
+                            android:layout_marginTop="10dp"
+                            android:text="@{item.paymentWay}" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
+
                         <TextView
+                            style="@style/header4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="서비스 환불 금액"
                             android:textColor="@color/gray_8"
-                            style="@style/header4"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/reservation_cancel_pay_way_text" />
+
                         <View
                             android:layout_width="0dp"
                             android:layout_height="0dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1" />
+
                         <TextView
                             android:id="@+id/reservation_cancel_pay_way_price_text"
+                            style="@style/header4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
                             android:layout_gravity="end"
-                            android:text="price"
-                            style="@style/header4" />
+                            android:layout_marginTop="10dp" />
+
+                        <TextView
+                            style="@style/header4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="10dp"
+                            android:text="원" />
                     </LinearLayout>
+                    <Button
+                        android:id="@+id/reservation_cancel_button"
+                        style="@style/header4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="10dp"
+                        android:text="취소 신청"
+                        android:textColor="@color/white"
+                        android:onClick="@{()->viewModel.onNextClick()}"/>
                 </LinearLayout>
-                <TextView
-                    android:id="@+id/reservation_cancel_reason_text"
-                    style="@style/header3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    android:text="취소 사유"
-                    android:textColor="@color/primary"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/reservation_cancel_pay_way_layout" />
-                <EditText
-                    android:id="@+id/reservation_cancel_reason_editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    app:layout_constraintTop_toBottomOf="@id/reservation_cancel_reason_text"
-                    app:layout_constraintStart_toStartOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
-        <Button
-            android:id="@+id/reservation_cancel_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/horizontal_margin"
-            android:text="취소 신청"
-            style="@style/header4"
-            android:textColor="@color/white"
-            android:paddingVertical="10dp"
-            android:layout_alignParentBottom="true"/>
     </RelativeLayout>
 </layout>
