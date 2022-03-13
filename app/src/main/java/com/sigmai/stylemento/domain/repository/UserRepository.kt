@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.data.repository.user
+package com.sigmai.stylemento.domain.repository
 
 import com.sigmai.stylemento.data.model.User
 

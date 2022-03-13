@@ -7,10 +7,10 @@ import com.sigmai.stylemento.global.util.GlideUtil
 
 class DummyCoordinatorDataSource {
     fun getCoordinatorList() : List<CoordinatorResponse> {
-        return dummy
+        return dummyCoordinatorList
     }
 
-    private val dummy = listOf(
+    private val dummyCoordinatorList = mutableListOf(
         CoordinatorResponse(
             id = 1,
             imageUrl = GlideUtil.getRandomImageUrl(),
