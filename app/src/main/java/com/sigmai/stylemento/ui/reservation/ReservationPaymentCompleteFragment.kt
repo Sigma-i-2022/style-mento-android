@@ -20,6 +20,10 @@ class ReservationPaymentCompleteFragment : BaseFragment<FragmentReservationPayme
         binding.viewModel = viewModel
 
         viewModel.startBack.observe(this) {
+            findNavController().navigate(R.id.action_reservation_payment_complete_page_to_main)
+        }
+        viewModel.startNext.observe(this){
+            findNavController().navigate(R.id.action_reservation_payment_complete_page_to_reservation_list_page)
         }
     }
 
@@ -31,6 +35,7 @@ class ReservationPaymentCompleteFragment : BaseFragment<FragmentReservationPayme
         binding.reservationCompleteServiceTimeRecycler.adapter = TimeAdapter(viewModel.receipt.value!!.timeList)
         Glide.with(this).load(viewModel.coordinator.value?.imageUrl)
             .into(binding.reservationCompleteCoordinatorImg)
+
     }
 
 }

@@ -11,6 +11,7 @@ import com.sigmai.stylemento.databinding.FragmentReservationServiceSetBinding
 import com.sigmai.stylemento.domain.entity.Receipt
 import com.sigmai.stylemento.domain.entity.User
 import com.sigmai.stylemento.global.base.BaseFragment
+import com.sigmai.stylemento.global.constant.ReceiptStateType
 import com.sigmai.stylemento.global.util.TimeUtil
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
 import java.text.SimpleDateFormat
@@ -135,6 +136,6 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
         val dataFormat = SimpleDateFormat("yyyy.MM.dd")
         val time = dataFormat.format(currentTime)
 
-        //viewModel.setReceipt(Receipt(viewModel.coordinator.value!!, viewModel.user.value!!, serviceName, serviceWay, price, date, timeList, "", time, 0))
+        //viewModel.setReceipt(Receipt(viewModel.coordinator.value!!, viewModel.user.value!!, serviceName, serviceWay, price, date, timeList, "", time, "", ReceiptStateType.ACCEPT_BEFORE))
     }
 }

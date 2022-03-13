@@ -9,6 +9,7 @@ data class Receipt(
     val date : String,
     val timeList : List<String>,
     val paymentWay : String,
-    val time : String,
+    val requestTime : String,
+    val decidedTime : String,
     val state : Int
 )

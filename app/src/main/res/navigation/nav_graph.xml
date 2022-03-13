@@ -166,8 +166,26 @@
         android:name="com.sigmai.stylemento.ui.reservation.ReservationPaymentCompleteFragment"
         android:label="reservation payment complete page"
         tools:layout="@layout/fragment_reservation_payment_complete">
+        <action
+            android:id="@+id/action_reservation_payment_complete_page_to_main"
+            app:destination="@id/main"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_reservation_payment_complete_page_to_reservation_list_page"
+            app:destination="@id/reservation_list_page" />
     </fragment>
-
+    <fragment
+        android:id="@+id/reservation_list_page"
+        android:name="com.sigmai.stylemento.ui.reservation.ReservationListFragment"
+        android:label="reservation list page"
+        tools:layout="@layout/fragment_reservation_list">
+        <action
+            android:id="@+id/action_reservation_list_page_to_main"
+            app:destination="@id/main"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
+    </fragment>
     <fragment
         android:id="@+id/application_finish"
         android:name="com.sigmai.stylemento.ui.coordinator_application.ApplicationFinishFragment"
