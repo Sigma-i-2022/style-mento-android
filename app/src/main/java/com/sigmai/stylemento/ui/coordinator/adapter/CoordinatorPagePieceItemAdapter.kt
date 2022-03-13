@@ -21,31 +21,24 @@ class CoordinatorPagePieceItemAdapter(val viewModel: CoordinatorPageViewModel) :
 
     class ViewHolder(val binding: ItemPieceScrollBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        private var detailState = 0
         fun bind(item: Piece, viewModel: CoordinatorPageViewModel) {
             binding.item = item
             binding.viewModel = viewModel
-            setAdapter(item)
+            setAdapter()
             setListener()
 
             binding.executePendingBindings()
         }
 
-        private fun setAdapter(item: Piece) {
-            val tagAdapter = TagAdapter()
-            tagAdapter.setList(item.tags)
-            binding.itemPieceScrollTagRecycler.adapter = tagAdapter
+        private fun setAdapter() {
+            binding.itemPieceScrollTagRecycler.adapter = TagAdapter()
         }
 
         private fun setListener() {
             binding.itemPieceScrollDetail.setOnClickListener {
-                if (detailState == 0) {
-                    binding.itemPieceScrollDetail.maxLines = 10
-                    detailState = 1
-                } else {
-                    binding.itemPieceScrollDetail.maxLines = 2
-                    detailState = 0
-                }
+                val maxLine = binding.itemPieceScrollDetail.maxLines
+                if (maxLine == 10) binding.itemPieceScrollDetail.maxLines = 2
+                else binding.itemPieceScrollDetail.maxLines = 10
             }
 
             binding.moreMenu.setOnClickListener {
