@@ -10,21 +10,21 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.ItemPieceScrollBinding
 import com.sigmai.stylemento.domain.entity.Piece
 import com.sigmai.stylemento.global.component.SmBottomSheet
+import com.sigmai.stylemento.ui.coordinator.coordinatorpage.CoordinatorPageViewModel
 import com.sigmai.stylemento.ui.home.adapter.TagAdapter
 
-class CoordinatorPagePieceItemAdapter : ListAdapter<Piece, CoordinatorPagePieceItemAdapter.ViewHolder>(WorkItemDiffCallback()) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder.from(parent)
-
+class CoordinatorPagePieceItemAdapter(val viewModel: CoordinatorPageViewModel) : ListAdapter<Piece, CoordinatorPagePieceItemAdapter.ViewHolder>(WorkItemDiffCallback()) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder.from(parent)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), viewModel)
     }
 
     class ViewHolder(val binding: ItemPieceScrollBinding) :
         RecyclerView.ViewHolder(binding.root) {
         private var detailState = 0
-        fun bind(item: Piece) {
+        fun bind(item: Piece, viewModel: CoordinatorPageViewModel) {
             binding.item = item
+            binding.viewModel = viewModel
             if(item.isModified)
                 binding.itemPieceScrollModifiedText.text = "(수정됨)"
             setImage(item)

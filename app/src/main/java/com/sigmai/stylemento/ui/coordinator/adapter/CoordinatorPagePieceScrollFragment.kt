@@ -30,7 +30,7 @@ class CoordinatorPagePieceScrollFragment : BaseFragment<FragmentCoordinatorPageW
     private fun setupRecyclerView() {
         val position = arguments?.getInt("position") ?: 0
 
-        binding.coordinatorPageWorkScrollRecycler.adapter = CoordinatorPagePieceItemAdapter()
+        binding.coordinatorPageWorkScrollRecycler.adapter = CoordinatorPagePieceItemAdapter(viewModel)
         binding.coordinatorPageWorkScrollRecycler.scrollToPosition(position)
     }
 }
