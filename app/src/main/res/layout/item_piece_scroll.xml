@@ -34,6 +34,7 @@
             app:layout_constraintTop_toTopOf="@id/item_piece_scroll_time_text" />
 
         <View
+            android:id="@+id/more_menu"
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:background="@drawable/ic_more_horiz"

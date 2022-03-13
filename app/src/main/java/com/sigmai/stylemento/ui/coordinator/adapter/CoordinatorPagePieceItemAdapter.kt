@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.ItemPieceScrollBinding
 import com.sigmai.stylemento.domain.entity.Piece
+import com.sigmai.stylemento.global.component.SmBottomSheet
 import com.sigmai.stylemento.ui.coordinator.CoordinatorPageViewModel
 import com.sigmai.stylemento.ui.home.adapter.TagAdapter
 
@@ -56,6 +57,10 @@ class CoordinatorPagePieceItemAdapter : ListAdapter<Piece, CoordinatorPagePieceI
                     binding.itemPieceScrollDetail.maxLines = 2
                     detailState = 0
                 }
+            }
+
+            binding.moreMenu.setOnClickListener {
+                SmBottomSheet(it.context).show()
             }
         }
 
