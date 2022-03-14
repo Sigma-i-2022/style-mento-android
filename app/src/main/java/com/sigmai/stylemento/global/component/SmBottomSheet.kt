@@ -8,10 +8,11 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.sigmai.stylemento.R
 
 class SmBottomSheet(context: Context?) : ConstraintLayout(context!!) {
-    private var showBackButton: Boolean = false
+    val dialog: BottomSheetDialog
 
     init {
         initView()
+        dialog = BottomSheetDialog(context!!)
     }
 
     private fun initView() {
@@ -24,18 +25,17 @@ class SmBottomSheet(context: Context?) : ConstraintLayout(context!!) {
 
         editButton.setOnClickListener {
             onEdit(it)
+            dialog.dismiss()
         }
 
         deleteButton.setOnClickListener {
             onDelete(it)
+            dialog.dismiss()
         }
     }
 
     fun show() {
-        val dialog = BottomSheetDialog(context)
-
         dialog.setContentView(rootView)
-
         dialog.show()
     }
 }
