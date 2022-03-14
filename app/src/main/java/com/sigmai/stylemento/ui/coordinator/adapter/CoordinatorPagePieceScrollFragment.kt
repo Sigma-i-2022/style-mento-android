@@ -1,5 +1,6 @@
 package com.sigmai.stylemento.ui.coordinator.adapter
 
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
@@ -19,6 +20,12 @@ class CoordinatorPagePieceScrollFragment : BaseFragment<FragmentCoordinatorPageW
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
+
+        viewModel.onEditEvent.observe(this) {
+        val bundle = bundleOf("id" to 0L)
+        val navController = findNavController()
+        navController.navigate(R.id.action_coordinator_page_piece_scroll_to_add_piece, bundle)
+        }
     }
 
     private fun setupButton() {

@@ -43,7 +43,9 @@ class CoordinatorPagePieceItemAdapter(val viewModel: CoordinatorPageViewModel) :
 
             binding.moreMenu.setOnClickListener {
                 val bottomSheet = SmBottomSheet(it.context)
-                bottomSheet.setOnClickListener({}, {
+                bottomSheet.setOnClickListener({
+                    viewModel.onEditPiece(it, id)
+                }, {
                     viewModel.deletePiece(id)
                 })
                 bottomSheet.show()

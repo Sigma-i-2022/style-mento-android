@@ -124,6 +124,9 @@
         android:name="com.sigmai.stylemento.ui.coordinator.adapter.CoordinatorPagePieceScrollFragment"
         android:label="coordinator pieces page"
         tools:layout="@layout/fragment_coordinator_page_work_scroll" >
+        <action
+            android:id="@+id/action_coordinator_page_piece_scroll_to_add_piece"
+            app:destination="@id/add_piece" />
     </fragment>
     <fragment
         android:id="@+id/application_viewpager"
@@ -207,5 +210,12 @@
             app:destination="@id/main"
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/add_piece"
+        android:name="com.sigmai.stylemento.ui.mypage.coordinator.AddPieceFragment"
+        android:label="add piece"
+        tools:layout="@layout/fragment_add_piece">
     </fragment>
 </navigation>

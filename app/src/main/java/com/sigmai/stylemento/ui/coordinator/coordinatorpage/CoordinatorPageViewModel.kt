@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.repository.coordinator.DummyCoordinatorRepository
 import com.sigmai.stylemento.di.AppConfigs
@@ -28,6 +29,7 @@ class CoordinatorPageViewModel : ViewModel() {
 
     val startChat = SingleLiveEvent<Any>()
     val startReserve = SingleLiveEvent<Any>()
+    val onEditEvent = SingleLiveEvent<Any>()
 
     fun onClickInstruction(){
         isExtended.value = !(isExtended.value!!)
@@ -64,5 +66,12 @@ class CoordinatorPageViewModel : ViewModel() {
             userRepository.deletePiece(id)
             loadCoordinatorInfo(-1)
         }
+    }
+
+    fun onEditPiece(view: View, id: Long) {
+        onEditEvent.call()
+//        val bundle = bundleOf("id" to id)
+//        val navController = view.findNavController()
+//        navController.navigate(R.id.action_coordinator_page_piece_scroll_to_add_piece, bundle)
     }
 }
