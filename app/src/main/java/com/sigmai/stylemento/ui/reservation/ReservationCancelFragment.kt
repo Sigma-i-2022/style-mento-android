@@ -44,6 +44,7 @@ class ReservationCancelFragment : BaseFragment<FragmentReservationCancelBinding>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setEditText()
+        checkButtonEnabled("")
     }
     private fun setEditText(){
         var reason = ""
