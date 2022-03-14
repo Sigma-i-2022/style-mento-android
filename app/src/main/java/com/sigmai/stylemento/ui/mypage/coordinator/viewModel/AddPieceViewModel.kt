@@ -9,12 +9,31 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class AddPieceViewModel : ViewModel() {
-    val piece = MutableLiveData<Piece>()
     private val userRepository = AppConfigs.coordinatorUserRepository
+
+    val imageUrl = MutableLiveData("")
+    val description = MutableLiveData("")
+    val top = MutableLiveData("")
+    val bottom = MutableLiveData("")
+    val shoes = MutableLiveData("")
+    val tagList = MutableLiveData<List<String>>(listOf())
+
 
     fun loadPiece(id: Long) {
         CoroutineScope(Dispatchers.IO).launch {
-            piece.postValue(userRepository.getUserInfo().pieceList.find { it.id == id })
+            val piece = userRepository.getUserInfo().pieceList.find { it.id == id }
+            piece?.let {
+                setDataFromPiece(piece)
+            }
         }
+    }
+
+    private fun setDataFromPiece(piece: Piece) {
+        imageUrl.postValue(piece.imageUrl)
+        description.postValue(piece.content)
+        top.postValue(piece.top)
+        bottom.postValue(piece.pants)
+        shoes.postValue(piece.shoes)
+        tagList.postValue(piece.tags)
     }
 }

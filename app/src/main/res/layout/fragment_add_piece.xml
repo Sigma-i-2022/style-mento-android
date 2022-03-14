@@ -34,7 +34,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="36dp"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
-            tools:background="@color/gray_d"/>
+            tools:background="@color/gray_d"
+            app:imageUrl="@{viewModel.imageUrl}"/>
 
         <EditText
             android:id="@+id/description"
@@ -43,6 +44,7 @@
             app:layout_constraintTop_toBottomOf="@id/photo"
             app:layout_constraintStart_toStartOf="@id/photo"
             app:layout_constraintEnd_toEndOf="@id/photo"
+            android:text="@={viewModel.description}"
             android:hint="설명 입력..."
             android:layout_marginTop="8dp"
             android:textSize="14sp"
@@ -82,7 +84,8 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/style_tag"
             tools:listitem="@layout/item_tag"
-            tools:itemCount="3"/>
+            tools:itemCount="3"
+            app:tags="@{viewModel.tagList}"/>
 
         <View
             android:id="@+id/divider1"
@@ -127,7 +130,8 @@
             android:layout_marginEnd="@dimen/horizontal_margin"
             android:hint="입력"
             android:textSize="18sp"
-            android:background="@color/trans_parent"/>
+            android:background="@color/trans_parent"
+            android:text="@={viewModel.top}"/>
 
         <TextView
             android:id="@+id/bottom_text_view"
@@ -151,7 +155,8 @@
             android:layout_marginEnd="@dimen/horizontal_margin"
             android:hint="입력"
             android:textSize="18sp"
-            android:background="@color/trans_parent"/>
+            android:background="@color/trans_parent"
+            android:text="@={viewModel.bottom}"/>
 
         <TextView
             android:id="@+id/shoes_text_view"
@@ -175,7 +180,8 @@
             android:layout_marginEnd="@dimen/horizontal_margin"
             android:hint="입력"
             android:textSize="18sp"
-            android:background="@color/trans_parent"/>
+            android:background="@color/trans_parent"
+            android:text="@={viewModel.shoes}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

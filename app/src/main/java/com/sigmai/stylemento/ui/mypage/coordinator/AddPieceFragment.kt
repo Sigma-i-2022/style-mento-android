@@ -8,6 +8,7 @@ import com.sigmai.stylemento.databinding.FragmentMyPageWorkAddBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.base.HavingImage
 import com.sigmai.stylemento.global.base.HavingTag2
+import com.sigmai.stylemento.ui.home.adapter.TagAdapter
 import com.sigmai.stylemento.ui.mypage.coordinator.viewModel.AddPieceViewModel
 import timber.log.Timber
 
@@ -18,11 +19,17 @@ class AddPieceFragment : BaseFragment<FragmentAddPieceBinding>() {
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
+
+        setupRecyclerView()
     }
 
     override fun initState() {
         val pieceId = arguments?.getLong("id") ?: -1
         if(pieceId >= 0L) viewModel.loadPiece(pieceId)
         else Timber.e("Invalid piece id $pieceId")
+    }
+
+    private fun setupRecyclerView() {
+        binding.tagList.adapter = TagAdapter()
     }
 }

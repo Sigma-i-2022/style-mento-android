@@ -22,7 +22,7 @@ class CoordinatorPagePieceScrollFragment : BaseFragment<FragmentCoordinatorPageW
         binding.viewModel = viewModel
 
         viewModel.onEditEvent.observe(this) {
-        val bundle = bundleOf("id" to 0L)
+        val bundle = bundleOf("id" to 1L)
         val navController = findNavController()
         navController.navigate(R.id.action_coordinator_page_piece_scroll_to_add_piece, bundle)
         }
