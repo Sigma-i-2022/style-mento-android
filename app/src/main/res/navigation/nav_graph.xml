@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_main_to_coordinator_page_piece_scroll"
             app:destination="@id/coordinator_page_piece_scroll" />
+        <action
+            android:id="@+id/action_main_to_reservation_list_page"
+            app:destination="@id/reservation_list_page" />
     </fragment>
 
     <fragment

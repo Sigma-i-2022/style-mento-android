@@ -180,7 +180,8 @@
                         android:text="@string/confirm_reservation"
                         android:textSize="12sp"
                         android:textColor="@color/white"
-                        android:background="@drawable/button_background_type_2"/>
+                        android:background="@drawable/button_background_type_2"
+                        android:onClick="@{()->viewModel.startCheckReservationFragment()}"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

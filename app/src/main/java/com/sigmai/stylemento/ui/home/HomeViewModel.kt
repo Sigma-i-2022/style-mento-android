@@ -22,6 +22,7 @@ class HomeViewModel : ViewModel() {
 
     val user: LiveData<User> get() = _user
     val startNotification = SingleLiveEvent<Any>()
+    val startCheckReservation = SingleLiveEvent<Any>()
     var recommendedCoordinatorList: List<RecommendedCoordinator>? = null
 
     init {
@@ -33,7 +34,9 @@ class HomeViewModel : ViewModel() {
     fun startNotificationFragment() {
         startNotification.call()
     }
-
+    fun startCheckReservationFragment() {
+        startCheckReservation.call()
+    }
     fun getUserInfo() {
         _user.postValue(getUserUseCase())
     }
