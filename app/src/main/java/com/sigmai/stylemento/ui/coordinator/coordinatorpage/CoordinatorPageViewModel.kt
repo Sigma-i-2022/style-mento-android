@@ -9,12 +9,16 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.repository.coordinator.DummyCoordinatorRepository
+import com.sigmai.stylemento.data.repository.coordinator.DummyMyPageRepository
 import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.global.util.SingleLiveEvent
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CoordinatorPageViewModel : ViewModel() {
-    val repository = DummyCoordinatorRepository()
+    val coordinatorRepository = DummyCoordinatorRepository()
+    val myPageRepository = DummyMyPageRepository()
 
     private val _coordinator = MutableLiveData<Coordinator>()
     val coordinator: LiveData<Coordinator> get() = _coordinator
@@ -36,8 +40,15 @@ class CoordinatorPageViewModel : ViewModel() {
     }
 
     fun loadCoordinatorInfo(position : Int) {
-        viewModelScope.launch {
-            _coordinator.postValue(Coordinator.from( repository.getCoordinatorList()[position]))
+        if(position == -1 || isMyPage.value!!) {
+            viewModelScope.launch {
+                _coordinator.postValue(Coordinator.from( myPageRepository.getUserInfo()) )
+            }
+        }
+        else {
+            viewModelScope.launch {
+                _coordinator.postValue(Coordinator.from( coordinatorRepository.getCoordinatorList()[position]))
+            }
         }
     }
 
@@ -46,5 +57,12 @@ class CoordinatorPageViewModel : ViewModel() {
         val navController = view.findNavController()
         if(isMyPage.value!!) navController.navigate(R.id.action_main_to_coordinator_page_piece_scroll, bundle)
         else navController.navigate(R.id.action_coordinator_page_to_coordinator_page_piece_scroll, bundle)
+    }
+
+    fun deletePiece(id: Long) {
+        CoroutineScope(Dispatchers.IO).launch {
+            myPageRepository.deletePiece(id)
+            loadCoordinatorInfo(-1)
+        }
     }
 }

@@ -25,7 +25,7 @@ class CoordinatorPagePieceItemAdapter(val viewModel: CoordinatorPageViewModel) :
             binding.item = item
             binding.viewModel = viewModel
             setAdapter()
-            setListener()
+            setListener(item.id, viewModel)
 
             binding.executePendingBindings()
         }
@@ -34,7 +34,7 @@ class CoordinatorPagePieceItemAdapter(val viewModel: CoordinatorPageViewModel) :
             binding.itemPieceScrollTagRecycler.adapter = TagAdapter()
         }
 
-        private fun setListener() {
+        private fun setListener(id: Long, viewModel: CoordinatorPageViewModel) {
             binding.itemPieceScrollDetail.setOnClickListener {
                 val maxLine = binding.itemPieceScrollDetail.maxLines
                 if (maxLine == 10) binding.itemPieceScrollDetail.maxLines = 2
@@ -42,7 +42,11 @@ class CoordinatorPagePieceItemAdapter(val viewModel: CoordinatorPageViewModel) :
             }
 
             binding.moreMenu.setOnClickListener {
-                SmBottomSheet(it.context).show()
+                val bottomSheet = SmBottomSheet(it.context)
+                bottomSheet.setOnClickListener({}, {
+                    viewModel.deletePiece(id)
+                })
+                bottomSheet.show()
             }
         }
 

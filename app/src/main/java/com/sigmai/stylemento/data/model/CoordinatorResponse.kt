@@ -9,7 +9,7 @@ data class CoordinatorResponse(
     val nickname: String,
     val email: String?,
     val introduction: String,
-    val pieceList: List<Piece>,
+    var pieceList: List<Piece>,
     val rating: Int,
     val reviewList: List<Review>?,
     val isFavorite: Boolean,
