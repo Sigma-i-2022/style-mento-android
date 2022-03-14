@@ -40,7 +40,7 @@ class ReservationListFragment : BaseFragment<FragmentReservationListBinding>() {
             Receipt(coordinator, user, "코디추천", "채팅", 3000, "2022.3.17", listOf("9:00", "9:30", "10:00", "10:30"),
                 "신용카드", "2022.3.15", "", ReceiptStateType.PAYBACK),
             Receipt(coordinator, user, "코디추천", "채팅", 3000, "2022.3.17", listOf("9:00", "9:30", "10:00", "10:30"),
-                "신용카드", "2022.3.15", "", ReceiptStateType.GET_DECISION))
+                "신용카드", "2022.3.15", "10:00", ReceiptStateType.GET_DECISION))
         binding.reservationListRecycler.adapter = ReservationListAdapter(dataSet)
 
         val stateArray = Array(4){0}
