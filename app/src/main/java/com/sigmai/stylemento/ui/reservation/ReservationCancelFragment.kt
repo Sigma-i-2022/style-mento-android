@@ -34,14 +34,17 @@ class ReservationCancelFragment : BaseFragment<FragmentReservationCancelBinding>
         binding.viewModel = viewModel
 
         viewModel.startBack.observe(this) {
+            findNavController().navigateUp()
         }
         viewModel.startNext.observe(this) {
+            findNavController().navigate(R.id.action_reservation_cancel_page_to_reservation_cancel_complete_page)
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setEditText()
+        checkButtonEnabled("")
     }
     private fun setEditText(){
         var reason = ""

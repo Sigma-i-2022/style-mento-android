@@ -333,24 +333,22 @@
                     android:layout_marginTop="6dp"
                     app:layout_constraintTop_toTopOf="@id/reservation_payment_second_agree_img"
                     app:layout_constraintStart_toEndOf="@id/reservation_payment_second_agree_img"/>
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/reservation_payment_next_button"
-                    style="@style/header4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="10dp"
-                    android:onClick="@{()->viewModel.onNextClick()}"
-                    android:paddingVertical="12dp"
-                    android:text="결제하기"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/reservation_payment_second_agree_img"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/reservation_payment_next_button"
+            style="@style/header4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginBottom="10dp"
+            android:onClick="@{()->viewModel.onNextClick()}"
+            android:paddingVertical="12dp"
+            android:text="결제하기"
+            android:background="@drawable/background_radius_12"
+            android:backgroundTint="@color/primary"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
     </RelativeLayout>
 </layout>

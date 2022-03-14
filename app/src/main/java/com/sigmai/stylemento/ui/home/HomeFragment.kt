@@ -20,13 +20,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         super.initDataBinding()
         binding.viewModel = viewModel
 
-        viewModel.startNotification.observe(this, {
+        viewModel.startNotification.observe(this) {
             findNavController().navigate(R.id.action_main_to_notification)
-        })
-
+        }
+        viewModel.startCheckReservation.observe(this) {
+            findNavController().navigate(R.id.action_main_to_reservation_list_page)
+        }
         if(activity is MainActivity){
             (activity as MainActivity).checkPermission()
         }
+
     }
 
     fun getUserInfo() {

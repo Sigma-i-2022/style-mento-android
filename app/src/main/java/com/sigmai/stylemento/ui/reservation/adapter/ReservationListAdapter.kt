@@ -3,6 +3,7 @@ package com.sigmai.stylemento.ui.reservation.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.ItemReservationListBinding
@@ -66,6 +67,7 @@ class ReservationListAdapter(private val dataSet: List<Receipt>) :
 
         private fun setListener(adapter: ReservationListAdapter, position: Int) {
             binding.reservationListCancelButton.setOnClickListener {
+                it.findNavController().navigate(R.id.action_reservation_list_page_to_reservation_cancel_page)
                 adapter.notifyItemChanged(position)
             }
             binding.reservationListRequestButton.setOnClickListener {

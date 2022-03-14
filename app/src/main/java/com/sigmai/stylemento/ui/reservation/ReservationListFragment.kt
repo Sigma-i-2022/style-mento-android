@@ -6,7 +6,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentReservationListBinding
+import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.domain.entity.Receipt
+import com.sigmai.stylemento.domain.entity.User
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.constant.ReceiptStateType
 import com.sigmai.stylemento.ui.reservation.adapter.ReservationListAdapter
@@ -28,10 +30,20 @@ class ReservationListFragment : BaseFragment<FragmentReservationListBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val dataSet = listOf<Receipt>()
+        val coordinator = Coordinator(0, "", "codi1", "codi1_email", "", listOf(), 4, listOf(), 2, listOf())
+        val user = User(1, "", "user1", "user_email", "", listOf(), listOf())
+        val dataSet = listOf<Receipt>(
+            Receipt(coordinator, user, "코디추천", "채팅", 3000, "2022.3.17", listOf("9:00", "9:30", "10:00", "10:30"),
+                "신용카드", "2022.3.15", "", ReceiptStateType.ACCEPT_BEFORE),
+            Receipt(coordinator, user, "코디추천", "채팅", 3000, "2022.3.17", listOf("9:00", "9:30", "10:00", "10:30"),
+                "신용카드", "2022.3.15", "", ReceiptStateType.ACCEPT_AFTER),
+            Receipt(coordinator, user, "코디추천", "채팅", 3000, "2022.3.17", listOf("9:00", "9:30", "10:00", "10:30"),
+                "신용카드", "2022.3.15", "", ReceiptStateType.PAYBACK),
+            Receipt(coordinator, user, "코디추천", "채팅", 3000, "2022.3.17", listOf("9:00", "9:30", "10:00", "10:30"),
+                "신용카드", "2022.3.15", "10:00", ReceiptStateType.GET_DECISION))
         binding.reservationListRecycler.adapter = ReservationListAdapter(dataSet)
 
-        val stateArray = Array(3){0}
+        val stateArray = Array(4){0}
         for(item in dataSet){
             stateArray[item.state] += 1
         }
