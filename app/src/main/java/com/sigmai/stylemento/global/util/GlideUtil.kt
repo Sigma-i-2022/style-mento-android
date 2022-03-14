@@ -16,7 +16,7 @@ object GlideUtil {
             .load(url)
             .placeholder(R.drawable.ic_logo)
             .error(R.drawable.ic_logo)
-            .circleCrop()
+            .centerCrop()
             .into(view)
     }
 

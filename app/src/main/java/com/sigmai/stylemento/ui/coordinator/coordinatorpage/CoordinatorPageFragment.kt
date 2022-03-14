@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.ui.coordinator
+package com.sigmai.stylemento.ui.coordinator.coordinatorpage
 
 import android.view.View
 import androidx.fragment.app.activityViewModels

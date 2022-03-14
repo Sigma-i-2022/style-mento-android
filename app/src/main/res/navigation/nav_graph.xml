@@ -109,7 +109,7 @@
     </fragment>
     <fragment
         android:id="@+id/coordinator_page"
-        android:name="com.sigmai.stylemento.ui.coordinator.CoordinatorPageFragment"
+        android:name="com.sigmai.stylemento.ui.coordinator.coordinatorpage.CoordinatorPageFragment"
         android:label="coordinator page"
         tools:layout="@layout/fragment_coordinator_page" >
         <action
