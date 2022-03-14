@@ -83,7 +83,7 @@ class SmToolbar(context: Context, attrs: AttributeSet) : Toolbar(context, attrs)
     }
 
     fun setOnFinishListener(action: (view: View)->Unit) {
-        val textButton = findViewById<ImageButton>(R.id.text_button)
+        val textButton = findViewById<Button>(R.id.text_button)
         textButton.setOnClickListener {
             action(it)
         }

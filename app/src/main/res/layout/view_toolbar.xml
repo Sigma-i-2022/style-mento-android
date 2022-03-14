@@ -46,6 +46,8 @@
         android:src="@drawable/ic_pencil"
         android:background="@null"
         android:text="완료"
+        android:textColor="@color/primary"
+        android:textSize="21sp"
         android:layout_gravity="end"
         android:layout_marginEnd="@dimen/horizontal_margin"/>
 </androidx.appcompat.widget.Toolbar>
