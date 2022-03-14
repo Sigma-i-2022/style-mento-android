@@ -23,7 +23,14 @@ class SmToolbar(context: Context, attrs: AttributeSet) : Toolbar(context, attrs)
             rootView?.findViewById<ImageButton>(R.id.edit_profile)?.visibility = if(value) View.VISIBLE else View.GONE
         }
 
+    private var textButtonName: String = "완료"
+        set(value) {
+            field = value
+            rootView?.findViewById<Button>(R.id.text_button)?.text = value
+        }
+
     private var showBackButton: Boolean = false
+    private var showTextButton: Boolean = false
 
     init {
         initAttrs(attrs)
@@ -37,6 +44,7 @@ class SmToolbar(context: Context, attrs: AttributeSet) : Toolbar(context, attrs)
             0, 0
         ).apply {
             try {
+                showTextButton = getBoolean(R.styleable.SmToolbar_showTextButton, false)
                 showBackButton = getBoolean(R.styleable.SmToolbar_showBackButton, false)
                 isMyPage = getBoolean(R.styleable.SmToolbar_isMyPage, false)
                 title = getString(R.styleable.SmToolbar_title) ?: ""
@@ -52,10 +60,12 @@ class SmToolbar(context: Context, attrs: AttributeSet) : Toolbar(context, attrs)
         val titleTextView = findViewById<TextView>(R.id.title)
         val backButton = findViewById<Button>(R.id.back_button)
         val editButton = findViewById<ImageButton>(R.id.edit_profile)
+        val textButton = findViewById<Button>(R.id.text_button)
 
         titleTextView.text = title
         backButton.visibility = if(showBackButton) View.VISIBLE else View.GONE
         editButton.visibility = if(isMyPage) View.VISIBLE else View.GONE
+        textButton.visibility = if(showTextButton) View.VISIBLE else View.GONE
     }
 
     fun setOnBackListener(action: (view: View)->Unit) {
@@ -72,11 +82,23 @@ class SmToolbar(context: Context, attrs: AttributeSet) : Toolbar(context, attrs)
         }
     }
 
+    fun setOnFinishListener(action: (view: View)->Unit) {
+        val textButton = findViewById<ImageButton>(R.id.text_button)
+        textButton.setOnClickListener {
+            action(it)
+        }
+    }
+
     override fun setTitle(title: CharSequence?) {
         this.title = title.toString()
     }
 
     fun setIsMyPage(isMyPage: Boolean) {
         this.isMyPage = isMyPage
+    }
+
+    @JvmName("setTextButtonName1")
+    fun setTextButtonName(textButtonName: String) {
+        this.textButtonName = textButtonName
     }
 }
