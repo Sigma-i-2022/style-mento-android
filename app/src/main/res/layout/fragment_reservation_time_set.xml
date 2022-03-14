@@ -123,8 +123,10 @@
             android:layout_alignParentBottom="true"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:layout_marginBottom="10dp"
+            android:background="@drawable/background_radius_12"
+            android:backgroundTint="@color/primary"
+            android:onClick="@{()->viewModel.onNextClick()}"
             android:text="다음"
-            android:textColor="@color/white"
-            android:onClick="@{()->viewModel.onNextClick()}"/>
+            android:textColor="@color/white" />
     </RelativeLayout>
 </layout>

@@ -381,6 +381,8 @@
                         android:layout_height="wrap_content"
                         android:paddingVertical="10dp"
                         android:text="취소 신청"
+                        android:background="@drawable/background_radius_12"
+                        android:backgroundTint="@color/primary"
                         android:textColor="@color/white"
                         android:onClick="@{()->viewModel.onNextClick()}"/>
                 </LinearLayout>
