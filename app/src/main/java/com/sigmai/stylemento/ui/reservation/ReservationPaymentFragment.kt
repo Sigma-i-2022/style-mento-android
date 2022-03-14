@@ -24,7 +24,7 @@ class ReservationPaymentFragment : BaseFragment<FragmentReservationPaymentBindin
             findNavController().navigateUp()
         }
         viewModel.startNext.observe(this) {
-            PostReceiptUseCase().invoke(viewModel.receipt.value!!)
+            //PostReceiptUseCase().invoke(viewModel.receipt.value!!)
             TimeUtil.resetTimeList()
             findNavController().navigate(R.id.action_reservation_payment_page_to_reservation_payment_complete_page)
         }
@@ -37,6 +37,10 @@ class ReservationPaymentFragment : BaseFragment<FragmentReservationPaymentBindin
         viewInit()
     }
     private fun viewInit(){
+        if(viewModel.receipt.value == null){
+            return
+        }
+
         binding.reservationPaymentServicePriceText.text = viewModel.receipt.value!!.price.toString()
         binding.reservationPaymentServiceTimeRecycler.adapter = TimeAdapter(viewModel.receipt.value!!.timeList)
 

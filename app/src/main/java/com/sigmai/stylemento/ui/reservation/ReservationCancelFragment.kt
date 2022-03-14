@@ -34,8 +34,10 @@ class ReservationCancelFragment : BaseFragment<FragmentReservationCancelBinding>
         binding.viewModel = viewModel
 
         viewModel.startBack.observe(this) {
+            findNavController().navigateUp()
         }
         viewModel.startNext.observe(this) {
+            findNavController().navigate(R.id.action_reservation_cancel_page_to_reservation_cancel_complete_page)
         }
     }
 
