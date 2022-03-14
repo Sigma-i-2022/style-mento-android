@@ -5,7 +5,7 @@ import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.domain.entity.Piece
 import com.sigmai.stylemento.global.util.GlideUtil
 
-class DummyMyPageDataSource {
+class DummyCoordinatorUserDataSource {
     fun getUserInfo() : CoordinatorResponse {
         return dummyUser
     }

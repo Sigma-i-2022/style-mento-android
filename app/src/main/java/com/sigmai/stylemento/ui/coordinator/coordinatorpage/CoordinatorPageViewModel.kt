@@ -9,7 +9,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.repository.coordinator.DummyCoordinatorRepository
-import com.sigmai.stylemento.data.repository.coordinator.DummyMyPageRepository
+import com.sigmai.stylemento.di.AppConfigs
 import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import kotlinx.coroutines.CoroutineScope
@@ -17,8 +17,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CoordinatorPageViewModel : ViewModel() {
-    val coordinatorRepository = DummyCoordinatorRepository()
-    val myPageRepository = DummyMyPageRepository()
+    private val coordinatorRepository = DummyCoordinatorRepository()
+    private val userRepository = AppConfigs.coordinatorUserRepository
 
     private val _coordinator = MutableLiveData<Coordinator>()
     val coordinator: LiveData<Coordinator> get() = _coordinator
@@ -42,7 +42,7 @@ class CoordinatorPageViewModel : ViewModel() {
     fun loadCoordinatorInfo(position : Int) {
         if(position == -1 || isMyPage.value!!) {
             viewModelScope.launch {
-                _coordinator.postValue(Coordinator.from( myPageRepository.getUserInfo()) )
+                _coordinator.postValue(Coordinator.from( userRepository.getUserInfo()) )
             }
         }
         else {
@@ -61,7 +61,7 @@ class CoordinatorPageViewModel : ViewModel() {
 
     fun deletePiece(id: Long) {
         CoroutineScope(Dispatchers.IO).launch {
-            myPageRepository.deletePiece(id)
+            userRepository.deletePiece(id)
             loadCoordinatorInfo(-1)
         }
     }
