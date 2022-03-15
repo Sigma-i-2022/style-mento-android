@@ -24,7 +24,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             findNavController().navigate(R.id.action_main_to_notification)
         }
         viewModel.startCheckReservation.observe(this) {
-            findNavController().navigate(R.id.action_main_to_reservation_list_page)
+            findNavController().navigate(R.id.action_main_to_reservation_user_list_page)
         }
         if(activity is MainActivity){
             (activity as MainActivity).checkPermission()

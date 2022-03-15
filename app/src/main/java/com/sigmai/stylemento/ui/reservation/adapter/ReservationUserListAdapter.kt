@@ -1,5 +1,6 @@
 package com.sigmai.stylemento.ui.reservation.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,9 +27,10 @@ class ReservationUserListAdapter(private val dataSet: List<Receipt>) :
 
     class ViewHolder(val binding: ItemReservationUserListBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        private val selectedTimes = ArrayList<String>()
         fun bind(item: Receipt, adapter: ReservationUserListAdapter, position: Int) {
             binding.item = item
-            setAdapter(item.timeList)
+            setAdapter(item.timeList, false)
             binding(item)
             setListener(adapter, position)
 
@@ -40,23 +42,29 @@ class ReservationUserListAdapter(private val dataSet: List<Receipt>) :
             when (item.state) {
                 ReceiptStateType.ACCEPT_BEFORE -> {
                     turnOffShare()
+                    setAdapter(item.timeList, true)
                 }
                 ReceiptStateType.ACCEPT_AFTER -> {
                     binding.reservationUserListStateText.text = "예약완료"
+                    binding.reservationUserListTimeRecycler.visibility = View.GONE
+                    showDecidedTime(item.decidedTime)
                     turnOffAccept()
                 }
                 ReceiptStateType.GET_DECISION -> {
                     binding.reservationUserListStateText.text = "구매확정"
                     binding.reservationUserListCancelButton.visibility = View.GONE
-                    binding.reservationUserListDecidedTimeText.visibility = View.VISIBLE
-                    binding.reservationUserListDecidedTimeText.text = item.decidedTime
                     binding.reservationUserListTimeRecycler.visibility = View.GONE
+                    showDecidedTime(item.decidedTime)
                     turnOffShare()
                     turnOffAccept()
                 }
                 ReceiptStateType.PAYBACK -> {
                     binding.reservationUserListStateText.text = "환불완료/대기"
                     binding.reservationUserListCancelButton.visibility = View.GONE
+                    if(item.decidedTime != ""){
+                        showDecidedTime(item.decidedTime)
+                        binding.reservationUserListTimeRecycler.visibility = View.GONE
+                    }
                     turnOffShare()
                     turnOffAccept()
                 }
@@ -68,14 +76,20 @@ class ReservationUserListAdapter(private val dataSet: List<Receipt>) :
                 adapter.notifyItemChanged(position)
             }
             binding.reservationUserListAcceptButton.setOnClickListener {
-
+                if(selectedTimes.size > 0)
+                    binding.reservationUserListTimeText.text = selectedTimes[0] //test용
             }
             binding.reservationUserListShareButton.setOnClickListener {
             }
         }
 
-        private fun setAdapter(timeList: List<String>) {
-            binding.reservationUserListTimeRecycler.adapter = TimeAdapter(timeList)
+        private fun setAdapter(timeList: List<String>, clickable : Boolean) {
+            binding.reservationUserListTimeRecycler.adapter = TimeAdapter(timeList, clickable, selectedTimes)
+        }
+
+        private fun showDecidedTime(time : String){
+            binding.reservationUserListDecidedTimeText.visibility = View.VISIBLE
+            binding.reservationUserListDecidedTimeText.text = time
         }
 
         private fun turnOffAccept() {
