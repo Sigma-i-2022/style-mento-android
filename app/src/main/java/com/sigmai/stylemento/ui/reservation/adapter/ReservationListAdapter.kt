@@ -50,15 +50,18 @@ class ReservationListAdapter(private val dataSet: List<Receipt>) :
                 ReceiptStateType.GET_DECISION -> {
                     binding.reservationListStateText.text = "구매확정"
                     binding.reservationListCancelButton.visibility = View.GONE
-                    binding.reservationListDecidedTimeText.visibility = View.VISIBLE
-                    binding.reservationListDecidedTimeText.text = item.decidedTime
                     binding.reservationListServiceTimeRecycler.visibility = View.GONE
+                    showDecidedTime(item.decidedTime)
                     turnOffBuy()
                 }
                 ReceiptStateType.PAYBACK -> {
                     binding.reservationListStateText.text = "환불완료/대기"
                     binding.reservationListCancelButton.visibility = View.GONE
                     binding.reservationListRequestButton.visibility = View.VISIBLE
+                    if(item.decidedTime != ""){
+                        binding.reservationListServiceTimeRecycler.visibility = View.GONE
+                        showDecidedTime(item.decidedTime)
+                    }
                     turnOffReview()
                     turnOffBuy()
                 }
@@ -81,6 +84,10 @@ class ReservationListAdapter(private val dataSet: List<Receipt>) :
             }
         }
 
+        private fun showDecidedTime(time : String){
+            binding.reservationListDecidedTimeText.visibility = View.VISIBLE
+            binding.reservationListDecidedTimeText.text = time
+        }
         private fun setAdapter(timeList: List<String>) {
             binding.reservationListServiceTimeRecycler.adapter = TimeAdapter(timeList)
         }
