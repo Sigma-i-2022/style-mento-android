@@ -19,7 +19,8 @@ import kotlinx.coroutines.launch
 
 class CoordinatorPageViewModel : ViewModel() {
     private val coordinatorRepository = DummyCoordinatorRepository()
-    private val userRepository = AppConfigs.coordinatorUserRepository
+    private val getCoordinatorUserUseCase = AppConfigs.getCoordinatorUserUseCase
+    private val deletePieceUseCase = AppConfigs.deletePieceUseCase
 
     private val _coordinator = MutableLiveData<Coordinator>()
     val coordinator: LiveData<Coordinator> get() = _coordinator
@@ -44,7 +45,7 @@ class CoordinatorPageViewModel : ViewModel() {
     fun loadCoordinatorInfo(position : Int) {
         if(position == -1 || isMyPage.value!!) {
             viewModelScope.launch {
-                _coordinator.postValue(Coordinator.from( userRepository.getUserInfo()) )
+                _coordinator.postValue(getCoordinatorUserUseCase())
             }
         }
         else {
@@ -63,7 +64,7 @@ class CoordinatorPageViewModel : ViewModel() {
 
     fun deletePiece(id: Long) {
         CoroutineScope(Dispatchers.IO).launch {
-            userRepository.deletePiece(id)
+            deletePieceUseCase(id)
             loadCoordinatorInfo(-1)
         }
     }
