@@ -7,18 +7,22 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.repository.coordinator.DummyCoordinatorRepository
 import com.sigmai.stylemento.di.AppConfigs
 import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.global.util.SingleLiveEvent
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CoordinatorPageViewModel : ViewModel() {
-    private val coordinatorRepository = DummyCoordinatorRepository()
+@HiltViewModel
+class CoordinatorPageViewModel
+@Inject constructor() : ViewModel() {
+    @Inject
+    lateinit var coordinatorRepository: DummyCoordinatorRepository
     private val getCoordinatorUserUseCase = AppConfigs.getCoordinatorUserUseCase
     private val deletePieceUseCase = AppConfigs.deletePieceUseCase
 
@@ -32,25 +36,26 @@ class CoordinatorPageViewModel : ViewModel() {
     val startReserve = SingleLiveEvent<Any>()
     val onEditEvent = SingleLiveEvent<Any>()
 
-    fun onClickInstruction(){
+    fun onClickInstruction() {
         isExtended.value = !(isExtended.value!!)
     }
-    fun onChatClick(){
+
+    fun onChatClick() {
         startChat.call()
     }
-    fun onReserveClick(){
+
+    fun onReserveClick() {
         startReserve.call()
     }
 
-    fun loadCoordinatorInfo(position : Int) {
-        if(position == -1 || isMyPage.value!!) {
+    fun loadCoordinatorInfo(position: Int) {
+        if (position == -1 || isMyPage.value!!) {
             viewModelScope.launch {
                 _coordinator.postValue(getCoordinatorUserUseCase())
             }
-        }
-        else {
+        } else {
             viewModelScope.launch {
-                _coordinator.postValue(Coordinator.from( coordinatorRepository.getCoordinatorList()[position]))
+                _coordinator.postValue(Coordinator.from(coordinatorRepository.getCoordinatorList()[position]))
             }
         }
     }
@@ -58,8 +63,14 @@ class CoordinatorPageViewModel : ViewModel() {
     fun onClickPiece(view: View, position: Int) {
         val bundle = bundleOf("position" to position)
         val navController = view.findNavController()
-        if(isMyPage.value!!) navController.navigate(R.id.action_main_to_coordinator_page_piece_scroll, bundle)
-        else navController.navigate(R.id.action_coordinator_page_to_coordinator_page_piece_scroll, bundle)
+        if (isMyPage.value!!) navController.navigate(
+            R.id.action_main_to_coordinator_page_piece_scroll,
+            bundle
+        )
+        else navController.navigate(
+            R.id.action_coordinator_page_to_coordinator_page_piece_scroll,
+            bundle
+        )
     }
 
     fun deletePiece(id: Long) {

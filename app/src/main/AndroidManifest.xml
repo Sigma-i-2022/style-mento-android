@@ -12,7 +12,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.StyleMento">
+        android:theme="@style/Theme.StyleMento"
+        android:name=".di.SmApplication">
         <activity
             android:name=".ui.chat.chat_room.ChatRoomActivity"
             android:exported="true" />
