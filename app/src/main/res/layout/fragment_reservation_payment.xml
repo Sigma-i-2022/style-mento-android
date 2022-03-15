@@ -335,6 +335,7 @@
                     app:layout_constraintStart_toEndOf="@id/reservation_payment_second_agree_img"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/reservation_payment_next_button"
             style="@style/header4"
@@ -346,8 +347,6 @@
             android:onClick="@{()->viewModel.onNextClick()}"
             android:paddingVertical="12dp"
             android:text="결제하기"
-            android:background="@drawable/background_radius_12"
-            android:backgroundTint="@color/primary"
             android:textColor="@color/white"
             android:textStyle="bold" />
     </RelativeLayout>

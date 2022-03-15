@@ -374,15 +374,13 @@
                             android:layout_marginTop="10dp"
                             android:text="원" />
                     </LinearLayout>
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/reservation_cancel_button"
                         style="@style/header4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingVertical="10dp"
                         android:text="취소 신청"
-                        android:background="@drawable/background_radius_12"
-                        android:backgroundTint="@color/primary"
                         android:textColor="@color/white"
                         android:onClick="@{()->viewModel.onNextClick()}"/>
                 </LinearLayout>

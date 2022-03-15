@@ -8,10 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentReservationServiceSetBinding
-import com.sigmai.stylemento.domain.entity.Receipt
-import com.sigmai.stylemento.domain.entity.User
 import com.sigmai.stylemento.global.base.BaseFragment
-import com.sigmai.stylemento.global.constant.ReceiptStateType
 import com.sigmai.stylemento.global.util.TimeUtil
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
 import java.text.SimpleDateFormat
@@ -113,10 +110,10 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
             viewModel.requestText.value!!.isNotEmpty()
         ) {
             binding.reservationTimeSelectionNextButton.isEnabled = true
-            binding.reservationTimeSelectionNextButton.setBackgroundResource(R.color.primary)
+            binding.reservationTimeSelectionNextButton.setBackgroundResource(R.drawable.button_available_background)
         } else {
             binding.reservationTimeSelectionNextButton.isEnabled = false
-            binding.reservationTimeSelectionNextButton.setBackgroundResource(R.color.gray_d)
+            binding.reservationTimeSelectionNextButton.setBackgroundResource(R.drawable.button_unavailable_background)
         }
     }
 

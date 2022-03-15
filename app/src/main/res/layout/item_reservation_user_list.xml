@@ -220,8 +220,7 @@
                     android:layout_height="wrap_content"
                     android:text="예약확정"
                     style="@style/header4"
-                    android:background="@drawable/background_radius_12"
-                    android:backgroundTint="@color/primary"
+                    android:background="@drawable/button_available_background"
                     android:textColor="@color/white"/>
                 <View
                     android:layout_width="0dp"
@@ -233,8 +232,7 @@
                     android:layout_height="wrap_content"
                     android:text="링크 공유하기"
                     style="@style/header4"
-                    android:background="@drawable/background_radius_12"
-                    android:backgroundTint="@color/primary"
+                    android:background="@drawable/button_available_background"
                     android:textColor="@color/white"/>
             </LinearLayout>
         </LinearLayout>

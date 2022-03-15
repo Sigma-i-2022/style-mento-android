@@ -235,8 +235,7 @@
                     android:layout_width="160dp"
                     android:layout_height="wrap_content"
                     android:text="구매확정"
-                    android:background="@drawable/background_radius_12"
-                    android:backgroundTint="@color/primary"
+                    android:background="@drawable/button_available_background"
                     style="@style/header4"
                     android:textColor="@color/white"/>
                 <View
@@ -249,8 +248,7 @@
                     android:layout_height="wrap_content"
                     android:text="후기작성"
                     style="@style/header4"
-                    android:background="@drawable/background_radius_12"
-                    android:backgroundTint="@color/primary"
+                    android:background="@drawable/button_available_background"
                     android:textColor="@color/white"/>
             </LinearLayout>
         </LinearLayout>

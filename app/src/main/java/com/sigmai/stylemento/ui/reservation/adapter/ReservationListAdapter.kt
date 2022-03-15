@@ -80,7 +80,7 @@ class ReservationListAdapter(private val dataSet: List<Receipt>) :
                 adapter.notifyItemChanged(position)
             }
             binding.reservationListReviewButton.setOnClickListener {
-
+                it.findNavController().navigate(R.id.action_reservation_list_page_to_write_review_page)
             }
         }
 
@@ -93,11 +93,11 @@ class ReservationListAdapter(private val dataSet: List<Receipt>) :
         }
         private fun turnOffReview(){
             binding.reservationListReviewButton.isEnabled = false
-            binding.reservationListReviewButton.setBackgroundResource(R.color.gray_d)
+            binding.reservationListReviewButton.setBackgroundResource(R.drawable.button_unavailable_background)
         }
         private fun turnOffBuy(){
             binding.reservationListBuyButton.isEnabled = false
-            binding.reservationListBuyButton.setBackgroundResource(R.color.gray_d)
+            binding.reservationListBuyButton.setBackgroundResource(R.drawable.button_unavailable_background)
         }
         companion object {
             fun from(parent: ViewGroup): ReservationListAdapter.ViewHolder {

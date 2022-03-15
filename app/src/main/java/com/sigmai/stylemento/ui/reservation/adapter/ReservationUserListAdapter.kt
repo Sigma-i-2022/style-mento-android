@@ -1,6 +1,5 @@
 package com.sigmai.stylemento.ui.reservation.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -94,12 +93,12 @@ class ReservationUserListAdapter(private val dataSet: List<Receipt>) :
 
         private fun turnOffAccept() {
             binding.reservationUserListAcceptButton.isEnabled = false
-            binding.reservationUserListAcceptButton.setBackgroundResource(R.color.gray_d)
+            binding.reservationUserListAcceptButton.setBackgroundResource(R.drawable.button_unavailable_background)
         }
 
         private fun turnOffShare() {
             binding.reservationUserListShareButton.isEnabled = false
-            binding.reservationUserListShareButton.setBackgroundResource(R.color.gray_d)
+            binding.reservationUserListShareButton.setBackgroundResource(R.drawable.button_unavailable_background)
         }
 
         companion object {

@@ -122,7 +122,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/reservation_time_selection_next_button"
             style="@style/header3"
             android:layout_width="match_parent"
@@ -132,8 +132,6 @@
             android:layout_marginBottom="10dp"
             android:onClick="@{()->viewModel.onNextClick()}"
             android:text="예약하기"
-            android:background="@drawable/background_radius_12"
-            android:backgroundTint="@color/primary"
             android:textColor="@color/white" />
     </RelativeLayout>
 </layout>

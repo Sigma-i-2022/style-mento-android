@@ -8,14 +8,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentReservationCancelBinding
-import com.sigmai.stylemento.databinding.FragmentReservationPaymentBinding
-import com.sigmai.stylemento.domain.entity.Receipt
-import com.sigmai.stylemento.domain.usecase.PostReceiptUseCase
 import com.sigmai.stylemento.global.base.BaseFragment
-import com.sigmai.stylemento.global.util.TimeUtil
-import com.sigmai.stylemento.ui.reservation.adapter.TimeAdapter
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationCancelViewModel
-import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
 
 class ReservationCancelFragment : BaseFragment<FragmentReservationCancelBinding>() {
     override val layoutResourceId = R.layout.fragment_reservation_cancel
@@ -64,10 +58,10 @@ class ReservationCancelFragment : BaseFragment<FragmentReservationCancelBinding>
     private fun checkButtonEnabled(text : String) {
         if (text.length > 24) {
             binding.reservationCancelButton.isEnabled = true
-            binding.reservationCancelButton.setBackgroundResource(R.color.primary)
+            binding.reservationCancelButton.setBackgroundResource(R.drawable.button_available_background)
         } else {
             binding.reservationCancelButton.isEnabled = false
-            binding.reservationCancelButton.setBackgroundResource(R.color.gray_d)
+            binding.reservationCancelButton.setBackgroundResource(R.drawable.button_unavailable_background)
         }
     }
 }

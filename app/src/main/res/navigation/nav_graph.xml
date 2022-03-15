@@ -197,17 +197,15 @@
         <action
             android:id="@+id/action_reservation_list_page_to_reservation_cancel_page"
             app:destination="@id/reservation_cancel_page" />
+        <action
+            android:id="@+id/action_reservation_list_page_to_write_review_page"
+            app:destination="@id/write_review_page" />
     </fragment>
     <fragment
         android:id="@+id/reservation_user_list_page"
         android:name="com.sigmai.stylemento.ui.reservation.ReservationUserListFragment"
         android:label="reservation list page"
         tools:layout="@layout/fragment_reservation_user_list">
-        <action
-            android:id="@+id/action_reservation_user_list_page_to_main"
-            app:destination="@id/main"
-            app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/application_finish"
@@ -246,5 +244,11 @@
         android:name="com.sigmai.stylemento.ui.mypage.coordinator.AddPieceFragment"
         android:label="add piece"
         tools:layout="@layout/fragment_add_piece">
+    </fragment>
+    <fragment
+        android:id="@+id/write_review_page"
+        android:name="com.sigmai.stylemento.ui.ReviewWriteFragment"
+        android:label="write review page"
+        tools:layout="@layout/fragment_write_review">
     </fragment>
 </navigation>

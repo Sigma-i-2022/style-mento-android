@@ -26,7 +26,7 @@ class ReservationUserListFragment : BaseFragment<FragmentReservationUserListBind
         binding.viewModel = viewModel
 
         viewModel.startBack.observe(this) {
-            findNavController().navigate(R.id.action_reservation_user_list_page_to_main)
+            findNavController().navigateUp()
         }
     }
 

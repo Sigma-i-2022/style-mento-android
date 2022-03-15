@@ -12,14 +12,13 @@ import com.sigmai.stylemento.databinding.FragmentWriteReviewBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.constant.ReviewType
 
-class ReviewWriteFragment(private val writer : User, coordinator : Coordinator) : BaseFragment<FragmentWriteReviewBinding>() {
+class ReviewWriteFragment : BaseFragment<FragmentWriteReviewBinding>() {
     override val layoutResourceId = R.layout.fragment_write_review
 
     private var reviewItem = ReviewItem(ReviewType.NORMAL, "")
     override fun initDataBinding() {
         super.initDataBinding()
 
-        binding.writeReviewNameText.text = writer.nickname
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

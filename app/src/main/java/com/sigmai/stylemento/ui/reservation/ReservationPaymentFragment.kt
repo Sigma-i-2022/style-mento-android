@@ -6,7 +6,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentReservationPaymentBinding
-import com.sigmai.stylemento.domain.usecase.PostReceiptUseCase
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.util.TimeUtil
 import com.sigmai.stylemento.ui.reservation.adapter.TimeAdapter
@@ -85,11 +84,11 @@ class ReservationPaymentFragment : BaseFragment<FragmentReservationPaymentBindin
     private fun checkButtonEnabled(){
         if(viewModel.isAllSelected.value!!){
             binding.reservationPaymentNextButton.isEnabled = true
-            binding.reservationPaymentNextButton.setBackgroundResource(R.color.primary)
+            binding.reservationPaymentNextButton.setBackgroundResource(R.drawable.button_available_background)
         }
         else{
             binding.reservationPaymentNextButton.isEnabled = false
-            binding.reservationPaymentNextButton.setBackgroundResource(R.color.gray_d)
+            binding.reservationPaymentNextButton.setBackgroundResource(R.drawable.button_unavailable_background)
         }
     }
 }
