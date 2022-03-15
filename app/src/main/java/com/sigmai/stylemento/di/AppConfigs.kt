@@ -21,6 +21,4 @@ object AppConfigs {
     val getRecommendedCoordinatorListUseCase = GetRecommendedCoordinatorListUseCase()
     val getCoordinatorUserUseCase = GetCoordinatorUserUseCase(coordinatorUserRepository)
     val deletePieceUseCase = DeletePieceUseCase(coordinatorUserRepository)
-
-    val applicationViewPagerViewModel = ApplicationViewPagerViewModel()
 }
