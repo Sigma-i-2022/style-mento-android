@@ -9,6 +9,7 @@ import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.domain.entity.Receipt
 import com.sigmai.stylemento.domain.entity.User
 import com.sigmai.stylemento.global.util.SingleLiveEvent
+import timber.log.Timber
 
 class ReservationViewModel : ViewModel() {
     private val _coordinator = MutableLiveData<Coordinator>()
@@ -39,12 +40,11 @@ class ReservationViewModel : ViewModel() {
 
     private var _serviceType = MutableLiveData<Int>(-1)
     private var _serviceWay = MutableLiveData<Int>(-1)
-    private var _requestText = MutableLiveData<String>("")
     private var _isServiceOk = MutableLiveData<Boolean>(false)
 
     val serviceType : LiveData<Int> get() = _serviceType
     val serviceWay : LiveData<Int> get() = _serviceWay
-    val requestText : LiveData<String> get() = _requestText
+    val requestText = MutableLiveData<String>("")
     val isServiceOk : LiveData<Boolean> get() = _isServiceOk
 
     private fun checkServiceOk(){
@@ -68,10 +68,6 @@ class ReservationViewModel : ViewModel() {
     fun onFaceToFaceClick() {
         _serviceWay.value = if (_serviceWay.value == 1) -1 else 1
         checkServiceOk()
-    }
-
-    fun setRequestText(text : String){
-        _requestText.value = text
     }
 
     private var _isAllSelected = MutableLiveData<Boolean>(false)

@@ -135,6 +135,7 @@
                     android:paddingHorizontal="6dp"
                     android:gravity="top"
                     android:hint="취향, 본인 체형 등"
+                    android:text="@={viewModel.requestText}"
                     app:layout_constraintTop_toBottomOf="@id/reservation_service_request_text"
                     app:layout_constraintStart_toStartOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
