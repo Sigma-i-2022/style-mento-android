@@ -247,7 +247,7 @@
     </fragment>
     <fragment
         android:id="@+id/write_review_page"
-        android:name="com.sigmai.stylemento.ui.ReviewWriteFragment"
+        android:name="com.sigmai.stylemento.ui.reservation.ReviewWriteFragment"
         android:label="write review page"
         tools:layout="@layout/fragment_write_review">
     </fragment>

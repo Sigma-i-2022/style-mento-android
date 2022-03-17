@@ -1,5 +1,6 @@
 package com.sigmai.stylemento.ui.reservation.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -28,20 +29,6 @@ class ReservationViewModel : ViewModel() {
 
     val startBack = SingleLiveEvent<Any>()
     val startNext = SingleLiveEvent<Any>()
-
-    val startFeedback = SingleLiveEvent<Any>()
-    val startRecommend = SingleLiveEvent<Any>()
-    val startChatting = SingleLiveEvent<Any>()
-    val startFaceToFace = SingleLiveEvent<Any>()
-
-    private var _serviceType = MutableLiveData<Int>(-1)
-    private var _serviceWay = MutableLiveData<Int>(-1)
-    private var _requestText = MutableLiveData<String>("")
-
-    val serviceType : LiveData<Int> get() = _serviceType
-    val serviceWay : LiveData<Int> get() = _serviceWay
-    val requestText : LiveData<String> get() = _requestText
-
     fun onBackClick() {
         startBack.call()
     }
@@ -50,24 +37,37 @@ class ReservationViewModel : ViewModel() {
         startNext.call()
     }
 
+    private var _serviceType = MutableLiveData<Int>(-1)
+    private var _serviceWay = MutableLiveData<Int>(-1)
+    private var _requestText = MutableLiveData<String>("")
+    private var _isServiceOk = MutableLiveData<Boolean>(false)
+
+    val serviceType : LiveData<Int> get() = _serviceType
+    val serviceWay : LiveData<Int> get() = _serviceWay
+    val requestText : LiveData<String> get() = _requestText
+    val isServiceOk : LiveData<Boolean> get() = _isServiceOk
+
+    private fun checkServiceOk(){
+        _isServiceOk.value = serviceType.value != -1 && serviceWay.value != -1
+    }
     fun onFeedbackClick() {
         _serviceType.value = if (_serviceType.value == 0) -1 else 0
-        startFeedback.call()
+        checkServiceOk()
     }
 
     fun onRecommendClick() {
         _serviceType.value = if (_serviceType.value == 1) -1 else 1
-        startRecommend.call()
+        checkServiceOk()
     }
 
     fun onChattingClick() {
         _serviceWay.value = if (_serviceWay.value == 0) -1 else 0
-        startChatting.call()
+        checkServiceOk()
     }
 
     fun onFaceToFaceClick() {
         _serviceWay.value = if (_serviceWay.value == 1) -1 else 1
-        startFaceToFace.call()
+        checkServiceOk()
     }
 
     fun setRequestText(text : String){

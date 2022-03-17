@@ -8,7 +8,6 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentReservationPaymentBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.util.TimeUtil
-import com.sigmai.stylemento.ui.reservation.adapter.TimeAdapter
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
 
 class ReservationPaymentFragment : BaseFragment<FragmentReservationPaymentBinding>() {
@@ -27,68 +26,9 @@ class ReservationPaymentFragment : BaseFragment<FragmentReservationPaymentBindin
             TimeUtil.resetTimeList()
             findNavController().navigate(R.id.action_reservation_payment_page_to_reservation_payment_complete_page)
         }
-        observeSelection()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        checkButtonEnabled()
-        viewInit()
-    }
-    private fun viewInit(){
-        if(viewModel.receipt.value == null){
-            return
-        }
-
-        binding.reservationPaymentServicePriceText.text = viewModel.receipt.value!!.price.toString()
-        binding.reservationPaymentServiceTimeRecycler.adapter = TimeAdapter(viewModel.receipt.value!!.timeList)
-
-        if(viewModel.isAllSelected.value!!)
-            binding.reservationPaymentAllAgreeImg.setBackgroundResource(R.drawable.button_background_type_1)
-        else
-            binding.reservationPaymentAllAgreeImg.setBackgroundResource(R.color.trans_parent)
-
-        if(viewModel.isAllSelected.value!!)
-            binding.reservationPaymentFirstAgreeImg.setBackgroundResource(R.drawable.button_background_type_1)
-        else
-            binding.reservationPaymentFirstAgreeImg.setBackgroundResource(R.color.trans_parent)
-
-        if(viewModel.isAllSelected.value!!)
-            binding.reservationPaymentSecondAgreeImg.setBackgroundResource(R.drawable.button_background_type_1)
-        else
-            binding.reservationPaymentSecondAgreeImg.setBackgroundResource(R.color.trans_parent)
-    }
-    private fun observeSelection(){
-        viewModel.isAllSelected.observe(this){
-            if(viewModel.isAllSelected.value!!)
-                binding.reservationPaymentAllAgreeImg.setBackgroundResource(R.drawable.button_background_type_1)
-            else
-                binding.reservationPaymentAllAgreeImg.setBackgroundResource(R.color.trans_parent)
-            checkButtonEnabled()
-        }
-        viewModel.isFirstSelected.observe(this){
-            if(viewModel.isFirstSelected.value!!)
-                binding.reservationPaymentFirstAgreeImg.setBackgroundResource(R.drawable.button_background_type_1)
-            else
-                binding.reservationPaymentFirstAgreeImg.setBackgroundResource(R.color.trans_parent)
-            checkButtonEnabled()
-        }
-        viewModel.isSecondSelected.observe(this){
-            if(viewModel.isSecondSelected.value!!)
-                binding.reservationPaymentSecondAgreeImg.setBackgroundResource(R.drawable.button_background_type_1)
-            else
-                binding.reservationPaymentSecondAgreeImg.setBackgroundResource(R.color.trans_parent)
-            checkButtonEnabled()
-        }
-    }
-    private fun checkButtonEnabled(){
-        if(viewModel.isAllSelected.value!!){
-            binding.reservationPaymentNextButton.isEnabled = true
-            binding.reservationPaymentNextButton.setBackgroundResource(R.drawable.button_available_background)
-        }
-        else{
-            binding.reservationPaymentNextButton.isEnabled = false
-            binding.reservationPaymentNextButton.setBackgroundResource(R.drawable.button_unavailable_background)
-        }
     }
 }

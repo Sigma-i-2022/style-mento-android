@@ -28,13 +28,10 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
             setReceipt()
             findNavController().navigate(R.id.action_reservation_service_page_to_reservation_payment_page)
         }
-        setImageClick()
-        observeInput()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewInit()
 
         binding.reservationServiceRequestEditText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
@@ -47,74 +44,6 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
                 viewModel.setRequestText(p0.toString())
             }
         })
-    }
-
-    private fun viewInit() {
-        checkButtonEnabled()
-
-        if (viewModel.serviceType.value == 0)
-            binding.reservationServiceFeedbackImg.setBackgroundResource(R.drawable.button_background_type_1)
-        else if (viewModel.serviceType.value == 1)
-            binding.reservationServiceCoordiRecommendationImg.setBackgroundResource(R.drawable.button_background_type_1)
-        if (viewModel.serviceWay.value == 0)
-            binding.reservationServiceChattingImg.setBackgroundResource(R.drawable.button_background_type_1)
-        else if (viewModel.serviceWay.value == 1)
-            binding.reservationServiceFaceToFaceImg.setBackgroundResource(R.drawable.button_background_type_1)
-    }
-
-    private fun setImageClick() {
-        viewModel.startFeedback.observe(this) {
-            binding.reservationServiceCoordiRecommendationImg.setBackgroundResource(R.color.trans_parent)
-            if (viewModel.serviceType.value == 0)
-                binding.reservationServiceFeedbackImg.setBackgroundResource(R.drawable.button_background_type_1)
-            else
-                binding.reservationServiceFeedbackImg.setBackgroundResource(R.color.trans_parent)
-        }
-        viewModel.startRecommend.observe(this) {
-            binding.reservationServiceFeedbackImg.setBackgroundResource(R.color.trans_parent)
-            if (viewModel.serviceType.value == 1)
-                binding.reservationServiceCoordiRecommendationImg.setBackgroundResource(R.drawable.button_background_type_1)
-            else
-                binding.reservationServiceCoordiRecommendationImg.setBackgroundResource(R.color.trans_parent)
-        }
-        viewModel.startChatting.observe(this) {
-            binding.reservationServiceFaceToFaceImg.setBackgroundResource(R.color.trans_parent)
-            if (viewModel.serviceWay.value == 0)
-                binding.reservationServiceChattingImg.setBackgroundResource(R.drawable.button_background_type_1)
-            else
-                binding.reservationServiceChattingImg.setBackgroundResource(R.color.trans_parent)
-        }
-        viewModel.startFaceToFace.observe(this) {
-            binding.reservationServiceChattingImg.setBackgroundResource(R.color.trans_parent)
-            if (viewModel.serviceWay.value == 1)
-                binding.reservationServiceFaceToFaceImg.setBackgroundResource(R.drawable.button_background_type_1)
-            else
-                binding.reservationServiceFaceToFaceImg.setBackgroundResource(R.color.trans_parent)
-        }
-    }
-
-    private fun observeInput() {
-        viewModel.serviceType.observe(this) {
-            checkButtonEnabled()
-        }
-        viewModel.serviceWay.observe(this) {
-            checkButtonEnabled()
-        }
-        viewModel.requestText.observe(this) {
-            checkButtonEnabled()
-        }
-    }
-
-    private fun checkButtonEnabled() {
-        if (viewModel.serviceType.value != -1 && viewModel.serviceWay.value != -1 &&
-            viewModel.requestText.value!!.isNotEmpty()
-        ) {
-            binding.reservationTimeSelectionNextButton.isEnabled = true
-            binding.reservationTimeSelectionNextButton.setBackgroundResource(R.drawable.button_available_background)
-        } else {
-            binding.reservationTimeSelectionNextButton.isEnabled = false
-            binding.reservationTimeSelectionNextButton.setBackgroundResource(R.drawable.button_unavailable_background)
-        }
     }
 
     private fun setReceipt() {
