@@ -10,10 +10,14 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.sigmai.stylemento.R
+import com.sigmai.stylemento.data.api.Sample
+import com.sigmai.stylemento.data.factory.RetrofitServiceFactory
 import com.sigmai.stylemento.databinding.ActivityMainBinding
 import com.sigmai.stylemento.ui.login.LoginHostActivity
 import com.sigmai.stylemento.global.base.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
+import retrofit2.Call
+import retrofit2.Response
 import timber.log.Timber
 
 @AndroidEntryPoint

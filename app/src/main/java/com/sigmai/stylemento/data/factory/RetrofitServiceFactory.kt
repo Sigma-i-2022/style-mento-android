@@ -13,7 +13,7 @@ class RetrofitServiceFactory {
              * 난독화하지 않을 경우 apk 를 디컴파일 시켜서 api token 값을 확인할 수 있다.
              */
             return Retrofit.Builder()
-                .baseUrl("")
+                .baseUrl("http://13.125.39.167:9090/")
                 .addConverterFactory(
                     GsonConverterFactory.create(
                     GsonBuilder().serializeNulls().create()
