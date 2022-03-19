@@ -189,7 +189,8 @@
                         android:background="@color/trans_parent"
                         android:gravity="end"
                         android:textColor="@color/gray_8"
-                        android:paddingVertical="2dp"/>
+                        android:paddingVertical="2dp"
+                        android:text="@{viewModel.height.toString()}"/>
                     <TextView
                         style="@style/header5"
                         android:layout_width="wrap_content"
@@ -229,7 +230,8 @@
                         android:layout_height="wrap_content"
                         android:background="@color/trans_parent"
                         android:gravity="end"
-                        android:paddingVertical="2dp" />
+                        android:paddingVertical="2dp"
+                        android:text="@{viewModel.weight.toString()}"/>
                     <TextView
                         style="@style/header5"
                         android:layout_width="wrap_content"
@@ -268,6 +270,7 @@
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:layout_marginTop="12dp"
                     android:background="@color/trans_parent"
+                    android:text="@{viewModel.content}"
                     android:maxLength="500"
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="6dp"

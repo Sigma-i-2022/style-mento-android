@@ -45,6 +45,11 @@ class ReviewWriteViewModel : ViewModel() {
         _gender.postValue(1)
         startFemale.call()
     }
+
+    val height = MutableLiveData<Float>(0f)
+    val weight = MutableLiveData<Float>(0f)
+    val content = MutableLiveData<String>("")
+
     val startBack = SingleLiveEvent<Any>()
     val startNext = SingleLiveEvent<Any>()
     fun onBackClick(){

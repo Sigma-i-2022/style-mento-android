@@ -33,28 +33,17 @@ class ReservationCancelFragment : BaseFragment<FragmentReservationCancelBinding>
         viewModel.startNext.observe(this) {
             findNavController().navigate(R.id.action_reservation_cancel_page_to_reservation_cancel_complete_page)
         }
+        viewModel.content.observe(this){
+            checkButtonEnabled(viewModel.content.value!!)
+        }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setEditText()
         checkButtonEnabled("")
     }
-    private fun setEditText(){
-        var reason = ""
-        binding.reservationCancelReasonEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
 
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                reason = p0.toString()
-                checkButtonEnabled(reason)
-            }
-        })
-    }
     private fun checkButtonEnabled(text : String) {
         if (text.length > 24) {
             binding.reservationCancelButton.isEnabled = true
