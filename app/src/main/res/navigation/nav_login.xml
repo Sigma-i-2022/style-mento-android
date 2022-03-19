@@ -11,43 +11,8 @@
         android:label="login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_login_to_signup"
-            app:destination="@id/signup_email" />
-        <action
             android:id="@+id/action_login_to_signup2"
             app:destination="@id/signup" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/signup_email"
-        android:name="com.sigmai.stylemento.ui.signup.email.SignUpEmailFragment"
-        android:label="email"
-        tools:layout="@layout/fragment_sign_up_email">
-        <action
-            android:id="@+id/action_signup_email_to_signup_password"
-            app:destination="@id/signup_password" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/signup_password"
-        android:name="com.sigmai.stylemento.ui.signup.password.SignUpPasswordFragment"
-        android:label="password"
-        tools:layout="@layout/fragment_sign_up_password">
-        <action
-            android:id="@+id/action_signup_password_to_signup_finish"
-            app:destination="@id/signup_finish" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/signup_finish"
-        android:name="com.sigmai.stylemento.ui.signup.SignUpFinishFragment"
-        android:label="signup finish"
-        tools:layout="@layout/fragment_sign_up_finish">
-        <action
-            android:id="@+id/action_signup_finish_to_login"
-            app:destination="@id/login"
-            app:popUpTo="@id/nav_login"
-            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
