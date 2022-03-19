@@ -5,11 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.ui.signup.email.SignUpEmailViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 
+@HiltViewModel
 class SignUpPasswordViewModel : ViewModel() {
-    companion object {
-        const val NUMBER_OF_PAGE = 2
-    }
     val currentPageIndex = MutableLiveData(0)
     val pageTitle = listOf("비밀번호를 입력해주세요", "비밀번호를\n다시 한 번 입력해주세요")
     val inputText = listOf(MutableLiveData<String?>(), MutableLiveData<String?>())

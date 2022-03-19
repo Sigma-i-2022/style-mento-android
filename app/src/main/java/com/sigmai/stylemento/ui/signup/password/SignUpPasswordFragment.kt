@@ -8,7 +8,9 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentSignUpPasswordBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.util.ValidationUtil
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignUpPasswordFragment : BaseFragment<FragmentSignUpPasswordBinding>() {
     override val layoutResourceId = R.layout.fragment_sign_up_password
     private val viewModel: SignUpPasswordViewModel by viewModels()

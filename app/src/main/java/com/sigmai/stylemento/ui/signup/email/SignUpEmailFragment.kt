@@ -17,6 +17,8 @@ class SignUpEmailFragment : BaseFragment<FragmentSignUpEmailBinding>() {
 
     override fun initDataBinding() {
         binding.viewModel = viewModel
+
+        setupButton()
     }
 
     override fun initState() {
@@ -24,11 +26,6 @@ class SignUpEmailFragment : BaseFragment<FragmentSignUpEmailBinding>() {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 viewModel.inputText[viewModel.currentPageIndex.value!!].postValue(text.toString())
-
-                binding.buttonInEmail.setOnClickListener {
-                    viewModel.nextPage(findNavController())
-                }
-
                 viewModel.isClickable[viewModel.currentPageIndex.value!!].postValue(validate(text.toString()))
             }
 
@@ -41,6 +38,12 @@ class SignUpEmailFragment : BaseFragment<FragmentSignUpEmailBinding>() {
             ValidationUtil().validateEmail(string)
         } else {
             string.length == 4
+        }
+    }
+
+    private fun setupButton() {
+        binding.buttonInEmail.setOnClickListener {
+            viewModel.nextPage(findNavController())
         }
     }
 }
