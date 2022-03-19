@@ -8,7 +8,9 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentSignUpEmailBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.util.ValidationUtil
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignUpEmailFragment : BaseFragment<FragmentSignUpEmailBinding>() {
     override val layoutResourceId = R.layout.fragment_sign_up_email
     private val viewModel: SignUpEmailViewModel by viewModels()

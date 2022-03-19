@@ -2,13 +2,24 @@ package com.sigmai.stylemento.ui.signup.email
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.sigmai.stylemento.R
+import com.sigmai.stylemento.domain.usecase.signup.SendAuthenticationCodeUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import timber.log.Timber
+import javax.inject.Inject
 
-class SignUpEmailViewModel : ViewModel() {
+@HiltViewModel
+class SignUpEmailViewModel @Inject constructor() : ViewModel() {
     companion object {
         const val NUMBER_OF_PAGE = 2
     }
+
+    @Inject
+    lateinit var sendAuthenticationCodeUseCase: SendAuthenticationCodeUseCase
+
     val currentPageIndex = MutableLiveData(0)
     val pageTitle = listOf("이메일 주소를 입력해주세요", "메일로 인증코드를 보내드렸어요\n확인 후 입력해주세요")
     val validationText = listOf("올바른 이메일 주소를 입력해주세요", "")
@@ -21,6 +32,7 @@ class SignUpEmailViewModel : ViewModel() {
         if(!isClickable[currentPageIndex.value!!].value!!) return
 
         if(currentPageIndex.value!! == 0) {
+            sendAuthenticationCode()
             val nextPage = currentPageIndex.value!! + 1
             if(nextPage < NUMBER_OF_PAGE)
                 currentPageIndex.postValue(nextPage)
@@ -34,5 +46,11 @@ class SignUpEmailViewModel : ViewModel() {
         val currentPage = currentPageIndex.value!!
         if(currentPage > 0)
             currentPageIndex.postValue(currentPage - 1)
+    }
+
+    private fun sendAuthenticationCode() {
+        viewModelScope.launch {
+            sendAuthenticationCodeUseCase(inputText[0].value!!)
+        }
     }
 }
