@@ -15,8 +15,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         super.initDataBinding()
         binding.viewModel = viewModel
 
-        viewModel.startNext.observe(this, Observer {
-            findNavController().navigate(R.id.action_login_to_signup)
-        })
+        viewModel.startNext.observe(this) {
+            findNavController().navigate(R.id.action_login_to_signup2)
+        }
     }
 }

@@ -25,11 +25,11 @@ class SignupFragment : BaseFragment<FragmentSignupBinding>() {
 
     private fun setupObserver() {
         viewModel.previousEvent.observe(this) {
-
+            binding.viewpager.currentItem -= 1
         }
 
         viewModel.nextEvent.observe(this) {
-
+            binding.viewpager.currentItem += 1
         }
     }
 }

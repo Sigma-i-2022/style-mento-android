@@ -10,7 +10,7 @@ class SignUpFinishFragment : BaseFragment<FragmentSignUpFinishBinding>() {
 
     override fun initState() {
         binding.moveLoginButton.setOnClickListener {
-            findNavController().navigate(R.id.action_signup_finish_to_login)
+            findNavController().navigateUp()
         }
     }
 }
