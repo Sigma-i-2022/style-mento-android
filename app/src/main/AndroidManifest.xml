@@ -18,7 +18,8 @@
         <activity
             android:name=".ui.chat.chat_room.ChatRoomActivity"
             android:exported="true" />
-        <activity android:name=".ui.login.LoginHostActivity" />
+        <activity android:name=".ui.login.LoginHostActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.splash.SplashActivity"
             android:exported="true">

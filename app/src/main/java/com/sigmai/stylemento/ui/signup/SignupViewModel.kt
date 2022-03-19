@@ -2,12 +2,19 @@ package com.sigmai.stylemento.ui.signup
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.sigmai.stylemento.domain.usecase.signup.SendAuthenticationCodeUseCase
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class SignupViewModel @Inject constructor() : ViewModel() {
+    @Inject
+    lateinit var sendAuthenticationCodeUseCase: SendAuthenticationCodeUseCase
+
     val nextEvent = SingleLiveEvent<Any>()
     val previousEvent = SingleLiveEvent<Any>()
 
@@ -16,6 +23,7 @@ class SignupViewModel @Inject constructor() : ViewModel() {
     val id = MutableLiveData<String>()
     val password = MutableLiveData<String>()
     val passwordConfirm = MutableLiveData<String>()
+    val isButtonClickable = MutableLiveData<Boolean>()
 
     fun onPrevious() {
         previousEvent.call()
@@ -23,5 +31,11 @@ class SignupViewModel @Inject constructor() : ViewModel() {
 
     fun onNext() {
         nextEvent.call()
+    }
+
+    fun sendAuthenticationCode() {
+        viewModelScope.launch {
+            sendAuthenticationCodeUseCase(email.value!!)
+        }
     }
 }
