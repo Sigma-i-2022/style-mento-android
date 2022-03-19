@@ -4,6 +4,7 @@ import androidx.fragment.app.activityViewModels
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentAuthenticationCodeBinding
 import com.sigmai.stylemento.global.base.BaseFragment
+import com.sigmai.stylemento.global.util.ValidationUtil
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -14,5 +15,13 @@ class AuthenticationCodeFragment : BaseFragment<FragmentAuthenticationCodeBindin
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
+
+        setupObserver()
+    }
+
+    fun setupObserver() {
+        viewModel.authenticationCode.observe(this) {
+            viewModel.isButtonClickable.value = ValidationUtil().validateCode(it)
+        }
     }
 }

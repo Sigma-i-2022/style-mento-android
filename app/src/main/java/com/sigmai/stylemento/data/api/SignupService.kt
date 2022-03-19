@@ -11,4 +11,10 @@ import retrofit2.http.Query
 interface SignupService {
     @POST("v1/api/email")
     fun email(@Query("email") email: String): Call<ResponseWrapper<Unit>>
+
+    @POST("v1/api/emailCode")
+    fun emailCode(
+        @Query("code") code: String,
+        @Query("email") email: String
+    ): Call<ResponseWrapper<Unit>>
 }

@@ -7,4 +7,8 @@ class SignupRepositoryImpl @Inject constructor(private val dataSource: SignupDat
     override fun email(email: String): Boolean {
         return dataSource.email(email)
     }
+
+    override fun emailCode(code: String, email: String): Boolean {
+        return dataSource.emailCode(code, email)
+    }
 }

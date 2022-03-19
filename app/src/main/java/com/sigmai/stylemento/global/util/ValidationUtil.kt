@@ -23,4 +23,8 @@ class ValidationUtil {
         )
         return passwordPattern.matcher(password).matches()
     }
+
+    fun validateCode(code: String) : Boolean {
+        return code.length == 6
+    }
 }

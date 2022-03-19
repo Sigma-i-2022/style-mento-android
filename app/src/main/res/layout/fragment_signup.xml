@@ -43,7 +43,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:textColor="@color/primary"
+            android:textColor="@color/primary"
             android:onClick="@{()->viewModel.onNext()}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,4 +14,8 @@ class SignupDataSource @Inject constructor() {
     fun email(email: String) : Boolean {
         return service.email(email).execute().body()?.success ?: false
     }
+
+    fun emailCode(code: String, email: String) : Boolean {
+        return service.emailCode(code, email).execute().body()?.success ?: false
+    }
 }

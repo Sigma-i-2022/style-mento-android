@@ -5,4 +5,5 @@ import retrofit2.Response
 
 interface SignupRepository {
     fun email(email: String): Boolean
+    fun emailCode(code: String, email: String): Boolean
 }
