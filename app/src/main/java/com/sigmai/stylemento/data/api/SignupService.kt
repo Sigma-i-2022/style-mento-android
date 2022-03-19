@@ -1,6 +1,7 @@
 package com.sigmai.stylemento.data.api
 
 import com.sigmai.stylemento.data.model.ResponseWrapper
+import com.sigmai.stylemento.data.model.response.JoinState
 import com.sigmai.stylemento.data.model.response.Member
 import retrofit2.Call
 import retrofit2.Response
@@ -23,25 +24,25 @@ interface SignupService {
         @Query("email") email: String,
         @Query("userId") userId: String,
         @Query("career") career: String,
-        @Query("url1") url1: String,
-        @Query("url2") url2: String,
-        @Query("url3") url3: String,
-        @Query("url4") url4: String,
-        @Query("url5") url5: String
+        @Query("url1") url1: String?,
+        @Query("url2") url2: String?,
+        @Query("url3") url3: String?,
+        @Query("url4") url4: String?,
+        @Query("url5") url5: String?
     ): Call<ResponseWrapper<Unit>>
 
     @GET("v1/api/joinState")
     fun joinState(
         @Query("email") email: String
-    ): Call<ResponseWrapper<Unit>>
+    ): Call<ResponseWrapper<JoinState>>
 
-    @GET("v1/api/login")
+    @POST("v1/api/login")
     fun login(
         @Query("email") email: String,
         @Query("password") password: String
     ): Call<ResponseWrapper<Unit>>
 
-    @GET("v1/api/signUp")
+    @POST("v1/api/signUp")
     fun signUp(
         @Query("userId") userId: String,
         @Query("email") email: String,
