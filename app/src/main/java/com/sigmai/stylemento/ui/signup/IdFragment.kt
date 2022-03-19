@@ -14,5 +14,13 @@ class IdFragment : BaseFragment<FragmentIdBinding>() {
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
+
+        setupObserver()
+    }
+
+    private fun setupObserver() {
+        viewModel.id.observe(this) {
+            viewModel.isButtonClickable.value = it.isNotEmpty()
+        }
     }
 }

@@ -37,7 +37,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:textColor="@color/primary"
             android:background="@drawable/edittext_background"
-            android:text="@{viewModel.id}"
+            android:text="@={viewModel.id}"
             android:maxLines="1"
             android:inputType="text"/>
 
@@ -63,6 +63,8 @@
             android:text="확인"
             tools:textColor="@color/primary"
             tools:background="@drawable/button_background_type_1"
-            android:onClick="@{()->viewModel.onNext()}"/>
+            android:onClick="@{()->viewModel.onNext()}"
+            android:textColor="@{viewModel.isButtonClickable ? @color/white : @color/primary}"
+            android:background="@{viewModel.isButtonClickable ? @drawable/button_background_type_2 : @drawable/button_background_type_1}"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
