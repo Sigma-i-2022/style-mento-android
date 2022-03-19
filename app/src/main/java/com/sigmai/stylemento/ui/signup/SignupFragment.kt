@@ -9,7 +9,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SignupFragment : BaseFragment<FragmentSignupBinding>() {
     override val layoutResourceId = R.layout.fragment_signup
-    val viewModel: SignUpViewModel by viewModels()
+    val viewModel: SignupViewModel by viewModels()
 
     override fun initDataBinding() {
         super.initDataBinding()
