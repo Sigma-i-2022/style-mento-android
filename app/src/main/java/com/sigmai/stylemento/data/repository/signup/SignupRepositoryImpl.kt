@@ -23,15 +23,15 @@ class SignupRepositoryImpl @Inject constructor(private val dataSource: SignupDat
         url4: String?,
         url5: String?
     ): Boolean {
-        TODO("Not yet implemented")
+        return dataSource.join(email, userId, career, url1, url2, url3, url4, url5)
     }
 
     override fun joinState(email: String): JoinState {
-        TODO("Not yet implemented")
+        return dataSource.joinState(email)
     }
 
     override fun login(email: String, password: String): Boolean {
-        TODO("Not yet implemented")
+        return dataSource.login(email, password)
     }
 
     override fun signUp(
@@ -40,6 +40,6 @@ class SignupRepositoryImpl @Inject constructor(private val dataSource: SignupDat
         password1: String,
         password2: String
     ): Boolean {
-        TODO("Not yet implemented")
+        return dataSource.signUp(userId, email, password1, password2)
     }
 }
