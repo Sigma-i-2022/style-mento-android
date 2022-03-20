@@ -9,8 +9,10 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
+import com.google.firebase.iid.FirebaseInstanceId
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.ActivityMainBinding
+import com.sigmai.stylemento.firebase.SmFirebaseInstanceIOService
 import com.sigmai.stylemento.global.base.BaseActivity
 import com.sigmai.stylemento.ui.login.LoginHostActivity
 import dagger.hilt.android.AndroidEntryPoint
