@@ -11,12 +11,9 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface ReservationService {
-    @GET("v1/api/member/all")
-    fun login(): Call<Unit>
-
     @POST("v1/api/reservation/client")
     fun client(
-        @Body reserveReq : Client
+        @Body reserveReq: Client
     ): Call<ResponseWrapper<Unit>>
 
     @POST("v1/api/reservation/client/cancel")
