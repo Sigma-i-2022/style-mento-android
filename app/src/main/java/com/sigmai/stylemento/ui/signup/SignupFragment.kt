@@ -1,5 +1,6 @@
 package com.sigmai.stylemento.ui.signup
 
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentSignupBinding
@@ -9,7 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SignupFragment : BaseFragment<FragmentSignupBinding>() {
     override val layoutResourceId = R.layout.fragment_signup
-    val viewModel: SignupViewModel by viewModels()
+    val viewModel: SignupViewModel by activityViewModels()
 
     override fun initDataBinding() {
         super.initDataBinding()
@@ -26,10 +27,12 @@ class SignupFragment : BaseFragment<FragmentSignupBinding>() {
     private fun setupObserver() {
         viewModel.previousEvent.observe(this) {
             binding.viewpager.currentItem -= 1
+            viewModel.currentPage.value = binding.viewpager.currentItem
         }
 
         viewModel.nextEvent.observe(this) {
             binding.viewpager.currentItem += 1
+            viewModel.currentPage.value = binding.viewpager.currentItem
         }
     }
 }

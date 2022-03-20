@@ -6,6 +6,7 @@ import com.sigmai.stylemento.databinding.FragmentPasswordConfirmBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.util.ValidationUtil
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class PasswordConfirmFragment : BaseFragment<FragmentPasswordConfirmBinding>() {

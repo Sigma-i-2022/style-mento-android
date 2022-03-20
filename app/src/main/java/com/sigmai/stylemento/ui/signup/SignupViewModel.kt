@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sigmai.stylemento.domain.usecase.signup.AuthenticateUseCase
 import com.sigmai.stylemento.domain.usecase.signup.SendAuthenticationCodeUseCase
+import com.sigmai.stylemento.domain.usecase.signup.SignUpUseCase
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -17,22 +18,28 @@ class SignupViewModel @Inject constructor() : ViewModel() {
     lateinit var sendAuthenticationCodeUseCase: SendAuthenticationCodeUseCase
     @Inject
     lateinit var authenticateUseCase: AuthenticateUseCase
+    @Inject
+    lateinit var signupUseCase: SignUpUseCase
 
     val nextEvent = SingleLiveEvent<Any>()
     val previousEvent = SingleLiveEvent<Any>()
 
-    val email = MutableLiveData<String>()
-    val authenticationCode = MutableLiveData<String>()
-    val id = MutableLiveData<String>()
-    val password = MutableLiveData<String>()
-    val passwordConfirm = MutableLiveData<String>()
+    val email = MutableLiveData("")
+    val authenticationCode = MutableLiveData("")
+    val id = MutableLiveData("")
+    val password = MutableLiveData("")
+    val passwordConfirm = MutableLiveData("")
     val isButtonClickable = MutableLiveData<Boolean>()
+    val currentPage = MutableLiveData<Int>()
 
     fun onPrevious() {
         previousEvent.call()
     }
 
     fun onNext() {
+        if(currentPage.value == 4) {
+            signup()
+        }
         nextEvent.call()
     }
 
@@ -50,5 +57,9 @@ class SignupViewModel @Inject constructor() : ViewModel() {
         }
     }
 
-
+    fun signup() {
+        viewModelScope.launch {
+            signupUseCase(id.value!!, email.value!!, password.value!!, passwordConfirm.value!!)
+        }
+    }
 }
