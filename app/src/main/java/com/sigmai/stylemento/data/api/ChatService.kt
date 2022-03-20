@@ -14,7 +14,7 @@ interface ChatService {
         @Query("chatRoomSeq") chatRoomSeq: Long,
         @Query("page") page: Int,
         @Query("size") size: Int
-    ): Call<ResponseWrapper<Chat>>
+    ): Call<ResponseWrapper<List<Chat>>>
 
     @GET("v1/api/chat/cordi/rooms")
     fun getChatCordiRooms(

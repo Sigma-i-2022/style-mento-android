@@ -13,11 +13,11 @@ interface ReportService {
         @Query("memberSeq") memberSeq: Long,
         @Query("memberEmail") memberEmail: String,
         @Query("reportTitle") reportTitle: String,
-        @Query("reportContent") reportContent: String,
+        @Query("reportContent") reportContent: String
     ): Call<ResponseWrapper<Unit>>
 
     @GET("v1/api/report/all")
-    fun getReportAll(): Call<ResponseWrapper<Report>>
+    fun getReportAll(): Call<ResponseWrapper<List<Report>>>
 
     @GET("v1/api/report/member")
     fun getReportMember(

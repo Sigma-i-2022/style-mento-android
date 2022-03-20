@@ -10,7 +10,7 @@ import java.io.File
 interface ClientLookBookService {
     @GET("v1/api/lookPage")
     fun getLookPage(
-        @Query("lookSeq") lookSeq: Long,
+        @Query("lookSeq") lookSeq: Long
     ): Call<ResponseWrapper<LookPage>>
 
     @POST("v1/api/lookPage")
@@ -28,12 +28,12 @@ interface ClientLookBookService {
 
     @GET("v1/api/lookPage/all")
     fun getLookPageAll(
-        @Query("email") email: String,
-    ): Call<ResponseWrapper<LookPage>>
+        @Query("email") email: String
+    ): Call<ResponseWrapper<List<LookPage>>>
 
     @POST("v1/api/lookPage/image")
     fun postLookPageImage(
-        @Query("lookSeq") lookSeq: Long,
+        @Query("lookSeq") lookSeq: Long
     ): Call<ResponseWrapper<Unit>>
 
     @PUT("v1/api/lookPage/image")
@@ -58,11 +58,11 @@ interface ClientLookBookService {
     @POST("v1/api/lookPage/report")
     fun postLookPageReport(
         @Query("lookSeq") lookSeq: Long,
-        @Query("reason") reason: String,
+        @Query("reason") reason: String
     ): Call<ResponseWrapper<Unit>>
 
     @GET("v1/api/lookPage/report/all")
     fun getLookPageReportAll(
-    ): Call<ResponseWrapper<LookPage>>
+    ): Call<ResponseWrapper<List<LookPage>>>
 
 }

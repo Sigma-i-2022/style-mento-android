@@ -27,5 +27,5 @@ interface CoordinatorWorkService {
     ): Call<ResponseWrapper<Unit>>
 
     @GET("v1/api/crdi/work/all")
-    fun getCrdiWorkAll(@Query("crdiEmail") crdiEmail : String): Call<ResponseWrapper<Work>>
+    fun getCrdiWorkAll(@Query("crdiEmail") crdiEmail : String): Call<ResponseWrapper<List<Work>>>
 }

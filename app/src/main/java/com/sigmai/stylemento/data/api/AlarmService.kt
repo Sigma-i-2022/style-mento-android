@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface AlarmService {
     @POST("v1/api/alarm")
-    fun alarm(
+    fun postAlarm(
         @Query("email") email: String,
         @Query("alarmMsg") alarmMsg: String,
     ): Call<ResponseWrapper<Unit>>

@@ -11,19 +11,19 @@ import java.io.File
 interface MyPageService {
     @GET("v1/api/mypage/client")
     fun getMyPageClient(
-        @Query("email") email: String,
+        @Query("email") email: String
     ): Call<ResponseWrapper<MyPageClient>>
 
     @PUT("v1/api/mypage/client")
     fun putMyPageClient(
         @Query("email") email: String,
         @Query("userId") userId: String,
-        @Query("intro") intro: String,
+        @Query("intro") intro: String
     ): Call<ResponseWrapper<Unit>>
 
     @GET("v1/api/mypage/crdi")
     fun getMyPageCrdi(
-        @Query("email") email: String,
+        @Query("email") email: String
     ): Call<ResponseWrapper<MyPageCrdi>>
 
     @POST("v1/api/mypage/crdi")
@@ -39,7 +39,7 @@ interface MyPageService {
     fun putMyPageCrdi(
         @Query("email") email: String,
         @Query("userId") userId: String,
-        @Query("intro") intro: String,
+        @Query("intro") intro: String
     ): Call<ResponseWrapper<Unit>>
 
     @POST("v1/api/mypage/image")
