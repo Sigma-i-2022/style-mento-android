@@ -20,8 +20,8 @@ class PasswordConfirmFragment : BaseFragment<FragmentPasswordConfirmBinding>() {
     }
 
     private fun setupObserver() {
-        viewModel.password.observe(this) {
-            viewModel.isButtonClickable.value = ValidationUtil().validatePassword(it)
+        viewModel.passwordConfirm.observe(this) {
+            viewModel.isButtonClickable.value = it == viewModel.password.value!!
         }
     }
 }
