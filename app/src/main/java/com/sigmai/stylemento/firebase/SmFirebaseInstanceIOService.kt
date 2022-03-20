@@ -29,6 +29,6 @@ class SmFirebaseInstanceIOService : FirebaseMessagingService() {
     }
 
     fun getToken(context: Context) : String {
-        return context.getSharedPreferences("_", MODE_PRIVATE).getString("token", "empty") ?: ""
+        return context.getSharedPreferences("token", MODE_PRIVATE).getString("token", "empty") ?: ""
     }
 }
