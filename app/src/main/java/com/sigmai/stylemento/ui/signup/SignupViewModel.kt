@@ -46,6 +46,7 @@ class SignupViewModel @Inject constructor() : ViewModel() {
     fun sendAuthenticationCode() {
         viewModelScope.launch {
             sendAuthenticationCodeUseCase(email.value!!)
+            onNext()
         }
     }
 
@@ -54,12 +55,14 @@ class SignupViewModel @Inject constructor() : ViewModel() {
             val code = authenticationCode.value!!
             val email = email.value!!
             authenticateUseCase(code, email)
+            onNext()
         }
     }
 
     fun signup() {
         viewModelScope.launch {
             signupUseCase(id.value!!, email.value!!, password.value!!, passwordConfirm.value!!)
+            onNext()
         }
     }
 }
