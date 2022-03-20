@@ -25,6 +25,6 @@ class ValidationUtil {
     }
 
     fun validateCode(code: String) : Boolean {
-        return code.length == 6
+        return code.length == 8
     }
 }
