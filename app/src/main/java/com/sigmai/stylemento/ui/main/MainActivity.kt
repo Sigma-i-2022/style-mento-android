@@ -1,24 +1,23 @@
 package com.sigmai.stylemento.ui.main
 
 import android.Manifest
+import android.app.ActivityManager
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
-import com.google.firebase.iid.FirebaseInstanceId
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.ActivityMainBinding
-import com.sigmai.stylemento.firebase.SmFirebaseInstanceIOService
+import com.sigmai.stylemento.firebase.SmFirebaseMessagingService
 import com.sigmai.stylemento.global.base.BaseActivity
 import com.sigmai.stylemento.ui.login.LoginHostActivity
-import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
-@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override val layoutResourceId = R.layout.activity_main
 

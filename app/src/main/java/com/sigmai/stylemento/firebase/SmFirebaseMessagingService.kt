@@ -3,8 +3,14 @@ import android.content.Context
 import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import timber.log.Timber
 
-class SmFirebaseInstanceIOService : FirebaseMessagingService() {
+class SmFirebaseMessagingService : FirebaseMessagingService() {
+    override fun onCreate() {
+        super.onCreate()
+        Timber.d("파이어베이스 서비스 생성")
+    }
+
     override fun onNewToken(token: String) {
         val pref = this.getSharedPreferences("token", Context.MODE_PRIVATE)
         val editor = pref.edit()
@@ -15,17 +21,10 @@ class SmFirebaseInstanceIOService : FirebaseMessagingService() {
     }
 
     override fun onMessageReceived(message: RemoteMessage) {
-        Log.d("메시지", message.from.toString())
-
-        if(message.data.isNotEmpty()) {
-            Log.i("바디: ", message.data["body"].toString())
-            Log.i("타이틀: ", message.data["title"].toString())
-        }
-
-        else {
-            Log.i("수신에러: ", "data가 비어있습니다. 메시지를 수신하지 못했습니다.")
-            Log.i("data값: ", message.data.toString())
-        }
+        val title = message.notification!!.title
+        val body = message.notification!!.body
+        Timber.d("타이틀 ${title!!}")
+        Timber.d("바디 ${body!!}")
     }
 
     fun getToken(context: Context) : String {

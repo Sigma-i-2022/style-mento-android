@@ -34,7 +34,7 @@
             android:exported="true"
             android:windowSoftInputMode="adjustPan"/>
 
-        <service android:name=".firebase.SmFirebaseInstanceIOService"
+        <service android:name=".firebase.SmFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
