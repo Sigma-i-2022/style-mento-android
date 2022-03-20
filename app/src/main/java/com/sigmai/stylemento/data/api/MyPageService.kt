@@ -3,11 +3,9 @@ package com.sigmai.stylemento.data.api
 import com.sigmai.stylemento.data.model.ResponseWrapper
 import com.sigmai.stylemento.data.model.response.myPage.MyPageClient
 import com.sigmai.stylemento.data.model.response.myPage.MyPageCrdi
+import okhttp3.MultipartBody
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.PUT
-import retrofit2.http.Query
+import retrofit2.http.*
 import java.io.File
 
 interface MyPageService {
@@ -34,7 +32,7 @@ interface MyPageService {
         @Query("userId") userId: String,
         @Query("intro") intro: String,
         @Query("expertYN") expertYN: String,
-        @Query("profileImg") profileImg: File //formData
+        @Part profileImage: MultipartBody.Part
     ): Call<ResponseWrapper<Unit>>
 
     @PUT("v1/api/mypage/crdi")
@@ -47,6 +45,6 @@ interface MyPageService {
     @POST("v1/api/mypage/image")
     fun postMyPageImage(
         @Query("memberEmail") memberEmail: String,
-        @Query("memberImageFile") memberImageFile: File //formData
+        @Part memberImageFile: MultipartBody.Part
     ): Call<ResponseWrapper<Unit>>
 }

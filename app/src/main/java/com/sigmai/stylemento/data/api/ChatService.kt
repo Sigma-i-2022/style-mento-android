@@ -3,11 +3,9 @@ package com.sigmai.stylemento.data.api
 import com.sigmai.stylemento.data.model.ResponseWrapper
 import com.sigmai.stylemento.data.model.response.chat.Chat
 import com.sigmai.stylemento.data.model.response.chat.ChatRoom
+import okhttp3.MultipartBody
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 import java.io.File
 
 interface ChatService {
@@ -42,7 +40,7 @@ interface ChatService {
         @Query("senderEmail") senderEmail: String,
         @Query("senderId") senderId: String,
         @Query("message") message: String,
-        @Query("imageFile") imageFile: File, //formData???
+        @Part imageFile: MultipartBody.Part
     ): Call<ResponseWrapper<Unit>>
 
     @GET("v1/api/chat/room")
