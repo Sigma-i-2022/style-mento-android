@@ -25,7 +25,9 @@ class SmFirebaseMessagingService : FirebaseMessagingService() {
         Timber.d("바디 ${body!!}")
     }
 
-    fun getToken(context: Context) : String {
-        return context.getSharedPreferences("token", MODE_PRIVATE).getString("token", "empty") ?: ""
+    companion object {
+        fun getToken(context: Context) : String {
+            return context.getSharedPreferences("token", MODE_PRIVATE).getString("token", "empty") ?: ""
+        }
     }
 }
