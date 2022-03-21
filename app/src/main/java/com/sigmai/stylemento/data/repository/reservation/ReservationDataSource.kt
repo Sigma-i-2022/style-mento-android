@@ -10,33 +10,37 @@ import javax.inject.Inject
 class ReservationDataSource @Inject constructor() {
     private val service = RetrofitServiceFactory.createService<ReservationService>()
 
-    fun client(reserveReq: Client): Boolean {
-        return service.client(reserveReq).execute().body()?.success ?: false
+    fun postReservationClient(reserveReq: Client): Boolean {
+        return service.postReservationClient(reserveReq).execute().body()?.success ?: false
     }
 
-    fun clientCancel(clientId: String, reservationSeq: Long, reason: String): Boolean {
-        return service.clientCancel(clientId, reservationSeq, reason).execute().body()?.success
+    fun postReservationClientCancel(clientId: String, reservationSeq: Long, reason: String): Boolean {
+        return service.postReservationClientCancel(clientId, reservationSeq, reason).execute().body()?.success
             ?: false
     }
 
-    fun clientPay(memberEmail: String, reservationSeq: Long): Boolean {
-        return service.clientPay(memberEmail, reservationSeq).execute().body()?.success ?: false
+    fun postReservationClientPay(memberEmail: String, reservationSeq: Long): Boolean {
+        return service.postReservationClientPay(memberEmail, reservationSeq).execute().body()?.success ?: false
     }
 
-    fun commonAll(): Common {
-        return service.commonAll().execute().body()!!.data
+    fun getReservationCommonAll(): List<Common> {
+        return service.getReservationCommonAll().execute().body()!!.data
     }
 
-    fun commonList(email: String): Boolean {
-        return service.commonList(email).execute().body()?.success ?: false
+    fun postReservationCommonHide(memberEmail: String, reservationSeq: Long) : Boolean{
+        return service.postReservationCommonHide(memberEmail, reservationSeq).execute().body()?.success ?: false
     }
 
-    fun crdiCancel(crdiId: String, reservationSeq: Long, reason: String): Boolean {
-        return service.crdiCancel(crdiId, reservationSeq, reason).execute().body()?.success ?: false
+    fun getReservationCommonList(email: String): Boolean {
+        return service.getReservationCommonList(email).execute().body()?.success ?: false
     }
 
-    fun crdiFix(clientId: String, reservationSeq: Long, resvTime: ResvTime): Boolean {
-        return service.crdiFix(clientId, reservationSeq, resvTime).execute().body()?.success
+    fun postReservationCrdiCancel(crdiId: String, reservationSeq: Long, reason: String): Boolean {
+        return service.postReservationCrdiCancel(crdiId, reservationSeq, reason).execute().body()?.success ?: false
+    }
+
+    fun postReservationCrdiFix(clientId: String, reservationSeq: Long, resvTime: ResvTime): Boolean {
+        return service.postReservationCrdiFix(clientId, reservationSeq, resvTime).execute().body()?.success
             ?: false
     }
 }

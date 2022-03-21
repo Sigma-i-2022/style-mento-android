@@ -12,48 +12,48 @@ import retrofit2.http.Query
 
 interface ReservationService {
     @POST("v1/api/reservation/client")
-    fun client(
+    fun postReservationClient(
         @Body reserveReq: Client
     ): Call<ResponseWrapper<Unit>>
 
     @POST("v1/api/reservation/client/cancel")
-    fun clientCancel(
+    fun postReservationClientCancel(
         @Query("clientId") clientId: String,
         @Query("reservationSeq") reservationSeq: Long,
         @Query("reason") reason: String,
     ): Call<ResponseWrapper<Unit>>
 
     @POST("v1/api/reservation/client/pay")
-    fun clientPay(
+    fun postReservationClientPay(
         @Query("clientId") clientId: String,
         @Query("reservationSeq") reservationSeq: Long,
     ): Call<ResponseWrapper<Unit>>
 
     @GET("v1/api/reservation/common/all")
-    fun commonAll(
+    fun getReservationCommonAll(
 
-    ): Call<ResponseWrapper<Common>>
+    ): Call<ResponseWrapper<List<Common>>>
 
     @POST("v1/api/reservation/common/hide")
-    fun clientHide(
+    fun postReservationCommonHide(
         @Query("memberEmail") memberEmail: String,
-        @Query("reservationSeq") reservationSeq: Long,
+        @Query("reservationSeq") reservationSeq: Long
     ): Call<ResponseWrapper<Unit>>
 
     @GET("v1/api/reservation/common/list")
-    fun commonList(
+    fun getReservationCommonList(
         @Query("email") email: String,
     ): Call<ResponseWrapper<Unit>>
 
     @POST("v1/api/reservation/crdi/cancel")
-    fun crdiCancel(
+    fun postReservationCrdiCancel(
         @Query("crdiId") crdiId: String,
         @Query("reservationSeq") reservationSeq: Long,
         @Query("reason") reason: String,
     ): Call<ResponseWrapper<Unit>>
 
     @POST("v1/api/reservation/crdi/fix")
-    fun crdiFix(
+    fun postReservationCrdiFix(
         @Query("clientId") clientId: String,
         @Query("reservationSeq") reservationSeq: Long,
         @Body resvTime: ResvTime,
