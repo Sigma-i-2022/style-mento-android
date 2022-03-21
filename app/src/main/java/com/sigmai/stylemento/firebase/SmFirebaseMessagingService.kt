@@ -1,23 +1,21 @@
 package com.sigmai.stylemento.firebase
 import android.content.Context
 import android.util.Log
+import com.google.firebase.installations.FirebaseInstallations
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class SmFirebaseMessagingService : FirebaseMessagingService() {
-    override fun onCreate() {
-        super.onCreate()
-        Timber.d("파이어베이스 서비스 생성")
-    }
-
     override fun onNewToken(token: String) {
         val pref = this.getSharedPreferences("token", Context.MODE_PRIVATE)
         val editor = pref.edit()
         editor.putString("token", token).apply()
         editor.commit()
 
-        println("성공")
+        Timber.d("새 토큰 값 저장 : $token")
     }
 
     override fun onMessageReceived(message: RemoteMessage) {
