@@ -30,8 +30,8 @@ class SignupRepositoryImpl @Inject constructor(private val dataSource: SignupDat
         return dataSource.joinState(email)
     }
 
-    override fun login(email: String, password: String): Boolean {
-        return dataSource.login(email, password)
+    override fun login(email: String, password: String, deviceToken: String): Boolean {
+        return dataSource.login(email, password, deviceToken)
     }
 
     override fun signUp(

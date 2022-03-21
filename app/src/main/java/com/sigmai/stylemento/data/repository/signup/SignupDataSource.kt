@@ -28,8 +28,8 @@ class SignupDataSource @Inject constructor() {
         return service.joinState(email).execute().body()!!.data
     }
 
-    fun login(email: String, password: String) : Boolean {
-        return service.login(email, password).execute().body()?.success ?: false
+    fun login(email: String, password: String, deviceToken: String) : Boolean {
+        return service.login(email, password, deviceToken).execute().body()?.success ?: false
     }
 
     fun signUp(userId: String, email: String, password1: String, password2: String) : Boolean {

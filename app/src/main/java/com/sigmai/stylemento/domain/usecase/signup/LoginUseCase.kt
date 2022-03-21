@@ -8,9 +8,9 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class LoginUseCase @Inject constructor(private val repository: SignupRepositoryImpl) {
-    suspend operator fun invoke(email: String, password: String) : Boolean {
+    suspend operator fun invoke(email: String, password: String, fcmToken: String) : Boolean {
         return withContext(Dispatchers.IO) {
-            repository.login(email, password)
+            repository.login(email, password, fcmToken)
         }
     }
 }

@@ -1,9 +1,11 @@
 package com.sigmai.stylemento.ui.login
 
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sigmai.stylemento.domain.usecase.signup.LoginUseCase
+import com.sigmai.stylemento.firebase.SmFirebaseMessagingService
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -24,9 +26,9 @@ class LoginViewModel @Inject constructor() : ViewModel() {
         startNext.call()
     }
 
-    fun onLogin() {
+    fun onLogin(view: View) {
         viewModelScope.launch {
-            val isSuccessful = loginUserCase(email.value!!, password.value!!)
+            val isSuccessful = loginUserCase(email.value!!, password.value!!, SmFirebaseMessagingService.getToken(view.context))
             if(isSuccessful) finishEvent.call()
         }
     }

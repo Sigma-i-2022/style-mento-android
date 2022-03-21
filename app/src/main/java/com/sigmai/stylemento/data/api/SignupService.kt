@@ -39,7 +39,8 @@ interface SignupService {
     @POST("v1/api/login")
     fun login(
         @Query("email") email: String,
-        @Query("password") password: String
+        @Query("password") password: String,
+        @Query("deviceToken") deviceToken: String
     ): Call<ResponseWrapper<Unit>>
 
     @POST("v1/api/signUp")
