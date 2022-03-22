@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.*
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.DialogImageSelectionBinding
-import com.sigmai.stylemento.ui.mypage.user.MyPageUserRevisionFragment
 import com.sigmai.stylemento.global.base.BaseDialogFragment
 import com.sigmai.stylemento.global.base.HavingImage
 
