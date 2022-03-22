@@ -3,9 +3,16 @@ package com.sigmai.stylemento.ui.reservation.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.sigmai.stylemento.data.repository.review.ReviewRepositoryImpl
 import com.sigmai.stylemento.global.util.SingleLiveEvent
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ReviewWriteViewModel : ViewModel() {
+@HiltViewModel
+class ReviewWriteViewModel @Inject constructor(): ViewModel() {
+    @Inject
+    lateinit var reviewRepository : ReviewRepositoryImpl
+
     private var _isAllSelected = MutableLiveData<Boolean>(false)
     private var _isFirstSelected = MutableLiveData<Boolean>(false)
     private var _isSecondSelected = MutableLiveData<Boolean>(false)

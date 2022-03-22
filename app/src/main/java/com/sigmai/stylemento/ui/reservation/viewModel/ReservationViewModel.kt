@@ -5,13 +5,20 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sigmai.stylemento.data.repository.datasource.DummyCoordinatorDataSource
+import com.sigmai.stylemento.data.repository.reservation.ReservationRepositoryImpl
 import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.domain.entity.Receipt
 import com.sigmai.stylemento.domain.entity.User
 import com.sigmai.stylemento.global.util.SingleLiveEvent
+import dagger.hilt.android.lifecycle.HiltViewModel
 import timber.log.Timber
+import javax.inject.Inject
 
-class ReservationViewModel : ViewModel() {
+@HiltViewModel
+class ReservationViewModel @Inject constructor(): ViewModel() {
+    @Inject
+    lateinit var reservationRepository: ReservationRepositoryImpl
+
     private val _coordinator = MutableLiveData<Coordinator>()
     private val _user = MutableLiveData<User>()
     private val _receipt = MutableLiveData<Receipt>()
