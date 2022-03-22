@@ -11,8 +11,10 @@ import com.sigmai.stylemento.databinding.FragmentReservationServiceSetBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.util.TimeUtil
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 
+@AndroidEntryPoint
 class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSetBinding>() {
     override val layoutResourceId = R.layout.fragment_reservation_service_set
     private val viewModel: ReservationViewModel by viewModels({ requireParentFragment() })
@@ -25,12 +27,12 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
             findNavController().navigateUp()
         }
         viewModel.startNext.observe(this) {
-            setReceipt()
+            //setReservation()
             findNavController().navigate(R.id.action_reservation_service_page_to_reservation_payment_page)
         }
     }
 
-    private fun setReceipt() {
+    private fun setReservation() {
         val serviceName =
             if (viewModel.serviceType.value == 0) "스타일 피드백"
             else "코디 or 구매 추천"
@@ -43,9 +45,9 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
         val price = 3000
 
         val currentTime: Long = System.currentTimeMillis()
-        val dataFormat = SimpleDateFormat("yyyy.MM.dd")
+        val dataFormat = SimpleDateFormat("yyyy-MM-dd")
         val time = dataFormat.format(currentTime)
 
-        //viewModel.setReceipt(Receipt(viewModel.coordinator.value!!, viewModel.user.value!!, serviceName, serviceWay, price, date, timeList, "", time, "", ReceiptStateType.ACCEPT_BEFORE))
+        viewModel.setClient("", "", "", "", date, timeList, serviceWay, serviceName)
     }
 }

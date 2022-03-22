@@ -12,8 +12,10 @@ import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.util.TimeUtil
 import com.sigmai.stylemento.ui.reservation.adapter.TimeSelectorAdapter
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 
+@AndroidEntryPoint
 class ReservationTimeSetFragment : BaseFragment<FragmentReservationTimeSetBinding>() {
     override val layoutResourceId = R.layout.fragment_reservation_time_set
     private val viewModel: ReservationViewModel by viewModels({requireParentFragment()})

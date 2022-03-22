@@ -12,7 +12,9 @@ import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.ui.reservation.adapter.TimeAdapter
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationCancelCompleteViewModel
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ReservationCancelCompleteFragment : BaseFragment<FragmentReservationCancelCompleteBinding>() {
     override val layoutResourceId = R.layout.fragment_reservation_cancel_complete
     private val viewModel: ReservationCancelCompleteViewModel by viewModels()
