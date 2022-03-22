@@ -29,6 +29,7 @@ class MyPageUserViewModel @Inject constructor() : ViewModel() {
     lateinit var myPageRepository: MyPageRepositoryImpl
 
     val user = MutableLiveData<MyPageClient>()
+    val isIntroductionExtended = MutableLiveData(false)
 
     fun onRevisionClick(view: View) {
         view.findNavController().navigate(R.id.action_main_to_user_revision)
@@ -41,5 +42,9 @@ class MyPageUserViewModel @Inject constructor() : ViewModel() {
             }
             user.value = receivedUser
         }
+    }
+
+    fun onExtend() {
+        isIntroductionExtended.value = !isIntroductionExtended.value!!
     }
 }
