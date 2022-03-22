@@ -15,13 +15,9 @@ class MyPageUserViewModel : ViewModel() {
     val user: LiveData<User> get() = _user
 
     val startRevision = SingleLiveEvent<Any>()
-    val startInstruction = SingleLiveEvent<Any>()
 
     fun onRevisionClick(){
         startRevision.call()
-    }
-    fun onInstructionClick(){
-        startInstruction.call()
     }
 
     fun getUserInfo() {
