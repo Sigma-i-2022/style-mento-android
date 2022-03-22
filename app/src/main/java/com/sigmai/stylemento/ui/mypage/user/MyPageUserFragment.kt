@@ -1,15 +1,12 @@
 package com.sigmai.stylemento.ui.mypage.user
 
-import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
 import com.sigmai.stylemento.R
-import com.sigmai.stylemento.data.model.Client
 import com.sigmai.stylemento.databinding.FragmentMyPageUserBinding
 import com.sigmai.stylemento.global.base.BaseFragment
-import com.sigmai.stylemento.ui.mypage.user.adapter.UserViewPagerAdapter
+import com.sigmai.stylemento.ui.mypage.user.adapter.UserLookbookAdapter
 import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageUserViewModel
 
 class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
@@ -39,11 +36,6 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
             }
         }
         binding.myPageUserChatButton.visibility = View.GONE
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.myPageUserViewPager.adapter = UserViewPagerAdapter(this)
+        binding.lookbookRecyclerview.adapter = UserLookbookAdapter()
     }
 }
