@@ -10,7 +10,9 @@ import com.sigmai.stylemento.databinding.FragmentReservationPaymentCompleteBindi
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.ui.reservation.adapter.TimeAdapter
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ReservationPaymentCompleteFragment : BaseFragment<FragmentReservationPaymentCompleteBinding>() {
     override val layoutResourceId = R.layout.fragment_reservation_payment_complete
     private val viewModel: ReservationViewModel by viewModels({requireParentFragment()})

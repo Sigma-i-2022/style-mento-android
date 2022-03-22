@@ -9,7 +9,9 @@ import com.sigmai.stylemento.databinding.FragmentReservationPaymentBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.util.TimeUtil
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ReservationPaymentFragment : BaseFragment<FragmentReservationPaymentBinding>() {
     override val layoutResourceId = R.layout.fragment_reservation_payment
     private val viewModel: ReservationViewModel by viewModels({requireParentFragment()})
@@ -22,7 +24,7 @@ class ReservationPaymentFragment : BaseFragment<FragmentReservationPaymentBindin
             findNavController().navigateUp()
         }
         viewModel.startNext.observe(this) {
-            //PostReceiptUseCase().invoke(viewModel.receipt.value!!)
+            //viewModel.postReservation()
             TimeUtil.resetTimeList()
             findNavController().navigate(R.id.action_reservation_payment_page_to_reservation_payment_complete_page)
         }

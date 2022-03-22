@@ -10,7 +10,10 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentReservationCancelBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationCancelViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
+@AndroidEntryPoint
 class ReservationCancelFragment : BaseFragment<FragmentReservationCancelBinding>() {
     override val layoutResourceId = R.layout.fragment_reservation_cancel
     private val viewModel: ReservationCancelViewModel by viewModels()
@@ -45,6 +48,7 @@ class ReservationCancelFragment : BaseFragment<FragmentReservationCancelBinding>
     }
 
     private fun checkButtonEnabled(text : String) {
+        Timber.d(text)
         if (text.length > 24) {
             binding.reservationCancelButton.isEnabled = true
             binding.reservationCancelButton.setBackgroundResource(R.drawable.button_available_background)
