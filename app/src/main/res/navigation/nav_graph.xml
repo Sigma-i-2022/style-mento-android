@@ -74,9 +74,9 @@
         tools:layout="@layout/fragment_chat_room" />
     <fragment
         android:id="@+id/user_revision"
-        android:name="com.sigmai.stylemento.ui.mypage.user.MyPageUserRevisionFragment"
+        android:name="com.sigmai.stylemento.ui.mypage.user.MyPageRevisionFragment"
         android:label="user revision"
-        tools:layout="@layout/fragment_my_page_user_revision"/>
+        tools:layout="@layout/fragment_my_page_revision"/>
     <fragment
         android:id="@+id/lookbook_add"
         android:name="com.sigmai.stylemento.ui.mypage.user.MyPageLookbookAddFragment"
