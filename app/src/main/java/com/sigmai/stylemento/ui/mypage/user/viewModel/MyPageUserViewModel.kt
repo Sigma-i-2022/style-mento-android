@@ -1,8 +1,12 @@
 package com.sigmai.stylemento.ui.mypage.user.viewModel
 
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.User
 import com.sigmai.stylemento.di.AppConfigs
 import com.sigmai.stylemento.domain.usecase.user.GetUserUseCase
@@ -14,10 +18,8 @@ class MyPageUserViewModel : ViewModel() {
 
     val user: LiveData<User> get() = _user
 
-    val startRevision = SingleLiveEvent<Any>()
-
-    fun onRevisionClick(){
-        startRevision.call()
+    fun onRevisionClick(view: View) {
+        view.findNavController().navigate(R.id.action_main_to_user_revision)
     }
 
     fun getUserInfo() {
