@@ -7,7 +7,9 @@ import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.store.AuthenticationInformation
 import com.sigmai.stylemento.ui.coordinator.coordinatorpage.CoordinatorPageFragment
 import com.sigmai.stylemento.ui.mypage.user.MyPageUserFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page
     private val viewModel: MyPageViewModel by viewModels()
