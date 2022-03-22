@@ -301,7 +301,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/write_review_notification_text" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageView
                     android:id="@+id/write_review_all_agree_img"
                     android:layout_width="34dp"
                     android:layout_height="34dp"
@@ -322,7 +322,7 @@
                     app:layout_constraintStart_toEndOf="@id/write_review_all_agree_img"
                     app:layout_constraintTop_toTopOf="@id/write_review_all_agree_img" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageView
                     android:id="@+id/write_review_first_agree_img"
                     android:layout_width="34dp"
                     android:layout_height="34dp"
@@ -344,7 +344,7 @@
                     app:layout_constraintStart_toEndOf="@id/write_review_first_agree_img"
                     app:layout_constraintTop_toTopOf="@id/write_review_first_agree_img" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageView
                     android:id="@+id/write_review_second_agree_img"
                     android:layout_width="34dp"
                     android:layout_height="34dp"

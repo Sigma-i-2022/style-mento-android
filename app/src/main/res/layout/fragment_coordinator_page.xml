@@ -41,7 +41,7 @@
                     app:title="코디네이터"
                     tools:layout_editor_absoluteX="0dp" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageView
                     android:id="@+id/coordinator_page_img"
                     android:layout_width="80dp"
                     android:layout_height="80dp"

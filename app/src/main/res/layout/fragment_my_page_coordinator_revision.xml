@@ -31,7 +31,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageView
                     android:id="@+id/my_page_coordinator_revision_profile_img"
                     android:layout_width="128dp"
                     android:layout_height="128dp"

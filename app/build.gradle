@@ -96,9 +96,6 @@ dependencies {
     // bottom navigation
     implementation 'com.google.android.material:material:1.5.0'
 
-    // circle imageView
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
-
     // timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
