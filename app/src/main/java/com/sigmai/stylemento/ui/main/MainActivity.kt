@@ -16,8 +16,10 @@ import com.sigmai.stylemento.databinding.ActivityMainBinding
 import com.sigmai.stylemento.firebase.SmFirebaseMessagingService
 import com.sigmai.stylemento.global.base.BaseActivity
 import com.sigmai.stylemento.ui.login.LoginHostActivity
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override val layoutResourceId = R.layout.activity_main
 

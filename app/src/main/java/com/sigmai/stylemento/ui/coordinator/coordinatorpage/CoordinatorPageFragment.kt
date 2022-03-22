@@ -9,7 +9,9 @@ import com.sigmai.stylemento.databinding.FragmentCoordinatorPageBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.ui.coordinator.adapter.CoordinatorPageViewPagerAdapter
 import com.sigmai.stylemento.ui.home.adapter.TagAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CoordinatorPageFragment(private val isMyPage: Boolean = false) :
     BaseFragment<FragmentCoordinatorPageBinding>() {
     override val layoutResourceId = R.layout.fragment_coordinator_page
