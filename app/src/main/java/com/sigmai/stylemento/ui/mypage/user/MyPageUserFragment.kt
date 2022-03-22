@@ -26,29 +26,24 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
         super.initDataBinding()
         binding.viewModel = viewModel
 
-        viewModel.startRevision.observe(this, {
+        viewModel.startRevision.observe(this) {
             findNavController().navigate(R.id.action_main_to_user_revision)
-        })
-        viewModel.startInstruction.observe(this, {
-            if(introductionState == 0){
+        }
+        viewModel.startInstruction.observe(this) {
+            if (introductionState == 0) {
                 binding.myPageUserIntroductionText.maxLines = 10
                 introductionState = 1
-            }
-            else{
+            } else {
                 binding.myPageUserIntroductionText.maxLines = 3
                 introductionState = 0
             }
-        })
+        }
         binding.myPageUserChatButton.visibility = View.GONE
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val userAdapter = UserViewPagerAdapter(this)
-        binding.myPageUserViewPager.isUserInputEnabled = false
-        binding.myPageUserViewPager.adapter = userAdapter
-
-//        Glide.with(this).load(Client.getUserInfo().profile).into(binding.myPageUserProfileImg)
+        binding.myPageUserViewPager.adapter = UserViewPagerAdapter(this)
     }
 }

@@ -25,7 +25,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
     }
 
     private fun setMyPageFragment(){
-        if(false){
+        if(true){
             val transaction = childFragmentManager.beginTransaction().replace(R.id.my_page_frameLayout, MyPageUserFragment())
             transaction.addToBackStack(null)
             transaction.commit()
