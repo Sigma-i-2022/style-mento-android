@@ -10,7 +10,7 @@ import javax.inject.Inject
 class MyPageDataSource @Inject constructor(){
     private val service = RetrofitServiceFactory.createService<MyPageService>()
 
-    fun getMyPageClient(email: String,) : MyPageClient{
+    fun getMyPageClient(email: String) : MyPageClient{
         return service.getMyPageClient(email).execute().body()!!.data
     }
 
