@@ -4,19 +4,28 @@ import com.sigmai.stylemento.data.model.ResponseWrapper
 import com.sigmai.stylemento.data.model.response.Member
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface MemberService {
-    @GET("v1/api/member")
+    @POST("v1/api/member")
     fun postMember(
-
-    ): Call<Unit>
+        @Query("userId") userId : String,
+        @Query("email") email : String,
+        @Query("password") password : String,
+        @Query("signupType") signupType : String
+    ): Call<ResponseWrapper<Member>>
 
     @GET("v1/api/member/all")
     fun getMembers(): Call<ResponseWrapper<List<Member>>>
 
     @GET("v1/api/member/crdi")
-    fun upgradeCoordinator(): Call<Unit>
+    fun upgradeCoordinator(
+        @Query("email") email : String
+    ): Call<ResponseWrapper<Unit>>
 
     @GET("v1/api/member/email")
-    fun getMemberByEmail(): Call<Unit>
+    fun getMemberByEmail(
+        @Query("email") email : String
+    ) : Call<ResponseWrapper<Member>>
 }

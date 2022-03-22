@@ -206,6 +206,9 @@
         android:name="com.sigmai.stylemento.ui.reservation.ReservationUserListFragment"
         android:label="reservation list page"
         tools:layout="@layout/fragment_reservation_user_list">
+        <action
+            android:id="@+id/action_reservation_user_list_page_to_reservation_cancel_user_page"
+            app:destination="@id/reservation_cancel_user_page" />
     </fragment>
     <fragment
         android:id="@+id/application_finish"
@@ -238,7 +241,26 @@
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true"/>
     </fragment>
-
+    <fragment
+        android:id="@+id/reservation_cancel_user_page"
+        android:name="com.sigmai.stylemento.ui.reservation.ReservationCancelUserFragment"
+        android:label="reservation cancel user page"
+        tools:layout="@layout/fragment_reservation_cancel">
+        <action
+            android:id="@+id/action_reservation_cancel_user_page_to_reservation_cancel_user_complete_page"
+            app:destination="@id/reservation_cancel_user_complete_page" />
+    </fragment>
+    <fragment
+        android:id="@+id/reservation_cancel_user_complete_page"
+        android:name="com.sigmai.stylemento.ui.reservation.ReservationCancelUserCompleteFragment"
+        android:label="reservation cancel user complete page"
+        tools:layout="@layout/fragment_reservation_cancel_user_complete">
+        <action
+            android:id="@+id/action_reservation_cancel_user_complete_page_to_reservation_user_list_page"
+            app:destination="@id/reservation_user_list_page"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
+    </fragment>
     <fragment
         android:id="@+id/add_piece"
         android:name="com.sigmai.stylemento.ui.mypage.coordinator.AddPieceFragment"
