@@ -135,7 +135,8 @@
                     android:layout_marginEnd="@dimen/horizontal_margin"
                     android:src="@drawable/ic_plus"
                     android:background="@null"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:onClick="@{(view)->viewModel.onAdd(view)}"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/lookbook_recyclerview"

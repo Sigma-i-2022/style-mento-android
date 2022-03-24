@@ -47,4 +47,8 @@ class MyPageUserViewModel @Inject constructor() : ViewModel() {
     fun onExtend() {
         isIntroductionExtended.value = !isIntroductionExtended.value!!
     }
+
+    fun onAdd(view: View) {
+        view.findNavController().navigate(R.id.action_main_to_add_piece)
+    }
 }

@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_main_to_reservation_user_list_page"
             app:destination="@id/reservation_user_list_page" />
+        <action
+            android:id="@+id/action_main_to_add_piece"
+            app:destination="@id/add_piece" />
     </fragment>
 
     <fragment
