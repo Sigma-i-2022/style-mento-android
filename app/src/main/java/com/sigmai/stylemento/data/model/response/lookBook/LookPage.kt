@@ -11,6 +11,7 @@ data class LookPage(
     val registDate : String,
     val reportContent : String,
     val reportedYn : String,
+    val topInfo: String,
     val shoeInfo : String,
     val updateDate : String
 )

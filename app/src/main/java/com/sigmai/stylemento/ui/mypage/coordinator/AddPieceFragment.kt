@@ -8,8 +8,10 @@ import com.sigmai.stylemento.databinding.FragmentAddPieceBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.ui.home.adapter.TagAdapter
 import com.sigmai.stylemento.ui.mypage.coordinator.viewModel.AddPieceViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class AddPieceFragment : BaseFragment<FragmentAddPieceBinding>() {
     override val layoutResourceId = R.layout.fragment_add_piece
     private val viewModel: AddPieceViewModel by viewModels()
@@ -46,7 +48,7 @@ class AddPieceFragment : BaseFragment<FragmentAddPieceBinding>() {
             }
 
             setOnFinishListener {
-                viewModel.finish()
+                viewModel.finish(it)
             }
         }
     }

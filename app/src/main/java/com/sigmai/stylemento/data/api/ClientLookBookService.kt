@@ -45,7 +45,7 @@ interface ClientLookBookService {
     @PUT("v1/api/lookPage/info")
     fun putLookPageInfo(
         @Query("lookSeq") lookSeq: Long,
-        @Query("memberEmail") memberEmail: String,
+        @Query("clientEmail") clientEmail: String,
         @Query("explanation") explanation: String,
         @Query("keyword1") keyword1: String,
         @Query("keyword2") keyword2: String,
