@@ -9,7 +9,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.User
+import com.sigmai.stylemento.data.model.response.lookBook.LookPage
 import com.sigmai.stylemento.data.model.response.myPage.MyPageClient
+import com.sigmai.stylemento.data.repository.lookBook.LookBookRepositoryImpl
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
 import com.sigmai.stylemento.di.AppConfigs
 import com.sigmai.stylemento.domain.usecase.user.GetUserUseCase
@@ -27,9 +29,13 @@ import javax.inject.Inject
 class MyPageUserViewModel @Inject constructor() : ViewModel() {
     @Inject
     lateinit var myPageRepository: MyPageRepositoryImpl
+    @Inject
+    lateinit var lookBookRepository: LookBookRepositoryImpl
 
     val user = MutableLiveData<MyPageClient>()
     val isIntroductionExtended = MutableLiveData(false)
+
+    val lookPageList = MutableLiveData<List<LookPage>>()
 
     fun onRevisionClick(view: View) {
         view.findNavController().navigate(R.id.action_main_to_user_revision)
@@ -41,7 +47,13 @@ class MyPageUserViewModel @Inject constructor() : ViewModel() {
                 myPageRepository.getMyPageClient(AuthenticationInformation.email.value!!)
             }
             user.value = receivedUser
+
+            val lookBooks = withContext(Dispatchers.IO) {
+                lookBookRepository.getLookPageAll(AuthenticationInformation.email.value!!, 0)
+            }
+            lookPageList.value = lookBooks
         }
+
     }
 
     fun onExtend() {

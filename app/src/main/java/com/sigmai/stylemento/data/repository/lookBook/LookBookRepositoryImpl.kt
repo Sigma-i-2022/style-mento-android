@@ -25,8 +25,8 @@ class LookBookRepositoryImpl @Inject constructor(private val dataSource: LookBoo
         return dataSource.postLookPage(memberEmail, explanation, keyword1, keyword2, keyword3, topInfo, bottomInfo, shoeInfo, imageFile)
     }
 
-    override fun getLookPageAll(email: String): List<LookPage> {
-        return dataSource.getLookPageAll(email)
+    override fun getLookPageAll(email: String, page: Int): List<LookPage> {
+        return dataSource.getLookPageAll(email, page)
     }
     override fun deleteLookPage(lookSeq: Long): Boolean {
         return dataSource.deleteLookPage(lookSeq)

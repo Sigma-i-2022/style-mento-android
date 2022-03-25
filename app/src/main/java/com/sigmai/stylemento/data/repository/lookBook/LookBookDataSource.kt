@@ -17,8 +17,8 @@ class LookBookDataSource @Inject constructor() {
         return service.postLookPage(memberEmail, explanation, keyword1, keyword2, keyword3, topInfo, bottomInfo, shoeInfo, imageFile).execute().body()?.success ?: false
     }
 
-    fun getLookPageAll(email: String) : List<LookPage>{
-        return service.getLookPageAll(email).execute().body()!!.data
+    fun getLookPageAll(email: String, page: Int) : List<LookPage>{
+        return service.getLookPageAll(email, page).execute().body()!!.data
     }
 
     fun deleteLookPage(lookSeq: Long) : Boolean{

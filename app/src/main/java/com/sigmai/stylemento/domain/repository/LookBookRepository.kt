@@ -6,7 +6,7 @@ import okhttp3.MultipartBody
 interface LookBookRepository {
     fun getLookPage(lookSeq: Long) : LookPage
     fun postLookPage(memberEmail: String, explanation: String, keyword1: String, keyword2: String, keyword3: String, topInfo: String, bottomInfo: String, shoeInfo: String, imageFile: MultipartBody.Part) : Boolean
-    fun getLookPageAll(email: String) : List<LookPage>
+    fun getLookPageAll(email: String, page: Int = 0) : List<LookPage>
     fun deleteLookPage(lookSeq: Long) : Boolean
     fun putLookPageImage(lookSeq: Long, requestImage: MultipartBody.Part) : Boolean
     fun putLookPageInfo(lookSeq: Long, memberEmail: String, explanation: String, keyword1: String, keyword2: String, keyword3: String, topInfo: String, bottomInfo: String, shoeInfo: String) : Boolean

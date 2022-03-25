@@ -28,7 +28,8 @@ interface ClientLookBookService {
 
     @GET("v1/api/lookPage/all")
     fun getLookPageAll(
-        @Query("email") email: String
+        @Query("email") email: String,
+        @Query("page") page: Int
     ): Call<ResponseWrapper<List<LookPage>>>
 
     @POST("v1/api/lookPage")
