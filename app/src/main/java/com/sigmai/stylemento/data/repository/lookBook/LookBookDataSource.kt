@@ -21,8 +21,8 @@ class LookBookDataSource @Inject constructor() {
         return service.getLookPageAll(email).execute().body()!!.data
     }
 
-    fun postLookPageImage(lookSeq: Long) : Boolean{
-        return service.postLookPageImage(lookSeq).execute().body()?.success ?: false
+    fun deleteLookPage(lookSeq: Long) : Boolean{
+        return service.deleteLookPage(lookSeq).execute().body()?.success ?: false
     }
 
     fun putLookPageImage(lookSeq: Long, requestImage: MultipartBody.Part) : Boolean{

@@ -31,8 +31,8 @@ interface ClientLookBookService {
         @Query("email") email: String
     ): Call<ResponseWrapper<List<LookPage>>>
 
-    @POST("v1/api/lookPage/image")
-    fun postLookPageImage(
+    @POST("v1/api/lookPage")
+    fun deleteLookPage(
         @Query("lookSeq") lookSeq: Long
     ): Call<ResponseWrapper<Unit>>
 

@@ -7,7 +7,7 @@ interface LookBookRepository {
     fun getLookPage(lookSeq: Long) : LookPage
     fun postLookPage(memberEmail: String, explanation: String, keyword1: String, keyword2: String, keyword3: String, topInfo: String, bottomInfo: String, shoeInfo: String, imageFile: MultipartBody.Part) : Boolean
     fun getLookPageAll(email: String) : List<LookPage>
-    fun postLookPageImage(lookSeq: Long) : Boolean
+    fun deleteLookPage(lookSeq: Long) : Boolean
     fun putLookPageImage(lookSeq: Long, requestImage: MultipartBody.Part) : Boolean
     fun putLookPageInfo(lookSeq: Long, memberEmail: String, explanation: String, keyword1: String, keyword2: String, keyword3: String, topInfo: String, bottomInfo: String, shoeInfo: String) : Boolean
     fun postLookPageReport(lookSeq: Long, reason: String) : Boolean
