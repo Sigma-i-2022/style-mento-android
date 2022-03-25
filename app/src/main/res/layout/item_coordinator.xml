@@ -26,7 +26,8 @@
             android:layout_marginStart="@dimen/horizontal_margin"
             android:background="@drawable/background_radius_12"
             tools:backgroundTint="@color/primary"
-            app:imageUrl12="@{item.imageUrl}"/>
+            app:imageUrl="@{item.imageUrl}"
+            app:imageRadius="@{12}"/>
 
         <TextView
             android:id="@+id/coordinator_nickname"
