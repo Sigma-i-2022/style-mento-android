@@ -147,7 +147,10 @@
                     android:nestedScrollingEnabled="false"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:spanCount="3"/>
+                    app:spanCount="3"
+                    tools:itemCount="9"
+                    tools:listitem="@layout/item_grid_piece"
+                    app:lookBooks="@{viewModel.lookPageList}"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>

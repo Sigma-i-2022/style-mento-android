@@ -5,6 +5,7 @@ import androidx.fragment.app.viewModels
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageUserBinding
 import com.sigmai.stylemento.global.base.BaseFragment
+import com.sigmai.stylemento.ui.mypage.user.adapter.PieceGridAdapter
 import com.sigmai.stylemento.ui.mypage.user.adapter.UserLookbookAdapter
 import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageUserViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,10 +19,11 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
         super.initState()
         viewModel.getUserInfo()
     }
+
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
         binding.myPageUserChatButton.visibility = View.GONE
-        binding.lookbookRecyclerview.adapter = UserLookbookAdapter()
+        binding.lookbookRecyclerview.adapter = PieceGridAdapter()
     }
 }
