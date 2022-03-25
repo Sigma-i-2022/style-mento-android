@@ -20,9 +20,6 @@
             android:id="@+id/action_main_to_user_revision"
             app:destination="@id/user_revision" />
         <action
-            android:id="@+id/action_main_to_lookbook_add"
-            app:destination="@id/lookbook_add" />
-        <action
             android:id="@+id/action_main_to_coordinator_revision"
             app:destination="@id/coordinator_revision" />
         <action
@@ -80,11 +77,6 @@
         android:name="com.sigmai.stylemento.ui.mypage.user.MyPageRevisionFragment"
         android:label="user revision"
         tools:layout="@layout/fragment_my_page_revision"/>
-    <fragment
-        android:id="@+id/lookbook_add"
-        android:name="com.sigmai.stylemento.ui.mypage.user.MyPageLookbookAddFragment"
-        android:label="look book add"
-        tools:layout="@layout/fragment_my_page_lookbook_add" />
 
     <fragment
         android:id="@+id/coordinator_revision"
@@ -103,9 +95,6 @@
         android:name="com.sigmai.stylemento.ui.mypage.user.MyPageLookbookScrollFragment"
         android:label="lookbook scroll"
         tools:layout="@layout/fragment_my_page_lookbook_scroll" >
-        <action
-            android:id="@+id/action_lookbook_scroll_to_lookbook_add"
-            app:destination="@id/lookbook_add" />
     </fragment>
     <fragment
         android:id="@+id/work_scroll"
