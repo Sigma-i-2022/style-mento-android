@@ -24,7 +24,7 @@ class MyPageWorkScrollViewModel : ViewModel() {
 
     fun onClickRevision(view: View, position: Int) {
         val bundle = bundleOf("position" to position)
-        view.findNavController().navigate(R.id.action_work_scroll_to_work_add, bundle)
+//        view.findNavController().navigate(R.id.action_work_scroll_to_work_add, bundle)
     }
 
     fun setDeleteDialog(

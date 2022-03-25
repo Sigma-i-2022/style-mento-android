@@ -22,7 +22,7 @@ class MyPageWorkFragment() : BaseFragment<FragmentMyPageWorkBinding>() {
 
         viewModel.startAddition.observe(this, {
             val bundle = bundleOf("position" to -1)
-            findNavController().navigate(R.id.action_main_to_work_add, bundle)
+//            findNavController().navigate(R.id.action_main_to_work_add, bundle)
         })
     }
 
