@@ -32,7 +32,7 @@ interface ClientLookBookService {
         @Query("page") page: Int
     ): Call<ResponseWrapper<List<LookPage>>>
 
-    @POST("v1/api/lookPage")
+    @DELETE("v1/api/lookPage")
     fun deleteLookPage(
         @Query("lookSeq") lookSeq: Long
     ): Call<ResponseWrapper<Unit>>

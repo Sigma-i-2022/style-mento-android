@@ -18,7 +18,7 @@ class LookBookScrollFragment : BaseFragment<FragmentLookBookScrollBinding>() {
         super.initDataBinding()
         binding.viewModel = viewModel
 
-        binding.listview.adapter = PieceScrollAdapter()
+        binding.listview.adapter = PieceScrollAdapter(viewModel)
 
         binding.toolbar.setOnBackListener {
             findNavController().navigateUp()
