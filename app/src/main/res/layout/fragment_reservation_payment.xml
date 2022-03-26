@@ -66,6 +66,7 @@
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:background="@drawable/bg_circle"
                     android:backgroundTint="@color/gray_d"
+                    android:src="@{viewModel.userUrl}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/reservation_payment_payer_text" />
 
@@ -75,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    android:text="user_name"
+                    android:text="@{viewModel.userName}"
                     app:layout_constraintStart_toEndOf="@id/reservation_payment_payer_img"
                     app:layout_constraintTop_toTopOf="@id/reservation_payment_payer_img" />
 
@@ -85,7 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    android:text="user@email.com"
+                    android:text="@{viewModel.userEmail}"
                     app:layout_constraintStart_toEndOf="@id/reservation_payment_payer_img"
                     app:layout_constraintTop_toBottomOf="@id/reservation_payment_payer_name_text" />
 
@@ -134,7 +135,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="end"
-                            android:text="@{viewModel.receipt.serviceName}" />
+                            android:text="@{viewModel.client.serviceType}" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -161,7 +162,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="end"
-                            android:text="@{viewModel.receipt.serviceWay}" />
+                            android:text="@{viewModel.client.serviceSystem}" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -183,16 +184,11 @@
                             android:layout_weight="1" />
 
                         <TextView
-                            android:id="@+id/reservation_payment_service_price_text"
-                            style="@style/header4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <TextView
                             style="@style/header4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="end"
-                            android:text="원" />
+                            android:text="3000원" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -219,7 +215,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="end"
-                            android:text="@{viewModel.receipt.date}" />
+                            android:text="@{viewModel.client.reserveDay}" />
                     </LinearLayout>
 
                     <LinearLayout
