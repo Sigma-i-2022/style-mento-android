@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.sigmai.stylemento.R
+import com.sigmai.stylemento.data.model.response.lookBook.LookPage
 import com.sigmai.stylemento.data.repository.coordinator.DummyCoordinatorRepository
 import com.sigmai.stylemento.di.AppConfigs
 import com.sigmai.stylemento.domain.entity.Coordinator
@@ -28,6 +29,7 @@ class CoordinatorPageViewModel
 
     private val _coordinator = MutableLiveData<Coordinator>()
     val coordinator: LiveData<Coordinator> get() = _coordinator
+    val pieceList = MutableLiveData<List<LookPage>>()
 
     val isMyPage = MutableLiveData(false)
     val isExtended = MutableLiveData(false)
@@ -64,7 +66,7 @@ class CoordinatorPageViewModel
         val bundle = bundleOf("position" to position)
         val navController = view.findNavController()
         if (isMyPage.value!!) navController.navigate(
-            R.id.action_main_to_coordinator_page_piece_scroll,
+            R.id.action_main_to_piece_scroll,
             bundle
         )
         else navController.navigate(

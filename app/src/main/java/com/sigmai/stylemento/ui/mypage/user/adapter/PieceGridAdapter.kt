@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.response.lookBook.LookPage
 import com.sigmai.stylemento.databinding.ItemGridPieceBinding
-import com.sigmai.stylemento.databinding.ItemUserLookbookBinding
 
 class PieceGridAdapter : ListAdapter<LookPage, PieceGridAdapter.ViewHolder>(LookPageDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,8 +26,8 @@ class PieceGridAdapter : ListAdapter<LookPage, PieceGridAdapter.ViewHolder>(Look
             binding.executePendingBindings()
 
             binding.root.setOnClickListener {
-                val bundle = bundleOf("position" to adapterPosition)
-                it.findNavController().navigate(R.id.action_main_to_lookbook_scroll, bundle)
+//                val bundle = bundleOf("position" to adapterPosition)
+                it.findNavController().navigate(R.id.action_main_to_piece_scroll2)
             }
         }
 

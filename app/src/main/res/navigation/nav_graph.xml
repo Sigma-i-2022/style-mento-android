@@ -35,7 +35,7 @@
             android:id="@+id/action_main_to_coordinator_page"
             app:destination="@id/coordinator_page" />
         <action
-            android:id="@+id/action_main_to_coordinator_page_piece_scroll"
+            android:id="@+id/action_main_to_piece_scroll"
             app:destination="@id/coordinator_page_piece_scroll" />
         <action
             android:id="@+id/action_main_to_reservation_list_page"
@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_main_to_add_piece"
             app:destination="@id/add_piece" />
+        <action
+            android:id="@+id/action_main_to_piece_scroll2"
+            app:destination="@id/piece_scroll" />
     </fragment>
 
     <fragment
@@ -254,4 +257,10 @@
         android:label="write review page"
         tools:layout="@layout/fragment_write_review">
     </fragment>
+
+    <fragment
+        android:id="@+id/piece_scroll"
+        android:name="com.sigmai.stylemento.ui.mypage.LookBookScrollFragment"
+        android:label="look book scroll"
+        tools:layout="@layout/fragment_look_book_scroll"/>
 </navigation>
