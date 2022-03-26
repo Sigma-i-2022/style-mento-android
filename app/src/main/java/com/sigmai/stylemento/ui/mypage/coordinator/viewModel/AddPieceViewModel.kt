@@ -26,6 +26,8 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
     @Inject
     lateinit var lookbookRepository: LookBookRepositoryImpl
 
+    val lookPage = MutableLiveData<LookPage>()
+
     val onFinishEvent = SingleLiveEvent<Any>()
 
     val imageUrl = MutableLiveData("")
@@ -47,6 +49,7 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
                 lookbookRepository.getLookPage(id)
             }
             setDataFromPiece(piece)
+            lookPage.value = piece
         }
     }
 

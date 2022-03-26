@@ -27,12 +27,12 @@ class PieceScrollAdapter(val listener: PieceScrollListener) : ListAdapter<LookPa
                 val bottomSheet = SmBottomSheet(it.context)
                 bottomSheet.setOnClickListener(
                     {
-                        view ->
-                        listener.onEdit(view, item.lookPageSeq)
+                        _ ->
+                        listener.onEdit(it, item.lookPageSeq)
                     },
                     {
-                        view ->
-                        listener.onDelete(view, item.lookPageSeq)
+                        _ ->
+                        listener.onDelete(it, item.lookPageSeq)
                     }
                 )
                 bottomSheet.show()

@@ -27,8 +27,8 @@ class AddPieceFragment : BaseFragment<FragmentAddPieceBinding>() {
 
     override fun initState() {
         val pieceId = arguments?.getLong("id") ?: -1
+
         if (pieceId >= 0L) viewModel.loadPiece(pieceId)
-        else Timber.e("Invalid piece id $pieceId")
     }
 
     private fun setupObserver() {

@@ -1,5 +1,6 @@
 package com.sigmai.stylemento.ui.mypage
 
+import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -35,7 +36,9 @@ class LookBookScrollViewModel @Inject constructor() : ViewModel(), PieceScrollLi
     }
 
     override fun onEdit(view: View, id: Long) {
-        view.findNavController().navigate(R.id.action_piece_scroll_to_add_piece)
+        val bundle = Bundle()
+        bundle.putLong("id", id)
+        view.findNavController().navigate(R.id.action_piece_scroll_to_add_piece, bundle)
     }
 
     override fun onDelete(view: View, id: Long) {
