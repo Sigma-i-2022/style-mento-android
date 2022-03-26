@@ -30,7 +30,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:pieces="@{viewModel.coordinator.pieceList}"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             tools:listitem="@layout/item_piece_scroll"
             tools:itemCount="3"/>

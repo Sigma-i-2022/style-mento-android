@@ -30,6 +30,7 @@ class CoordinatorPageFragment(private val isMyPage: Boolean = false) :
         val position = arguments?.getInt("position") ?: 0
         viewModel.loadCoordinatorInfo(position)
         viewModel.isMyPage.value = isMyPage
+        viewModel.loadData()
     }
 
     private fun setupButton() {

@@ -9,26 +9,30 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.response.lookBook.LookPage
+import com.sigmai.stylemento.data.model.response.myPage.MyPageCrdi
 import com.sigmai.stylemento.data.repository.coordinator.DummyCoordinatorRepository
+import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
+import com.sigmai.stylemento.data.repository.work.WorkRepositoryImpl
 import com.sigmai.stylemento.di.AppConfigs
 import com.sigmai.stylemento.domain.entity.Coordinator
+import com.sigmai.stylemento.global.store.AuthenticationInformation
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
 class CoordinatorPageViewModel
 @Inject constructor() : ViewModel() {
     @Inject
-    lateinit var coordinatorRepository: DummyCoordinatorRepository
-    private val getCoordinatorUserUseCase = AppConfigs.getCoordinatorUserUseCase
-    private val deletePieceUseCase = AppConfigs.deletePieceUseCase
+    lateinit var workRepository: WorkRepositoryImpl
+    @Inject
+    lateinit var myPageRepository: MyPageRepositoryImpl
 
-    private val _coordinator = MutableLiveData<Coordinator>()
-    val coordinator: LiveData<Coordinator> get() = _coordinator
+    val coordinator = MutableLiveData<MyPageCrdi>()
     val pieceList = MutableLiveData<List<LookPage>>()
 
     val isMyPage = MutableLiveData(false)
@@ -37,6 +41,19 @@ class CoordinatorPageViewModel
     val startChat = SingleLiveEvent<Any>()
     val startReserve = SingleLiveEvent<Any>()
     val onEditEvent = SingleLiveEvent<Any>()
+
+    fun loadData() {
+        loadCoordinatorInfo(-1)
+
+        viewModelScope.launch {
+            val list = withContext(Dispatchers.IO) {
+                workRepository.getCrdiWorkAll(AuthenticationInformation.email.value!!)
+            }
+            pieceList.value = list.map {
+                it.toLookPage()
+            }
+        }
+    }
 
     fun onClickInstruction() {
         isExtended.value = !(isExtended.value!!)
@@ -51,14 +68,11 @@ class CoordinatorPageViewModel
     }
 
     fun loadCoordinatorInfo(position: Int) {
-        if (position == -1 || isMyPage.value!!) {
-            viewModelScope.launch {
-                _coordinator.postValue(getCoordinatorUserUseCase())
+        viewModelScope.launch {
+            val coordi = withContext(Dispatchers.IO) {
+                myPageRepository.getMyPageCrdi(AuthenticationInformation.email.value!!)
             }
-        } else {
-            viewModelScope.launch {
-                _coordinator.postValue(Coordinator.from(coordinatorRepository.getCoordinatorList()[position]))
-            }
+            coordinator.value = coordi
         }
     }
 
@@ -76,10 +90,6 @@ class CoordinatorPageViewModel
     }
 
     fun deletePiece(id: Long) {
-        CoroutineScope(Dispatchers.IO).launch {
-            deletePieceUseCase(id)
-            loadCoordinatorInfo(-1)
-        }
     }
 
     fun onEditPiece(view: View, id: Long) {

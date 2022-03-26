@@ -7,6 +7,7 @@ import com.sigmai.stylemento.databinding.FragmentCoordinatorPageWorkBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.ui.coordinator.adapter.CoordinatorPageWorkAdapter
 import com.sigmai.stylemento.ui.coordinator.coordinatorpage.CoordinatorPageViewModel
+import com.sigmai.stylemento.ui.mypage.user.adapter.PieceGridAdapter
 
 class CoordinatorPageWorkFragment : BaseFragment<FragmentCoordinatorPageWorkBinding>() {
     override val layoutResourceId = R.layout.fragment_coordinator_page_work
@@ -30,6 +31,7 @@ class CoordinatorPageWorkFragment : BaseFragment<FragmentCoordinatorPageWorkBind
     }
 
     private fun setupRecyclerViewAdapter() {
-        binding.coordinatorPageWorkRecycler.adapter = CoordinatorPageWorkAdapter(viewModel)
+//        binding.coordinatorPageWorkRecycler.adapter = CoordinatorPageWorkAdapter(viewModel)
+        binding.coordinatorPageWorkRecycler.adapter = PieceGridAdapter()
     }
 }

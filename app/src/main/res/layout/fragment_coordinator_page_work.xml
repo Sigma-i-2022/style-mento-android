@@ -20,6 +20,6 @@
             android:layout_centerHorizontal="true"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="3"
-            app:gridPiece="@{viewModel.coordinator.pieceList}"/>
+            app:lookBooks="@{viewModel.pieceList}"/>
     </RelativeLayout>
 </layout>
