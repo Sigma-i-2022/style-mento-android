@@ -55,7 +55,7 @@
                         android:backgroundTint="@color/gray_d"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:imageUrlCircle="@{viewModel.user.profileImageUrl}"/>
+                        app:imageUrlCircle="@{viewModel.user.profileImgUrl}"/>
 
                     <LinearLayout
                         android:id="@+id/my_page_user_profile_text_layout"

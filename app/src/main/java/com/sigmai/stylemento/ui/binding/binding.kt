@@ -5,9 +5,10 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.global.util.GlideUtil
 import com.sigmai.stylemento.ui.home.adapter.TagAdapter
+import timber.log.Timber
 
 @BindingAdapter("app:imageUrl", "app:imageRadius", requireAll = false)
-fun bindImageUrl(view: ImageView, imageUrl: String, radius: Int = 0) {
+fun bindImageUrl(view: ImageView, imageUrl: String?, radius: Int = 0) {
     if(radius == 0) GlideUtil.setImage(imageUrl, view)
     else GlideUtil.setImageWithRadius(imageUrl, view, radius)
 }

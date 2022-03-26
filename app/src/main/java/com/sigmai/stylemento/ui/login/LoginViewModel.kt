@@ -32,7 +32,7 @@ class LoginViewModel @Inject constructor() : ViewModel() {
             val isSuccessful = loginUserCase(email.value!!, password.value!!, SmFirebaseMessagingService.getToken(view.context))
             //if(isSuccessful) finishEvent.call()
             AuthenticationInformation.email.value = email.value!!
-            AuthenticationInformation.userType = AuthenticationInformation.TYPE_COORDINATOR
+//            AuthenticationInformation.userType = AuthenticationInformation.TYPE_COORDINATOR
             finishEvent.call() // TODO : 현재 로그인 요청 200 이 안 떨어져서 서버쪽과 대화 중, 나중에 이 행을 지우고 윗 라인 주석을 해제하세요.
         }
     }

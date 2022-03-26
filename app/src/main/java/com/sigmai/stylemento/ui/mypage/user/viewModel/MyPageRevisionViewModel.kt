@@ -12,6 +12,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.MultipartBody
 import javax.inject.Inject
 
 @HiltViewModel
@@ -42,6 +43,14 @@ class MyPageRevisionViewModel @Inject constructor() : ViewModel() {
                 myPageRepository.putMyPageClient(AuthenticationInformation.email.value!!, user.value!!.userId, introduction.value!!)
             }
             view.findNavController().navigateUp()
+        }
+    }
+
+    fun uploadImage(file: MultipartBody.Part) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                myPageRepository.postMyPageImage(AuthenticationInformation.email.value!!, file)
+            }
         }
     }
 }
