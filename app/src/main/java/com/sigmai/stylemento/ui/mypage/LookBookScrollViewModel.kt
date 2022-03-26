@@ -18,13 +18,15 @@ class LookBookScrollViewModel @Inject constructor() : ViewModel() {
     lateinit var lookBookRepository: LookBookRepositoryImpl
 
     val pieceList = MutableLiveData<List<LookPage>>()
+    val scrollPosition = MutableLiveData(0)
 
-    fun loadData() {
+    fun loadData(position: Int) {
         viewModelScope.launch {
             val list = withContext(Dispatchers.IO) {
                 lookBookRepository.getLookPageAll(AuthenticationInformation.email.value!!)
             }
             pieceList.value = list
+            scrollPosition.value = position
         }
     }
 }

@@ -26,8 +26,8 @@ class PieceGridAdapter : ListAdapter<LookPage, PieceGridAdapter.ViewHolder>(Look
             binding.executePendingBindings()
 
             binding.root.setOnClickListener {
-//                val bundle = bundleOf("position" to adapterPosition)
-                it.findNavController().navigate(R.id.action_main_to_piece_scroll2)
+                val bundle = bundleOf("position" to adapterPosition)
+                it.findNavController().navigate(R.id.action_main_to_piece_scroll2, bundle)
             }
         }
 

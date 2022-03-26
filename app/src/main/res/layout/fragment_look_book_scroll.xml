@@ -20,7 +20,8 @@
             android:background="@color/white"
             android:elevation="8dp"
             app:title="룩북"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:showBackButton="true"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listview"
@@ -30,6 +31,7 @@
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
             app:lookBookList="@{viewModel.pieceList}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
