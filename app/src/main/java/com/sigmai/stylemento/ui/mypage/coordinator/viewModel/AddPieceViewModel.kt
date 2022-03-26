@@ -5,13 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
-import com.sigmai.stylemento.data.api.ClientLookBookService
 import com.sigmai.stylemento.data.model.response.lookBook.LookPage
-import com.sigmai.stylemento.data.model.response.myPage.MyPageClient
 import com.sigmai.stylemento.data.repository.lookBook.LookBookRepositoryImpl
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
-import com.sigmai.stylemento.di.AppConfigs
-import com.sigmai.stylemento.domain.entity.Piece
 import com.sigmai.stylemento.global.store.AuthenticationInformation
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -37,11 +33,12 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
     val shoes = MutableLiveData("")
     val tagList = MutableLiveData<List<String>>(listOf())
     val isNewPage = MutableLiveData(true)
+    var lookPageId = -1L
 
     fun loadPiece(id: Long) {
-        if(id < 0) {
-            return
-        }
+        if(id < 0) return
+        else lookPageId = id
+
         isNewPage.value = false
 
         viewModelScope.launch {
@@ -68,28 +65,31 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
 
     fun finish(view: View) {
         viewModelScope.launch {
-//            withContext(Dispatchers.IO) {
-//                if(isNewPage.value!!) {
-//                    lookbookRepository.postLookPage(
-//                        memberEmail = AuthenticationInformation.email.value!!,
-//                        explanation = description.value!!,
-//                        keyword1 = "",
-//                        keyword2 = "",
-//                        keyword3 = "",
-//                        topInfo = top.value!!,
-//                        bottomInfo = bottom.value!!,
-//                        shoeInfo = shoes.value!!,
-//                        imageFile = null
-//                    )
-//                } else {
-//                    myPageRepository.putMyPageClient()
-//                }
-//            }
+            if(lookPageId >= 0) updatePiece()
+            else addPiece()
             view.findNavController().navigateUp()
         }
     }
 
-    suspend fun updatePiece() {
-        // TODO : 서버 요청
+    private suspend fun updatePiece() {
+        withContext(Dispatchers.IO) {
+            lookbookRepository.putLookPageInfo(
+                lookSeq = lookPageId,
+                clientEmail = AuthenticationInformation.email.value!!,
+                explanation = description.value!!,
+                keyword1 = "WARM",
+                keyword2 = "COOL",
+                keyword3 = "MINIMAL",
+                topInfo = top.value!!,
+                bottomInfo = bottom.value!!,
+                shoeInfo = shoes.value!!
+            )
+        }
+    }
+
+    private suspend fun addPiece() {
+        withContext(Dispatchers.IO) {
+//            lookbookRepository.postLookPage()
+        }
     }
 }

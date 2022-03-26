@@ -36,7 +36,7 @@ class LookBookRepositoryImpl @Inject constructor(private val dataSource: LookBoo
     }
     override fun putLookPageInfo(
         lookSeq: Long,
-        memberEmail: String,
+        clientEmail: String,
         explanation: String,
         keyword1: String,
         keyword2: String,
@@ -45,7 +45,7 @@ class LookBookRepositoryImpl @Inject constructor(private val dataSource: LookBoo
         bottomInfo: String,
         shoeInfo: String
     ): Boolean {
-        return dataSource.putLookPageInfo(lookSeq, memberEmail, explanation, keyword1, keyword2, keyword3, topInfo, bottomInfo, shoeInfo)
+        return dataSource.putLookPageInfo(lookSeq, clientEmail, explanation, keyword1, keyword2, keyword3, topInfo, bottomInfo, shoeInfo)
     }
 
     override fun postLookPageReport(lookSeq: Long, reason: String): Boolean {

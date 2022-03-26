@@ -29,8 +29,8 @@ class LookBookDataSource @Inject constructor() {
         return service.putLookPageImage(lookSeq, requestImage).execute().body()?.success ?: false
     }
 
-    fun putLookPageInfo(lookSeq: Long, memberEmail: String, explanation: String, keyword1: String, keyword2: String, keyword3: String, topInfo: String, bottomInfo: String, shoeInfo: String) : Boolean {
-        return service.putLookPageInfo(lookSeq, memberEmail, explanation, keyword1, keyword2, keyword3, topInfo, bottomInfo, shoeInfo).execute().body()?.success ?: false
+    fun putLookPageInfo(lookSeq: Long, clientEmail: String, explanation: String, keyword1: String, keyword2: String, keyword3: String, topInfo: String, bottomInfo: String, shoeInfo: String) : Boolean {
+        return service.putLookPageInfo(lookSeq, clientEmail, explanation, keyword1, keyword2, keyword3, topInfo, bottomInfo, shoeInfo).execute().body()?.success ?: false
     }
 
     fun postLookPageReport(lookSeq: Long, reason: String) : Boolean{
