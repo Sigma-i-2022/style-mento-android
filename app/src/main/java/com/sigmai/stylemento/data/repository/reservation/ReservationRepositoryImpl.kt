@@ -12,43 +12,43 @@ class ReservationRepositoryImpl @Inject constructor(private val dataSource: Rese
         return dataSource.postReservationClient(reserveReq)
     }
 
-    override fun postReservationClientCancel(
-        clientId: String,
-        reservationSeq: Long,
-        reason: String
-    ): Boolean {
-        return dataSource.postReservationClientCancel(clientId, reservationSeq, reason)
-    }
+//    override fun postReservationClientCancel(
+//        clientId: String,
+//        reservationSeq: Long,
+//        reason: String
+//    ): Boolean {
+//        return dataSource.postReservationClientCancel(clientId, reservationSeq, reason)
+//    }
 
     override fun postReservationClientPay(memberEmail: String, reservationSeq: Long): Boolean {
         return dataSource.postReservationClientPay(memberEmail, reservationSeq)
     }
 
-    override fun getReservationCommonAll(): List<Common> {
-        return dataSource.getReservationCommonAll()
-    }
+//    override fun getReservationCommonAll(): List<Common> {
+//        return dataSource.getReservationCommonAll()
+//    }
 
     override fun postReservationCommonHide(memberEmail: String, reservationSeq: Long): Boolean {
         return dataSource.postReservationCommonHide(memberEmail, reservationSeq)
     }
 
-    override fun getReservationCommonList(email: String): Boolean {
-        return dataSource.getReservationCommonList(email)
+    override fun getReservationCommonList(email: String, page : Int, size : Int): List<Common> {
+        return dataSource.getReservationCommonList(email, page, size)
     }
 
-    override fun postReservationCrdiCancel(
-        crdiId: String,
-        reservationSeq: Long,
-        reason: String
-    ): Boolean {
-        return dataSource.postReservationCrdiCancel(crdiId, reservationSeq, reason)
-    }
+//    override fun postReservationCrdiCancel(
+//        crdiId: String,
+//        reservationSeq: Long,
+//        reason: String
+//    ): Boolean {
+//        return dataSource.postReservationCrdiCancel(crdiId, reservationSeq, reason)
+//    }
 
     override fun postReservationCrdiFix(
-        clientId: String,
+        crdiId: String,
         reservationSeq: Long,
         resvTime: ResvTime
     ): Boolean {
-        return dataSource.postReservationCrdiFix(clientId, reservationSeq, resvTime)
+        return dataSource.postReservationCrdiFix(crdiId, reservationSeq, resvTime)
     }
 }

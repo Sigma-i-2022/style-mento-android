@@ -16,7 +16,9 @@ import com.sigmai.stylemento.ui.reservation.adapter.ReservationListAdapter
 import com.sigmai.stylemento.ui.reservation.adapter.ReservationUserListAdapter
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationListViewModel
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationUserListViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ReservationUserListFragment : BaseFragment<FragmentReservationUserListBinding>() {
     override val layoutResourceId = R.layout.fragment_reservation_user_list
     private val viewModel: ReservationUserListViewModel by viewModels()

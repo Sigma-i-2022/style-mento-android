@@ -1,5 +1,6 @@
 package com.sigmai.stylemento.ui.reservation.viewModel
 
+import androidx.compose.ui.res.colorResource
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,16 +24,32 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
     @Inject
     lateinit var reservationRepository: ReservationRepositoryImpl
 
-    private val _coordinator = MutableLiveData<Coordinator>()
+    val coordinatorEmail = MutableLiveData<String>("")
+    val coordinatorName = MutableLiveData<String>("")
+    val coordinatorUrl = MutableLiveData<String>("")
+    val userEmail = MutableLiveData<String>("")
+    val userName = MutableLiveData<String>("")
+    val userUrl = MutableLiveData<String>("")
+
+    fun setCoordinatorInfo(email : String, name : String, url : String){
+        coordinatorEmail.postValue(email)
+        coordinatorName.postValue(name)
+        coordinatorUrl.postValue((url))
+    }
+    fun setUserInfo(email : String, name : String, url : String){
+        userEmail.postValue(email)
+        userName.postValue(name)
+        userUrl.postValue(url)
+    }
     private val _user = MutableLiveData<User>()
     private val _receipt = MutableLiveData<Receipt>()
 
-    val coordinator: LiveData<Coordinator> get() = _coordinator
     val user: LiveData<User> get() = _user
     val receipt: LiveData<Receipt> get() = _receipt
 
     private val _client = MutableLiveData<Client>()
     val client: LiveData<Client> get() = _client
+    val paymentWay = MutableLiveData<String>("")
 
     fun setClient(
         clientEmail: String,
@@ -45,10 +62,6 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
         serviceType: String
     ) {
         _client.postValue(Client(clientEmail, clientId, crdiEmail, crdiId, requestText.value!!, reserveDay, reserveTimes, serviceSystem, serviceType))
-    }
-
-    fun getCoordinatorInfo(position: Int) {
-        _coordinator.postValue(Coordinator.from(DummyCoordinatorDataSource().getCoordinatorList()[position]))
     }
 
     val startBack = SingleLiveEvent<Any>()

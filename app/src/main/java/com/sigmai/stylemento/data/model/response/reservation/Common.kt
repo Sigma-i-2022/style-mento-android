@@ -8,6 +8,7 @@ data class Common (
     val confirmReserveYn : String,
     val crdiId : String,
     val price : Int,
+    val requestReservationTime : String,
     val requireText : String,
     val reserveDay : String,
     val reserveTimes : String,

@@ -33,11 +33,7 @@ class ReservationPaymentCompleteFragment : BaseFragment<FragmentReservationPayme
         super.onViewCreated(view, savedInstanceState)
 
         if(viewModel.receipt.value != null){
-            binding.reservationCompletePayWayPriceText.text = viewModel.receipt.value!!.price.toString()
-            binding.reservationCompleteServicePriceText.text = viewModel.receipt.value!!.price.toString()
             binding.reservationCompleteServiceTimeRecycler.adapter = TimeAdapter(viewModel.receipt.value!!.timeList)
-            Glide.with(this).load(viewModel.coordinator.value?.imageUrl)
-                .into(binding.reservationCompleteCoordinatorImg)
         }
     }
 
