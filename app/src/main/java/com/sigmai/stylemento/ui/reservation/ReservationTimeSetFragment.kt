@@ -24,7 +24,6 @@ class ReservationTimeSetFragment : BaseFragment<FragmentReservationTimeSetBindin
     override fun initState() {
         super.initState()
         val position = arguments?.getInt("position")!!
-        viewModel.getCoordinatorInfo(position)
     }
     override fun initDataBinding() {
         super.initDataBinding()

@@ -13,7 +13,9 @@ import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.constant.ReceiptStateType
 import com.sigmai.stylemento.ui.reservation.adapter.ReservationListAdapter
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationListViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ReservationListFragment : BaseFragment<FragmentReservationListBinding>() {
     override val layoutResourceId = R.layout.fragment_reservation_list
     private val viewModel: ReservationListViewModel by viewModels()

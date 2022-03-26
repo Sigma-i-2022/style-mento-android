@@ -12,7 +12,9 @@ import com.sigmai.stylemento.databinding.FragmentReservationCancelUserBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationCancelUserViewModel
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationCancelViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ReservationCancelUserFragment : BaseFragment<FragmentReservationCancelUserBinding>() {
     override val layoutResourceId = R.layout.fragment_reservation_cancel_user
     private val viewModel: ReservationCancelUserViewModel by viewModels()

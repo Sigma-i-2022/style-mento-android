@@ -116,7 +116,7 @@
                     app:layout_constraintVertical_bias="1.0"
                     app:spanCount="5" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/reservation_time_selection_next_button"
                     style="@style/header3"
                     android:layout_width="match_parent"
@@ -128,7 +128,8 @@
                     android:text="다음"
                     android:textColor="@color/white"
                     tools:layout_editor_absoluteX="22dp"
-                    tools:layout_editor_absoluteY="597dp" />
+                    tools:layout_editor_absoluteY="597dp"
+                    tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
