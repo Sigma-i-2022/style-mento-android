@@ -3,15 +3,17 @@ package com.sigmai.stylemento.ui.mypage.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.response.lookBook.LookPage
 import com.sigmai.stylemento.databinding.ItemPieceScroll2Binding
+import com.sigmai.stylemento.domain.entity.Piece
 import com.sigmai.stylemento.global.component.SmBottomSheet
 import com.sigmai.stylemento.ui.mypage.user.adapter.LookPageDiffUtil
 
-class PieceScrollAdapter(val listener: PieceScrollListener) : ListAdapter<LookPage, PieceScrollAdapter.ViewHolder>(LookPageDiffUtil()) {
+class PieceScrollAdapter(val listener: PieceScrollListener) : ListAdapter<Piece, PieceScrollAdapter.ViewHolder>(PieceDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder.from(parent)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -20,19 +22,19 @@ class PieceScrollAdapter(val listener: PieceScrollListener) : ListAdapter<LookPa
 
     class ViewHolder(val binding: ItemPieceScroll2Binding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: LookPage, listener: PieceScrollListener) {
-            binding.item = item
+        fun bind(piece: Piece, listener: PieceScrollListener) {
+            binding.piece = piece
 
             binding.moreMenu.setOnClickListener {
                 val bottomSheet = SmBottomSheet(it.context)
                 bottomSheet.setOnClickListener(
                     {
                         _ ->
-                        listener.onEdit(it, item.lookPageSeq)
+                        listener.onEdit(it, piece.id)
                     },
                     {
                         _ ->
-                        listener.onDelete(it, item.lookPageSeq)
+                        listener.onDelete(it, piece.id)
                     }
                 )
                 bottomSheet.show()
@@ -49,5 +51,15 @@ class PieceScrollAdapter(val listener: PieceScrollListener) : ListAdapter<LookPa
                 return ViewHolder(binding)
             }
         }
+    }
+}
+
+class PieceDiffUtil : DiffUtil.ItemCallback<Piece>() {
+    override fun areItemsTheSame(oldItem: Piece, newItem: Piece): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: Piece, newItem: Piece): Boolean {
+        return oldItem == newItem
     }
 }

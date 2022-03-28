@@ -16,41 +16,43 @@ data class Piece(
     val shoes : String,
     val other : String? = null,
     val isModified : Boolean = false,
-    val isClient: Boolean
+    val isClient: Boolean = true
 ) {
-    fun from(lookPage: LookPage) : Piece {
-        return Piece(
-            id = lookPage.lookPageSeq,
-            imageUrl = lookPage.imagePathUrl,
-            content = lookPage.explanation,
-            tags = listOf(
-                lookPage.keyword1,
-                lookPage.keyword2,
-                lookPage.keyword3
-            ),
-            time = lookPage.registDate,
-            height = "0",
-            weight = "0",
-            top = lookPage.topInfo,
-            bottom = lookPage.bottomInfo,
-            shoes = lookPage.shoeInfo,
-            isClient = true
-        )
-    }
+    companion object {
+        fun from(lookPage: LookPage) : Piece {
+            return Piece(
+                id = lookPage.lookPageSeq,
+                imageUrl = lookPage.imagePathUrl,
+                content = lookPage.explanation,
+                tags = listOf(
+                    lookPage.keyword1,
+                    lookPage.keyword2,
+                    lookPage.keyword3
+                ),
+                time = lookPage.registDate,
+                height = "0",
+                weight = "0",
+                top = lookPage.topInfo,
+                bottom = lookPage.bottomInfo,
+                shoes = lookPage.shoeInfo,
+                isClient = true
+            )
+        }
 
-    fun from(work: Work) : Piece {
-        return Piece(
-            id = work.crdiWorkSeq,
-            imageUrl = work.imagePathUrl,
-            content = work.explanation,
-            tags = listOf(),
-            time = work.registDate,
-            height = work.height,
-            weight = work.weight,
-            top = work.topInfo,
-            bottom = work.bottomInfo,
-            shoes = work.shoeInfo,
-            isClient = false
-        )
+        fun from(work: Work) : Piece {
+            return Piece(
+                id = work.crdiWorkSeq,
+                imageUrl = work.imagePathUrl,
+                content = work.explanation,
+                tags = listOf(),
+                time = work.registDate,
+                height = work.height,
+                weight = work.weight,
+                top = work.topInfo,
+                bottom = work.bottomInfo,
+                shoes = work.shoeInfo,
+                isClient = false
+            )
+        }
     }
 }

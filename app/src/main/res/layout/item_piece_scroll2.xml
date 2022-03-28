@@ -5,8 +5,8 @@
 
         <import type="android.view.View"/>
         <variable
-            name="item"
-            type="com.sigmai.stylemento.data.model.response.lookBook.LookPage" />
+            name="piece"
+            type="com.sigmai.stylemento.domain.entity.Piece" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@{item.updateDate}"
+            android:text="@{piece.time}"
             tools:text="2022.03.14"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -45,7 +45,7 @@
             android:layout_marginTop="4dp"
             android:background="@color/trans_parent"
             android:src="@drawable/ic_launcher_foreground"
-            app:imageUrl="@{item.imagePathUrl}"
+            app:imageUrl="@{piece.imageUrl}"
             app:layout_constraintDimensionRatio="5:6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_piece_scroll_time_text" />
@@ -58,7 +58,7 @@
             android:layout_marginTop="6dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="@{item.explanation}"
+            android:text="@{piece.content}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_piece_scroll_img" />
 
@@ -73,88 +73,97 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_piece_scroll_detail" />
 
-        <TextView
-            android:id="@+id/item_piece_scroll_model_info_title"
-            style="@style/header4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/trans_parent"
-            android:text="모델 정보"
-            android:textColor="@color/primary"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_piece_scroll_tag_recycler" />
-
-        <LinearLayout
-            android:id="@+id/item_piece_scroll_model_height_layout"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/body_spec"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_piece_scroll_model_info_title">
+            app:layout_constraintTop_toBottomOf="@id/item_piece_scroll_tag_recycler"
+            android:visibility="@{piece.isClient ? View.GONE : View.VISIBLE}">
 
             <TextView
+                android:id="@+id/item_piece_scroll_model_info_title"
                 style="@style/header4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:background="@color/trans_parent"
-                android:text="키" />
+                android:text="모델 정보"
+                android:textColor="@color/primary"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/item_piece_scroll_model_height_text"
-                style="@style/header4"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/item_piece_scroll_model_height_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="0" />
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/item_piece_scroll_model_info_title">
 
-            <TextView
-                style="@style/header4"
-                android:layout_width="wrap_content"
+                <TextView
+                    style="@style/header4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/trans_parent"
+                    android:text="키" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/item_piece_scroll_model_height_text"
+                    style="@style/header4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{piece.height}" />
+
+                <TextView
+                    style="@style/header4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="cm" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/item_piece_scroll_model_weight_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="cm" />
-        </LinearLayout>
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/item_piece_scroll_model_height_layout">
 
-        <LinearLayout
-            android:id="@+id/item_piece_scroll_model_weight_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_piece_scroll_model_height_layout">
+                <TextView
+                    style="@style/header4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/trans_parent"
+                    android:text="몸무게" />
 
-            <TextView
-                style="@style/header4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/trans_parent"
-                android:text="몸무게" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+                <TextView
+                    android:id="@+id/item_piece_scroll_model_weight_text"
+                    style="@style/header4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{piece.weight}" />
 
-            <TextView
-                android:id="@+id/item_piece_scroll_model_weight_text"
-                style="@style/header4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0" />
+                <TextView
+                    style="@style/header4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="kg" />
+            </LinearLayout>
 
-            <TextView
-                style="@style/header4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="kg" />
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/item_piece_scroll_coordi_info_text"
@@ -166,7 +175,7 @@
             android:textColor="@color/primary"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_piece_scroll_model_weight_layout" />
+            app:layout_constraintTop_toBottomOf="@id/body_spec"/>
 
         <LinearLayout
             android:id="@+id/item_piece_scroll_top_layout"
@@ -195,7 +204,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/trans_parent"
-                android:text="@{item.topInfo}" />
+                android:text="@{piece.top}" />
         </LinearLayout>
 
         <LinearLayout
@@ -225,7 +234,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/trans_parent"
-                android:text="@{item.bottomInfo}" />
+                android:text="@{piece.bottom}" />
         </LinearLayout>
 
         <LinearLayout
@@ -255,7 +264,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/trans_parent"
-                android:text="@{item.shoeInfo}" />
+                android:text="@{piece.shoes}" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

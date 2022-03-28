@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.response.lookBook.LookPage
 import com.sigmai.stylemento.data.repository.lookBook.LookBookRepositoryImpl
+import com.sigmai.stylemento.domain.entity.Piece
 import com.sigmai.stylemento.global.store.AuthenticationInformation
 import com.sigmai.stylemento.ui.mypage.adapter.PieceScrollListener
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,7 +23,7 @@ class LookBookScrollViewModel @Inject constructor() : ViewModel(), PieceScrollLi
     @Inject
     lateinit var lookBookRepository: LookBookRepositoryImpl
 
-    val pieceList = MutableLiveData<List<LookPage>>()
+    val pieceList = MutableLiveData<List<Piece>>()
     val scrollPosition = MutableLiveData(0)
 
     fun loadData(position: Int) {
@@ -30,7 +31,9 @@ class LookBookScrollViewModel @Inject constructor() : ViewModel(), PieceScrollLi
             val list = withContext(Dispatchers.IO) {
                 lookBookRepository.getLookPageAll(AuthenticationInformation.email.value!!)
             }
-            pieceList.value = list
+            pieceList.value = list.map {
+                Piece.from(it)
+            }
             scrollPosition.value = position
         }
     }
