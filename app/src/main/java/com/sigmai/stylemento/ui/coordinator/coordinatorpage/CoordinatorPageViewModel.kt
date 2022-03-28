@@ -43,7 +43,7 @@ class CoordinatorPageViewModel
     val onEditEvent = SingleLiveEvent<Any>()
 
     fun loadData() {
-        loadCoordinatorInfo(-1)
+        loadCoordinatorInfo()
 
         viewModelScope.launch {
             val list = withContext(Dispatchers.IO) {
@@ -67,7 +67,7 @@ class CoordinatorPageViewModel
         startReserve.call()
     }
 
-    fun loadCoordinatorInfo(position: Int) {
+    fun loadCoordinatorInfo() {
         viewModelScope.launch {
             val coordi = withContext(Dispatchers.IO) {
                 myPageRepository.getMyPageCrdi(AuthenticationInformation.email.value!!)

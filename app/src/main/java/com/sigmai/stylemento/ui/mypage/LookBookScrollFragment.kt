@@ -18,20 +18,32 @@ class LookBookScrollFragment : BaseFragment<FragmentLookBookScrollBinding>() {
         super.initDataBinding()
         binding.viewModel = viewModel
 
-        binding.listview.adapter = PieceScrollAdapter(viewModel)
-
-        binding.toolbar.setOnBackListener {
-            findNavController().navigateUp()
-        }
-
-        viewModel.scrollPosition.observe(this) {
-            binding.listview.scrollToPosition(it)
-        }
+        setupAdapter()
+        setupToolbar()
+        setupObserver()
     }
 
     override fun initState() {
         val position = arguments?.getInt("position") ?: 0
-        Timber.d("position $position")
+        val isClient = arguments?.getBoolean("isClient") ?: true
+
+        viewModel.isClient = isClient
         viewModel.loadData(position)
+    }
+
+    private fun setupAdapter() {
+        binding.listview.adapter = PieceScrollAdapter(viewModel)
+    }
+
+    private fun setupToolbar() {
+        binding.toolbar.setOnBackListener {
+            findNavController().navigateUp()
+        }
+    }
+
+    private fun setupObserver() {
+        viewModel.scrollPosition.observe(this) {
+            binding.listview.scrollToPosition(it)
+        }
     }
 }

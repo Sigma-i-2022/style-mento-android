@@ -27,8 +27,6 @@ class CoordinatorPageFragment(private val isMyPage: Boolean = false) :
     }
 
     override fun initState() {
-        val position = arguments?.getInt("position") ?: 0
-        viewModel.loadCoordinatorInfo(position)
         viewModel.isMyPage.value = isMyPage
         viewModel.loadData()
     }
@@ -54,9 +52,9 @@ class CoordinatorPageFragment(private val isMyPage: Boolean = false) :
     }
 
     private fun setupRecyclerView() {
-        binding.coordinatorPageViewPager.apply {
-            isUserInputEnabled = false
+        with(binding.coordinatorPageViewPager) {
             adapter = CoordinatorPageViewPagerAdapter(this@CoordinatorPageFragment)
+            isUserInputEnabled = false
             binding.tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     val position = tab!!.position
