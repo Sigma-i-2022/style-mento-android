@@ -23,9 +23,9 @@ class ReservationTimeSetFragment : BaseFragment<FragmentReservationTimeSetBindin
     var date : String = ""
     override fun initState() {
         super.initState()
-        val email = arguments?.getString("email")!!
-        val name = arguments?.getString("position")!!
-        val url = arguments?.getString("position")!!
+        val email = arguments?.getString("Email")!!
+        val name = arguments?.getString("Name")!!
+        val url = arguments?.getString("Url")!!
         viewModel.setCoordinatorInfo(email, name, url)
     }
     override fun initDataBinding() {
