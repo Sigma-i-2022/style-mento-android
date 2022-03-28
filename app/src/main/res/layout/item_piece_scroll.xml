@@ -31,16 +31,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/item_piece_scroll_modified_text"
-            style="@style/body1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="(수정됨)"
-            android:visibility="@{item.isModified ? View.VISIBLE : View.GONE}"
-            app:layout_constraintStart_toEndOf="@id/item_piece_scroll_time_text"
-            app:layout_constraintTop_toTopOf="@id/item_piece_scroll_time_text" />
-
         <View
             android:id="@+id/more_menu"
             android:layout_width="16dp"
@@ -239,7 +229,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/trans_parent"
-                android:text="@{item.pants}" />
+                android:text="@{item.bottom}" />
         </LinearLayout>
 
         <LinearLayout
