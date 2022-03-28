@@ -36,7 +36,8 @@ class ReservationTimeSetFragment : BaseFragment<FragmentReservationTimeSetBindin
         }
         viewModel.startNext.observe(this) {
             val bundle = bundleOf("date" to date)
-            findNavController().navigate(R.id.action_reservation_time_page_to_reservation_service_page, bundle)
+            if(TimeUtil.isSelected())
+                findNavController().navigate(R.id.action_reservation_time_page_to_reservation_service_page, bundle)
         }
 
         setCalendar()

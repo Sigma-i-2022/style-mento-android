@@ -48,6 +48,6 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
         val dataFormat = SimpleDateFormat("yyyy-MM-dd")
         val time = dataFormat.format(currentTime)
 
-        viewModel.setClient("", "", "", "", date, timeList, serviceWay, serviceName)
+        viewModel.setClient(viewModel.userEmail.value!!, viewModel.userName.value!!, viewModel.coordinatorEmail.value!!, viewModel.coordinatorName.value!!, date, timeList, serviceWay, serviceName)
     }
 }

@@ -29,4 +29,11 @@ object TimeUtil {
         }
         return timeList
     }
+    fun isSelected() : Boolean{
+        for(item in timeList){
+            if(item.isChecked)
+                return true
+        }
+        return false
+    }
 }
