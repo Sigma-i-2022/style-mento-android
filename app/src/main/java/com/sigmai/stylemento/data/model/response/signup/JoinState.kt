@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.data.model.response
+package com.sigmai.stylemento.data.model.response.signup
 
 data class JoinState(
     val career: String,

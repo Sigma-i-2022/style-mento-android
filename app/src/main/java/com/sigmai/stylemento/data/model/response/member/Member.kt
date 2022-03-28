@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.data.model.response
+package com.sigmai.stylemento.data.model.response.member
 
 data class Member(
     val activateYn: String,

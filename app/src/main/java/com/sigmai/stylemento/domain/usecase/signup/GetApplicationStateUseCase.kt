@@ -1,9 +1,7 @@
 package com.sigmai.stylemento.domain.usecase.signup
 
-import com.sigmai.stylemento.data.model.response.JoinState
+import com.sigmai.stylemento.data.model.response.signup.JoinState
 import com.sigmai.stylemento.data.repository.signup.SignupRepositoryImpl
-import com.sigmai.stylemento.domain.entity.Coordinator
-import com.sigmai.stylemento.domain.repository.CoordinatorRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

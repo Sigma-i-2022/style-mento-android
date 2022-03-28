@@ -1,6 +1,6 @@
 package com.sigmai.stylemento.domain.repository
 
-import com.sigmai.stylemento.data.model.response.JoinState
+import com.sigmai.stylemento.data.model.response.signup.JoinState
 
 interface SignupRepository {
     fun email(email: String): Boolean

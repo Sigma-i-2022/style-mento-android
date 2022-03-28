@@ -1,34 +1,48 @@
 package com.sigmai.stylemento.ui.mypage.coordinator.viewModel
 
-import androidx.lifecycle.LiveData
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sigmai.stylemento.data.model.Coordinator
-import com.sigmai.stylemento.di.AppConfigs
-import com.sigmai.stylemento.domain.usecase.coordinator.GetCoordinatorUseCase
-import com.sigmai.stylemento.global.util.SingleLiveEvent
+import androidx.lifecycle.viewModelScope
+import androidx.navigation.findNavController
+import com.sigmai.stylemento.data.model.response.myPage.MyPageCrdi
+import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
+import com.sigmai.stylemento.data.repository.user.UserRepositoryImpl
+import com.sigmai.stylemento.global.store.AuthenticationInformation
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class MyPageCoordinatorRevisionViewModel : ViewModel() {
-    private val _coordinator = MutableLiveData<Coordinator>()
-    private val getCoordinatorUseCase: GetCoordinatorUseCase = GetCoordinatorUseCase(AppConfigs.coordinatorRepository)
+@HiltViewModel
+class MyPageCoordinatorRevisionViewModel @Inject constructor() : ViewModel() {
+    @Inject
+    lateinit var myPageRepository: MyPageRepositoryImpl
 
-    val coordinator: LiveData<Coordinator> get() = _coordinator
+    val userInfo = MutableLiveData<MyPageCrdi>()
+    val introduction = MutableLiveData("")
 
-    val startBack = SingleLiveEvent<Any>()
-    val startSave = SingleLiveEvent<Any>()
-    val startTagAddition = SingleLiveEvent<Any>()
-
-    fun onBackClick(){
-        startBack.call()
+    fun loadData() {
+        viewModelScope.launch {
+            val user = withContext(Dispatchers.IO) {
+                myPageRepository.getMyPageCrdi(AuthenticationInformation.email.value!!)
+            }
+            userInfo.value = user
+            introduction.value = user.intro
+        }
     }
-    fun onSaveClick(){
-        startSave.call()
-    }
-    fun onTagAdditionClick(){
-        startTagAddition.call()
+
+    fun onSave(view: View) {
+        updateProfile()
+        view.findNavController().navigateUp()
     }
 
-    fun getCoordinatorInfo() {
-        _coordinator.postValue(getCoordinatorUseCase())
+    fun updateProfile() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                myPageRepository.putMyPageCrdi(AuthenticationInformation.email.value!!, userInfo.value!!.userId, introduction.value!!)
+            }
+        }
     }
 }

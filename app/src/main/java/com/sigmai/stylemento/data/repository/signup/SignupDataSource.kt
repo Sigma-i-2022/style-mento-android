@@ -2,11 +2,7 @@ package com.sigmai.stylemento.data.repository.signup
 
 import com.sigmai.stylemento.data.api.SignupService
 import com.sigmai.stylemento.data.factory.RetrofitServiceFactory
-import com.sigmai.stylemento.data.model.ResponseWrapper
-import com.sigmai.stylemento.data.model.response.JoinState
-import retrofit2.Call
-import retrofit2.Response
-import timber.log.Timber
+import com.sigmai.stylemento.data.model.response.signup.JoinState
 import javax.inject.Inject
 
 class SignupDataSource @Inject constructor() {

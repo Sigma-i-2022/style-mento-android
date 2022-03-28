@@ -1,6 +1,6 @@
 package com.sigmai.stylemento.data.repository.signup
 
-import com.sigmai.stylemento.data.model.response.JoinState
+import com.sigmai.stylemento.data.model.response.signup.JoinState
 import com.sigmai.stylemento.domain.repository.SignupRepository
 import javax.inject.Inject
 

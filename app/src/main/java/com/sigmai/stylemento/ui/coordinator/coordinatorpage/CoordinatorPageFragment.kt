@@ -34,11 +34,13 @@ class CoordinatorPageFragment(private val isMyPage: Boolean = false) :
     }
 
     private fun setupButton() {
-        binding.toolbar.setOnBackListener {
-            findNavController().navigateUp()
-        }
-        binding.toolbar.setOnEditListener {
-            findNavController().navigate(R.id.action_main_to_coordinator_revision)
+        with(binding.toolbar) {
+            setOnBackListener {
+                findNavController().navigateUp()
+            }
+            setOnEditListener {
+                findNavController().navigate(R.id.action_main_to_coordinator_revision)
+            }
         }
     }
 
