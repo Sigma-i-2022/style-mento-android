@@ -1,6 +1,7 @@
 package com.sigmai.stylemento.ui.coordinator.coordinatorpage
 
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayout
@@ -44,9 +45,10 @@ class CoordinatorPageFragment(private val isMyPage: Boolean = false) :
 
     private fun setupObserver() {
         viewModel.startReserve.observe(this) {
+            val bundle = bundleOf("Name" to viewModel.coordinator.value!!.userId, "Email" to viewModel.coordinator.value!!.email, "Url" to viewModel.coordinator.value!!.profileImageUrl)
             findNavController().navigate(
                 R.id.action_coordinator_page_to_reservation_time_page,
-                arguments
+                bundle
             )
         }
     }
