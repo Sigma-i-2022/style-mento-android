@@ -7,19 +7,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.sigmai.stylemento.R
-import com.sigmai.stylemento.data.model.response.lookBook.LookPage
-import com.sigmai.stylemento.data.model.response.work.Work
 import com.sigmai.stylemento.data.repository.lookBook.LookBookRepositoryImpl
 import com.sigmai.stylemento.data.repository.work.WorkRepositoryImpl
 import com.sigmai.stylemento.domain.entity.Piece
-import com.sigmai.stylemento.domain.usecase.GetPiecesUseCase
-import com.sigmai.stylemento.global.store.AuthenticationInformation
+import com.sigmai.stylemento.domain.usecase.mypage.DeletePieceUseCase
+import com.sigmai.stylemento.domain.usecase.mypage.GetPiecesUseCase
 import com.sigmai.stylemento.ui.mypage.adapter.PieceScrollListener
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,9 +24,7 @@ class LookBookScrollViewModel @Inject constructor() : ViewModel(), PieceScrollLi
     @Inject
     lateinit var getPieceUseCase: GetPiecesUseCase
     @Inject
-    lateinit var lookBookRepository: LookBookRepositoryImpl
-    @Inject
-    lateinit var workRepository: WorkRepositoryImpl
+    lateinit var deletePieceUseCase: DeletePieceUseCase
 
     val pieceList = MutableLiveData<List<Piece>>()
     val scrollPosition = MutableLiveData(0)
@@ -51,9 +46,7 @@ class LookBookScrollViewModel @Inject constructor() : ViewModel(), PieceScrollLi
 
     override fun onDelete(view: View, id: Long) {
         viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                lookBookRepository.deleteLookPage(id)
-            }
+            deletePieceUseCase(id)
             loadData(0)
         }
     }

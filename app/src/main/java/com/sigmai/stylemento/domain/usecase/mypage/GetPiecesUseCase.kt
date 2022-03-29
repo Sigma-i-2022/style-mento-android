@@ -1,14 +1,11 @@
-package com.sigmai.stylemento.domain.usecase
+package com.sigmai.stylemento.domain.usecase.mypage
 
-import com.sigmai.stylemento.data.model.response.lookBook.LookPage
-import com.sigmai.stylemento.data.model.response.work.Work
 import com.sigmai.stylemento.data.repository.lookBook.LookBookRepositoryImpl
 import com.sigmai.stylemento.data.repository.work.WorkRepositoryImpl
 import com.sigmai.stylemento.domain.entity.Piece
 import com.sigmai.stylemento.global.store.AuthenticationInformation
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 import javax.inject.Inject
 
 class GetPiecesUseCase @Inject constructor() {
