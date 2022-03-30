@@ -27,14 +27,14 @@ interface PaymentService {
 
     @GET("v1/api/payment/fail")
     fun getPaymentFail(
-        @Path("code") code : String,
+        @Query("code") code : String,
         @Query("message") message : String,
         @Query("orderId") orderId : String
     ) : Call<ResponseWrapper<PaymentFail>>
 
     @GET("v1/api/payment/success")
     fun getPaymentSuccess(
-        @Path("paymentKey") paymentKey : String,
+        @Query("paymentKey") paymentKey : String,
         @Query("orderId") orderId : String,
         @Query("amount") amount : Long
     ) : Call<ResponseWrapper<PaymentSuccess>>
