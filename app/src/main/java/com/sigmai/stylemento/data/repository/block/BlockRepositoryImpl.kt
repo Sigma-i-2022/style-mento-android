@@ -5,7 +5,7 @@ import javax.inject.Inject
 
 class BlockRepositoryImpl @Inject constructor(private val dataSource: BlockDataSource) : BlockRepository {
 
-    fun postBlock(email : String, crdiEmail : String) : Boolean{
+    override fun postBlock(email : String, crdiEmail : String) : Boolean{
         return dataSource.postBlock(email, crdiEmail)
     }
 }
