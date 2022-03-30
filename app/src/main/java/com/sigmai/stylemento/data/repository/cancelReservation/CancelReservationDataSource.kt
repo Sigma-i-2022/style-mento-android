@@ -8,7 +8,10 @@ import javax.inject.Inject
 class CancelReservationDataSource @Inject constructor() {
     private val service = RetrofitServiceFactory.createService<CancelReservationService>()
 
-    fun getCancelAll(searchType : String) : List<CancelItem>{
-        return service.getCancelAll(searchType).execute().body()!!.data
+    fun postCancelPayment(memberSeq : Long, reservationSeq : Long, paymentKey : String, cancelReason : String, bank : String, accountNumber : String, holderName : String) : Boolean {
+        return service.postCancelPayment(memberSeq, reservationSeq, paymentKey, cancelReason, bank, accountNumber, holderName).execute().body()?.success ?: false
+    }
+    fun getCancelList(memberSeq: Long, page: Int, size: Int): List<CancelItem> {
+        return service.getCancelList(memberSeq, page, size).execute().body()!!.data
     }
 }
