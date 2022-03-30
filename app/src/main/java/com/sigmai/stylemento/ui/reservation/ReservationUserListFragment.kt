@@ -35,7 +35,7 @@ class ReservationUserListFragment : BaseFragment<FragmentReservationUserListBind
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val coordinator = Coordinator(0, "", "codi1", "codi1_email", "", listOf(), 4, listOf(), 2, listOf())
+        val coordinator = Coordinator(0, "", "codi1", "codi1_email", "", listOf(), listOf(), 4, listOf(), listOf())
         val user = User(1, "", "user1", "user_email", "", listOf(), listOf())
         val dataSet = listOf<Receipt>(
             Receipt(coordinator, user, "코디추천", "채팅", 3000, "2022.3.17", listOf("9:00", "9:30", "10:00", "10:30"),

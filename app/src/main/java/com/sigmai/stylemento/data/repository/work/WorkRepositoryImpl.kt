@@ -1,5 +1,6 @@
 package com.sigmai.stylemento.data.repository.work
 
+import com.sigmai.stylemento.data.model.response.work.Coordinator
 import com.sigmai.stylemento.data.model.response.work.Work
 import com.sigmai.stylemento.domain.repository.WorkRepository
 import okhttp3.MultipartBody
@@ -25,5 +26,9 @@ class WorkRepositoryImpl @Inject constructor(private val dataSource: WorkDataSou
 
     override fun getCrdiWorkAll(crdiEmail: String): List<Work> {
         return dataSource.getCrdiWorkAll(crdiEmail)
+    }
+
+    override fun getCrdiList(email: String): List<Coordinator> {
+        return dataSource.getCrdiList(email)
     }
 }

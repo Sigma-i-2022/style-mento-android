@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="item"
+            type="String" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="75dp"
@@ -11,7 +16,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/background_radius_12"
-            android:backgroundTint="@color/gray_f"/>
+            android:backgroundTint="@color/gray_f"
+            app:imageUrl="@{item}"
+            app:imageRadius="@{12}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -19,6 +19,7 @@ abstract class BaseFragment<VB: ViewDataBinding> : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, layoutResourceId, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
+        initDataBinding()
 
         return binding.root
     }
@@ -35,6 +36,5 @@ abstract class BaseFragment<VB: ViewDataBinding> : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initState()
-        initDataBinding()
     }
 }

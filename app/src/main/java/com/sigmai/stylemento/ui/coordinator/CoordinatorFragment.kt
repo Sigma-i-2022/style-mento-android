@@ -5,7 +5,9 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentCoordinatorBinding
 import com.sigmai.stylemento.ui.coordinator.adapter.CoordinatorAdapter
 import com.sigmai.stylemento.global.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CoordinatorFragment : BaseFragment<FragmentCoordinatorBinding>() {
     override val layoutResourceId = R.layout.fragment_coordinator
     private val viewModel: CoordinatorViewModel by viewModels()
@@ -15,6 +17,10 @@ class CoordinatorFragment : BaseFragment<FragmentCoordinatorBinding>() {
         binding.viewModel = viewModel
 
         setupAdapter()
+    }
+
+    override fun initState() {
+        viewModel.loadDate()
     }
 
     fun setupAdapter() {

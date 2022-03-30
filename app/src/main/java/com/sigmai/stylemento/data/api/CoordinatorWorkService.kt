@@ -1,6 +1,7 @@
 package com.sigmai.stylemento.data.api
 
 import com.sigmai.stylemento.data.model.ResponseWrapper
+import com.sigmai.stylemento.data.model.response.work.Coordinator
 import com.sigmai.stylemento.data.model.response.work.Work
 import okhttp3.MultipartBody
 import retrofit2.Call
@@ -28,4 +29,7 @@ interface CoordinatorWorkService {
 
     @GET("v1/api/crdi/work/all")
     fun getCrdiWorkAll(@Query("crdiEmail") crdiEmail : String): Call<ResponseWrapper<List<Work>>>
+
+    @GET("v1/api/crdi/work/list")
+    fun getCrdiList(@Query("email") email: String): Call<ResponseWrapper<List<Coordinator>>>
 }

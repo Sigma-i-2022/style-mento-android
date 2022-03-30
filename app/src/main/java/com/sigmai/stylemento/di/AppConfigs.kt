@@ -11,6 +11,5 @@ object AppConfigs {
     val userRepository: UserRepository = UserRepositoryImpl()
     val coordinatorRepository: CoordinatorRepository = DummyCoordinatorRepository()
 
-    val getCoordinatorListUseCase: GetCoordinatorListUseCase = GetCoordinatorListUseCase(coordinatorRepository)
     val getRecommendedCoordinatorListUseCase = GetRecommendedCoordinatorListUseCase()
 }

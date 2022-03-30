@@ -22,6 +22,6 @@ fun bindCoordinators(recyclerView: RecyclerView, list: List<Coordinator>) {
 }
 
 @BindingAdapter("app:horizontalPiece")
-fun bindHorizontalPieces(recyclerView: RecyclerView, list: List<Piece>) {
-    (recyclerView.adapter as HorizontalPieceAdapter).setList(list)
+fun bindHorizontalPieces(recyclerView: RecyclerView, list: List<String>) {
+    (recyclerView.adapter as HorizontalPieceAdapter).submitList(list)
 }

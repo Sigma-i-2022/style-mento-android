@@ -2,6 +2,7 @@ package com.sigmai.stylemento.data.repository.work
 
 import com.sigmai.stylemento.data.api.CoordinatorWorkService
 import com.sigmai.stylemento.data.factory.RetrofitServiceFactory
+import com.sigmai.stylemento.data.model.response.work.Coordinator
 import com.sigmai.stylemento.data.model.response.work.Work
 import okhttp3.MultipartBody
 import javax.inject.Inject
@@ -19,5 +20,9 @@ class WorkDataSource @Inject constructor(){
 
     fun getCrdiWorkAll(crdiEmail : String) : List<Work>{
         return service.getCrdiWorkAll(crdiEmail).execute().body()!!.data
+    }
+
+    fun getCrdiList(email: String) : List<Coordinator> {
+        return service.getCrdiList(email).execute().body()!!.data
     }
 }
