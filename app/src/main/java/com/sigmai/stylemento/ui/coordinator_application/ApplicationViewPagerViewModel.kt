@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.repository.member.MemberRepositoryImpl
+import com.sigmai.stylemento.data.repository.signup.SignupRepositoryImpl
 import com.sigmai.stylemento.global.store.AuthenticationInformation
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ApplicationViewPagerViewModel @Inject constructor(): ViewModel() {
     @Inject
-    lateinit var memberRepository : MemberRepositoryImpl
+    lateinit var singupRepository : SignupRepositoryImpl
 
     val snsList = MutableLiveData(mutableListOf(""))
     val introduction = MutableLiveData("")
@@ -54,7 +55,7 @@ class ApplicationViewPagerViewModel @Inject constructor(): ViewModel() {
     fun requestUpgrade(){
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                memberRepository.upgradeCoordinator(AuthenticationInformation.email.value!!)
+                singupRepository.join(AuthenticationInformation.email.value!!, "", introduction.value!!, "", "", "", "", "")
             }
         }
     }
