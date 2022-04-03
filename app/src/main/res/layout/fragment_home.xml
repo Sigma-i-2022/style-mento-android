@@ -6,6 +6,9 @@
         <variable
             name="viewModel"
             type="com.sigmai.stylemento.ui.home.HomeViewModel" />
+        <variable
+            name="mainViewModel"
+            type="com.sigmai.stylemento.ui.main.MainViewModel" />
     </data>
 
     <ScrollView
@@ -60,7 +63,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="@dimen/horizontal_margin"
                 android:background="@drawable/background_radius_12"
-                android:backgroundTint="@color/primary">
+                android:backgroundTint="@color/primary"
+                android:onClick="@{()->mainViewModel.onFindCoordinator()}">
 
                 <TextView
                     android:id="@+id/tv_move_coordinator_page"
@@ -103,7 +107,8 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="@dimen/horizontal_margin"
                 android:background="@drawable/background_radius_12"
-                android:backgroundTint="@color/primary">
+                android:backgroundTint="@color/primary"
+                android:onClick="@{()->mainViewModel.onMyPage()}">
 
                 <TextView
                     android:id="@+id/tv_move_my_page"
