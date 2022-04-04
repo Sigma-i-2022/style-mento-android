@@ -52,10 +52,16 @@ class ApplicationViewPagerViewModel @Inject constructor(): ViewModel() {
         finishEvent.call()
     }
 
+    private val snsArray = Array<String>(5){""}
     fun requestUpgrade(){
+        val i = 0
+        for(sns in snsList.value!!){
+            snsArray[i] = sns
+        }
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                singupRepository.join(AuthenticationInformation.email.value!!, "", introduction.value!!, "", "", "", "", "")
+                singupRepository.join(AuthenticationInformation.email.value!!, "", introduction.value!!
+                    , snsArray[0], snsArray[1], snsArray[2], snsArray[4], snsArray[5])
             }
         }
     }
