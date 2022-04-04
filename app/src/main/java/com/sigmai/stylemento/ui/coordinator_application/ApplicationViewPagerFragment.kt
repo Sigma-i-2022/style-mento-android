@@ -7,7 +7,9 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentApplicationViewPagerBinding
 import com.sigmai.stylemento.di.AppConfigs
 import com.sigmai.stylemento.global.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ApplicationViewPagerFragment : BaseFragment<FragmentApplicationViewPagerBinding>() {
     override val layoutResourceId = R.layout.fragment_application_view_pager
     private val viewModel: ApplicationViewPagerViewModel by activityViewModels()
