@@ -1,12 +1,10 @@
-package com.sigmai.stylemento.ui.coordinator
+package com.sigmai.stylemento.ui.mypage.coordinatorpage
 
 import android.annotation.SuppressLint
 import androidx.fragment.app.activityViewModels
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentCoordinatorPageWorkBinding
 import com.sigmai.stylemento.global.base.BaseFragment
-import com.sigmai.stylemento.ui.coordinator.adapter.CoordinatorPageWorkAdapter
-import com.sigmai.stylemento.ui.coordinator.coordinatorpage.CoordinatorPageViewModel
 import com.sigmai.stylemento.ui.mypage.user.adapter.PieceGridAdapter
 
 class CoordinatorPageWorkFragment : BaseFragment<FragmentCoordinatorPageWorkBinding>() {

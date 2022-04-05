@@ -1,8 +1,7 @@
-package com.sigmai.stylemento.ui.coordinator.coordinatorpage
+package com.sigmai.stylemento.ui.mypage.coordinatorpage
 
 import android.view.View
 import androidx.core.os.bundleOf
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,15 +9,11 @@ import androidx.navigation.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.response.lookBook.LookPage
 import com.sigmai.stylemento.data.model.response.myPage.MyPageCrdi
-import com.sigmai.stylemento.data.repository.coordinator.DummyCoordinatorRepository
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
 import com.sigmai.stylemento.data.repository.work.WorkRepositoryImpl
-import com.sigmai.stylemento.di.AppConfigs
-import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.global.store.AuthenticationInformation
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

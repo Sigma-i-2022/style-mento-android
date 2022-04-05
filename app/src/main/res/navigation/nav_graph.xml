@@ -99,7 +99,7 @@
     </fragment>
     <fragment
         android:id="@+id/coordinator_page"
-        android:name="com.sigmai.stylemento.ui.coordinator.coordinatorpage.CoordinatorPageFragment"
+        android:name="com.sigmai.stylemento.ui.mypage.coordinatorpage.CoordinatorPageFragment"
         android:label="coordinator page"
         tools:layout="@layout/fragment_coordinator_page" >
         <action
@@ -111,7 +111,7 @@
     </fragment>
     <fragment
         android:id="@+id/coordinator_page_piece_scroll"
-        android:name="com.sigmai.stylemento.ui.coordinator.adapter.CoordinatorPagePieceScrollFragment"
+        android:name="com.sigmai.stylemento.ui.mypage.coordinatorpage.CoordinatorPagePieceScrollFragment"
         android:label="coordinator pieces page"
         tools:layout="@layout/fragment_coordinator_page_work_scroll" >
         <action

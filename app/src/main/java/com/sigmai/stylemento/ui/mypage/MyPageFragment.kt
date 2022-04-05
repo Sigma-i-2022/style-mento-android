@@ -5,7 +5,7 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.store.AuthenticationInformation
-import com.sigmai.stylemento.ui.coordinator.coordinatorpage.CoordinatorPageFragment
+import com.sigmai.stylemento.ui.mypage.coordinatorpage.CoordinatorPageFragment
 import com.sigmai.stylemento.ui.mypage.user.MyPageUserFragment
 import dagger.hilt.android.AndroidEntryPoint
 

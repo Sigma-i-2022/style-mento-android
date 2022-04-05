@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.ui.coordinator.coordinatorpage
+package com.sigmai.stylemento.ui.mypage.coordinatorpage
 
 import android.view.View
 import androidx.core.os.bundleOf
@@ -8,7 +8,7 @@ import com.google.android.material.tabs.TabLayout
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentCoordinatorPageBinding
 import com.sigmai.stylemento.global.base.BaseFragment
-import com.sigmai.stylemento.ui.coordinator.adapter.CoordinatorPageViewPagerAdapter
+import com.sigmai.stylemento.ui.mypage.adapter.CoordinatorPageViewPagerAdapter
 import com.sigmai.stylemento.ui.home.adapter.TagAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
