@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.sigmai.stylemento.ui.mypage.coordinator.viewModel.AddPieceViewModel" />
+            type="com.sigmai.stylemento.ui.mypage.add.AddPieceViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

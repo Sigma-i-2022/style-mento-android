@@ -247,7 +247,7 @@
     </fragment>
     <fragment
         android:id="@+id/add_piece"
-        android:name="com.sigmai.stylemento.ui.mypage.coordinator.AddPieceFragment"
+        android:name="com.sigmai.stylemento.ui.mypage.add.AddPieceFragment"
         android:label="add piece"
         tools:layout="@layout/fragment_add_piece">
     </fragment>

@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.ui.mypage.coordinator
+package com.sigmai.stylemento.ui.mypage.add
 
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -7,9 +7,7 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentAddPieceBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.ui.home.adapter.TagAdapter
-import com.sigmai.stylemento.ui.mypage.coordinator.viewModel.AddPieceViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class AddPieceFragment : BaseFragment<FragmentAddPieceBinding>() {

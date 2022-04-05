@@ -2,7 +2,7 @@ package com.sigmai.stylemento.ui.mypage.coordinator.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.sigmai.stylemento.ui.mypage.coordinator.MyPageReviewFragment
+import com.sigmai.stylemento.ui.mypage.coordinatorpage.MyPageReviewFragment
 import com.sigmai.stylemento.ui.mypage.coordinator.MyPageWorkFragment
 import java.lang.Exception
 

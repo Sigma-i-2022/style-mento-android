@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.ui.mypage.coordinator
+package com.sigmai.stylemento.ui.mypage.coordinatorpage
 
 import android.annotation.SuppressLint
 import androidx.fragment.app.activityViewModels
