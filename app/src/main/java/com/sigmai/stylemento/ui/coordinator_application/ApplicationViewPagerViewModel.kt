@@ -61,7 +61,7 @@ class ApplicationViewPagerViewModel @Inject constructor(): ViewModel() {
         viewModelScope.launch {
             withContext(Dispatchers.IO){
                 singupRepository.join(AuthenticationInformation.email.value!!, "", introduction.value!!
-                    , snsArray[0], snsArray[1], snsArray[2], snsArray[4], snsArray[5])
+                    , snsArray[0], snsArray[1], snsArray[2], snsArray[3], snsArray[4])
             }
         }
     }
