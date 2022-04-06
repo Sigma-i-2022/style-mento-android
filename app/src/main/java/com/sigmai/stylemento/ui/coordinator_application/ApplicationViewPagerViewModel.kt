@@ -21,7 +21,7 @@ class ApplicationViewPagerViewModel @Inject constructor(): ViewModel() {
     @Inject
     lateinit var singupRepository : SignupRepositoryImpl
 
-    val snsList = MutableLiveData(mutableListOf(""))
+    val snsList = MutableLiveData(mutableListOf(MutableLiveData("")))
     val introduction = MutableLiveData("")
     val textLength = MutableLiveData(0)
 
@@ -44,7 +44,7 @@ class ApplicationViewPagerViewModel @Inject constructor(): ViewModel() {
     }
 
     fun onAdd() {
-        snsList.value!!.add("")
+        snsList.value!!.add(MutableLiveData(""))
         snsList.value = snsList.value!!.toMutableList()
     }
 
@@ -56,7 +56,7 @@ class ApplicationViewPagerViewModel @Inject constructor(): ViewModel() {
     fun requestUpgrade(){
         val i = 0
         for(sns in snsList.value!!){
-            snsArray[i] = sns
+            snsArray[i] = sns.value!!
         }
         viewModelScope.launch {
             withContext(Dispatchers.IO){

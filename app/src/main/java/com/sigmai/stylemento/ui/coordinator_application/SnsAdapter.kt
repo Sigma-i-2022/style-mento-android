@@ -2,6 +2,7 @@ package com.sigmai.stylemento.ui.coordinator_application
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.ItemSnsInputBinding
@@ -12,7 +13,7 @@ class SnsAdapter : RecyclerView.Adapter<SnsAdapter.ViewHolder>() {
         const val UNFOCUSED_ITEM = 1
     }
 
-    var list: List<String>? = null
+    var list: List<MutableLiveData<String>>? = null
         set(value) {
             field = value
             notifyItemRangeChanged(0, value!!.size)
@@ -28,7 +29,7 @@ class SnsAdapter : RecyclerView.Adapter<SnsAdapter.ViewHolder>() {
 
     override fun getItemCount() = list?.size ?: 0
 
-    fun submitList(list: List<String>) {
+    fun submitList(list: List<MutableLiveData<String>>) {
         this.list = list
     }
 
@@ -42,7 +43,7 @@ class SnsAdapter : RecyclerView.Adapter<SnsAdapter.ViewHolder>() {
             }
         }
 
-        fun bind(address: String) {
+        fun bind(address: MutableLiveData<String>) {
             binding.item = address
             binding.address.setOnFocusChangeListener { view, hasFocus ->
                 if(hasFocus) view.setBackgroundResource(R.drawable.sns_background_type_2)

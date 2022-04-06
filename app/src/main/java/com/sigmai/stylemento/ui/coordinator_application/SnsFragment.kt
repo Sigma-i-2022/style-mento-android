@@ -5,7 +5,9 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentSnsBinding
 import com.sigmai.stylemento.di.AppConfigs
 import com.sigmai.stylemento.global.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SnsFragment : BaseFragment<FragmentSnsBinding>() {
     override val layoutResourceId = R.layout.fragment_sns
     private val viewModel: ApplicationViewPagerViewModel by activityViewModels()
