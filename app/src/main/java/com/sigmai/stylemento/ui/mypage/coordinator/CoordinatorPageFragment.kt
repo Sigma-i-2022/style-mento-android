@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.ui.mypage.coordinatorpage
+package com.sigmai.stylemento.ui.mypage.coordinator
 
 import android.view.View
 import androidx.core.os.bundleOf

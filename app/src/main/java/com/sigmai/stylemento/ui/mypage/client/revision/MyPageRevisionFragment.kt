@@ -1,15 +1,14 @@
-package com.sigmai.stylemento.ui.mypage.user
+package com.sigmai.stylemento.ui.mypage.client.revision
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
-import com.bumptech.glide.Glide
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageRevisionBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.util.asRequestBody
-import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageRevisionViewModel
+import com.sigmai.stylemento.ui.mypage.client.revision.MyPageRevisionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody

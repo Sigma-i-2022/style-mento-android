@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageRevisionViewModel" />
+            type="com.sigmai.stylemento.ui.mypage.client.revision.MyPageRevisionViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

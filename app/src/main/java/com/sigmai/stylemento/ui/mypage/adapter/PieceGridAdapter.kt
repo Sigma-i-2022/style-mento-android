@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.ui.mypage.user.adapter
+package com.sigmai.stylemento.ui.mypage.client.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

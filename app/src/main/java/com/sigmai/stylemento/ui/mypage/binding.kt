@@ -8,7 +8,7 @@ import com.sigmai.stylemento.domain.entity.Piece
 import com.sigmai.stylemento.ui.coordinator.adapter.CoordinatorAdapter
 import com.sigmai.stylemento.ui.coordinator.adapter.HorizontalPieceAdapter
 import com.sigmai.stylemento.ui.mypage.adapter.PieceScrollAdapter
-import com.sigmai.stylemento.ui.mypage.user.adapter.PieceGridAdapter
+import com.sigmai.stylemento.ui.mypage.client.adapter.PieceGridAdapter
 
 @BindingAdapter("app:lookBookList")
 fun bindLookBookList(recyclerView: RecyclerView, list: List<Piece>?) {

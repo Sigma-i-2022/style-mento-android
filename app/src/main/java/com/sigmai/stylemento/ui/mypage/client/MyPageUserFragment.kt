@@ -1,12 +1,11 @@
-package com.sigmai.stylemento.ui.mypage.user
+package com.sigmai.stylemento.ui.mypage.client
 
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageUserBinding
 import com.sigmai.stylemento.global.base.BaseFragment
-import com.sigmai.stylemento.ui.mypage.user.adapter.PieceGridAdapter
-import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageUserViewModel
+import com.sigmai.stylemento.ui.mypage.client.adapter.PieceGridAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

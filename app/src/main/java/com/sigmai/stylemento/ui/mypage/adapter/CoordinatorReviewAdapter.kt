@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.databinding.ItemReviewBinding
 import com.sigmai.stylemento.domain.entity.Review
-import com.sigmai.stylemento.ui.mypage.coordinatorpage.MyPageReviewFragment
+import com.sigmai.stylemento.ui.mypage.coordinator.MyPageReviewFragment
 
 class CoordinatorReviewAdapter(private val f: MyPageReviewFragment) :
     RecyclerView.Adapter<CoordinatorReviewAdapter.ReviewViewHolder>() {

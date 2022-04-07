@@ -2,16 +2,12 @@ package com.sigmai.stylemento.ui.mypage.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.sigmai.stylemento.R
-import com.sigmai.stylemento.data.model.response.lookBook.LookPage
 import com.sigmai.stylemento.databinding.ItemPieceScroll2Binding
 import com.sigmai.stylemento.domain.entity.Piece
 import com.sigmai.stylemento.global.component.SmBottomSheet
-import com.sigmai.stylemento.ui.mypage.user.adapter.LookPageDiffUtil
 
 class PieceScrollAdapter(val listener: PieceScrollListener) : ListAdapter<Piece, PieceScrollAdapter.ViewHolder>(PieceDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =

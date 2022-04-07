@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.ui.mypage.coordinator
+package com.sigmai.stylemento.ui.mypage.coordinator.revision
 
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController

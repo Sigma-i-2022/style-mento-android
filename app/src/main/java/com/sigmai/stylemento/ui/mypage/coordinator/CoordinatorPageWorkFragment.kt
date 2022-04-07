@@ -1,11 +1,11 @@
-package com.sigmai.stylemento.ui.mypage.coordinatorpage
+package com.sigmai.stylemento.ui.mypage.coordinator
 
 import android.annotation.SuppressLint
 import androidx.fragment.app.activityViewModels
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentCoordinatorPageWorkBinding
 import com.sigmai.stylemento.global.base.BaseFragment
-import com.sigmai.stylemento.ui.mypage.user.adapter.PieceGridAdapter
+import com.sigmai.stylemento.ui.mypage.client.adapter.PieceGridAdapter
 
 class CoordinatorPageWorkFragment : BaseFragment<FragmentCoordinatorPageWorkBinding>() {
     override val layoutResourceId = R.layout.fragment_coordinator_page_work

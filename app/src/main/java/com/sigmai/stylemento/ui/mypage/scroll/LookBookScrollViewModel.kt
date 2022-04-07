@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.ui.mypage
+package com.sigmai.stylemento.ui.mypage.scroll
 
 import android.os.Bundle
 import android.view.View

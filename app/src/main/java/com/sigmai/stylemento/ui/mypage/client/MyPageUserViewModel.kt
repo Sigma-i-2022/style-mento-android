@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.ui.mypage.user.viewModel
+package com.sigmai.stylemento.ui.mypage.client
 
 import android.view.View
 import androidx.lifecycle.MutableLiveData

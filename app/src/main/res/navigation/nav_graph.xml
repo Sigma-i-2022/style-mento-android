@@ -65,19 +65,19 @@
         tools:layout="@layout/fragment_chat_room" />
     <fragment
         android:id="@+id/user_revision"
-        android:name="com.sigmai.stylemento.ui.mypage.user.MyPageRevisionFragment"
+        android:name="com.sigmai.stylemento.ui.mypage.client.revision.MyPageRevisionFragment"
         android:label="user revision"
         tools:layout="@layout/fragment_my_page_revision"/>
 
     <fragment
         android:id="@+id/coordinator_revision"
-        android:name="com.sigmai.stylemento.ui.mypage.coordinator.MyPageCoordinatorRevisionFragment"
+        android:name="com.sigmai.stylemento.ui.mypage.coordinator.revision.MyPageCoordinatorRevisionFragment"
         android:label="coordinator revision"
         tools:layout="@layout/fragment_my_page_coordinator_revision">
     </fragment>
     <fragment
         android:id="@+id/coordinator_page"
-        android:name="com.sigmai.stylemento.ui.mypage.coordinatorpage.CoordinatorPageFragment"
+        android:name="com.sigmai.stylemento.ui.mypage.coordinator.CoordinatorPageFragment"
         android:label="coordinator page"
         tools:layout="@layout/fragment_coordinator_page" >
         <action
@@ -226,7 +226,7 @@
 
     <fragment
         android:id="@+id/piece_scroll"
-        android:name="com.sigmai.stylemento.ui.mypage.LookBookScrollFragment"
+        android:name="com.sigmai.stylemento.ui.mypage.scroll.LookBookScrollFragment"
         android:label="look book scroll"
         tools:layout="@layout/fragment_look_book_scroll">
 

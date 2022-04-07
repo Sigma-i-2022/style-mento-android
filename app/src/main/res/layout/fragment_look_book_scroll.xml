@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.sigmai.stylemento.ui.mypage.LookBookScrollViewModel" />
+            type="com.sigmai.stylemento.ui.mypage.scroll.LookBookScrollViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
