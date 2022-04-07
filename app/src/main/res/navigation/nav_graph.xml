@@ -29,9 +29,6 @@
             android:id="@+id/action_main_to_coordinator_page"
             app:destination="@id/coordinator_page" />
         <action
-            android:id="@+id/action_main_to_piece_scroll"
-            app:destination="@id/coordinator_page_piece_scroll" />
-        <action
             android:id="@+id/action_main_to_reservation_list_page"
             app:destination="@id/reservation_list_page" />
         <action
@@ -84,20 +81,8 @@
         android:label="coordinator page"
         tools:layout="@layout/fragment_coordinator_page" >
         <action
-            android:id="@+id/action_coordinator_page_to_coordinator_page_piece_scroll"
-            app:destination="@id/coordinator_page_piece_scroll" />
-        <action
             android:id="@+id/action_coordinator_page_to_reservation_time_page"
             app:destination="@id/reservation_time_page" />
-    </fragment>
-    <fragment
-        android:id="@+id/coordinator_page_piece_scroll"
-        android:name="com.sigmai.stylemento.ui.mypage.coordinatorpage.CoordinatorPagePieceScrollFragment"
-        android:label="coordinator pieces page"
-        tools:layout="@layout/fragment_coordinator_page_work_scroll" >
-        <action
-            android:id="@+id/action_coordinator_page_piece_scroll_to_add_piece"
-            app:destination="@id/add_piece" />
     </fragment>
     <fragment
         android:id="@+id/application_viewpager"

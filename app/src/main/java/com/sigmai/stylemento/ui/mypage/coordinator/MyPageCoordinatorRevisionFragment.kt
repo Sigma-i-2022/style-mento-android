@@ -5,9 +5,6 @@ import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageCoordinatorRevisionBinding
 import com.sigmai.stylemento.global.base.BaseFragment
-import com.sigmai.stylemento.global.base.HavingImage
-import com.sigmai.stylemento.global.base.HavingTag
-import com.sigmai.stylemento.ui.mypage.coordinator.viewModel.MyPageCoordinatorRevisionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

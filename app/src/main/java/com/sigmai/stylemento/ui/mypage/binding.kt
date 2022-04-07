@@ -8,6 +8,7 @@ import com.sigmai.stylemento.domain.entity.Piece
 import com.sigmai.stylemento.ui.coordinator.adapter.CoordinatorAdapter
 import com.sigmai.stylemento.ui.coordinator.adapter.HorizontalPieceAdapter
 import com.sigmai.stylemento.ui.mypage.adapter.PieceScrollAdapter
+import com.sigmai.stylemento.ui.mypage.user.adapter.PieceGridAdapter
 
 @BindingAdapter("app:lookBookList")
 fun bindLookBookList(recyclerView: RecyclerView, list: List<Piece>?) {
@@ -24,4 +25,11 @@ fun bindCoordinators(recyclerView: RecyclerView, list: List<Coordinator>) {
 @BindingAdapter("app:horizontalPiece")
 fun bindHorizontalPieces(recyclerView: RecyclerView, list: List<String>) {
     (recyclerView.adapter as HorizontalPieceAdapter).submitList(list)
+}
+
+@BindingAdapter("app:lookBooks")
+fun bindLookBooks(recyclerView: RecyclerView, list: List<LookPage>?) {
+    list?.let {
+        (recyclerView.adapter as PieceGridAdapter).submitList(list)
+    }
 }
