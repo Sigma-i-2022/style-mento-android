@@ -6,7 +6,6 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageUserBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.ui.mypage.user.adapter.PieceGridAdapter
-import com.sigmai.stylemento.ui.mypage.user.adapter.UserLookbookAdapter
 import com.sigmai.stylemento.ui.mypage.user.viewModel.MyPageUserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

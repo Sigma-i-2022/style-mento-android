@@ -16,7 +16,6 @@ import com.sigmai.stylemento.global.constant.FitType
 import com.sigmai.stylemento.global.constant.ItemCategoryType
 import com.sigmai.stylemento.global.constant.TextureType
 import com.sigmai.stylemento.global.util.TransformToStringUtil
-import com.sigmai.stylemento.ui.mypage.ImageSelectionDialog
 
 class MyPageClosetAddFragment : BaseFragment<FragmentMyPageClosetAddBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_closet_add
