@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.sigmai.stylemento.ui.setting.SettingViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/setting_back_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_arrow_back"
+            android:onClick="@{()->viewModel.onBackClick()}"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/setting_back_img">
+
+            <TextView
+                android:id="@+id/setting_title"
+                style="@style/header3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="10dp"
+                android:text="설정"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/inquire_title_text"
+                style="@style/header4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="20dp"
+                android:text="문의 및 개선사항"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/setting_title" />
+
+            <TextView
+                android:id="@+id/inquire_by_kakaotalk_text"
+                style="@style/header5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="20dp"
+                android:text="카카오톡으로 문의하기"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/inquire_title_text" />
+
+            <View
+                android:id="@+id/line_1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="25dp"
+                android:background="@color/gray_f"
+                app:layout_constraintTop_toBottomOf="@id/inquire_by_kakaotalk_text" />
+
+            <TextView
+                android:id="@+id/review_title_text"
+                style="@style/header4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="20dp"
+                android:text="리뷰"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line_1" />
+
+            <TextView
+                android:id="@+id/review_text"
+                style="@style/header5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="20dp"
+                android:text="앱 리뷰하기"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/review_title_text" />
+
+            <View
+                android:id="@+id/line_2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="25dp"
+                android:background="@color/gray_f"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/review_text" />
+
+            <TextView
+                android:id="@+id/account_register_title_text"
+                style="@style/header4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="20dp"
+                android:text="계좌 등록"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line_2" />
+
+            <TextView
+                android:id="@+id/account_register_text"
+                style="@style/header5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="20dp"
+                android:text="계좌 등록하기"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/account_register_title_text" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+</layout>

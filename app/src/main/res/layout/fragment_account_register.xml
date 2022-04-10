@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.sigmai.stylemento.ui.setting.AccountRegisterViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/account_register_back_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_arrow_back"
+            android:onClick="@{()->viewModel.onBackClick()}"/>
+        <TextView
+            style="@style/header3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="계좌 정보 등록"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/account_register_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/account_register_back_img"
+            android:layout_marginTop="24dp"
+            android:background="@color/gray_f" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/account_register_line">
+
+            <TextView
+                android:id="@+id/bank_title_text"
+                style="@style/header3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="30dp"
+                android:text="은행"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/back_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_radius_12"
+                android:backgroundTint="@color/gray_f"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bank_title_text">
+
+                <TextView
+                    style="@style/body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1111"
+                    android:textColor="@color/gray_8" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    style="@style/body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="선택"
+                    android:textColor="@color/gray_8" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/account_number_title_text"
+                style="@style/header3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="30dp"
+                android:text="계좌번호"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/back_layout" />
+
+            <EditText
+                android:id="@+id/account_number_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_radius_12"
+                android:backgroundTint="@color/gray_f"
+                android:inputType="number"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="8dp"
+                android:text="@{viewModel.accountNumber}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/account_number_title_text"/>
+
+            <TextView
+                android:id="@+id/owner_title_text"
+                style="@style/header3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="30dp"
+                android:text="예금주"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/account_number_editText" />
+
+            <EditText
+                android:id="@+id/owner_title_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_radius_12"
+                android:backgroundTint="@color/gray_f"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="8dp"
+                android:text="@{viewModel.owner}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/owner_title_text"/>
+
+            <TextView
+                style="@style/body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="6dp"
+                android:text="*예금주명이 실제 예금주와 다를 경우 이체가 불가능합니다."
+                android:textColor="@color/gray_d"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/owner_title_editText" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/account_register_complete_button"
+            style="@style/header4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp"
+            android:text="완료"
+            android:textColor="@color/white"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:backgroundTint="@color/primary"
+            android:onClick="@{()->viewModel.onNextClick()}"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+</layout>
