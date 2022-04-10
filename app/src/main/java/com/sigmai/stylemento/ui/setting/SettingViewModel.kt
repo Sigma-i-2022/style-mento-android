@@ -18,8 +18,20 @@ class SettingViewModel @Inject constructor() : ViewModel() {
     lateinit var reservationRepository: CancelReservationRepositoryImpl
 
     val startBack = SingleLiveEvent<Any>()
+    val startInquireByKakao = SingleLiveEvent<Any>()
+    val startReview = SingleLiveEvent<Any>()
+    val startRegister = SingleLiveEvent<Any>()
 
     fun onBackClick(){
         startBack.call()
+    }
+    fun onInquireByKakaoClick(){
+        startInquireByKakao.call()
+    }
+    fun onReviewClick(){
+        startReview.call()
+    }
+    fun onRegisterClick(){
+        startRegister.call()
     }
 }

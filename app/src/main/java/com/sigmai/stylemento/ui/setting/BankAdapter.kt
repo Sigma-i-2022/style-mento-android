@@ -1,0 +1,49 @@
+package com.sigmai.stylemento.ui.setting
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.lifecycle.MutableLiveData
+import androidx.recyclerview.widget.RecyclerView
+import com.sigmai.stylemento.R
+import com.sigmai.stylemento.databinding.ItemBankBinding
+import com.sigmai.stylemento.databinding.ItemTimeSelectorBinding
+
+
+class BankAdapter(
+    private val bankList: List<String>,
+    private var selectedBank: MutableLiveData<String>
+) : RecyclerView.Adapter<BankAdapter.ViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder.from(parent)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(bankList[position], selectedBank)
+    }
+
+    override fun getItemCount(): Int {
+        return bankList.size
+    }
+
+    class ViewHolder(val binding: ItemBankBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: String, selectedBank: MutableLiveData<String>) {
+            binding.item = item
+            binding.bankSelectorText.setOnClickListener {
+                selectedBank.postValue(item)
+            }
+            binding.executePendingBindings()
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): BankAdapter.ViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = ItemBankBinding.inflate(layoutInflater, parent, false)
+
+                return BankAdapter.ViewHolder(binding)
+            }
+        }
+    }
+
+}

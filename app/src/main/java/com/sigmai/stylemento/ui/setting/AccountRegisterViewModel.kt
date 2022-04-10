@@ -19,13 +19,19 @@ class AccountRegisterViewModel @Inject constructor() : ViewModel() {
 
     val accountNumber = MutableLiveData<String>("")
     val owner = MutableLiveData<String>("")
+    val bank = MutableLiveData<String>("")
 
     val startBack = SingleLiveEvent<Any>()
     val startNext = SingleLiveEvent<Any>()
+    val startSetBank = SingleLiveEvent<Any>()
+
     fun onBackClick(){
         startBack.call()
     }
     fun onNextClick(){
         startNext.call()
+    }
+    fun onSetBankClick(){
+        startSetBank.call()
     }
 }

@@ -8,7 +8,7 @@
     </data>
 
     <TextView
-        android:id="@+id/time_selector_text"
+        android:id="@+id/bank_selector_text"
         style="@style/body1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

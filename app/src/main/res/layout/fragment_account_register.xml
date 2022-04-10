@@ -7,7 +7,6 @@
     <data>
 
         <import type="android.view.View" />
-
         <variable
             name="viewModel"
             type="com.sigmai.stylemento.ui.setting.AccountRegisterViewModel" />
@@ -76,7 +75,7 @@
                     style="@style/body1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1111"
+                    android:text="@{viewModel.bank}"
                     android:textColor="@color/gray_8" />
 
                 <View
