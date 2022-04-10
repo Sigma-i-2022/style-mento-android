@@ -7,11 +7,16 @@ import androidx.fragment.app.viewModels
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageRevisionBinding
 import com.sigmai.stylemento.global.base.BaseFragment
+import com.sigmai.stylemento.global.util.PathUtil
 import com.sigmai.stylemento.global.util.asRequestBody
-import com.sigmai.stylemento.ui.mypage.client.revision.MyPageRevisionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
+import okhttp3.OkHttpClient
+import okhttp3.RequestBody
+import timber.log.Timber
+import java.io.File
+
 
 @AndroidEntryPoint
 class MyPageRevisionFragment : BaseFragment<FragmentMyPageRevisionBinding>() {
@@ -22,11 +27,11 @@ class MyPageRevisionFragment : BaseFragment<FragmentMyPageRevisionBinding>() {
         if (result.resultCode == RESULT_OK) {
             try {
                 val uri = result.data?.data ?: return@registerForActivityResult
-
+                val filePath = PathUtil().getPath(requireContext(), uri)
+                val file = File(filePath!!)
                 val stream = context?.contentResolver?.openInputStream(uri)
-
                 val requestFile = stream!!.asRequestBody("multipart/form-data".toMediaType())
-                val image = MultipartBody.Part.createFormData("memberImageFile", "memberImageFile", requestFile)
+                val image = MultipartBody.Part.createFormData("imageFile", file.name, requestFile)
 
                 viewModel.uploadImage(image)
             } catch (e: Exception) {

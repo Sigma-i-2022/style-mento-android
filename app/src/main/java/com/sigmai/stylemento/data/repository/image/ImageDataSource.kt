@@ -11,7 +11,7 @@ class ImageDataSource @Inject constructor() {
         return service.getImage(uuid).execute().body()?.data!!
 
     }
-    fun postImage(imageFile: MultipartBody.Part) : Boolean{
-        return service.postImage(imageFile).execute().body()?.success ?: false
+    fun postImage(imageFile: MultipartBody.Part) : String {
+        return service.postImage(imageFile).execute().body()?.data!!
     }
 }

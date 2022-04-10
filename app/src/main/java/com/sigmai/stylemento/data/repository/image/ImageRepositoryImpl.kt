@@ -8,7 +8,7 @@ class ImageRepositoryImpl @Inject constructor(private val dataSource : ImageData
     override fun getImage(uuid : String) : String{
         return dataSource.getImage(uuid)
     }
-    override fun postImage(imageFile: MultipartBody.Part) : Boolean{
+    override fun postImage(imageFile: MultipartBody.Part) : String {
         return dataSource.postImage(imageFile)
     }
 }
