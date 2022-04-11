@@ -234,4 +234,19 @@
             android:id="@+id/action_piece_scroll_to_add_piece"
             app:destination="@id/add_piece" />
     </fragment>
+    <fragment
+        android:id="@+id/setting_page"
+        android:name="com.sigmai.stylemento.ui.setting.SettingFragment"
+        android:label="setting page"
+        tools:layout="@layout/fragment_setting">
+        <action
+            android:id="@+id/action_setting_page_to_account_register_page"
+            app:destination="@id/account_register_page" />
+    </fragment>
+    <fragment
+        android:id="@+id/account_register_page"
+        android:name="com.sigmai.stylemento.ui.setting.AccountRegisterFragment"
+        android:label="account register page"
+        tools:layout="@layout/fragment_account_register">
+    </fragment>
 </navigation>

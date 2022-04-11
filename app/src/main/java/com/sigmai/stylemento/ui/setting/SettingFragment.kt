@@ -32,7 +32,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
 
         }
         viewModel.startRegister.observe(this) {
-
+            findNavController().navigate(R.id.action_setting_page_to_account_register_page)
         }
 
     }

@@ -34,4 +34,8 @@ class AccountRegisterViewModel @Inject constructor() : ViewModel() {
     fun onSetBankClick(){
         startSetBank.call()
     }
+
+    fun saveInfo(){
+        
+    }
 }

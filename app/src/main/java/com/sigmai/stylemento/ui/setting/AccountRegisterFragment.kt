@@ -27,7 +27,8 @@ class AccountRegisterFragment : BaseFragment<FragmentAccountRegisterBinding>() {
             findNavController().navigateUp()
         }
         viewModel.startNext.observe(this) {
-
+            viewModel.saveInfo()
+            findNavController().navigateUp()
         }
         viewModel.startSetBank.observe(this) {
             val bankBottomSheet = BankBottomSheet(viewModel.bank)
