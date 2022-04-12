@@ -23,5 +23,9 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
         binding.viewModel = viewModel
         binding.myPageUserChatButton.visibility = View.GONE
         binding.lookbookRecyclerview.adapter = PieceGridAdapter()
+
+        binding.toolbar.setOnEditListener {
+            viewModel.onRevisionClick(it)
+        }
     }
 }

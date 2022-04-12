@@ -39,7 +39,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:showBackButton="true"
                     app:title="코디네이터"
-                    tools:layout_editor_absoluteX="0dp" />
+                    app:showSettingsButton="true"/>
 
                 <ImageView
                     android:id="@+id/coordinator_page_img"

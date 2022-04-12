@@ -11,51 +11,53 @@
             type="com.sigmai.stylemento.ui.mypage.client.MyPageUserViewModel" />
     </data>
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <com.sigmai.stylemento.global.component.SmToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/white"
+            android:elevation="8dp"
+            app:isMyPage="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:showSettingsButton="true"
+            app:title="마이페이지" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true"
-            android:scrollbars="vertical">
+            android:scrollbars="vertical"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
                 android:descendantFocusability="blocksDescendants">
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/my_page_user_revise_img"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    android:background="@drawable/ic_pencil"
-                    android:onClick="@{(view)->viewModel.onRevisionClick(view)}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/my_page_user_profile_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="20dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_user_revise_img">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
                         android:id="@+id/my_page_user_profile_img"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/ic_launcher_foreground"
                         android:background="@drawable/bg_circle"
                         android:backgroundTint="@color/gray_d"
+                        android:src="@drawable/ic_launcher_foreground"
+                        app:imageUrlCircle="@{viewModel.user.profileImgUrl}"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:imageUrlCircle="@{viewModel.user.profileImgUrl}"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <LinearLayout
                         android:id="@+id/my_page_user_profile_text_layout"
@@ -72,18 +74,18 @@
                             style="@style/header3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="@{viewModel.user.userId}"
                             android:textStyle="bold"
-                            tools:text="user_name"
-                            android:text="@{viewModel.user.userId}"/>
+                            tools:text="user_name" />
 
                         <TextView
                             android:id="@+id/my_page_user_email_text"
                             style="@style/body1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="@{viewModel.user.email}"
                             android:textColor="@color/gray_8"
-                            tools:text="user_email"
-                            android:text="@{viewModel.user.email}"/>
+                            tools:text="user_email" />
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -94,16 +96,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:layout_marginTop="12dp"
-                    android:paddingVertical="12dp"
-                    android:paddingHorizontal="8dp"
                     android:background="@drawable/background_radius_12"
                     android:backgroundTint="@color/gray_f"
-                    android:text="@{viewModel.user.intro}"
-                    android:maxLines="@{viewModel.isIntroductionExtended ? 10 : 3}"
                     android:ellipsize="end"
+                    android:maxLines="@{viewModel.isIntroductionExtended ? 10 : 3}"
+                    android:onClick="@{()->viewModel.onExtend()}"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="12dp"
+                    android:text="@{viewModel.user.intro}"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_user_profile_layout"
-                    android:onClick="@{()->viewModel.onExtend()}"/>
+                    app:layout_constraintTop_toBottomOf="@id/my_page_user_profile_layout" />
 
                 <View
                     android:id="@+id/my_page_user_line"
@@ -117,40 +119,40 @@
 
                 <TextView
                     android:id="@+id/my_page_user_lookbook_button"
+                    style="@style/header4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_user_line"
-                    android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:layout_marginTop="10dp"
                     android:text="스타일 룩북"
-                    style="@style/header4"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_user_line" />
 
                 <ImageButton
                     android:layout_width="34dp"
                     android:layout_height="34dp"
-                    app:layout_constraintTop_toTopOf="@id/my_page_user_lookbook_button"
+                    android:layout_marginEnd="@dimen/horizontal_margin"
+                    android:background="@null"
+                    android:onClick="@{(view)->viewModel.onAdd(view)}"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_plus"
                     app:layout_constraintBottom_toBottomOf="@id/my_page_user_lookbook_button"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="@dimen/horizontal_margin"
-                    android:src="@drawable/ic_plus"
-                    android:background="@null"
-                    android:scaleType="centerCrop"
-                    android:onClick="@{(view)->viewModel.onAdd(view)}"/>
+                    app:layout_constraintTop_toTopOf="@id/my_page_user_lookbook_button" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/lookbook_recyclerview"
-                    app:layout_constraintTop_toBottomOf="@id/my_page_user_lookbook_button"
-                    android:layout_marginTop="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:layout_marginTop="16dp"
+                    android:nestedScrollingEnabled="false"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/my_page_user_lookbook_button"
+                    app:lookBooks="@{viewModel.lookPageList}"
                     app:spanCount="3"
                     tools:itemCount="9"
-                    tools:listitem="@layout/item_grid_piece"
-                    app:lookBooks="@{viewModel.lookPageList}"/>
+                    tools:listitem="@layout/item_grid_piece" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
@@ -159,15 +161,14 @@
             android:id="@+id/my_page_user_chat_button"
             style="@style/header4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_height="55dp"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
             android:layout_weight="1"
-            android:paddingVertical="12dp"
+            android:background="@drawable/background_radius_12"
             android:text="채팅하기"
             android:textColor="@color/white"
-            android:textStyle="bold" />
-    </RelativeLayout>
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
