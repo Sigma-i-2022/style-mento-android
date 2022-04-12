@@ -26,6 +26,7 @@ class MyPageUserViewModel @Inject constructor() : ViewModel() {
 
     val user = MutableLiveData<MyPageClient>()
     val isIntroductionExtended = MutableLiveData(false)
+    val isMyPage = MutableLiveData(true)
 
     val lookPageList = MutableLiveData<List<LookPage>>()
 

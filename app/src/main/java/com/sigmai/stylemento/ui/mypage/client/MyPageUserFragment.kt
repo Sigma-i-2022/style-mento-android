@@ -16,6 +16,8 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
     override fun initState() {
         super.initState()
         viewModel.getUserInfo()
+
+        setupButtons()
     }
 
     override fun initDataBinding() {
@@ -24,6 +26,9 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
         binding.myPageUserChatButton.visibility = View.GONE
         binding.lookbookRecyclerview.adapter = PieceGridAdapter()
 
+    }
+
+    private fun setupButtons() {
         binding.toolbar.setOnEditListener {
             viewModel.onRevisionClick(it)
         }
