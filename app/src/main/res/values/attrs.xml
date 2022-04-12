@@ -6,5 +6,6 @@
         <attr name="isMyPage" format="boolean"/>
         <attr name="showTextButton" format="boolean"/>
         <attr name="textButtonName" format="string"/>
+        <attr name="showSettingsButton" format="boolean"/>
     </declare-styleable>
 </resources>

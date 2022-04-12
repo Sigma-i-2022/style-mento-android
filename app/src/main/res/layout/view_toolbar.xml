@@ -28,6 +28,14 @@
         tools:text="제목"
         android:layout_gravity="center"/>
 
+    <View
+        android:id="@+id/settings"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@drawable/ic_settings"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        android:layout_gravity="end"/>
+
     <ImageButton
         android:id="@+id/edit_profile"
         android:layout_width="24dp"
