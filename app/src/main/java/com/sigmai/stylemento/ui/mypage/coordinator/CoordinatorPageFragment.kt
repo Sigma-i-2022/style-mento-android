@@ -40,6 +40,9 @@ class CoordinatorPageFragment(private val isMyPage: Boolean = false) :
             setOnEditListener {
                 findNavController().navigate(R.id.action_main_to_coordinator_revision)
             }
+            setOnSettingsListener {
+                findNavController().navigate(R.id.action_coordinator_page_to_setting_page)
+            }
         }
     }
 

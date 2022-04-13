@@ -32,5 +32,8 @@ class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
         binding.toolbar.setOnEditListener {
             viewModel.onRevisionClick(it)
         }
+        binding.toolbar.setOnSettingsListener {
+
+        }
     }
 }

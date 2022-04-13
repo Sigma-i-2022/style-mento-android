@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_main_to_piece_scroll2"
             app:destination="@id/piece_scroll" />
+        <action
+            android:id="@+id/action_coordinator_page_to_setting_page"
+            app:destination="@id/setting_page" />
     </fragment>
 
     <fragment

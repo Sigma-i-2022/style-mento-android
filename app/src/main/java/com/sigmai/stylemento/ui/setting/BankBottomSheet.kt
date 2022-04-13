@@ -17,15 +17,17 @@ class BankBottomSheet(val selectedBank : MutableLiveData<String>) : BottomSheetD
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        super.onCreateView(inflater, container, savedInstanceState)
+        return inflater.inflate(R.layout.view_bank_bottom_sheet, container, false)
+    }
 
-        val bankRecycler = view?.findViewById<RecyclerView>(R.id.bank_recycler)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val bankRecycler = view.findViewById<RecyclerView>(R.id.bank_recycler)
         bankRecycler?.adapter = BankAdapter(BankUtil.getBankList(), selectedBank)
 
         selectedBank.observe(this){
             dismiss()
         }
-
-        return inflater.inflate(R.layout.view_bank_bottom_sheet, container, false)
     }
 }
