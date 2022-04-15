@@ -8,26 +8,31 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.sigmai.stylemento.R
+import com.sigmai.stylemento.databinding.ViewBankBottomSheetBinding
 import com.sigmai.stylemento.global.util.BankUtil
 
-class BankBottomSheet(val selectedBank : MutableLiveData<String>) : BottomSheetDialogFragment() {
+class BankBottomSheet(val itemClick: (Int) -> Unit) : BottomSheetDialogFragment() {
+    private var _binding: ViewBankBottomSheetBinding? = null
+    private val binding get() = _binding!!
 
+    val selectedBank = ArrayList<String>()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.view_bank_bottom_sheet, container, false)
-    }
+        _binding = ViewBankBottomSheetBinding.inflate(inflater, container, false)
+        val view = binding.root
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        binding.bankRecycler.adapter = BankAdapter(BankUtil.getBankList(), selectedBank)
 
-        val bankRecycler = view.findViewById<RecyclerView>(R.id.bank_recycler)
-        bankRecycler?.adapter = BankAdapter(BankUtil.getBankList(), selectedBank)
-
-        selectedBank.observe(this){
-            dismiss()
+        binding.bankSelectionButton.setOnClickListener {
+            if(selectedBank.size == 1)
+                itemClick(BankUtil.getPosition(selectedBank[0]))
+            else
+                itemClick(-1)
+            dialog?.dismiss()
         }
+        return view
     }
 }

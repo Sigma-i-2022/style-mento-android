@@ -28,4 +28,14 @@ object BankUtil {
     fun getBankList() : List<String>{
         return bankList
     }
+    fun getBank(position : Int) : String{
+        return bankList[position]
+    }
+    fun getPosition(bank : String) : Int{
+        for(i in 0..bankList.size){
+            if (bank == bankList[i])
+                return i
+        }
+        return -1
+    }
 }

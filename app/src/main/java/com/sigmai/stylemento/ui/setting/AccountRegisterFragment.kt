@@ -12,6 +12,7 @@ import com.sigmai.stylemento.global.util.TimeUtil
 import com.sigmai.stylemento.ui.reservation.adapter.TimeSelectorAdapter
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
 import com.sigmai.stylemento.databinding.FragmentSettingBinding
+import com.sigmai.stylemento.global.util.BankUtil
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,6 +20,7 @@ class AccountRegisterFragment : BaseFragment<FragmentAccountRegisterBinding>() {
     override val layoutResourceId = R.layout.fragment_account_register
     private val viewModel: AccountRegisterViewModel by viewModels()
 
+    var bank = ArrayList<String>()
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
@@ -31,8 +33,13 @@ class AccountRegisterFragment : BaseFragment<FragmentAccountRegisterBinding>() {
             findNavController().navigateUp()
         }
         viewModel.startSetBank.observe(this) {
-            val bankBottomSheet = BankBottomSheet(viewModel.bank)
-            bankBottomSheet.show(childFragmentManager, bankBottomSheet.tag)
+            val bankBottomSheet = BankBottomSheet {
+                if(it > 0){
+                    viewModel.bank.value = BankUtil.getBank(it)
+                }
+            }
+            bankBottomSheet.show(childFragmentManager, "dialog")
+            //bankBottomSheet.setOnCancelListener
         }
     }
 

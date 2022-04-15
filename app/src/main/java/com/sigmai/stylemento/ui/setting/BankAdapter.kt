@@ -12,7 +12,7 @@ import com.sigmai.stylemento.databinding.ItemTimeSelectorBinding
 
 class BankAdapter(
     private val bankList: List<String>,
-    private var selectedBank: MutableLiveData<String>
+    private val selectedBank: ArrayList<String>
 ) : RecyclerView.Adapter<BankAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,12 +28,29 @@ class BankAdapter(
     }
 
     class ViewHolder(val binding: ItemBankBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: String, selectedBank: MutableLiveData<String>) {
+        fun bind(item: String, selectedBank: ArrayList<String>) {
             binding.item = item
-            binding.bankSelectorText.setOnClickListener {
-                selectedBank.postValue(item)
+            binding.bankSelectorText.setOnClickListener {   tagView ->
+                onClickBank(item, selectedBank, tagView as TextView)
             }
             binding.executePendingBindings()
+        }
+
+        private fun onClickBank(
+            item: String,
+            selectedBank: ArrayList<String>,
+            timeView: TextView
+        ) {
+            if (selectedBank.contains(item)) {
+                selectedBank.remove(item)
+                timeView.setBackgroundResource(R.drawable.button_background_type_1)
+                return
+            }
+
+            if (selectedBank.size < 1) {
+                selectedBank.add(item)
+                timeView.setBackgroundResource(R.drawable.button_background_type_2)
+            }
         }
 
         companion object {
