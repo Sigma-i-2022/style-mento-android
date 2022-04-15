@@ -5,7 +5,6 @@ import com.sigmai.stylemento.data.model.Notification
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 
 class NotificationViewModel : ViewModel() {
-    val backPressEvent = SingleLiveEvent<Any>()
     val dummyList = listOf(
         Notification("eqkfeq_te님이 나를 어쩌구했어요1"),
         Notification("eqkfeq_te님이 나를 어쩌구했어용2"),
@@ -14,8 +13,4 @@ class NotificationViewModel : ViewModel() {
         Notification("eqkfeq_te님이 나를 어쩌구했어요5"),
         Notification("eqkfeq_te님이 나를 어쩌구했어요6")
     )
-
-    fun backPress() {
-        backPressEvent.call()
-    }
 }
