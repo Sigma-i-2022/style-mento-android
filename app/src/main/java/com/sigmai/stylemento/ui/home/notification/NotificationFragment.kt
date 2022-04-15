@@ -17,12 +17,8 @@ class NotificationFragment : BaseFragment<FragmentNotificationBinding>() {
 
     override fun initState() {
         binding.notificationRecyclerView.adapter = NotificationAdapter()
-
-        viewModel.backPressEvent.observe(
-            this,
-            {
-                findNavController().navigateUp()
-            }
-        )
+        binding.toolbar.setOnBackListener {
+            findNavController().navigateUp()
+        }
     }
 }
