@@ -4,25 +4,30 @@ import com.sigmai.stylemento.data.model.TimeItem
 
 object BankUtil {
     private val bankList = listOf<String>(
+        "경남",
+        "광주",
+        "시티",
+        "산림",
         "NH농협",
         "우리",
         "신한",
         "KB국민",
         "하나",
-        "시티",
-        "IBK기업",
-        "케이뱅크",
+        "저축",
         "산업",
-        "카카오뱅크",
+        "케이",
+        "토스",
+        "카카오",
         "수협",
+        "신협",
         "전북",
         "제주",
         "부산",
         "대구",
-        "외환",
+        "우체국",
         "기업",
         "새마을",
-        "SC은행"
+        "SC제일"
     )
 
     fun getBankList() : List<String>{

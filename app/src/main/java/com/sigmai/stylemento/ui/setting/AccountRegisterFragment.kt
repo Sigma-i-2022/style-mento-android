@@ -34,7 +34,7 @@ class AccountRegisterFragment : BaseFragment<FragmentAccountRegisterBinding>() {
         }
         viewModel.startSetBank.observe(this) {
             val bankBottomSheet = BankBottomSheet {
-                if(it > 0){
+                if(it >= 0){
                     viewModel.bank.value = BankUtil.getBank(it)
                 }
             }

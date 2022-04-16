@@ -10,11 +10,12 @@
     <TextView
         android:id="@+id/bank_selector_text"
         style="@style/body1"
-        android:layout_width="wrap_content"
+        android:layout_width="85dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:paddingHorizontal="10dp"
-        android:paddingVertical="4dp"
+        android:layout_marginTop="8dp"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="8dp"
         android:text="@{item}"
+        android:gravity="center"
         android:background="@drawable/button_round"/>
 </layout>

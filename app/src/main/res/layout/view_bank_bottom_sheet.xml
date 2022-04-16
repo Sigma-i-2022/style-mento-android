@@ -7,7 +7,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:behavior_hideable="true"
-        app:behavior_draggable="true">
+        app:behavior_draggable="true"
+        android:background="@drawable/round_rectangle_background_type_1">
         <TextView
             android:id="@+id/bank_selection_title_text"
             android:layout_width="wrap_content"
@@ -33,7 +34,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:text="선택"
+            android:gravity="center"
             style="@style/header3"
             android:textColor="@color/white"
             android:backgroundTint="@color/primary"
