@@ -35,7 +35,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     fun getUserInfo() {
         viewModel.getUserInfo()
     }
-    fun setBannerViewPager(){
+    private fun setBannerViewPager(){
         binding.banner.adapter = BannerViewPagerAdapter(this)
     }
     private fun setupObserver() {
@@ -44,6 +44,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
         viewModel.startCheckReservation.observe(this) {
             findNavController().navigate(R.id.action_main_to_reservation_user_list_page)
+        }
+        viewModel.startPrivacy.observe(this){
+            val dialog = PrivacyDialogFragment()
+            dialog.show(childFragmentManager, "privacy")
         }
     }
 }
