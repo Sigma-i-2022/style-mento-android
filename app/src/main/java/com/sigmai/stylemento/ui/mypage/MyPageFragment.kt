@@ -6,7 +6,7 @@ import com.sigmai.stylemento.databinding.FragmentMyPageBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.store.AuthenticationInformation
 import com.sigmai.stylemento.ui.mypage.coordinator.CoordinatorPageFragment
-import com.sigmai.stylemento.ui.mypage.client.MyPageUserFragment
+import com.sigmai.stylemento.ui.mypage.client.MyPageClientFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,7 +27,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
         val transaction = when (AuthenticationInformation.userType) {
             AuthenticationInformation.TYPE_CLIENT ->
                 childFragmentManager.beginTransaction()
-                    .replace(R.id.my_page_frameLayout, MyPageUserFragment())
+                    .replace(R.id.my_page_frameLayout, MyPageClientFragment())
             AuthenticationInformation.TYPE_COORDINATOR ->
                 childFragmentManager.beginTransaction()
                     .replace(R.id.my_page_frameLayout, CoordinatorPageFragment(true))

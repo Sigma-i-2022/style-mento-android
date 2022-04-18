@@ -9,9 +9,9 @@ import com.sigmai.stylemento.ui.mypage.client.adapter.PieceGridAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MyPageUserFragment : BaseFragment<FragmentMyPageUserBinding>() {
+class MyPageClientFragment : BaseFragment<FragmentMyPageUserBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_user
-    private val viewModel: MyPageUserViewModel by viewModels()
+    private val viewModel: MyPageClientViewModel by viewModels()
 
     override fun initState() {
         super.initState()

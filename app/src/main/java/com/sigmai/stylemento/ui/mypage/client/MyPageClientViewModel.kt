@@ -18,7 +18,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class MyPageUserViewModel @Inject constructor() : ViewModel() {
+class MyPageClientViewModel @Inject constructor() : ViewModel() {
     @Inject
     lateinit var myPageRepository: MyPageRepositoryImpl
     @Inject

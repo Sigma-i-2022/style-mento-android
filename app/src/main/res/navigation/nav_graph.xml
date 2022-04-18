@@ -18,7 +18,7 @@
             app:destination="@id/chat_room" />
         <action
             android:id="@+id/action_main_to_user_revision"
-            app:destination="@id/user_revision" />
+            app:destination="@id/client_revision" />
         <action
             android:id="@+id/action_main_to_coordinator_revision"
             app:destination="@id/coordinator_revision" />
@@ -67,9 +67,9 @@
         android:label="chatting room"
         tools:layout="@layout/fragment_chat_room" />
     <fragment
-        android:id="@+id/user_revision"
+        android:id="@+id/client_revision"
         android:name="com.sigmai.stylemento.ui.mypage.client.revision.MyPageRevisionFragment"
-        android:label="user revision"
+        android:label="client revision"
         tools:layout="@layout/fragment_my_page_revision"/>
 
     <fragment
