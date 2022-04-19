@@ -258,28 +258,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="Copyright"
+                android:text="Copyright © Style Mento. All Rights Reserved"
                 style="@style/body1"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Copyright"
+                android:text="사업자등록번호 757-08-01950  | 대표 : 안예영"
                 android:layout_marginBottom="8dp"
-                style="@style/body1"
+                style="@style/body2"
                 android:textColor="@color/gray_8"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Copyright"
+                android:text="통신판매신고 제 2022-서울서대문-0599호"
                 android:layout_marginBottom="8dp"
-                style="@style/body1"
+                style="@style/body2"
                 android:textColor="@color/gray_8"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Copyright"
-                android:layout_marginBottom="8dp"
-                style="@style/body1"
+                android:text="서울특별시 서대문구 연희로12길 13, B동 701호(연희동, 연희노블레스)"
+                android:layout_marginBottom="14dp"
+                style="@style/body2"
                 android:textColor="@color/gray_8"/>
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -288,7 +288,7 @@
                     android:id="@+id/privacy_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="개인정보 처리방침"
+                    android:text="@string/privacy_text"
                     style="@style/body1"
                     android:textColor="@color/gray_8"
                     android:onClick="@{()->viewModel.startPrivacyDialog()}"
