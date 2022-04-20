@@ -39,7 +39,6 @@ class AccountRegisterFragment : BaseFragment<FragmentAccountRegisterBinding>() {
                 }
             }
             bankBottomSheet.show(childFragmentManager, "dialog")
-            //bankBottomSheet.setOnCancelListener
         }
     }
 

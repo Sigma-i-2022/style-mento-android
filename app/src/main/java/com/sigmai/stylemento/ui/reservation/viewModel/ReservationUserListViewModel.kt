@@ -28,8 +28,12 @@ class ReservationUserListViewModel @Inject constructor() : ViewModel() {
     }
 
     val startBack = SingleLiveEvent<Any>()
+    val startInfo = SingleLiveEvent<Any>()
 
     fun onBackClick(){
         startBack.call()
+    }
+    fun onInfoClick(){
+        startInfo.call()
     }
 }

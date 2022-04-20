@@ -29,6 +29,15 @@
             android:text="예약 현황"
             android:textStyle="bold" />
 
+        <ImageView
+            android:id="@+id/reservation_user_list_info_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_arrow_back"
+            android:onClick="@{()->viewModel.onInfoClick()}"/>
         <View
             android:id="@+id/reservation_user_list_line"
             android:layout_width="match_parent"

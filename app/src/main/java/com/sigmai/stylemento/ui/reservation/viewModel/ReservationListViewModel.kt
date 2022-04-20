@@ -20,6 +20,7 @@ class ReservationListViewModel @Inject constructor() : ViewModel() {
     private val receipts = MutableLiveData<List<Common>>(listOf())
     val email = MutableLiveData<String>("")
     val startBack = SingleLiveEvent<Any>()
+    val startInfo = SingleLiveEvent<Any>()
 
     fun requestReceipts(){
         viewModelScope.launch {
@@ -37,5 +38,8 @@ class ReservationListViewModel @Inject constructor() : ViewModel() {
     }
     fun onBackClick(){
         startBack.call()
+    }
+    fun onInfoClick(){
+        startInfo.call()
     }
 }

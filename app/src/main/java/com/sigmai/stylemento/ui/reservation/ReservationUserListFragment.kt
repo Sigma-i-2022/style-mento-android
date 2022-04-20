@@ -30,6 +30,10 @@ class ReservationUserListFragment : BaseFragment<FragmentReservationUserListBind
         viewModel.startBack.observe(this) {
             findNavController().navigateUp()
         }
+        viewModel.startInfo.observe(this){
+            val dialog = InfoDialogFragment()
+            dialog.show(childFragmentManager, "info")
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
