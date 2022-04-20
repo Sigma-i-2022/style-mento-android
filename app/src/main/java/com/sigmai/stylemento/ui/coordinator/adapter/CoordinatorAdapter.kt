@@ -31,7 +31,7 @@ class CoordinatorAdapter(val viewModel: CoordinatorViewModel) :
             binding.pieceList.adapter = HorizontalPieceAdapter()
 
             binding.root.setOnClickListener {
-                viewModel.onClickCoordinatorProfile(it, adapterPosition)
+                viewModel.onClickCoordinatorProfile(it, item.email!!)
             }
 
             binding.executePendingBindings()

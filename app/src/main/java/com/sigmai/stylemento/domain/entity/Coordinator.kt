@@ -27,7 +27,8 @@ data class Coordinator(
                 nickname = coordinatorResponse.id,
                 pieceImages = coordinatorResponse.imageWorkImageList,
                 rating = coordinatorResponse.star,
-                tagList = tagList
+                tagList = tagList,
+                email = coordinatorResponse.crdiEmail
             )
         }
     }

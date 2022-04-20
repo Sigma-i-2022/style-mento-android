@@ -32,8 +32,8 @@ class CoordinatorViewModel @Inject constructor() : ViewModel() {
         }
     }
 
-    fun onClickCoordinatorProfile(view: View, position: Int) {
-        val bundle = bundleOf("position" to position)
+    fun onClickCoordinatorProfile(view: View, email: String) {
+        val bundle = bundleOf("email" to email)
         val navController = view.findNavController()
         navController.navigate(R.id.action_main_to_coordinator_page, bundle)
     }

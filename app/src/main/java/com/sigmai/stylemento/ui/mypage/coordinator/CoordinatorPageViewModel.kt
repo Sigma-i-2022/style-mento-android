@@ -14,6 +14,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -29,17 +30,20 @@ class CoordinatorPageViewModel
 
     val isMyPage = MutableLiveData(false)
     val isExtended = MutableLiveData(false)
+    var email = ""
 
     val startChat = SingleLiveEvent<Any>()
     val startReserve = SingleLiveEvent<Any>()
     val onEditEvent = SingleLiveEvent<Any>()
 
     fun loadData() {
+        val coordiEmail = if(isMyPage.value!!) AuthenticationInformation.email.value!! else email
+
         loadCoordinatorInfo()
 
         viewModelScope.launch {
             val list = withContext(Dispatchers.IO) {
-                workRepository.getCrdiWorkAll(AuthenticationInformation.email.value!!)
+                workRepository.getCrdiWorkAll(coordiEmail)
             }
             pieceList.value = list.map {
                 it.toLookPage()
@@ -59,10 +63,12 @@ class CoordinatorPageViewModel
         startReserve.call()
     }
 
-    fun loadCoordinatorInfo() {
+    private fun loadCoordinatorInfo() {
+        val coordiEmail = if(isMyPage.value!!) AuthenticationInformation.email.value!! else email
+
         viewModelScope.launch {
             val coordi = withContext(Dispatchers.IO) {
-                myPageRepository.getMyPageCrdi(AuthenticationInformation.email.value!!)
+                myPageRepository.getMyPageCrdi(coordiEmail)
             }
             coordinator.value = coordi
         }
