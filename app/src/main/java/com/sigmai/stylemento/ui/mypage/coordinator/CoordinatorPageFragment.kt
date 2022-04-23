@@ -29,6 +29,7 @@ class CoordinatorPageFragment(private val isMyPage: Boolean = false) :
 
     override fun initState() {
         viewModel.isMyPage.value = isMyPage
+        viewModel.email = arguments?.getString("email") ?: ""
         viewModel.loadData()
     }
 

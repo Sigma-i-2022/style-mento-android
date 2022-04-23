@@ -7,5 +7,6 @@ data class Coordinator(
     val stag1: String?,
     val stag2: String?,
     val stag3: String?,
-    val star: Int
+    val star: Int,
+    val crdiEmail: String
 )
