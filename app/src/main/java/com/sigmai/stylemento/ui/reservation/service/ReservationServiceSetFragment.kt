@@ -27,7 +27,7 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
             findNavController().navigateUp()
         }
         viewModel.startNext.observe(this) {
-            //setReservation()
+            setReservation()
             findNavController().navigate(R.id.action_reservation_service_page_to_reservation_payment_page)
         }
     }

@@ -32,9 +32,7 @@ class ReservationPaymentCompleteFragment : BaseFragment<FragmentReservationPayme
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if(viewModel.receipt.value != null){
-            binding.reservationCompleteServiceTimeRecycler.adapter = TimeAdapter(viewModel.receipt.value!!.timeList)
-        }
+        binding.reservationCompleteServiceTimeRecycler.adapter = TimeAdapter(viewModel.client.value!!.reserveTimes, false)
     }
 
 }

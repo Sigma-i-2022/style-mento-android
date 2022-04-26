@@ -42,10 +42,10 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
         userUrl.postValue(url)
     }
     private val _user = MutableLiveData<User>()
-    private val _receipt = MutableLiveData<Receipt>()
+    //private val _receipt = MutableLiveData<Receipt>()
 
     val user: LiveData<User> get() = _user
-    val receipt: LiveData<Receipt> get() = _receipt
+    //val receipt: LiveData<Receipt> get() = _receipt
 
     private val _client = MutableLiveData<Client>()
     val client: LiveData<Client> get() = _client

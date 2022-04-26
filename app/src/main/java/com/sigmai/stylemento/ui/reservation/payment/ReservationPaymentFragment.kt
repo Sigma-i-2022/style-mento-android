@@ -8,6 +8,7 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentReservationPaymentBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.util.TimeUtil
+import com.sigmai.stylemento.ui.reservation.adapter.TimeAdapter
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,5 +33,7 @@ class ReservationPaymentFragment : BaseFragment<FragmentReservationPaymentBindin
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.reservationPaymentServiceTimeRecycler.adapter = TimeAdapter(viewModel.client.value!!.reserveTimes, false)
     }
 }

@@ -12,6 +12,8 @@ import com.sigmai.stylemento.global.util.TimeUtil
 import com.sigmai.stylemento.ui.reservation.adapter.TimeSelectorAdapter
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class ReservationTimeSetFragment : BaseFragment<FragmentReservationTimeSetBinding>() {
@@ -21,9 +23,9 @@ class ReservationTimeSetFragment : BaseFragment<FragmentReservationTimeSetBindin
     var date : String = ""
     override fun initState() {
         super.initState()
-        val email = arguments?.getString("Email")!!
-        val name = arguments?.getString("Name")!!
-        val url = arguments?.getString("Url")!!
+        val email = arguments?.getString("Email") ?: ""
+        val name = arguments?.getString("Name") ?: ""
+        val url = arguments?.getString("Url") ?: ""
         viewModel.setCoordinatorInfo(email, name, url)
     }
     override fun initDataBinding() {
@@ -53,7 +55,8 @@ class ReservationTimeSetFragment : BaseFragment<FragmentReservationTimeSetBindin
     private fun setCalendar() {
         val currentTime: Long = System.currentTimeMillis()
         binding.reservationCalendar.minDate = currentTime
-
+        val sdf = SimpleDateFormat("yyyy년 MM월 dd일", Locale.KOREA)
+        date = sdf.format(binding.reservationCalendar.date)
         binding.reservationCalendar.setOnDateChangeListener { _, year, month, dayOfMonth ->
             date = "${year}년 ${month+1}월 ${dayOfMonth}일"
         }
