@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.sigmai.stylemento.ui.reservation.viewModel.ReviewWriteViewModel" />
+            type="com.sigmai.stylemento.ui.reservation.write.ReviewWriteViewModel" />
     </data>
     <RelativeLayout
         android:layout_width="match_parent"

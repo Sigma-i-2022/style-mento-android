@@ -1,8 +1,6 @@
-package com.sigmai.stylemento.ui.reservation
+package com.sigmai.stylemento.ui.reservation.write
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -11,8 +9,6 @@ import com.sigmai.stylemento.data.model.ReviewItem
 import com.sigmai.stylemento.databinding.FragmentWriteReviewBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.constant.ReviewType
-import com.sigmai.stylemento.ui.reservation.adapter.TimeAdapter
-import com.sigmai.stylemento.ui.reservation.viewModel.ReviewWriteViewModel
 
 class ReviewWriteFragment : BaseFragment<FragmentWriteReviewBinding>() {
     override val layoutResourceId = R.layout.fragment_write_review

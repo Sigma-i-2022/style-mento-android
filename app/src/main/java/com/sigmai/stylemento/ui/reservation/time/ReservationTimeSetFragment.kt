@@ -1,7 +1,6 @@
-package com.sigmai.stylemento.ui.reservation
+package com.sigmai.stylemento.ui.reservation.time
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
@@ -13,7 +12,6 @@ import com.sigmai.stylemento.global.util.TimeUtil
 import com.sigmai.stylemento.ui.reservation.adapter.TimeSelectorAdapter
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.SimpleDateFormat
 
 @AndroidEntryPoint
 class ReservationTimeSetFragment : BaseFragment<FragmentReservationTimeSetBinding>() {

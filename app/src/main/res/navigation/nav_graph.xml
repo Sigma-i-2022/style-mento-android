@@ -98,7 +98,7 @@
     </fragment>
     <fragment
         android:id="@+id/reservation_time_page"
-        android:name="com.sigmai.stylemento.ui.reservation.ReservationTimeSetFragment"
+        android:name="com.sigmai.stylemento.ui.reservation.time.ReservationTimeSetFragment"
         android:label="reservation time page"
         tools:layout="@layout/fragment_reservation_time_set">
         <action
@@ -107,7 +107,7 @@
     </fragment>
     <fragment
         android:id="@+id/reservation_service_page"
-        android:name="com.sigmai.stylemento.ui.reservation.ReservationServiceSetFragment"
+        android:name="com.sigmai.stylemento.ui.reservation.service.ReservationServiceSetFragment"
         android:label="reservation service page"
         tools:layout="@layout/fragment_reservation_service_set">
         <action
@@ -116,7 +116,7 @@
     </fragment>
     <fragment
         android:id="@+id/reservation_payment_page"
-        android:name="com.sigmai.stylemento.ui.reservation.ReservationPaymentFragment"
+        android:name="com.sigmai.stylemento.ui.reservation.payment.ReservationPaymentFragment"
         android:label="reservation payment page"
         tools:layout="@layout/fragment_reservation_payment">
         <action
@@ -125,7 +125,7 @@
     </fragment>
     <fragment
         android:id="@+id/reservation_payment_complete_page"
-        android:name="com.sigmai.stylemento.ui.reservation.ReservationPaymentCompleteFragment"
+        android:name="com.sigmai.stylemento.ui.reservation.payment.ReservationPaymentCompleteFragment"
         android:label="reservation payment complete page"
         tools:layout="@layout/fragment_reservation_payment_complete">
         <action
@@ -139,7 +139,7 @@
     </fragment>
     <fragment
         android:id="@+id/reservation_list_page"
-        android:name="com.sigmai.stylemento.ui.reservation.ReservationListFragment"
+        android:name="com.sigmai.stylemento.ui.reservation.list.ReservationListFragment"
         android:label="reservation list page"
         tools:layout="@layout/fragment_reservation_list">
         <action
@@ -156,7 +156,7 @@
     </fragment>
     <fragment
         android:id="@+id/reservation_user_list_page"
-        android:name="com.sigmai.stylemento.ui.reservation.ReservationUserListFragment"
+        android:name="com.sigmai.stylemento.ui.reservation.list.ReservationUserListFragment"
         android:label="reservation list page"
         tools:layout="@layout/fragment_reservation_user_list">
         <action
@@ -176,7 +176,7 @@
     </fragment>
     <fragment
         android:id="@+id/reservation_cancel_page"
-        android:name="com.sigmai.stylemento.ui.reservation.ReservationCancelFragment"
+        android:name="com.sigmai.stylemento.ui.reservation.cancel.ReservationCancelFragment"
         android:label="reservation cancel page"
         tools:layout="@layout/fragment_reservation_cancel">
         <action
@@ -185,7 +185,7 @@
     </fragment>
     <fragment
         android:id="@+id/reservation_cancel_complete_page"
-        android:name="com.sigmai.stylemento.ui.reservation.ReservationCancelCompleteFragment"
+        android:name="com.sigmai.stylemento.ui.reservation.cancel.ReservationCancelCompleteFragment"
         android:label="reservation cancel complete page"
         tools:layout="@layout/fragment_reservation_cancel_complete">
         <action
@@ -196,7 +196,7 @@
     </fragment>
     <fragment
         android:id="@+id/reservation_cancel_user_page"
-        android:name="com.sigmai.stylemento.ui.reservation.ReservationCancelUserFragment"
+        android:name="com.sigmai.stylemento.ui.reservation.cancel.ReservationCancelUserFragment"
         android:label="reservation cancel user page"
         tools:layout="@layout/fragment_reservation_cancel">
         <action
@@ -205,7 +205,7 @@
     </fragment>
     <fragment
         android:id="@+id/reservation_cancel_user_complete_page"
-        android:name="com.sigmai.stylemento.ui.reservation.ReservationCancelUserCompleteFragment"
+        android:name="com.sigmai.stylemento.ui.reservation.cancel.ReservationCancelUserCompleteFragment"
         android:label="reservation cancel user complete page"
         tools:layout="@layout/fragment_reservation_cancel_user_complete">
         <action
@@ -222,7 +222,7 @@
     </fragment>
     <fragment
         android:id="@+id/write_review_page"
-        android:name="com.sigmai.stylemento.ui.reservation.ReviewWriteFragment"
+        android:name="com.sigmai.stylemento.ui.reservation.write.ReviewWriteFragment"
         android:label="write review page"
         tools:layout="@layout/fragment_write_review">
     </fragment>

@@ -7,7 +7,7 @@
             type="com.sigmai.stylemento.domain.entity.Receipt" />
         <variable
             name="viewModel"
-            type="com.sigmai.stylemento.ui.reservation.viewModel.ReservationCancelUserViewModel" />
+            type="com.sigmai.stylemento.ui.reservation.cancel.ReservationCancelUserViewModel" />
     </data>
     <RelativeLayout
         android:layout_width="match_parent"

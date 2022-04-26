@@ -1,15 +1,12 @@
-package com.sigmai.stylemento.ui.reservation
+package com.sigmai.stylemento.ui.reservation.cancel
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentReservationCancelBinding
 import com.sigmai.stylemento.global.base.BaseFragment
-import com.sigmai.stylemento.ui.reservation.viewModel.ReservationCancelViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 

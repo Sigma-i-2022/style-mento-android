@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.ui.reservation
+package com.sigmai.stylemento.ui.reservation.service
 
 import android.os.Bundle
 import android.text.Editable

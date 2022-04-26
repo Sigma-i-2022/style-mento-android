@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.ui.reservation
+package com.sigmai.stylemento.ui.reservation.list
 
 import android.os.Bundle
 import android.view.View
@@ -11,8 +11,8 @@ import com.sigmai.stylemento.domain.entity.Receipt
 import com.sigmai.stylemento.domain.entity.User
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.constant.ReceiptStateType
+import com.sigmai.stylemento.ui.reservation.InfoDialogFragment
 import com.sigmai.stylemento.ui.reservation.adapter.ReservationListAdapter
-import com.sigmai.stylemento.ui.reservation.viewModel.ReservationListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

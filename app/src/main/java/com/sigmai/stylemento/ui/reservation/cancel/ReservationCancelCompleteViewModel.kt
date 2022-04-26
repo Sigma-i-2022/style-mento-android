@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.ui.reservation.viewModel
+package com.sigmai.stylemento.ui.reservation.cancel
 
 import androidx.lifecycle.ViewModel
 import com.sigmai.stylemento.global.util.SingleLiveEvent

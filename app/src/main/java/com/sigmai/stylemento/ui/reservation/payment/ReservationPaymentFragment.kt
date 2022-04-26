@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.ui.reservation
+package com.sigmai.stylemento.ui.reservation.payment
 
 import android.os.Bundle
 import android.view.View

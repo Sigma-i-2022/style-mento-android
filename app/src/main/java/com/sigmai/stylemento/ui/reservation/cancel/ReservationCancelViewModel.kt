@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.ui.reservation.viewModel
+package com.sigmai.stylemento.ui.reservation.cancel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

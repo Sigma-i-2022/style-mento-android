@@ -1,4 +1,4 @@
-package com.sigmai.stylemento.ui.reservation.viewModel
+package com.sigmai.stylemento.ui.reservation.list
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,12 +13,15 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class ReservationUserListViewModel @Inject constructor() : ViewModel() {
+class ReservationListViewModel @Inject constructor() : ViewModel() {
     @Inject
     lateinit var reservationRepository: ReservationRepositoryImpl
 
     private val receipts = MutableLiveData<List<Common>>(listOf())
     val email = MutableLiveData<String>("")
+    val startBack = SingleLiveEvent<Any>()
+    val startInfo = SingleLiveEvent<Any>()
+
     fun requestReceipts(){
         viewModelScope.launch {
             withContext(Dispatchers.IO){
@@ -26,10 +29,13 @@ class ReservationUserListViewModel @Inject constructor() : ViewModel() {
             }
         }
     }
+    fun requestEmail(){
+        viewModelScope.launch {
+            withContext(Dispatchers.IO){
 
-    val startBack = SingleLiveEvent<Any>()
-    val startInfo = SingleLiveEvent<Any>()
-
+            }
+        }
+    }
     fun onBackClick(){
         startBack.call()
     }
