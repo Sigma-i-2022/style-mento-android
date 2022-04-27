@@ -3,6 +3,7 @@ package com.sigmai.stylemento.ui.mypage.client.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.response.lookBook.LookPage
 import com.sigmai.stylemento.databinding.ItemGridPieceBinding
+import java.lang.IllegalArgumentException
 
 class PieceGridAdapter : ListAdapter<LookPage, PieceGridAdapter.ViewHolder>(LookPageDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,8 +28,17 @@ class PieceGridAdapter : ListAdapter<LookPage, PieceGridAdapter.ViewHolder>(Look
             binding.executePendingBindings()
 
             binding.root.setOnClickListener {
-                val bundle = bundleOf("position" to adapterPosition)
-                it.findNavController().navigate(R.id.action_main_to_piece_scroll2, bundle)
+                navigate(it.findNavController())
+            }
+        }
+
+        fun navigate(controller: NavController) {
+            val bundle = bundleOf("position" to adapterPosition)
+            try {
+                controller.navigate(R.id.action_main_to_piece_scroll, bundle)
+            }
+            catch (e: IllegalArgumentException) {
+                controller.navigate(R.id.action_coordinator_page_to_piece_scroll, bundle)
             }
         }
 

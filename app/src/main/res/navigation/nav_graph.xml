@@ -38,7 +38,7 @@
             android:id="@+id/action_main_to_add_piece"
             app:destination="@id/add_piece" />
         <action
-            android:id="@+id/action_main_to_piece_scroll2"
+            android:id="@+id/action_main_to_piece_scroll"
             app:destination="@id/piece_scroll" />
         <action
             android:id="@+id/action_coordinator_page_to_setting_page"
@@ -86,6 +86,10 @@
         <action
             android:id="@+id/action_coordinator_page_to_reservation_time_page"
             app:destination="@id/reservation_time_page" />
+        <action
+            android:id="@+id/action_coordinator_page_to_piece_scroll"
+            app:destination="@id/piece_scroll" />
+
     </fragment>
     <fragment
         android:id="@+id/application_viewpager"
