@@ -30,7 +30,7 @@ class MyPageRepositoryImpl @Inject constructor(private val dataSource: MyPageDat
     override fun putMyPageCrdi(email: String, userId: String, intro: String): Boolean {
         return dataSource.putMyPageCrdi(email, userId, intro)
     }
-    override fun postMyPageImage(memberEmail: String, memberImageFile: MultipartBody.Part): Boolean {
-        return dataSource.postMyPageImage(memberEmail, memberImageFile)
+    override fun postMyPageImage(memberEmail: String, uuid: String): Boolean {
+        return dataSource.postMyPageImage(memberEmail, uuid)
     }
 }
