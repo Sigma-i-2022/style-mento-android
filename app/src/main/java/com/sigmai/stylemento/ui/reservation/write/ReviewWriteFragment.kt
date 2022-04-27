@@ -9,7 +9,9 @@ import com.sigmai.stylemento.data.model.ReviewItem
 import com.sigmai.stylemento.databinding.FragmentWriteReviewBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.constant.ReviewType
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ReviewWriteFragment : BaseFragment<FragmentWriteReviewBinding>() {
     override val layoutResourceId = R.layout.fragment_write_review
     private val viewModel : ReviewWriteViewModel by viewModels()
@@ -24,6 +26,7 @@ class ReviewWriteFragment : BaseFragment<FragmentWriteReviewBinding>() {
         }
         viewModel.startNext.observe(this) {
         }
+        setRating()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,6 +34,8 @@ class ReviewWriteFragment : BaseFragment<FragmentWriteReviewBinding>() {
     }
 
     private fun setRating(){
+        binding.reviewRatingBar.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->
+            viewModel.setStar(rating.toInt()) }
 
     }
 }
