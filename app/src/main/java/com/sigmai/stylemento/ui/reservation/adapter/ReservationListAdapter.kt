@@ -57,16 +57,16 @@ class ReservationListAdapter(val viewModel : ReservationListViewModel) :
                     binding.reservationListStateText.text = "구매확정"
                     binding.reservationListCancelButton.visibility = View.GONE
                     binding.reservationListServiceTimeRecycler.visibility = View.GONE
-                    showDecidedTime(item.reserveTimes[0])
+                    showDecidedTime(item.confirmReserveTime)
                     turnOffBuy()
                 }
                 ReceiptStateType.PAYBACK -> {
                     binding.reservationListStateText.text = "환불완료/대기"
                     binding.reservationListCancelButton.visibility = View.GONE
                     binding.reservationListRequestButton.visibility = View.VISIBLE
-                    if(item.reserveTimes.isNotEmpty()){
+                    if(item.confirmReserveTime != "" || item.confirmReserveTime != null){
                         binding.reservationListServiceTimeRecycler.visibility = View.GONE
-                        showDecidedTime(item.reserveTimes[0])
+                        showDecidedTime(item.confirmReserveTime)
                     }
                     turnOffReview()
                     turnOffBuy()
@@ -76,7 +76,7 @@ class ReservationListAdapter(val viewModel : ReservationListViewModel) :
                     binding.reservationListCancelButton.visibility = View.GONE
                     binding.reservationListRequestButton.visibility = View.GONE
                     binding.reservationListServiceTimeRecycler.visibility = View.GONE
-                    showDecidedTime(item.reserveTimes[0])
+                    showDecidedTime(item.confirmReserveTime)
                     turnOffReview()
                     turnOffBuy()
                 }
@@ -100,15 +100,14 @@ class ReservationListAdapter(val viewModel : ReservationListViewModel) :
             }
         }
         private fun getState(item : Common) : Int{
-
-            if(item.confirmPayYn == "True"){
+            if(item.reviewedYn == "Y"){
+                return ReceiptStateType.REVIEW_AFTER
+            }
+            if(item.confirmPayYn == "Y"){
                 return ReceiptStateType.GET_DECISION
             }
-            if(item.confirmResvYn == "True"){
+            if(item.confirmResvYn == "Y"){
                 return ReceiptStateType.ACCEPT_AFTER
-            }
-            if(item.reviewedYn == "True"){
-                return ReceiptStateType.REVIEW_AFTER
             }
             return ReceiptStateType.ACCEPT_BEFORE
         }
