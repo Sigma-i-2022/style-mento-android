@@ -17,7 +17,7 @@ class ReservationListViewModel @Inject constructor() : ViewModel() {
     @Inject
     lateinit var reservationRepository: ReservationRepositoryImpl
 
-    private val receipts = MutableLiveData<List<Common>>(listOf())
+    val receipts = MutableLiveData<List<Common>>(listOf())
     val email = MutableLiveData<String>("")
     val startBack = SingleLiveEvent<Any>()
     val startInfo = SingleLiveEvent<Any>()
@@ -29,13 +29,23 @@ class ReservationListViewModel @Inject constructor() : ViewModel() {
             }
         }
     }
-    fun requestEmail(){
+    fun postReservationClientPay(memberEmail: String, reservationSeq: Long){
         viewModelScope.launch {
+            var ack = false
             withContext(Dispatchers.IO){
-
+                ack = reservationRepository.postReservationClientPay(memberEmail, reservationSeq)
             }
         }
     }
+    fun postReservationCommonHide(memberEmail: String, reservationSeq: Long){
+        viewModelScope.launch {
+            var ack = false
+            withContext(Dispatchers.IO){
+                ack = reservationRepository.postReservationCommonHide(memberEmail, reservationSeq)
+            }
+        }
+    }
+
     fun onBackClick(){
         startBack.call()
     }

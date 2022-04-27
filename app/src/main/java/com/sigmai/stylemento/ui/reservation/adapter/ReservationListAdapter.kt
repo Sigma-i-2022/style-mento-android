@@ -3,22 +3,28 @@ package com.sigmai.stylemento.ui.reservation.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
+import com.sigmai.stylemento.data.model.response.reservation.Common
 import com.sigmai.stylemento.databinding.ItemReservationListBinding
 import com.sigmai.stylemento.domain.entity.Receipt
 import com.sigmai.stylemento.global.constant.ReceiptStateType
+import com.sigmai.stylemento.global.store.AuthenticationInformation
+import com.sigmai.stylemento.ui.reservation.list.ReservationListViewModel
 
 
-class ReservationListAdapter(private val dataSet: List<Receipt>) :
+class ReservationListAdapter(val viewModel : ReservationListViewModel) :
     RecyclerView.Adapter<ReservationListAdapter.ViewHolder>() {
+    private val dataSet = viewModel.receipts.value!!
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(dataSet[position], this, position)
+        holder.bind(dataSet[position], this, position, viewModel)
     }
 
     override fun getItemCount(): Int {
@@ -27,18 +33,18 @@ class ReservationListAdapter(private val dataSet: List<Receipt>) :
 
     class ViewHolder(val binding: ItemReservationListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Receipt, adapter: ReservationListAdapter, position: Int) {
+        fun bind(item: Common, adapter: ReservationListAdapter, position: Int, viewModel : ReservationListViewModel) {
             binding.item = item
-            setAdapter(item.timeList)
+            setAdapter(item.reserveTimes)
             binding(item)
-            setListener(adapter, position)
+            setListener(adapter, position, item, viewModel)
 
             binding.executePendingBindings()
         }
 
-        private fun binding(item: Receipt) {
+        private fun binding(item: Common) {
             binding.reservationListServicePriceText.text = item.price.toString()
-            when (item.state) {
+            when (getState(item)) {
                 ReceiptStateType.ACCEPT_BEFORE -> {
                     turnOffReview()
                     turnOffBuy()
@@ -51,24 +57,33 @@ class ReservationListAdapter(private val dataSet: List<Receipt>) :
                     binding.reservationListStateText.text = "구매확정"
                     binding.reservationListCancelButton.visibility = View.GONE
                     binding.reservationListServiceTimeRecycler.visibility = View.GONE
-                    showDecidedTime(item.decidedTime)
+                    showDecidedTime(item.reserveTimes[0])
                     turnOffBuy()
                 }
                 ReceiptStateType.PAYBACK -> {
                     binding.reservationListStateText.text = "환불완료/대기"
                     binding.reservationListCancelButton.visibility = View.GONE
                     binding.reservationListRequestButton.visibility = View.VISIBLE
-                    if(item.decidedTime != ""){
+                    if(item.reserveTimes.isNotEmpty()){
                         binding.reservationListServiceTimeRecycler.visibility = View.GONE
-                        showDecidedTime(item.decidedTime)
+                        showDecidedTime(item.reserveTimes[0])
                     }
+                    turnOffReview()
+                    turnOffBuy()
+                }
+                ReceiptStateType.REVIEW_AFTER -> {
+                    binding.reservationListStateText.text = "후기 작성 완료"
+                    binding.reservationListCancelButton.visibility = View.GONE
+                    binding.reservationListRequestButton.visibility = View.GONE
+                    binding.reservationListServiceTimeRecycler.visibility = View.GONE
+                    showDecidedTime(item.reserveTimes[0])
                     turnOffReview()
                     turnOffBuy()
                 }
             }
         }
 
-        private fun setListener(adapter: ReservationListAdapter, position: Int) {
+        private fun setListener(adapter: ReservationListAdapter, position: Int, item: Common, viewModel : ReservationListViewModel) {
             binding.reservationListCancelButton.setOnClickListener {
                 it.findNavController().navigate(R.id.action_reservation_list_page_to_reservation_cancel_page)
                 adapter.notifyItemChanged(position)
@@ -77,13 +92,26 @@ class ReservationListAdapter(private val dataSet: List<Receipt>) :
 
             }
             binding.reservationListBuyButton.setOnClickListener {
+                viewModel.postReservationClientPay(AuthenticationInformation.email.value!!, item.seq)
                 adapter.notifyItemChanged(position)
             }
             binding.reservationListReviewButton.setOnClickListener {
                 it.findNavController().navigate(R.id.action_reservation_list_page_to_write_review_page)
             }
         }
+        private fun getState(item : Common) : Int{
 
+            if(item.confirmPayYn == "True"){
+                return ReceiptStateType.GET_DECISION
+            }
+            if(item.confirmResvYn == "True"){
+                return ReceiptStateType.ACCEPT_AFTER
+            }
+            if(item.reviewedYn == "True"){
+                return ReceiptStateType.REVIEW_AFTER
+            }
+            return ReceiptStateType.ACCEPT_BEFORE
+        }
         private fun showDecidedTime(time : String){
             binding.reservationListDecidedTimeText.visibility = View.VISIBLE
             binding.reservationListDecidedTimeText.text = time
