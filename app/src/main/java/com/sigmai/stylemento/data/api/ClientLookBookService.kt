@@ -23,7 +23,7 @@ interface ClientLookBookService {
         @Query("topInfo") topInfo: String,
         @Query("bottomInfo") bottomInfo: String,
         @Query("shoeInfo") shoeInfo: String,
-        @Part imageFile: MultipartBody.Part
+        @Query("uuid") uuid: String
     ): Call<ResponseWrapper<Unit>>
 
     @GET("v1/api/lookPage/all")

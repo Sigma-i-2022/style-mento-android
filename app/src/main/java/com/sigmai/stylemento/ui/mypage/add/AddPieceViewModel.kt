@@ -89,7 +89,17 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
 
     private suspend fun addPiece() {
         withContext(Dispatchers.IO) {
-//            lookbookRepository.postLookPage()
+            lookbookRepository.postLookPage(
+                memberEmail = AuthenticationInformation.email.value!!,
+                explanation = description.value!!,
+                keyword1 = "WARM",
+                keyword2 = "COOL",
+                keyword3 = "MINIMAL",
+                topInfo = top.value!!,
+                bottomInfo = bottom.value!!,
+                shoeInfo = shoes.value!!,
+                uuid = ""
+            )
         }
     }
 }
