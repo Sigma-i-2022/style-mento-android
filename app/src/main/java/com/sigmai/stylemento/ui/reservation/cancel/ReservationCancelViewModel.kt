@@ -15,7 +15,9 @@ import javax.inject.Inject
 @HiltViewModel
 class ReservationCancelViewModel @Inject constructor() : ViewModel() {
     @Inject
-    lateinit var reservationRepository: CancelReservationRepositoryImpl
+    lateinit var cancelRepository: CancelReservationRepositoryImpl
+    @Inject
+    lateinit var reservationRepository: ReservationRepositoryImpl
 
     val email = MutableLiveData<String>("")
     val seq = MutableLiveData<Long>(0)
@@ -24,11 +26,18 @@ class ReservationCancelViewModel @Inject constructor() : ViewModel() {
     fun requestCancel(){
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                //reservationRepository.postReservationCommonHide(email.value!!, seq.value!!)
+                //cancelRepository.postCancelPayment(email.value!!, seq.value!!)
             }
         }
     }
-
+    fun postReservationCommonHide(memberEmail: String, reservationSeq: Long){
+        viewModelScope.launch {
+            var ack = false
+            withContext(Dispatchers.IO){
+                ack = reservationRepository.postReservationCommonHide(memberEmail, reservationSeq)
+            }
+        }
+    }
     val startBack = SingleLiveEvent<Any>()
     val startNext = SingleLiveEvent<Any>()
 
