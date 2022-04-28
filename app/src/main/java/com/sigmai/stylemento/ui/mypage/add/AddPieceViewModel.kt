@@ -6,25 +6,29 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.sigmai.stylemento.data.model.response.lookBook.LookPage
+import com.sigmai.stylemento.data.repository.image.ImageRepositoryImpl
 import com.sigmai.stylemento.data.repository.lookBook.LookBookRepositoryImpl
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
 import com.sigmai.stylemento.global.store.AuthenticationInformation
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
+import okhttp3.MultipartBody
 import javax.inject.Inject
 
 @HiltViewModel
 class AddPieceViewModel @Inject constructor() : ViewModel() {
     @Inject
     lateinit var myPageRepository: MyPageRepositoryImpl
-
     @Inject
     lateinit var lookbookRepository: LookBookRepositoryImpl
+    @Inject
+    lateinit var imageRepository: ImageRepositoryImpl
 
     val lookPage = MutableLiveData<LookPage>()
 
     val onFinishEvent = SingleLiveEvent<Any>()
+    val onImageEvent = SingleLiveEvent<Any>()
 
     val imageUrl = MutableLiveData("")
     val description = MutableLiveData("")
@@ -34,6 +38,7 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
     val tagList = MutableLiveData<List<String>>(listOf())
     val isNewPage = MutableLiveData(true)
     var lookPageId = -1L
+    var uuid = ""
 
     fun loadPiece(id: Long) {
         if(id < 0) return
@@ -82,7 +87,7 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
                 keyword3 = "MINIMAL",
                 topInfo = top.value!!,
                 bottomInfo = bottom.value!!,
-                shoeInfo = shoes.value!!
+                shoeInfo = shoes.value!!,
             )
         }
     }
@@ -98,8 +103,20 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
                 topInfo = top.value!!,
                 bottomInfo = bottom.value!!,
                 shoeInfo = shoes.value!!,
-                uuid = ""
+                uuid = uuid
             )
         }
+    }
+
+    fun uploadImage(file: MultipartBody.Part) {
+        viewModelScope.launch {
+            uuid = withContext(Dispatchers.IO) {
+                imageRepository.postImage(file)
+            }
+        }
+    }
+
+    fun onImageClick() {
+        onImageEvent.call()
     }
 }

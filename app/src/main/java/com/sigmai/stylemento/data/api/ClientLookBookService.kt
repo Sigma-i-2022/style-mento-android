@@ -15,7 +15,7 @@ interface ClientLookBookService {
 
     @POST("v1/api/lookPage")
     fun postLookPage(
-        @Query("memberEmail") memberEmail: String,
+        @Query("clientEmail") memberEmail: String,
         @Query("explanation") explanation: String,
         @Query("keyword1") keyword1: String,
         @Query("keyword2") keyword2: String,
