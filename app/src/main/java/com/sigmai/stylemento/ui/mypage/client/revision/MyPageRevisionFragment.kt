@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageRevisionBinding
 import com.sigmai.stylemento.global.base.BaseFragment
+import com.sigmai.stylemento.global.util.MultipartUtil
 import com.sigmai.stylemento.global.util.PathUtil
 import com.sigmai.stylemento.global.util.asRequestBody
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,19 +25,10 @@ class MyPageRevisionFragment : BaseFragment<FragmentMyPageRevisionBinding>() {
     private val viewModel: MyPageRevisionViewModel by viewModels()
 
     private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == RESULT_OK) {
-            try {
-                val uri = result.data?.data ?: return@registerForActivityResult
-                val filePath = PathUtil().getPath(requireContext(), uri)
-                val file = File(filePath!!)
-                val stream = context?.contentResolver?.openInputStream(uri)
-                val requestFile = stream!!.asRequestBody("multipart/form-data".toMediaType())
-                val image = MultipartBody.Part.createFormData("imageFile", file.name, requestFile)
-
-                viewModel.uploadImage(image)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+        val multipartUtil = MultipartUtil()
+        val image = multipartUtil.getMultipartBody(result, requireContext())
+        image?.let {
+            viewModel.uploadImage(image)
         }
     }
 
