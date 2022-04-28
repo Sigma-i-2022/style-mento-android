@@ -6,7 +6,7 @@ import com.sigmai.stylemento.databinding.FragmentBannerBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.ui.main.MainViewModel
 
-class BannerFragment(val img : Int, val position : Int) : BaseFragment<FragmentBannerBinding>() {
+class BannerFragment(val img : Int = R.drawable.banner_client_1, val position : Int = 0) : BaseFragment<FragmentBannerBinding>() {
     override val layoutResourceId = R.layout.fragment_banner
     private val mainViewModel: MainViewModel by activityViewModels()
 
