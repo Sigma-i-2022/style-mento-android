@@ -30,7 +30,7 @@ class MyPageDataSource @Inject constructor(){
         return service.putMyPageCrdi(email, userId, intro).execute().body()?.success ?: false
     }
 
-    fun postMyPageImage(memberEmail: String, memberImageFile: MultipartBody.Part) : Boolean{
-        return service.postMyPageImage(memberEmail, memberImageFile).execute().body()?.success ?: false
+    fun postMyPageImage(memberEmail: String, uuid: String) : Boolean{
+        return service.postMyPageImage(memberEmail, uuid).execute().body()?.success ?: false
     }
 }

@@ -29,6 +29,7 @@ class MyPageRevisionViewModel @Inject constructor() : ViewModel() {
 
     val user = MutableLiveData<MyPageClient>()
     val introduction = MutableLiveData("")
+    var uuid = "";
 
     fun getUserInfo() {
         viewModelScope.launch {
@@ -60,7 +61,8 @@ class MyPageRevisionViewModel @Inject constructor() : ViewModel() {
     fun uploadImage(file: MultipartBody.Part) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                val uuid = imageRepository.postImage(file)
+                uuid = imageRepository.postImage(file)
+                myPageRepository.postMyPageImage(AuthenticationInformation.email.value!!, uuid)
             }
         }
     }

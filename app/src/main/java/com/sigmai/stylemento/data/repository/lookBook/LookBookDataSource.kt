@@ -13,8 +13,8 @@ class LookBookDataSource @Inject constructor() {
         return service.getLookPage(lookSeq).execute().body()!!.data
     }
 
-    fun postLookPage(memberEmail: String, explanation: String, keyword1: String, keyword2: String, keyword3: String, topInfo: String, bottomInfo: String, shoeInfo: String, imageFile: MultipartBody.Part) : Boolean{
-        return service.postLookPage(memberEmail, explanation, keyword1, keyword2, keyword3, topInfo, bottomInfo, shoeInfo, imageFile).execute().body()?.success ?: false
+    fun postLookPage(memberEmail: String, explanation: String, keyword1: String, keyword2: String, keyword3: String, topInfo: String, bottomInfo: String, shoeInfo: String, uuid: String) : Boolean{
+        return service.postLookPage(memberEmail, explanation, keyword1, keyword2, keyword3, topInfo, bottomInfo, shoeInfo, uuid).execute().body()?.success ?: false
     }
 
     fun getLookPageAll(email: String, page: Int) : List<LookPage>{

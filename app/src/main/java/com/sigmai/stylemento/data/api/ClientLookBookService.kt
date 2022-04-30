@@ -15,7 +15,7 @@ interface ClientLookBookService {
 
     @POST("v1/api/lookPage")
     fun postLookPage(
-        @Query("memberEmail") memberEmail: String,
+        @Query("clientEmail") memberEmail: String,
         @Query("explanation") explanation: String,
         @Query("keyword1") keyword1: String,
         @Query("keyword2") keyword2: String,
@@ -23,7 +23,7 @@ interface ClientLookBookService {
         @Query("topInfo") topInfo: String,
         @Query("bottomInfo") bottomInfo: String,
         @Query("shoeInfo") shoeInfo: String,
-        @Part imageFile: MultipartBody.Part
+        @Query("uuid") uuid: String
     ): Call<ResponseWrapper<Unit>>
 
     @GET("v1/api/lookPage/all")

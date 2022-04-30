@@ -42,10 +42,9 @@ interface MyPageService {
         @Query("intro") intro: String
     ): Call<ResponseWrapper<Unit>>
 
-    @Multipart
     @POST("v1/api/mypage/image")
     fun postMyPageImage(
         @Query("memberEmail") memberEmail: String,
-        @Part memberImageFile: MultipartBody.Part
+        @Query("uuid") uuid: String
     ): Call<ResponseWrapper<Unit>>
 }

@@ -4,6 +4,8 @@ import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.findNavController
+import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.response.lookBook.LookPage
 import com.sigmai.stylemento.data.model.response.myPage.MyPageCrdi
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
@@ -82,5 +84,9 @@ class CoordinatorPageViewModel
 //        val bundle = bundleOf("id" to id)
 //        val navController = view.findNavController()
 //        navController.navigate(R.id.action_coordinator_page_piece_scroll_to_add_piece, bundle)
+    }
+
+    fun onAddPiece(view: View) {
+        view.findNavController().navigate(R.id.action_main_to_add_piece)
     }
 }

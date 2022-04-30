@@ -20,9 +20,9 @@ class LookBookRepositoryImpl @Inject constructor(private val dataSource: LookBoo
         topInfo: String,
         bottomInfo: String,
         shoeInfo: String,
-        imageFile: MultipartBody.Part
+        uuid: String
     ): Boolean {
-        return dataSource.postLookPage(memberEmail, explanation, keyword1, keyword2, keyword3, topInfo, bottomInfo, shoeInfo, imageFile)
+        return dataSource.postLookPage(memberEmail, explanation, keyword1, keyword2, keyword3, topInfo, bottomInfo, shoeInfo, uuid)
     }
 
     override fun getLookPageAll(email: String, page: Int): List<LookPage> {

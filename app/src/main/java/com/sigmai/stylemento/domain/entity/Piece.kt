@@ -42,15 +42,15 @@ data class Piece(
         fun from(work: Work) : Piece {
             return Piece(
                 id = work.crdiWorkSeq,
-                imageUrl = work.imagePathUrl,
-                content = work.explanation,
+                imageUrl = work.imagePathUrl ?: "",
+                content = work.explanation ?: "",
                 tags = listOf(),
-                time = work.registDate,
-                height = work.height,
-                weight = work.weight,
-                top = work.topInfo,
-                bottom = work.bottomInfo,
-                shoes = work.shoeInfo,
+                time = work.registDate ?: "",
+                height = work.height ?: "",
+                weight = work.weight ?: "",
+                top = work.topInfo ?: "",
+                bottom = work.bottomInfo ?: "",
+                shoes = work.shoeInfo ?: "",
                 isClient = false
             )
         }
