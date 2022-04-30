@@ -31,8 +31,8 @@ class LookBookRepositoryImpl @Inject constructor(private val dataSource: LookBoo
     override fun deleteLookPage(lookSeq: Long): Boolean {
         return dataSource.deleteLookPage(lookSeq)
     }
-    override fun putLookPageImage(lookSeq: Long, requestImage: MultipartBody.Part): Boolean {
-        return dataSource.putLookPageImage(lookSeq, requestImage)
+    override fun putLookPageImage(lookSeq: Long, uuid: String): Boolean {
+        return dataSource.putLookPageImage(lookSeq, uuid)
     }
     override fun putLookPageInfo(
         lookSeq: Long,

@@ -2,6 +2,7 @@ package com.sigmai.stylemento.data.repository.lookBook
 
 import com.sigmai.stylemento.data.api.ClientLookBookService
 import com.sigmai.stylemento.data.factory.RetrofitServiceFactory
+import com.sigmai.stylemento.data.model.request.lookbook.StringWrapper
 import com.sigmai.stylemento.data.model.response.lookBook.LookPage
 import okhttp3.MultipartBody
 import javax.inject.Inject
@@ -25,8 +26,8 @@ class LookBookDataSource @Inject constructor() {
         return service.deleteLookPage(lookSeq).execute().body()?.success ?: false
     }
 
-    fun putLookPageImage(lookSeq: Long, requestImage: MultipartBody.Part) : Boolean{
-        return service.putLookPageImage(lookSeq, requestImage).execute().body()?.success ?: false
+    fun putLookPageImage(lookSeq: Long, uuid: String) : Boolean{
+        return service.putLookPageImage(lookSeq, StringWrapper(uuid)).execute().body()?.success ?: false
     }
 
     fun putLookPageInfo(lookSeq: Long, clientEmail: String, explanation: String, keyword1: String, keyword2: String, keyword3: String, topInfo: String, bottomInfo: String, shoeInfo: String) : Boolean {

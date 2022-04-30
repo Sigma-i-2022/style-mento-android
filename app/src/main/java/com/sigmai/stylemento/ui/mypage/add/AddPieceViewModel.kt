@@ -89,6 +89,10 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
                 bottomInfo = bottom.value!!,
                 shoeInfo = shoes.value!!,
             )
+            lookbookRepository.putLookPageImage(
+                lookSeq = lookPageId,
+                uuid = uuid
+            )
         }
     }
 
