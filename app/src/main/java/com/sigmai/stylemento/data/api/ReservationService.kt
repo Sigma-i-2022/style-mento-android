@@ -11,28 +11,21 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface ReservationService {
+    @GET("v1/api/reservation")
+    fun getReservationCommon(
+        @Query("seq") seq: Long
+    ): Call<ResponseWrapper<Common>>
+
     @POST("v1/api/reservation/client")
     fun postReservationClient(
         @Body reserveReq: Client
     ): Call<ResponseWrapper<Unit>>
-
-//    @POST("v1/api/reservation/client/cancel")
-//    fun postReservationClientCancel(
-//        @Query("clientId") clientId: String,
-//        @Query("reservationSeq") reservationSeq: Long,
-//        @Query("reason") reason: String,
-//    ): Call<ResponseWrapper<Unit>>
 
     @POST("v1/api/reservation/client/pay")
     fun postReservationClientPay(
         @Query("clientId") clientId: String,
         @Query("reservationSeq") reservationSeq: Long,
     ): Call<ResponseWrapper<Unit>>
-
-//    @GET("v1/api/reservation/common/all")
-//    fun getReservationCommonAll(
-//
-//    ): Call<ResponseWrapper<List<Common>>>
 
     @POST("v1/api/reservation/common/hide")
     fun postReservationCommonHide(
@@ -46,13 +39,6 @@ interface ReservationService {
         @Query("page") page: Int,
         @Query("size") size: Int
     ): Call<ResponseWrapper<List<Common>>>
-
-//    @POST("v1/api/reservation/crdi/cancel")
-//    fun postReservationCrdiCancel(
-//        @Query("crdiId") crdiId: String,
-//        @Query("reservationSeq") reservationSeq: Long,
-//        @Query("reason") reason: String,
-//    ): Call<ResponseWrapper<Unit>>
 
     @POST("v1/api/reservation/crdi/fix")
     fun postReservationCrdiFix(
