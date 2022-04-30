@@ -3,6 +3,7 @@ package com.sigmai.stylemento.ui.reservation.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -96,7 +97,8 @@ class ReservationListAdapter(val viewModel : ReservationListViewModel) :
                 adapter.notifyItemChanged(position)
             }
             binding.reservationListReviewButton.setOnClickListener {
-                it.findNavController().navigate(R.id.action_reservation_list_page_to_write_review_page)
+                val bundle = bundleOf("seq" to item.seq)
+                it.findNavController().navigate(R.id.action_reservation_list_page_to_write_review_page, bundle)
             }
         }
         private fun getState(item : Common) : Int{
