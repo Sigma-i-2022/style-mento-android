@@ -101,7 +101,7 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
             }
 
             if(AuthenticationInformation.userType == AuthenticationInformation.TYPE_COORDINATOR) {
-                workRepository.
+                workRepository
             }
         }
     }

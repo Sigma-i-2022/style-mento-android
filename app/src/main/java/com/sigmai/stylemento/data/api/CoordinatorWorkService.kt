@@ -46,5 +46,5 @@ interface CoordinatorWorkService {
         @Query("keyword1") keyword1: String,
         @Query("keyword2") keyword2: String,
         @Query("keyword3") keyword3: String
-    )
+    ): Call<ResponseWrapper<Unit>>
 }
