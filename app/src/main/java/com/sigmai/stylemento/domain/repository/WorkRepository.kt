@@ -1,11 +1,12 @@
 package com.sigmai.stylemento.domain.repository
 
+import com.sigmai.stylemento.data.model.response.lookBook.LookPage
 import com.sigmai.stylemento.data.model.response.work.Coordinator
 import com.sigmai.stylemento.data.model.response.work.Work
 import okhttp3.MultipartBody
 
 interface WorkRepository {
-    fun getCrdiWork(workSeq: Long): Boolean
+    fun getCrdiWork(workSeq: Long): LookPage
     fun postCrdiWork(
         crdiEmail: String,
         explanation: String,

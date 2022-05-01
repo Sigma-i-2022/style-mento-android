@@ -1,5 +1,6 @@
 package com.sigmai.stylemento.data.repository.work
 
+import com.sigmai.stylemento.data.model.response.lookBook.LookPage
 import com.sigmai.stylemento.data.model.response.work.Coordinator
 import com.sigmai.stylemento.data.model.response.work.Work
 import com.sigmai.stylemento.domain.repository.WorkRepository
@@ -8,7 +9,7 @@ import javax.inject.Inject
 
 class WorkRepositoryImpl @Inject constructor(private val dataSource: WorkDataSource) :
     WorkRepository {
-    override fun getCrdiWork(workSeq: Long): Boolean {
+    override fun getCrdiWork(workSeq: Long): LookPage {
         return dataSource.getCrdiWork(workSeq)
     }
 

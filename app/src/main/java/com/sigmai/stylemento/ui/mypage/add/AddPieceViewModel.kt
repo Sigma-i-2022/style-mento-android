@@ -52,7 +52,8 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
 
         viewModelScope.launch {
             val piece = withContext(Dispatchers.IO) {
-                lookbookRepository.getLookPage(id)
+                if(AuthenticationInformation.userType == AuthenticationInformation.TYPE_CLIENT) lookbookRepository.getLookPage(id)
+                else workRepository.getCrdiWork(id)
             }
             setDataFromPiece(piece)
             lookPage.value = piece
@@ -114,6 +115,7 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
                     keyword2 = "COOL",
                     keyword3 = "MINIMAL"
                 )
+//                workRepository.putCrdiWorkImage(uuid)
             }
         }
     }
