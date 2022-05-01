@@ -5,6 +5,8 @@ import com.sigmai.stylemento.data.factory.RetrofitServiceFactory
 import com.sigmai.stylemento.data.model.response.lookBook.LookPage
 import com.sigmai.stylemento.data.model.response.work.Coordinator
 import com.sigmai.stylemento.data.model.response.work.Work
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody
 import javax.inject.Inject
 
 class WorkDataSource @Inject constructor() {
@@ -75,6 +77,18 @@ class WorkDataSource @Inject constructor() {
             keyword1,
             keyword2,
             keyword3
+        ).execute().body()!!.success
+    }
+
+    fun putCrdiWorkImage(
+        workSeq: Long,
+        uuid: String
+    ): Boolean {
+        val data = RequestBody.create("application/json".toMediaType(), uuid)
+
+        return service.putCrdiWorkImage(
+            workSeq,
+            data
         ).execute().body()!!.success
     }
 }

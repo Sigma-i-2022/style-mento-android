@@ -4,11 +4,9 @@ import com.sigmai.stylemento.data.model.ResponseWrapper
 import com.sigmai.stylemento.data.model.response.lookBook.LookPage
 import com.sigmai.stylemento.data.model.response.work.Coordinator
 import com.sigmai.stylemento.data.model.response.work.Work
+import okhttp3.RequestBody
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.PUT
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface CoordinatorWorkService {
     @GET("v1/api/crdi/work")
@@ -48,5 +46,11 @@ interface CoordinatorWorkService {
         @Query("keyword1") keyword1: String,
         @Query("keyword2") keyword2: String,
         @Query("keyword3") keyword3: String
+    ): Call<ResponseWrapper<Unit>>
+
+    @PUT("v1/api/crdi/work/updateImg")
+    fun putCrdiWorkImage(
+        @Query("workSeq") workSeq: Long,
+        @Body uuid: RequestBody
     ): Call<ResponseWrapper<Unit>>
 }

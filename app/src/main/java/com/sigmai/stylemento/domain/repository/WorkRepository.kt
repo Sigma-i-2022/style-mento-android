@@ -35,4 +35,8 @@ interface WorkRepository {
         keyword2: String,
         keyword3: String
     ) : Boolean
+    fun putCrdiWorkImage(
+        workSeq: Long,
+        uuid: String
+    ) : Boolean
 }

@@ -115,7 +115,7 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
                     keyword2 = "COOL",
                     keyword3 = "MINIMAL"
                 )
-//                workRepository.putCrdiWorkImage(uuid)
+                workRepository.putCrdiWorkImage(lookPageId, uuid)
             }
         }
     }

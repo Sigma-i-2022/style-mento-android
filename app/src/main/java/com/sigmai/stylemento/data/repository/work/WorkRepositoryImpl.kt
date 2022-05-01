@@ -76,4 +76,11 @@ class WorkRepositoryImpl @Inject constructor(private val dataSource: WorkDataSou
             keyword3
         )
     }
+
+    override fun putCrdiWorkImage(
+        workSeq: Long,
+        uuid: String
+    ) : Boolean {
+        return dataSource.putCrdiWorkImage(workSeq, uuid)
+    }
 }
