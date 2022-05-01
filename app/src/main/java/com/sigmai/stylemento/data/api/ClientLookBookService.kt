@@ -1,12 +1,10 @@
 package com.sigmai.stylemento.data.api
 
 import com.sigmai.stylemento.data.model.ResponseWrapper
-import com.sigmai.stylemento.data.model.request.lookbook.StringWrapper
 import com.sigmai.stylemento.data.model.response.lookBook.LookPage
-import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
-import java.io.File
 
 interface ClientLookBookService {
     @GET("v1/api/lookPage")
@@ -41,7 +39,7 @@ interface ClientLookBookService {
     @PUT("v1/api/lookPage/image")
     fun putLookPageImage(
         @Query("lookSeq") lookSeq: Long,
-        @Body uuid: StringWrapper
+        @Body uuid: RequestBody
     ): Call<ResponseWrapper<Unit>>
 
     @PUT("v1/api/lookPage/info")
