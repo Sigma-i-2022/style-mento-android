@@ -3,6 +3,7 @@ package com.sigmai.stylemento.ui.reservation.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -57,16 +58,16 @@ class ReservationListAdapter(val viewModel : ReservationListViewModel) :
                     binding.reservationListStateText.text = "구매확정"
                     binding.reservationListCancelButton.visibility = View.GONE
                     binding.reservationListServiceTimeRecycler.visibility = View.GONE
-                    showDecidedTime(item.reserveTimes[0])
+                    showDecidedTime(item.confirmReserveTime)
                     turnOffBuy()
                 }
                 ReceiptStateType.PAYBACK -> {
                     binding.reservationListStateText.text = "환불완료/대기"
                     binding.reservationListCancelButton.visibility = View.GONE
                     binding.reservationListRequestButton.visibility = View.VISIBLE
-                    if(item.reserveTimes.isNotEmpty()){
+                    if(item.confirmReserveTime != "" || item.confirmReserveTime != null){
                         binding.reservationListServiceTimeRecycler.visibility = View.GONE
-                        showDecidedTime(item.reserveTimes[0])
+                        showDecidedTime(item.confirmReserveTime)
                     }
                     turnOffReview()
                     turnOffBuy()
@@ -76,7 +77,7 @@ class ReservationListAdapter(val viewModel : ReservationListViewModel) :
                     binding.reservationListCancelButton.visibility = View.GONE
                     binding.reservationListRequestButton.visibility = View.GONE
                     binding.reservationListServiceTimeRecycler.visibility = View.GONE
-                    showDecidedTime(item.reserveTimes[0])
+                    showDecidedTime(item.confirmReserveTime)
                     turnOffReview()
                     turnOffBuy()
                 }
@@ -96,19 +97,19 @@ class ReservationListAdapter(val viewModel : ReservationListViewModel) :
                 adapter.notifyItemChanged(position)
             }
             binding.reservationListReviewButton.setOnClickListener {
-                it.findNavController().navigate(R.id.action_reservation_list_page_to_write_review_page)
+                val bundle = bundleOf("seq" to item.seq)
+                it.findNavController().navigate(R.id.action_reservation_list_page_to_write_review_page, bundle)
             }
         }
         private fun getState(item : Common) : Int{
-
-            if(item.confirmPayYn == "True"){
+            if(item.reviewedYn == "Y"){
+                return ReceiptStateType.REVIEW_AFTER
+            }
+            if(item.confirmPayYn == "Y"){
                 return ReceiptStateType.GET_DECISION
             }
-            if(item.confirmResvYn == "True"){
+            if(item.confirmResvYn == "Y"){
                 return ReceiptStateType.ACCEPT_AFTER
-            }
-            if(item.reviewedYn == "True"){
-                return ReceiptStateType.REVIEW_AFTER
             }
             return ReceiptStateType.ACCEPT_BEFORE
         }

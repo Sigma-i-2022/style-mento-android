@@ -8,25 +8,18 @@ import javax.inject.Inject
 
 class ReservationRepositoryImpl @Inject constructor(private val dataSource: ReservationDataSource) :
     ReservationRepository {
+
+    override fun getReservationCommon(seq : Long): Common {
+        return dataSource.getReservationCommon(seq)
+    }
+
     override fun postReservationClient(reserveReq: Client): Boolean {
         return dataSource.postReservationClient(reserveReq)
     }
 
-//    override fun postReservationClientCancel(
-//        clientId: String,
-//        reservationSeq: Long,
-//        reason: String
-//    ): Boolean {
-//        return dataSource.postReservationClientCancel(clientId, reservationSeq, reason)
-//    }
-
     override fun postReservationClientPay(memberEmail: String, reservationSeq: Long): Boolean {
         return dataSource.postReservationClientPay(memberEmail, reservationSeq)
     }
-
-//    override fun getReservationCommonAll(): List<Common> {
-//        return dataSource.getReservationCommonAll()
-//    }
 
     override fun postReservationCommonHide(memberEmail: String, reservationSeq: Long): Boolean {
         return dataSource.postReservationCommonHide(memberEmail, reservationSeq)
@@ -35,14 +28,6 @@ class ReservationRepositoryImpl @Inject constructor(private val dataSource: Rese
     override fun getReservationCommonList(email: String, page : Int, size : Int): List<Common> {
         return dataSource.getReservationCommonList(email, page, size)
     }
-
-//    override fun postReservationCrdiCancel(
-//        crdiId: String,
-//        reservationSeq: Long,
-//        reason: String
-//    ): Boolean {
-//        return dataSource.postReservationCrdiCancel(crdiId, reservationSeq, reason)
-//    }
 
     override fun postReservationCrdiFix(
         crdiId: String,

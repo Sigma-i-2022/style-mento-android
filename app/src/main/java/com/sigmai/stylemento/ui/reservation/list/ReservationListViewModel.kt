@@ -37,14 +37,6 @@ class ReservationListViewModel @Inject constructor() : ViewModel() {
             }
         }
     }
-    fun postReservationCommonHide(memberEmail: String, reservationSeq: Long){
-        viewModelScope.launch {
-            var ack = false
-            withContext(Dispatchers.IO){
-                ack = reservationRepository.postReservationCommonHide(memberEmail, reservationSeq)
-            }
-        }
-    }
 
     fun onBackClick(){
         startBack.call()

@@ -17,11 +17,8 @@ class ReservationCancelFragment : BaseFragment<FragmentReservationCancelBinding>
 
     override fun initState() {
         super.initState()
-        val position = arguments?.getInt("position")
-//        val receipt = getReceiptUseCase().invoke(position)
-//        binding.item = receipt
-//        binding.reservationCancelServicePriceText.text = receipt.price.toString()
-//        binding.reservationCancelPayWayPriceText.text = receipt.price.toString()
+        viewModel.requestCommon(arguments?.getLong("seq") ?: 0)
+        viewModel.requestCrdiInfo(arguments?.getString("email") ?: "")
     }
     override fun initDataBinding() {
         super.initDataBinding()
@@ -31,6 +28,8 @@ class ReservationCancelFragment : BaseFragment<FragmentReservationCancelBinding>
             findNavController().navigateUp()
         }
         viewModel.startNext.observe(this) {
+            viewModel.requestCancel()
+            viewModel.postReservationCommonHide()
             findNavController().navigate(R.id.action_reservation_cancel_page_to_reservation_cancel_complete_page)
         }
         viewModel.content.observe(this){
@@ -42,6 +41,9 @@ class ReservationCancelFragment : BaseFragment<FragmentReservationCancelBinding>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         checkButtonEnabled("")
+
+        binding.reservationCancelPayWayPriceText.text = viewModel.common.value?.price.toString()
+        binding.reservationCancelServicePriceText.text = viewModel.common.value?.price.toString()
     }
 
     private fun checkButtonEnabled(text : String) {
