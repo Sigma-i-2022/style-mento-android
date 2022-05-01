@@ -4,7 +4,6 @@ import com.sigmai.stylemento.data.api.CoordinatorWorkService
 import com.sigmai.stylemento.data.factory.RetrofitServiceFactory
 import com.sigmai.stylemento.data.model.response.work.Coordinator
 import com.sigmai.stylemento.data.model.response.work.Work
-import okhttp3.MultipartBody
 import javax.inject.Inject
 
 class WorkDataSource @Inject constructor() {
@@ -62,7 +61,7 @@ class WorkDataSource @Inject constructor() {
         keyword1: String,
         keyword2: String,
         keyword3: String
-    ) : Boolean {
+    ): Boolean {
         return service.putCrdiWork(
             workSeq,
             crdiEmail,
@@ -74,6 +73,7 @@ class WorkDataSource @Inject constructor() {
             shoeInfo,
             keyword1,
             keyword2,
-            keyword3).execute().body()!!.success
+            keyword3
+        ).execute().body()!!.success
     }
 }
