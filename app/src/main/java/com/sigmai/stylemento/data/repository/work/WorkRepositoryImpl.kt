@@ -33,10 +33,10 @@ class WorkRepositoryImpl @Inject constructor(private val dataSource: WorkDataSou
             topInfo,
             bottomInfo,
             shoeInfo,
-            uuid,
             keyword1,
             keyword2,
-            keyword3
+            keyword3,
+            uuid
         )
     }
 
