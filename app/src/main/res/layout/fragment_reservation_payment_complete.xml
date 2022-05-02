@@ -95,7 +95,7 @@
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:background="@drawable/bg_circle"
                     android:backgroundTint="@color/gray_d"
-                    android:src="@{viewModel.coordinatorUrl}"
+                    app:imageUrlCircle="@{viewModel.coordinatorUrl}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/reservation_complete_coordinator_text" />
 

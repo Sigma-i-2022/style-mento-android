@@ -66,7 +66,7 @@
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:background="@drawable/bg_circle"
                     android:backgroundTint="@color/gray_d"
-                    android:src="@{viewModel.userUrl}"
+                    app:imageUrlCircle="@{viewModel.userUrl}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/reservation_payment_payer_text" />
 
