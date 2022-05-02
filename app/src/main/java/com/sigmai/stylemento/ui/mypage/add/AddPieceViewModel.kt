@@ -9,6 +9,8 @@ import com.sigmai.stylemento.data.model.response.lookBook.LookPage
 import com.sigmai.stylemento.data.repository.image.ImageRepositoryImpl
 import com.sigmai.stylemento.data.repository.lookBook.LookBookRepositoryImpl
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
+import com.sigmai.stylemento.data.repository.work.WorkRepositoryImpl
+import com.sigmai.stylemento.domain.repository.WorkRepository
 import com.sigmai.stylemento.global.store.AuthenticationInformation
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,6 +26,8 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
     lateinit var lookbookRepository: LookBookRepositoryImpl
     @Inject
     lateinit var imageRepository: ImageRepositoryImpl
+    @Inject
+    lateinit var workRepository: WorkRepositoryImpl
 
     val lookPage = MutableLiveData<LookPage>()
 
@@ -48,7 +52,8 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
 
         viewModelScope.launch {
             val piece = withContext(Dispatchers.IO) {
-                lookbookRepository.getLookPage(id)
+                if(AuthenticationInformation.userType == AuthenticationInformation.TYPE_CLIENT) lookbookRepository.getLookPage(id)
+                else workRepository.getCrdiWork(id)
             }
             setDataFromPiece(piece)
             lookPage.value = piece
@@ -78,33 +83,74 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
 
     private suspend fun updatePiece() {
         withContext(Dispatchers.IO) {
-            lookbookRepository.putLookPageInfo(
-                lookSeq = lookPageId,
-                clientEmail = AuthenticationInformation.email.value!!,
-                explanation = description.value!!,
-                keyword1 = "WARM",
-                keyword2 = "COOL",
-                keyword3 = "MINIMAL",
-                topInfo = top.value!!,
-                bottomInfo = bottom.value!!,
-                shoeInfo = shoes.value!!,
-            )
+            if(AuthenticationInformation.userType == AuthenticationInformation.TYPE_CLIENT) {
+                lookbookRepository.putLookPageInfo(
+                    lookSeq = lookPageId,
+                    clientEmail = AuthenticationInformation.email.value!!,
+                    explanation = description.value!!,
+                    topInfo = top.value!!,
+                    bottomInfo = bottom.value!!,
+                    shoeInfo = shoes.value!!,
+                    keyword1 = "WARM",
+                    keyword2 = "COOL",
+                    keyword3 = "MINIMAL"
+                )
+                lookbookRepository.putLookPageImage(
+                    lookSeq = lookPageId,
+                    uuid = uuid
+                )
+            }
+
+            if(AuthenticationInformation.userType == AuthenticationInformation.TYPE_COORDINATOR) {
+                workRepository.putCrdiWork(
+                    workSeq = lookPageId,
+                    crdiEmail = AuthenticationInformation.email.value!!,
+                    explanation = description.value!!,
+                    topInfo = top.value!!,
+                    bottomInfo = bottom.value!!,
+                    shoeInfo = shoes.value!!,
+                    height = "0",
+                    weight = "0",
+                    keyword1 = "WARM",
+                    keyword2 = "COOL",
+                    keyword3 = "MINIMAL"
+                )
+                workRepository.putCrdiWorkImage(lookPageId, uuid)
+            }
         }
     }
 
     private suspend fun addPiece() {
         withContext(Dispatchers.IO) {
-            lookbookRepository.postLookPage(
-                memberEmail = AuthenticationInformation.email.value!!,
-                explanation = description.value!!,
-                keyword1 = "WARM",
-                keyword2 = "COOL",
-                keyword3 = "MINIMAL",
-                topInfo = top.value!!,
-                bottomInfo = bottom.value!!,
-                shoeInfo = shoes.value!!,
-                uuid = uuid
-            )
+            if(AuthenticationInformation.userType == AuthenticationInformation.TYPE_CLIENT) {
+                lookbookRepository.postLookPage(
+                    memberEmail = AuthenticationInformation.email.value!!,
+                    explanation = description.value!!,
+                    keyword1 = "WARM",
+                    keyword2 = "COOL",
+                    keyword3 = "MINIMAL",
+                    topInfo = top.value!!,
+                    bottomInfo = bottom.value!!,
+                    shoeInfo = shoes.value!!,
+                    uuid = uuid
+                )
+            }
+
+            if(AuthenticationInformation.userType == AuthenticationInformation.TYPE_COORDINATOR) {
+                workRepository.postCrdiWork(
+                    crdiEmail = AuthenticationInformation.email.value!!,
+                    explanation = description.value!!,
+                    topInfo = top.value!!,
+                    bottomInfo = bottom.value!!,
+                    shoeInfo = shoes.value!!,
+                    weight = "0",
+                    height = "0",
+                    keyword1 = "WARM",
+                    keyword2 = "COOL",
+                    keyword3 = "MINIMAL",
+                    uuid = uuid
+                )
+            }
         }
     }
 
