@@ -16,11 +16,8 @@ class ReservationCancelUserFragment : BaseFragment<FragmentReservationCancelUser
 
     override fun initState() {
         super.initState()
-        val position = arguments?.getInt("position")
-//        val receipt = getReceiptUseCase().invoke(position)
-//        binding.item = receipt
-//        binding.reservationCancelServicePriceText.text = receipt.price.toString()
-//        binding.reservationCancelPayWayPriceText.text = receipt.price.toString()
+        viewModel.requestCommon(arguments?.getLong("seq") ?: 0)
+        viewModel.requestUserInfo(arguments?.getString("email") ?: "")
     }
     override fun initDataBinding() {
         super.initDataBinding()
@@ -30,6 +27,8 @@ class ReservationCancelUserFragment : BaseFragment<FragmentReservationCancelUser
             findNavController().navigateUp()
         }
         viewModel.startNext.observe(this) {
+            viewModel.requestCancel()
+            viewModel.postReservationCommonHide()
             findNavController().navigate(R.id.action_reservation_cancel_user_page_to_reservation_cancel_user_complete_page)
         }
         viewModel.content.observe(this){
