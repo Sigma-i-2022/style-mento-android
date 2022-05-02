@@ -7,6 +7,7 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentApplicationViewPagerBinding
 import com.sigmai.stylemento.di.AppConfigs
 import com.sigmai.stylemento.global.base.BaseFragment
+import com.sigmai.stylemento.global.store.AuthenticationInformation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,5 +32,7 @@ class ApplicationViewPagerFragment : BaseFragment<FragmentApplicationViewPagerBi
             val navController = findNavController()
             navController.navigateUp()
         }
+
+        viewModel.requestUserInfo(AuthenticationInformation.email.value!!)
     }
 }

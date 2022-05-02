@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.repository.member.MemberRepositoryImpl
+import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
 import com.sigmai.stylemento.data.repository.signup.SignupRepositoryImpl
 import com.sigmai.stylemento.global.store.AuthenticationInformation
 import com.sigmai.stylemento.global.util.SingleLiveEvent
@@ -20,6 +21,8 @@ import javax.inject.Inject
 class ApplicationViewPagerViewModel @Inject constructor(): ViewModel() {
     @Inject
     lateinit var singupRepository : SignupRepositoryImpl
+    @Inject
+    lateinit var myPageRepository: MyPageRepositoryImpl
 
     val snsList = MutableLiveData(mutableListOf(MutableLiveData("")))
     val introduction = MutableLiveData("")
@@ -60,8 +63,20 @@ class ApplicationViewPagerViewModel @Inject constructor(): ViewModel() {
         }
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                singupRepository.join(AuthenticationInformation.email.value!!, "", introduction.value!!
+                singupRepository.join(AuthenticationInformation.email.value!!, userName.value!!, introduction.value!!
                     , snsArray[0], snsArray[1], snsArray[2], snsArray[3], snsArray[4])
+            }
+        }
+    }
+    val userName = MutableLiveData<String>("")
+
+    fun requestUserInfo(email : String) {
+        if(AuthenticationInformation.userType == AuthenticationInformation.TYPE_CLIENT){
+            viewModelScope.launch {
+                val client = withContext(Dispatchers.IO) {
+                    myPageRepository.getMyPageClient(email)
+                }
+                userName.value = client.userId
             }
         }
     }
