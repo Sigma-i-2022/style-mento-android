@@ -1,10 +1,13 @@
 package com.sigmai.stylemento.ui.reservation.list
 
+import android.os.Debug
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sigmai.stylemento.data.model.response.reservation.Common
 import com.sigmai.stylemento.data.repository.reservation.ReservationRepositoryImpl
+import com.sigmai.stylemento.global.store.AuthenticationInformation
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -17,16 +20,19 @@ class ReservationListViewModel @Inject constructor() : ViewModel() {
     @Inject
     lateinit var reservationRepository: ReservationRepositoryImpl
 
-    val receipts = MutableLiveData<List<Common>>(listOf())
+    val commons = MutableLiveData<List<Common>>(listOf())
     val email = MutableLiveData<String>("")
     val startBack = SingleLiveEvent<Any>()
     val startInfo = SingleLiveEvent<Any>()
+    val startAdapter = SingleLiveEvent<Any>()
 
-    fun requestReceipts(){
+    fun requestCommons(){
         viewModelScope.launch {
-            withContext(Dispatchers.IO){
-                receipts.value = reservationRepository.getReservationCommonList(email.value!!, 1, 10)
+            val _commons = withContext(Dispatchers.IO){
+                reservationRepository.getReservationCommonList(AuthenticationInformation.email.value!!, 0, 10)
             }
+            commons.value = _commons
+            startAdapter.call()
         }
     }
     fun postReservationClientPay(memberEmail: String, reservationSeq: Long){
