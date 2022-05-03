@@ -18,9 +18,7 @@ class ValidationUtil {
     }
 
     fun validatePassword(password: String) : Boolean {
-        val passwordPattern = Pattern.compile(
-            "^(?=.*[0-9])(?=.*[a-zA-Z])(?=\\S+\$).{8,}"
-        )
+        val passwordPattern = Pattern.compile("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*\\W).{8,20}$")
         return passwordPattern.matcher(password).matches()
     }
 
