@@ -4,7 +4,8 @@ import com.sigmai.stylemento.data.api.ReservationService
 import com.sigmai.stylemento.data.factory.RetrofitServiceFactory
 import com.sigmai.stylemento.data.model.response.reservation.Client
 import com.sigmai.stylemento.data.model.response.reservation.Common
-import com.sigmai.stylemento.data.model.response.reservation.ResvTime
+import com.sigmai.stylemento.data.model.response.reservation.ReservePartTimeReqs
+import java.util.logging.StreamHandler
 import javax.inject.Inject
 
 class ReservationDataSource @Inject constructor() {
@@ -32,7 +33,7 @@ class ReservationDataSource @Inject constructor() {
         return service.getReservationCommonList(email, page, size).execute().body()!!.data
     }
 
-    fun postReservationCrdiFix(crdiId: String, reservationSeq: Long, resvTime: ResvTime): Boolean {
+    fun postReservationCrdiFix(crdiId: String, reservationSeq: Long, resvTime: String): Boolean {
         return service.postReservationCrdiFix(crdiId, reservationSeq, resvTime).execute().body()?.success
             ?: false
     }

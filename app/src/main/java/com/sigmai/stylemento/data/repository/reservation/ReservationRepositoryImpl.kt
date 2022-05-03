@@ -2,7 +2,7 @@ package com.sigmai.stylemento.data.repository.reservation
 
 import com.sigmai.stylemento.data.model.response.reservation.Client
 import com.sigmai.stylemento.data.model.response.reservation.Common
-import com.sigmai.stylemento.data.model.response.reservation.ResvTime
+import com.sigmai.stylemento.data.model.response.reservation.ReservePartTimeReqs
 import com.sigmai.stylemento.domain.repository.ReservationRepository
 import javax.inject.Inject
 
@@ -32,7 +32,7 @@ class ReservationRepositoryImpl @Inject constructor(private val dataSource: Rese
     override fun postReservationCrdiFix(
         crdiId: String,
         reservationSeq: Long,
-        resvTime: ResvTime
+        resvTime: String
     ): Boolean {
         return dataSource.postReservationCrdiFix(crdiId, reservationSeq, resvTime)
     }
