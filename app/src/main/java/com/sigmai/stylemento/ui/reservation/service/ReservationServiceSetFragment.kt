@@ -34,11 +34,11 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
 
     private fun setReservation() {
         val serviceName =
-            if (viewModel.serviceType.value == 0) "스타일 피드백"
-            else "코디 or 구매 추천"
+            if (viewModel.serviceType.value == 0) "STYLE_FEEDBACK"
+            else "CRDI_OR_PRODUCT_RECMD"
         val serviceWay =
-            if (viewModel.serviceWay.value == 0) "문자채팅(오픈채팅)"
-            else "화상대면(ZOOM)"
+            if (viewModel.serviceWay.value == 0) "OPEN_KAKAOTALK"
+            else "ZOOM"
 
         val date = arguments?.getString("date")!!
         val timeList = TimeUtil.getSelectedTimeList(TimeUtil.timeList)
@@ -48,6 +48,6 @@ class ReservationServiceSetFragment : BaseFragment<FragmentReservationServiceSet
         val dataFormat = SimpleDateFormat("yyyy-MM-dd")
         val time = dataFormat.format(currentTime)
 
-        viewModel.setClient(viewModel.userEmail.value!!, viewModel.userName.value!!, viewModel.coordinatorEmail.value!!, viewModel.coordinatorName.value!!, date, timeList, serviceWay, serviceName)
+        viewModel.setClient(date, timeList, serviceWay, serviceName)
     }
 }

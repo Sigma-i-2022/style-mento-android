@@ -5,12 +5,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sigmai.stylemento.data.model.response.myPage.MyPageCrdi
 import com.sigmai.stylemento.data.model.response.reservation.Client
+import com.sigmai.stylemento.data.model.response.reservation.ReservePartTimeReqs
 import com.sigmai.stylemento.data.repository.datasource.DummyCoordinatorDataSource
+import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
 import com.sigmai.stylemento.data.repository.reservation.ReservationRepositoryImpl
 import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.domain.entity.Receipt
 import com.sigmai.stylemento.domain.entity.User
+import com.sigmai.stylemento.global.store.AuthenticationInformation
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -23,6 +27,8 @@ import javax.inject.Inject
 class ReservationViewModel @Inject constructor() : ViewModel() {
     @Inject
     lateinit var reservationRepository: ReservationRepositoryImpl
+    @Inject
+    lateinit var myPageRepository: MyPageRepositoryImpl
 
     val coordinatorEmail = MutableLiveData<String>("")
     val coordinatorName = MutableLiveData<String>("")
@@ -36,10 +42,28 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
         coordinatorName.postValue(name)
         coordinatorUrl.postValue((url))
     }
-    fun setUserInfo(email : String, name : String, url : String){
-        userEmail.postValue(email)
-        userName.postValue(name)
-        userUrl.postValue(url)
+
+    fun requestUserInfo(email : String) {
+        if(AuthenticationInformation.userType == AuthenticationInformation.TYPE_CLIENT){
+            viewModelScope.launch {
+                val client = withContext(Dispatchers.IO) {
+                    myPageRepository.getMyPageClient(email)
+                }
+                userEmail.value = client.email
+                userName.value = client.userId
+                userUrl.value = client.profileImgUrl
+            }
+        }
+        else{
+            viewModelScope.launch {
+                val coordi = withContext(Dispatchers.IO) {
+                    myPageRepository.getMyPageCrdi(email)
+                }
+                userEmail.value = coordi.email
+                userName.value = coordi.userId
+                userUrl.value = coordi.profileImageUrl
+            }
+        }
     }
     private val _user = MutableLiveData<User>()
     //private val _receipt = MutableLiveData<Receipt>()
@@ -52,16 +76,12 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
     val paymentWay = MutableLiveData<String>("")
 
     fun setClient(
-        clientEmail: String,
-        clientId: String,
-        crdiEmail: String,
-        crdiId: String,
         reserveDay: String,
         reserveTimes: List<String>,
         serviceSystem: String,
         serviceType: String
     ) {
-        _client.postValue(Client(clientEmail, clientId, crdiEmail, crdiId, requestText.value!!, reserveDay, reserveTimes, serviceSystem, serviceType))
+        _client.postValue(Client(userEmail.value!!, userName.value!!, coordinatorEmail.value!!, coordinatorName.value!!, requestText.value!!, reserveDay, reserveTimes, serviceSystem, serviceType))
     }
 
     val startBack = SingleLiveEvent<Any>()

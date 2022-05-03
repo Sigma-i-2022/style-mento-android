@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentReservationTimeSetBinding
 import com.sigmai.stylemento.global.base.BaseFragment
+import com.sigmai.stylemento.global.store.AuthenticationInformation
 import com.sigmai.stylemento.global.util.TimeUtil
 import com.sigmai.stylemento.ui.reservation.adapter.TimeSelectorAdapter
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
@@ -27,6 +28,7 @@ class ReservationTimeSetFragment : BaseFragment<FragmentReservationTimeSetBindin
         val name = arguments?.getString("Name") ?: ""
         val url = arguments?.getString("Url") ?: ""
         viewModel.setCoordinatorInfo(email, name, url)
+        viewModel.requestUserInfo(AuthenticationInformation.email.value!!)
     }
     override fun initDataBinding() {
         super.initDataBinding()
@@ -55,10 +57,10 @@ class ReservationTimeSetFragment : BaseFragment<FragmentReservationTimeSetBindin
     private fun setCalendar() {
         val currentTime: Long = System.currentTimeMillis()
         binding.reservationCalendar.minDate = currentTime
-        val sdf = SimpleDateFormat("yyyy년 MM월 dd일", Locale.KOREA)
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
         date = sdf.format(binding.reservationCalendar.date)
         binding.reservationCalendar.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            date = "${year}년 ${month+1}월 ${dayOfMonth}일"
+            date = "${year}-${month+1}-${dayOfMonth}"
         }
     }
 }
