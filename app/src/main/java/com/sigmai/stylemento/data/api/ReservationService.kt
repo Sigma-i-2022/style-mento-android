@@ -3,7 +3,7 @@ package com.sigmai.stylemento.data.api
 import com.sigmai.stylemento.data.model.ResponseWrapper
 import com.sigmai.stylemento.data.model.response.reservation.Client
 import com.sigmai.stylemento.data.model.response.reservation.Common
-import com.sigmai.stylemento.data.model.response.reservation.ResvTime
+import com.sigmai.stylemento.data.model.response.reservation.ReservePartTimeReqs
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -44,6 +44,6 @@ interface ReservationService {
     fun postReservationCrdiFix(
         @Query("crdiId") crdiId: String,
         @Query("reservationSeq") reservationSeq: Long,
-        @Body resvTime: ResvTime,
+        @Query("resvTime") resvTime: String
     ): Call<ResponseWrapper<Unit>>
 }
