@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.response.reservation.Common
+import com.sigmai.stylemento.data.model.response.reservation.ReservePartTimeReqs
 import com.sigmai.stylemento.databinding.ItemReservationListBinding
 import com.sigmai.stylemento.domain.entity.Receipt
 import com.sigmai.stylemento.global.constant.ReceiptStateType
@@ -18,7 +19,7 @@ import com.sigmai.stylemento.ui.reservation.list.ReservationListViewModel
 
 class ReservationListAdapter(val viewModel : ReservationListViewModel) :
     RecyclerView.Adapter<ReservationListAdapter.ViewHolder>() {
-    private val dataSet = viewModel.receipts.value!!
+    private val dataSet = viewModel.commons.value!!
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -86,6 +87,7 @@ class ReservationListAdapter(val viewModel : ReservationListViewModel) :
 
         private fun setListener(adapter: ReservationListAdapter, position: Int, item: Common, viewModel : ReservationListViewModel) {
             binding.reservationListCancelButton.setOnClickListener {
+                val bundle = bundleOf("seq" to item.seq, "email" to item.crdiEmail)
                 it.findNavController().navigate(R.id.action_reservation_list_page_to_reservation_cancel_page)
                 adapter.notifyItemChanged(position)
             }
