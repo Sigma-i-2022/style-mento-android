@@ -37,7 +37,7 @@
                     android:elevation="8dp"
                     app:isMyPage="@{viewModel.isMyPage}"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:showBackButton="true"
+                    app:showBackButton="@{viewModel.isMyPage}"
                     app:title="코디네이터"
                     app:showSettingsButton="true"/>
 

@@ -108,6 +108,10 @@ class SmToolbar(context: Context, attrs: AttributeSet) : Toolbar(context, attrs)
         this.isMyPage = isMyPage
     }
 
+    fun setShowBackButton(showBackButton: Boolean) {
+        this.showBackButton = showBackButton
+    }
+
     @JvmName("setTextButtonName1")
     fun setTextButtonName(textButtonName: String) {
         this.textButtonName = textButtonName
