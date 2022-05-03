@@ -17,7 +17,8 @@ class DeletePieceUseCase @Inject constructor() {
     suspend operator fun invoke(id: Long): Boolean {
         return withContext(Dispatchers.IO) {
             if (AuthenticationInformation.userType == AuthenticationInformation.TYPE_CLIENT) lookBookRepository.deleteLookPage(id)
-            else false
+            if (AuthenticationInformation.userType == AuthenticationInformation.TYPE_COORDINATOR) workRepository.deleteCrdiWork(id)
+            false
         }
     }
 }

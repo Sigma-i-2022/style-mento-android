@@ -53,4 +53,9 @@ interface CoordinatorWorkService {
         @Query("workSeq") workSeq: Long,
         @Body uuid: RequestBody
     ): Call<ResponseWrapper<Unit>>
+
+    @DELETE("v1/api/crdi/work")
+    fun deleteCrdiWork(
+        @Query("workSeq") workSeq: Long
+    ): Call<ResponseWrapper<Unit>>
 }

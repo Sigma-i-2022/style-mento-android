@@ -4,7 +4,6 @@ import com.sigmai.stylemento.data.model.response.lookBook.LookPage
 import com.sigmai.stylemento.data.model.response.work.Coordinator
 import com.sigmai.stylemento.data.model.response.work.Work
 import com.sigmai.stylemento.domain.repository.WorkRepository
-import okhttp3.MultipartBody
 import javax.inject.Inject
 
 class WorkRepositoryImpl @Inject constructor(private val dataSource: WorkDataSource) :
@@ -61,7 +60,7 @@ class WorkRepositoryImpl @Inject constructor(private val dataSource: WorkDataSou
         keyword1: String,
         keyword2: String,
         keyword3: String
-    ) : Boolean {
+    ): Boolean {
         return dataSource.putCrdiWork(
             workSeq,
             crdiEmail,
@@ -80,7 +79,13 @@ class WorkRepositoryImpl @Inject constructor(private val dataSource: WorkDataSou
     override fun putCrdiWorkImage(
         workSeq: Long,
         uuid: String
-    ) : Boolean {
+    ): Boolean {
         return dataSource.putCrdiWorkImage(workSeq, uuid)
+    }
+
+    override fun deleteCrdiWork(
+        workSeq: Long
+    ): Boolean {
+        return dataSource.deleteCrdiWork(workSeq)
     }
 }

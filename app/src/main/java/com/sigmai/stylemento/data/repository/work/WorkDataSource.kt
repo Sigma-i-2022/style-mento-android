@@ -91,4 +91,10 @@ class WorkDataSource @Inject constructor() {
             data
         ).execute().body()!!.success
     }
+
+    fun deleteCrdiWork(
+        workSeq: Long
+    ): Boolean {
+        return service.deleteCrdiWork(workSeq).execute().body()!!.success
+    }
 }
