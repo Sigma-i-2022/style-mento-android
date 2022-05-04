@@ -32,23 +32,19 @@ class ReservationCancelUserFragment : BaseFragment<FragmentReservationCancelUser
             findNavController().navigate(R.id.action_reservation_cancel_user_page_to_reservation_cancel_user_complete_page)
         }
         viewModel.content.observe(this){
-            checkButtonEnabled(viewModel.content.value!!)
+            if (viewModel.content.value!!.length >= 0) {
+                binding.reservationCancelUserButton.isEnabled = true
+                binding.reservationCancelUserButton.setBackgroundResource(R.drawable.button_available_background)
+            } else {
+                binding.reservationCancelUserButton.isEnabled = false
+                binding.reservationCancelUserButton.setBackgroundResource(R.drawable.button_unavailable_background)
+            }
         }
-
+        binding.reservationCancelUserPayWayPriceText.text = viewModel.common.value?.price.toString()
+        binding.reservationCancelUserServicePriceText.text = viewModel.common.value?.price.toString()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        checkButtonEnabled("")
-    }
-
-    private fun checkButtonEnabled(text : String) {
-        if (text.length > 24) {
-            binding.reservationCancelUserButton.isEnabled = true
-            binding.reservationCancelUserButton.setBackgroundResource(R.drawable.button_available_background)
-        } else {
-            binding.reservationCancelUserButton.isEnabled = false
-            binding.reservationCancelUserButton.setBackgroundResource(R.drawable.button_unavailable_background)
-        }
     }
 }

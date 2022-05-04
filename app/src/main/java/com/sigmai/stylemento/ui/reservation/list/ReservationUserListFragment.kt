@@ -1,6 +1,7 @@
 package com.sigmai.stylemento.ui.reservation.list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -39,17 +40,26 @@ class ReservationUserListFragment : BaseFragment<FragmentReservationUserListBind
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        val stateArray = Array(4){0}
-//        for(item in dataSet){
-//            stateArray[item.state] += 1
-//        }
-//        binding.reservationUserListAllText.text = dataSet.size.toString()
-//        binding.reservationUserListQueueText.text = stateArray[ReceiptStateType.ACCEPT_BEFORE].toString()
-//        binding.reservationUserListCompleteText.text = stateArray[ReceiptStateType.ACCEPT_AFTER].toString()
-//        binding.reservationUserListBuyCompleteText.text = stateArray[ReceiptStateType.GET_DECISION].toString()
     }
+
     private fun setAdapter(){
         binding.reservationUserListRecycler.adapter = ReservationUserListAdapter(viewModel)
+
+        val stateArray = Array(4){0}
+        for(item in viewModel.commons.value!!){
+            if(item.confirmPayYn == "Y"){
+                stateArray[ReceiptStateType.GET_DECISION]++
+            }
+            else if(item.confirmResvYn == "Y"){
+                stateArray[ReceiptStateType.ACCEPT_AFTER]++
+            }
+            else
+                stateArray[ReceiptStateType.ACCEPT_BEFORE]++
+        }
+
+        binding.reservationUserListAllText.text = viewModel.commons.value!!.size.toString()
+        binding.reservationUserListQueueText.text = stateArray[ReceiptStateType.ACCEPT_BEFORE].toString()
+        binding.reservationUserListCompleteText.text = stateArray[ReceiptStateType.ACCEPT_AFTER].toString()
+        binding.reservationUserListBuyCompleteText.text = stateArray[ReceiptStateType.GET_DECISION].toString()
     }
 }

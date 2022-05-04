@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
@@ -80,7 +81,8 @@ class ReservationUserListAdapter(val viewModel : ReservationUserListViewModel) :
 
         private fun setListener(adapter: ReservationUserListAdapter, position: Int, item: Common, viewModel : ReservationUserListViewModel) {
             binding.reservationUserListCancelButton.setOnClickListener {
-                it.findNavController().navigate(R.id.action_reservation_user_list_page_to_reservation_cancel_user_page)
+                val bundle = bundleOf("seq" to item.seq, "email" to item.clientEmail)
+                it.findNavController().navigate(R.id.action_reservation_user_list_page_to_reservation_cancel_user_page, bundle)
                 adapter.notifyItemChanged(position)
             }
             binding.reservationUserListAcceptButton.setOnClickListener {

@@ -26,14 +26,13 @@ class ReservationCancelUserViewModel @Inject constructor(): ViewModel() {
     @Inject
     lateinit var myPageRepository: MyPageRepositoryImpl
 
-    /*예약 신청자가 일반 사용자인지 코디네이터인지에 따라 다르게 해야함*/
-    val coordinator = MutableLiveData<MyPageClient>()
+    val client = MutableLiveData<MyPageClient>()
     fun requestUserInfo(email : String) {
         viewModelScope.launch {
-            val client = withContext(Dispatchers.IO) {
+            val _client = withContext(Dispatchers.IO) {
                 myPageRepository.getMyPageClient(email)
             }
-            coordinator.value = client
+            client.value = _client
         }
     }
 

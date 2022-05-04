@@ -57,7 +57,6 @@ class ReservationListFragment : BaseFragment<FragmentReservationListBinding>() {
                 stateArray[ReceiptStateType.ACCEPT_BEFORE]++
         }
 
-        Log.d("size: ", viewModel.commons.value!!.size.toString())
         binding.reservationListAllText.text = viewModel.commons.value!!.size.toString()
         binding.reservationListQueueText.text = stateArray[ReceiptStateType.ACCEPT_BEFORE].toString()
         binding.reservationListCompleteText.text = stateArray[ReceiptStateType.ACCEPT_AFTER].toString()

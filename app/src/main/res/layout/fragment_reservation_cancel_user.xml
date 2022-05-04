@@ -3,9 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="item"
-            type="com.sigmai.stylemento.domain.entity.Receipt" />
-        <variable
             name="viewModel"
             type="com.sigmai.stylemento.ui.reservation.cancel.ReservationCancelUserViewModel" />
     </data>
@@ -69,6 +66,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_circle"
                     android:backgroundTint="@color/gray_d"
+                    app:imageUrlCircle="@{viewModel.client.profileImgUrl}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/reservation_cancel_user_service_text" />
 
@@ -78,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    android:text="@{item.coordinator.nickname}"
+                    android:text="@{viewModel.client.userId}"
                     app:layout_constraintStart_toEndOf="@id/reservation_cancel_user_coordinator_img"
                     app:layout_constraintTop_toTopOf="@id/reservation_cancel_user_coordinator_img" />
 
@@ -88,7 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
-                    android:text="@{item.coordinator.email}"
+                    android:text="@{viewModel.client.email}"
                     app:layout_constraintStart_toEndOf="@id/reservation_cancel_user_coordinator_img"
                     app:layout_constraintTop_toBottomOf="@id/reservation_cancel_user_coordinator_name_text" />
 
@@ -125,7 +123,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="end"
-                            android:text="@{item.serviceName}" />
+                            android:text="@{viewModel.common.serviceType}" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -152,7 +150,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="end"
-                            android:text="@{item.serviceWay}" />
+                            android:text="@{viewModel.common.serviceSystem}" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -212,7 +210,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="end"
-                            android:text="@{item.date}" />
+                            android:text="@{viewModel.common.reserveDay}" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -239,7 +237,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="end"
-                            android:text="@{item.decidedTime}" />
+                            android:text="@{viewModel.common.confirmReserveTime}" />
                     </LinearLayout>
 
                     <View
@@ -336,8 +334,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_marginTop="10dp"
-                            android:text="@{item.paymentWay}" />
+                            android:layout_marginTop="10dp" />
                     </LinearLayout>
 
                     <LinearLayout
