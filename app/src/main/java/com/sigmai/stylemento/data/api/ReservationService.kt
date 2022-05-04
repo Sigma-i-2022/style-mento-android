@@ -42,7 +42,7 @@ interface ReservationService {
 
     @POST("v1/api/reservation/crdi/fix")
     fun postReservationCrdiFix(
-        @Query("crdiId") crdiId: String,
+        @Query("crdiEmail") crdiEmail: String,
         @Query("reservationSeq") reservationSeq: Long,
         @Query("resvTime") resvTime: String
     ): Call<ResponseWrapper<Unit>>
