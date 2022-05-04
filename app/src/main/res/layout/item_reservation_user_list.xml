@@ -3,7 +3,7 @@
     <data>
         <variable
             name="item"
-            type="com.sigmai.stylemento.domain.entity.Receipt" />
+            type="com.sigmai.stylemento.data.model.response.reservation.Common" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -17,7 +17,7 @@
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             style="@style/header4"
             android:layout_marginTop="10dp"
-            android:text="@{item.requestTime}"
+            android:text="@{item.requestReservationTime}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
@@ -77,7 +77,7 @@
                     android:id="@+id/reservation_user_list_coordinator_id_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{item.user.nickname}"
+                    android:text="@{item.clientId}"
                     style="@style/header4"
                     android:textColor="@color/gray_8"/>
             </LinearLayout>
@@ -100,7 +100,7 @@
                     android:id="@+id/reservation_user_list_service_name_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{item.serviceName}"
+                    android:text="@{item.serviceType}"
                     style="@style/header4"
                     android:textColor="@color/gray_8"/>
             </LinearLayout>
@@ -123,7 +123,7 @@
                     android:id="@+id/reservation_user_list_service_way_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{item.serviceWay}"
+                    android:text="@{item.serviceSystem}"
                     style="@style/header4"
                     android:textColor="@color/gray_8"/>
             </LinearLayout>
@@ -174,7 +174,7 @@
                     android:id="@+id/reservation_user_list_service_date_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{item.date}"
+                    android:text="@{item.reserveDay}"
                     style="@style/header4"
                     android:textColor="@color/gray_8"/>
             </LinearLayout>
