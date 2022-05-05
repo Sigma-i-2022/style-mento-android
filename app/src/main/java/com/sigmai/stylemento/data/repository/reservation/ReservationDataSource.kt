@@ -33,8 +33,8 @@ class ReservationDataSource @Inject constructor() {
         return service.getReservationCommonList(email, page, size).execute().body()!!.data
     }
 
-    fun postReservationCrdiFix(crdiId: String, reservationSeq: Long, resvTime: String): Boolean {
-        return service.postReservationCrdiFix(crdiId, reservationSeq, resvTime).execute().body()?.success
+    fun postReservationCrdiFix(crdiEmail: String, reservationSeq: Long, resvTime: String): Boolean {
+        return service.postReservationCrdiFix(crdiEmail, reservationSeq, resvTime).execute().body()?.success
             ?: false
     }
 }

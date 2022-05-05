@@ -1,6 +1,7 @@
 package com.sigmai.stylemento.ui.reservation.cancel
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -33,27 +34,20 @@ class ReservationCancelFragment : BaseFragment<FragmentReservationCancelBinding>
             findNavController().navigate(R.id.action_reservation_cancel_page_to_reservation_cancel_complete_page)
         }
         viewModel.content.observe(this){
-            checkButtonEnabled(viewModel.content.value!!)
+            if (viewModel.content.value!!.length >= 0) {
+                binding.reservationCancelButton.isEnabled = true
+                binding.reservationCancelButton.setBackgroundResource(R.drawable.button_available_background)
+            } else {
+                binding.reservationCancelButton.isEnabled = false
+                binding.reservationCancelButton.setBackgroundResource(R.drawable.button_unavailable_background)
+            }
         }
-
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        checkButtonEnabled("")
-
         binding.reservationCancelPayWayPriceText.text = viewModel.common.value?.price.toString()
         binding.reservationCancelServicePriceText.text = viewModel.common.value?.price.toString()
     }
 
-    private fun checkButtonEnabled(text : String) {
-        Timber.d(text)
-        if (text.length > 24) {
-            binding.reservationCancelButton.isEnabled = true
-            binding.reservationCancelButton.setBackgroundResource(R.drawable.button_available_background)
-        } else {
-            binding.reservationCancelButton.isEnabled = false
-            binding.reservationCancelButton.setBackgroundResource(R.drawable.button_unavailable_background)
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
+
 }

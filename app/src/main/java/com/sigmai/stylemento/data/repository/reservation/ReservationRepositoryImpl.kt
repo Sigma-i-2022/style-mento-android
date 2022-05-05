@@ -30,10 +30,10 @@ class ReservationRepositoryImpl @Inject constructor(private val dataSource: Rese
     }
 
     override fun postReservationCrdiFix(
-        crdiId: String,
+        crdiEmail: String,
         reservationSeq: Long,
         resvTime: String
     ): Boolean {
-        return dataSource.postReservationCrdiFix(crdiId, reservationSeq, resvTime)
+        return dataSource.postReservationCrdiFix(crdiEmail, reservationSeq, resvTime)
     }
 }

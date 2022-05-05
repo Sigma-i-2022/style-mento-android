@@ -88,7 +88,7 @@ class ReservationListAdapter(val viewModel : ReservationListViewModel) :
         private fun setListener(adapter: ReservationListAdapter, position: Int, item: Common, viewModel : ReservationListViewModel) {
             binding.reservationListCancelButton.setOnClickListener {
                 val bundle = bundleOf("seq" to item.seq, "email" to item.crdiEmail)
-                it.findNavController().navigate(R.id.action_reservation_list_page_to_reservation_cancel_page)
+                it.findNavController().navigate(R.id.action_reservation_list_page_to_reservation_cancel_page, bundle)
                 adapter.notifyItemChanged(position)
             }
             binding.reservationListRequestButton.setOnClickListener {
