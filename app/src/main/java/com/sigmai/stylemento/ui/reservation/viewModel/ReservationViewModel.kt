@@ -44,25 +44,13 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
     }
 
     fun requestUserInfo(email : String) {
-        if(AuthenticationInformation.userType == AuthenticationInformation.TYPE_CLIENT){
-            viewModelScope.launch {
-                val client = withContext(Dispatchers.IO) {
-                    myPageRepository.getMyPageClient(email)
-                }
-                userEmail.value = client.email
-                userName.value = client.userId
-                userUrl.value = client.profileImgUrl
+        viewModelScope.launch {
+            val client = withContext(Dispatchers.IO) {
+                myPageRepository.getMyPageClient(email)
             }
-        }
-        else{
-            viewModelScope.launch {
-                val coordi = withContext(Dispatchers.IO) {
-                    myPageRepository.getMyPageCrdi(email)
-                }
-                userEmail.value = coordi.email
-                userName.value = coordi.userId
-                userUrl.value = coordi.profileImageUrl
-            }
+            userEmail.value = client.email
+            userName.value = client.userId
+            userUrl.value = client.profileImgUrl
         }
     }
     private val _user = MutableLiveData<User>()
