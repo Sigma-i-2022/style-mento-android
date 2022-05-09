@@ -57,6 +57,7 @@
                     android:layout_marginTop="36dp"
                     android:background="@drawable/bg_circle"
                     android:backgroundTint="@color/gray_d"
+                    app:imageUrlCircle="@{viewModel.coordinatorUrl}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,7 +76,7 @@
                         style="@style/body1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="user_name"
+                        android:text="@{viewModel.coordinatorName}"
                         android:textStyle="bold" />
 
                     <TextView
@@ -84,7 +85,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="service_name"
+                        android:text="@{viewModel.common.serviceType}"
                         android:textColor="@color/gray_8" />
 
                     <TextView
@@ -93,7 +94,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="0000 - 00 - 00 00:00"
+                        android:text="@{viewModel.common.confirmReserveTime}"
                         android:textColor="@color/gray_8" />
 
                     <RatingBar
@@ -233,6 +234,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/trans_parent"
                         android:gravity="end"
+                        android:textColor="@color/gray_8"
                         android:paddingVertical="2dp"
                         android:text="@{viewModel.weight.toString()}"/>
                     <TextView

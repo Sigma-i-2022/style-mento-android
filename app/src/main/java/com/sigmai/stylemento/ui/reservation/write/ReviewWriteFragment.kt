@@ -17,14 +17,13 @@ class ReviewWriteFragment : BaseFragment<FragmentWriteReviewBinding>() {
     private val viewModel : ReviewWriteViewModel by viewModels()
 
     private var reviewItem = ReviewItem(ReviewType.NORMAL, "")
-    override fun initState() {
-        super.initState()
-        viewModel.requestCommon(arguments?.getLong("seq") ?: 0)
-    }
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
-
+        viewModel.requestCommon(arguments?.getLong("seq") ?: 0)
+        viewModel.endCommon.observe(this) {
+            viewModel.requestCrdiInfo()
+        }
         viewModel.startBack.observe(this) {
             findNavController().navigateUp()
         }

@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sigmai.stylemento.data.model.response.reservation.Common
+import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
 import com.sigmai.stylemento.data.repository.reservation.ReservationRepositoryImpl
 import com.sigmai.stylemento.data.repository.review.ReviewRepositoryImpl
 import com.sigmai.stylemento.global.util.SingleLiveEvent
@@ -21,17 +22,33 @@ class ReviewWriteViewModel @Inject constructor(): ViewModel() {
     lateinit var reviewRepository : ReviewRepositoryImpl
     @Inject
     lateinit var reservationRepository : ReservationRepositoryImpl
+    @Inject
+    lateinit var myPageRepository: MyPageRepositoryImpl
 
-    private val _common = MutableLiveData<Common>()
+    val common = MutableLiveData<Common>()
+    val endCommon = SingleLiveEvent<Any>()
     fun requestCommon(seq : Long){
         viewModelScope.launch {
-            val common = withContext(Dispatchers.IO){
+            val common_ = withContext(Dispatchers.IO){
                 reservationRepository.getReservationCommon(seq)
             }
-            _common.value = common
+            common.value = common_
+            endCommon.call()
         }
     }
-
+    val coordinatorEmail = MutableLiveData<String>("")
+    val coordinatorName = MutableLiveData<String>("")
+    val coordinatorUrl = MutableLiveData<String>("")
+    fun requestCrdiInfo() {
+        viewModelScope.launch {
+            val crdi = withContext(Dispatchers.IO) {
+                myPageRepository.getMyPageCrdi(common.value!!.crdiEmail)
+            }
+            coordinatorEmail.value = crdi.email
+            coordinatorName.value = crdi.userId
+            coordinatorUrl.value = crdi.profileImageUrl
+        }
+    }
     private val startMale = SingleLiveEvent<Any>()
     private val startFemale = SingleLiveEvent<Any>()
     private var _gender = MutableLiveData<Int>(-1)
@@ -67,7 +84,7 @@ class ReviewWriteViewModel @Inject constructor(): ViewModel() {
     fun postReview() {
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                reviewRepository.postReview(_common.value!!.seq, _common.value!!.clientId, "", _common.value!!.crdiId, "",
+                reviewRepository.postReview(common.value!!.seq, common.value!!.clientId, common.value!!.clientEmail, common.value!!.crdiId, common.value!!.crdiEmail,
                     _star.value!!, if(_gender.value!! == 0) "MALE" else "FEMALE", height.value.toString(), weight.value.toString(), content.value!!)
 
             }
