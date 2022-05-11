@@ -8,6 +8,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import com.sigmai.stylemento.R
+import timber.log.Timber
 
 class SmToolbar(context: Context, attrs: AttributeSet) : Toolbar(context, attrs) {
     private var title: String = ""
@@ -19,8 +20,7 @@ class SmToolbar(context: Context, attrs: AttributeSet) : Toolbar(context, attrs)
     private var isMyPage: Boolean = false
         set(value) {
             field = value
-            rootView?.findViewById<ImageButton>(R.id.edit_profile)?.visibility =
-                if (value) View.VISIBLE else View.GONE
+            initView()
         }
 
     private var textButtonName: String = "완료"
