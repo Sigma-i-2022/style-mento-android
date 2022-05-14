@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.sigmai.stylemento.data.model.response.myPage.MyPageCrdi
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
-import com.sigmai.stylemento.data.repository.user.UserRepositoryImpl
 import com.sigmai.stylemento.global.store.AuthenticationInformation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
