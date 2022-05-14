@@ -14,12 +14,11 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
     override val layoutResourceId = R.layout.fragment_main
     private val viewModel: MainViewModel by activityViewModels()
 
-    private val pages = listOf(R.id.page_home, R.id.page_coordinator, R.id.page_chat, R.id.page_my)
+    private val pages = listOf(R.id.page_home, R.id.page_coordinator, R.id.page_my)
     private val positions = mapOf(
         R.id.page_home to 0,
         R.id.page_coordinator to 1,
-        R.id.page_chat to 2,
-        R.id.page_my to 3)
+        R.id.page_my to 2)
 
     override fun initDataBinding() {
         super.initDataBinding()

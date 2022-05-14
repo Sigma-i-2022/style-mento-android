@@ -11,11 +11,6 @@
         android:title="코디"
         android:icon="@drawable/tab_clothes"/>
     <item
-        android:id="@+id/page_chat"
-        android:enabled="true"
-        android:title="채팅"
-        android:icon="@drawable/tab_chat"/>
-    <item
         android:id="@+id/page_my"
         android:enabled="true"
         android:title="나"
