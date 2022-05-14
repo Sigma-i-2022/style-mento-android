@@ -16,11 +16,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private val viewModel: HomeViewModel by viewModels()
     private val mainViewModel: MainViewModel by activityViewModels()
 
-    override fun initState() {
-        super.initState()
-        getUserInfo()
-    }
-
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
@@ -33,9 +28,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         setupObserver()
     }
 
-    fun getUserInfo() {
-        viewModel.getUserInfo()
-    }
     private fun setBannerViewPager(){
         binding.banner.adapter = BannerViewPagerAdapter(this)
     }

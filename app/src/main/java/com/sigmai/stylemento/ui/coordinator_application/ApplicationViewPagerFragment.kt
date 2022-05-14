@@ -1,11 +1,9 @@
 package com.sigmai.stylemento.ui.coordinator_application
 
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentApplicationViewPagerBinding
-import com.sigmai.stylemento.di.AppConfigs
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.store.AuthenticationInformation
 import dagger.hilt.android.AndroidEntryPoint
