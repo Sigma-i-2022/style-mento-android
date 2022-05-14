@@ -18,19 +18,11 @@ import kotlinx.coroutines.launch
 class HomeViewModel : ViewModel() {
     private val _user = MutableLiveData<User>()
     private val getUserUseCase: GetUserUseCase = GetUserUseCase(AppConfigs.userRepository)
-    private val getRecommendedCoordinatorListUseCase = AppConfigs.getRecommendedCoordinatorListUseCase
 
     val user: LiveData<User> get() = _user
     val startNotification = SingleLiveEvent<Any>()
     val startCheckReservation = SingleLiveEvent<Any>()
     val startPrivacy = SingleLiveEvent<Any>()
-    var recommendedCoordinatorList: List<RecommendedCoordinator>? = null
-
-    init {
-        CoroutineScope(Dispatchers.IO).launch {
-            recommendedCoordinatorList = getRecommendedCoordinatorListUseCase()
-        }
-    }
 
     fun startNotificationFragment() {
         startNotification.call()

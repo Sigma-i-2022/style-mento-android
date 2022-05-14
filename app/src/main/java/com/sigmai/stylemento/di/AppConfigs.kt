@@ -6,6 +6,4 @@ import com.sigmai.stylemento.domain.usecase.coordinator.GetRecommendedCoordinato
 
 object AppConfigs {
     val userRepository: UserRepository = DummyUserRepositoryImpl()
-
-    val getRecommendedCoordinatorListUseCase = GetRecommendedCoordinatorListUseCase()
 }
