@@ -11,14 +11,12 @@ import com.sigmai.stylemento.data.model.response.myPage.MyPageCrdi
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
 import com.sigmai.stylemento.data.repository.review.ReviewRepositoryImpl
 import com.sigmai.stylemento.data.repository.work.WorkRepositoryImpl
-import com.sigmai.stylemento.domain.repository.ReviewRepository
-import com.sigmai.stylemento.global.store.AuthenticationInformation
+import com.sigmai.stylemento.global.store.AuthenticationInfo
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -60,7 +58,7 @@ class CoordinatorPageViewModel
     }
 
     private fun loadCoordinatorInfo() {
-        val coordiEmail = if(isMyPage.value!!) AuthenticationInformation.email.value!! else email
+        val coordiEmail = if(isMyPage.value!!) AuthenticationInfo.email.value!! else email
 
         viewModelScope.launch {
             val coordi = withContext(Dispatchers.IO) {
@@ -71,7 +69,7 @@ class CoordinatorPageViewModel
     }
 
     private fun fetchPieceList() {
-        val coordiEmail = if(isMyPage.value!!) AuthenticationInformation.email.value!! else email
+        val coordiEmail = if(isMyPage.value!!) AuthenticationInfo.email.value!! else email
 
         viewModelScope.launch {
             val list = withContext(Dispatchers.IO) {

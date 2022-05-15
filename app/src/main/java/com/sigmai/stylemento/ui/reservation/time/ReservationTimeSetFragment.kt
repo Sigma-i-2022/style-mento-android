@@ -8,7 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentReservationTimeSetBinding
 import com.sigmai.stylemento.global.base.BaseFragment
-import com.sigmai.stylemento.global.store.AuthenticationInformation
+import com.sigmai.stylemento.global.store.AuthenticationInfo
 import com.sigmai.stylemento.global.util.TimeUtil
 import com.sigmai.stylemento.ui.reservation.adapter.TimeSelectorAdapter
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
@@ -28,7 +28,7 @@ class ReservationTimeSetFragment : BaseFragment<FragmentReservationTimeSetBindin
         val name = arguments?.getString("Name") ?: ""
         val url = arguments?.getString("Url") ?: ""
         viewModel.setCoordinatorInfo(email, name, url)
-        viewModel.requestUserInfo(AuthenticationInformation.email.value!!)
+        viewModel.requestUserInfo(AuthenticationInfo.email.value!!)
     }
     override fun initDataBinding() {
         super.initDataBinding()

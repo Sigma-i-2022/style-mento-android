@@ -10,8 +10,7 @@ import com.sigmai.stylemento.data.repository.image.ImageRepositoryImpl
 import com.sigmai.stylemento.data.repository.lookBook.LookBookRepositoryImpl
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
 import com.sigmai.stylemento.data.repository.work.WorkRepositoryImpl
-import com.sigmai.stylemento.domain.repository.WorkRepository
-import com.sigmai.stylemento.global.store.AuthenticationInformation
+import com.sigmai.stylemento.global.store.AuthenticationInfo
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
@@ -52,7 +51,7 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
 
         viewModelScope.launch {
             val piece = withContext(Dispatchers.IO) {
-                if(AuthenticationInformation.userType == AuthenticationInformation.TYPE_CLIENT) lookbookRepository.getLookPage(id)
+                if(AuthenticationInfo.userType == AuthenticationInfo.TYPE_CLIENT) lookbookRepository.getLookPage(id)
                 else workRepository.getCrdiWork(id)
             }
             setDataFromPiece(piece)
@@ -83,10 +82,10 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
 
     private suspend fun updatePiece() {
         withContext(Dispatchers.IO) {
-            if(AuthenticationInformation.userType == AuthenticationInformation.TYPE_CLIENT) {
+            if(AuthenticationInfo.userType == AuthenticationInfo.TYPE_CLIENT) {
                 lookbookRepository.putLookPageInfo(
                     lookSeq = lookPageId,
-                    clientEmail = AuthenticationInformation.email.value!!,
+                    clientEmail = AuthenticationInfo.email.value!!,
                     explanation = description.value!!,
                     topInfo = top.value!!,
                     bottomInfo = bottom.value!!,
@@ -101,10 +100,10 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
                 )
             }
 
-            if(AuthenticationInformation.userType == AuthenticationInformation.TYPE_COORDINATOR) {
+            if(AuthenticationInfo.userType == AuthenticationInfo.TYPE_COORDINATOR) {
                 workRepository.putCrdiWork(
                     workSeq = lookPageId,
-                    crdiEmail = AuthenticationInformation.email.value!!,
+                    crdiEmail = AuthenticationInfo.email.value!!,
                     explanation = description.value!!,
                     topInfo = top.value!!,
                     bottomInfo = bottom.value!!,
@@ -122,9 +121,9 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
 
     private suspend fun addPiece() {
         withContext(Dispatchers.IO) {
-            if(AuthenticationInformation.userType == AuthenticationInformation.TYPE_CLIENT) {
+            if(AuthenticationInfo.userType == AuthenticationInfo.TYPE_CLIENT) {
                 lookbookRepository.postLookPage(
-                    memberEmail = AuthenticationInformation.email.value!!,
+                    memberEmail = AuthenticationInfo.email.value!!,
                     explanation = description.value!!,
                     keyword1 = "WARM",
                     keyword2 = "COOL",
@@ -136,9 +135,9 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
                 )
             }
 
-            if(AuthenticationInformation.userType == AuthenticationInformation.TYPE_COORDINATOR) {
+            if(AuthenticationInfo.userType == AuthenticationInfo.TYPE_COORDINATOR) {
                 workRepository.postCrdiWork(
-                    crdiEmail = AuthenticationInformation.email.value!!,
+                    crdiEmail = AuthenticationInfo.email.value!!,
                     explanation = description.value!!,
                     topInfo = top.value!!,
                     bottomInfo = bottom.value!!,

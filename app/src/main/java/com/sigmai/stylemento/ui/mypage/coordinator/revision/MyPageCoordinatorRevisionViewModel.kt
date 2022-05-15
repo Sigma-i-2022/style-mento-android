@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.sigmai.stylemento.data.model.response.myPage.MyPageCrdi
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
-import com.sigmai.stylemento.global.store.AuthenticationInformation
+import com.sigmai.stylemento.global.store.AuthenticationInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,7 +25,7 @@ class MyPageCoordinatorRevisionViewModel @Inject constructor() : ViewModel() {
     fun loadData() {
         viewModelScope.launch {
             val user = withContext(Dispatchers.IO) {
-                myPageRepository.getMyPageCrdi(AuthenticationInformation.email.value!!)
+                myPageRepository.getMyPageCrdi(AuthenticationInfo.email.value!!)
             }
             userInfo.value = user
             introduction.value = user.intro
@@ -40,7 +40,7 @@ class MyPageCoordinatorRevisionViewModel @Inject constructor() : ViewModel() {
     fun updateProfile() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                myPageRepository.putMyPageCrdi(AuthenticationInformation.email.value!!, userInfo.value!!.userId, introduction.value!!)
+                myPageRepository.putMyPageCrdi(AuthenticationInfo.email.value!!, userInfo.value!!.userId, introduction.value!!)
             }
         }
     }

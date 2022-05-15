@@ -2,7 +2,7 @@ package com.sigmai.stylemento.global.store
 
 import androidx.lifecycle.MutableLiveData
 
-object AuthenticationInformation {
+object AuthenticationInfo {
     const val TYPE_CLIENT = 0
     const val TYPE_COORDINATOR = 1
 

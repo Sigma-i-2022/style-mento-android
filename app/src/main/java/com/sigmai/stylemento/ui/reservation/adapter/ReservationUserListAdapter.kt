@@ -1,6 +1,5 @@
 package com.sigmai.stylemento.ui.reservation.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.response.reservation.Common
 import com.sigmai.stylemento.databinding.ItemReservationUserListBinding
-import com.sigmai.stylemento.domain.entity.Receipt
 import com.sigmai.stylemento.global.constant.ReceiptStateType
-import com.sigmai.stylemento.global.store.AuthenticationInformation
-import com.sigmai.stylemento.ui.reservation.list.ReservationListViewModel
 import com.sigmai.stylemento.ui.reservation.list.ReservationUserListViewModel
 
 

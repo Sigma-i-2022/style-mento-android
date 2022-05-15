@@ -1,26 +1,18 @@
 package com.sigmai.stylemento.ui.reservation.viewModel
 
-import androidx.compose.ui.res.colorResource
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sigmai.stylemento.data.model.response.myPage.MyPageCrdi
 import com.sigmai.stylemento.data.model.response.reservation.Client
-import com.sigmai.stylemento.data.model.response.reservation.ReservePartTimeReqs
-import com.sigmai.stylemento.data.repository.datasource.DummyCoordinatorDataSource
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
 import com.sigmai.stylemento.data.repository.reservation.ReservationRepositoryImpl
-import com.sigmai.stylemento.domain.entity.Coordinator
-import com.sigmai.stylemento.domain.entity.Receipt
 import com.sigmai.stylemento.domain.entity.User
-import com.sigmai.stylemento.global.store.AuthenticationInformation
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.Dispatcher
 import javax.inject.Inject
 
 @HiltViewModel

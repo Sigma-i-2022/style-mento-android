@@ -8,16 +8,12 @@ import androidx.navigation.findNavController
 import com.sigmai.stylemento.data.model.response.myPage.MyPageClient
 import com.sigmai.stylemento.data.repository.image.ImageRepositoryImpl
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
-import com.sigmai.stylemento.global.store.AuthenticationInformation
+import com.sigmai.stylemento.global.store.AuthenticationInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.*
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import timber.log.Timber
-import java.io.File
-import java.sql.Time
 import javax.inject.Inject
 
 @HiltViewModel
@@ -34,7 +30,7 @@ class MyPageRevisionViewModel @Inject constructor() : ViewModel() {
     fun getUserInfo() {
         viewModelScope.launch {
             val receivedUser = withContext(Dispatchers.IO) {
-                myPageRepository.getMyPageClient(AuthenticationInformation.email.value!!)
+                myPageRepository.getMyPageClient(AuthenticationInfo.email.value!!)
             }
             user.value = receivedUser
             introduction.value = user.value!!.intro
@@ -49,7 +45,7 @@ class MyPageRevisionViewModel @Inject constructor() : ViewModel() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 myPageRepository.putMyPageClient(
-                    AuthenticationInformation.email.value!!,
+                    AuthenticationInfo.email.value!!,
                     user.value!!.userId,
                     introduction.value!!
                 )
@@ -62,7 +58,7 @@ class MyPageRevisionViewModel @Inject constructor() : ViewModel() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 uuid = imageRepository.postImage(file)
-                myPageRepository.postMyPageImage(AuthenticationInformation.email.value!!, uuid)
+                myPageRepository.postMyPageImage(AuthenticationInfo.email.value!!, uuid)
             }
         }
     }
