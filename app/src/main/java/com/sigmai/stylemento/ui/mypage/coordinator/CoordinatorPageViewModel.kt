@@ -39,18 +39,8 @@ class CoordinatorPageViewModel
     val onEditEvent = SingleLiveEvent<Any>()
 
     fun loadData() {
-        val coordiEmail = if(isMyPage.value!!) AuthenticationInformation.email.value!! else email
-
         loadCoordinatorInfo()
-
-        viewModelScope.launch {
-            val list = withContext(Dispatchers.IO) {
-                workRepository.getCrdiWorkAll(coordiEmail)
-            }
-            pieceList.value = list.map {
-                it.toLookPage()
-            }
-        }
+        fetchPieceList()
     }
 
     fun onClickInstruction() {
@@ -73,6 +63,19 @@ class CoordinatorPageViewModel
                 myPageRepository.getMyPageCrdi(coordiEmail)
             }
             coordinator.value = coordi
+        }
+    }
+
+    private fun fetchPieceList() {
+        val coordiEmail = if(isMyPage.value!!) AuthenticationInformation.email.value!! else email
+
+        viewModelScope.launch {
+            val list = withContext(Dispatchers.IO) {
+                workRepository.getCrdiWorkAll(coordiEmail)
+            }
+            pieceList.value = list.map {
+                it.toLookPage()
+            }
         }
     }
 
