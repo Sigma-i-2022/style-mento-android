@@ -9,7 +9,9 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.response.lookBook.LookPage
 import com.sigmai.stylemento.data.model.response.myPage.MyPageCrdi
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
+import com.sigmai.stylemento.data.repository.review.ReviewRepositoryImpl
 import com.sigmai.stylemento.data.repository.work.WorkRepositoryImpl
+import com.sigmai.stylemento.domain.repository.ReviewRepository
 import com.sigmai.stylemento.global.store.AuthenticationInformation
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -26,6 +28,8 @@ class CoordinatorPageViewModel
     lateinit var workRepository: WorkRepositoryImpl
     @Inject
     lateinit var myPageRepository: MyPageRepositoryImpl
+    @Inject
+    lateinit var reviewRepository: ReviewRepositoryImpl
 
     val coordinator = MutableLiveData<MyPageCrdi>()
     val pieceList = MutableLiveData<List<LookPage>>()
@@ -91,5 +95,9 @@ class CoordinatorPageViewModel
 
     fun onAddPiece(view: View) {
         view.findNavController().navigate(R.id.action_main_to_add_piece)
+    }
+
+    fun fetchReviews() {
+        reviewRepository.getReview(coordinator.value!!.email)
     }
 }

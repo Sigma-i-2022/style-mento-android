@@ -13,13 +13,6 @@ class MyPageReviewFragment() : BaseFragment<FragmentMyPageReviewBinding>() {
 
     override fun initState() {
         binding.myPageReviewRecycler.adapter = CoordinatorReviewAdapter(this)
-        setupObserver()
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    private fun setupObserver() {
-        viewModel.coordinator.observe(this) {
-            binding.myPageReviewRecycler.adapter!!.notifyDataSetChanged()
-        }
+        viewModel.fetchReviews()
     }
 }

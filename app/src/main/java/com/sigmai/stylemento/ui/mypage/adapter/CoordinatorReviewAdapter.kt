@@ -10,12 +10,7 @@ import com.sigmai.stylemento.ui.mypage.coordinator.MyPageReviewFragment
 
 class CoordinatorReviewAdapter(private val f: MyPageReviewFragment) :
     RecyclerView.Adapter<CoordinatorReviewAdapter.ReviewViewHolder>() {
-    private var reviewList: MutableList<Review> = mutableListOf(
-        Review(rating = 4, nickname = "Keiee",content = "너무 좋아요~~", hasReply = false),
-        Review(rating = 5, nickname = "iamgroot",content = "너무 좋아요~~", hasReply = true, reply = "이용해주셔서 감사합니다."),
-        Review(rating = 3, nickname = "talking potato",content = "너무 좋아요~~", hasReply = false),
-        Review(rating = 5, nickname = "gooooooogle",content = "너무 좋아요~~", hasReply = false),
-    )
+    private var reviewList: List<Review> = listOf()
     val context: String = ""
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
