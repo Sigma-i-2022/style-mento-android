@@ -11,6 +11,10 @@ class MyPageReviewFragment() : BaseFragment<FragmentMyPageReviewBinding>() {
     override val layoutResourceId = R.layout.fragment_my_page_review
     val viewModel: CoordinatorPageViewModel by activityViewModels()
 
+    override fun initDataBinding() {
+        binding.viewModel = viewModel
+    }
+
     override fun initState() {
         binding.myPageReviewRecycler.adapter = CoordinatorReviewAdapter(this)
         viewModel.fetchReviews()
