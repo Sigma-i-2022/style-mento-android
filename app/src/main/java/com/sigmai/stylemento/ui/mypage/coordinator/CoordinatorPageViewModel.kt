@@ -96,6 +96,10 @@ class CoordinatorPageViewModel
     }
 
     fun fetchReviews() {
-        reviewRepository.getReview(coordinator.value!!.email)
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                reviewRepository.getReview(coordinator.value!!.email)
+            }
+        }
     }
 }
