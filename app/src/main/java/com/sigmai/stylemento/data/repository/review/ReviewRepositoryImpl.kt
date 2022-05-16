@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class ReviewRepositoryImpl @Inject constructor(private val dataSource: ReviewDataSource) :
     ReviewRepository {
-    override fun getReview(email: String): Review {
+    override fun getReview(email: String): List<Review> {
         return dataSource.getReview(email)
     }
     override fun postReview(
