@@ -1,17 +1,25 @@
 package com.sigmai.stylemento.data.model.response.review
 
 data class Review(
-    val content: String,
+    val seq: Long,
+    val reservationSeq: Long,
+    val reviewerId: String,
     val coordinatorId: String,
-    val height: String,
+    val star: Int,
+    val sex: String,
+    val content: String,
+    val reportYn: String,
     val registDate: String,
     val reportContent: String,
     val reportReason: String,
-    val reportYn: String,
-    val reservationSeq: Long,
-    val reviewId: String,
-    val seq: Long,
-    val sex: String,
-    val star: Int,
-    val weight: String
+    val height: String,
+    val weight: String,
+    val replyRes: ReplyResponse
+)
+
+data class ReplyResponse(
+    val crdiEmail: String,
+    val replyContent: String,
+    val reviewSeq: String,
+    val seq: Long
 )
