@@ -1,5 +1,7 @@
 package com.sigmai.stylemento.data.model.response.review
 
+import com.sigmai.stylemento.domain.entity.Review
+
 data class Review(
     val seq: Long,
     val reservationSeq: Long,
@@ -12,10 +14,24 @@ data class Review(
     val registDate: String,
     val reportContent: String,
     val reportReason: String,
-    val height: String,
-    val weight: String,
+    val height: Int,
+    val weight: Int,
     val replyRes: ReplyResponse
-)
+) {
+    fun toEntity() : Review {
+        return Review(
+            rating = star,
+            nickname = reviewerId,
+            profileImageUrl = null,
+            tall = height,
+            weight = weight,
+            date = registDate,
+            content = content,
+            reply = replyRes.replyContent,
+            hasReply = !replyRes.replyContent.isNullOrEmpty()
+        )
+    }
+}
 
 data class ReplyResponse(
     val crdiEmail: String,

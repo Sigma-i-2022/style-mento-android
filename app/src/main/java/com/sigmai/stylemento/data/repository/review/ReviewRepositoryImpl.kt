@@ -6,8 +6,10 @@ import javax.inject.Inject
 
 class ReviewRepositoryImpl @Inject constructor(private val dataSource: ReviewDataSource) :
     ReviewRepository {
-    override fun getReview(email: String): List<Review> {
-        return dataSource.getReview(email)
+    override fun getReview(email: String): List<com.sigmai.stylemento.domain.entity.Review> {
+        return dataSource.getReview(email).map {
+            it.toEntity()
+        }
     }
     override fun postReview(
         reservationSeq: Long,

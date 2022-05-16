@@ -11,6 +11,7 @@ import com.sigmai.stylemento.data.model.response.myPage.MyPageCrdi
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
 import com.sigmai.stylemento.data.repository.review.ReviewRepositoryImpl
 import com.sigmai.stylemento.data.repository.work.WorkRepositoryImpl
+import com.sigmai.stylemento.domain.entity.Review
 import com.sigmai.stylemento.global.store.AuthenticationInfo
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -31,6 +32,7 @@ class CoordinatorPageViewModel
 
     val coordinator = MutableLiveData<MyPageCrdi>()
     val pieceList = MutableLiveData<List<LookPage>>()
+    val reviews = MutableLiveData<List<Review>>(listOf())
 
     val isMyPage = MutableLiveData(false)
     val isExtended = MutableLiveData(false)
@@ -97,9 +99,10 @@ class CoordinatorPageViewModel
 
     fun fetchReviews() {
         viewModelScope.launch {
-            withContext(Dispatchers.IO) {
+            val result = withContext(Dispatchers.IO) {
                 reviewRepository.getReview(coordinator.value!!.email)
             }
+            reviews.value = result
         }
     }
 }
