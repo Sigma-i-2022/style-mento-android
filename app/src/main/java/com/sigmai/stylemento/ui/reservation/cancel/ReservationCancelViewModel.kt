@@ -1,6 +1,5 @@
 package com.sigmai.stylemento.ui.reservation.cancel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,7 +8,7 @@ import com.sigmai.stylemento.data.model.response.reservation.Common
 import com.sigmai.stylemento.data.repository.cancelReservation.CancelReservationRepositoryImpl
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
 import com.sigmai.stylemento.data.repository.reservation.ReservationRepositoryImpl
-import com.sigmai.stylemento.global.store.AuthenticationInformation
+import com.sigmai.stylemento.global.store.AuthenticationInfo
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -58,7 +57,7 @@ class ReservationCancelViewModel @Inject constructor() : ViewModel() {
     fun postReservationCommonHide(){
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                reservationRepository.postReservationCommonHide(AuthenticationInformation.email.value!!, common.value!!.seq)
+                reservationRepository.postReservationCommonHide(AuthenticationInfo.email.value!!, common.value!!.seq)
             }
         }
     }

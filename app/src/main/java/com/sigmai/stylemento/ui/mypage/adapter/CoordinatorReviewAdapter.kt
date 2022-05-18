@@ -1,5 +1,6 @@
 package com.sigmai.stylemento.ui.mypage.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,15 +8,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.databinding.ItemReviewBinding
 import com.sigmai.stylemento.domain.entity.Review
 import com.sigmai.stylemento.ui.mypage.coordinator.MyPageReviewFragment
+import timber.log.Timber
 
 class CoordinatorReviewAdapter(private val f: MyPageReviewFragment) :
     RecyclerView.Adapter<CoordinatorReviewAdapter.ReviewViewHolder>() {
-    private var reviewList: MutableList<Review> = mutableListOf(
-        Review(rating = 4, nickname = "Keiee",content = "너무 좋아요~~", hasReply = false),
-        Review(rating = 5, nickname = "iamgroot",content = "너무 좋아요~~", hasReply = true, reply = "이용해주셔서 감사합니다."),
-        Review(rating = 3, nickname = "talking potato",content = "너무 좋아요~~", hasReply = false),
-        Review(rating = 5, nickname = "gooooooogle",content = "너무 좋아요~~", hasReply = false),
-    )
+    private var reviewList: List<Review> = listOf()
+        set(items) {
+            field = items
+            notifyDataSetChanged()
+        }
     val context: String = ""
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
@@ -29,7 +30,7 @@ class CoordinatorReviewAdapter(private val f: MyPageReviewFragment) :
 
     override fun getItemCount() = reviewList.size
 
-    fun setList(items: MutableList<Review>) {
+    fun submitList(items: List<Review>) {
         reviewList = items
     }
 

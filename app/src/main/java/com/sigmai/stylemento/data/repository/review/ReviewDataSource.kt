@@ -8,7 +8,7 @@ import javax.inject.Inject
 class ReviewDataSource @Inject constructor() {
     private val service = RetrofitServiceFactory.createService<ReviewService>()
 
-    fun getReview(email: String) : Review{
+    fun getReview(email: String) : List<Review> {
         return service.getReview(email).execute().body()!!.data
     }
 

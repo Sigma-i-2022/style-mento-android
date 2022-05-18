@@ -7,16 +7,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.sigmai.stylemento.R
-import com.sigmai.stylemento.data.repository.work.WorkRepositoryImpl
-import com.sigmai.stylemento.di.AppConfigs
 import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.domain.usecase.coordinator.GetCoordinatorListUseCase
-import com.sigmai.stylemento.global.store.AuthenticationInformation
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel

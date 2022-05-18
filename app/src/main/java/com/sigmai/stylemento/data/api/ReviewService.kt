@@ -11,7 +11,7 @@ interface ReviewService {
     @GET("v1/api/review")
     fun getReview(
         @Query("email") email: String
-    ): Call<ResponseWrapper<Review>>
+    ): Call<ResponseWrapper<List<Review>>>
 
     @POST("v1/api/review")
     fun postReview(

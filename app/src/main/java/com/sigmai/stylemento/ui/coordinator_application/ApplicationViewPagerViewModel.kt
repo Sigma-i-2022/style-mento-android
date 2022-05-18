@@ -6,10 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.sigmai.stylemento.R
-import com.sigmai.stylemento.data.repository.member.MemberRepositoryImpl
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
 import com.sigmai.stylemento.data.repository.signup.SignupRepositoryImpl
-import com.sigmai.stylemento.global.store.AuthenticationInformation
+import com.sigmai.stylemento.global.store.AuthenticationInfo
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -63,7 +62,7 @@ class ApplicationViewPagerViewModel @Inject constructor(): ViewModel() {
         }
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                singupRepository.join(AuthenticationInformation.email.value!!, userName.value!!, introduction.value!!
+                singupRepository.join(AuthenticationInfo.email.value!!, userName.value!!, introduction.value!!
                     , snsArray[0], snsArray[1], snsArray[2], snsArray[3], snsArray[4])
             }
         }
@@ -71,7 +70,7 @@ class ApplicationViewPagerViewModel @Inject constructor(): ViewModel() {
     val userName = MutableLiveData<String>("")
 
     fun requestUserInfo(email : String) {
-        if(AuthenticationInformation.userType == AuthenticationInformation.TYPE_CLIENT){
+        if(AuthenticationInfo.userType == AuthenticationInfo.TYPE_CLIENT){
             viewModelScope.launch {
                 val client = withContext(Dispatchers.IO) {
                     myPageRepository.getMyPageClient(email)

@@ -1,13 +1,11 @@
 package com.sigmai.stylemento.ui.reservation.list
 
-import android.os.Debug
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sigmai.stylemento.data.model.response.reservation.Common
 import com.sigmai.stylemento.data.repository.reservation.ReservationRepositoryImpl
-import com.sigmai.stylemento.global.store.AuthenticationInformation
+import com.sigmai.stylemento.global.store.AuthenticationInfo
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -29,7 +27,7 @@ class ReservationListViewModel @Inject constructor() : ViewModel() {
     fun requestCommons(){
         viewModelScope.launch {
             val _commons = withContext(Dispatchers.IO){
-                reservationRepository.getReservationCommonList(AuthenticationInformation.email.value!!, 0, 10)
+                reservationRepository.getReservationCommonList(AuthenticationInfo.email.value!!, 0, 10)
             }
             commons.value = _commons
             startAdapter.call()

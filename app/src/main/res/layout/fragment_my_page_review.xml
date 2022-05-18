@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.sigmai.stylemento.ui.mypage.coordinator.CoordinatorPageViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/my_page_review_content_layout"
         android:layout_width="match_parent"
@@ -19,6 +25,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="5"
-            tools:listitem="@layout/item_review" />
+            tools:listitem="@layout/item_review"
+            app:reviews="@{viewModel.reviews}"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

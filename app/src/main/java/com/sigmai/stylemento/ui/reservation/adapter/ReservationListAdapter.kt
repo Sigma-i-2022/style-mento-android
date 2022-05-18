@@ -4,16 +4,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.response.reservation.Common
-import com.sigmai.stylemento.data.model.response.reservation.ReservePartTimeReqs
 import com.sigmai.stylemento.databinding.ItemReservationListBinding
-import com.sigmai.stylemento.domain.entity.Receipt
 import com.sigmai.stylemento.global.constant.ReceiptStateType
-import com.sigmai.stylemento.global.store.AuthenticationInformation
+import com.sigmai.stylemento.global.store.AuthenticationInfo
 import com.sigmai.stylemento.ui.reservation.list.ReservationListViewModel
 
 
@@ -95,7 +92,7 @@ class ReservationListAdapter(val viewModel : ReservationListViewModel) :
 
             }
             binding.reservationListBuyButton.setOnClickListener {
-                viewModel.postReservationClientPay(AuthenticationInformation.email.value!!, item.seq)
+                viewModel.postReservationClientPay(AuthenticationInfo.email.value!!, item.seq)
                 adapter.notifyItemChanged(position)
             }
             binding.reservationListReviewButton.setOnClickListener {

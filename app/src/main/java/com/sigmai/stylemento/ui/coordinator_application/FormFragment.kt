@@ -1,10 +1,8 @@
 package com.sigmai.stylemento.ui.coordinator_application
 
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentFormBinding
-import com.sigmai.stylemento.di.AppConfigs
 import com.sigmai.stylemento.global.base.BaseFragment
 
 class FormFragment : BaseFragment<FragmentFormBinding>() {

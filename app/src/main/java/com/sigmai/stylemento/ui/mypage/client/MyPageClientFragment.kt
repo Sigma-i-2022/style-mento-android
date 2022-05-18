@@ -2,6 +2,7 @@ package com.sigmai.stylemento.ui.mypage.client
 
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentMyPageUserBinding
 import com.sigmai.stylemento.global.base.BaseFragment
@@ -32,8 +33,9 @@ class MyPageClientFragment : BaseFragment<FragmentMyPageUserBinding>() {
         binding.toolbar.setOnEditListener {
             viewModel.onRevisionClick(it)
         }
-        binding.toolbar.setOnSettingsListener {
 
+        binding.toolbar.setOnSettingsListener {
+            findNavController().navigate(R.id.action_coordinator_page_to_setting_page)
         }
     }
 }

@@ -1,17 +1,41 @@
 package com.sigmai.stylemento.data.model.response.review
 
+import com.sigmai.stylemento.domain.entity.Review
+
 data class Review(
-    val content: String,
+    val seq: Long,
+    val reservationSeq: Long,
+    val reviewerId: String,
     val coordinatorId: String,
-    val height: String,
+    val star: Int,
+    val sex: String,
+    val content: String,
+    val reportYn: String,
     val registDate: String,
     val reportContent: String,
     val reportReason: String,
-    val reportYn: String,
-    val reservationSeq: Long,
-    val reviewId: String,
-    val seq: Long,
-    val sex: String,
-    val star: Int,
-    val weight: String
+    val height: Int,
+    val weight: Int,
+    val replyRes: ReplyResponse
+) {
+    fun toEntity() : Review {
+        return Review(
+            rating = star,
+            nickname = reviewerId,
+            profileImageUrl = null,
+            tall = height,
+            weight = weight,
+            date = registDate,
+            content = content,
+            reply = replyRes.replyContent,
+            hasReply = !replyRes.replyContent.isNullOrEmpty()
+        )
+    }
+}
+
+data class ReplyResponse(
+    val crdiEmail: String,
+    val replyContent: String,
+    val reviewSeq: String,
+    val seq: Long
 )

@@ -9,14 +9,15 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.response.lookBook.LookPage
 import com.sigmai.stylemento.data.model.response.myPage.MyPageCrdi
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
+import com.sigmai.stylemento.data.repository.review.ReviewRepositoryImpl
 import com.sigmai.stylemento.data.repository.work.WorkRepositoryImpl
-import com.sigmai.stylemento.global.store.AuthenticationInformation
+import com.sigmai.stylemento.domain.entity.Review
+import com.sigmai.stylemento.global.store.AuthenticationInfo
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,9 +27,12 @@ class CoordinatorPageViewModel
     lateinit var workRepository: WorkRepositoryImpl
     @Inject
     lateinit var myPageRepository: MyPageRepositoryImpl
+    @Inject
+    lateinit var reviewRepository: ReviewRepositoryImpl
 
     val coordinator = MutableLiveData<MyPageCrdi>()
     val pieceList = MutableLiveData<List<LookPage>>()
+    val reviews = MutableLiveData<List<Review>>(listOf())
 
     val isMyPage = MutableLiveData(false)
     val isExtended = MutableLiveData(false)
@@ -39,18 +43,8 @@ class CoordinatorPageViewModel
     val onEditEvent = SingleLiveEvent<Any>()
 
     fun loadData() {
-        val coordiEmail = if(isMyPage.value!!) AuthenticationInformation.email.value!! else email
-
         loadCoordinatorInfo()
-
-        viewModelScope.launch {
-            val list = withContext(Dispatchers.IO) {
-                workRepository.getCrdiWorkAll(coordiEmail)
-            }
-            pieceList.value = list.map {
-                it.toLookPage()
-            }
-        }
+        fetchPieceList()
     }
 
     fun onClickInstruction() {
@@ -66,13 +60,26 @@ class CoordinatorPageViewModel
     }
 
     private fun loadCoordinatorInfo() {
-        val coordiEmail = if(isMyPage.value!!) AuthenticationInformation.email.value!! else email
+        val coordiEmail = if(isMyPage.value!!) AuthenticationInfo.email.value!! else email
 
         viewModelScope.launch {
             val coordi = withContext(Dispatchers.IO) {
                 myPageRepository.getMyPageCrdi(coordiEmail)
             }
             coordinator.value = coordi
+        }
+    }
+
+    private fun fetchPieceList() {
+        val coordiEmail = if(isMyPage.value!!) AuthenticationInfo.email.value!! else email
+
+        viewModelScope.launch {
+            val list = withContext(Dispatchers.IO) {
+                workRepository.getCrdiWorkAll(coordiEmail)
+            }
+            pieceList.value = list.map {
+                it.toLookPage()
+            }
         }
     }
 
@@ -88,5 +95,14 @@ class CoordinatorPageViewModel
 
     fun onAddPiece(view: View) {
         view.findNavController().navigate(R.id.action_main_to_add_piece)
+    }
+
+    fun fetchReviews() {
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO) {
+                reviewRepository.getReview(coordinator.value!!.email)
+            }
+            reviews.value = result
+        }
     }
 }

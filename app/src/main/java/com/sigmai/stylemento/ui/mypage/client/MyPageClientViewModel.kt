@@ -10,7 +10,7 @@ import com.sigmai.stylemento.data.model.response.lookBook.LookPage
 import com.sigmai.stylemento.data.model.response.myPage.MyPageClient
 import com.sigmai.stylemento.data.repository.lookBook.LookBookRepositoryImpl
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
-import com.sigmai.stylemento.global.store.AuthenticationInformation
+import com.sigmai.stylemento.global.store.AuthenticationInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -37,12 +37,12 @@ class MyPageClientViewModel @Inject constructor() : ViewModel() {
     fun getUserInfo() {
         viewModelScope.launch {
             val receivedUser = withContext(Dispatchers.IO) {
-                myPageRepository.getMyPageClient(AuthenticationInformation.email.value!!)
+                myPageRepository.getMyPageClient(AuthenticationInfo.email.value!!)
             }
             user.value = receivedUser
 
             val lookBooks = withContext(Dispatchers.IO) {
-                lookBookRepository.getLookPageAll(AuthenticationInformation.email.value!!, 0)
+                lookBookRepository.getLookPageAll(AuthenticationInfo.email.value!!, 0)
             }
             lookPageList.value = lookBooks
         }
