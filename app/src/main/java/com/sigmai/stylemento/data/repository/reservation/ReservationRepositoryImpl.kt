@@ -13,7 +13,7 @@ class ReservationRepositoryImpl @Inject constructor(private val dataSource: Rese
         return dataSource.getReservationCommon(seq)
     }
 
-    override fun postReservationClient(reserveReq: Client): Boolean {
+    override fun postReservationClient(reserveReq: Client): Long {
         return dataSource.postReservationClient(reserveReq)
     }
 

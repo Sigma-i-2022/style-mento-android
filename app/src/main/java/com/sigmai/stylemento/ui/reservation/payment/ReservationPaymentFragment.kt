@@ -25,7 +25,8 @@ class ReservationPaymentFragment : BaseFragment<FragmentReservationPaymentBindin
             findNavController().navigateUp()
         }
         viewModel.startNext.observe(this) {
-            viewModel.postReservation()
+            if(viewModel.payType.value != -1)
+                viewModel.postPayment()
             TimeUtil.resetTimeList()
             findNavController().navigate(R.id.action_reservation_payment_page_to_reservation_payment_complete_page)
         }

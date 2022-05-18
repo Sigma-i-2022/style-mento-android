@@ -16,8 +16,8 @@ class ReservationDataSource @Inject constructor() {
         return service.getReservationCommon(seq).execute().body()!!.data
     }
 
-    fun postReservationClient(reserveReq: Client): Boolean {
-        return service.postReservationClient(reserveReq).execute().body()?.success ?: false
+    fun postReservationClient(reserveReq: Client): Long {
+        return service.postReservationClient(reserveReq).execute().body()!!.data
     }
 
 

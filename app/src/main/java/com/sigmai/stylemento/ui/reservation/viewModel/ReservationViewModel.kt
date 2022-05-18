@@ -152,11 +152,34 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
     }
 
     val paymentInfo = MutableLiveData<Payment>()
+    val seq = MutableLiveData<Long>(-1)
     fun postPayment() {
         viewModelScope.launch {
-            val payment = withContext(Dispatchers.IO){
-                //paymentRepository.postPayment()
+            val seq_ = withContext(Dispatchers.IO){
+                reservationRepository.postReservationClient(_client.value!!)
             }
+            seq.value = seq_
         }
+        viewModelScope.launch {
+            val payment = withContext(Dispatchers.IO){
+                paymentRepository.postPayment(seq.value!!, if(_payType.value == 0) "CARD" else "VIRTUAL_ACCOUNT",
+                3000, client.value!!.serviceType, client.value!!.clientEmail, client.value!!.clientId)
+            }
+            paymentInfo.value = payment
+        }
+    }
+
+    private val startCard = SingleLiveEvent<Any>()
+    private val startVirtual = SingleLiveEvent<Any>()
+    private var _payType = MutableLiveData<Int>(-1)
+    val payType : LiveData<Int> get() = _payType
+
+    fun onCardClick(){
+        _payType.postValue(0)
+        startCard.call()
+    }
+    fun onVirtualClick(){
+        _payType.postValue(1)
+        startVirtual.call()
     }
 }

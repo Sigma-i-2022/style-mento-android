@@ -19,7 +19,7 @@ interface ReservationService {
     @POST("v1/api/reservation/client")
     fun postReservationClient(
         @Body reserveReq: Client
-    ): Call<ResponseWrapper<Unit>>
+    ): Call<ResponseWrapper<Long>>
 
     @POST("v1/api/reservation/client/pay")
     fun postReservationClientPay(
