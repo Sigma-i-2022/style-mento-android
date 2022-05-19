@@ -42,6 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numStars="5"
+            android:rating="@{item.rating}"
             android:progressTint="@color/primary"
             app:layout_constraintStart_toStartOf="@id/review_item_owner_name_text"
             app:layout_constraintTop_toBottomOf="@id/review_item_owner_name_text" />

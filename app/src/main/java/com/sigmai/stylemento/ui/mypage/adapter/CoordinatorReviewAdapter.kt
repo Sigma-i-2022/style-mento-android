@@ -39,7 +39,7 @@ class CoordinatorReviewAdapter :
     class ReviewNormalViewHolder(val binding: ItemReviewBinding) : ReviewViewHolder(binding.root) {
         override fun bind(item: Review) {
             binding.item = item
-            binding.reviewItemRating.rating = item.rating.toFloat()
+            binding.executePendingBindings()
         }
 
         companion object {

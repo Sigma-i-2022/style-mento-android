@@ -1,7 +1,7 @@
 package com.sigmai.stylemento.domain.entity
 
 data class Review(
-    val rating: Int,
+    val rating: Float,
     val nickname: String,
     val profileImageUrl: String? = null,
     val tall: Int? = null,
