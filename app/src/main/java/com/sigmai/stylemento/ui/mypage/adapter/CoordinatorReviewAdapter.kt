@@ -37,19 +37,9 @@ class CoordinatorReviewAdapter :
     }
 
     class ReviewNormalViewHolder(val binding: ItemReviewBinding) : ReviewViewHolder(binding.root) {
-        private var reviewState = 0
         override fun bind(item: Review) {
             binding.item = item
             binding.reviewItemRating.rating = item.rating.toFloat()
-            binding.reviewItemContentEditText.setOnClickListener {
-                if (reviewState == 0) {
-                    binding.reviewItemContentEditText.maxLines = 10
-                    reviewState = 1
-                } else {
-                    binding.reviewItemContentEditText.maxLines = 2
-                    reviewState = 0
-                }
-            }
         }
 
         companion object {
