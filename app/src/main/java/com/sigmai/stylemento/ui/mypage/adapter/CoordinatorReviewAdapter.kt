@@ -1,16 +1,13 @@
 package com.sigmai.stylemento.ui.mypage.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.databinding.ItemReviewBinding
 import com.sigmai.stylemento.domain.entity.Review
-import com.sigmai.stylemento.ui.mypage.coordinator.MyPageReviewFragment
-import timber.log.Timber
 
-class CoordinatorReviewAdapter(private val f: MyPageReviewFragment) :
+class CoordinatorReviewAdapter :
     RecyclerView.Adapter<CoordinatorReviewAdapter.ReviewViewHolder>() {
     private var reviewList: List<Review> = listOf()
         set(items) {
@@ -36,15 +33,15 @@ class CoordinatorReviewAdapter(private val f: MyPageReviewFragment) :
 
     abstract class ReviewViewHolder protected constructor(val view: View) :
         RecyclerView.ViewHolder(view) {
-            abstract fun bind(item: Review)
-        }
+        abstract fun bind(item: Review)
+    }
 
     class ReviewNormalViewHolder(val binding: ItemReviewBinding) : ReviewViewHolder(binding.root) {
         private var reviewState = 0
         override fun bind(item: Review) {
             binding.item = item
             binding.reviewItemRating.rating = item.rating.toFloat()
-            binding.reviewItemContentEditText.setOnClickListener(View.OnClickListener {
+            binding.reviewItemContentEditText.setOnClickListener {
                 if (reviewState == 0) {
                     binding.reviewItemContentEditText.maxLines = 10
                     reviewState = 1
@@ -52,8 +49,7 @@ class CoordinatorReviewAdapter(private val f: MyPageReviewFragment) :
                     binding.reviewItemContentEditText.maxLines = 2
                     reviewState = 0
                 }
-            })
-
+            }
         }
 
         companion object {
