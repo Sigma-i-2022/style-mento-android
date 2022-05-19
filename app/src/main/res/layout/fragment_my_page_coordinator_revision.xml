@@ -43,7 +43,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:imageUrlCircle="@{viewModel.userInfo.profileImageUrl}"/>
+                    app:imageUrlCircle="@{viewModel.userInfo.profileImgUrl}"/>
 
                 <TextView
                     android:id="@+id/user_id"

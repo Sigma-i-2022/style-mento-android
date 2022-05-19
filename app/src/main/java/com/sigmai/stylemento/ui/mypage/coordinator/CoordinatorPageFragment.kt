@@ -1,6 +1,5 @@
 package com.sigmai.stylemento.ui.mypage.coordinator
 
-import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -8,9 +7,10 @@ import com.google.android.material.tabs.TabLayout
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentCoordinatorPageBinding
 import com.sigmai.stylemento.global.base.BaseFragment
-import com.sigmai.stylemento.ui.mypage.adapter.CoordinatorPageViewPagerAdapter
 import com.sigmai.stylemento.ui.home.adapter.TagAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import com.sigmai.stylemento.ui.mypage.adapter.CoordinatorPageViewPagerAdapter
+import android.view.View
 
 @AndroidEntryPoint
 class CoordinatorPageFragment(private val isMyPage: Boolean = false) :
@@ -49,7 +49,7 @@ class CoordinatorPageFragment(private val isMyPage: Boolean = false) :
 
     private fun setupObserver() {
         viewModel.startReserve.observe(this) {
-            val bundle = bundleOf("Name" to viewModel.coordinator.value!!.userId, "Email" to viewModel.coordinator.value!!.email, "Url" to viewModel.coordinator.value!!.profileImageUrl)
+            val bundle = bundleOf("Name" to viewModel.coordinator.value!!.userId, "Email" to viewModel.coordinator.value!!.email, "Url" to viewModel.coordinator.value!!.profileImgUrl)
             findNavController().navigate(
                 R.id.action_coordinator_page_to_reservation_time_page,
                 bundle

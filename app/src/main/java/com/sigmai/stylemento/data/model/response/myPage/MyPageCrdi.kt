@@ -4,7 +4,7 @@ data class MyPageCrdi(
     val email: String,
     val expertYN: String,
     val intro: String,
-    val profileImageUrl: String,
+    val profileImgUrl: String,
     val seq: Long,
     val stag1: String,
     val stag2: String,

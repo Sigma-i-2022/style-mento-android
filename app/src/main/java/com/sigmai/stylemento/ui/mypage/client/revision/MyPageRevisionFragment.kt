@@ -47,4 +47,5 @@ class MyPageRevisionFragment : BaseFragment<FragmentMyPageRevisionBinding>() {
     override fun initState() {
         viewModel.getUserInfo()
     }
+
 }

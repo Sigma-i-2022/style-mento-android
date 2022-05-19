@@ -67,6 +67,7 @@ class CoordinatorPageViewModel
                 myPageRepository.getMyPageCrdi(coordiEmail)
             }
             coordinator.value = coordi
+            println(coordi.profileImgUrl)
         }
     }
 
