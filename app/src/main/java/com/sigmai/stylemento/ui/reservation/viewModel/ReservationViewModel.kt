@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sigmai.stylemento.data.model.Payment
 import com.sigmai.stylemento.data.model.response.reservation.Client
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
+import com.sigmai.stylemento.data.repository.payment.PaymentRepositoryImpl
 import com.sigmai.stylemento.data.repository.reservation.ReservationRepositoryImpl
 import com.sigmai.stylemento.domain.entity.User
 import com.sigmai.stylemento.global.util.SingleLiveEvent
@@ -21,6 +23,8 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
     lateinit var reservationRepository: ReservationRepositoryImpl
     @Inject
     lateinit var myPageRepository: MyPageRepositoryImpl
+    @Inject
+    lateinit var paymentRepository: PaymentRepositoryImpl
 
     val coordinatorEmail = MutableLiveData<String>("")
     val coordinatorName = MutableLiveData<String>("")
@@ -143,6 +147,15 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
         viewModelScope.launch {
             withContext(Dispatchers.IO){
                 reservationRepository.postReservationClient(_client.value!!)
+            }
+        }
+    }
+
+    val paymentInfo = MutableLiveData<Payment>()
+    fun postPayment() {
+        viewModelScope.launch {
+            val payment = withContext(Dispatchers.IO){
+                //paymentRepository.postPayment()
             }
         }
     }
