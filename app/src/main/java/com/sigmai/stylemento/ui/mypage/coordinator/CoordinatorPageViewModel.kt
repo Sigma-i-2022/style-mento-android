@@ -104,7 +104,7 @@ class CoordinatorPageViewModel
                 reviewRepository.getReview(coordinator.value!!.email)
             }
             reviews.value = reviewList.map {
-                it.copy(deleteEvent = ::deleteReviewReply)
+                it.copy(deleteEvent = ::deleteReviewReply, postEvent = ::postReviewReply)
             }
         }
     }

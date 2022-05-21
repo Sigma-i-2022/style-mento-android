@@ -43,6 +43,12 @@ class CoordinatorReviewAdapter :
                     item.deleteEvent!!(item.replySeq)
                 }
             }
+
+            binding.register.setOnClickListener {
+                binding.item?.let { item ->
+                    item.postEvent!!(item.seq)
+                }
+            }
         }
 
         override fun bind(item: Review) {

@@ -1,6 +1,7 @@
 package com.sigmai.stylemento.domain.entity
 
 data class Review(
+    val seq: Long,
     val rating: Float,
     val nickname: String,
     val profileImageUrl: String? = null,
@@ -11,5 +12,6 @@ data class Review(
     val replySeq: Long,
     val reply: String? = null,
     val hasReply: Boolean,
-    val deleteEvent: ((Long)->Unit)? = null
+    val deleteEvent: ((Long)->Unit)? = null,
+    val postEvent: ((Long)->Unit)? = null
 )

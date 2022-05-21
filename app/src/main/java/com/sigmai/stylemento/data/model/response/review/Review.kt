@@ -20,6 +20,7 @@ data class Review(
 ) {
     fun toEntity() : Review {
         return Review(
+            seq = seq,
             rating = star.toFloat(),
             nickname = reviewerId,
             profileImageUrl = null,
