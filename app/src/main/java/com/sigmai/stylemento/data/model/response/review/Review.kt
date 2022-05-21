@@ -28,7 +28,8 @@ data class Review(
             date = registDate,
             content = content,
             reply = replyRes.replyContent,
-            hasReply = !replyRes.replyContent.isNullOrEmpty()
+            hasReply = !replyRes.replyContent.isNullOrEmpty(),
+            replySeq = replyRes.seq
         )
     }
 }

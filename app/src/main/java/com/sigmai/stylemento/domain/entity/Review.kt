@@ -8,6 +8,8 @@ data class Review(
     val weight: Int? = null,
     val date: String? = null,
     val content: String,
+    val replySeq: Long,
     val reply: String? = null,
-    val hasReply: Boolean
+    val hasReply: Boolean,
+    val deleteEvent: ((Long)->Unit)? = null
 )

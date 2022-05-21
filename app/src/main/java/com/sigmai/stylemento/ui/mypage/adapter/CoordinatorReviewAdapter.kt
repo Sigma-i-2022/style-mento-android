@@ -37,6 +37,14 @@ class CoordinatorReviewAdapter :
     }
 
     class ReviewNormalViewHolder(val binding: ItemReviewBinding) : ReviewViewHolder(binding.root) {
+        init {
+            binding.delete.setOnClickListener {
+                binding.item?.let { item ->
+                    item.deleteEvent!!(item.replySeq)
+                }
+            }
+        }
+
         override fun bind(item: Review) {
             binding.item = item
             binding.executePendingBindings()

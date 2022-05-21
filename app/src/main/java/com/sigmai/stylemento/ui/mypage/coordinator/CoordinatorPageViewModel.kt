@@ -100,10 +100,20 @@ class CoordinatorPageViewModel
 
     fun fetchReviews() {
         viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) {
+            val reviewList = withContext(Dispatchers.IO) {
                 reviewRepository.getReview(coordinator.value!!.email)
             }
-            reviews.value = result
+            reviews.value = reviewList.map {
+                it.copy(deleteEvent = ::deleteReviewReply)
+            }
+        }
+    }
+
+    fun deleteReviewReply(replySeq: Long) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                reviewRepository.deleteReviewReply(replySeq)
+            }
         }
     }
 }
