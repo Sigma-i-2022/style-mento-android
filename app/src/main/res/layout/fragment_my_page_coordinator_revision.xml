@@ -111,6 +111,7 @@
                     android:layout_marginStart="@dimen/horizontal_margin"
                     android:background="@drawable/background_radius_12"
                     android:backgroundTint="@color/primary"
+                    app:selected="@{false}"
                     android:textColor="@color/white"/>
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -122,7 +123,8 @@
                     app:layout_constraintStart_toEndOf="@id/yes"
                     app:layout_constraintTop_toTopOf="@id/yes"
                     android:layout_marginStart="12dp"
-                    android:background="@drawable/outline_radius_12" />
+                    android:background="@drawable/outline_radius_12"
+                    app:selected="@{true}" />
 
                 <TextView
                     android:id="@+id/style_tag"
