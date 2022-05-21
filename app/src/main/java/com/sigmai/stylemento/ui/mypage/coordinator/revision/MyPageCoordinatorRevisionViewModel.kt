@@ -27,7 +27,7 @@ class MyPageCoordinatorRevisionViewModel @Inject constructor() : ViewModel() {
 
     val userInfo = MutableLiveData<MyPageCrdi>()
     val introduction = MutableLiveData("")
-    var uuid = ""
+    var uuid: String? = null
     val isSeller = MutableStateFlow(false)
 
     fun loadData() {
@@ -36,6 +36,7 @@ class MyPageCoordinatorRevisionViewModel @Inject constructor() : ViewModel() {
                 myPageRepository.getMyPageCrdi(AuthenticationInfo.email.value!!)
             }
             userInfo.value = user
+            isSeller.value = user.expertYN == "Y"
             introduction.value = user.intro
         }
     }
@@ -48,7 +49,8 @@ class MyPageCoordinatorRevisionViewModel @Inject constructor() : ViewModel() {
     private fun updateProfile() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                myPageRepository.putMyPageCrdi(AuthenticationInfo.email.value!!, userInfo.value!!.userId, introduction.value!!)
+                val expert = if(isSeller.value) "Y" else "N"
+                myPageRepository.postMyPageCrdi(AuthenticationInfo.email.value!!, userInfo.value!!.userId, introduction.value!!, expert, uuid)
             }
         }
     }
@@ -57,7 +59,7 @@ class MyPageCoordinatorRevisionViewModel @Inject constructor() : ViewModel() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 uuid = imageRepository.postImage(file)
-                myPageRepository.postMyPageImage(AuthenticationInfo.email.value!!, uuid)
+                myPageRepository.postMyPageImage(AuthenticationInfo.email.value!!, uuid!!)
             }
         }
     }
