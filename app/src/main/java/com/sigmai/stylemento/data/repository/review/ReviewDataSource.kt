@@ -23,4 +23,8 @@ class ReviewDataSource @Inject constructor() {
     fun postReviewReport(reservationSeq: Long, reason: String, content: String) : Boolean{
         return service.postReviewReport(reservationSeq, reason, content).execute().body()?.success ?: false
     }
+
+    fun deleteReviewReply(replySeq: Long): Boolean {
+        return service.deleteReviewReply(replySeq).execute().body()?.success ?: false
+    }
 }

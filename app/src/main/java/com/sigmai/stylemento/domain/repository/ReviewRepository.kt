@@ -7,4 +7,5 @@ interface ReviewRepository {
     fun postReview(reservationSeq: Long, reviewerId: String, reviewerEmail: String, coordinatorId: String, coordinatorEmail: String, star: Int, sex: String, height: String, weight: String, content: String) : Boolean
     fun getReviewReport() : Review
     fun postReviewReport(reservationSeq: Long, reason: String, content: String) : Boolean
+    fun deleteReviewReply(replySeq: Long): Boolean
 }
