@@ -28,6 +28,13 @@ interface ReviewService {
         @Query("content") content: String
     ): Call<ResponseWrapper<Unit>>
 
+    @POST("v1/api/review/reply")
+    fun postReviewReply(
+        @Query("reviewSeq") reviewSeq: Long,
+        @Query("crdiEmail") crdiEmail: String,
+        @Query("replyContent") replyContent: String
+    ): Call<ResponseWrapper<Unit>>
+
     @GET("v1/api/review/report")
     fun getReviewReport(): Call<ResponseWrapper<Review>>
 

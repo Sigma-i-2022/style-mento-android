@@ -109,10 +109,18 @@ class CoordinatorPageViewModel
         }
     }
 
-    fun deleteReviewReply(replySeq: Long) {
+    private fun deleteReviewReply(replySeq: Long) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 reviewRepository.deleteReviewReply(replySeq)
+            }
+        }
+    }
+
+    private fun postReviewReply(reviewSeq: Long) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                reviewRepository.postReviewReply(reviewSeq, AuthenticationInfo.email.value!!, "test test test")
             }
         }
     }

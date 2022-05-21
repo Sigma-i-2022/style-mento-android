@@ -27,4 +27,8 @@ class ReviewDataSource @Inject constructor() {
     fun deleteReviewReply(replySeq: Long): Boolean {
         return service.deleteReviewReply(replySeq).execute().body()?.success ?: false
     }
+
+    fun postReviewReply(reviewSeq: Long, crdiEmail: String, replyContent: String): Boolean {
+        return service.postReviewReply(reviewSeq, crdiEmail, replyContent).execute().body()?.success ?: false
+    }
 }

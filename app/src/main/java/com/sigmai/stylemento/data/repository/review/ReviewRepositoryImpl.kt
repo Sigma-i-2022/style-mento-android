@@ -36,4 +36,8 @@ class ReviewRepositoryImpl @Inject constructor(private val dataSource: ReviewDat
     override fun deleteReviewReply(replySeq: Long) : Boolean {
         return dataSource.deleteReviewReply(replySeq)
     }
+
+    override fun postReviewReply(reviewSeq: Long, crdiEmail: String, replyContent: String): Boolean {
+        return dataSource.postReviewReply(reviewSeq, crdiEmail, replyContent)
+    }
 }
