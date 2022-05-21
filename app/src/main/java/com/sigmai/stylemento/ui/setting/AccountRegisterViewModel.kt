@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sigmai.stylemento.data.repository.cancelReservation.CancelReservationRepositoryImpl
+import com.sigmai.stylemento.data.repository.openApi.OpenApiRepositoryImpl
 import com.sigmai.stylemento.data.repository.reservation.ReservationRepositoryImpl
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,6 +17,9 @@ import javax.inject.Inject
 class AccountRegisterViewModel @Inject constructor() : ViewModel() {
     @Inject
     lateinit var reservationRepository: CancelReservationRepositoryImpl
+    @Inject
+    lateinit var openApiRepository: OpenApiRepositoryImpl
+
 
     val accountNumber = MutableLiveData<String>("")
     val owner = MutableLiveData<String>("")
@@ -36,6 +40,11 @@ class AccountRegisterViewModel @Inject constructor() : ViewModel() {
     }
 
     fun saveInfo(){
-        
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                val bankName = if(bank.value!! == "카카오") "카카오뱅크" else "${bank.value!!}은행"
+//                openApiRepository.postRealName(?, bankName, "", "", "YYYYMMDD")
+            }
+        }
     }
 }

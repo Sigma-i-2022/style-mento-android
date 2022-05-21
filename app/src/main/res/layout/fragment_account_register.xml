@@ -114,7 +114,7 @@
                 android:inputType="number"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="8dp"
-                android:text="@{viewModel.accountNumber}"
+                android:text="@={viewModel.accountNumber}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/account_number_title_text"/>
 
@@ -139,7 +139,7 @@
                 android:backgroundTint="@color/gray_f"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="8dp"
-                android:text="@{viewModel.owner}"
+                android:text="@={viewModel.owner}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/owner_title_text"/>
 
@@ -154,17 +154,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/owner_title_editText" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/account_register_complete_button"
             style="@style/header4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="10dp"
-            android:text="완료"
-            android:textColor="@color/white"
+            android:layout_alignParentBottom="true"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:backgroundTint="@color/primary"
             android:onClick="@{()->viewModel.onNextClick()}"
-            android:layout_alignParentBottom="true"/>
+            android:paddingVertical="10dp"
+            android:text="완료"
+            android:textColor="@color/white" />
     </RelativeLayout>
 </layout>
