@@ -111,8 +111,9 @@
                     android:layout_marginStart="@dimen/horizontal_margin"
                     android:background="@drawable/background_radius_12"
                     android:backgroundTint="@color/primary"
-                    app:selected="@{false}"
-                    android:textColor="@color/white"/>
+                    app:selected="@{viewModel.isSeller}"
+                    android:textColor="@color/white"
+                    android:onClick="@{@{()->viewModel.onSellerButtonClick(true)}}"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/no"
@@ -124,7 +125,8 @@
                     app:layout_constraintTop_toTopOf="@id/yes"
                     android:layout_marginStart="12dp"
                     android:background="@drawable/outline_radius_12"
-                    app:selected="@{true}" />
+                    app:selected="@{!viewModel.isSeller}"
+                    android:onClick="@{()->viewModel.onSellerButtonClick(false)}"/>
 
                 <TextView
                     android:id="@+id/style_tag"

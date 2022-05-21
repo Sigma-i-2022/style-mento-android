@@ -1,6 +1,7 @@
 package com.sigmai.stylemento.ui.mypage.coordinator.revision
 
 import android.view.View
+import androidx.compose.runtime.MutableState
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,6 +12,7 @@ import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
 import com.sigmai.stylemento.global.store.AuthenticationInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.MultipartBody
@@ -26,6 +28,7 @@ class MyPageCoordinatorRevisionViewModel @Inject constructor() : ViewModel() {
     val userInfo = MutableLiveData<MyPageCrdi>()
     val introduction = MutableLiveData("")
     var uuid = ""
+    val isSeller = MutableStateFlow(false)
 
     fun loadData() {
         viewModelScope.launch {
@@ -57,5 +60,9 @@ class MyPageCoordinatorRevisionViewModel @Inject constructor() : ViewModel() {
                 myPageRepository.postMyPageImage(AuthenticationInfo.email.value!!, uuid)
             }
         }
+    }
+
+    fun onSellerButtonClick(seller: Boolean) {
+        isSeller.value = seller
     }
 }
