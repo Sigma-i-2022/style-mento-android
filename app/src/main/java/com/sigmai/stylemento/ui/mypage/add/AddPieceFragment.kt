@@ -1,10 +1,12 @@
 package com.sigmai.stylemento.ui.mypage.add
 
 import android.content.Intent
+import android.view.LayoutInflater
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentAddPieceBinding
 import com.sigmai.stylemento.global.base.BaseFragment
@@ -49,6 +51,12 @@ class AddPieceFragment : BaseFragment<FragmentAddPieceBinding>() {
             intent.type = "image/*"
             intent.action = Intent.ACTION_GET_CONTENT
             launcher.launch(intent)
+        }
+        viewModel.tagSelectedEvent.observe(this) {
+            val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.style_tag_bottom_sheet, null)
+            val dialog = BottomSheetDialog(requireContext())
+            dialog.setContentView(dialogView)
+            dialog.show()
         }
     }
 
