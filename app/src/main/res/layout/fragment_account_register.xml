@@ -61,16 +61,16 @@
             <LinearLayout
                 android:id="@+id/back_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginHorizontal="@dimen/horizontal_margin"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/background_radius_12"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_radius_6"
                 android:backgroundTint="@color/gray_f"
+                android:onClick="@{()->viewModel.onSetBankClick()}"
+                android:orientation="horizontal"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="8dp"
-                app:layout_constraintTop_toBottomOf="@id/bank_title_text"
-                android:orientation="horizontal"
-                android:onClick="@{()->viewModel.onSetBankClick()}">
+                app:layout_constraintTop_toBottomOf="@id/bank_title_text">
 
                 <TextView
                     style="@style/body1"
@@ -88,9 +88,9 @@
                     style="@style/body1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="@{()->viewModel.onSetBankClick()}"
                     android:text="선택"
-                    android:textColor="@color/gray_8"
-                    android:onClick="@{()->viewModel.onSetBankClick()}"/>
+                    android:textColor="@color/gray_8" />
             </LinearLayout>
 
             <TextView
@@ -107,17 +107,17 @@
             <EditText
                 android:id="@+id/account_number_editText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginHorizontal="@dimen/horizontal_margin"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/background_radius_12"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_radius_6"
                 android:backgroundTint="@color/gray_f"
                 android:inputType="number"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="8dp"
                 android:text="@={viewModel.accountNumber}"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/account_number_title_text"/>
+                app:layout_constraintTop_toBottomOf="@id/account_number_title_text" />
 
             <TextView
                 android:id="@+id/owner_title_text"
@@ -133,18 +133,19 @@
             <EditText
                 android:id="@+id/owner_title_editText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginHorizontal="@dimen/horizontal_margin"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/background_radius_12"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_radius_6"
                 android:backgroundTint="@color/gray_f"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="8dp"
                 android:text="@={viewModel.owner}"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/owner_title_text"/>
+                app:layout_constraintTop_toBottomOf="@id/owner_title_text" />
 
             <TextView
+                android:id="@+id/info"
                 style="@style/body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -154,18 +155,43 @@
                 android:textColor="@color/gray_d"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/owner_title_editText" />
+
+            <TextView
+                android:id="@+id/birthday_title"
+                style="@style/header3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="32dp"
+                android:text="생년월일"
+                app:layout_constraintTop_toBottomOf="@id/info"
+                tools:layout_editor_absoluteX="20dp" />
+
+            <EditText
+                android:id="@+id/birthday"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_radius_6"
+                android:backgroundTint="@color/gray_f"
+                android:hint="19990909"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="8dp"
+                app:layout_constraintTop_toBottomOf="@id/birthday_title"
+                tools:layout_editor_absoluteX="20dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/account_register_complete_button"
             style="@style/header4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:layout_alignParentBottom="true"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:background="@drawable/background_radius_12"
             android:backgroundTint="@color/primary"
             android:onClick="@{()->viewModel.onNextClick()}"
-            android:paddingVertical="10dp"
             android:text="완료"
             android:textColor="@color/white" />
     </RelativeLayout>
