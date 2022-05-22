@@ -68,8 +68,9 @@
                 android:backgroundTint="@color/gray_f"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/bank_title_text">
+                app:layout_constraintTop_toBottomOf="@id/bank_title_text"
+                android:orientation="horizontal"
+                android:onClick="@{()->viewModel.onSetBankClick()}">
 
                 <TextView
                     style="@style/body1"
