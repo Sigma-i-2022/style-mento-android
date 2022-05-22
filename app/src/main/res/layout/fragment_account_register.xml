@@ -178,6 +178,7 @@
                 android:hint="19990909"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="8dp"
+                android:text="@={viewModel.birthday}"
                 app:layout_constraintTop_toBottomOf="@id/birthday_title"
                 tools:layout_editor_absoluteX="20dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>

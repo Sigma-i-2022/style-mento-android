@@ -20,10 +20,10 @@ class AccountRegisterViewModel @Inject constructor() : ViewModel() {
     @Inject
     lateinit var openApiRepository: OpenApiRepositoryImpl
 
-
     val accountNumber = MutableLiveData<String>("")
     val owner = MutableLiveData<String>("")
     val bank = MutableLiveData<String>("")
+    val birthday = MutableLiveData<String>("")
 
     val startBack = SingleLiveEvent<Any>()
     val startNext = SingleLiveEvent<Any>()
@@ -43,7 +43,7 @@ class AccountRegisterViewModel @Inject constructor() : ViewModel() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 val bankName = if(bank.value!! == "카카오") "카카오뱅크" else "${bank.value!!}은행"
-//                openApiRepository.postRealName(?, bankName, "", "", "YYYYMMDD")
+//                openApiRepository.postRealName("seq", bankName, accountNumber.value!!, owner.value!!, birthday.value!!)
             }
         }
     }
