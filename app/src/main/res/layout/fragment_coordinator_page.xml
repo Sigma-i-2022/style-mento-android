@@ -26,8 +26,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/coordinator_page_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:descendantFocusability="blocksDescendants">
+                android:layout_height="match_parent">
 
                 <com.sigmai.stylemento.global.component.SmToolbar
                     android:id="@+id/toolbar"
