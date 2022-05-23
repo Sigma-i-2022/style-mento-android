@@ -1,6 +1,5 @@
 package com.sigmai.stylemento.ui.reservation.write
 
-import android.net.wifi.WifiManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -46,7 +45,7 @@ class ReviewWriteViewModel @Inject constructor(): ViewModel() {
             }
             coordinatorEmail.value = crdi.email
             coordinatorName.value = crdi.userId
-            coordinatorUrl.value = crdi.profileImageUrl
+            coordinatorUrl.value = crdi.profileImgUrl
         }
     }
     private val startMale = SingleLiveEvent<Any>()

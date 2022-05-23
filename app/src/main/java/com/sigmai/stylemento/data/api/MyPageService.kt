@@ -32,7 +32,7 @@ interface MyPageService {
         @Query("userId") userId: String,
         @Query("intro") intro: String,
         @Query("expertYN") expertYN: String,
-        @Part profileImage: MultipartBody.Part
+        @Query("uuid") uuid: String?
     ): Call<ResponseWrapper<Unit>>
 
     @PUT("v1/api/mypage/crdi")

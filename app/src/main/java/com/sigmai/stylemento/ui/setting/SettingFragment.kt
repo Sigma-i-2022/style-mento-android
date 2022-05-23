@@ -42,9 +42,4 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
         }
 
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
 }

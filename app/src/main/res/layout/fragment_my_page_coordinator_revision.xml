@@ -43,7 +43,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:imageUrlCircle="@{viewModel.userInfo.profileImageUrl}"/>
+                    app:imageUrlCircle="@{viewModel.userInfo.profileImgUrl}"/>
 
                 <TextView
                     android:id="@+id/user_id"
@@ -89,11 +89,51 @@
                     app:layout_constraintTop_toBottomOf="@id/self_introduction_textview" />
 
                 <TextView
+                    android:id="@+id/is_seller"
+                    style="@style/header4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin"
+                    android:text="전문 셀러 여부"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@id/introduction"
+                    android:layout_marginTop="30dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/yes"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:text="예"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/is_seller"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="@dimen/horizontal_margin"
+                    android:background="@drawable/background_radius_12"
+                    android:backgroundTint="@color/primary"
+                    app:selected="@{viewModel.isSeller}"
+                    android:textColor="@color/white"
+                    android:onClick="@{@{()->viewModel.onSellerButtonClick(true)}}"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/no"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:text="아니오"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@id/yes"
+                    app:layout_constraintTop_toTopOf="@id/yes"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/outline_radius_12"
+                    app:selected="@{!viewModel.isSeller}"
+                    android:onClick="@{()->viewModel.onSellerButtonClick(false)}"/>
+
+                <TextView
                     android:id="@+id/style_tag"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="스타일 태그 (최대 3개)"
-                    app:layout_constraintTop_toBottomOf="@id/introduction"
+                    app:layout_constraintTop_toBottomOf="@id/yes"
                     android:layout_marginTop="36dp"
                     style="@style/header4"
                     android:textStyle="bold"

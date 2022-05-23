@@ -22,8 +22,8 @@ class MyPageDataSource @Inject constructor(){
         return service.getMyPageCrdi(email).execute().body()!!.data
     }
 
-    fun postMyPageCrdi(email: String, userId: String, intro: String, expertYN: String, profileImage: MultipartBody.Part) : Boolean{
-        return service.postMyPageCrdi(email, userId, intro, expertYN, profileImage).execute().body()?.success ?: false
+    fun postMyPageCrdi(email: String, userId: String, intro: String, expertYN: String, imageUuid: String?) : Boolean{
+        return service.postMyPageCrdi(email, userId, intro, expertYN, imageUuid).execute().body()?.success ?: false
     }
 
     fun putMyPageCrdi(email: String, userId: String, intro: String) : Boolean {

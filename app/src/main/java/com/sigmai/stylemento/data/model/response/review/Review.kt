@@ -20,7 +20,8 @@ data class Review(
 ) {
     fun toEntity() : Review {
         return Review(
-            rating = star,
+            seq = seq,
+            rating = star.toFloat(),
             nickname = reviewerId,
             profileImageUrl = null,
             tall = height,
@@ -28,7 +29,8 @@ data class Review(
             date = registDate,
             content = content,
             reply = replyRes.replyContent,
-            hasReply = !replyRes.replyContent.isNullOrEmpty()
+            hasReply = !replyRes.replyContent.isNullOrEmpty(),
+            replySeq = replyRes.seq
         )
     }
 }

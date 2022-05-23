@@ -19,7 +19,7 @@ interface OpenApiService {
         @Query("bankAccount") bankAccount : String,
         @Query("realName") realName : String,
         @Query("birthday") birthday : String
-    ) : Call<ResponseWrapper<Unit>>
+    ) : Call<ResponseWrapper<Boolean>>
 
     @POST("v1/api/openapi/token")
     fun postToken() : Call<ResponseWrapper<Unit>>

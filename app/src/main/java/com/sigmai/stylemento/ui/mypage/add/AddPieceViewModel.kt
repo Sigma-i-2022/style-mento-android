@@ -32,6 +32,7 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
 
     val onFinishEvent = SingleLiveEvent<Any>()
     val onImageEvent = SingleLiveEvent<Any>()
+    val tagSelectedEvent = SingleLiveEvent<Any>()
 
     val imageUrl = MutableLiveData("")
     val description = MutableLiveData("")
@@ -163,5 +164,9 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
 
     fun onImageClick() {
         onImageEvent.call()
+    }
+
+    fun onTagClick() {
+        tagSelectedEvent.call()
     }
 }

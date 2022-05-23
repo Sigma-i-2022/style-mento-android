@@ -67,6 +67,7 @@ class CoordinatorPageViewModel
                 myPageRepository.getMyPageCrdi(coordiEmail)
             }
             coordinator.value = coordi
+            println(coordi.profileImgUrl)
         }
     }
 
@@ -99,10 +100,28 @@ class CoordinatorPageViewModel
 
     fun fetchReviews() {
         viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) {
+            val reviewList = withContext(Dispatchers.IO) {
                 reviewRepository.getReview(coordinator.value!!.email)
             }
-            reviews.value = result
+            reviews.value = reviewList.map {
+                it.copy(deleteEvent = ::deleteReviewReply, postEvent = ::postReviewReply)
+            }
+        }
+    }
+
+    private fun deleteReviewReply(replySeq: Long) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                reviewRepository.deleteReviewReply(replySeq)
+            }
+        }
+    }
+
+    private fun postReviewReply(reviewSeq: Long) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                reviewRepository.postReviewReply(reviewSeq, AuthenticationInfo.email.value!!, "test test test")
+            }
         }
     }
 }

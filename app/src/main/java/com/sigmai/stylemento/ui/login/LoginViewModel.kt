@@ -32,7 +32,7 @@ class LoginViewModel @Inject constructor() : ViewModel() {
             val isSuccessful = loginUserCase(email.value!!, password.value!!, SmFirebaseMessagingService.getToken(view.context))
             //if(isSuccessful) finishEvent.call()
             AuthenticationInfo.email.value = email.value!!
-//            AuthenticationInformation.userType = AuthenticationInformation.TYPE_COORDINATOR
+            AuthenticationInfo.userType = AuthenticationInfo.TYPE_COORDINATOR
 
             // if(isSuccessful) TODO : 배포할 때는 아래 조건문을 지우고 이 조건문을 사용하세요.
             if(true) finishEvent.call()

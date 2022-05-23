@@ -73,7 +73,8 @@
             app:layout_constraintTop_toTopOf="@id/style_tag"
             android:background="@null"
             android:src="@drawable/ic_plus"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:onClick="@{()->viewModel.onTagClick()}"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tag_list"
