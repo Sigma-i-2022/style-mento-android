@@ -1,14 +1,19 @@
 package com.sigmai.stylemento.ui.mypage.add
 
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentAddPieceBinding
+import com.sigmai.stylemento.databinding.StyleTagBottomSheetBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.util.MultipartUtil
 import com.sigmai.stylemento.ui.home.adapter.TagAdapter
@@ -18,6 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class AddPieceFragment : BaseFragment<FragmentAddPieceBinding>() {
     override val layoutResourceId = R.layout.fragment_add_piece
     private val viewModel: AddPieceViewModel by viewModels()
+    private var dialog: BottomSheetDialog? = null
 
     private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         val multipartUtil = MultipartUtil()
@@ -53,11 +59,20 @@ class AddPieceFragment : BaseFragment<FragmentAddPieceBinding>() {
             launcher.launch(intent)
         }
         viewModel.tagSelectedEvent.observe(this) {
-            val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.style_tag_bottom_sheet, null)
-            val dialog = BottomSheetDialog(requireContext())
-            dialog.setContentView(dialogView)
-            dialog.show()
+            dialog?.show()
         }
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val binding = StyleTagBottomSheetBinding.inflate(inflater, container, false)
+        dialog = BottomSheetDialog(requireContext())
+        dialog?.setContentView(binding.root)
+
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     private fun setupRecyclerView() {
