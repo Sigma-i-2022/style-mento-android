@@ -16,7 +16,9 @@ import com.sigmai.stylemento.ui.coordinator.adapter.CoordinatorAdapter
 import com.sigmai.stylemento.ui.coordinator.adapter.HorizontalPieceAdapter
 import com.sigmai.stylemento.ui.mypage.adapter.CoordinatorReviewAdapter
 import com.sigmai.stylemento.ui.mypage.adapter.PieceScrollAdapter
+import com.sigmai.stylemento.ui.mypage.adapter.StyleTagSelectionAdapter
 import com.sigmai.stylemento.ui.mypage.client.adapter.PieceGridAdapter
+import com.sigmai.stylemento.ui.mypage.model.StyleTag
 import timber.log.Timber
 
 @BindingAdapter("app:lookBookList")
@@ -63,5 +65,12 @@ fun bindSelected(view: Button, isSelected: Boolean) {
 //        view.background = ContextCompat.getDrawable(view.context, R.drawable.outline_radius_12)
         DrawableCompat.setTint(drawable, ContextCompat.getColor(view.context, R.color.white))
         view.setTextColor(view.context.getColor(R.color.black))
+    }
+}
+
+@BindingAdapter("app:styleTags")
+fun bindStyleTags(recyclerView: RecyclerView, list: List<StyleTag>?) {
+    list?.let {
+        (recyclerView.adapter as StyleTagSelectionAdapter).submitList(list)
     }
 }
