@@ -67,8 +67,8 @@ class ReviewWriteViewModel @Inject constructor(): ViewModel() {
     fun setStar(rating : Int){
         _star.postValue(rating)
     }
-    val height = MutableLiveData<Float>(0f)
-    val weight = MutableLiveData<Float>(0f)
+    val height = MutableLiveData<String>("")
+    val weight = MutableLiveData<String>("")
     val content = MutableLiveData<String>("")
 
     val startBack = SingleLiveEvent<Any>()
@@ -84,7 +84,7 @@ class ReviewWriteViewModel @Inject constructor(): ViewModel() {
         viewModelScope.launch {
             withContext(Dispatchers.IO){
                 reviewRepository.postReview(common.value!!.seq, common.value!!.clientId, common.value!!.clientEmail, common.value!!.crdiId, common.value!!.crdiEmail,
-                    _star.value!!, if(_gender.value!! == 0) "MALE" else "FEMALE", height.value.toString(), weight.value.toString(), content.value!!)
+                    _star.value!!, if(_gender.value!! == 0) "MALE" else "FEMALE", height.value!!, weight.value!!, content.value!!)
 
             }
         }
