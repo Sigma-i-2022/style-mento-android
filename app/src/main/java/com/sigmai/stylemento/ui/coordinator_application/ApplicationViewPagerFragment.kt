@@ -30,7 +30,5 @@ class ApplicationViewPagerFragment : BaseFragment<FragmentApplicationViewPagerBi
             val navController = findNavController()
             navController.navigateUp()
         }
-
-        viewModel.requestUserInfo(AuthenticationInfo.email.value!!)
     }
 }

@@ -62,20 +62,8 @@ class ApplicationViewPagerViewModel @Inject constructor(): ViewModel() {
         }
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                singupRepository.join(AuthenticationInfo.email.value!!, userName.value!!, introduction.value!!
+                singupRepository.join(AuthenticationInfo.email.value!!, introduction.value!!
                     , snsArray[0], snsArray[1], snsArray[2], snsArray[3], snsArray[4])
-            }
-        }
-    }
-    val userName = MutableLiveData<String>("")
-
-    fun requestUserInfo(email : String) {
-        if(AuthenticationInfo.userType == AuthenticationInfo.TYPE_CLIENT){
-            viewModelScope.launch {
-                val client = withContext(Dispatchers.IO) {
-                    myPageRepository.getMyPageClient(email)
-                }
-                userName.value = client.userId
             }
         }
     }

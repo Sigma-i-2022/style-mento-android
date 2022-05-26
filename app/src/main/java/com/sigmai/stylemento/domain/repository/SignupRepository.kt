@@ -7,7 +7,6 @@ interface SignupRepository {
     fun emailCode(code: String, email: String): Boolean
     fun join(
         email: String,
-        userId: String,
         career: String,
         url1: String?,
         url2: String?,
