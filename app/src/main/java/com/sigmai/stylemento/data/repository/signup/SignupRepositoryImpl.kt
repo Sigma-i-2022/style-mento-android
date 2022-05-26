@@ -15,7 +15,6 @@ class SignupRepositoryImpl @Inject constructor(private val dataSource: SignupDat
 
     override fun join(
         email: String,
-        userId: String,
         career: String,
         url1: String?,
         url2: String?,
@@ -23,7 +22,7 @@ class SignupRepositoryImpl @Inject constructor(private val dataSource: SignupDat
         url4: String?,
         url5: String?
     ): Boolean {
-        return dataSource.join(email, userId, career, url1, url2, url3, url4, url5)
+        return dataSource.join(email, career, url1, url2, url3, url4, url5)
     }
 
     override fun joinState(email: String): JoinState {

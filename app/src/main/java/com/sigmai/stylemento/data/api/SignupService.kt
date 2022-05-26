@@ -20,7 +20,6 @@ interface SignupService {
     @POST("v1/api/join")
     fun join(
         @Query("email") email: String,
-        @Query("userId") userId: String,
         @Query("career") career: String,
         @Query("url1") url1: String?,
         @Query("url2") url2: String?,

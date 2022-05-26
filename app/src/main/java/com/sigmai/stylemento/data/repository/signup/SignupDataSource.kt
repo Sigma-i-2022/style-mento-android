@@ -16,8 +16,8 @@ class SignupDataSource @Inject constructor() {
         return service.emailCode(code, email).execute().body()?.success ?: false
     }
 
-    fun join(email: String, userId: String, career: String, url1: String?, url2: String?, url3: String?, url4: String?, url5: String?) : Boolean {
-        return service.join(email, userId, career, url1, url2, url3, url4, url5).execute().body()?.success ?: false
+    fun join(email: String, career: String, url1: String?, url2: String?, url3: String?, url4: String?, url5: String?) : Boolean {
+        return service.join(email, career, url1, url2, url3, url4, url5).execute().body()?.success ?: false
     }
 
     fun joinState(email: String) : JoinState {
