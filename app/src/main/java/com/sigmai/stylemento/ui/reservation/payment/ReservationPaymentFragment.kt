@@ -1,13 +1,12 @@
 package com.sigmai.stylemento.ui.reservation.payment
 
+import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.webkit.URLUtil
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.webkit.*
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
@@ -34,18 +33,25 @@ class ReservationPaymentFragment : BaseFragment<FragmentReservationPaymentBindin
         viewModel.startNext.observe(this) {
             if (viewModel.payType.value != -1) {
                 viewModel.postPayment()
-                shouldOverrideUrlLoading(binding.paymentWebView, "supertoss://")
+                //shouldOverrideUrlLoading(binding.paymentWebView, "supertoss://")
+                binding.paymentWebView.loadUrl("file:///android_asset/index.html")
             }
             TimeUtil.resetTimeList()
-            findNavController().navigate(R.id.action_reservation_payment_page_to_reservation_payment_complete_page)
+            //findNavController().navigate(R.id.action_reservation_payment_page_to_reservation_payment_complete_page)
         }
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.reservationPaymentServiceTimeRecycler.adapter =
             TimeAdapter(viewModel.client.value!!.reserveTimes, false)
+
+        binding.paymentWebView.settings.javaScriptEnabled = true
+        binding.paymentWebView.webViewClient = WebViewClient()
+        binding.paymentWebView.webChromeClient = WebChromeClient()
+
     }
 
     fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean =

@@ -3,9 +3,18 @@
     <!-- 1. 스크립트 추가 -->
     <script src="https://js.tosspayments.com/v1"></script>
 </head>
+<body>
 <script>
-  var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq' // 테스트용 클라이언트 키
-  var customerKey = 'Eply-VOnnWPGcEBl7lCNJ' // 고객을 식별할 수 있는 키
-  // 2. 초기화
-  var tossPayments = TossPayments(clientKey)
-</script>
+    var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'
+    var tossPayments = TossPayments(clientKey) // 클라이언트 키로 초기화하기
+    tossPayments.requestPayment('카드', { // 결제 수단 파라미터
+    // 결제 정보 파라미터
+    amount: 15000,
+    orderId: 'OrivqnOb-4bxOpYg8bJHe',
+    orderName: '토스 티셔츠 외 2건',
+    customerName: '박토스',
+    successUrl: 'http://localhost:8080/success',
+    failUrl: 'http://localhost:8080/fail',
+    })
+  </script>
+</body>
