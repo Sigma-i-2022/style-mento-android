@@ -159,11 +159,9 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
                 reservationRepository.postReservationClient(_client.value!!)
             }
             seq.value = seq_
-        }
-        viewModelScope.launch {
             val payment = withContext(Dispatchers.IO){
                 paymentRepository.postPayment(seq.value!!, if(_payType.value == 0) "CARD" else "VIRTUAL_ACCOUNT",
-                3000, client.value!!.serviceType, client.value!!.clientEmail, client.value!!.clientId)
+                    3000, client.value!!.serviceType, client.value!!.clientEmail, client.value!!.clientId)
             }
             paymentInfo.value = payment
         }
