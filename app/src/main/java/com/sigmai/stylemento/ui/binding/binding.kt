@@ -1,5 +1,6 @@
 package com.sigmai.stylemento.ui.binding
 
+import android.widget.EditText
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -23,4 +24,9 @@ fun bindTags(view: RecyclerView, list: List<String>?) {
     list?.let {
         (view.adapter as TagAdapter).setList(list)
     }
+}
+
+@BindingAdapter("app:readOnly")
+fun bindReadOnly(view: EditText, readOnly: Boolean = false) {
+    view.isEnabled = !readOnly
 }
