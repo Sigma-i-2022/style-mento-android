@@ -40,12 +40,14 @@ class CoordinatorReviewAdapter(val isMyPage: Boolean = false) :
         init {
             binding.delete.setOnClickListener {
                 binding.item?.let { item ->
-                    item.deleteEvent!!(item.replySeq!!)
+                    if(item.hasReply) item.deleteEvent!!(item.replySeq!!)
                 }
             }
 
             binding.register.setOnClickListener {
                 binding.item?.let { item ->
+                    if(item.hasReply) return@let
+
                     val content = binding.reply.text.toString()
                     item.postEvent!!(item.seq, content)
                 }
@@ -53,7 +55,7 @@ class CoordinatorReviewAdapter(val isMyPage: Boolean = false) :
 
             binding.delete.visibility = if(isMyPage) View.VISIBLE else View.GONE
             binding.register.visibility = if(isMyPage) View.VISIBLE else View.GONE
-            binding.reply.isEnabled = !isMyPage
+            binding.reply.isEnabled = isMyPage
         }
 
         override fun bind(item: Review) {

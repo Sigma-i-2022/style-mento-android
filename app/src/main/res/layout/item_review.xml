@@ -115,7 +115,8 @@
             android:minHeight="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/reply"
-            android:background="@drawable/outlined_radius_6" />
+            android:background="@drawable/outlined_radius_6"
+            app:activate="@{!item.hasReply}" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/delete"
@@ -127,7 +128,8 @@
             app:layout_constraintEnd_toStartOf="@id/register"
             app:layout_constraintTop_toTopOf="@id/register"
             android:background="@drawable/outlined_radius_6"
-            android:layout_marginEnd="4dp"/>
+            android:layout_marginEnd="4dp"
+            app:activate="@{item.hasReply}" />
 
         <View
             android:layout_width="match_parent"
