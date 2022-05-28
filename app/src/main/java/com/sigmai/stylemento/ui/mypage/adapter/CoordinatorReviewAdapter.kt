@@ -51,11 +51,16 @@ class CoordinatorReviewAdapter(val isMyPage: Boolean = false) :
                 }
             }
 
+            binding.delete.visibility = if(isMyPage) View.VISIBLE else View.GONE
+            binding.register.visibility = if(isMyPage) View.VISIBLE else View.GONE
             binding.reply.isEnabled = !isMyPage
         }
 
         override fun bind(item: Review) {
             binding.item = item
+
+            binding.reply.visibility = if(item.hasReply || isMyPage) View.VISIBLE else View.GONE
+
             binding.executePendingBindings()
         }
 

@@ -15,7 +15,7 @@ class MyPageReviewFragment : BaseFragment<FragmentMyPageReviewBinding>() {
     }
 
     override fun initState() {
-        binding.myPageReviewRecycler.adapter = CoordinatorReviewAdapter()
+        binding.myPageReviewRecycler.adapter = CoordinatorReviewAdapter(viewModel.isMyPage.value!!)
         viewModel.fetchReviews()
     }
 }
