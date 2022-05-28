@@ -1,5 +1,7 @@
 package com.sigmai.stylemento.ui.mypage.adapter
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,7 +42,14 @@ class CoordinatorReviewAdapter(val isMyPage: Boolean = false) :
         init {
             binding.delete.setOnClickListener {
                 binding.item?.let { item ->
-                    if(item.hasReply) item.deleteEvent!!(item.replySeq!!)
+                    if(!item.hasReply) return@let
+
+                    val builder = AlertDialog.Builder(binding.root.context)
+                    builder.setMessage("답글을 삭제하시겠습니까?")
+                        .setPositiveButton("삭제") { _, _ -> item.deleteEvent!!(item.replySeq!!) }
+                        .setNegativeButton("취소") { _, _ -> }
+
+                    builder.create().show()
                 }
             }
 
