@@ -117,10 +117,10 @@ class CoordinatorPageViewModel
         }
     }
 
-    private fun postReviewReply(reviewSeq: Long) {
+    private fun postReviewReply(reviewSeq: Long, content: String) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                reviewRepository.postReviewReply(reviewSeq, AuthenticationInfo.email.value!!, "test test test")
+                reviewRepository.postReviewReply(reviewSeq, AuthenticationInfo.email.value!!, content)
             }
         }
     }

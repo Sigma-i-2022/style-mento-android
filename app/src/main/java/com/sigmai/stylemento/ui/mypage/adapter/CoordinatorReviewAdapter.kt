@@ -46,7 +46,8 @@ class CoordinatorReviewAdapter :
 
             binding.register.setOnClickListener {
                 binding.item?.let { item ->
-                    item.postEvent!!(item.seq)
+                    val content = binding.reply.text.toString()
+                    item.postEvent!!(item.seq, content)
                 }
             }
         }
