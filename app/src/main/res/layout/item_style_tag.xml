@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
+        <import type="com.sigmai.stylemento.ui.mypage.model.StyleTag" />
         <variable
             name="item"
             type="com.sigmai.stylemento.ui.mypage.model.StyleTag" />
@@ -21,7 +22,8 @@
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="#캐주얼" />
+            tools:text="#캐주얼"
+            android:text='@{item.type == StyleTag.CATEGORY ? item.categoryName : item.tagName}'/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

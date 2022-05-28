@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -17,6 +16,8 @@ import com.sigmai.stylemento.databinding.StyleTagBottomSheetBinding
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.util.MultipartUtil
 import com.sigmai.stylemento.ui.home.adapter.TagAdapter
+import com.sigmai.stylemento.ui.mypage.adapter.StyleTagSelectionAdapter
+import com.sigmai.stylemento.ui.mypage.model.StyleTag
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -68,9 +69,14 @@ class AddPieceFragment : BaseFragment<FragmentAddPieceBinding>() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = StyleTagBottomSheetBinding.inflate(inflater, container, false)
+        val dialogBinding = StyleTagBottomSheetBinding.inflate(inflater, container, false)
         dialog = BottomSheetDialog(requireContext())
-        dialog?.setContentView(binding.root)
+        dialog?.setContentView(dialogBinding.root)
+        dialogBinding.items = listOf(
+            StyleTag(tagName = "hoho2"),
+            StyleTag(tagName = "hoho")
+        )
+        dialogBinding.tags.adapter = StyleTagSelectionAdapter()
 
         return super.onCreateView(inflater, container, savedInstanceState)
     }
