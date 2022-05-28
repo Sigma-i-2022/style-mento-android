@@ -3,9 +3,9 @@ package com.sigmai.stylemento.ui.setting
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sigmai.stylemento.data.repository.cancelReservation.CancelReservationRepositoryImpl
 import com.sigmai.stylemento.data.repository.openApi.OpenApiRepositoryImpl
-import com.sigmai.stylemento.data.repository.reservation.ReservationRepositoryImpl
+import com.sigmai.stylemento.data.repository.submall.SubMallRepositoryImpl
+import com.sigmai.stylemento.global.store.AuthenticationInfo
 import com.sigmai.stylemento.global.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -16,9 +16,10 @@ import javax.inject.Inject
 @HiltViewModel
 class AccountRegisterViewModel @Inject constructor() : ViewModel() {
     @Inject
-    lateinit var reservationRepository: CancelReservationRepositoryImpl
-    @Inject
     lateinit var openApiRepository: OpenApiRepositoryImpl
+
+    @Inject
+    lateinit var submallRepository: SubMallRepositoryImpl
 
     val accountNumber = MutableLiveData<String>("")
     val owner = MutableLiveData<String>("")
@@ -29,21 +30,33 @@ class AccountRegisterViewModel @Inject constructor() : ViewModel() {
     val startNext = SingleLiveEvent<Any>()
     val startSetBank = SingleLiveEvent<Any>()
 
-    fun onBackClick(){
+    fun onBackClick() {
         startBack.call()
     }
-    fun onNextClick(){
+
+    fun onNextClick() {
         startNext.call()
     }
-    fun onSetBankClick(){
+
+    fun onSetBankClick() {
         startSetBank.call()
     }
 
-    fun saveInfo(){
+    fun saveInfo() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                val bankName = if(bank.value!! == "카카오") "카카오뱅크" else "${bank.value!!}은행"
-//                openApiRepository.postRealName("seq", bankName, accountNumber.value!!, owner.value!!, birthday.value!!)
+                val bankName = if (bank.value!! == "카카오") "카카오뱅크" else "${bank.value!!}은행"
+
+                submallRepository.postSubMall(
+                    bankName,
+                    accountNumber.value!!,
+                    owner.value!!,
+                    AuthenticationInfo.email.value!!,
+                    "상호명",
+                    "대표자",
+                    "개인",
+                    null
+                )
             }
         }
     }

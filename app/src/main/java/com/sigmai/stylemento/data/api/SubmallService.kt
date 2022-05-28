@@ -26,7 +26,7 @@ interface SubmallService {
         @Query("companyName") companyName : String,
         @Query("representativeName") representativeName : String,
         @Query("type") type : String,
-        @Query("businessNumber") businessNumber : String
+        @Query("businessNumber") businessNumber : String?
     ) : Call<ResponseWrapper<SubMall>>
 
     @PUT("v1/api/submall")

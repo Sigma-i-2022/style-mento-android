@@ -15,7 +15,7 @@ class SubMallDataSource @Inject constructor() {
     fun getSubMall(crdiEmail : String) : SubMall {
         return service.getSubMall(crdiEmail).execute().body()!!.data
     }
-    fun postSubMall(bank : String, accountNumber : String, holderName : String, crdiEmail : String, companyName : String, representativeName : String, type : String, businessNumber : String) : SubMall{
+    fun postSubMall(bank : String, accountNumber : String, holderName : String, crdiEmail : String, companyName : String, representativeName : String, type : String, businessNumber : String?) : SubMall{
         return service.postSubMall(bank, accountNumber, holderName, crdiEmail, companyName, representativeName, type, businessNumber).execute().body()!!.data
     }
     fun putSubMall(crdiEmail : String, bank : String, accountNumber : String, holderName : String, companyName : String, representativeName : String, businessNumber : String) : SubMall{
