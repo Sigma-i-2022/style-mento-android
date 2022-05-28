@@ -16,7 +16,7 @@ data class Review(
     val reportReason: String,
     val height: Int,
     val weight: Int,
-    val replyRes: ReplyResponse
+    val replyRes: ReplyResponse?
 ) {
     fun toEntity() : Review {
         return Review(
@@ -28,9 +28,9 @@ data class Review(
             weight = weight,
             date = registDate,
             content = content,
-            reply = replyRes.replyContent,
-            hasReply = !replyRes.replyContent.isNullOrEmpty(),
-            replySeq = replyRes.seq
+            reply = replyRes?.replyContent,
+            hasReply = replyRes != null,
+            replySeq = replyRes?.seq
         )
     }
 }

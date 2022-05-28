@@ -40,7 +40,7 @@ class CoordinatorReviewAdapter :
         init {
             binding.delete.setOnClickListener {
                 binding.item?.let { item ->
-                    item.deleteEvent!!(item.replySeq)
+                    item.deleteEvent!!(item.replySeq!!)
                 }
             }
 
