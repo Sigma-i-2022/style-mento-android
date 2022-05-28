@@ -6,6 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
 
+@Deprecated("Submall api 를 사용하세요.")
 interface OpenApiService {
     @GET("v1/api/openapi/account")
     fun getAccount(
