@@ -103,7 +103,8 @@
             android:textColor="@color/black"
             android:textSize="12sp"
             android:hint="답글 입력..."
-            app:layout_constraintTop_toBottomOf="@id/review_item_content_editText" />
+            app:layout_constraintTop_toBottomOf="@id/review_item_content_editText"
+            android:enabled="false" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/register"

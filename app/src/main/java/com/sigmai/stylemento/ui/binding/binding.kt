@@ -25,8 +25,3 @@ fun bindTags(view: RecyclerView, list: List<String>?) {
         (view.adapter as TagAdapter).setList(list)
     }
 }
-
-@BindingAdapter("app:readOnly")
-fun bindReadOnly(view: EditText, readOnly: Boolean = false) {
-    view.isEnabled = !readOnly
-}

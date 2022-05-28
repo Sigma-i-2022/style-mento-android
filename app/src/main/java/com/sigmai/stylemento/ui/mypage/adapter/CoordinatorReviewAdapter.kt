@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.databinding.ItemReviewBinding
 import com.sigmai.stylemento.domain.entity.Review
 
-class CoordinatorReviewAdapter :
+class CoordinatorReviewAdapter(val isMyPage: Boolean = false) :
     RecyclerView.Adapter<CoordinatorReviewAdapter.ReviewViewHolder>() {
     private var reviewList: List<Review> = listOf()
         set(items) {
@@ -17,7 +17,7 @@ class CoordinatorReviewAdapter :
     val context: String = ""
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
-        return ReviewNormalViewHolder.from(parent)
+        return ReviewNormalViewHolder.from(parent, isMyPage)
     }
 
     override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {
@@ -36,7 +36,7 @@ class CoordinatorReviewAdapter :
         abstract fun bind(item: Review)
     }
 
-    class ReviewNormalViewHolder(val binding: ItemReviewBinding) : ReviewViewHolder(binding.root) {
+    class ReviewNormalViewHolder(val binding: ItemReviewBinding, val isMyPage: Boolean) : ReviewViewHolder(binding.root) {
         init {
             binding.delete.setOnClickListener {
                 binding.item?.let { item ->
@@ -50,6 +50,8 @@ class CoordinatorReviewAdapter :
                     item.postEvent!!(item.seq, content)
                 }
             }
+
+            binding.reply.isEnabled = !isMyPage
         }
 
         override fun bind(item: Review) {
@@ -58,11 +60,11 @@ class CoordinatorReviewAdapter :
         }
 
         companion object {
-            fun from(parent: ViewGroup): ReviewViewHolder {
+            fun from(parent: ViewGroup, isMyPage: Boolean): ReviewViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemReviewBinding.inflate(layoutInflater, parent, false)
 
-                return ReviewNormalViewHolder(binding)
+                return ReviewNormalViewHolder(binding, isMyPage)
             }
         }
     }
