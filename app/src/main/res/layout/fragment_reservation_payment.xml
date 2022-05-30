@@ -368,11 +368,5 @@
             android:text="결제하기"
             android:textColor="@color/white"
             android:textStyle="bold" />
-        <WebView
-            android:id="@+id/payment_web_view"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_alignParentBottom="false"
-            tools:ignore="WebViewLayout" />
     </RelativeLayout>
 </layout>

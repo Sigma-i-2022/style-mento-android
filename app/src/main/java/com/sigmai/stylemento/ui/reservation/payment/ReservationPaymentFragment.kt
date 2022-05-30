@@ -34,10 +34,9 @@ class ReservationPaymentFragment : BaseFragment<FragmentReservationPaymentBindin
             if (viewModel.payType.value != -1) {
                 viewModel.postPayment()
                 //shouldOverrideUrlLoading(binding.paymentWebView, "supertoss://")
-                binding.paymentWebView.loadUrl("file:///android_asset/index.html")
             }
             TimeUtil.resetTimeList()
-            //findNavController().navigate(R.id.action_reservation_payment_page_to_reservation_payment_complete_page)
+            findNavController().navigate(R.id.action_reservation_payment_page_to_reservation_web_view_page)
         }
     }
 
@@ -48,64 +47,5 @@ class ReservationPaymentFragment : BaseFragment<FragmentReservationPaymentBindin
         binding.reservationPaymentServiceTimeRecycler.adapter =
             TimeAdapter(viewModel.client.value!!.reserveTimes, false)
 
-        binding.paymentWebView.settings.javaScriptEnabled = true
-        binding.paymentWebView.webViewClient = WebViewClient()
-        binding.paymentWebView.webChromeClient = WebChromeClient()
-
     }
-
-    fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean =
-        url.let()
-        {
-            if (!URLUtil.isNetworkUrl(url) && !URLUtil.isJavaScriptUrl(url)) {
-                val uri = try {
-                    Uri.parse(url)
-                } catch (e: Exception) {
-                    return false
-                }
-
-                return when (uri.scheme) {
-                    "intent" -> {
-                        startSchemeIntent(it)
-                    }
-                    else -> {
-                        return try {
-                            startActivity(Intent(Intent.ACTION_VIEW, uri))
-                            true
-                        } catch (e: java.lang.Exception) {
-                            false
-                        }
-                    }
-                }
-            } else {
-                return false
-            }
-        }
-
-
-    private fun startSchemeIntent(url: String): Boolean {
-        val schemeIntent: Intent = try {
-            Intent.parseUri(url, Intent.URI_INTENT_SCHEME)
-        } catch (e: URISyntaxException) {
-            return false
-        }
-        try {
-            startActivity(schemeIntent)
-            return true
-        } catch (e: ActivityNotFoundException) {
-            val packageName = schemeIntent.getPackage()
-
-            if (!packageName.isNullOrBlank()) {
-                startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("market://details?id=$packageName")
-                    )
-                )
-                return true
-            }
-        }
-        return false
-    }
-
 }

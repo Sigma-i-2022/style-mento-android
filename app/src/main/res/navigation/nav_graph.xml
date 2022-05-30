@@ -124,7 +124,16 @@
         android:label="reservation payment page"
         tools:layout="@layout/fragment_reservation_payment">
         <action
-            android:id="@+id/action_reservation_payment_page_to_reservation_payment_complete_page"
+            android:id="@+id/action_reservation_payment_page_to_reservation_web_view_page"
+            app:destination="@id/reservation_web_view_page" />
+    </fragment>
+    <fragment
+        android:id="@+id/reservation_web_view_page"
+        android:name="com.sigmai.stylemento.ui.reservation.payment.ReservationWebViewFragment"
+        android:label="reservation web view page"
+        tools:layout="@layout/fragment_reservation_web_view">
+        <action
+            android:id="@+id/action_reservation_web_view_page_to_reservation_payment_complete_page"
             app:destination="@id/reservation_payment_complete_page" />
     </fragment>
     <fragment
