@@ -1,20 +1,79 @@
+<!--<head>-->
+<!--    <title>결제하기</title>-->
+<!--    &lt;!&ndash; 1. 스크립트 추가 &ndash;&gt;-->
+<!--    <script src="https://js.tosspayments.com/v1"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<script>-->
+<!--    var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'-->
+<!--    var tossPayments = TossPayments(clientKey) // 클라이언트 키로 초기화하기-->
+<!--    tossPayments.requestPayment('카드', { // 결제 수단 파라미터-->
+<!--    // 결제 정보 파라미터-->
+<!--    amount: 15000,-->
+<!--    orderId: 'OrivqnOb-4bxOpYg8bJHe',-->
+<!--    orderName: '토스 티셔츠 외 2건',-->
+<!--    customerName: '박토스',-->
+<!--    successUrl: 'http://localhost:8080/success',-->
+<!--    failUrl: 'http://localhost:8080/fail',-->
+<!--    })-->
+<!--  </script>-->
+<!--</body>-->
+<!DOCTYPE html>
+<html lang="ko">
 <head>
     <title>결제하기</title>
-    <!-- 1. 스크립트 추가 -->
+    <meta charset="utf-8">
     <script src="https://js.tosspayments.com/v1"></script>
 </head>
 <body>
+<section>
+    <!-- ... -->
+    <span>총 주문금액</span>
+    <span>3000 원</span>
+    <button id="payment-button">3000원 카드 결제하기</button>
+</section>
+<section>
+    <!-- ... -->
+    <span>총 주문금액</span>
+    <span>3000 원</span>
+    <button id="payment-virtual-account-button">3000원 가상계좌 결제하기</button>
+</section>
 <script>
-    var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'
-    var tossPayments = TossPayments(clientKey) // 클라이언트 키로 초기화하기
-    tossPayments.requestPayment('카드', { // 결제 수단 파라미터
-    // 결제 정보 파라미터
-    amount: 15000,
-    orderId: 'OrivqnOb-4bxOpYg8bJHe',
-    orderName: '토스 티셔츠 외 2건',
-    customerName: '박토스',
-    successUrl: 'http://localhost:8080/success',
-    failUrl: 'http://localhost:8080/fail',
+    var clientKey = 'test_ck_jkYG57Eba3G06EgN4PwVpWDOxmA1'
+    var tossPayments = TossPayments(clientKey)
+    var button = document.getElementById('payment-button') // 결제하기 버튼
+    button.addEventListener('click', function () {
+        tossPayments.requestPayment('CARD', {
+            amount: 3000,
+            orderId: 'd034479d-7d2e-4c03-bf2e-cc81671e0fa4',
+            orderName: '스타일 피드백',
+            customerName: '김바보',
+            customerEmail: 'test1234@test.com',
+            successUrl: 'http://localhost:9090/v1/api/payment/success',
+            failUrl: 'http://localhost:9090/v1/api/payment/fail',
+        })
     })
-  </script>
+</script>
+<script>
+    var clientKey = 'test_ck_jkYG57Eba3G06EgN4PwVpWDOxmA1'
+    var tossPayments = TossPayments(clientKey)
+    var button = document.getElementById('payment-virtual-account-button') // 결제하기 버튼
+    button.addEventListener('click', function () {
+        tossPayments.requestPayment('가상계좌', {
+            amount: 3000,
+            orderId: 'ee734e67-3378-4f10-86e6-e31d506ed467',
+            orderName: '스타일 피드백',
+            customerName: '김바보',
+            customerEmail: 'woon@sik.com',
+            successUrl: 'http://localhost:9090/v1/api/payment/success',
+            failUrl: 'http://localhost:9090/v1/api/payment/fail',
+            validHours: 6,
+            cashReceipt: {
+                type: '소득공제',
+            },
+            useEscrow: false,
+        })
+    })
+</script>
 </body>
+</html>
