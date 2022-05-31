@@ -44,6 +44,14 @@ class ReservationWebViewFragment : BaseFragment<FragmentReservationWebViewBindin
         binding.paymentWebView.webViewClient = WebViewClient()
         binding.paymentWebView.webChromeClient = WebChromeClient()
         binding.paymentWebView.loadUrl("file:///android_asset/index.html")
+
+        val arg = viewModel.paymentInfo.value!!.amount.toString() + ", " +
+                viewModel.paymentInfo.value!!.orderId + ", " +
+                viewModel.paymentInfo.value!!.orderName + ", " +
+                viewModel.paymentInfo.value!!.customerName + ", " +
+                viewModel.paymentInfo.value!!.customerEmail
+        binding.paymentWebView.loadUrl("javascript:payCard($arg)")
+
     }
 
     fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean =

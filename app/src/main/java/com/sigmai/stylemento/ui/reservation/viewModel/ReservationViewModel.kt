@@ -153,6 +153,7 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
 
     val paymentInfo = MutableLiveData<Payment>()
     val seq = MutableLiveData<Long>(-1)
+    val endPostPayInfo = SingleLiveEvent<Any>()
     fun postPayment() {
         viewModelScope.launch {
             val seq_ = withContext(Dispatchers.IO){
@@ -164,6 +165,7 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
                     3000, client.value!!.serviceType, client.value!!.clientEmail, client.value!!.clientId)
             }
             paymentInfo.value = payment
+            endPostPayInfo.call()
         }
     }
 

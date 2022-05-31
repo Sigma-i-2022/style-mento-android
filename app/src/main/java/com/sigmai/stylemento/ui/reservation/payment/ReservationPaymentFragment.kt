@@ -35,6 +35,8 @@ class ReservationPaymentFragment : BaseFragment<FragmentReservationPaymentBindin
                 viewModel.postPayment()
                 //shouldOverrideUrlLoading(binding.paymentWebView, "supertoss://")
             }
+        }
+        viewModel.endPostPayInfo.observe(this){
             TimeUtil.resetTimeList()
             findNavController().navigate(R.id.action_reservation_payment_page_to_reservation_web_view_page)
         }
