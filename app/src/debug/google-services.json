@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1028460972010",
+    "project_id": "sigma-cd079",
+    "storage_bucket": "sigma-cd079.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1028460972010:android:9ca504f7ccfadd5b44d493",
+        "android_client_info": {
+          "package_name": "com.sigmai.stylemento.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1028460972010-s6mv1tktr3bkoss5ne5p13vk18ov09n1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sigmai.stylemento.dev",
+            "certificate_hash": "cb58883cdbf07690dc5b7301755f715c2d0bb8be"
+          }
+        },
+        {
+          "client_id": "1028460972010-mbtjqr42d0jf3fogt26ju45r43qg6vbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMXceMkPRvwP4bmt8osNmX5E40DFQteUc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1028460972010-mbtjqr42d0jf3fogt26ju45r43qg6vbf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
