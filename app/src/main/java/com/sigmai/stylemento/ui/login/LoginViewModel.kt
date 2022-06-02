@@ -4,6 +4,7 @@ import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sigmai.stylemento.BuildConfig.IS_PROD
 import com.sigmai.stylemento.domain.usecase.signup.LoginUseCase
 import com.sigmai.stylemento.firebase.SmFirebaseMessagingService
 import com.sigmai.stylemento.global.store.AuthenticationInfo
@@ -30,12 +31,11 @@ class LoginViewModel @Inject constructor() : ViewModel() {
     fun onLogin(view: View) {
         viewModelScope.launch {
             val isSuccessful = loginUserCase(email.value!!, password.value!!, SmFirebaseMessagingService.getToken(view.context))
-            //if(isSuccessful) finishEvent.call()
+
             AuthenticationInfo.email.value = email.value!!
             AuthenticationInfo.userType = AuthenticationInfo.TYPE_COORDINATOR
 
-            // if(isSuccessful) TODO : 배포할 때는 아래 조건문을 지우고 이 조건문을 사용하세요.
-            if(true) finishEvent.call()
+            if(IS_PROD && isSuccessful) finishEvent.call()
         }
     }
 }
