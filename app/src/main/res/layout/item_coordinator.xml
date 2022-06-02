@@ -41,6 +41,17 @@
             android:textSize="14sp"
             tools:text="jenny_eqet" />
 
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/coordinator_nickname"
+            android:numStars="5"
+            android:rating="@{item.rating}"
+            android:stepSize="0.1"
+            android:theme="@style/RatingBar" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/coordinator_tags"
             android:layout_width="wrap_content"
