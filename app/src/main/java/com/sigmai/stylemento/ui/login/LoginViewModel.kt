@@ -35,7 +35,7 @@ class LoginViewModel @Inject constructor() : ViewModel() {
             AuthenticationInfo.email.value = email.value!!
             AuthenticationInfo.userType = AuthenticationInfo.TYPE_COORDINATOR
 
-            if(IS_PROD && isSuccessful) finishEvent.call()
+            if(!IS_PROD || isSuccessful) finishEvent.call()
         }
     }
 }
