@@ -1,7 +1,7 @@
 <!--<head>-->
 <!--    <title>결제하기</title>-->
 <!--    &lt;!&ndash; 1. 스크립트 추가 &ndash;&gt;-->
-<!--    <script src="https://js.tosspayments.com/v1"></script>-->
+<!--    <script src='https://js.tosspayments.com/v1'></script>-->
 <!--</head>-->
 <!--<body>-->
 <!--<script>-->
@@ -19,60 +19,59 @@
 <!--  </script>-->
 <!--</body>-->
 <!DOCTYPE html>
-<html lang="ko">
+<html lang='ko'>
 <head>
     <title>결제하기</title>
-    <meta charset="utf-8">
-    <script src="https://js.tosspayments.com/v1"></script>
+    <meta charset='utf-8'>
+    <script src='https://js.tosspayments.com/v1'></script>
 </head>
 <body>
-<!--<section>-->
-<!--    &lt;!&ndash; ... &ndash;&gt;-->
-<!--    <span>총 주문금액</span>-->
-<!--    <span>3000 원</span>-->
-<!--    <button id="payment-button">3000원 카드 결제하기</button>-->
-<!--</section>-->
-<!--<section>-->
-<!--    &lt;!&ndash; ... &ndash;&gt;-->
-<!--    <span>총 주문금액</span>-->
-<!--    <span>3000 원</span>-->
-<!--    <button id="payment-virtual-account-button">3000원 가상계좌 결제하기</button>-->
-<!--</section>-->
-<script language="JavaScript">
-    function payCard(_amount, _orderId, _orderName, _customerName, _customerEmail){
-        var clientKey = 'test_ck_jkYG57Eba3G06EgN4PwVpWDOxmA1'
-        var tossPayments = TossPayments(clientKey)
+<section>
+    <span>총 주문금액</span>
+    <span>3000 원</span>
+    <button id='payment-button'>3000원 카드 결제하기</button>
+</section>
+<section>
+    <span>총 주문금액</span>
+    <span>3000 원</span>
+    <button id='payment-virtual-account-button'>3000원 가상계좌 결제하기</button>
+</section>
+<script language='JavaScript'>
+    var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'
+    var tossPayments = TossPayments(clientKey)
+    var button = document.getElementById('payment-button') // 결제하기 버튼
+    button.addEventListener('click', function () {
         tossPayments.requestPayment('CARD', {
             amount: _amount,
-            orderId: _orderId,
-            orderName: _orderName,
-            customerName: _customerName,
-            customerEmail: _customerEmail,
+            orderId: '_orderId',
+            orderName: '_orderName',
+            customerName: '_customerName',
+            customerEmail: '_customerEmail',
             successUrl: 'http://localhost:9090/v1/api/payment/success',
             failUrl: 'http://localhost:9090/v1/api/payment/fail',
         })
     }
 </script>
-<!--<script>-->
-<!--    var clientKey = 'test_ck_jkYG57Eba3G06EgN4PwVpWDOxmA1'-->
-<!--    var tossPayments = TossPayments(clientKey)-->
-<!--    var button = document.getElementById('payment-virtual-account-button') // 결제하기 버튼-->
-<!--    button.addEventListener('click', function () {-->
-<!--        tossPayments.requestPayment('가상계좌', {-->
-<!--            amount: 3000,-->
-<!--            orderId: 'ee734e67-3378-4f10-86e6-e31d506ed467',-->
-<!--            orderName: '스타일 피드백',-->
-<!--            customerName: '김바보',-->
-<!--            customerEmail: 'woon@sik.com',-->
-<!--            successUrl: 'http://localhost:9090/v1/api/payment/success',-->
-<!--            failUrl: 'http://localhost:9090/v1/api/payment/fail',-->
-<!--            validHours: 6,-->
-<!--            cashReceipt: {-->
-<!--                type: '소득공제',-->
-<!--            },-->
-<!--            useEscrow: false,-->
-<!--        })-->
-<!--    })-->
-<!--</script>-->
+<script>
+    var clientKey = 'test_ck_jkYG57Eba3G06EgN4PwVpWDOxmA1'
+    var tossPayments = TossPayments(clientKey)
+    var button = document.getElementById('payment-virtual-account-button') // 결제하기 버튼
+    button.addEventListener('click', function () {
+        tossPayments.requestPayment('가상계좌', {
+            amount: 3000,
+            orderId: 'ee734e67-3378-4f10-86e6-e31d506ed467',
+            orderName: '스타일 피드백',
+            customerName: '김바보',
+            customerEmail: 'woon@sik.com',
+            successUrl: 'http://localhost:9090/v1/api/payment/success',
+            failUrl: 'http://localhost:9090/v1/api/payment/fail',
+            validHours: 6,
+            cashReceipt: {
+                type: '소득공제',
+            },
+            useEscrow: false,
+        })
+    })
+</script>
 </body>
 </html>
