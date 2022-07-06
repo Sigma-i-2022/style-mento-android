@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.webkit.*
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.load.engine.Resource
@@ -49,7 +50,60 @@ class ReservationWebViewFragment : BaseFragment<FragmentReservationWebViewBindin
 
         binding.paymentWebView.settings.javaScriptEnabled = true
 //        binding.paymentWebView.loadUrl("file:///android_asset/payment_page.html")
-        binding.paymentWebView.webViewClient = WebViewClient()
+        binding.paymentWebView.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean =
+                url.let()
+                {
+                    if (!URLUtil.isNetworkUrl(url) && !URLUtil.isJavaScriptUrl(url)) {
+                        val uri = try {
+                            Uri.parse(url)
+                        } catch (e: Exception) {
+                            return false
+                        }
+
+                        return when (uri.scheme) {
+                            "intent" -> {
+                                startSchemeIntent(it)
+                            }
+                            else -> {
+                                return try {
+                                    startActivity(Intent(Intent.ACTION_VIEW, uri))
+                                    true
+                                } catch (e: java.lang.Exception) {
+                                    false
+                                }
+                            }
+                        }
+                    } else {
+                        return false
+                    }
+                }
+
+            private fun startSchemeIntent(url: String): Boolean {
+                val schemeIntent: Intent = try {
+                    Intent.parseUri(url, Intent.URI_INTENT_SCHEME)
+                } catch (e: URISyntaxException) {
+                    return false
+                }
+                try {
+                    startActivity(schemeIntent)
+                    return true
+                } catch (e: ActivityNotFoundException) {
+                    val packageName = schemeIntent.getPackage()
+
+                    if (!packageName.isNullOrBlank()) {
+                        startActivity(
+                            Intent(
+                                Intent.ACTION_VIEW,
+                                Uri.parse("market://details?id=$packageName")
+                            )
+                        )
+                        return true
+                    }
+                }
+                return false
+            }
+        }
         binding.paymentWebView.webChromeClient = WebChromeClient()
 
 //        val arg = viewModel.paymentInfo.value!!.amount.toString() + ", " +
@@ -65,60 +119,6 @@ class ReservationWebViewFragment : BaseFragment<FragmentReservationWebViewBindin
 //        content.replace("_customerEmail", viewModel.paymentInfo.value!!.customerEmail)
         binding.paymentWebView.loadData(content, "text/html", "UTF-8")
 
-    }
-
-    fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean =
-        url.let()
-        {
-            if (!URLUtil.isNetworkUrl(url) && !URLUtil.isJavaScriptUrl(url)) {
-                val uri = try {
-                    Uri.parse(url)
-                } catch (e: Exception) {
-                    return false
-                }
-
-                return when (uri.scheme) {
-                    "intent" -> {
-                        startSchemeIntent(it)
-                    }
-                    else -> {
-                        return try {
-                            startActivity(Intent(Intent.ACTION_VIEW, uri))
-                            true
-                        } catch (e: java.lang.Exception) {
-                            false
-                        }
-                    }
-                }
-            } else {
-                return false
-            }
-        }
-
-
-    private fun startSchemeIntent(url: String): Boolean {
-        val schemeIntent: Intent = try {
-            Intent.parseUri(url, Intent.URI_INTENT_SCHEME)
-        } catch (e: URISyntaxException) {
-            return false
-        }
-        try {
-            startActivity(schemeIntent)
-            return true
-        } catch (e: ActivityNotFoundException) {
-            val packageName = schemeIntent.getPackage()
-
-            if (!packageName.isNullOrBlank()) {
-                startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("market://details?id=$packageName")
-                    )
-                )
-                return true
-            }
-        }
-        return false
     }
 
 }
