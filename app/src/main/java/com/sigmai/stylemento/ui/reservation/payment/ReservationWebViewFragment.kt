@@ -20,6 +20,7 @@ import com.sigmai.stylemento.global.util.TimeUtil
 import com.sigmai.stylemento.ui.reservation.adapter.TimeAdapter
 import com.sigmai.stylemento.ui.reservation.viewModel.ReservationViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 import java.io.File
 import java.net.URISyntaxException
 import java.nio.file.Paths
@@ -29,9 +30,8 @@ class ReservationWebViewFragment : BaseFragment<FragmentReservationWebViewBindin
     override val layoutResourceId = R.layout.fragment_reservation_web_view
     private val viewModel: ReservationViewModel by viewModels({ requireParentFragment() })
 
-    //var content = "<html><head><script src='https://js.tosspayments.com/v1'></script></head><body><section><span>총 주문금액</span><span>_amount 원</span><button id='payment-button'>_amount원 결제하기</button></section><section><span>총 주문금액</span><span>_amount 원</span><button id='payment-virtual-account-button'>_amount원 결제하기</button></section><script> var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'\n var tossPayments = TossPayments(clientKey)\n var button = document.getElementById('payment-button')\nbutton.addEventListener('click', function () { tossPayments.requestPayment('카드', { amount: _amount, orderId: '_orderId', orderName: '_orderName', customerName: '_customerName', successUrl: 'http://localhost:9090/v1/api/payment/success', failUrl: 'http://localhost:9090/v1/api/payment/fail', }) })</script><script> var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'\n var tossPayments = TossPayments(clientKey)\n var button = document.getElementById('payment-virtual-account-button')\nbutton.addEventListener('click', function () { tossPayments.requestPayment('가상계좌', { amount: _amount,orderId: '_orderId',orderName: '_orderName',customerName: '_customerName',successUrl: 'http://localhost:9090/v1/api/payment/success',failUrl: 'http://localhost:9090/v1/api/payment/fail',validHours: 6,cashReceipt: { type: '소득공제', },useEscrow: false, }) })</script></body></html>"
-    private var cardHtml = "<html><head><script src='https://js.tosspayments.com/v1'></script></head><body><script> var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'\n var tossPayments = TossPayments(clientKey)\n var button = document.getElementById('payment-button')\ntossPayments.requestPayment('카드', { amount: _amount,orderId: '_orderId',orderName: '_orderName',customerName: '_customerName',successUrl: 'http://localhost:9090/v1/api/payment/success',failUrl: 'http://localhost:9090/v1/api/payment/fail', })</script></body></html>"
-    private var virtualHtml = "<html><head><script src='https://js.tosspayments.com/v1'></script></head><body><script> var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'\n var tossPayments = TossPayments(clientKey)\n var button = document.getElementById('payment-virtual-account-button')\ntossPayments.requestPayment('가상계좌', { amount: _amount,orderId: '_orderId',orderName: '_orderName',customerName: '_customerName',successUrl: 'http://localhost:9090/v1/api/payment/success',failUrl: 'http://localhost:9090/v1/api/payment/fail',validHours: 6,cashReceipt: { type: '소득공제', },useEscrow: false, })</script></body></html>"
+    private var cardHtml = "<html><head><script src='https://js.tosspayments.com/v1'></script></head><body><script> var clientKey = 'test_ck_jkYG57Eba3G06EgN4PwVpWDOxmA1'\n var tossPayments = TossPayments(clientKey)\n var button = document.getElementById('payment-button')\ntossPayments.requestPayment('카드', { amount: _amount,orderId: '_orderId',orderName: '_orderName',customerName: '_customerName',successUrl: 'http://13.125.39.167:9090/v1/api/payment/success',failUrl: 'http://13.125.39.167:9090/v1/api/payment/fail', })</script></body></html>"
+    private var virtualHtml = "<html><head><script src='https://js.tosspayments.com/v1'></script></head><body><script> var clientKey = 'test_ck_jkYG57Eba3G06EgN4PwVpWDOxmA1'\n var tossPayments = TossPayments(clientKey)\n var button = document.getElementById('payment-virtual-account-button')\ntossPayments.requestPayment('가상계좌', { amount: _amount,orderId: '_orderId',orderName: '_orderName',customerName: '_customerName',successUrl: 'http://13.125.39.167:9090/v1/api/payment/success',failUrl: 'http://13.125.39.167:9090/v1/api/payment/fail',validHours: 6,cashReceipt: { type: '소득공제', },useEscrow: false, })</script></body></html>"
 
     override fun initDataBinding() {
         super.initDataBinding()
@@ -54,6 +54,8 @@ class ReservationWebViewFragment : BaseFragment<FragmentReservationWebViewBindin
             override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean =
                 url.let()
                 {
+                    Timber.d("------------------------------------------------------------------------------")
+                    Timber.d(url)
                     if (!URLUtil.isNetworkUrl(url) && !URLUtil.isJavaScriptUrl(url)) {
                         val uri = try {
                             Uri.parse(url)
