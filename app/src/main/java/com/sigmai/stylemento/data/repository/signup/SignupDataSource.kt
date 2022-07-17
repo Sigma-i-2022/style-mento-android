@@ -2,6 +2,7 @@ package com.sigmai.stylemento.data.repository.signup
 
 import com.sigmai.stylemento.data.api.SignupService
 import com.sigmai.stylemento.data.factory.RetrofitServiceFactory
+import com.sigmai.stylemento.data.model.request.signup.LoginReq
 import com.sigmai.stylemento.data.model.response.signup.JoinState
 import javax.inject.Inject
 
@@ -25,7 +26,9 @@ class SignupDataSource @Inject constructor() {
     }
 
     fun login(email: String, password: String, deviceToken: String) : Boolean {
-        return service.login(email, password, deviceToken).execute().body()?.success ?: false
+        val req = LoginReq(email, password)
+
+        return service.login(req).execute().body()?.success ?: false
     }
 
     fun signUp(userId: String, email: String, password1: String, password2: String) : Boolean {

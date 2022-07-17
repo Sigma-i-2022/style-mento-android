@@ -1,8 +1,10 @@
 package com.sigmai.stylemento.data.api
 
 import com.sigmai.stylemento.data.model.ResponseWrapper
+import com.sigmai.stylemento.data.model.request.signup.LoginReq
 import com.sigmai.stylemento.data.model.response.signup.JoinState
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
@@ -35,9 +37,7 @@ interface SignupService {
 
     @POST("v1/api/join/login")
     fun login(
-        @Query("email") email: String,
-        @Query("password") password: String,
-        @Query("deviceToken") deviceToken: String
+        @Body loginReq: LoginReq
     ): Call<ResponseWrapper<Unit>>
 
     @POST("v1/api/join/signUp")

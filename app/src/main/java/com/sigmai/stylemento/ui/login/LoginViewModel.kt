@@ -33,9 +33,9 @@ class LoginViewModel @Inject constructor() : ViewModel() {
             val isSuccessful = loginUserCase(email.value!!, password.value!!, SmFirebaseMessagingService.getToken(view.context))
 
             AuthenticationInfo.email.value = email.value!!
-            AuthenticationInfo.userType = AuthenticationInfo.TYPE_COORDINATOR
+//            AuthenticationInfo.userType = AuthenticationInfo.TYPE_COORDINATOR
 
-            if(!IS_PROD || isSuccessful) finishEvent.call()
+            if(isSuccessful) finishEvent.call()
         }
     }
 }
