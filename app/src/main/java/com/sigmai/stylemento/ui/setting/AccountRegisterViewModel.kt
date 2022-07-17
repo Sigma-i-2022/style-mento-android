@@ -3,7 +3,6 @@ package com.sigmai.stylemento.ui.setting
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sigmai.stylemento.data.repository.openApi.OpenApiRepositoryImpl
 import com.sigmai.stylemento.data.repository.submall.SubMallRepositoryImpl
 import com.sigmai.stylemento.global.store.AuthenticationInfo
 import com.sigmai.stylemento.global.util.SingleLiveEvent
@@ -15,8 +14,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AccountRegisterViewModel @Inject constructor() : ViewModel() {
-    @Inject
-    lateinit var openApiRepository: OpenApiRepositoryImpl
 
     @Inject
     lateinit var submallRepository: SubMallRepositoryImpl
