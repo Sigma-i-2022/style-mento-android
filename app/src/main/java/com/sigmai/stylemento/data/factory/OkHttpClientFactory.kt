@@ -1,6 +1,9 @@
 package com.sigmai.stylemento.data.factory
 
+import com.sigmai.stylemento.global.store.AuthenticationInfo
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import timber.log.Timber
 
@@ -9,6 +12,7 @@ class OkHttpClientFactory {
         fun create() : OkHttpClient {
             return OkHttpClient.Builder()
                 .addInterceptor(createLoggingInterceptor())
+                .addInterceptor(AuthenticationInterceptor())
                 .build()
         }
 
