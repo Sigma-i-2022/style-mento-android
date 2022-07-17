@@ -8,16 +8,16 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface SignupService {
-    @POST("v1/api/email")
+    @POST("v1/api/join/email")
     fun email(@Query("email") email: String): Call<ResponseWrapper<Unit>>
 
-    @POST("v1/api/emailCode")
+    @POST("v1/api/join/emailCode")
     fun emailCode(
         @Query("code") code: String,
         @Query("email") email: String
     ): Call<ResponseWrapper<Unit>>
 
-    @POST("v1/api/join")
+    @POST("v1/api/join/join")
     fun join(
         @Query("email") email: String,
         @Query("career") career: String,
@@ -28,19 +28,19 @@ interface SignupService {
         @Query("url5") url5: String?
     ): Call<ResponseWrapper<Unit>>
 
-    @GET("v1/api/joinState")
+    @GET("v1/api/join/joinState")
     fun joinState(
         @Query("email") email: String
     ): Call<ResponseWrapper<JoinState>>
 
-    @POST("v1/api/login")
+    @POST("v1/api/join/login")
     fun login(
         @Query("email") email: String,
         @Query("password") password: String,
         @Query("deviceToken") deviceToken: String
     ): Call<ResponseWrapper<Unit>>
 
-    @POST("v1/api/signUp")
+    @POST("v1/api/join/signUp")
     fun signUp(
         @Query("userId") userId: String,
         @Query("email") email: String,

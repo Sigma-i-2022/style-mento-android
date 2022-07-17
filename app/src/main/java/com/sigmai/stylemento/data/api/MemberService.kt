@@ -8,7 +8,7 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface MemberService {
-    @POST("v1/api/member")
+    @POST("v1/admin/api/member")
     fun postMember(
         @Query("userId") userId : String,
         @Query("email") email : String,
@@ -16,15 +16,15 @@ interface MemberService {
         @Query("signupType") signupType : String
     ): Call<ResponseWrapper<Member>>
 
-    @GET("v1/api/member/all")
+    @GET("v1/admin/api/member/all")
     fun getMembers(): Call<ResponseWrapper<List<Member>>>
 
-    @GET("v1/api/member/crdi")
+    @GET("v1/admin/api/member/crdi")
     fun upgradeCoordinator(
         @Query("email") email : String
     ): Call<ResponseWrapper<Unit>>
 
-    @GET("v1/api/member/email")
+    @GET("v1/admin/api/member/email")
     fun getMemberByEmail(
         @Query("email") email : String
     ) : Call<ResponseWrapper<Member>>
