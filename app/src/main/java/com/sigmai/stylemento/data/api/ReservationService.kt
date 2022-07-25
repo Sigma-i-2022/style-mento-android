@@ -23,7 +23,7 @@ interface ReservationService {
 
     @POST("v1/api/reservation/client/pay")
     fun postReservationClientPay(
-        @Query("clientId") clientId: String,
+        @Query("clientEmail") clientEmail: String,
         @Query("reservationSeq") reservationSeq: Long,
     ): Call<ResponseWrapper<Unit>>
 
