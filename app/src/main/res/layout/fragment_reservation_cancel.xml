@@ -274,7 +274,7 @@
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:layout_marginTop="12dp"
                     android:background="@color/trans_parent"
-                    android:text="@{viewModel.content}"
+                    android:text="@={viewModel.content}"
                     android:maxLength="300"
                     android:paddingHorizontal="6dp"
                     android:gravity="top"
