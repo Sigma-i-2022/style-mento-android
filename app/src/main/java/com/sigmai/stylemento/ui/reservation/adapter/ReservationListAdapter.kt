@@ -91,13 +91,15 @@ class ReservationListAdapter(val viewModel : ReservationListViewModel) :
                 val bundle = bundleOf("seq" to item.seq, "email" to item.crdiEmail)
                 it.findNavController().navigate(R.id.action_reservation_list_page_to_reservation_cancel_page, bundle)
                 adapter.notifyItemChanged(position)
+                viewModel.updateAdapter()
             }
             binding.reservationListRequestButton.setOnClickListener {
 
             }
             binding.reservationListBuyButton.setOnClickListener {
-                viewModel.postReservationClientPay(AuthenticationInfo.email.value!!, item.seq)
+                viewModel.postReservationClientPay(item.clientEmail, item.seq)
                 adapter.notifyItemChanged(position)
+                viewModel.updateAdapter()
             }
             binding.reservationListReviewButton.setOnClickListener {
                 val bundle = bundleOf("seq" to item.seq)

@@ -42,7 +42,7 @@ class ReservationUserListViewModel @Inject constructor() : ViewModel() {
         }
     }
     fun updateAdapter(){
-        startAdapter.call()
+        requestCommons()
     }
     fun onBackClick(){
         startBack.call()

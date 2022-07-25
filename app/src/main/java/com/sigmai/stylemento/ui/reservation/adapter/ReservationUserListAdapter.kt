@@ -80,13 +80,14 @@ class ReservationUserListAdapter(val viewModel : ReservationUserListViewModel) :
                 val bundle = bundleOf("seq" to item.seq, "email" to item.clientEmail)
                 it.findNavController().navigate(R.id.action_reservation_user_list_page_to_reservation_cancel_user_page, bundle)
                 adapter.notifyItemChanged(position)
+                viewModel.updateAdapter()
             }
             binding.reservationUserListAcceptButton.setOnClickListener {
                 if(selectedTimes.size > 0) {
                     viewModel.postReservationCrdiFix(item.crdiEmail, item.seq, selectedTimes[0])
+                    adapter.notifyItemChanged(position)
                     viewModel.updateAdapter()
                 }
-                adapter.notifyItemChanged(position)
             }
             binding.reservationUserListShareButton.setOnClickListener {
             }
