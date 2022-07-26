@@ -12,6 +12,8 @@ import com.sigmai.stylemento.databinding.ItemReservationListBinding
 import com.sigmai.stylemento.global.constant.ReceiptStateType
 import com.sigmai.stylemento.global.store.AuthenticationInfo
 import com.sigmai.stylemento.ui.reservation.list.ReservationListViewModel
+import timber.log.Timber
+import java.util.*
 
 
 class ReservationListAdapter(val viewModel : ReservationListViewModel) :
@@ -50,22 +52,24 @@ class ReservationListAdapter(val viewModel : ReservationListViewModel) :
                 }
                 ReceiptStateType.ACCEPT_AFTER ->{
                     binding.reservationListStateText.text = "예약완료"
+                    binding.reservationListServiceTimeRecycler.visibility = View.GONE
+                    showDecidedTime(item.confirmedReserveTime)
                     turnOffReview()
                 }
                 ReceiptStateType.GET_DECISION -> {
                     binding.reservationListStateText.text = "구매확정"
                     binding.reservationListCancelButton.visibility = View.GONE
                     binding.reservationListServiceTimeRecycler.visibility = View.GONE
-                    showDecidedTime(item.confirmReserveTime)
+                    showDecidedTime(item.confirmedReserveTime)
                     turnOffBuy()
                 }
                 ReceiptStateType.PAYBACK -> {
                     binding.reservationListStateText.text = "환불완료/대기"
                     binding.reservationListCancelButton.visibility = View.GONE
                     binding.reservationListRequestButton.visibility = View.VISIBLE
-                    if(item.confirmReserveTime != "" || item.confirmReserveTime != null){
+                    if(item.confirmedReserveTime != "" || item.confirmedReserveTime != null){
                         binding.reservationListServiceTimeRecycler.visibility = View.GONE
-                        showDecidedTime(item.confirmReserveTime)
+                        showDecidedTime(item.confirmedReserveTime)
                     }
                     turnOffReview()
                     turnOffBuy()
@@ -75,7 +79,7 @@ class ReservationListAdapter(val viewModel : ReservationListViewModel) :
                     binding.reservationListCancelButton.visibility = View.GONE
                     binding.reservationListRequestButton.visibility = View.GONE
                     binding.reservationListServiceTimeRecycler.visibility = View.GONE
-                    showDecidedTime(item.confirmReserveTime)
+                    showDecidedTime(item.confirmedReserveTime)
                     turnOffReview()
                     turnOffBuy()
                 }
@@ -87,13 +91,15 @@ class ReservationListAdapter(val viewModel : ReservationListViewModel) :
                 val bundle = bundleOf("seq" to item.seq, "email" to item.crdiEmail)
                 it.findNavController().navigate(R.id.action_reservation_list_page_to_reservation_cancel_page, bundle)
                 adapter.notifyItemChanged(position)
+                viewModel.updateAdapter()
             }
             binding.reservationListRequestButton.setOnClickListener {
 
             }
             binding.reservationListBuyButton.setOnClickListener {
-                viewModel.postReservationClientPay(AuthenticationInfo.email.value!!, item.seq)
+                viewModel.postReservationClientPay(item.clientEmail, item.seq)
                 adapter.notifyItemChanged(position)
+                viewModel.updateAdapter()
             }
             binding.reservationListReviewButton.setOnClickListener {
                 val bundle = bundleOf("seq" to item.seq)
@@ -101,6 +107,9 @@ class ReservationListAdapter(val viewModel : ReservationListViewModel) :
             }
         }
         private fun getState(item : Common) : Int{
+            if(item.cancelYn == "Y"){
+                return ReceiptStateType.PAYBACK
+            }
             if(item.reviewedYn == "Y"){
                 return ReceiptStateType.REVIEW_AFTER
             }

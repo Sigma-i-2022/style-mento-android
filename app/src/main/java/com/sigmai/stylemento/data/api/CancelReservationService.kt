@@ -11,7 +11,7 @@ import retrofit2.http.Query
 interface CancelReservationService {
     @POST("v1/api/cancelPayment")
     fun postCancelPayment(
-        @Query("memberSeq") memberSeq : Long,
+        @Query("email") email : String,
         @Query("reservationSeq") reservationSeq : Long,
         @Query("paymentKey") paymentKey : String,
         @Query("cancelReason") cancelReason : String,
@@ -20,9 +20,9 @@ interface CancelReservationService {
         @Query("holderName") holderName : String
     ) : Call<ResponseWrapper<Unit>>
 
-    @GET("v1/api/cancelPayment/{memberSeq}")
+    @GET("v1/api/cancelPayment")
     fun getCancelList(
-        @Path("memberSeq") memberSeq : Long,
+        @Query("memberEmail") memberEmail : String,
         @Query("page") page : Int,
         @Query("size") size : Int
     ) : Call<ResponseWrapper<List<CancelItem>>>

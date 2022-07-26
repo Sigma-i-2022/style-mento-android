@@ -51,22 +51,22 @@ class ReservationUserListAdapter(val viewModel : ReservationUserListViewModel) :
                 ReceiptStateType.ACCEPT_AFTER -> {
                     binding.reservationUserListStateText.text = "예약완료"
                     binding.reservationUserListTimeRecycler.visibility = View.GONE
-                    showDecidedTime(item.confirmReserveTime)
+                    showDecidedTime(item.confirmedReserveTime)
                     turnOffAccept()
                 }
                 ReceiptStateType.GET_DECISION -> {
                     binding.reservationUserListStateText.text = "구매확정"
                     binding.reservationUserListCancelButton.visibility = View.GONE
                     binding.reservationUserListTimeRecycler.visibility = View.GONE
-                    showDecidedTime(item.confirmReserveTime)
+                    showDecidedTime(item.confirmedReserveTime)
                     turnOffShare()
                     turnOffAccept()
                 }
                 ReceiptStateType.PAYBACK -> {
                     binding.reservationUserListStateText.text = "환불완료/대기"
                     binding.reservationUserListCancelButton.visibility = View.GONE
-                    if(item.confirmReserveTime != ""){
-                        showDecidedTime(item.confirmReserveTime)
+                    if(item.confirmedReserveTime != ""){
+                        showDecidedTime(item.confirmedReserveTime)
                         binding.reservationUserListTimeRecycler.visibility = View.GONE
                     }
                     turnOffShare()
@@ -80,13 +80,14 @@ class ReservationUserListAdapter(val viewModel : ReservationUserListViewModel) :
                 val bundle = bundleOf("seq" to item.seq, "email" to item.clientEmail)
                 it.findNavController().navigate(R.id.action_reservation_user_list_page_to_reservation_cancel_user_page, bundle)
                 adapter.notifyItemChanged(position)
+                viewModel.updateAdapter()
             }
             binding.reservationUserListAcceptButton.setOnClickListener {
                 if(selectedTimes.size > 0) {
                     viewModel.postReservationCrdiFix(item.crdiEmail, item.seq, selectedTimes[0])
+                    adapter.notifyItemChanged(position)
                     viewModel.updateAdapter()
                 }
-                adapter.notifyItemChanged(position)
             }
             binding.reservationUserListShareButton.setOnClickListener {
             }

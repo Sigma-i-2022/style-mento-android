@@ -27,7 +27,7 @@ class ReservationUserListViewModel @Inject constructor() : ViewModel() {
     fun requestCommons(){
         viewModelScope.launch {
             val _commons = withContext(Dispatchers.IO){
-                reservationRepository.getReservationCommonList(AuthenticationInfo.email.value!!, 0, 10)
+                reservationRepository.getReservationCommonList(AuthenticationInfo.email.value!!, 0, 50)
             }
             commons.value = _commons
             startAdapter.call()
@@ -42,7 +42,7 @@ class ReservationUserListViewModel @Inject constructor() : ViewModel() {
         }
     }
     fun updateAdapter(){
-        startAdapter.call()
+        requestCommons()
     }
     fun onBackClick(){
         startBack.call()

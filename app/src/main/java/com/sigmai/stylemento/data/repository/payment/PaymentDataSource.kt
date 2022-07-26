@@ -14,11 +14,14 @@ class PaymentDataSource @Inject constructor() {
     fun postPayment(reservationSeq : Long, payType : String, amount : Long, orderName : String, customerEmail : String, customerName : String) : Payment{
         return service.postPayment(reservationSeq, payType, amount, orderName, customerEmail, customerName).execute().body()!!.data
     }
-    fun getPaymentList(memberSeq : Long, page : Int, size : Int) : List<PaymentItem>{
-        return service.getPaymentList(memberSeq, page, size).execute().body()!!.data
+    fun getPaymentList(email : String, page : Int, size : Int) : List<PaymentItem>{
+        return service.getPaymentList(email, page, size).execute().body()!!.data
     }
     fun getPaymentFail(code : String, message : String, orderId : String) : PaymentFail{
         return service.getPaymentFail(code, message, orderId).execute().body()!!.data
+    }
+    fun getPaymentOne(email : String, reservationSeq : Long) : PaymentItem{
+        return service.getPaymentOne(email, reservationSeq).execute().body()!!.data
     }
     fun getPaymentSuccess(paymentKey : String, orderId : String, amount : Long) : PaymentSuccess{
         return service.getPaymentSuccess(paymentKey, orderId, amount).execute().body()!!.data

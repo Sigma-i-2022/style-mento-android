@@ -6,10 +6,10 @@ import javax.inject.Inject
 
 class CancelReservationRepositoryImpl @Inject constructor(private val dataSource: CancelReservationDataSource) :
     CancelReservationRepository {
-    override fun postCancelPayment(memberSeq : Long, reservationSeq : Long, paymentKey : String, cancelReason : String, bank : String, accountNumber : String, holderName : String) : Boolean {
-        return dataSource.postCancelPayment(memberSeq, reservationSeq, paymentKey, cancelReason, bank, accountNumber, holderName)
+    override fun postCancelPayment(email : String, reservationSeq : Long, paymentKey : String, cancelReason : String, bank : String, accountNumber : String, holderName : String) : Boolean {
+        return dataSource.postCancelPayment(email, reservationSeq, paymentKey, cancelReason, bank, accountNumber, holderName)
     }
-    override fun getCancelList(memberSeq: Long, page: Int, size: Int): List<CancelItem> {
-        return dataSource.getCancelList(memberSeq, page, size)
+    override fun getCancelList(memberEmail: String, page: Int, size: Int): List<CancelItem> {
+        return dataSource.getCancelList(memberEmail, page, size)
     }
 }

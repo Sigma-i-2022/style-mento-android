@@ -6,7 +6,7 @@ data class Common (
     val clientId : String,
     val confirmPayYn : String,
     val confirmResvYn : String,
-    val confirmReserveTime : String,
+    val confirmedReserveTime : String,
     val crdiEmail : String,
     val crdiId : String,
     val payYn : String,

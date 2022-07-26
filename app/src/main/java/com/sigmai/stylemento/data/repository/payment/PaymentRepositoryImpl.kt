@@ -11,8 +11,11 @@ class PaymentRepositoryImpl @Inject constructor(private val dataSource: PaymentD
     override fun postPayment(reservationSeq : Long, payType : String, amount : Long, orderName : String, customerEmail : String, customerName : String) : Payment {
         return dataSource.postPayment(reservationSeq, payType, amount, orderName, customerEmail, customerName)
     }
-    override fun getPaymentList(memberSeq : Long, page : Int, size : Int) : List<PaymentItem>{
-        return dataSource.getPaymentList(memberSeq, page, size)
+    override fun getPaymentList(email : String, page : Int, size : Int) : List<PaymentItem>{
+        return dataSource.getPaymentList(email, page, size)
+    }
+    override fun getPaymentOne(email: String, reservationSeq: Long): PaymentItem {
+        return dataSource.getPaymentOne(email, reservationSeq)
     }
     override fun getPaymentFail(code : String, message : String, orderId : String) : PaymentFail {
         return dataSource.getPaymentFail(code, message, orderId)

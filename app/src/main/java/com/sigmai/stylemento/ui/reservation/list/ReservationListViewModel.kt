@@ -27,7 +27,7 @@ class ReservationListViewModel @Inject constructor() : ViewModel() {
     fun requestCommons(){
         viewModelScope.launch {
             val _commons = withContext(Dispatchers.IO){
-                reservationRepository.getReservationCommonList(AuthenticationInfo.email.value!!, 0, 10)
+                reservationRepository.getReservationCommonList(AuthenticationInfo.email.value!!, 0, 50)
             }
             commons.value = _commons
             startAdapter.call()
@@ -35,9 +35,8 @@ class ReservationListViewModel @Inject constructor() : ViewModel() {
     }
     fun postReservationClientPay(memberEmail: String, reservationSeq: Long){
         viewModelScope.launch {
-            var ack = false
-            withContext(Dispatchers.IO){
-                ack = reservationRepository.postReservationClientPay(memberEmail, reservationSeq)
+            var ack = withContext(Dispatchers.IO){
+                reservationRepository.postReservationClientPay(memberEmail, reservationSeq)
             }
         }
     }
@@ -47,5 +46,8 @@ class ReservationListViewModel @Inject constructor() : ViewModel() {
     }
     fun onInfoClick(){
         startInfo.call()
+    }
+    fun updateAdapter(){
+        requestCommons()
     }
 }

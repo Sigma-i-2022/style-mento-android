@@ -65,7 +65,7 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
         serviceSystem: String,
         serviceType: String
     ) {
-        _client.postValue(Client(userEmail.value!!, userName.value!!, coordinatorEmail.value!!, coordinatorName.value!!, requestText.value!!, reserveDay, reserveTimes, serviceSystem, serviceType))
+        _client.postValue(Client(userEmail.value!!, coordinatorEmail.value!!, requestText.value!!, reserveDay, reserveTimes, serviceSystem, serviceType))
     }
 
     val startBack = SingleLiveEvent<Any>()
@@ -162,12 +162,18 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
             seq.value = seq_
             val payment = withContext(Dispatchers.IO){
                 paymentRepository.postPayment(seq.value!!, if(_payType.value == 0) "CARD" else "VIRTUAL_ACCOUNT",
-                    3000, client.value!!.serviceType, client.value!!.clientEmail, client.value!!.clientId)
+                    3000, client.value!!.serviceType, client.value!!.clientEmail, userName.value!!)
             }
             paymentInfo.value = payment
             endPostPayInfo.call()
         }
     }
+
+    fun getPaymentSuccess(url: String){
+
+    }
+
+
 
     private val startCard = SingleLiveEvent<Any>()
     private val startVirtual = SingleLiveEvent<Any>()
