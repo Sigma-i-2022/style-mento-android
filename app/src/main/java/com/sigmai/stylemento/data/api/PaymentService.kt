@@ -20,7 +20,7 @@ interface PaymentService {
 
     @GET("v1/api/payment/all")
     fun getPaymentList(
-        @Path("email") email : String,
+        @Query("email") email : String,
         @Query("page") page : Int,
         @Query("size") size : Int
     ) : Call<ResponseWrapper<List<PaymentItem>>>
@@ -31,6 +31,12 @@ interface PaymentService {
         @Query("message") message : String,
         @Query("orderId") orderId : String
     ) : Call<ResponseWrapper<PaymentFail>>
+
+    @GET("v1/api/payment/one")
+    fun getPaymentOne(
+        @Query("email") email : String,
+        @Query("reservationSeq") reservationSeq : Long
+    ) : Call<ResponseWrapper<PaymentItem>>
 
     @GET("v1/api/payment/success")
     fun getPaymentSuccess(

@@ -20,6 +20,9 @@ class PaymentDataSource @Inject constructor() {
     fun getPaymentFail(code : String, message : String, orderId : String) : PaymentFail{
         return service.getPaymentFail(code, message, orderId).execute().body()!!.data
     }
+    fun getPaymentOne(email : String, reservationSeq : Long) : PaymentItem{
+        return service.getPaymentOne(email, reservationSeq).execute().body()!!.data
+    }
     fun getPaymentSuccess(paymentKey : String, orderId : String, amount : Long) : PaymentSuccess{
         return service.getPaymentSuccess(paymentKey, orderId, amount).execute().body()!!.data
     }

@@ -22,7 +22,7 @@ interface CancelReservationService {
 
     @GET("v1/api/cancelPayment")
     fun getCancelList(
-        @Path("memberEmail") memberEmail : String,
+        @Query("memberEmail") memberEmail : String,
         @Query("page") page : Int,
         @Query("size") size : Int
     ) : Call<ResponseWrapper<List<CancelItem>>>
