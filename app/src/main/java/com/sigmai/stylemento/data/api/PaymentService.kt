@@ -18,9 +18,9 @@ interface PaymentService {
         @Query("customerName") customerName : String
     ) : Call<ResponseWrapper<Payment>>
 
-    @GET("v1/api/payment/all/{memberSeq}")
+    @GET("v1/api/payment/all")
     fun getPaymentList(
-        @Path("memberSeq") memberSeq : Long,
+        @Path("email") email : String,
         @Query("page") page : Int,
         @Query("size") size : Int
     ) : Call<ResponseWrapper<List<PaymentItem>>>
