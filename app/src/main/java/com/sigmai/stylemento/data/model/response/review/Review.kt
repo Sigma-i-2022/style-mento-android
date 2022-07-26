@@ -13,10 +13,10 @@ data class Review(
     val content: String,
     val reportYn: String,
     val registDate: String,
-    val reportContent: String,
-    val reportReason: String,
-    val height: Int,
-    val weight: Int,
+    val reportContent: String?,
+    val reportReason: String?,
+    val height: String,
+    val weight: String,
     val replyRes: ReplyResponse?
 ) {
     fun toEntity() : Review {

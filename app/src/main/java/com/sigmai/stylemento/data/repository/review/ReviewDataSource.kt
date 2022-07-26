@@ -9,7 +9,7 @@ class ReviewDataSource @Inject constructor() {
     private val service = RetrofitServiceFactory.createService<ReviewService>()
 
     fun getReview(email: String) : List<Review> {
-        return service.getReview(email).execute().body()!!.data
+        return service.getReview(email).execute().body()?.data ?: listOf()
     }
 
     fun postReview(reservationSeq: Long, reviewerId: String, reviewerEmail: String, coordinatorId: String, coordinatorEmail: String, star: Int, sex: String, height: String, weight: String, content: String) : Boolean{
