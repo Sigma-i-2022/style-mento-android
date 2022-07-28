@@ -31,7 +31,8 @@ data class Review(
             content = content,
             reply = replyRes?.replyContent,
             hasReply = replyRes != null,
-            replySeq = replyRes?.seq
+            replySeq = replyRes?.seq,
+            sex = sex
         )
     }
 }
