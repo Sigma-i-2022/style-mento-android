@@ -8,6 +8,8 @@ import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentReservationCancelBinding
 import com.sigmai.stylemento.global.base.BaseFragment
+import com.sigmai.stylemento.global.util.BankUtil
+import com.sigmai.stylemento.ui.setting.BankBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -29,9 +31,20 @@ class ReservationCancelFragment : BaseFragment<FragmentReservationCancelBinding>
             findNavController().navigateUp()
         }
         viewModel.startNext.observe(this) {
-            viewModel.requestCancel()
+            viewModel.requestPaymentItem()
             viewModel.postReservationCommonHide()
             findNavController().navigate(R.id.action_reservation_cancel_page_to_reservation_cancel_complete_page)
+        }
+        viewModel.startSetBank.observe(this) {
+            val bankBottomSheet = BankBottomSheet {
+                if (it >= 0) {
+                    viewModel.bank.value = BankUtil.getBank(it)
+                }
+            }
+            bankBottomSheet.show(childFragmentManager, "dialog")
+        }
+        viewModel.endRequetPaymentItem.observe(this){
+            viewModel.requestCancel()
         }
         viewModel.content.observe(this){
             if (viewModel.content.value!!.length >= 0) {

@@ -3,10 +3,12 @@ package com.sigmai.stylemento.ui.reservation.cancel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sigmai.stylemento.data.model.PaymentItem
 import com.sigmai.stylemento.data.model.response.myPage.MyPageCrdi
 import com.sigmai.stylemento.data.model.response.reservation.Common
 import com.sigmai.stylemento.data.repository.cancelReservation.CancelReservationRepositoryImpl
 import com.sigmai.stylemento.data.repository.myPage.MyPageRepositoryImpl
+import com.sigmai.stylemento.data.repository.payment.PaymentRepositoryImpl
 import com.sigmai.stylemento.data.repository.reservation.ReservationRepositoryImpl
 import com.sigmai.stylemento.global.store.AuthenticationInfo
 import com.sigmai.stylemento.global.util.SingleLiveEvent
@@ -22,6 +24,8 @@ class ReservationCancelViewModel @Inject constructor() : ViewModel() {
     lateinit var cancelRepository: CancelReservationRepositoryImpl
     @Inject
     lateinit var reservationRepository: ReservationRepositoryImpl
+    @Inject
+    lateinit var paymentRepository: PaymentRepositoryImpl
     @Inject
     lateinit var myPageRepository: MyPageRepositoryImpl
 
@@ -46,11 +50,25 @@ class ReservationCancelViewModel @Inject constructor() : ViewModel() {
     }
     val email = MutableLiveData<String>("")
     val content = MutableLiveData<String>("")
+    val accountNumber = MutableLiveData<String>("")
+    val accountOwner = MutableLiveData<String>("")
+    val bank = MutableLiveData<String>("")
+    val paymentItem = MutableLiveData<PaymentItem>()
 
+    val endRequetPaymentItem = SingleLiveEvent<Any>()
+    fun requestPaymentItem(){
+        viewModelScope.launch {
+            val paymentItem_ = withContext(Dispatchers.IO){
+                paymentRepository.getPaymentOne(common.value!!.clientEmail, common.value!!.seq)
+            }
+            paymentItem.value = paymentItem_
+            endRequetPaymentItem.call()
+        }
+    }
     fun requestCancel(){
         viewModelScope.launch {
             withContext(Dispatchers.IO){
-                //cancelRepository.postCancelPayment(coordinator.value!!.seq, common.value!!.seq)
+                cancelRepository.postCancelPayment(common.value!!.clientEmail, common.value!!.seq, paymentItem.value!!.paymentKey, content.value!!, bank.value!!, accountNumber.value!!, accountOwner.value!!)
             }
         }
     }
@@ -61,6 +79,16 @@ class ReservationCancelViewModel @Inject constructor() : ViewModel() {
             }
         }
     }
+
+    val startSetBank = SingleLiveEvent<Any>()
+    fun onSetBankClick() {
+        startSetBank.call()
+    }
+    fun setBank(bank : String){
+        this.bank.value = bank
+    }
+
+
     val startBack = SingleLiveEvent<Any>()
     val startNext = SingleLiveEvent<Any>()
 
