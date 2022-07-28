@@ -334,9 +334,73 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_marginTop="10dp" />
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="6dp"
+                            android:text="@{viewModel.bank}"/>
+                        <TextView
+                            style="@style/header4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{()->viewModel.onSetBankClick()}"
+                            android:text="선택"
+                            android:textColor="@color/gray_8" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
 
+                        <TextView
+                            style="@style/header4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="계좌번호"
+                            android:textColor="@color/gray_8"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/reservation_cancel_pay_way_text" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <EditText
+                            style="@style/header4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@={viewModel.accountNumber}"
+                            android:textColor="@color/gray_8"
+                            android:gravity="end"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/header4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="예금주"
+                            android:textColor="@color/gray_8"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/reservation_cancel_pay_way_text" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <EditText
+                            style="@style/header4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@={viewModel.accountOwner}"
+                            android:textColor="@color/gray_8"
+                            android:gravity="end"/>
+                    </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
