@@ -9,6 +9,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.response.lookBook.LookPage
+import com.sigmai.stylemento.data.model.response.reservation.Common
 import com.sigmai.stylemento.domain.entity.Coordinator
 import com.sigmai.stylemento.domain.entity.Piece
 import com.sigmai.stylemento.domain.entity.Review
@@ -19,7 +20,15 @@ import com.sigmai.stylemento.ui.mypage.adapter.PieceScrollAdapter
 import com.sigmai.stylemento.ui.mypage.adapter.StyleTagSelectionAdapter
 import com.sigmai.stylemento.ui.mypage.client.adapter.PieceGridAdapter
 import com.sigmai.stylemento.ui.mypage.model.StyleTag
+import com.sigmai.stylemento.ui.reservation.adapter.ReservationListAdapter
 import timber.log.Timber
+
+@BindingAdapter("app:reservationList")
+fun bindReservationList(recyclerView: RecyclerView, list: List<Common>?) {
+    list?.let {
+        (recyclerView.adapter as ReservationListAdapter).submitList(list)
+    }
+}
 
 @BindingAdapter("app:lookBookList")
 fun bindLookBookList(recyclerView: RecyclerView, list: List<Piece>?) {
