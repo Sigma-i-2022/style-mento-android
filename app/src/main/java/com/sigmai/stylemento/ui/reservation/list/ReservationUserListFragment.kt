@@ -1,15 +1,9 @@
 package com.sigmai.stylemento.ui.reservation.list
 
-import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentReservationUserListBinding
-import com.sigmai.stylemento.domain.entity.Coordinator
-import com.sigmai.stylemento.domain.entity.Receipt
-import com.sigmai.stylemento.domain.entity.User
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.constant.ReceiptStateType
 import com.sigmai.stylemento.ui.reservation.InfoDialogFragment
@@ -24,7 +18,7 @@ class ReservationUserListFragment : BaseFragment<FragmentReservationUserListBind
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
-        viewModel.requestCommons()
+        setAdapter()
 
         viewModel.startBack.observe(this) {
             findNavController().navigateUp()
@@ -34,15 +28,20 @@ class ReservationUserListFragment : BaseFragment<FragmentReservationUserListBind
             dialog.show(childFragmentManager, "info")
         }
         viewModel.startAdapter.observe(this){
-            setAdapter()
+            setOverView()
+        }
+        viewModel.adapterPosition.observe(this) {
+            binding.reservationUserListRecycler.scrollToPosition(it)
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun initState() {
+        viewModel.loadData(0)
     }
-
     private fun setAdapter(){
+        binding.reservationUserListRecycler.adapter = ReservationUserListAdapter(viewModel)
+    }
+    private fun setOverView(){
         binding.reservationUserListRecycler.adapter = ReservationUserListAdapter(viewModel)
 
         val stateArray = Array(4){0}

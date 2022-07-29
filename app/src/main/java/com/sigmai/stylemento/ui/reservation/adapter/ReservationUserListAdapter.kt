@@ -5,38 +5,32 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.response.reservation.Common
 import com.sigmai.stylemento.databinding.ItemReservationUserListBinding
 import com.sigmai.stylemento.global.constant.ReceiptStateType
 import com.sigmai.stylemento.ui.reservation.list.ReservationUserListViewModel
+import com.sigmai.stylemento.ui.reservation.list.ReservationUserListener
 
 
-class ReservationUserListAdapter(val viewModel : ReservationUserListViewModel) :
-    RecyclerView.Adapter<ReservationUserListAdapter.ViewHolder>() {
-    private val dataSet = viewModel.commons.value!!
-
+class ReservationUserListAdapter(val listener : ReservationUserListener) : ListAdapter<Common, ReservationUserListAdapter.ViewHolder>(CommonDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
     }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(dataSet[position], this, position, viewModel)
-    }
-
-    override fun getItemCount(): Int {
-        return dataSet.size
+        holder.bind(getItem(position), listener)
     }
 
     class ViewHolder(val binding: ItemReservationUserListBinding) :
         RecyclerView.ViewHolder(binding.root) {
         private val selectedTimes = ArrayList<String>()
-        fun bind(item: Common, adapter: ReservationUserListAdapter, position: Int, viewModel : ReservationUserListViewModel) {
+        fun bind(item: Common, listener : ReservationUserListener) {
             binding.item = item
             setAdapter(item.reserveTimes, false)
             binding(item)
-            setListener(adapter, position, item, viewModel)
+            setListener(item, listener)
 
             binding.executePendingBindings()
         }
@@ -75,18 +69,13 @@ class ReservationUserListAdapter(val viewModel : ReservationUserListViewModel) :
             }
         }
 
-        private fun setListener(adapter: ReservationUserListAdapter, position: Int, item: Common, viewModel : ReservationUserListViewModel) {
+        private fun setListener(item: Common, listener : ReservationUserListener) {
             binding.reservationUserListCancelButton.setOnClickListener {
-                val bundle = bundleOf("seq" to item.seq, "email" to item.clientEmail)
-                it.findNavController().navigate(R.id.action_reservation_user_list_page_to_reservation_cancel_user_page, bundle)
-                adapter.notifyItemChanged(position)
-                viewModel.updateAdapter()
+                listener.onDelete(it, item.seq, item.clientEmail)
             }
             binding.reservationUserListAcceptButton.setOnClickListener {
                 if(selectedTimes.size > 0) {
-                    viewModel.postReservationCrdiFix(item.crdiEmail, item.seq, selectedTimes[0])
-                    adapter.notifyItemChanged(position)
-                    viewModel.updateAdapter()
+                    listener.onAccept(it, item.seq, item.crdiEmail, selectedTimes[0], adapterPosition)
                 }
             }
             binding.reservationUserListShareButton.setOnClickListener {
@@ -132,5 +121,4 @@ class ReservationUserListAdapter(val viewModel : ReservationUserListViewModel) :
             }
         }
     }
-
 }
