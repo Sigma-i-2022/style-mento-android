@@ -21,12 +21,12 @@ class ReservationListAdapter(val listener : ReservationListener) : ListAdapter<C
         return ViewHolder.from(parent)
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position), this, listener)
+        holder.bind(getItem(position), listener)
     }
 
     class ViewHolder(val binding: ItemReservationListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Common, adapter: ReservationListAdapter, listener : ReservationListener) {
+        fun bind(item: Common, listener : ReservationListener) {
             binding.item = item
             setAdapter(item.reserveTimes)
             binding(item)
