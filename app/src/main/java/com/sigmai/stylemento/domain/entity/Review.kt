@@ -13,5 +13,6 @@ data class Review(
     val reply: String? = null,
     val hasReply: Boolean,
     val deleteEvent: ((Long)->Unit)? = null,
-    val postEvent: ((Long, String)->Unit)? = null
+    val postEvent: ((Long, String)->Unit)? = null,
+    val sex: String?
 )

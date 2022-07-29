@@ -53,7 +53,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
-            android:text="여성 | 160cm 50kg"
+            android:text='@{ (item.sex.equals("MALE") ? "남성 | " : "여성 | ") + item.tall + "cm " + item.weight + "kg"}'
+            tools:text="여성 160cm | 62kg"
             android:textColor="@color/gray_d"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
