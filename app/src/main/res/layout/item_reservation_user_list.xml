@@ -213,6 +213,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginTop="6dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="요청 사항"
+                    style="@style/header4"
+                    android:textColor="@color/gray_8"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.requireText}"
+                style="@style/header5"
+                android:textColor="@color/gray_8" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_marginTop="10dp">
                 <Button
                     android:id="@+id/reservation_user_list_accept_button"
