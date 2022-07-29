@@ -144,13 +144,15 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"/>
         </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/reservation_list_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/reservation_list_layout"
             android:layout_marginTop="10dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="vertical"
-            android:layout_below="@id/reservation_list_layout"/>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:reservationList="@{viewModel.commons}"/>
     </RelativeLayout>
 </layout>
