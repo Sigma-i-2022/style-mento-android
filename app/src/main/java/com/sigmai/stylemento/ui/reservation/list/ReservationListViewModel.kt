@@ -23,7 +23,7 @@ class ReservationListViewModel @Inject constructor() : ViewModel(), ReservationL
     lateinit var reservationRepository: ReservationRepositoryImpl
 
     val commons = MutableLiveData<List<Common>>()
-    val adapterposition = MutableLiveData(0)
+    val adapterPosition = MutableLiveData(0)
     val email = MutableLiveData<String>("")
     val startBack = SingleLiveEvent<Any>()
     val startInfo = SingleLiveEvent<Any>()
@@ -35,7 +35,7 @@ class ReservationListViewModel @Inject constructor() : ViewModel(), ReservationL
                 reservationRepository.getReservationCommonList(AuthenticationInfo.email.value!!, 0, 50)
             }
             commons.value = _commons
-            adapterposition.value = position
+            adapterPosition.value = position
             startAdapter.call()
         }
     }

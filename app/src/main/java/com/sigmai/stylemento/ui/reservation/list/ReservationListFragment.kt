@@ -1,15 +1,9 @@
 package com.sigmai.stylemento.ui.reservation.list
 
-import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentReservationListBinding
-import com.sigmai.stylemento.domain.entity.Coordinator
-import com.sigmai.stylemento.domain.entity.Receipt
-import com.sigmai.stylemento.domain.entity.User
 import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.constant.ReceiptStateType
 import com.sigmai.stylemento.ui.reservation.InfoDialogFragment
@@ -36,7 +30,7 @@ class ReservationListFragment : BaseFragment<FragmentReservationListBinding>() {
         viewModel.startAdapter.observe(this){
             setOverView()
         }
-        viewModel.adapterposition.observe(this) {
+        viewModel.adapterPosition.observe(this) {
             binding.reservationListRecycler.scrollToPosition(it)
         }
     }
