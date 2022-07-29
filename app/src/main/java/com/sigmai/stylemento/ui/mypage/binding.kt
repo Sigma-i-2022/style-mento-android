@@ -21,7 +21,15 @@ import com.sigmai.stylemento.ui.mypage.adapter.StyleTagSelectionAdapter
 import com.sigmai.stylemento.ui.mypage.client.adapter.PieceGridAdapter
 import com.sigmai.stylemento.ui.mypage.model.StyleTag
 import com.sigmai.stylemento.ui.reservation.adapter.ReservationListAdapter
+import com.sigmai.stylemento.ui.reservation.adapter.ReservationUserListAdapter
 import timber.log.Timber
+
+@BindingAdapter("app:reservationUserList")
+fun bindReservationUserList(recyclerView: RecyclerView, list: List<Common>?) {
+    list?.let {
+        (recyclerView.adapter as ReservationUserListAdapter).submitList(list)
+    }
+}
 
 @BindingAdapter("app:reservationList")
 fun bindReservationList(recyclerView: RecyclerView, list: List<Common>?) {
