@@ -80,7 +80,7 @@ class ReservationListAdapter(val listener : ReservationListener) : ListAdapter<C
 
         private fun setListener(item: Common, listener : ReservationListener) {
             binding.reservationListCancelButton.setOnClickListener {
-                listener.onDelete(it, item.seq, item.clientEmail)
+                listener.onDelete(it, item.seq, item.crdiEmail)
             }
             binding.reservationListRequestButton.setOnClickListener {
 
