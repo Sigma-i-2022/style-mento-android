@@ -24,8 +24,8 @@ class ReservationListFragment : BaseFragment<FragmentReservationListBinding>() {
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
-        viewModel.requestCommons()
 
+        setAdapter()
         viewModel.startBack.observe(this) {
             findNavController().navigate(R.id.action_reservation_list_page_to_main)
         }
@@ -34,17 +34,20 @@ class ReservationListFragment : BaseFragment<FragmentReservationListBinding>() {
             dialog.show(childFragmentManager, "info")
         }
         viewModel.startAdapter.observe(this){
-            setAdapter()
+            setOverView()
+        }
+        viewModel.adapterposition.observe(this) {
+            binding.reservationListRecycler.scrollToPosition(it)
         }
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    override fun initState() {
+        viewModel.loadData(0)
     }
+
     private fun setAdapter(){
         binding.reservationListRecycler.adapter = ReservationListAdapter(viewModel)
-
+    }
+    private fun setOverView(){
         val stateArray = Array(4){0}
         for(item in viewModel.commons.value!!){
             if(item.confirmPayYn == "Y"){

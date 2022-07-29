@@ -5,40 +5,32 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sigmai.stylemento.R
 import com.sigmai.stylemento.data.model.response.reservation.Common
 import com.sigmai.stylemento.databinding.ItemReservationListBinding
 import com.sigmai.stylemento.global.constant.ReceiptStateType
-import com.sigmai.stylemento.global.store.AuthenticationInfo
-import com.sigmai.stylemento.ui.reservation.list.ReservationListViewModel
-import timber.log.Timber
+import com.sigmai.stylemento.ui.reservation.list.ReservationListener
 import java.util.*
 
 
-class ReservationListAdapter(val viewModel : ReservationListViewModel) :
-    RecyclerView.Adapter<ReservationListAdapter.ViewHolder>() {
-    private val dataSet = viewModel.commons.value!!
-
+class ReservationListAdapter(val listener : ReservationListener) : ListAdapter<Common, ReservationListAdapter.ViewHolder>(CommonDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
     }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(dataSet[position], this, position, viewModel)
-    }
-
-    override fun getItemCount(): Int {
-        return dataSet.size
+        holder.bind(getItem(position), this, listener)
     }
 
     class ViewHolder(val binding: ItemReservationListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Common, adapter: ReservationListAdapter, position: Int, viewModel : ReservationListViewModel) {
+        fun bind(item: Common, adapter: ReservationListAdapter, listener : ReservationListener) {
             binding.item = item
             setAdapter(item.reserveTimes)
             binding(item)
-            setListener(adapter, position, item, viewModel)
+            setListener(item, listener)
 
             binding.executePendingBindings()
         }
@@ -86,24 +78,18 @@ class ReservationListAdapter(val viewModel : ReservationListViewModel) :
             }
         }
 
-        private fun setListener(adapter: ReservationListAdapter, position: Int, item: Common, viewModel : ReservationListViewModel) {
+        private fun setListener(item: Common, listener : ReservationListener) {
             binding.reservationListCancelButton.setOnClickListener {
-                val bundle = bundleOf("seq" to item.seq, "email" to item.crdiEmail)
-                it.findNavController().navigate(R.id.action_reservation_list_page_to_reservation_cancel_page, bundle)
-                adapter.notifyItemChanged(position)
-                viewModel.updateAdapter()
+                listener.onDelete(it, item.seq, item.clientEmail)
             }
             binding.reservationListRequestButton.setOnClickListener {
 
             }
             binding.reservationListBuyButton.setOnClickListener {
-                viewModel.postReservationClientPay(item.clientEmail, item.seq)
-                adapter.notifyItemChanged(position)
-                viewModel.updateAdapter()
+                listener.onSetBuy(it, item.seq, item.clientEmail, adapterPosition)
             }
             binding.reservationListReviewButton.setOnClickListener {
-                val bundle = bundleOf("seq" to item.seq)
-                it.findNavController().navigate(R.id.action_reservation_list_page_to_write_review_page, bundle)
+                listener.onReview(it, item.seq, adapterPosition)
             }
         }
         private fun getState(item : Common) : Int{
@@ -145,5 +131,14 @@ class ReservationListAdapter(val viewModel : ReservationListViewModel) :
             }
         }
     }
+}
 
+class CommonDiffUtil : DiffUtil.ItemCallback<Common>() {
+    override fun areItemsTheSame(oldItem: Common, newItem: Common): Boolean {
+        return oldItem.seq == newItem.seq
+    }
+
+    override fun areContentsTheSame(oldItem: Common, newItem: Common): Boolean {
+        return oldItem == newItem
+    }
 }
