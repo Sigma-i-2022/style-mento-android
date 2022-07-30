@@ -56,13 +56,16 @@ class ReservationWebViewFragment : BaseFragment<FragmentReservationWebViewBindin
                 {
                     Timber.d("------------------------------------------------------------------------------")
                     Timber.d(url)
+                    if (url.startsWith("http://13.125.39.167:9090/v1/api/payment/success")){
+                        viewModel.startNext.call()
+                    }
                     if (!URLUtil.isNetworkUrl(url) && !URLUtil.isJavaScriptUrl(url)) {
                         val uri = try {
                             Uri.parse(url)
                         } catch (e: Exception) {
                             return false
                         }
-
+                        Timber.d(uri.scheme)
                         return when (uri.scheme) {
                             "intent" -> {
                                 startSchemeIntent(it)
