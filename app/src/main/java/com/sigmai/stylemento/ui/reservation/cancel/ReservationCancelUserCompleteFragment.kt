@@ -20,12 +20,7 @@ class ReservationCancelUserCompleteFragment : BaseFragment<FragmentReservationCa
             findNavController().navigate(R.id.action_reservation_cancel_user_complete_page_to_reservation_user_list_page)
         }
         viewModel.startNext.observe(this){
+            findNavController().navigate(R.id.action_reservation_cancel_user_complete_page_to_main)
         }
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
-
 }
