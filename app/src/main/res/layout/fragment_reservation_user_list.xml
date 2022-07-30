@@ -18,7 +18,7 @@
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:layout_marginTop="20dp"
             android:background="@drawable/ic_arrow_back"
-            android:onClick="@{()->viewModel.onBackClick()}"/>
+            android:onClick="@{()->viewModel.onBackClick()}" />
 
         <TextView
             style="@style/header3"
@@ -36,8 +36,8 @@
             android:layout_alignParentEnd="true"
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:layout_marginTop="20dp"
-            android:background="@drawable/ic_arrow_back"
-            android:onClick="@{()->viewModel.onInfoClick()}"/>
+            android:background="@drawable/ic_help"
+            android:onClick="@{()->viewModel.onInfoClick()}" />
         <View
             android:id="@+id/reservation_user_list_line"
             android:layout_width="match_parent"
@@ -153,6 +153,6 @@
             android:layout_marginTop="10dp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:reservationUserList="@{viewModel.commons}"/>
+            app:reservationUserList="@{viewModel.commons}" />
     </RelativeLayout>
 </layout>
