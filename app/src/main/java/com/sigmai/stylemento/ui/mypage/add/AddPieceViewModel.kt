@@ -41,6 +41,9 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
     val shoes = MutableLiveData("")
     val tagList = MutableLiveData<List<String>>(listOf())
     val isNewPage = MutableLiveData(true)
+    val isCoordinator = MutableLiveData(true)
+    val height = MutableLiveData("")
+    val weight = MutableLiveData("")
     var lookPageId = -1L
     var uuid = ""
 
@@ -109,8 +112,8 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
                     topInfo = top.value!!,
                     bottomInfo = bottom.value!!,
                     shoeInfo = shoes.value!!,
-                    height = "0",
-                    weight = "0",
+                    height = height.value!!,
+                    weight = weight.value!!,
                     keyword1 = "WARM",
                     keyword2 = "COOL",
                     keyword3 = "MINIMAL"
@@ -143,8 +146,8 @@ class AddPieceViewModel @Inject constructor() : ViewModel() {
                     topInfo = top.value!!,
                     bottomInfo = bottom.value!!,
                     shoeInfo = shoes.value!!,
-                    weight = "0",
-                    height = "0",
+                    height = height.value!!,
+                    weight = weight.value!!,
                     keyword1 = "WARM",
                     keyword2 = "COOL",
                     keyword3 = "MINIMAL",

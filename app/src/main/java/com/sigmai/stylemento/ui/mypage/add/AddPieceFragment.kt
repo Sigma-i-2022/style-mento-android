@@ -14,6 +14,7 @@ import com.sigmai.stylemento.R
 import com.sigmai.stylemento.databinding.FragmentAddPieceBinding
 import com.sigmai.stylemento.databinding.StyleTagBottomSheetBinding
 import com.sigmai.stylemento.global.base.BaseFragment
+import com.sigmai.stylemento.global.store.AuthenticationInfo
 import com.sigmai.stylemento.global.util.MultipartUtil
 import com.sigmai.stylemento.ui.home.adapter.TagAdapter
 import com.sigmai.stylemento.ui.mypage.adapter.StyleTagSelectionAdapter
@@ -44,6 +45,7 @@ class AddPieceFragment : BaseFragment<FragmentAddPieceBinding>() {
     }
 
     override fun initState() {
+        viewModel.isCoordinator.value = AuthenticationInfo.userType == AuthenticationInfo.TYPE_COORDINATOR
         val pieceId = arguments?.getLong("id") ?: -1
 
         if (pieceId >= 0L) viewModel.loadPiece(pieceId)
