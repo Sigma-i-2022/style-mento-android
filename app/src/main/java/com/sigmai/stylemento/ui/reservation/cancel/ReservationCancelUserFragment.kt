@@ -27,9 +27,12 @@ class ReservationCancelUserFragment : BaseFragment<FragmentReservationCancelUser
             findNavController().navigateUp()
         }
         viewModel.startNext.observe(this) {
-            viewModel.requestCancel()
+            viewModel.requestPaymentItem()
             viewModel.postReservationCommonHide()
             findNavController().navigate(R.id.action_reservation_cancel_user_page_to_reservation_cancel_user_complete_page)
+        }
+        viewModel.endRequetPaymentItem.observe(this){
+            viewModel.requestCancel()
         }
         viewModel.content.observe(this){
             if (viewModel.content.value!!.length >= 0) {
