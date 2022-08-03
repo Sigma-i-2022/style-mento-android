@@ -42,8 +42,6 @@ class ReservationUserListFragment : BaseFragment<FragmentReservationUserListBind
         binding.reservationUserListRecycler.adapter = ReservationUserListAdapter(viewModel)
     }
     private fun setOverView(){
-        binding.reservationUserListRecycler.adapter = ReservationUserListAdapter(viewModel)
-
         val stateArray = Array(4){0}
         for(item in viewModel.commons.value!!){
             if(item.confirmPayYn == "Y"){
