@@ -277,19 +277,19 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
-                    <TextView
-                        android:id="@+id/write_review_virtual_text"
-                        style="@style/header5"
-                        android:layout_width="150dp"
-                        android:layout_height="30dp"
-                        android:layout_marginHorizontal="@dimen/horizontal_margin"
-                        android:background="@{viewModel.payType == 1 ? @drawable/button_background_type_1 : @drawable/button_background_type_5}"
-                        android:textColor="@{viewModel.payType == 1 ? @color/primary : @color/gray_d}"
-                        android:onClick="@{()->viewModel.onVirtualClick()}"
-                        android:gravity="center"
-                        android:text="가상 계좌"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/write_review_gender_text" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/write_review_virtual_text"-->
+<!--                        style="@style/header5"-->
+<!--                        android:layout_width="150dp"-->
+<!--                        android:layout_height="30dp"-->
+<!--                        android:layout_marginHorizontal="@dimen/horizontal_margin"-->
+<!--                        android:background="@{viewModel.payType == 1 ? @drawable/button_background_type_1 : @drawable/button_background_type_5}"-->
+<!--                        android:textColor="@{viewModel.payType == 1 ? @color/primary : @color/gray_d}"-->
+<!--                        android:onClick="@{()->viewModel.onVirtualClick()}"-->
+<!--                        android:gravity="center"-->
+<!--                        android:text="가상 계좌"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="@id/write_review_gender_text" />-->
                 </LinearLayout>
                 <ImageView
                     android:id="@+id/reservation_payment_all_agree_img"

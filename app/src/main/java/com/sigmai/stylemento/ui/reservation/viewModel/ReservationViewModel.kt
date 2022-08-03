@@ -169,15 +169,9 @@ class ReservationViewModel @Inject constructor() : ViewModel() {
         }
     }
 
-    fun getPaymentSuccess(url: String){
-
-    }
-
-
-
     private val startCard = SingleLiveEvent<Any>()
     private val startVirtual = SingleLiveEvent<Any>()
-    private var _payType = MutableLiveData<Int>(-1)
+    private var _payType = MutableLiveData<Int>(0)
     val payType : LiveData<Int> get() = _payType
 
     fun onCardClick(){
