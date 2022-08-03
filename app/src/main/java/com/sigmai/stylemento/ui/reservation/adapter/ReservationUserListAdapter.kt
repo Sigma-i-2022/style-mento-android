@@ -52,6 +52,7 @@ class ReservationUserListAdapter(val listener : ReservationUserListener) : ListA
                     binding.reservationUserListStateText.text = "구매확정"
                     binding.reservationUserListCancelButton.visibility = View.GONE
                     binding.reservationUserListTimeRecycler.visibility = View.GONE
+                    binding.reservationUserListCancelButton.visibility = View.GONE
                     showDecidedTime(item.confirmedReserveTime)
                     turnOffShare()
                     turnOffAccept()
