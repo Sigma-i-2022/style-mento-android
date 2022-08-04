@@ -267,6 +267,7 @@
                     android:layout_marginTop="6dp"
                     android:background="@drawable/button_background_type_5"
                     app:layout_constraintTop_toBottomOf="@id/reservation_cancel_reason_text" />
+
                 <EditText
                     android:id="@+id/reservation_cancel_reason_editText"
                     android:layout_width="match_parent"
@@ -274,20 +275,22 @@
                     android:layout_marginHorizontal="@dimen/horizontal_margin"
                     android:layout_marginTop="12dp"
                     android:background="@color/trans_parent"
-                    android:text="@={viewModel.content}"
+                    android:gravity="top"
                     android:maxLength="300"
                     android:paddingHorizontal="6dp"
-                    android:gravity="top"
+                    android:text="@={viewModel.content}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/reservation_cancel_reason_text" />
+
                 <View
                     android:id="@+id/reservation_cancel_reason_line"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:layout_marginTop="12dp"
                     android:background="@color/gray_f"
-                    app:layout_constraintTop_toBottomOf="@id/reservation_cancel_reason_background"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/reservation_cancel_reason_background" />
+
                 <TextView
                     android:id="@+id/reservation_cancel_pay_way_text"
                     style="@style/header3"
@@ -312,7 +315,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:visibility="gone">
 
                         <TextView
                             style="@style/header4"
@@ -336,7 +340,8 @@
                             android:layout_gravity="end"
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="6dp"
-                            android:text="@{viewModel.bank}"/>
+                            android:text="@{viewModel.bank}" />
+
                         <TextView
                             style="@style/header4"
                             android:layout_width="wrap_content"
@@ -345,11 +350,13 @@
                             android:text="선택"
                             android:textColor="@color/gray_8" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:visibility="gone">
 
                         <TextView
                             style="@style/header4"
@@ -369,15 +376,17 @@
                             style="@style/header4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:gravity="end"
                             android:text="@={viewModel.accountNumber}"
-                            android:textColor="@color/gray_8"
-                            android:gravity="end"/>
+                            android:textColor="@color/gray_8" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:visibility="gone">
 
                         <TextView
                             style="@style/header4"
@@ -397,10 +406,11 @@
                             style="@style/header4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:gravity="end"
                             android:text="@={viewModel.accountOwner}"
-                            android:textColor="@color/gray_8"
-                            android:gravity="end"/>
+                            android:textColor="@color/gray_8" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -436,15 +446,16 @@
                             android:layout_marginTop="10dp"
                             android:text="원" />
                     </LinearLayout>
+
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/reservation_cancel_button"
                         style="@style/header4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:onClick="@{()->viewModel.onNextClick()}"
                         android:paddingVertical="10dp"
                         android:text="취소 신청"
-                        android:textColor="@color/white"
-                        android:onClick="@{()->viewModel.onNextClick()}"/>
+                        android:textColor="@color/white" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

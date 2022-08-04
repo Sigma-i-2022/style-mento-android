@@ -1,8 +1,5 @@
 package com.sigmai.stylemento.ui.reservation.cancel
 
-import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigmai.stylemento.R
@@ -11,7 +8,6 @@ import com.sigmai.stylemento.global.base.BaseFragment
 import com.sigmai.stylemento.global.util.BankUtil
 import com.sigmai.stylemento.ui.setting.BankBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class ReservationCancelFragment : BaseFragment<FragmentReservationCancelBinding>() {
@@ -23,6 +19,7 @@ class ReservationCancelFragment : BaseFragment<FragmentReservationCancelBinding>
         viewModel.requestCommon(arguments?.getLong("seq") ?: 0)
         viewModel.requestCrdiInfo(arguments?.getString("email") ?: "")
     }
+
     override fun initDataBinding() {
         super.initDataBinding()
         binding.viewModel = viewModel
@@ -43,10 +40,10 @@ class ReservationCancelFragment : BaseFragment<FragmentReservationCancelBinding>
             }
             bankBottomSheet.show(childFragmentManager, "dialog")
         }
-        viewModel.endRequetPaymentItem.observe(this){
+        viewModel.endRequestPaymentItem.observe(this) {
             viewModel.requestCancel()
         }
-        viewModel.content.observe(this){
+        viewModel.content.observe(this) {
             if (viewModel.content.value!!.length >= 0) {
                 binding.reservationCancelButton.isEnabled = true
                 binding.reservationCancelButton.setBackgroundResource(R.drawable.button_available_background)
@@ -55,12 +52,10 @@ class ReservationCancelFragment : BaseFragment<FragmentReservationCancelBinding>
                 binding.reservationCancelButton.setBackgroundResource(R.drawable.button_unavailable_background)
             }
         }
-        binding.reservationCancelPayWayPriceText.text = viewModel.common.value?.price.toString()
-        binding.reservationCancelServicePriceText.text = viewModel.common.value?.price.toString()
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        viewModel.endRequestCommon.observe(this) {
+            binding.reservationCancelPayWayPriceText.text = viewModel.common.value?.price.toString()
+            binding.reservationCancelServicePriceText.text = viewModel.common.value?.price.toString()
+        }
     }
 
 }

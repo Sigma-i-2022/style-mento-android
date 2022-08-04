@@ -40,6 +40,7 @@ class ReservationCancelViewModel @Inject constructor() : ViewModel() {
     }
 
     val common = MutableLiveData<Common>()
+    val endRequestCommon = SingleLiveEvent<Any>()
     fun requestCommon(seq : Long){
         viewModelScope.launch {
             val ack = withContext(Dispatchers.IO){
@@ -55,14 +56,14 @@ class ReservationCancelViewModel @Inject constructor() : ViewModel() {
     val bank = MutableLiveData<String>("")
     val paymentItem = MutableLiveData<PaymentItem>()
 
-    val endRequetPaymentItem = SingleLiveEvent<Any>()
+    val endRequestPaymentItem = SingleLiveEvent<Any>()
     fun requestPaymentItem(){
         viewModelScope.launch {
             val paymentItem_ = withContext(Dispatchers.IO){
                 paymentRepository.getPaymentOne(common.value!!.clientEmail, common.value!!.seq)
             }
             paymentItem.value = paymentItem_
-            endRequetPaymentItem.call()
+            endRequestPaymentItem.call()
         }
     }
     fun requestCancel(){
